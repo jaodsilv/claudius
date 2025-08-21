@@ -2,7 +2,8 @@
 """
 Simple download utility for Claude Code scripts.
 
-This module provides a function to download content from a URL and save it to a specified path.
+This module provides a class-based approach to download content from URLs and save to specified paths.
+Supports single file downloads, multi-domain batch downloads, and YAML configuration.
 """
 
 import asyncio
@@ -13,8 +14,85 @@ import requests
 import yaml
 from collections import namedtuple, defaultdict
 from urllib.parse import urlparse
+from typing import Dict, List, Tuple, Optional
 
 DownloadItem = namedtuple('DownloadItem', ['url', 'filename'])
+
+
+class FileDownloader:
+    """Handles individual file download operations."""
+
+    def __init__(self, skip_existing: bool = False):
+        """
+        Initialize FileDownloader.
+
+        Args:
+            skip_existing: If True, skip download if file already exists
+        """
+        self.skip_existing = skip_existing
+
+    def download(self, output_path: str, url: str, filename: str) -> bool:
+        """
+        Download content from a URL and save it to the specified output path.
+
+        Args:
+            output_path: The directory where the file should be saved
+            url: The absolute URL to download from
+            filename: The filename or relative path where to write the output
+
+        Returns:
+            True if download was successful, False otherwise
+
+        Raises:
+            ValueError: If any of the parameters are invalid
+            OSError: If there are file system related errors
+            requests.RequestException: If there are network related errors
+        """
+        if not output_path:
+            raise ValueError("output_path cannot be empty")
+        if not url:
+            raise ValueError("url cannot be empty")
+        if not filename:
+            raise ValueError("filename cannot be empty")
+
+        # Create the full output file path
+        full_output_path = os.path.join(output_path, filename)
+
+        # Skip if file exists and skip_existing is True
+        if self.skip_existing and os.path.exists(full_output_path):
+            print(f"Skipping {filename} - file already exists")
+            return True
+
+        # Create output directory if it doesn't exist
+        output_dir = os.path.dirname(full_output_path)
+        if output_dir and not os.path.exists(output_dir):
+            try:
+                os.makedirs(output_dir, exist_ok=True)
+            except OSError as e:
+                print(f"Error creating directory {output_dir}: {e}")
+                raise
+
+        try:
+            # Download the content
+            print(f"Downloading {url}...")
+            response = requests.get(url)
+            response.raise_for_status()
+            content = response.content
+
+            # Write content to file
+            with open(full_output_path, 'wb') as f:
+                f.write(content)
+
+            print(f"Successfully saved to {full_output_path}")
+            return True
+
+        except requests.RequestException as e:
+            print(f"Error downloading from {url}: {e}")
+            raise
+        except OSError as e:
+            print(f"Error writing to {full_output_path}: {e}")
+            raise
+
 
 def download(output_path: str, url: str, filename: str, skip_existing: bool = False) -> bool:
     """
@@ -78,6 +156,63 @@ def download(output_path: str, url: str, filename: str, skip_existing: bool = Fa
     except OSError as e:
         print(f"Error writing to {full_output_path}: {e}")
         raise
+
+
+class DomainDownloader:
+    """Handles downloads for a single domain with retry logic and exponential backoff."""
+
+    def __init__(self, max_attempts: int = 5, skip_existing: bool = False):
+        """
+        Initialize DomainDownloader.
+
+        Args:
+            max_attempts: Maximum number of attempts per file (default: 5)
+            skip_existing: If True, skip download if file already exists (default: False)
+        """
+        self.max_attempts = max_attempts
+        self.file_downloader = FileDownloader(skip_existing=skip_existing)
+
+    def download_domain(self, output_path: str, downloads: List[DownloadItem]) -> List[bool]:
+        """
+        Download multiple files from the same domain sequentially with exponential backoff retry logic.
+
+        Args:
+            output_path: The directory where files should be saved
+            downloads: list of DownloadItem named tuples containing url and filename
+
+        Returns:
+            List of boolean values indicating success/failure for each download
+        """
+        attempts = {item.filename: 0 for item in downloads}
+        urls = {item.filename: item.url for item in downloads}
+        results = {item.filename: False for item in downloads}
+
+        while attempts:
+            for filename in list(attempts.keys()):
+                attempts[filename] += 1
+                url = urls[filename]
+
+                try:
+                    success = self.file_downloader.download(output_path, url, filename)
+                    if success:
+                        results[filename] = True
+                        del attempts[filename]
+                        del urls[filename]
+                        continue
+                except Exception as e:
+                    print(f"Attempt {attempts[filename]} failed to download {url}: {e}")
+
+                if attempts[filename] >= self.max_attempts:
+                    print(f"Download failed after {self.max_attempts} attempts: {url}")
+                    del attempts[filename]
+                    del urls[filename]
+                else:
+                    # Exponential backoff: 3 * 2^(attempts-1) seconds
+                    wait_time = 3 * (2 ** (attempts[filename] - 1))
+                    time.sleep(wait_time)
+
+        return [results[item.filename] for item in downloads]
+
 
 def group_downloads_by_domain(downloads: list[DownloadItem]) -> dict[str, list[DownloadItem]]:
     """
@@ -184,6 +319,104 @@ async def download_multi_domain(output_path: str, downloads: list[DownloadItem],
     return dict(domain_results)
 
 
+class DownloadManager:
+    """Main orchestrator for all download operations."""
+
+    def __init__(self, max_attempts: int = 5, skip_existing: bool = False):
+        """
+        Initialize DownloadManager.
+
+        Args:
+            max_attempts: Maximum number of attempts per file (default: 5)
+            skip_existing: If True, skip download if file already exists (default: False)
+        """
+        self.max_attempts = max_attempts
+        self.skip_existing = skip_existing
+        self.file_downloader = FileDownloader(skip_existing=skip_existing)
+
+    def download_single_file(self, output_path: str, url: str, filename: str) -> bool:
+        """
+        Download a single file.
+
+        Args:
+            output_path: The directory where the file should be saved
+            url: The absolute URL to download from
+            filename: The filename or relative path where to write the output
+
+        Returns:
+            True if download was successful, False otherwise
+        """
+        return self.file_downloader.download(output_path, url, filename)
+
+    async def download_multi_domain(self, output_path: str, downloads: List[DownloadItem]) -> Dict[str, List[bool]]:
+        """
+        Download multiple files from multiple domains concurrently with exponential backoff retry logic.
+
+        Args:
+            output_path: The directory where files should be saved
+            downloads: list of DownloadItem named tuples containing url and filename
+
+        Returns:
+            Dictionary mapping domain names to lists of boolean values indicating success/failure for each download
+        """
+        # Group downloads by domain
+        domain_groups = self._group_downloads_by_domain(downloads)
+
+        # Create tasks for each domain
+        tasks = [
+            self._download_domain_async(output_path, domain, domain_downloads)
+            for domain, domain_downloads in domain_groups.items()
+        ]
+
+        # Wait for all domains to complete
+        domain_results = await asyncio.gather(*tasks)
+
+        # Convert results to dictionary
+        return dict(domain_results)
+
+    async def _download_domain_async(self, output_path: str, domain: str, domain_downloads: List[DownloadItem]) -> Tuple[str, List[bool]]:
+        """Download all files for a single domain asynchronously."""
+        loop = asyncio.get_event_loop()
+        domain_downloader = DomainDownloader(max_attempts=self.max_attempts, skip_existing=self.skip_existing)
+
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            results = await loop.run_in_executor(
+                executor,
+                domain_downloader.download_domain,
+                output_path,
+                domain_downloads
+            )
+        return domain, results
+
+    def _group_downloads_by_domain(self, downloads: List[DownloadItem]) -> Dict[str, List[DownloadItem]]:
+        """
+        Group a list of DownloadItem objects by domain.
+
+        Args:
+            downloads: list of DownloadItem named tuples containing url and filename
+
+        Returns:
+            Dictionary mapping domain names to lists of DownloadItem objects
+        """
+        groups = defaultdict(list)
+        for item in downloads:
+            domain = urlparse(item.url).netloc
+            groups[domain].append(item)
+        return groups
+
+    def load_from_yaml(self, yaml_file_path: str) -> Tuple[str, List[DownloadItem], bool]:
+        """
+        Load download configuration from a YAML file.
+
+        Args:
+            yaml_file_path: Path to the YAML configuration file
+
+        Returns:
+            Tuple of (output_path, downloads_list, skip_existing)
+        """
+        return load_downloads_from_yaml(yaml_file_path)
+
+
 def load_downloads_from_yaml(yaml_file_path: str) -> tuple[str, list[DownloadItem], bool]:
     """Load download configuration from a YAML file.
 
@@ -226,7 +459,7 @@ def load_downloads_from_yaml(yaml_file_path: str) -> tuple[str, list[DownloadIte
         raise ValueError(f"YAML file not found: {yaml_file_path}")
 
 async def main_async():
-    """Async main function that uses download_multi_domain."""
+    """Async main function that uses DownloadManager."""
     import sys
 
     # Check for different usage modes
@@ -239,6 +472,9 @@ async def main_async():
             print(f"Loaded {len(downloads)} downloads from {yaml_file}")
             print(f"Output directory: {output_path}")
             print(f"Skip existing files: {skip_existing}")
+
+            # Create DownloadManager with the configuration from YAML
+            download_manager = DownloadManager(skip_existing=skip_existing)
         except Exception as e:
             print(f"Error loading YAML file: {e}")
             sys.exit(1)
@@ -248,6 +484,9 @@ async def main_async():
         output_path, url, filename = sys.argv[1], sys.argv[2], sys.argv[3]
         downloads = [DownloadItem(url=url, filename=filename)]
         skip_existing = False
+
+        # Create DownloadManager with default configuration
+        download_manager = DownloadManager(skip_existing=skip_existing)
 
     else:
         print("""Usage:
@@ -267,13 +506,13 @@ YAML file format:
     - url: 'https://example.com/file2.txt'
       filename: 'subdir/file2.txt'
 
-Note: Uses multi-domain download function internally for robust
+Note: Uses DownloadManager class internally for robust
       downloading with retry logic and async capabilities.""")
         sys.exit(1)
 
     try:
-        # Use download_multi_domain for the download(s)
-        results = await download_multi_domain(output_path, downloads, skip_existing=skip_existing)
+        # Use DownloadManager for the download(s)
+        results = await download_manager.download_multi_domain(output_path, downloads)
 
         # Check results and count successes/failures
         total_downloads = len(downloads)
