@@ -205,12 +205,12 @@ def load_downloads_from_yaml(yaml_file_path: str) -> tuple[str, list[DownloadIte
         if 'downloads' not in config:
             raise ValueError("YAML file must contain a 'downloads' key")
 
-        output_path = config['output_path']
+        yaml_dir = os.path.dirname(os.path.abspath(yaml_file_path))
+        output_path = config.get('output_path', yaml_dir)
         skip_existing = config.get('skip_existing', False)
 
         # Make relative paths relative to the YAML file directory
         if not os.path.isabs(output_path):
-            yaml_dir = os.path.dirname(os.path.abspath(yaml_file_path))
             output_path = os.path.join(yaml_dir, output_path)
 
         downloads = []
