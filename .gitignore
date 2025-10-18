@@ -3,7 +3,6 @@
 **/.credentials.json
 **/backups
 **/ide
-**/local
 **/logs
 **/projects
 **/shell-snapshots
@@ -13,6 +12,7 @@
 **/debug
 **/file-history
 **/history.jsonl
+*/local
 .env
 downloads/
 tmp/
