@@ -55,6 +55,22 @@ This repository now uses specialized .claude directories for different workflows
 **Purpose**: General-purpose Claude Code configurations
 **Contents**: General agents, commands, shared resources, instructions, scripts
 
+### doc-understanding.claude/
+
+**Purpose**: Documentation downloading, conversion, and processing workflow configurations
+**Contents**:
+
+1. Documentation download agents and commands
+2. Document format converters
+3. Conversion quality verifiers
+4. Batch processing tools
+
+**Related Functionality**:
+
+1. `/docs:download` command for fetching documentation from URLs
+2. Agent system for parallel document processing
+3. Format conversion and verification workflows
+
 ### job-hunting.claude/
 
 **Purpose**: Job hunting workflow configurations
@@ -85,8 +101,9 @@ This repository now uses specialized .claude directories for different workflows
 Content previously in `dotclaude/` has been split:
 
 1. General configs remain in `dotclaude/`
-2. Job hunting specific configs moved to `job-hunting.claude/`
-3. Future specialized configs will use similar pattern
+2. Documentation-related configs moved to `doc-understanding.claude/`
+3. Job hunting specific configs moved to `job-hunting.claude/`
+4. Future specialized configs will use similar pattern
 
 ## Application Purpose
 
