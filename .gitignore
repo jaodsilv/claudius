@@ -14,6 +14,17 @@
 **/file-history
 **/history.jsonl
 .env
+<<<<<<< Updated upstream
 downloads/
 tmp/
 dotclaude/dotclaude/
+=======
+>>>>>>> Stashed changes
+
+# Python cache
+
+**/__pycache__/
+
+# Downloaded content
+
+external-resources/downloads/knowledge/

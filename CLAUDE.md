@@ -2,10 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Base Instructions
-
-- Read @CLAUDE.base.md as a base or as an extension for this CLAUDE.md file
-
 ## Repository Overview
 
 This is a personal configuration repository for Claude Code custom base configs, sub agents, custom slash commands and workflows.
@@ -16,8 +12,8 @@ This is a personal configuration repository for Claude Code custom base configs,
 - `LICENSE` - MIT license file
 - `.claude` - Project specific configuration for Claude Code
 - `dotclaude` - Actual .claude mounted at `~/.claude`. This is where you should put non-project specific configuration.
-- `CLAUDE.base.md` - Base configuration for Claude Code to copy to other projects
 - `external-resources` - External resources for Claude Code.
+- `src` - Source code for python agents and scripts of the project.
 
 ### External Resources
 

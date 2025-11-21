@@ -19,6 +19,81 @@ from typing import Dict, List, Tuple, Optional
 DownloadItem = namedtuple('DownloadItem', ['url', 'filename'])
 
 
+def _infer_extension_from_url(url: str) -> str:
+    """
+    Infer file extension from URL path.
+    
+    Args:
+        url: The URL to analyze
+        
+    Returns:
+        File extension including the dot (e.g., '.html', '.pdf'), or empty string if none found
+    """
+    if not url or not isinstance(url, str):
+        return ''
+        
+    try:
+        parsed_url = urlparse(url.strip())
+        path = parsed_url.path
+        
+        if not path or path == '/':
+            return ''
+        
+        # Remove query parameters and fragments from path
+        if '?' in path:
+            path = path.split('?')[0]
+        if '#' in path:
+            path = path.split('#')[0]
+            
+        # Extract extension from the last path segment
+        if path and path != '/':
+            _, ext = os.path.splitext(path)
+            # Only return valid extensions (2-5 characters)
+            if ext and 1 < len(ext) <= 5 and ext.replace('.', '').isalnum():
+                return ext.lower()
+    except (ValueError, AttributeError, TypeError):
+        # Handle URL parsing errors silently
+        pass
+    
+    return ''
+
+
+def _ensure_filename_has_extension(filename: str, url: str) -> str:
+    """
+    Ensure filename has an extension, inferring from URL if necessary.
+    
+    Args:
+        filename: The original filename
+        url: The URL to infer extension from if needed
+        
+    Returns:
+        Filename with extension
+    """
+    if not filename or not isinstance(filename, str):
+        return filename or ''
+    
+    try:
+        # Check if filename already has an extension
+        name, ext = os.path.splitext(filename.strip())
+        
+        if ext and len(ext) > 1:
+            # Filename already has a valid extension
+            return filename
+        
+        # Try to infer extension from URL
+        if url:
+            inferred_ext = _infer_extension_from_url(url)
+            
+            if inferred_ext:
+                return filename + inferred_ext
+    except (ValueError, AttributeError, TypeError):
+        # Handle any unexpected errors in filename processing
+        pass
+    
+    # No extension could be inferred, return original filename
+    return filename
+
+
 class FileDownloader:
     """Handles individual file download operations."""
 
@@ -55,12 +130,19 @@ class FileDownloader:
         if not filename:
             raise ValueError("filename cannot be empty")
 
+        # Ensure filename has an extension, inferring from URL if necessary
+        enhanced_filename = _ensure_filename_has_extension(filename, url)
+        
+        # Log if extension was inferred
+        if enhanced_filename != filename:
+            print(f"Inferred extension from URL: {filename} -> {enhanced_filename}")
+
         # Create the full output file path
-        full_output_path = os.path.join(output_path, filename)
+        full_output_path = os.path.join(output_path, enhanced_filename)
 
         # Skip if file exists and skip_existing is True
         if self.skip_existing and os.path.exists(full_output_path):
-            print(f"Skipping {filename} - file already exists")
+            print(f"Skipping {enhanced_filename} - file already exists")
             return True
 
         # Create output directory if it doesn't exist
@@ -119,12 +201,19 @@ def download(output_path: str, url: str, filename: str, skip_existing: bool = Fa
     if not filename:
         raise ValueError("filename cannot be empty")
 
+    # Ensure filename has an extension, inferring from URL if necessary
+    enhanced_filename = _ensure_filename_has_extension(filename, url)
+    
+    # Log if extension was inferred
+    if enhanced_filename != filename:
+        print(f"Inferred extension from URL: {filename} -> {enhanced_filename}")
+
     # Create the full output file path
-    full_output_path = os.path.join(output_path, filename)
+    full_output_path = os.path.join(output_path, enhanced_filename)
 
     # Skip if file exists and skip_existing is True
     if skip_existing and os.path.exists(full_output_path):
-        print(f"Skipping {filename} - file already exists")
+        print(f"Skipping {enhanced_filename} - file already exists")
         return True
 
     # Create output directory if it doesn't exist
