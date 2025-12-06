@@ -11,6 +11,8 @@ Arguments is a raw text copy-pasted from either email or linkedin
 
 ## Task
 
+**Note**: Read personal preferences (salary expectations, visa requirements) from `@job-hunting/personal-preferences.yaml` before filling templates.
+
 Your task is to create 2 files:
 
 * A new history file in the @job-hunting/history directory.
@@ -96,7 +98,7 @@ The generated content should follow one of the templates below:
 ```yaml
 context:
   - Approaches with no company name usually seems fishy to me, but I'm ok with that.
-  - 70/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_hourly_rate}}/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: linkedin
 process_status: recruiter reach-out
@@ -112,9 +114,10 @@ conversation_history:
 
 ```yaml
 context:
-  - 70/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_hourly_rate}}/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: linkedin
+company: {{company_name}}
 process_status: recruiter reach-out
 conversation_history:
   - timestamp: {{timestamp}}
@@ -131,7 +134,7 @@ conversation_history:
 ```yaml
 context:
   - Approaches with no company name usually seems fishy to me, but I'm ok with that.
-  - 140k yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_yearly_salary}} yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: linkedin
 process_status: recruiter reach-out
@@ -147,9 +150,10 @@ conversation_history:
 
 ```yaml
 context:
-  - 140k yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_yearly_salary}} yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: linkedin
+company: {{company_name}}
 process_status: recruiter reach-out
 conversation_history:
   - timestamp: {{timestamp}}
@@ -182,7 +186,7 @@ conversation_history:
 
 ```yaml
 context:
-  - 70/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_hourly_rate}}/hour is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: email
 process_status: recruiter reach-out
@@ -198,7 +202,7 @@ conversation_history:
 
 ```yaml
 context:
-  - 140k yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
+  - {{min_yearly_salary}} yearly is in the lower range of my acceptable range, but it is still inside. Below that I must reject. The higher the better.
   - Do not forget to mention that I require H1B Visa Sponsorship for any new position.
 platform: email
 process_status: recruiter reach-out
@@ -212,7 +216,7 @@ conversation_history:
 
 ###### Template 2.3 - Application Response
 
-####### Template 3.1 - Response to Email Application
+####### Template 2.3.1 - Response to Email Application
 
 ```yaml
 context:

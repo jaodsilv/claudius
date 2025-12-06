@@ -19,7 +19,7 @@ Your task is to update 1 file in the @job-hunting/history directory
 2. analyze the arguments to determine the best template to use or if it is just additional context
 3. analyze the arguments to extract non-obvious information, like the datetime of the message and company name, etc.
 4. With the provided information identify the the filename of the history file to update.
-4. Update the history file
+5. Update the history file
 
 ### Arguments Parsing
 

@@ -82,8 +82,6 @@ Evaluate the quality of quantified achievements and technical contributions in t
 - Consistency: Look for achievements that are not backed by the resume or that are conflicting with the resume
 - Impact Clarity: Check if the business value and technical significance are clearly communicated
 
-**STEP 11: TECHNICAL POSITIONING**
-
 18. **PROFESSIONAL PRESENTATION**: Delegate to `cover-letter-evaluator:presentation` agent
 
 ### Phase 4: Results Compilation (Steps 19-20)
