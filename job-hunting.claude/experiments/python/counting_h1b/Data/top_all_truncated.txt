@@ -1,0 +1,1501 @@
+All Companies by Total Approvals
+
+---------------------------------------------------------------------------------------------------------------
+| Pos|Company                                                                       |Approvals|Denials|   Rate|
+---------------------------------------------------------------------------------------------------------------
+|   1 MICROSOFT                                                                          16724     183   98.9%|
+|   2 AMAZON                                                                              3831      99   97.5%|
+|   3 EXPEDIA                                                                             1314      15   98.9%|
+|   4 T MOBILE USA                                                                        1287      10   99.2%|
+|   5 AMAZON WEB SERVICES                                                                  741      14   98.1%|
+|   6 SLALOM                                                                               610       8   98.7%|
+|   7 NORDSTROM                                                                            570       8   98.6%|
+|   8 UNIVERSITY WA                                                                        497       7   98.6%|
+|   9 ZILLOW                                                                               435      11   97.5%|
+|  10 STARBUCKS COFFEE CO                                                                  423       7   98.4%|
+|  11 F5                                                                                   378       2   99.5%|
+|  12 COSTCO WHOLESALE                                                                     294       2   99.3%|
+|  13 PROVIDENCE                                                                           225       3   98.7%|
+|  14 FRED HUTCHINSON CANCER CTR                                                           198       5   97.5%|
+|  15 PACCAR                                                                               155       5   96.9%|
+|  16 EDIFECS                                                                              147       4   97.4%|
+|  17 AVANADE                                                                              141       2   98.6%|
+|  18 SMARTSHEET                                                                           141       1   99.3%|
+|  19 LULULEMON USA                                                                        140       0  100.0%|
+|  20 SEAGEN                                                                               127       2   98.4%|
+|  21 REMITLY                                                                              125       2   98.4%|
+|  22 ILINK SYS                                                                            110       1   99.1%|
+|  23 HARMAN CONNECTED SVCS                                                                100       5   95.2%|
+|  24 LASAI TECH                                                                            90       2   97.8%|
+|  25 ZEN3 INFOSOLUTIONS AMERICA                                                            82       3   96.5%|
+|  26 ALLEN INSTITUTE                                                                       80       1   98.8%|
+|  27 ACCELALPHA                                                                            78       0  100.0%|
+|  28 AVALARA                                                                               78       1   98.7%|
+|  29 SEA MAR COMMUNITY HLTH CTRS                                                           73       2   97.3%|
+|  30 ADITI CONSULTING                                                                      72       2   97.3%|
+|  31 ZULILY                                                                                67       3   95.7%|
+|  32 MAQ                                                                                   64       0  100.0%|
+|  33 SEATTLE CHILDREN S HOSPITAL                                                           63       0  100.0%|
+|  34 TETRA SYS                                                                             63       1   98.4%|
+|  35 C2S TECH                                                                              62       0  100.0%|
+|  36 INSPIRAGE                                                                             62       0  100.0%|
+|  37 REDFIN                                                                                56       0  100.0%|
+|  38 AXON ENTERPRISE                                                                       54       2   96.4%|
+|  39 PREMERA BLUE CROSS                                                                    53       0  100.0%|
+|  40 9LOGIC TECH                                                                           51       1   98.1%|
+|  41 LENORA SYS                                                                            50       3   94.3%|
+|  42 HIGHSPOT                                                                              50       1   98.0%|
+|  43 CONVOY                                                                                49       1   98.0%|
+|  44 OUTREACH                                                                              48       1   98.0%|
+|  45 BILL MELINDA GATES FOUNDATION                                                         46       0  100.0%|
+|  46 WYZE LABS                                                                             45       0  100.0%|
+|  47 MOSS ADAMS                                                                            45       2   95.7%|
+|  48 RUSSELL INVESTMENTS GROU                                                              43       1   97.7%|
+|  49 SANA BIOTECHNOLOGY                                                                    42       0  100.0%|
+|  50 RELANTO                                                                               41       0  100.0%|
+|  51 PUGET SOUND ENERGY                                                                    39       0  100.0%|
+|  52 FACTSPAN                                                                              39       3   92.9%|
+|  53 ADROIT TECH CLOUD SOLNS                                                               39       0  100.0%|
+|  54 CWC TRAVEL                                                                            36       2   94.7%|
+|  55 NBBJ                                                                                  35       2   94.6%|
+|  56 BEYONDSOFT CONSULTING                                                                 35       1   97.2%|
+|  57 EDIFEES                                                                               34       0  100.0%|
+|  58 TRUVETA                                                                               34       0  100.0%|
+|  59 CONFIZ                                                                                33       0  100.0%|
+|  60 SWEDISH HLTH SVCS                                                                     33       0  100.0%|
+|  61 FRED HUTCHINSON CANCER RESEARCH CT                                                    33       1   97.1%|
+|  62 SEATTLE UNIVERSITY                                                                    32       1   97.0%|
+|  63 CORETEK LABS                                                                          32       0  100.0%|
+|  64 ICERTIS                                                                               31       1   96.9%|
+|  65 FLUKE ELECTRONICS                                                                     31       2   93.9%|
+|  66 GE ENERGY MANAGEMENT SVCS                                                             31       0  100.0%|
+|  67 ALASKA AIRLINES                                                                       31       1   96.9%|
+|  68 MILLIMAN                                                                              30       0  100.0%|
+|  69 NINTENDO                                                                              29       0  100.0%|
+|  70 FUELCOMM                                                                              28       0  100.0%|
+|  71 CENTIFIC GLOBAL SOLNS                                                                 28       0  100.0%|
+|  72 OMNIVA                                                                                28       0  100.0%|
+|  73 KADLEC REGIONAL MED CTR                                                               27       2   93.1%|
+|  74 SYRENCLOUD                                                                            26       2   92.9%|
+|  75 TWITCH INTERACTIVE                                                                    26       3   89.7%|
+|  76 INABIA SOFT CONSULTING                                                                26       2   92.9%|
+|  77 POKEMON CO INTL                                                                       26       1   96.3%|
+|  78 APPLEXUS TECH                                                                         25       2   92.6%|
+|  79 SMARTEK21                                                                             25       2   92.6%|
+|  80 VIRGINIA MASON MED CTR                                                                25       0  100.0%|
+|  81 CENTIFIC TECH                                                                         25       1   96.2%|
+|  82 BUNGIE                                                                                24       0  100.0%|
+|  83 EXPEDITORS INTL WA                                                                    24       0  100.0%|
+|  84 INSTITUTE SYS BIOLOGY                                                                 24       0  100.0%|
+|  85 SEATTLE CHILDRENS HOSPITAL                                                            23       0  100.0%|
+|  86 MAGNUSSON KLEMENCIC ASSOCIATES                                                        23       0  100.0%|
+|  87 SOPHUS IT SOLNS                                                                       23       0  100.0%|
+|  88 GE DIGITAL HOLDINGS                                                                   23       0  100.0%|
+|  89 NEXTURN                                                                               22       0  100.0%|
+|  90 TELECOMMUNICATION SYS                                                                 22       2   91.7%|
+|  91 SEATTLE PACIFIC UNIVERSITY                                                            22       1   95.7%|
+|  92 PHILI ULTRASOUND                                                                      21       0  100.0%|
+|  93 ISOFTSTONE                                                                            21       2   91.3%|
+|  94 FLEXE                                                                                 20       2   90.9%|
+|  95 D AMATO CONVERSANO                                                                    20       1   95.2%|
+|  96 MCG HLTH                                                                              20       1   95.2%|
+|  97 METEORCOMM                                                                            20       0  100.0%|
+|  98 DAVID OPPENHEIMER CO I                                                                19       2   90.5%|
+|  99 SYMETRA LIFE INSURANCE CO                                                             19       0  100.0%|
+| 100 KPFF                                                                                  19       0  100.0%|
+| 101 CLOUDIQ TECH                                                                          19       0  100.0%|
+| 102 PEOPLE TECH GROUP                                                                     19       1   95.0%|
+| 103 TEMPORAL TECH                                                                         18       0  100.0%|
+| 104 GEOENGINEERS                                                                          18       0  100.0%|
+| 105 FRED HUTCHINSON CANCER RESEARCH CE                                                    17       0  100.0%|
+| 106 PACTERA TECH                                                                          17       0  100.0%|
+| 107 ALTIUS INSTITUTE BIOMEDICAL SCIENCES                                                  17       0  100.0%|
+| 108 ISPOT TV                                                                              17       0  100.0%|
+| 109 ADROIT TECH CLOUD SOLU                                                                17       1   94.4%|
+| 110 ADAPTIVE BIOTECHNOLOGIES                                                              17       0  100.0%|
+| 111 FLYHOMES                                                                              17       0  100.0%|
+| 112 ECOM STRATEGIES                                                                       17       0  100.0%|
+| 113 APPTIO                                                                                17       0  100.0%|
+| 114 FTV EMPLOYMENT SVCS                                                                   17       0  100.0%|
+| 115 H10 SEATTLE                                                                           16       0  100.0%|
+| 116 OFFERUP                                                                               16       0  100.0%|
+| 117 TRIDENT SEAFOODS                                                                      16       0  100.0%|
+| 118 9LLABS                                                                                15       0  100.0%|
+| 119 BLUE NILE                                                                             15       0  100.0%|
+| 120 GITHUB                                                                                15       0  100.0%|
+| 121 SPACELABS HEALTHCARE                                                                  15       1   93.8%|
+| 122 STATSIG                                                                               15       0  100.0%|
+| 123 AEGIS CO                                                                              15       0  100.0%|
+| 124 MOBILE INTEGRATION WORKGROUP                                                          14       0  100.0%|
+| 125 AFFINE                                                                                14       1   93.3%|
+| 126 AGC BIOLOGICS                                                                         14       0  100.0%|
+| 127 DARIGOLD                                                                              14       0  100.0%|
+| 128 SKILL ON TA                                                                           14       0  100.0%|
+| 129 MC GROUP COMPANIES                                                                    14       0  100.0%|
+| 130 APTLY TECH                                                                            13       0  100.0%|
+| 131 ASIAN COUNSELING REFERRAL SVC                                                         13       0  100.0%|
+| 132 TRINE                                                                                 13       0  100.0%|
+| 133 OCTOML                                                                                13       0  100.0%|
+| 134 CTS TECHNICAL SVCS                                                                    13       1   92.9%|
+| 135 REC ROOM                                                                              13       0  100.0%|
+| 136 COMMERCE FABRIC                                                                       13       0  100.0%|
+| 137 GRAB TECH                                                                             13       1   92.9%|
+| 138 ALLEN INSTITUTE ARTIFICIAL INTELLIGENCE                                               13       0  100.0%|
+| 139 UNITEDTEKGROUP                                                                        13       0  100.0%|
+| 140 PACTERA TECH NA                                                                       12       1   92.3%|
+| 141 SKYTAP                                                                                12       1   92.3%|
+| 142 CLOUDIFY TECH                                                                         12       0  100.0%|
+| 143 AARIYA TECH                                                                           12       0  100.0%|
+| 144 TANIUM                                                                                12       0  100.0%|
+| 145 MAGNIX USA                                                                            11       1   91.7%|
+| 146 VALVE                                                                                 11       1   91.7%|
+| 147 BNBUILDERS                                                                            11       0  100.0%|
+| 148 AMPERITY                                                                              11       0  100.0%|
+| 149 MICROVISION                                                                           11       1   91.7%|
+| 150 BELLEVUE COLLEGE                                                                      11       0  100.0%|
+| 151 BITTREX                                                                               11       0  100.0%|
+| 152 WEYERHAEUSER NR CO                                                                    11       0  100.0%|
+| 153 BIG FISH GAMES                                                                        11       0  100.0%|
+| 154 ENFEC                                                                                 11       0  100.0%|
+| 155 AXIO RESEARCH                                                                         11       0  100.0%|
+| 156 COURSE5 INTELLIGENCE PRIVATE                                                          10       0  100.0%|
+| 157 CLOUDMOYO                                                                             10       0  100.0%|
+| 158 COFFMAN ENGINEERS                                                                     10       0  100.0%|
+| 159 KIN ON HLTH CARE CTR                                                                  10       0  100.0%|
+| 160 REDAPT ATTUNIX                                                                        10       0  100.0%|
+| 161 KING COUNTY                                                                           10       0  100.0%|
+| 162 NFOLKS                                                                                10       1   90.9%|
+| 163 JUNO THERAPEUTICS                                                                     10       1   90.9%|
+| 164 JUST EVOTEC BIOLOGICS                                                                 10       0  100.0%|
+| 165 CHATECK                                                                               10       0  100.0%|
+| 166 INSPUR USA                                                                            10       0  100.0%|
+| 167 INVENTPRISE                                                                           10       0  100.0%|
+| 168 SAGE BIONETWORKS                                                                      10       0  100.0%|
+| 169 FLAIR TECH SOLNS                                                                      10       0  100.0%|
+| 170 INRIX                                                                                  9       1   90.0%|
+| 171 DEXTERITY OPERATION US                                                                 9       0  100.0%|
+| 172 ESPER IO                                                                               9       0  100.0%|
+| 173 PATH                                                                                   9       0  100.0%|
+| 174 DOOSAN GRIDTECH                                                                        9       0  100.0%|
+| 175 WAFERWIRE                                                                              9       0  100.0%|
+| 176 PILLPACK                                                                               9       0  100.0%|
+| 177 RLSUN SYS                                                                              9       1   90.0%|
+| 178 BROOKS SPORTS                                                                          9       0  100.0%|
+| 179 NAUTILUS SUBSIDIARY                                                                    9       0  100.0%|
+| 180 SIMERICS                                                                               9       1   90.0%|
+| 181 DAMATO CONVERSANO                                                                      9       0  100.0%|
+| 182 XPANSE                                                                                 9       0  100.0%|
+| 183 HIGHBROW                                                                               9       0  100.0%|
+| 184 PITCHBOOK DATA                                                                         9       0  100.0%|
+| 185 JACOBS ASSOCIATES                                                                      8       0  100.0%|
+| 186 CHINESE INFORMATION SVC CTR                                                            8       0  100.0%|
+| 187 RYTHMOS                                                                                8       1   88.9%|
+| 188 YITA                                                                                   8       1   88.9%|
+| 189 DAKSA SOLNS                                                                            8       0  100.0%|
+| 190 VIOME LIFE SCIENCES                                                                    8       0  100.0%|
+| 191 ALLEN INSTITUTE ARTIFICIAL                                                             8       0  100.0%|
+| 192 ANNAPURNA LABS US                                                                      8       0  100.0%|
+| 193 COMPASS WA                                                                             8       1   88.9%|
+| 194 110 HOLDINGS                                                                           8       0  100.0%|
+| 195 CONCORD ENGINEERING                                                                    8       0  100.0%|
+| 196 TALKING RAIN BEVERAGE CO                                                               8       0  100.0%|
+| 197 ZENSA                                                                                  8       0  100.0%|
+| 198 BIBLIOSO                                                                               8       0  100.0%|
+| 199 OSSIA                                                                                  8       0  100.0%|
+| 200 ASSURANCE IQ                                                                           8       0  100.0%|
+| 201 APPEN BUTLER HILL                                                                      8       1   88.9%|
+| 202 EVIATION AIRCRAFT                                                                      8       0  100.0%|
+| 203 COWI NORTH AMERICA                                                                     8       0  100.0%|
+| 204 SHANZE PARTNERS                                                                        8       0  100.0%|
+| 205 WA FAN TUAN                                                                            8       0  100.0%|
+| 206 QUMULO                                                                                 8       0  100.0%|
+| 207 AFFIRMA                                                                                7       0  100.0%|
+| 208 HIYA                                                                                   7       0  100.0%|
+| 209 RETROCAUSAL                                                                            7       0  100.0%|
+| 210 INNOVATIVE EDGE TECH CONSULTANCY SVCS                                                  7       3   70.0%|
+| 211 SELLEN CONSTRUCTION CO                                                                 7       0  100.0%|
+| 212 CSI INTERFUSION                                                                        7       0  100.0%|
+| 213 PIT SOLNS                                                                              7       0  100.0%|
+| 214 CORESTACK                                                                              7       0  100.0%|
+| 215 CASH FLOW PORTAL                                                                       7       0  100.0%|
+| 216 AFOUR TECH                                                                             7       0  100.0%|
+| 217 LINEDATA L C                                                                           7       0  100.0%|
+| 218 ALLEN INST ARTIFICIAL INTELLIGENCE                                                     7       0  100.0%|
+| 219 MOODYS NORTH WEST CONSULTING                                                           7       0  100.0%|
+| 220 ZONAR SYS                                                                              7       0  100.0%|
+| 221 ASTRUMU                                                                                7       0  100.0%|
+| 222 TECHNOVERT SOLNS                                                                       7       0  100.0%|
+| 223 AUTEL ROBOTICS USA                                                                     7       0  100.0%|
+| 224 OLSON KUNDIG                                                                           7       0  100.0%|
+| 225 OMEROS                                                                                 7       0  100.0%|
+| 226 PACCAR ENGINE CO                                                                       7       0  100.0%|
+| 227 ONELIN CAPITAL                                                                         7       0  100.0%|
+| 228 TECHNOVA SYS                                                                           7       0  100.0%|
+| 229 PIONEER IT SYS                                                                         7       0  100.0%|
+| 230 DAVIS WRIGHT TREMAINE                                                                  7       0  100.0%|
+| 231 COURSE5 INTELLIGENCE                                                                   7       0  100.0%|
+| 232 LOCATE SOFT                                                                            7       0  100.0%|
+| 233 DIGIPEN USA                                                                            7       0  100.0%|
+| 234 GETTY IMAGES SEATTLE                                                                   7       1   87.5%|
+| 235 ALAMERE SOFT                                                                           7       0  100.0%|
+| 236 REVEFI                                                                                 6       0  100.0%|
+| 237 ROBERT E TUTLAND RPT                                                                   6       0  100.0%|
+| 238 SLR INTL                                                                               6       0  100.0%|
+| 239 OPALA HLTH                                                                             6       0  100.0%|
+| 240 EKAA SOLNS                                                                             6       0  100.0%|
+| 241 SPECTRUM TECH                                                                          6       0  100.0%|
+| 242 BENAROYA RESEARCH INSTITUTE VIRGINIA MASON                                             6       2   75.0%|
+| 243 TANGO CARD                                                                             6       0  100.0%|
+| 244 EIGEN LABS                                                                             6       0  100.0%|
+| 245 NOVATEUR                                                                               6       0  100.0%|
+| 246 ST JOSEPH HLTH NORTHERN CALIFORNIA                                                     6       0  100.0%|
+| 247 TIDEWORKS TECH                                                                         6       0  100.0%|
+| 248 NAUTILUS BIOTECHNOLOGY                                                                 6       0  100.0%|
+| 249 FUJIFILM SONOSITE                                                                      6       0  100.0%|
+| 250 F5 NETWORKS                                                                            6       0  100.0%|
+| 251 MCKINSTRY ESSENTION                                                                    6       0  100.0%|
+| 252 ALL STAR DIRECTORIES                                                                   6       0  100.0%|
+| 253 POSSIBLE FINANCIAL                                                                     6       0  100.0%|
+| 254 SHAPE THERAPEUTICS                                                                     6       0  100.0%|
+| 255 PHILI ORAL HEALTHCARE                                                                  6       0  100.0%|
+| 256 PICKET HOUSES                                                                          6       1   85.7%|
+| 257 VUEDATA                                                                                6       0  100.0%|
+| 258 CARIAD                                                                                 6       0  100.0%|
+| 259 LEASE CRUTCHER LEWIS WA                                                                6       0  100.0%|
+| 260 KNACKHOOK                                                                              6       0  100.0%|
+| 261 WATCHGUARD TECH                                                                        6       1   85.7%|
+| 262 IMDB COM                                                                               6       1   85.7%|
+| 263 POWER MOBILE LIFE                                                                      6       0  100.0%|
+| 264 SALESPOINT                                                                             6       0  100.0%|
+| 265 98POINT6                                                                               6       0  100.0%|
+| 266 0965688 BC                                                                             6       0  100.0%|
+| 267 3MD                                                                                    5       0  100.0%|
+| 268 YETI GAMES                                                                             5       0  100.0%|
+| 269 RIGHTCROWD SOFT                                                                        5       0  100.0%|
+| 270 IDENTITY DIGITAL                                                                       5       0  100.0%|
+| 271 INNOVATION IT TECH                                                                     5       4   55.6%|
+| 272 RESTMESH TECH                                                                          5       0  100.0%|
+| 273 ULTRA SAFE NUCLEAR                                                                     5       0  100.0%|
+| 274 AIRBIQUITY                                                                             5       0  100.0%|
+| 275 HOTWIRE                                                                                5       0  100.0%|
+| 276 CHISON USA                                                                             5       0  100.0%|
+| 277 RYTHER                                                                                 5       0  100.0%|
+| 278 TRANSCEND SOLNS                                                                        5       0  100.0%|
+| 279 SEA BIRD ELECTRONICS                                                                   5       0  100.0%|
+| 280 COSMOS GRANITE WEST                                                                    5       0  100.0%|
+| 281 RAMMER TECH                                                                            5       0  100.0%|
+| 282 COMPASS HLTH                                                                           5       0  100.0%|
+| 283 QUANTYZD                                                                               5       0  100.0%|
+| 284 MOLECULAR EPIDEMIOLOGY                                                                 5       0  100.0%|
+| 285 MOMENTO                                                                                5       0  100.0%|
+| 286 THRIVE SOFT SOLNS                                                                      5       0  100.0%|
+| 287 GLOBAL HLTH LABS                                                                       5       0  100.0%|
+| 288 PACIFIC MARKET INTL                                                                    5       0  100.0%|
+| 289 PANDION                                                                                5       0  100.0%|
+| 290 TERAWE                                                                                 5       0  100.0%|
+| 291 PARAMOUNT DATA MANAGEMENT                                                              5       0  100.0%|
+| 292 DEVINFRA                                                                               5       0  100.0%|
+| 293 NANOSTRING TECH                                                                        5       0  100.0%|
+| 294 SYSTIMMUNE                                                                             5       0  100.0%|
+| 295 AUDAX LABS                                                                             5       0  100.0%|
+| 296 ADISYS                                                                                 5       0  100.0%|
+| 297 ACCOLADE                                                                               5       0  100.0%|
+| 298 ZONES                                                                                  5       0  100.0%|
+| 299 ZIPSTORM                                                                               5       0  100.0%|
+| 300 EAN COM                                                                                5       0  100.0%|
+| 301 BAMBOO TECH                                                                            5       0  100.0%|
+| 302 EXPEDITORS INTL WASHIN                                                                 5       0  100.0%|
+| 303 BELLEVUE SCHOOL DISTRICT                                                               5       0  100.0%|
+| 304 DATADIGM                                                                               5       0  100.0%|
+| 305 PORCH COM                                                                              5       0  100.0%|
+| 306 CREATE WORLD REAL ESTATE                                                               5       0  100.0%|
+| 307 COUGHLIN PORTER LUNDEEN                                                                5       0  100.0%|
+| 308 FRESH CONSULTING                                                                       5       0  100.0%|
+| 309 POINT APOGEE                                                                           5       0  100.0%|
+| 310 PORT SEATTLE                                                                           4       0  100.0%|
+| 311 MLOPTIC                                                                                4       0  100.0%|
+| 312 ALTASCIENCES PRECLINICAL SEATTLE                                                       4       0  100.0%|
+| 313 GORDIAN SOFT                                                                           4       0  100.0%|
+| 314 SEATTLE CELTIC                                                                         4       0  100.0%|
+| 315 GRAHAM CONSTRUCTION MANAGEMENT                                                         4       0  100.0%|
+| 316 TAIYO PACIFIC PARTNERS                                                                 4       0  100.0%|
+| 317 OQ POINT                                                                               4       0  100.0%|
+| 318 DUODUO TECH                                                                            4       0  100.0%|
+| 319 DOCUSMART                                                                              4       0  100.0%|
+| 320 MOKSHAA                                                                                4       1   80.0%|
+| 321 THRIVESOFTWARE SOLNS                                                                   4       0  100.0%|
+| 322 SHIPIUM                                                                                4       0  100.0%|
+| 323 MYNTRA                                                                                 4       0  100.0%|
+| 324 ARTICA                                                                                 4       0  100.0%|
+| 325 NEURAL IMAGE                                                                           4       0  100.0%|
+| 326 MILLER HULL PARTNERSHIP                                                                4       0  100.0%|
+| 327 MALIK LAW                                                                              4       0  100.0%|
+| 328 PROTECT AI                                                                             4       0  100.0%|
+| 329 INNOVATIVE EDGE TECH CONSULT                                                           4       0  100.0%|
+| 330 JAYES TECH                                                                             4       0  100.0%|
+| 331 LOGIC20 20                                                                             4       0  100.0%|
+| 332 KNOCK                                                                                  4       0  100.0%|
+| 333 CHRISTOPHER HUANG CPAS                                                                 4       0  100.0%|
+| 334 AEROSPACE TESTING ENGINEERING CERTIFICATION                                            4       0  100.0%|
+| 335 REALSELF                                                                               4       0  100.0%|
+| 336 AI SQUARED                                                                             4       1   80.0%|
+| 337 PRESCRYPTIVE HLTH                                                                      4       0  100.0%|
+| 338 TRUPANION MANAGERS USA                                                                 4       0  100.0%|
+| 339 RPI PRINT                                                                              4       0  100.0%|
+| 340 VIRTUAL THERAPEUTICS                                                                   4       0  100.0%|
+| 341 INUIX                                                                                  4       0  100.0%|
+| 342 STREAMLINE                                                                             4       0  100.0%|
+| 343 EXTRAHOP NETWORKS                                                                      4       0  100.0%|
+| 344 BENAROYA RESEARCH INSTITUTE VIR                                                        4       1   80.0%|
+| 345 SOHAM                                                                                  4       0  100.0%|
+| 346 FARMERS NEW WORLD LIFE INSURANCE CO                                                    4       0  100.0%|
+| 347 NOISEFIGURE RESEARCH                                                                   4       0  100.0%|
+| 348 RM TECHNOTREE                                                                          4       0  100.0%|
+| 349 WAGGENER EDSTROM WORLDWIDE                                                             4       0  100.0%|
+| 350 1POINT3ACRES                                                                           4       0  100.0%|
+| 351 INICIO TECH                                                                            4       0  100.0%|
+| 352 ABBOTT CONSTRUCTION                                                                    4       0  100.0%|
+| 353 XEMELGO                                                                                4       0  100.0%|
+| 354 WIZARDS COAST                                                                          4       1   80.0%|
+| 355 A9 COM                                                                                 4       0  100.0%|
+| 356 BENAROYA RESEARCH INSTITUTE                                                            4       0  100.0%|
+| 357 EAGLEVIEW TECH                                                                         4       0  100.0%|
+| 358 SINCRO                                                                                 4       0  100.0%|
+| 359 NEAL ANALYTICS                                                                         4       0  100.0%|
+| 360 MY TECH GEEKS                                                                          4       0  100.0%|
+| 361 DELTA DENTAL WA                                                                        4       0  100.0%|
+| 362 DENALI SOURCING SVCS                                                                   4       0  100.0%|
+| 363 XEALTH                                                                                 4       0  100.0%|
+| 364 SPUR GROUP                                                                             4       0  100.0%|
+| 365 EVERETT PUBLIC SCHOOLS                                                                 4       0  100.0%|
+| 366 SONIKA SINGLA DMD                                                                      4       0  100.0%|
+| 367 OUR BEGINNING                                                                          4       0  100.0%|
+| 368 PEMCO MUTUAL INSURANCE CO                                                              4       0  100.0%|
+| 369 SOFTSMART CONSULTING                                                                   4       0  100.0%|
+| 370 PACSTON                                                                                4       0  100.0%|
+| 371 FIREWALK STUDIOS                                                                       4       0  100.0%|
+| 372 BLOODWORKS NW                                                                          4       0  100.0%|
+| 373 BLUE HILL TECH                                                                         4       0  100.0%|
+| 374 DOCTORS EXCHANGE WA                                                                    4       0  100.0%|
+| 375 PANOPTO                                                                                4       0  100.0%|
+| 376 FRENCH AMERICAN SCHOOL PUGET SO                                                        4       0  100.0%|
+| 377 DOMAIN 6                                                                               4       0  100.0%|
+| 378 PERKINS COIE                                                                           4       0  100.0%|
+| 379 COMPUSIGHT                                                                             3       0  100.0%|
+| 380 MG2                                                                                    3       0  100.0%|
+| 381 GOODREADS                                                                              3       0  100.0%|
+| 382 MIHAYLOV ELIM                                                                          3       0  100.0%|
+| 383 MITHUN                                                                                 3       0  100.0%|
+| 384 CLOBOTICS                                                                              3       1   75.0%|
+| 385 KOOAP                                                                                  3       0  100.0%|
+| 386 INSTITUTE ENVIRONMENTAL HLTH                                                           3       0  100.0%|
+| 387 INFOWAY CONSULTING                                                                     3       0  100.0%|
+| 388 REISCHLING PRESS                                                                       3       0  100.0%|
+| 389 CHAINGUARD                                                                             3       0  100.0%|
+| 390 CHINESE INFORMATION SVC CE                                                             3       0  100.0%|
+| 391 INTEGRATED REHABILITATION GROUP                                                        3       0  100.0%|
+| 392 WORMPEX AI RESEARCH                                                                    3       0  100.0%|
+| 393 KENCO CONSTRUCTION                                                                     3       0  100.0%|
+| 394 AEROMECH                                                                               3       0  100.0%|
+| 395 CONCORD III                                                                            3       0  100.0%|
+| 396 LUXE KITCHEN BATH                                                                      3       0  100.0%|
+| 397 CAROLINE KLINE GALLAND HOME                                                            3       2   60.0%|
+| 398 MARCHEX                                                                                3       1   75.0%|
+| 399 MEMBRION                                                                               3       0  100.0%|
+| 400 RUSTCHAT                                                                               3       0  100.0%|
+| 401 HOUGH BECK BAIRD                                                                       3       0  100.0%|
+| 402 CHINOOK THERAPEUTICS                                                                   3       0  100.0%|
+| 403 KNACKSOFT                                                                              3       0  100.0%|
+| 404 RDH BUILDING SCIENCE                                                                   3       0  100.0%|
+| 405 CEMTICS                                                                                3       0  100.0%|
+| 406 COMMUNITY HLTH CTR SNOHOMISH COUNTY                                                    3       0  100.0%|
+| 407 KYMETA                                                                                 3       0  100.0%|
+| 408 AIM INTELLIGENT MACHINES                                                               3       0  100.0%|
+| 409 HOLLAND AMERICA LINE N V                                                               3       0  100.0%|
+| 410 LMN ARCHITECTS                                                                         3       0  100.0%|
+| 411 ALEXANDRA LOZANO IMMIGRATION LAW                                                       3       1   75.0%|
+| 412 LOGIC 20 20                                                                            3       0  100.0%|
+| 413 HANLIN MOSS YI                                                                         3       0  100.0%|
+| 414 HAUSER JONES SAS                                                                       3       0  100.0%|
+| 415 HDT BIO                                                                                3       0  100.0%|
+| 416 CARBON AUTONOMOUS ROBOTIC SYS                                                          3       0  100.0%|
+| 417 CALICO ENERGY                                                                          3       0  100.0%|
+| 418 CREDIT UNIONS STATE WASH                                                               3       0  100.0%|
+| 419 CRITIGEN                                                                               3       1   75.0%|
+| 420 CREDIT UNIONS STATE WA BOEING EMPLOYEES CREDIT UNION                                   3       0  100.0%|
+| 421 GLOWFORGE                                                                              3       0  100.0%|
+| 422 ASIAN PACIFIC MOTOR GROU                                                               3       0  100.0%|
+| 423 ASIA PACIFIC LANGUAGE SCHOOL                                                           3       0  100.0%|
+| 424 MUTUAL ENUMCLAW INSURANCE CO                                                           3       0  100.0%|
+| 425 MYRIAD CONSULTING                                                                      3       0  100.0%|
+| 426 NAVANSOFT TECH                                                                         3       0  100.0%|
+| 427 NEON MACHINE                                                                           3       0  100.0%|
+| 428 TRACTION ON DEMAND US                                                                  3       0  100.0%|
+| 429 MOKAVIA AEROSPACE                                                                      3       0  100.0%|
+| 430 GEOMETRICS ENGINEERING                                                                 3       0  100.0%|
+| 431 NEW ENGEN                                                                              3       0  100.0%|
+| 432 SELLERY                                                                                3       0  100.0%|
+| 433 SEIU 775 BENEFITS GROUP                                                                3       0  100.0%|
+| 434 SEATTLE SCHOOL DISTRICT NO 1                                                           3       0  100.0%|
+| 435 CURI BIO                                                                               3       0  100.0%|
+| 436 DEAKO                                                                                  3       0  100.0%|
+| 437 BLUEPRINT TECH                                                                         3       0  100.0%|
+| 438 PIKE STREET LABS                                                                       3       0  100.0%|
+| 439 DAVID OPPENHEIMER CO I LL                                                              3       0  100.0%|
+| 440 PIVOTREE USA                                                                           3       0  100.0%|
+| 441 PIVOTAL COMMWARE                                                                       3       0  100.0%|
+| 442 PINEYRO IMPLANT DENTISTRY ASSOCIATES                                                   3       0  100.0%|
+| 443 ARIES APP                                                                              3       0  100.0%|
+| 444 FRENCH AMERICAN SCHOOL PUGET SOUND                                                     3       0  100.0%|
+| 445 ARNOLD GROU                                                                            3       0  100.0%|
+| 446 MOXIE SOFT CIM                                                                         3       0  100.0%|
+| 447 API CHAYA                                                                              3       0  100.0%|
+| 448 PEARSON CHIROPRACTIC                                                                   3       0  100.0%|
+| 449 DIGISIGNALS                                                                            3       1   75.0%|
+| 450 DIGITALAPICRAFT                                                                        3       0  100.0%|
+| 451 DOCEQUITY                                                                              3       0  100.0%|
+| 452 PARSE BIOSCIENCES                                                                      3       0  100.0%|
+| 453 ECHONOUS                                                                               3       0  100.0%|
+| 454 SPUR REPLY                                                                             3       0  100.0%|
+| 455 AVOCADO MONTESSORI ACADEMY                                                             3       0  100.0%|
+| 456 AVVO                                                                                   3       0  100.0%|
+| 457 FIVEBY SOLNS                                                                           3       0  100.0%|
+| 458 SNOHOMISH COUNTY PUBLIC UTILITY DISTRICT                                               3       0  100.0%|
+| 459 PEOPLECONNECT                                                                          3       0  100.0%|
+| 460 FIVE STAR GRANITE                                                                      3       0  100.0%|
+| 461 NINTEX USA                                                                             3       0  100.0%|
+| 462 FLUKE                                                                                  3       0  100.0%|
+| 463 OSBORN CONSULTING                                                                      3       0  100.0%|
+| 464 FIDELITY ACCOUNTING TAX SVC                                                            3       0  100.0%|
+| 465 PACIFIC ANESTHESIA                                                                     3       0  100.0%|
+| 466 ECOFLOW TECH                                                                           3       0  100.0%|
+| 467 PACCAR FINANCIAL                                                                       3       0  100.0%|
+| 468 EL CENTRO DE LA RAZA                                                                   3       1   75.0%|
+| 469 NORTHWEST RESEARCH ASSOCIATES                                                          3       0  100.0%|
+| 470 NORTH PACIFIC CRANE CO                                                                 3       0  100.0%|
+| 471 FIREBOLT ANALYTICS                                                                     3       0  100.0%|
+| 472 BAYLAND PRO SOLNS                                                                      3       0  100.0%|
+| 473 STUDIO19 ARCHITECTS                                                                    3       0  100.0%|
+| 474 INTL COMMUNITY HLTH SVCS                                                               3       0  100.0%|
+| 475 INVISO                                                                                 3       0  100.0%|
+| 476 WILDCARD PROPERTIES                                                                    3       0  100.0%|
+| 477 INTERNATIONAL FRIENDS SCHOOL                                                           3       0  100.0%|
+| 478 ZYMEWORKS BIOPHARMACEUTICALS                                                           3       0  100.0%|
+| 479 ACITLABS                                                                               3       0  100.0%|
+| 480 XETDATA                                                                                2       0  100.0%|
+| 481 ACCRETE CONSULTING SOLNS                                                               2       0  100.0%|
+| 482 ABC LEGAL SVCS                                                                         2       0  100.0%|
+| 483 ZIPSTROM                                                                               2       0  100.0%|
+| 484 ZAP ENERGY                                                                             2       0  100.0%|
+| 485 A PLACE MOM                                                                            2       0  100.0%|
+| 486 YOUTH EASTSIDE SVCS                                                                    2       0  100.0%|
+| 487 WORLD VISION                                                                           2       0  100.0%|
+| 488 WORKLYTICS CO                                                                          2       0  100.0%|
+| 489 WOOLLY LABS                                                                            2       0  100.0%|
+| 490 ADAPTIVE PROTOCOLS                                                                     2       0  100.0%|
+| 491 WHOLE VALLEY THERAPY                                                                   2       0  100.0%|
+| 492 WEBER THOMPSON ARCHITECTS                                                              2       0  100.0%|
+| 493 IO INTELLIGENCE                                                                        2       0  100.0%|
+| 494 INTERNATIONAL MONTESSORI ACADEMY                                                       2       0  100.0%|
+| 495 INTERNATIONAL COMMUNITY HLTH SVCS                                                      2       0  100.0%|
+| 496 SWIFTLY SYS                                                                            2       0  100.0%|
+| 497 SU DEVELOPMENT MASTER PARTNERSHIP                                                      2       0  100.0%|
+| 498 STRATEGIES 360                                                                         2       0  100.0%|
+| 499 STARGATE                                                                               2       0  100.0%|
+| 500 STARBLAZER                                                                             2       0  100.0%|
+| 501 OAC SVCS                                                                               2       0  100.0%|
+| 502 EVERGREEN FINANCIAL TRAINING                                                           2       0  100.0%|
+| 503 EVERETT COMMUNITY COLLEGE                                                              2       0  100.0%|
+| 504 ENZYM                                                                                  2       0  100.0%|
+| 505 BERGER PARTNERSHIP                                                                     2       0  100.0%|
+| 506 BENAROYA RESEARCH INST VA MASON                                                        2       0  100.0%|
+| 507 SOLUTIONS RESOURCE                                                                     2       0  100.0%|
+| 508 OMRON MICROSCAN SYS                                                                    2       0  100.0%|
+| 509 ENTRE HERMANOS                                                                         2       0  100.0%|
+| 510 ELEKTROBIT AUTOMOTIVE AMERICAS                                                         2       0  100.0%|
+| 511 ELDEC AEROSPACE                                                                        2       1   66.7%|
+| 512 EIPAI USA                                                                              2       0  100.0%|
+| 513 EFINANCIAL                                                                             2       0  100.0%|
+| 514 SYNDIO SOLNS                                                                           2       0  100.0%|
+| 515 NORTHWEST IMMIGRANT RIGHTS PROJECT                                                     2       0  100.0%|
+| 516 NORTHWEST FROZEN                                                                       2       0  100.0%|
+| 517 NORTHWEST ADMINISTRATORS                                                               2       1   66.7%|
+| 518 NORTH30                                                                                2       0  100.0%|
+| 519 NORGREN GT DEVELOPMENT                                                                 2       0  100.0%|
+| 520 FINAL STRIKE GAMES                                                                     2       0  100.0%|
+| 521 FIDALAB                                                                                2       0  100.0%|
+| 522 FEATHER FINACIAL                                                                       2       0  100.0%|
+| 523 NORDSTROM CARD SVCS                                                                    2       0  100.0%|
+| 524 NOONUM                                                                                 2       0  100.0%|
+| 525 OZETTE TECH                                                                            2       0  100.0%|
+| 526 OUTGO                                                                                  2       0  100.0%|
+| 527 EDDIE BAUER                                                                            2       0  100.0%|
+| 528 EASTSIDE PREPARATORY SCHOOL                                                            2       0  100.0%|
+| 529 ORORA DESIGN TECH                                                                      2       0  100.0%|
+| 530 OPENZOO TECH                                                                           2       1   66.7%|
+| 531 SSA MARINE                                                                             2       0  100.0%|
+| 532 AVERLON                                                                                2       0  100.0%|
+| 533 AUDERE                                                                                 2       0  100.0%|
+| 534 ATLAS LABS                                                                             2       0  100.0%|
+| 535 NFOLKS DATA SOLNS                                                                      2       0  100.0%|
+| 536 NEXT FINANCIAL                                                                         2       0  100.0%|
+| 537 FLUKE MANUFACTURING                                                                    2       0  100.0%|
+| 538 BLINK INTERACTIVE                                                                      2       0  100.0%|
+| 539 BIOLIFE SOLNS                                                                          2       0  100.0%|
+| 540 BIGLYNX                                                                                2       0  100.0%|
+| 541 PACMEDS CLINICS                                                                        2       0  100.0%|
+| 542 PACIFIC SOFT PUBLISHING                                                                2       0  100.0%|
+| 543 DOWNTOWN EMERGENCY SVC CTR DESC                                                        2       0  100.0%|
+| 544 DOUGLAS BLOME ENGINEERING                                                              2       0  100.0%|
+| 545 PACIFIC PILE MARINE                                                                    2       0  100.0%|
+| 546 PERCENTS                                                                               2       0  100.0%|
+| 547 PEBBLE HLTH                                                                            2       0  100.0%|
+| 548 PAULAS CHOICE                                                                          2       0  100.0%|
+| 549 PARAMETRIC PORTFOLIO ASSOCIATES                                                        2       0  100.0%|
+| 550 TERRENO REALTY                                                                         2       0  100.0%|
+| 551 TENSAI TECH                                                                            2       0  100.0%|
+| 552 ASIA PACIFIC HLTH                                                                      2       0  100.0%|
+| 553 TAO ART STUDIO                                                                         2       0  100.0%|
+| 554 NAVIGATING CANCER                                                                      2       0  100.0%|
+| 555 BLOCKNIT                                                                               2       0  100.0%|
+| 556 SIMPLYFUN                                                                              2       0  100.0%|
+| 557 SHIVA INVESTMENTS                                                                      2       0  100.0%|
+| 558 SHANNON WILSON                                                                         2       0  100.0%|
+| 559 SELTOSOFT                                                                              2       0  100.0%|
+| 560 PHAIDRA                                                                                2       0  100.0%|
+| 561 DEXCARE                                                                                2       0  100.0%|
+| 562 DEVICEBOOK                                                                             2       0  100.0%|
+| 563 MOTHERDUCK                                                                             2       0  100.0%|
+| 564 GE RENEWABLE GRID                                                                      2       0  100.0%|
+| 565 GARHWAL                                                                                2       0  100.0%|
+| 566 FUNKO                                                                                  2       0  100.0%|
+| 567 MONTESSORI HEARTS CHILDCARE EA                                                         2       0  100.0%|
+| 568 TMUD HOLDINGS                                                                          2       0  100.0%|
+| 569 POINT B                                                                                2       0  100.0%|
+| 570 PITCHSTONE TECH                                                                        2       0  100.0%|
+| 571 PIONEER SQUARE ADVISORS                                                                2       0  100.0%|
+| 572 DATA SCIENCE DOJO                                                                      2       0  100.0%|
+| 573 PIKTORLABS                                                                             2       1   66.7%|
+| 574 PIA TEAM                                                                               2       0  100.0%|
+| 575 BLUEBERRY TECH                                                                         2       0  100.0%|
+| 576 COVESTIC                                                                               2       0  100.0%|
+| 577 COVENANT MED GROUP                                                                     2       0  100.0%|
+| 578 BUCHER AEROSPACE                                                                       2       0  100.0%|
+| 579 BROOKS APPLIED LABS                                                                    2       0  100.0%|
+| 580 BRIDGE33 CAPITAL                                                                       2       0  100.0%|
+| 581 BRICKRED SYS                                                                           2       0  100.0%|
+| 582 SEATTLE GROUP SOLNS                                                                    2       0  100.0%|
+| 583 SEATTLE FOOD TECH                                                                      2       0  100.0%|
+| 584 CYPHERD WALLET                                                                         2       0  100.0%|
+| 585 ARCHECOLOGY                                                                            2       0  100.0%|
+| 586 ANVIL VENTURES                                                                         2       0  100.0%|
+| 587 THIRA HLTH                                                                             2       0  100.0%|
+| 588 GLOBIXS                                                                                2       0  100.0%|
+| 589 GETTY IMAGES SEATLE                                                                    2       0  100.0%|
+| 590 MOBICA US                                                                              2       0  100.0%|
+| 591 SEAGULL SCIENTIFIC                                                                     2       0  100.0%|
+| 592 CARGOES US                                                                             2       0  100.0%|
+| 593 CAMPFIRE                                                                               2       0  100.0%|
+| 594 SCIENCE SOLNS                                                                          2       0  100.0%|
+| 595 SCHEMATA WORKSHOP                                                                      2       0  100.0%|
+| 596 SCALED FOUNDATIONS                                                                     2       0  100.0%|
+| 597 SAMAY CONSULTING                                                                       2       0  100.0%|
+| 598 PRABHJOT SIDHU                                                                         2       0  100.0%|
+| 599 CRESENTTECH                                                                            2       0  100.0%|
+| 600 MILLER HAYASHI ARCHITECTS                                                              2       0  100.0%|
+| 601 MILBRANDT ARCHITECTS                                                                   2       0  100.0%|
+| 602 METRICDUST                                                                             2       0  100.0%|
+| 603 MERCER ISLAND TELECOM                                                                  2       0  100.0%|
+| 604 UGURU DATA SCIENCES                                                                    2       0  100.0%|
+| 605 TVI                                                                                    2       0  100.0%|
+| 606 TUPL                                                                                   2       0  100.0%|
+| 607 ANROK                                                                                  2       0  100.0%|
+| 608 ANICCA DATA SCIENCE SOLNS                                                              2       0  100.0%|
+| 609 AMPLIFY CONSULTING PARTNERS                                                            2       0  100.0%|
+| 610 TRICOL CLEAN                                                                           2       0  100.0%|
+| 611 MEDIAMOSAIC                                                                            2       0  100.0%|
+| 612 GREEN EARTH OPERATIONS                                                                 2       0  100.0%|
+| 613 MARPAC CONSTRUCTION                                                                    2       0  100.0%|
+| 614 MAHLUM ARCHITECTS                                                                      2       0  100.0%|
+| 615 LYNDEN                                                                                 2       1   66.7%|
+| 616 LUND OPSAHL                                                                            2       0  100.0%|
+| 617 USER RESEARCH INTL                                                                     2       0  100.0%|
+| 618 ROCKETREACH                                                                            2       0  100.0%|
+| 619 ROBERT HUTCHISON ARCHITECTURE                                                          2       0  100.0%|
+| 620 PROFOUNDBIO US CO                                                                      2       0  100.0%|
+| 621 COOSEA USA TECH                                                                        2       0  100.0%|
+| 622 CONFLUENCE ENGINEERING GROU                                                            2       1   66.7%|
+| 623 PRIVACY DYNAMICS                                                                       2       0  100.0%|
+| 624 PRIME RAYS                                                                             2       0  100.0%|
+| 625 UNIVERSITY PROVIDENCE                                                                  2       0  100.0%|
+| 626 UNIV WA                                                                                2       0  100.0%|
+| 627 UNITY DATA                                                                             2       0  100.0%|
+| 628 UNION SYS                                                                              2       1   66.7%|
+| 629 LUMEN BIOSCIENCE                                                                       2       0  100.0%|
+| 630 LOVERIDGE HUNT CO                                                                      2       0  100.0%|
+| 631 HEARTDUB                                                                               2       0  100.0%|
+| 632 HEADLIGHT TECH                                                                         2       0  100.0%|
+| 633 HAYRE MCELROY ASSOCIATES                                                               2       0  100.0%|
+| 634 LINK DESIGN GROU                                                                       2       0  100.0%|
+| 635 W ONLINE                                                                               2       1   66.7%|
+| 636 VIRTUE TECH                                                                            2       2   50.0%|
+| 637 VIOLET IO                                                                              2       0  100.0%|
+| 638 VERITY SOLNS GROUP                                                                     2       0  100.0%|
+| 639 VANVI TECH                                                                             2       0  100.0%|
+| 640 HIMALAYA CAPITAL MANAGEMENT                                                            2       1   66.7%|
+| 641 LEVIATHAN SECURITY GROUP                                                               2       1   66.7%|
+| 642 LEVELTEN ENERGY                                                                        2       0  100.0%|
+| 643 LEE LEE                                                                                2       0  100.0%|
+| 644 COMMUNITY HLTH PLAN WA                                                                 2       0  100.0%|
+| 645 COMMUNITY HLTH CTR SNOHOMI                                                             2       0  100.0%|
+| 646 COLLIERS INTL WA                                                                       2       0  100.0%|
+| 647 COINME                                                                                 2       0  100.0%|
+| 648 QUADRANT RESOURCE                                                                      2       0  100.0%|
+| 649 PUBLIC UTILITY DISTRICT NO 1 SNOHOMISH COUNTY                                          2       0  100.0%|
+| 650 PROWESS CONSULTING                                                                     2       0  100.0%|
+| 651 PROVOKE SOLNS                                                                          2       0  100.0%|
+| 652 PROKLIN T                                                                              2       0  100.0%|
+| 653 CATALYSIS                                                                              2       0  100.0%|
+| 654 CAT DADDY GAMES                                                                        2       0  100.0%|
+| 655 CASTLIGHT HLTH                                                                         2       0  100.0%|
+| 656 CASPR BIOTECH                                                                          2       0  100.0%|
+| 657 LAYR LABS                                                                              2       0  100.0%|
+| 658 LANI CAO LAW OFFICE                                                                    2       0  100.0%|
+| 659 LAKLARA                                                                                2       0  100.0%|
+| 660 LAKESIDE CTR AUTISM                                                                    2       0  100.0%|
+| 661 LAKE WA SCHOOL DISTRICT                                                                2       0  100.0%|
+| 662 LAKE WA INSTITUTE TECH                                                                 2       0  100.0%|
+| 663 KOIDRA                                                                                 2       0  100.0%|
+| 664 IDEA ENTITY                                                                            2       0  100.0%|
+| 665 IDATALABS                                                                              2       0  100.0%|
+| 666 HTC AMERICA INNOVATION                                                                 2       0  100.0%|
+| 667 CHRONOSPHERE                                                                           2       0  100.0%|
+| 668 CMTY HLTH PLAN WA                                                                      2       0  100.0%|
+| 669 CLOUD ASSERT                                                                           2       0  100.0%|
+| 670 CLICK2CLOUD                                                                            2       0  100.0%|
+| 671 REASON AUTOMATION                                                                      2       0  100.0%|
+| 672 RAD POWER BIKES                                                                        2       0  100.0%|
+| 673 QUANTARIUM GROU                                                                        2       0  100.0%|
+| 674 KINDERING CTR                                                                          2       0  100.0%|
+| 675 WATER TECTONICS                                                                        2       0  100.0%|
+| 676 AG FINTAX                                                                              2       0  100.0%|
+| 677 WASHINGTON STEM CTR                                                                    2       0  100.0%|
+| 678 WALTER DORWIN TEAGUE ASSOCIATES                                                        2       0  100.0%|
+| 679 WALSH CONSTRUCTION CO                                                                  2       0  100.0%|
+| 680 WA HF                                                                                  2       0  100.0%|
+| 681 INFINITE MASS                                                                          2       0  100.0%|
+| 682 INBIOS INTL                                                                            2       0  100.0%|
+| 683 IMPINJ                                                                                 2       0  100.0%|
+| 684 IFOODDECISIONSCIENCES                                                                  2       0  100.0%|
+| 685 RIE CONSULTANTS                                                                        2       0  100.0%|
+| 686 RHAPSODY INTL                                                                          2       0  100.0%|
+| 687 CHEQ LIFESTYLE TECH                                                                    2       0  100.0%|
+| 688 CEQUINT                                                                                2       0  100.0%|
+| 689 REWORLD                                                                                2       0  100.0%|
+| 690 REDBOX AUTOMATED RETAIL                                                                2       0  100.0%|
+| 691 CLARK BARNES                                                                           2       0  100.0%|
+| 692 CITY LAKE STEVENS                                                                      2       0  100.0%|
+| 693 CIMPLESOFT                                                                             2       0  100.0%|
+| 694 CHUDGAR ENGINEERING CO                                                                 2       0  100.0%|
+| 695 KEEPE UP                                                                               2       0  100.0%|
+| 696 KARDIN SYS                                                                             2       0  100.0%|
+| 697 KALUNGI                                                                                2       0  100.0%|
+| 698 KAISER HLTH SOLNS                                                                      2       0  100.0%|
+| 699 JOHN L SCOTT                                                                           2       0  100.0%|
+| 700 INSIGHT ENGINEERING CO                                                                 2       0  100.0%|
+| 701 INICIO                                                                                 2       2   50.0%|
+| 702 INFLUENCE MOBILE                                                                       2       0  100.0%|
+| 703 XEVO                                                                                   2       0  100.0%|
+| 704 INTEGRATED DESIGN ENGINEERS                                                            2       0  100.0%|
+| 705 JAMCO AMERICA                                                                          2       0  100.0%|
+| 706 IQ RUSH                                                                                2       0  100.0%|
+| 707 IOACTIVE                                                                               2       0  100.0%|
+| 708 ZYPMEDIA                                                                               2       0  100.0%|
+| 709 YENLO USA                                                                              2       0  100.0%|
+| 710 YIXUE EDUCATION                                                                        2       0  100.0%|
+| 711 ZACHARY SCOTT CO                                                                       1       0  100.0%|
+| 712 17SHIPPINGS                                                                            1       0  100.0%|
+| 713 3SHAR                                                                                  1       0  100.0%|
+| 714 404 LABS                                                                               1       0  100.0%|
+| 715 42LAYERS                                                                               1       0  100.0%|
+| 716 5FT2 STUDIO ARCHITECTS                                                                 1       0  100.0%|
+| 717 98POINT6 TECH                                                                          1       0  100.0%|
+| 718 A ALPHA BIO                                                                            1       0  100.0%|
+| 719 AALOKTRONIX                                                                            1       0  100.0%|
+| 720 ZEROAVIA                                                                               1       0  100.0%|
+| 721 ZEROEX                                                                                 1       0  100.0%|
+| 722 ZUMIEZ                                                                                 1       0  100.0%|
+| 723 ACCEL BI                                                                               1       0  100.0%|
+| 724 ABEC                                                                                   1       0  100.0%|
+| 725 XEMBLY                                                                                 1       0  100.0%|
+| 726 XCJ                                                                                    1       0  100.0%|
+| 727 XAVIENT DIGITAL                                                                        1       0  100.0%|
+| 728 WRENCH                                                                                 1       0  100.0%|
+| 729 WORKSPACE DEVELOPMENT                                                                  1       0  100.0%|
+| 730 WOOT COM                                                                               1       0  100.0%|
+| 731 WITTMAN ESTES                                                                          1       0  100.0%|
+| 732 WINGWORK                                                                               1       0  100.0%|
+| 733 AECON PACIFIC NW                                                                       1       0  100.0%|
+| 734 AECON INFRASTRUCTURE DEVELOPMENT                                                       1       0  100.0%|
+| 735 ADVANGELISTS                                                                           1       0  100.0%|
+| 736 ADVAIYA SOLNS                                                                          1       0  100.0%|
+| 737 ADURO                                                                                  1       0  100.0%|
+| 738 ADROIT TECH CLOUD SOLUTI                                                               1       0  100.0%|
+| 739 JUNITY HOMES                                                                           1       0  100.0%|
+| 740 JUN FENG MANAGEMENT                                                                    1       0  100.0%|
+| 741 JULIAN WEBER ARCHITECTURE DESIGN                                                       1       1   50.0%|
+| 742 JTM GROU                                                                               1       0  100.0%|
+| 743 JTM CONSTRUCTION                                                                       1       0  100.0%|
+| 744 JOURNEY SCHOOL                                                                         1       0  100.0%|
+| 745 JOHNSTON ARCHITECTS                                                                    1       0  100.0%|
+| 746 JOHNSON SHUTE                                                                          1       0  100.0%|
+| 747 JIGO AI                                                                                1       0  100.0%|
+| 748 JEEVA WIRELESS                                                                         1       0  100.0%|
+| 749 JEEVA ACQUISITION CO                                                                   1       0  100.0%|
+| 750 JASON PEHLING DDS MS                                                                   1       0  100.0%|
+| 751 INNOVATIVE ADVANTAGE                                                                   1       0  100.0%|
+| 752 INNOVA PHYSICAL THERAPY                                                                1       0  100.0%|
+| 753 INFLECTION IO                                                                          1       0  100.0%|
+| 754 INWISE AI                                                                              1       0  100.0%|
+| 755 INDIGO REAL ESTATE SVCS                                                                1       0  100.0%|
+| 756 INATAI FOUNDATION                                                                      1       0  100.0%|
+| 757 IMPEL PHARMACEUTICALS                                                                  1       0  100.0%|
+| 758 IMMURIO                                                                                1       0  100.0%|
+| 759 IMMUNEXPRESS                                                                           1       0  100.0%|
+| 760 IMMUNEEXPRESS                                                                          1       0  100.0%|
+| 761 KEPION                                                                                 1       0  100.0%|
+| 762 KENSCI                                                                                 1       0  100.0%|
+| 763 KBA                                                                                    1       0  100.0%|
+| 764 KAYE SMITH ENTERPRISES                                                                 1       0  100.0%|
+| 765 KASTEN                                                                                 1       0  100.0%|
+| 766 KARBONARA                                                                              1       0  100.0%|
+| 767 KAPPES MILLER MANAGEMENT                                                               1       0  100.0%|
+| 768 KALVI CONSULTING SVCS                                                                  1       0  100.0%|
+| 769 KAISER FOUNDATION HLTH PLAN WA                                                         1       0  100.0%|
+| 770 KAI VENTURES                                                                           1       0  100.0%|
+| 771 HUNTERS CAPITAL                                                                        1       0  100.0%|
+| 772 HUDDLESTON TAX CPAS                                                                    1       0  100.0%|
+| 773 HUAYU                                                                                  1       0  100.0%|
+| 774 HORIZON AIR INDUSTRIES                                                                 1       0  100.0%|
+| 775 KNOW LABS                                                                              1       0  100.0%|
+| 776 KJELD AAMODT                                                                           1       0  100.0%|
+| 777 KISCHEL LAW FIRM                                                                       1       0  100.0%|
+| 778 KING ELECTRICAL MANUFACTURING CO                                                       1       0  100.0%|
+| 779 KING COUNTY PUBLIC HOSPITAL DISTRICT NO 2                                              1       0  100.0%|
+| 780 KIMBERLEE MARIE INTERIORS                                                              1       0  100.0%|
+| 781 KIDUS MONTESSORI ECDC                                                                  1       0  100.0%|
+| 782 KEYAMED NA                                                                             1       0  100.0%|
+| 783 KEY PROTEO                                                                             1       0  100.0%|
+| 784 KEVALA TECH                                                                            1       0  100.0%|
+| 785 INFINITE COMMERCE                                                                      1       0  100.0%|
+| 786 INDUPRO                                                                                1       0  100.0%|
+| 787 LANKFORD ASSOCIATES                                                                    1       0  100.0%|
+| 788 LANGUAGE GARDEN                                                                        1       0  100.0%|
+| 789 LANDAU ASSOCIATES                                                                      1       0  100.0%|
+| 790 LAND TECH                                                                              1       0  100.0%|
+| 791 LAND DEVELOPMENT CONSULTANTS                                                           1       0  100.0%|
+| 792 LAMDA                                                                                  1       0  100.0%|
+| 793 LAKE VUE O                                                                             1       0  100.0%|
+| 794 KYOTO FUSIONEERING AMERICA                                                             1       0  100.0%|
+| 795 KOREAN COMMUNITY SVC CTR                                                               1       0  100.0%|
+| 796 KORE CHIROPRACTIC REHAB                                                                1       0  100.0%|
+| 797 IDD AEROSPACE                                                                          1       0  100.0%|
+| 798 IDB                                                                                    1       0  100.0%|
+| 799 ICARE                                                                                  1       0  100.0%|
+| 800 ICAP ENTERPRISES                                                                       1       0  100.0%|
+| 801 I X INVESTMENTS                                                                        1       0  100.0%|
+| 802 HUTCHINSON WALTER                                                                      1       0  100.0%|
+| 803 HOLMAN DISTRIBUTION CTR WA                                                             1       0  100.0%|
+| 804 HITECH ADVISORS                                                                        1       1   50.0%|
+| 805 HIPPOML                                                                                1       0  100.0%|
+| 806 HID GLOBAL                                                                             1       0  100.0%|
+| 807 HI TECH TALENTS                                                                        1       0  100.0%|
+| 808 HF ACQUISITION CO                                                                      1       0  100.0%|
+| 809 HESS INTL                                                                              1       0  100.0%|
+| 810 HERRERA ENVIRONMENTAL CONSULTANTS                                                      1       0  100.0%|
+| 811 HENRY PRODUCTS                                                                         1       0  100.0%|
+| 812 HELIOTROPE ARCHITECTS                                                                  1       0  100.0%|
+| 813 LEARNING MACHINES AI PBC                                                               1       0  100.0%|
+| 814 LEANCODE                                                                               1       0  100.0%|
+| 815 LEADSCORZ                                                                              1       0  100.0%|
+| 816 LAXCO                                                                                  1       0  100.0%|
+| 817 LAW OFFICE WILLIAM FRICK PPLC                                                          1       0  100.0%|
+| 818 LAW OFFICE WILLIAM FRICK                                                               1       0  100.0%|
+| 819 HEALTHCARE MANAGEMENT ADMINISTRATORS                                                   1       0  100.0%|
+| 820 HEALTHCARE MANAGEMENT ADMINISTRATOR                                                    1       0  100.0%|
+| 821 HCL AMERICA                                                                            1       0  100.0%|
+| 822 HAYMINGWAY                                                                             1       0  100.0%|
+| 823 HARBORTECH MOBILITY                                                                    1       0  100.0%|
+| 824 LOOPIN HQ                                                                              1       0  100.0%|
+| 825 LOOPIE                                                                                 1       0  100.0%|
+| 826 LOFTIUM                                                                                1       0  100.0%|
+| 827 LO                                                                                     1       0  100.0%|
+| 828 LITTLE WARRIORS SPORTS ACADEMY                                                         1       0  100.0%|
+| 829 LIMEADE                                                                                1       0  100.0%|
+| 830 LIKEWISE                                                                               1       0  100.0%|
+| 831 LIGHTEL TECH                                                                           1       0  100.0%|
+| 832 LIFE POINT LAW                                                                         1       0  100.0%|
+| 833 LHCG LXIII                                                                             1       0  100.0%|
+| 834 HONGXIN WEALTH TAX PLANNING GROUP US                                                   1       0  100.0%|
+| 835 MANGOBOOST                                                                             1       0  100.0%|
+| 836 MAKER ARCHITECTURE URBAN DESI                                                          1       0  100.0%|
+| 837 MACROHEALTH USA                                                                        1       0  100.0%|
+| 838 MACDONALD MILLER FACILITY SOLNS                                                        1       0  100.0%|
+| 839 MACDONALD MILLER FACILITY SOLN                                                         1       0  100.0%|
+| 840 M WATTERSON ENTERPRISES                                                                1       0  100.0%|
+| 841 LUXOR TECH                                                                             1       0  100.0%|
+| 842 LUTHERAN COMMUNITY SVCS NW                                                             1       0  100.0%|
+| 843 LUND PRICE                                                                             1       0  100.0%|
+| 844 LUMOTIVE                                                                               1       0  100.0%|
+| 845 LOTUZ                                                                                  1       0  100.0%|
+| 846 LOOSE CANNON SYS                                                                       1       0  100.0%|
+| 847 HEDGEHOG SONIC FOUNDATION                                                              1       0  100.0%|
+| 848 HEATCON COMPOSITE SYS                                                                  1       0  100.0%|
+| 849 HEARD TECH                                                                             1       0  100.0%|
+| 850 HEALTHPOINT                                                                            1       0  100.0%|
+| 851 GROUP HLTH FOUNDATION                                                                  1       0  100.0%|
+| 852 GROUNDSPEAK                                                                            1       0  100.0%|
+| 853 GROUNDLIGHT                                                                            1       0  100.0%|
+| 854 GREENTOWN US MANAGEMENT SVC                                                            1       0  100.0%|
+| 855 GREENINGTON                                                                            1       0  100.0%|
+| 856 GREENCITY DEVELOPMENT                                                                  1       0  100.0%|
+| 857 GREEN SUN                                                                              1       0  100.0%|
+| 858 GREEN RIVER PRINTING                                                                   1       0  100.0%|
+| 859 GREEN FAMILY ENTERTAINMENT                                                             1       0  100.0%|
+| 860 MBS SOURCE ETRADING                                                                    1       0  100.0%|
+| 861 MASON AMERICA                                                                          1       0  100.0%|
+| 862 MARQE                                                                                  1       0  100.0%|
+| 863 MARKITCRAFT                                                                            1       0  100.0%|
+| 864 MARKET LEADER GROUP                                                                    1       0  100.0%|
+| 865 MANUAL THERAPY INTL PROFE                                                              1       0  100.0%|
+| 866 MANNAT K DHILLON DDS                                                                   1       0  100.0%|
+| 867 GRACE YING GUO DMD PHD                                                                 1       0  100.0%|
+| 868 GOOGLE                                                                                 1       0  100.0%|
+| 869 GOLDEN BAY SEAFOOD                                                                     1       0  100.0%|
+| 870 GLY CONSTRUCTION                                                                       1       0  100.0%|
+| 871 GLOBYS                                                                                 1       0  100.0%|
+| 872 MICROBIOLOGIQUE                                                                        1       1   50.0%|
+| 873 METRO PROPERTY SVCS                                                                    1       0  100.0%|
+| 874 MERIDIAN CAPITAL                                                                       1       0  100.0%|
+| 875 MENTIS SYS                                                                             1       0  100.0%|
+| 876 MCRT RESOURCES                                                                         1       0  100.0%|
+| 877 MCKINSTRY CO                                                                           1       0  100.0%|
+| 878 HAN AH REUM MARKET                                                                     1       0  100.0%|
+| 879 HAIDILAO HOT POT SEATTLE                                                               1       0  100.0%|
+| 880 HAIDILAO HOT POT BELLEVUE                                                              1       0  100.0%|
+| 881 HAGENS BERMAN SOBOL SHAPIRO                                                            1       0  100.0%|
+| 882 H12A                                                                                   1       0  100.0%|
+| 883 GEYER COBURN HUTCHINS                                                                  1       0  100.0%|
+| 884 GETTY IMAGES US                                                                        1       0  100.0%|
+| 885 GERSH ACADEMY SEATTLE                                                                  1       0  100.0%|
+| 886 GEORGE VENTURES                                                                        1       0  100.0%|
+| 887 MODERN LAND SEATTLE                                                                    1       0  100.0%|
+| 888 MINGLIAN MANAGEMENT                                                                    1       0  100.0%|
+| 889 MINAR NORTHEY                                                                          1       0  100.0%|
+| 890 MIMIC TECH                                                                             1       0  100.0%|
+| 891 MILESTONE INTERACTIVE USA                                                              1       0  100.0%|
+| 892 MILA HLTH                                                                              1       0  100.0%|
+| 893 GREEN DIAMOND RESOURCE CO                                                              1       0  100.0%|
+| 894 GREAT NORTHERN ENTERPRISES                                                             1       0  100.0%|
+| 895 GRAVITY PAYMENTS                                                                       1       0  100.0%|
+| 896 GRANITE TOP                                                                            1       0  100.0%|
+| 897 GRAHAM GROUP US                                                                        1       0  100.0%|
+| 898 GRAHAM CONSTRUCTION MANAGEMENT I                                                       1       0  100.0%|
+| 899 FUTURE DISCOVERY                                                                       1       0  100.0%|
+| 900 FSI CONSULTING ENGINEERS                                                               1       0  100.0%|
+| 901 MOSES FIELD                                                                            1       0  100.0%|
+| 902 MORGAN WATSON COUNSELING                                                               1       0  100.0%|
+| 903 MOONDIVE                                                                               1       0  100.0%|
+| 904 MONTESSORI PLUS SCHOOL TEACHER PREPARATION WA                                          1       0  100.0%|
+| 905 MONTESSORI HEARTS CHILDCARE EARLY LEARNING CTR                                         1       0  100.0%|
+| 906 MONTESSORI HEARTS CHILDCARE EARLY                                                      1       0  100.0%|
+| 907 MONTESSORI ACADEMY SPRING VALLE                                                        1       0  100.0%|
+| 908 MONOD BIO                                                                              1       0  100.0%|
+| 909 MOMENTIC                                                                               1       0  100.0%|
+| 910 GLOBENET CONSULTING                                                                    1       0  100.0%|
+| 911 GLOBALLOGIC                                                                            1       0  100.0%|
+| 912 GLOBAL PHYSICS SOLNS                                                                   1       0  100.0%|
+| 913 GGN LANDSCAPE ARCHITECTURE                                                             1       1   50.0%|
+| 914 GGLO ARCHITECTURE INTERIOR DESIGN LANDSCAPE ARCHITECTURE PLANNING URBAN DESIGN         1       0  100.0%|
+| 915 FOSS OFFSHORE WIND                                                                     1       0  100.0%|
+| 916 FORTIVE                                                                                1       0  100.0%|
+| 917 FOREST RIDGE SCHOOL SCARED HEART                                                       1       0  100.0%|
+| 918 FOREGROUND PROPERTY MANAGEMENT                                                         1       0  100.0%|
+| 919 N M MANAGEMENT                                                                         1       0  100.0%|
+| 920 MZA                                                                                    1       0  100.0%|
+| 921 MYSTERIES                                                                              1       0  100.0%|
+| 922 MYLIO                                                                                  1       0  100.0%|
+| 923 MY WORLD EDUCATION                                                                     1       0  100.0%|
+| 924 MUIR AL                                                                                1       0  100.0%|
+| 925 MOXIWORKS                                                                              1       0  100.0%|
+| 926 MOUNTAIN WHISPER LIGHT                                                                 1       0  100.0%|
+| 927 MOTIONSPACE ARCHITECTURE DESIGN                                                        1       0  100.0%|
+| 928 GEODESIC TECH                                                                          1       0  100.0%|
+| 929 GENERAL UI                                                                             1       0  100.0%|
+| 930 GENCAP CONSTRUCTION CO                                                                 1       0  100.0%|
+| 931 NETEASE INFORMATION TECH                                                               1       0  100.0%|
+| 932 NEST SOLNS                                                                             1       1   50.0%|
+| 933 NEEV TECH                                                                              1       0  100.0%|
+| 934 NAVIGATORSRVS                                                                          1       0  100.0%|
+| 935 NAVIA BENEFIT SOLNS                                                                    1       0  100.0%|
+| 936 NATIONAL INDUSTRIAL CONCEPTS                                                           1       0  100.0%|
+| 937 NATIONAL ASIAN PACIFIC CTR ON A                                                        1       0  100.0%|
+| 938 FREIHEIT ARCHITECTURE                                                                  1       0  100.0%|
+| 939 FREIGHTMATE AL                                                                         1       0  100.0%|
+| 940 FREESPIRA                                                                              1       0  100.0%|
+| 941 FREELANCE WRITING                                                                      1       0  100.0%|
+| 942 FREEFLY SYS                                                                            1       0  100.0%|
+| 943 FRAGMENT FOUNDRIES                                                                     1       0  100.0%|
+| 944 FOUNDATIONS LEARNING BEHAV                                                             1       0  100.0%|
+| 945 FOUNDATIONS LEARNING AND                                                               1       0  100.0%|
+| 946 FOSTER GARVEY                                                                          1       0  100.0%|
+| 947 FEATURESPOINT                                                                          1       0  100.0%|
+| 948 FEATHER FINANCIAL                                                                      1       0  100.0%|
+| 949 FAITH BIBLE CH SEATTLE                                                                 1       0  100.0%|
+| 950 NOOSHIN K DARVISH ND                                                                   1       0  100.0%|
+| 951 NO MEAT FACTORY                                                                        1       0  100.0%|
+| 952 NITEO WA                                                                               1       0  100.0%|
+| 953 NITE HAWK SWEEPERS                                                                     1       0  100.0%|
+| 954 NIA TERO FOUNDATION                                                                    1       0  100.0%|
+| 955 NEXT BIOMETRICS                                                                        1       0  100.0%|
+| 956 FOREGROUND PROPERTY MANAGAEMENT                                                        1       0  100.0%|
+| 957 FLOW INTL                                                                              1       0  100.0%|
+| 958 FJURI                                                                                  1       0  100.0%|
+| 959 FIRST CHOICE HLTH NETWORK                                                              1       0  100.0%|
+| 960 FIRST CHOICE HLTH CTR                                                                  1       0  100.0%|
+| 961 FIRESIGHT TECH SIIMPL                                                                  1       0  100.0%|
+| 962 FIRESIGHT TECH                                                                         1       0  100.0%|
+| 963 EUCLIDEAN TECH MANAGEMENT                                                              1       0  100.0%|
+| 964 EPIONE HEALING                                                                         1       0  100.0%|
+| 965 ENVIROISSUES                                                                           1       0  100.0%|
+| 966 NORTHWEST MONTESSORI SCHOOL                                                            1       0  100.0%|
+| 967 NORTHWEST KIDNEY CTRS                                                                  1       0  100.0%|
+| 968 NORTHWEST INVESTMENT CONSULTING                                                        1       0  100.0%|
+| 969 NORTHWEST HYDRAULIC CONSULTANTS                                                        1       0  100.0%|
+| 970 NORTHWEST CLINICAL RESEARCH CTR                                                        1       0  100.0%|
+| 971 NORTHWEST BEHAVIORAL ASSOCIATES                                                        1       0  100.0%|
+| 972 NORTH VALLEY RESEARCH                                                                  1       0  100.0%|
+| 973 NORTH AMERICA ASSET MANAGEMENT GROU                                                    1       0  100.0%|
+| 974 NORTH 30SC                                                                             1       0  100.0%|
+| 975 FINPILOT                                                                               1       0  100.0%|
+| 976 FILSON                                                                                 1       0  100.0%|
+| 977 FIKES PUGET SOUND                                                                      1       0  100.0%|
+| 978 FIERRO TECH                                                                            1       0  100.0%|
+| 979 ELECTRIC ERA TECH                                                                      1       0  100.0%|
+| 980 EKATA                                                                                  1       0  100.0%|
+| 981 EJK ACCOUNTING TAX SVCS                                                                1       0  100.0%|
+| 982 EGENCIA                                                                                1       1   50.0%|
+| 983 OMEGA SVCS SUPPLY                                                                      1       0  100.0%|
+| 984 OL REIGN                                                                               1       0  100.0%|
+| 985 OEC FREIGHT COMPANIES                                                                  1       0  100.0%|
+| 986 NW ACCOUNTANTS                                                                         1       0  100.0%|
+| 987 NUMBERS STATION                                                                        1       0  100.0%|
+| 988 NUCLYDE                                                                                1       0  100.0%|
+| 989 NORTIS                                                                                 1       0  100.0%|
+| 990 NORTHWEST UNIVERSITY                                                                   1       0  100.0%|
+| 991 NORTHWEST SHARED SVCS                                                                  1       0  100.0%|
+| 992 EYAS EDUCATION DEVELOPMENT                                                             1       0  100.0%|
+| 993 EXLSERVICE COM                                                                         1       0  100.0%|
+| 994 EVIL GENIUSES EG                                                                       1       0  100.0%|
+| 995 ECELLIX                                                                                1       0  100.0%|
+| 996 ECAC                                                                                   1       0  100.0%|
+| 997 EBD SVCS                                                                               1       0  100.0%|
+| 998 EASTSIDE THERAPY SVCS                                                                  1       0  100.0%|
+| 999 EAST GATE MONTESSORI GARDEN                                                            1       0  100.0%|
+|1000 ORGWORKING                                                                             1       0  100.0%|
+|1001 ORGANIZATION RESEARCH LEARNING                                                         1       0  100.0%|
+|1002 ORCA BEVERAGE                                                                          1       0  100.0%|
+|1003 ORBITZ WORLDWIDE                                                                       1       0  100.0%|
+|1004 OPTIMUMS                                                                               1       0  100.0%|
+|1005 OPENTUG                                                                                1       0  100.0%|
+|1006 ONG INNOVATIONS                                                                        1       0  100.0%|
+|1007 ONE WORKPLACE L FERRARI                                                                1       0  100.0%|
+|1008 ENDOGASTRIC SOLNS                                                                      1       0  100.0%|
+|1009 EMURASOFT                                                                              1       0  100.0%|
+|1010 ELLEN POLSKY DDS BOBBY VIRK DMD                                                        1       0  100.0%|
+|1011 DREAM HOMES SVC                                                                        1       0  100.0%|
+|1012 DOXO                                                                                   1       0  100.0%|
+|1013 DOWNTOWN EMERGENCY SVC CTR                                                             1       0  100.0%|
+|1014 DOWBUILT                                                                               1       0  100.0%|
+|1015 DOREMI MUSIC                                                                           1       0  100.0%|
+|1016 DORE LAW GROUP                                                                         1       0  100.0%|
+|1017 DOMESTIC ABUSE WOMEN S NETWORK DAWN                                                    1       0  100.0%|
+|1018 PACIFIC NW SOCCER CLUB                                                                 1       0  100.0%|
+|1019 PACIFIC NW RESEARCH INSTITU                                                            1       0  100.0%|
+|1020 PACIFIC NW ACADEMY                                                                     1       0  100.0%|
+|1021 PACE ENGINEERS                                                                         1       0  100.0%|
+|1022 OWNERREZ                                                                               1       0  100.0%|
+|1023 OUTPACE BIO                                                                            1       0  100.0%|
+|1024 EDGENEXT NORTH AMERICA                                                                 1       0  100.0%|
+|1025 EDGE DELTA                                                                             1       0  100.0%|
+|1026 ECO SMARTILES                                                                          1       0  100.0%|
+|1027 DIVERSIFICATION                                                                        1       0  100.0%|
+|1028 DISCOVERY INSTITUTE                                                                    1       0  100.0%|
+|1029 DISCOVER YOUR NW                                                                       1       0  100.0%|
+|1030 DIRECTAP                                                                               1       0  100.0%|
+|1031 DIMENSIONAL MECHANICS                                                                  1       0  100.0%|
+|1032 DIGITAL LADDER                                                                         1       0  100.0%|
+|1033 PARK HONG                                                                              1       0  100.0%|
+|1034 PARISH ST BERNADETTE                                                                   1       0  100.0%|
+|1035 PAI LIFE SCIENCES                                                                      1       0  100.0%|
+|1036 PACVUE                                                                                 1       0  100.0%|
+|1037 PACIFICA SEAFOOD                                                                       1       0  100.0%|
+|1038 PACIFIC WEALTH ADVISORS                                                                1       0  100.0%|
+|1039 EAGLE BEVERAGE ACCESSORY PRODUCTS                                                      1       0  100.0%|
+|1040 DYNAMIC SOLNS INTL                                                                     1       0  100.0%|
+|1041 DURANTA                                                                                1       0  100.0%|
+|1042 DTC REDMOND TC                                                                         1       0  100.0%|
+|1043 DESIGN LAB                                                                             1       0  100.0%|
+|1044 DERIVE ONE                                                                             1       0  100.0%|
+|1045 DEMO GORILLA                                                                           1       0  100.0%|
+|1046 DEMANACO                                                                               1       0  100.0%|
+|1047 PEOPLE POWER CO                                                                        1       0  100.0%|
+|1048 PEOPLE INFRA                                                                           1       0  100.0%|
+|1049 PEOPLE BLOOM COUNSELING                                                                1       0  100.0%|
+|1050 PENDULUM INTELLIGENCE                                                                  1       0  100.0%|
+|1051 PEACH LABS                                                                             1       0  100.0%|
+|1052 PAWSITIVE DREAMS                                                                       1       0  100.0%|
+|1053 PATTERN COMP                                                                           1       0  100.0%|
+|1054 PARTNERTAP                                                                             1       0  100.0%|
+|1055 DODODATA                                                                               1       0  100.0%|
+|1056 DOCUGAMI                                                                               1       0  100.0%|
+|1057 DMP MANAGEMENT SEATTLE                                                                 1       0  100.0%|
+|1058 DIVERSITY TAX CONSULTING                                                               1       0  100.0%|
+|1059 DAVIES TAX ADVISORS                                                                    1       0  100.0%|
+|1060 DAVID D HAWTHORNE C                                                                    1       0  100.0%|
+|1061 DAVID COLEMAN ARCHITECTURE                                                             1       0  100.0%|
+|1062 DATAFI LABS                                                                            1       0  100.0%|
+|1063 PINEAPPLE HOSPITALITY CO                                                               1       0  100.0%|
+|1064 PIKE PLACE MARKET PRESERVATION DEV                                                     1       0  100.0%|
+|1065 PICTORY                                                                                1       0  100.0%|
+|1066 PICNIC WORKS                                                                           1       0  100.0%|
+|1067 PH INTL                                                                                1       0  100.0%|
+|1068 PERIMETRICS                                                                            1       0  100.0%|
+|1069 PERIMATICS                                                                             1       0  100.0%|
+|1070 DIBIT MEASURING TECHNIQUE USA                                                          1       0  100.0%|
+|1071 DIANA WU DDS                                                                           1       0  100.0%|
+|1072 DIAGRID                                                                                1       0  100.0%|
+|1073 DHALIWAL DDS                                                                           1       0  100.0%|
+|1074 DEVOTE CONSULTING                                                                      1       0  100.0%|
+|1075 DADOES                                                                                 1       0  100.0%|
+|1076 D SCIENCE CO                                                                           1       0  100.0%|
+|1077 D NGUYEN DDS                                                                           1       0  100.0%|
+|1078 D ARCH                                                                                 1       0  100.0%|
+|1079 D A DAVIDSON CO                                                                        1       0  100.0%|
+|1080 CURTA                                                                                  1       0  100.0%|
+|1081 PMI WW BRANDS                                                                          1       0  100.0%|
+|1082 PLAYEVERYWARE                                                                          1       0  100.0%|
+|1083 PLATFORM DESIGN                                                                        1       0  100.0%|
+|1084 PIUS KITCHEN BATH                                                                      1       0  100.0%|
+|1085 DELIGHTFUL COMMUNICATIONS                                                              1       0  100.0%|
+|1086 DELEE TRIMMER                                                                          1       0  100.0%|
+|1087 DEFINEDCROWD                                                                           1       0  100.0%|
+|1088 DEEPWELL DTX                                                                           1       0  100.0%|
+|1089 DECH P                                                                                 1       0  100.0%|
+|1090 DAWSON GERBIC                                                                          1       0  100.0%|
+|1091 CONSOLIDATED RESOURCES HLTH CARE                                                       1       0  100.0%|
+|1092 CONE ARCHITECTURE                                                                      1       0  100.0%|
+|1093 PROCTOR CO AN ACCOUNTANCY                                                              1       0  100.0%|
+|1094 PROCTOR CO ACCOUNTANCY                                                                 1       0  100.0%|
+|1095 PROBABLY MONSTERS                                                                      1       0  100.0%|
+|1096 PRETTY BOOKS                                                                           1       0  100.0%|
+|1097 PREMIUM LABS                                                                           1       0  100.0%|
+|1098 PRECEPT BRANDS                                                                         1       0  100.0%|
+|1099 POWDER LABS                                                                            1       0  100.0%|
+|1100 POTTER CONSTRUCTION                                                                    1       0  100.0%|
+|1101 CUREVO                                                                                 1       0  100.0%|
+|1102 CREATIVE MINDS ACADEMY                                                                 1       0  100.0%|
+|1103 COVENANT MED CTR                                                                       1       0  100.0%|
+|1104 DATA BLANKET                                                                           1       0  100.0%|
+|1105 DARCH                                                                                  1       0  100.0%|
+|1106 DAH                                                                                    1       0  100.0%|
+|1107 COMPASS GENERAL CONSTRUCTION I                                                         1       0  100.0%|
+|1108 COMMUNITY PASSAGEWAYS                                                                  1       0  100.0%|
+|1109 COMMUNITY HOUSE MENTAL HLTH AGENCY                                                     1       0  100.0%|
+|1110 COMMON ROOM                                                                            1       0  100.0%|
+|1111 COMMANDLINK                                                                            1       0  100.0%|
+|1112 COLOR CREATIVE                                                                         1       0  100.0%|
+|1113 COGENT BRAIN                                                                           1       0  100.0%|
+|1114 QCENTUM TECH                                                                           1       0  100.0%|
+|1115 PURE BLUE TECH                                                                         1       0  100.0%|
+|1116 PUGET SOUND GASTYROENTEROLOGY                                                          1       0  100.0%|
+|1117 PUGET SOUND EMERGENCY RADIO NETWORK OPERATOR                                           1       0  100.0%|
+|1118 PSEB                                                                                   1       0  100.0%|
+|1119 PROMISE XYZ                                                                            1       0  100.0%|
+|1120 PROMETHEAN WORLD                                                                       1       0  100.0%|
+|1121 COSMOS GRANITE MARBLE                                                                  1       0  100.0%|
+|1122 COPPERTREE ANALYTICS                                                                   1       0  100.0%|
+|1123 CODING WITH KIDS                                                                       1       0  100.0%|
+|1124 CODIFIED                                                                               1       0  100.0%|
+|1125 CODE SYS                                                                               1       0  100.0%|
+|1126 COCRE8ED                                                                               1       0  100.0%|
+|1127 CLOUD ENTERTAINMENT                                                                    1       0  100.0%|
+|1128 CLOCKWORK CPAS                                                                         1       0  100.0%|
+|1129 CLIMATE VAULT SOLNS                                                                    1       0  100.0%|
+|1130 CLEARBRIEF                                                                             1       0  100.0%|
+|1131 RED BARN GROUP                                                                         1       0  100.0%|
+|1132 REAL GREEK                                                                             1       0  100.0%|
+|1133 RAIN FOOD DRINK                                                                        1       0  100.0%|
+|1134 R CUBED CONSULTING                                                                     1       0  100.0%|
+|1135 QUARTECH CORRECTIONS                                                                   1       0  100.0%|
+|1136 QUANTUM CONSULTING ENGINEERS                                                           1       0  100.0%|
+|1137 QUANTCONNECT                                                                           1       0  100.0%|
+|1138 COMPASS PROPERTY                                                                       1       0  100.0%|
+|1139 CENTER INTEGRATED CARE                                                                 1       0  100.0%|
+|1140 RH2 ENGINEERING                                                                        1       0  100.0%|
+|1141 RESILIENT FORESTRY                                                                     1       0  100.0%|
+|1142 RENTON TECHNICAL COLLEGE                                                               1       0  100.0%|
+|1143 RELIANCE                                                                               1       0  100.0%|
+|1144 REDWOOD VALUATION                                                                      1       0  100.0%|
+|1145 REDKIRK ACADEMY                                                                        1       0  100.0%|
+|1146 CLEAN REPUBLIC SODO                                                                    1       0  100.0%|
+|1147 CLARK RAYMOND CO                                                                       1       0  100.0%|
+|1148 CLARENT TECH                                                                           1       0  100.0%|
+|1149 CITY UNIVERSITY SEATTLE                                                                1       0  100.0%|
+|1150 CINTILIGHT                                                                             1       0  100.0%|
+|1151 CIBERTECH SOLNS                                                                        1       0  100.0%|
+|1152 CHOI CAPITAL LAW                                                                       1       0  100.0%|
+|1153 CHIPSTACK                                                                              1       0  100.0%|
+|1154 COFFEE ENTERTAINMENT                                                                   1       0  100.0%|
+|1155 ROUNDGLASS PARTNERS                                                                    1       0  100.0%|
+|1156 RON WRIGHT ASSO ARCHITECTS                                                             1       0  100.0%|
+|1157 ROLLUDA ARCHITECTS                                                                     1       0  100.0%|
+|1158 ROLAND VS                                                                              1       0  100.0%|
+|1159 RISC0                                                                                  1       0  100.0%|
+|1160 RIOS IMMIGRATION DEFENSE                                                               1       0  100.0%|
+|1161 RICHARD MAUDE FERRY FOUNDA                                                             1       0  100.0%|
+|1162 RHOMBUZ                                                                                1       0  100.0%|
+|1163 RHC ENGINEERING                                                                        1       0  100.0%|
+|1164 CHINESE RADIO SEATTLE                                                                  1       0  100.0%|
+|1165 CHILDREN S THERAPY CTR                                                                 1       0  100.0%|
+|1166 CHILDHAVEN                                                                             1       0  100.0%|
+|1167 CHEMPOINT COM                                                                          1       0  100.0%|
+|1168 CHARMED AI                                                                             1       0  100.0%|
+|1169 CHARLES CHANG DDS MS                                                                   1       0  100.0%|
+|1170 CHAMELEON TECH                                                                         1       0  100.0%|
+|1171 CEDAR PLAZA VET CLINIC                                                                 1       0  100.0%|
+|1172 CBIZ ACCOUNTING TAX ADVISORY WA                                                        1       0  100.0%|
+|1173 CATHOLIC COMMUNITY SVCS WEST WA                                                        1       0  100.0%|
+|1174 CATALYST COUNSELING                                                                    1       0  100.0%|
+|1175 CASTLE GLOBAL                                                                          1       0  100.0%|
+|1176 CASCADE ENGINEERING SVCS                                                               1       0  100.0%|
+|1177 CARROTEZ                                                                               1       0  100.0%|
+|1178 CARPAPA AUTO GROU                                                                      1       0  100.0%|
+|1179 SALT LIGHT                                                                             1       0  100.0%|
+|1180 SALESFORCE                                                                             1       0  100.0%|
+|1181 SAGE MED GROUP                                                                         1       0  100.0%|
+|1182 SAGAR INFORMATICS                                                                      1       0  100.0%|
+|1183 SAFRAN ELECTRICAL POWER USA L                                                          1       0  100.0%|
+|1184 SABARCHITECTS                                                                          1       0  100.0%|
+|1185 S3 GLOBAL                                                                              1       0  100.0%|
+|1186 RYAN SWANSON CLEVELAND                                                                 1       0  100.0%|
+|1187 CAMBER COLLECTIVE                                                                      1       0  100.0%|
+|1188 CALLIGO US                                                                             1       0  100.0%|
+|1189 CAJAL NEUROSCIENCE                                                                     1       1   50.0%|
+|1190 CAGLE CONSULTING                                                                       1       0  100.0%|
+|1191 BURGESS DESIGN                                                                         1       0  100.0%|
+|1192 SEA FARMS                                                                              1       0  100.0%|
+|1193 SCOTT COATINGS                                                                         1       0  100.0%|
+|1194 SCHERMA                                                                                1       0  100.0%|
+|1195 SCHEMA                                                                                 1       0  100.0%|
+|1196 SCARBOROUGH FITNESS                                                                    1       0  100.0%|
+|1197 SATURDAY                                                                               1       0  100.0%|
+|1198 SAPIENCE TECH                                                                          1       0  100.0%|
+|1199 SANPACT                                                                                1       0  100.0%|
+|1200 SANKOFA CONSULTING                                                                     1       0  100.0%|
+|1201 SAN MAR                                                                                1       0  100.0%|
+|1202 CEDAR RIVER MONTESSORI SCHOOL                                                          1       0  100.0%|
+|1203 BRIGHT APARTMENT HOLDING                                                               1       0  100.0%|
+|1204 BREAKTHROUGH ENERGY                                                                    1       0  100.0%|
+|1205 BRAVESPACE NUTRITION                                                                   1       0  100.0%|
+|1206 BRANDCHEF GROU                                                                         1       0  100.0%|
+|1207 SEATTLE NW CONSULTING                                                                  1       0  100.0%|
+|1208 SEATTLE ECONOMIC DEVELOPMENT FUND                                                      1       0  100.0%|
+|1209 SEATTLE ECONOMIC DEV FUND                                                              1       0  100.0%|
+|1210 SEATTLE BOX CO                                                                         1       0  100.0%|
+|1211 SEATTLE ANXIETY                                                                        1       0  100.0%|
+|1212 SEASALT AL                                                                             1       0  100.0%|
+|1213 SEA TO SKY MANAGEMENT                                                                  1       0  100.0%|
+|1214 CARNEY BADLEY SPELLMAN                                                                 1       0  100.0%|
+|1215 CARBON AUTONOMOUS ROBOTICS SYS                                                         1       0  100.0%|
+|1216 CARA VETERINARY PRACTICE WA                                                            1       1   50.0%|
+|1217 CAMOUFLAJ                                                                              1       0  100.0%|
+|1218 CAMBODIAN AMERICAN COMMUNITY COUNC                                                     1       0  100.0%|
+|1219 SHEENA GAUR DDS                                                                        1       0  100.0%|
+|1220 SHED SEATTLE                                                                           1       0  100.0%|
+|1221 SHEA C                                                                                 1       0  100.0%|
+|1222 SERVIFY US                                                                             1       0  100.0%|
+|1223 SERVICECHANNEL COM                                                                     1       0  100.0%|
+|1224 SEOMOZ                                                                                 1       0  100.0%|
+|1225 SENTINEL                                                                               1       0  100.0%|
+|1226 SENECA REAL ESTATE GROUP                                                               1       0  100.0%|
+|1227 SEED INTELLECTUAL PROPERTY LAW GROUP                                                   1       0  100.0%|
+|1228 SEATTLE SAFETY                                                                         1       0  100.0%|
+|1229 BUNGEE TECH                                                                            1       0  100.0%|
+|1230 BRYT360                                                                                1       0  100.0%|
+|1231 BRMK MANAGEMENT                                                                        1       0  100.0%|
+|1232 BRIGHTSEEDSACADEMY                                                                     1       0  100.0%|
+|1233 BRIGHT MOON ARTS                                                                       1       0  100.0%|
+|1234 BRIGHT MIND SCHOOL                                                                     1       0  100.0%|
+|1235 BR DRONES                                                                              1       0  100.0%|
+|1236 BOUNDLESS IMMIGRATION                                                                  1       0  100.0%|
+|1237 BO                                                                                     1       0  100.0%|
+|1238 BMC GROUP                                                                              1       0  100.0%|
+|1239 BLUEPRINT CAPITAL SVCS                                                                 1       0  100.0%|
+|1240 BLUELINE GROUP                                                                         1       0  100.0%|
+|1241 BLUE GEM                                                                               1       0  100.0%|
+|1242 BLUDIAGNOSTICS                                                                         1       1   50.0%|
+|1243 SJS MECHANICAL SVCS                                                                    1       0  100.0%|
+|1244 SIXENSE                                                                                1       0  100.0%|
+|1245 SIRIONLABS                                                                             1       0  100.0%|
+|1246 SINE DRACO AVIATION TECH                                                               1       0  100.0%|
+|1247 SILVER CREEK ADVISORY PARTNERS                                                         1       0  100.0%|
+|1248 SIGMA GENETICS                                                                         1       0  100.0%|
+|1249 SHYFT TECH                                                                             1       0  100.0%|
+|1250 SHINEFLOW                                                                              1       0  100.0%|
+|1251 BIRTH TO THREE DEVELOPMENTAL CENTE                                                     1       0  100.0%|
+|1252 BIRCH TECH                                                                             1       0  100.0%|
+|1253 BIOJUNCTION SPORTS THERAPY                                                             1       0  100.0%|
+|1254 BIOATLANTIS USA                                                                        1       0  100.0%|
+|1255 BIG DIPPER CAMPFIRE                                                                    1       0  100.0%|
+|1256 BHIMAS USA                                                                             1       0  100.0%|
+|1257 SNU TECH                                                                               1       0  100.0%|
+|1258 SNOHOMISH COUNTY PUBLIC UTILITY                                                        1       0  100.0%|
+|1259 SNOHOMISH COUNTY PUBLIC BENEFIT AR                                                     1       0  100.0%|
+|1260 SNC LAVALIN CONSTRUCTORS                                                               1       0  100.0%|
+|1261 SMITH BUNDAY BERMAN BRITTON                                                            1       0  100.0%|
+|1262 SMART TECH SEATTLE                                                                     1       0  100.0%|
+|1263 SKYLINE COMMUNICATIONS                                                                 1       0  100.0%|
+|1264 SKA                                                                                    1       0  100.0%|
+|1265 SK TEK SOLNS                                                                           1       0  100.0%|
+|1266 BRANCH RICHARDS CO                                                                     1       0  100.0%|
+|1267 BENSUSSEN DEUTSCH ASSOCIATES L                                                         1       0  100.0%|
+|1268 BEN BRIDGE JEWELERS                                                                    1       0  100.0%|
+|1269 BELLEVUE ANIMAL HOSPITA S                                                              1       0  100.0%|
+|1270 BELARDE CO                                                                             1       0  100.0%|
+|1271 SPECTRUM SOURCING GROU                                                                 1       1   50.0%|
+|1272 SPECTRUM CONTROLS                                                                      1       0  100.0%|
+|1273 SPARK RED                                                                              1       0  100.0%|
+|1274 SOUTHERN TAIWAN                                                                        1       0  100.0%|
+|1275 SOUNDVIEW SCHOOL                                                                       1       0  100.0%|
+|1276 SOUND BUSINESS ADVISORS                                                                1       0  100.0%|
+|1277 SOUND BOOKKEEPERS 2                                                                    1       0  100.0%|
+|1278 SOLSTICE INNOVATIONS                                                                   1       0  100.0%|
+|1279 SOFTWARE REVOLUTION                                                                    1       0  100.0%|
+|1280 BLOCCELERATE VC INVESTMENT SVCS                                                        1       0  100.0%|
+|1281 BLIZZARD REALTY                                                                        1       0  100.0%|
+|1282 BISOFT CONSULTANCY SVCS                                                                1       0  100.0%|
+|1283 STOIC                                                                                  1       0  100.0%|
+|1284 STEMCELL TECH                                                                          1       0  100.0%|
+|1285 STEEL GRIT THERAPY                                                                     1       0  100.0%|
+|1286 STATE WA OFFICE ATTORNEY GENERAL                                                       1       0  100.0%|
+|1287 STARMERX INTL                                                                          1       1   50.0%|
+|1288 STAKE NETWORK                                                                          1       0  100.0%|
+|1289 STABLY                                                                                 1       0  100.0%|
+|1290 ST MARY REGIONAL MED CTR                                                               1       1   50.0%|
+|1291 ST MARY MED CTR                                                                        1       0  100.0%|
+|1292 ST JUDE CHILDREN S RESEARCH HOSPITAL                                                   1       0  100.0%|
+|1293 ST JOSEPH HLTH NORTHERN CALIFORN                                                       1       0  100.0%|
+|1294 SPROUT SOCIAL                                                                          1       0  100.0%|
+|1295 BHC FAIRFAX HOSPITAL                                                                   1       0  100.0%|
+|1296 BHC CONSULTANTS                                                                        1       0  100.0%|
+|1297 BEST PLANT SUPPLY                                                                      1       0  100.0%|
+|1298 BENTON BRAY                                                                            1       0  100.0%|
+|1299 BANCROFT BUCKLEY JOHNSTON SERRES                                                       1       0  100.0%|
+|1300 BADER MARTIN                                                                           1       0  100.0%|
+|1301 BAAS                                                                                   1       1   50.0%|
+|1302 B Z                                                                                    1       0  100.0%|
+|1303 B B WELDING                                                                            1       0  100.0%|
+|1304 B B DENTAL CERAMIC ARTS DB                                                             1       0  100.0%|
+|1305 B B DENTAL CERAMIC ARTS                                                                1       0  100.0%|
+|1306 AYL TECH                                                                               1       0  100.0%|
+|1307 SUSTAINABLE BUSINESS CONSULTING                                                        1       0  100.0%|
+|1308 SUNVIEW REAL ESTATES DEVELOPMENT                                                       1       0  100.0%|
+|1309 SUBSTANBO                                                                              1       0  100.0%|
+|1310 STYLES LAW                                                                             1       0  100.0%|
+|1311 STUDIO216                                                                              1       0  100.0%|
+|1312 STRELLA BIOTECHNOLOGY                                                                  1       0  100.0%|
+|1313 STRATEGIC BUSINESS DECISIONS CONSULTING                                                1       0  100.0%|
+|1314 STOKE                                                                                  1       0  100.0%|
+|1315 AURION BIOTECH                                                                         1       0  100.0%|
+|1316 AUDIBLE                                                                                1       0  100.0%|
+|1317 ATOMO COFFEE                                                                           1       0  100.0%|
+|1318 TAGBOARD                                                                               1       0  100.0%|
+|1319 TADCO                                                                                  1       0  100.0%|
+|1320 TACOMA TIRE                                                                            1       0  100.0%|
+|1321 T D WANG ADVERTISING GROU                                                              1       0  100.0%|
+|1322 SYNERGY                                                                                1       0  100.0%|
+|1323 SYMMETRY CHIROPRACTIC WELLNESS CTR                                                     1       0  100.0%|
+|1324 SWEDISH EDMONDS                                                                        1       0  100.0%|
+|1325 SUTRIX CONSULTING                                                                      1       0  100.0%|
+|1326 BAY LEAF                                                                               1       0  100.0%|
+|1327 BATTGENIE                                                                              1       0  100.0%|
+|1328 BASIS SOFT                                                                             1       0  100.0%|
+|1329 BARSALA INTL                                                                           1       0  100.0%|
+|1330 BANK AMERICA NA                                                                        1       0  100.0%|
+|1331 ARZEDA                                                                                 1       0  100.0%|
+|1332 ARTSCI CO                                                                              1       0  100.0%|
+|1333 ARTISAN ELECTRIC                                                                       1       0  100.0%|
+|1334 TECHNOLOGY ACCESS FOUNDATION                                                           1       0  100.0%|
+|1335 TEAL COMMUNICATIONS                                                                    1       0  100.0%|
+|1336 TCA ARCHITECTURE PLANNING                                                              1       0  100.0%|
+|1337 TAXMAN CC                                                                              1       0  100.0%|
+|1338 TATANGO                                                                                1       0  100.0%|
+|1339 TASSO                                                                                  1       0  100.0%|
+|1340 TAPERT VENTURES                                                                        1       0  100.0%|
+|1341 TALON PRIVATE CAPITAL                                                                  1       0  100.0%|
+|1342 TALLAMOND                                                                              1       0  100.0%|
+|1343 TALIX                                                                                  1       0  100.0%|
+|1344 AVENUE5 RESIDENTIAL                                                                    1       0  100.0%|
+|1345 AVARON CAPITAL MANAGEMENT                                                              1       0  100.0%|
+|1346 AUROMA TECH CO                                                                         1       0  100.0%|
+|1347 ARC ARCHITECTS                                                                         1       0  100.0%|
+|1348 APPEN AI                                                                               1       0  100.0%|
+|1349 APP AIR                                                                                1       0  100.0%|
+|1350 APIJET                                                                                 1       0  100.0%|
+|1351 THUNK AI                                                                               1       0  100.0%|
+|1352 THINKIE                                                                                1       0  100.0%|
+|1353 TESTSPRITE                                                                             1       0  100.0%|
+|1354 TEST INNOVATORS                                                                        1       0  100.0%|
+|1355 TERRACLEAR                                                                             1       0  100.0%|
+|1356 TEMPERED NETWORKS                                                                      1       0  100.0%|
+|1357 ATLAS GENOMICS                                                                         1       0  100.0%|
+|1358 ATHIRA PHARMA                                                                          1       0  100.0%|
+|1359 ASTROLABE ANALYTICS                                                                    1       0  100.0%|
+|1360 ASSEMBLE                                                                               1       0  100.0%|
+|1361 ASIAN COUNSELING TREATMENT SVC                                                         1       0  100.0%|
+|1362 ASIAN AMERICAN TV                                                                      1       0  100.0%|
+|1363 AMERICAN SEAFOODS GROU                                                                 1       0  100.0%|
+|1364 AMENTO GROUP                                                                           1       0  100.0%|
+|1365 TRILOGY EQUITY PARTNERS II                                                             1       0  100.0%|
+|1366 TRIFORZA                                                                               1       0  100.0%|
+|1367 TREXIE MANAGEMENT                                                                      1       0  100.0%|
+|1368 TRANSLINK SHIPPING                                                                     1       0  100.0%|
+|1369 TRADITIONAL MORTGAGE ACCEPTANCE CO                                                     1       0  100.0%|
+|1370 TORADEX                                                                                1       0  100.0%|
+|1371 TOPOLITH                                                                               1       0  100.0%|
+|1372 TOLA CAPITAL MANAGEMENT                                                                1       0  100.0%|
+|1373 TLM                                                                                    1       0  100.0%|
+|1374 TINMAN SYS                                                                             1       0  100.0%|
+|1375 TIMBER IT CONSULTING                                                                   1       0  100.0%|
+|1376 ARMOUR UNSDERFER ENGINEERING                                                           1       1   50.0%|
+|1377 ARMOIRE STYLE                                                                          1       0  100.0%|
+|1378 ARK TECH SOLN                                                                          1       0  100.0%|
+|1379 UNDEAD LABS                                                                            1       0  100.0%|
+|1380 UMT 360                                                                                1       0  100.0%|
+|1381 UMOJA BIOPHARMA                                                                        1       0  100.0%|
+|1382 UMG RECORDINGS                                                                         1       0  100.0%|
+|1383 TURNPOINT TECH                                                                         1       0  100.0%|
+|1384 TURNER CONSTRUCTION                                                                    1       0  100.0%|
+|1385 TSP ADVISORS                                                                           1       0  100.0%|
+|1386 TRUEWIND TECH                                                                          1       0  100.0%|
+|1387 ANVAY SOLN                                                                             1       0  100.0%|
+|1388 ANSTON AERIAL MEDIA                                                                    1       0  100.0%|
+|1389 ANGEL PET HOSPITAL                                                                     1       0  100.0%|
+|1390 ANGEL CONSULTING                                                                       1       0  100.0%|
+|1391 ANG TECH                                                                               1       0  100.0%|
+|1392 ANCHOR QEA                                                                             1       0  100.0%|
+|1393 AMOBEO                                                                                 1       0  100.0%|
+|1394 AMMEX                                                                                  1       0  100.0%|
+|1395 VEER ARCHITECTURE                                                                      1       0  100.0%|
+|1396 VECML                                                                                  1       0  100.0%|
+|1397 VBN SALES                                                                              1       0  100.0%|
+|1398 UPLEVEL                                                                                1       0  100.0%|
+|1399 UNIVERSITY CHILD DEVELOPMENT SCHOOL                                                    1       0  100.0%|
+|1400 UNIMARK CONSTRUCTION                                                                   1       0  100.0%|
+|1401 UNICO PROPERTIES                                                                       1       0  100.0%|
+|1402 AMANPREET SIDHU                                                                        1       0  100.0%|
+|1403 ALTPEP                                                                                 1       0  100.0%|
+|1404 ALTO GROUP                                                                             1       0  100.0%|
+|1405 ALTIUS INSTITUTE BIOMEDICAL SC                                                         1       0  100.0%|
+|1406 ALTIUS INST BIOMEDICALSCIENCES                                                         1       0  100.0%|
+|1407 ALOFT                                                                                  1       0  100.0%|
+|1408 ALLYIS                                                                                 1       0  100.0%|
+|1409 ALLRECIPES COM                                                                         1       0  100.0%|
+|1410 ALLEN CREEK HEALTHCARE                                                                 1       0  100.0%|
+|1411 ALEGENT CREIGHTON CLINIC                                                               1       0  100.0%|
+|1412 AKVELON                                                                                1       0  100.0%|
+|1413 AK TECH                                                                                1       1   50.0%|
+|1414 AIWAYSION                                                                              1       0  100.0%|
+|1415 AIS OPERATING CO                                                                       1       0  100.0%|
+|1416 AIMS BUILDING SVC                                                                      1       0  100.0%|
+|1417 AIMMS                                                                                  1       0  100.0%|
+|1418 AIGEN                                                                                  1       0  100.0%|
+|1419 VOLGA PARTNERS                                                                         1       1   50.0%|
+|1420 VITALITY CHIROPRACTIC CTR                                                              1       0  100.0%|
+|1421 VIRTUDESK                                                                              1       0  100.0%|
+|1422 VILYA                                                                                  1       0  100.0%|
+|1423 VIDYATECH SOFT                                                                         1       0  100.0%|
+|1424 VERA WHOLE HLTH                                                                        1       0  100.0%|
+|1425 VENDARA PAYMENTS                                                                       1       0  100.0%|
+|1426 VELOCE                                                                                 1       0  100.0%|
+|1427 AFFABLEBPM                                                                             1       0  100.0%|
+|1428 AES GROUP                                                                              1       0  100.0%|
+|1429 AERO SPACE PORT INTL GROUP                                                             1       0  100.0%|
+|1430 AERO CONTROLS                                                                          1       0  100.0%|
+|1431 AEON LAW                                                                               1       0  100.0%|
+|1432 WASHINGTON UNIVERSITY PRE                                                              1       0  100.0%|
+|1433 WASHINGTON TECH INDY ASSOC                                                             1       0  100.0%|
+|1434 WASHINGTON MARITIME BLUE                                                               1       0  100.0%|
+|1435 WASHINGTON INTL SCHOOL                                                                 1       0  100.0%|
+|1436 WASHINGTON CONSERVATION ACTION EDUCATION FUND                                          1       0  100.0%|
+|1437 WASHINGTON CONFERENCE SEVENTH DAY ADVENTISTS                                           1       0  100.0%|
+|1438 WASHINGTON CAPITAL MANAGEMENT                                                          1       0  100.0%|
+|1439 WALSH CONSTRUCTION CO II                                                               1       0  100.0%|
+|1440 W STERNOFF                                                                             1       0  100.0%|
+|1441 ALIBHAI BEPPU RENTON                                                                   1       0  100.0%|
+|1442 ALEXA INTERNET                                                                         1       0  100.0%|
+|1443 ADHETEC                                                                                1       0  100.0%|
+|1444 ADALINE                                                                                1       0  100.0%|
+|1445 AD LIGHTNING                                                                           1       0  100.0%|
+|1446 WIMMER SOLNS                                                                           1       0  100.0%|
+|1447 WILLIAM H GATES III                                                                    1       0  100.0%|
+|1448 WICRESOFT NORTH AMERICA CO                                                             1       0  100.0%|
+|1449 WIBOTIC                                                                                1       0  100.0%|
+|1450 WHITEPAGES                                                                             1       0  100.0%|
+|1451 WESTRIVER MANAGEMENT                                                                   1       0  100.0%|
+|1452 WESTBANK PROJECTS US                                                                   1       0  100.0%|
+|1453 WEST SIDE SCHOOL                                                                       1       0  100.0%|
+|1454 WELLNESS GLOBAL USA                                                                    1       0  100.0%|
+|1455 WAYWARD                                                                                1       0  100.0%|
+|1456 AIBAOBAO INTL EDUCATION L                                                              1       0  100.0%|
+|1457 AGORA LAW GROUP                                                                        1       0  100.0%|
+|1458 AGILIANT                                                                               1       0  100.0%|
+|1459 ZUPLO                                                                                  1       0  100.0%|
+|1460 YOUNG CHILD ACADEMY SEATTLE                                                            1       0  100.0%|
+|1461 YOGAYA                                                                                 1       0  100.0%|
+|1462 YIFANG REDMOND                                                                         1       0  100.0%|
+|1463 YELLOW WOOD ACADEMY                                                                    1       0  100.0%|
+|1464 XTRA MATH                                                                              1       0  100.0%|
+|1465 XING LONG INVESTMENT                                                                   1       0  100.0%|
+|1466 XENON ARC                                                                              1       0  100.0%|
+|1467 ACTION REACTION PHYSICAL THERAPY I                                                     1       0  100.0%|
+|1468 ACRYLICIZE                                                                             1       0  100.0%|
+|1469 ACOUSTIIC                                                                              1       0  100.0%|
+|1470 ACI GIFT CARDS                                                                         1       0  100.0%|
+|1471 ACES INSTITUTE                                                                         1       0  100.0%|
+|1472 ACCUMATIC                                                                              1       0  100.0%|
+|1473 ACCESS TO ADVANCED HLTH INSTITUTE                                                      1       0  100.0%|
+|1474 ACCELBYTE                                                                              1       0  100.0%|
+|1475 INVENTIT SOLNS                                                                         1       0  100.0%|
+|1476 INTRA NW                                                                               1       0  100.0%|
+|1477 INTERNATIONAL RECRUITING                                                               1       0  100.0%|
+|1478 INTERLUNE                                                                              1       0  100.0%|
+|1479 INTELEX TECH US                                                                        1       0  100.0%|
+|1480 JAMES W CHERBERG DDS MSD                                                               1       0  100.0%|
+|1481 JACOBSON JARVIS CO                                                                     1       0  100.0%|
+|1482 JACKSON MAIN ARCHITECTURE                                                              1       0  100.0%|
+|1483 JA BRENNAN ASSOCIATES                                                                  1       0  100.0%|
+|1484 J W MARKETING                                                                          1       0  100.0%|
+|1485 J K CONNECTORS L                                                                       1       0  100.0%|
+|1486 J A BRENNAN ASSOCIATES                                                                 1       0  100.0%|
+|1487 IX INVESTMENTS                                                                         1       0  100.0%|
+|1488 IUNU                                                                                   1       0  100.0%|
+|1489 IOCURRENTS                                                                             1       0  100.0%|
+|1490 ZYMEWORKS ZANIDATAMAB                                                                  1       0  100.0%|
+---------------------------------------------------------------------------------------------------------------
+Max approvals: 16724
+Max denials: 183
+Max approval rate: 99.5%
+Min approval rate: 50.0%
+---------------------------------------------------------------------------------------------------------------

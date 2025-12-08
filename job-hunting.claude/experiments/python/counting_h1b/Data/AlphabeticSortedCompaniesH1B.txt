@@ -1,0 +1,62 @@
+Company Name	WA Approvals	WA DENIALS 	US APPROVALS 	US DENIALS	SUCCESS RATE	NAICS CODES
+Adobe	0	0   2137      48   97.8% ["51", "54"]
+Airbnb	0	0   566       4   99.3% ["56"]
+Alaska Airlines	31	1   31       1   96.9% ["48-49"]
+Amazon	3831	99  40861     773   98.1% ["42", "44-45", "48-49", "51", "54", "61"]
+Anthropic	0	0   42       1   97.7% ["54"]
+Apple	0	0   12747     117   99.1% ["31-33", "51", "54"]
+AT&T	0	0   1164       8   99.3% ["51", "54", "61"]
+Avanade	141	2   141       2   98.6% ["54"]
+Bungie	24	0
+ByteDance	0	0   2060      19   99.1% "51", "54"
+Coinbase	0	0
+Convoy	49	1
+Costco	294	2
+Databricks	0	0
+DIGITAL TECH LABS	0	0
+DISNEY	0	0
+DOORDASH	0	0
+Epic Games	0	0
+EXPEDIA	1314	15
+Expeditors International	24	0
+ExtraHop	4	0
+F5 Networks	378	2
+Flyhomes	17	0
+GE HealthCare	0	0
+GE Vernova	0	0
+IBM	0	0   8551      85   99.0% "44-45", "51", "54"
+ILINK SYSTEMS	110	1
+INTEL	0	0   8519     211   97.6% "31-33", "54"
+IonQ	0	0
+iSpot TV	17	0
+Netflix	0	0
+Niantic	0	0
+Nintendo	29	0
+Nordstrom	572	8
+NVIDIA	0	0   3649      19   99.5% "31-33"
+OpenAI	0	0
+Pinterest	0	0
+The Pokemon Company International	26	1
+Puget Sound Energy	39	0
+Quora	0	0
+Reddit	0	0
+Redfin	56	0
+REMITLY	125	2
+Riot Games	0	0
+Salesforce	1	0   4832      35   99.3% "51","54"
+ServiceNow	0	0   1702      19   98.9% "54"
+Siemens	0	0
+Slalom Consulting	610	8
+SmartSheet	141	1
+Snap	0	0
+SnowFlake	0	0
+T-Mobile	1287	10
+TikTok	0	0
+UBER	0	0   2246      33   98.6% "48-49", "54"
+Unity	2	0
+Valve/Steam	11	1
+Visa	0	0
+Zillow	435	11
+Zulily	67	3
+
+(Bungie | ByteDance | Coinbase | Convoy | Costco | Databricks | DIGITAL TECH LABS | DISNEY | DOORDASH | Epic Games | EXPEDIA | Expeditors (International | INTL) | ExtraHop | F5 | Flyhomes | GE HealthCare | GE HLTHCARE | GE Vernova | IBM | ILINK SYS| INTEL | IonQ | iSpot | Netflix | Niantic | Nintendo | Nordstrom | NVIDIA | OpenAI | Pinterest | Pokemon Co Intl | Puget Sound Energy | PSE | Quora | Reddit | Redfin | REMITLY | Riot Games | Salesforce | ServiceNow | Siemens | Slalom | SmartSheet | Snap | SnowFlake | T Mobile | TikTok | UBER | Unity | Valve| Visa | Zillow | Zulily)

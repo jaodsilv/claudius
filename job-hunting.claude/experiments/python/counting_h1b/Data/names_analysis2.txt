@@ -1,0 +1,2521 @@
+Company Name Analysis Results
+============================
+
+Total number of raw company names: 1683
+Total number of unique normalized names: 1570
+Total number of unique words: 2061
+
+Most Common Words
+----------------
+TECHNOLOGIES: 58
+HEALTH: 43
+OF: 41
+SERVICES: 40
+SOLUTIONS: 36
+CONSULTING: 30
+SEATTLE: 28
+WASHINGTON: 28
+CENTER: 25
+USA: 23
+MANAGEMENT: 23
+SYSTEMS: 22
+THE: 21
+NORTHWEST: 19
+TECHNOLOGY: 19
+TECH: 19
+PROVIDENCE: 19
+LABS: 18
+SCHOOL: 18
+RESEARCH: 17
+INSTITUTE: 16
+PACIFIC: 16
+US: 16
+FOR: 15
+CONSTRUCTION: 15
+ARCHITECTURE: 14
+ARCHITECTS: 13
+COM: 13
+DEVELOPMENT: 13
+LAW: 13
+SOFTWARE: 13
+AMAZON: 13
+AMERICA: 13
+ASSOCIATES: 13
+COMMUNITY: 13
+CAPITAL: 12
+ENGINEERING: 11
+AI: 11
+SERVICE: 11
+MONTESSORI: 11
+LLP: 11
+ACADEMY: 10
+DESIGN: 10
+DATA: 9
+FOUNDATION: 9
+DDS: 9
+MEDICAL: 9
+NORTH: 9
+THERAPY: 8
+B: 8
+WA: 8
+UNIVERSITY: 8
+INTELLIGENCE: 8
+PARTNERS: 7
+HOSPITAL: 7
+ASIAN: 7
+COUNSELING: 7
+GLOBAL: 7
+S: 7
+COUNTY: 7
+TAX: 7
+D: 7
+SOUND: 7
+ST: 7
+I: 6
+L: 6
+DISTRICT: 6
+BLUE: 6
+ENERGY: 6
+ADVISORS: 6
+PUBLIC: 6
+LIFE: 6
+PUGET: 6
+CANCER: 6
+SVCS: 6
+A: 5
+BIO: 5
+CLOUD: 5
+AEROSPACE: 5
+EDUCATION: 5
+ALLEN: 5
+HEALTHCARE: 5
+AMERICAN: 5
+SCIENCE: 5
+CONSULTANTS: 5
+GAMES: 5
+POWER: 5
+ENGINEERS: 5
+SNOHOMISH: 5
+PROPERTY: 5
+WORLD: 5
+REAL: 5
+NETWORK: 5
+FINANCIAL: 5
+LEARNING: 5
+W: 5
+GREEN: 5
+MILLER: 5
+NINTENDO: 5
+
+Most Common Prefixes
+-------------------
+PROVIDENCE: 18
+THE: 15
+SEATTLE: 14
+AMAZON: 12
+NORTHWEST: 12
+PACIFIC: 8
+COMMUNITY: 7
+WASHINGTON: 7
+ASIAN: 6
+MONTESSORI: 6
+D: 5
+GREEN: 5
+NINTENDO: 5
+NORTH: 5
+ST: 5
+
+Most Common Suffixes
+-------------------
+TECHNOLOGIES: 50
+SOLUTIONS: 35
+SERVICES: 31
+CONSULTING: 25
+USA: 21
+SYSTEMS: 21
+LABS: 17
+MANAGEMENT: 17
+CENTER: 16
+US: 15
+TECH: 15
+WASHINGTON: 15
+SEATTLE: 14
+ARCHITECTS: 12
+TECHNOLOGY: 12
+ASSOCIATES: 12
+HEALTH: 11
+SCHOOL: 11
+CONSTRUCTION: 11
+LLP: 11
+COM: 9
+ENGINEERING: 9
+AMERICA: 9
+DEVELOPMENT: 8
+LAW: 8
+AI: 8
+FOUNDATION: 8
+ARCHITECTURE: 8
+INSTITUTE: 7
+ACADEMY: 7
+SERVICE: 6
+SOFTWARE: 6
+PARTNERS: 6
+HOSPITAL: 6
+RESEARCH: 6
+DESIGN: 6
+WA: 6
+ADVISORS: 6
+BIO: 5
+CONSULTANTS: 5
+GAMES: 5
+ENERGY: 5
+CAPITAL: 5
+ENGINEERS: 5
+INTELLIGENCE: 5
+DDS: 5
+
+Most Common Acronyms
+-------------------
+USA: 23
+US: 16
+AI: 11
+LLP: 11
+DDS: 9
+WA: 8
+ST: 7
+SVCS: 6
+BIO: 5
+CTR: 4
+IO: 4
+IT: 4
+NO: 4
+INST: 3
+FKA: 3
+IN: 3
+NA: 3
+CPAS: 3
+DMD: 3
+AL: 3
+GE: 3
+HLTH: 3
+NW: 3
+APP: 2
+ARC: 2
+TV: 2
+IQ: 2
+BHC: 2
+MS: 2
+CE: 2
+III: 2
+CPA: 2
+F5: 2
+HF: 2
+JTM: 2
+DEV: 2
+MAR: 2
+STEM: 2
+II: 2
+BC: 1
+BI: 1
+ACES: 1
+ACI: 1
+ADISYS: 1
+ADITI: 1
+SOLUTI: 1
+SOLU: 1
+AD: 1
+AES: 1
+AGC: 1
+AG: 1
+AIMS: 1
+AIMMS: 1
+AIM: 1
+AIS: 1
+AIGEN: 1
+AK: 1
+ALL: 1
+SC: 1
+CA: 1
+QEA: 1
+ANG: 1
+APIJET: 1
+API: 1
+SVC: 1
+SERV: 1
+ABC: 1
+BAAS: 1
+VA: 1
+VIR: 1
+GEM: 1
+VC: 1
+BR: 1
+BRMK: 1
+DB: 1
+BMC: 1
+C2S: 1
+CALI: 1
+CAMBER: 1
+COUNC: 1
+CASPR: 1
+CARA: 1
+CARNEY: 1
+BADLEY: 1
+AUTO: 1
+CARROTEZ: 1
+CARIAD: 1
+CAT: 1
+DADDY: 1
+CATALYSIS: 1
+CATALYST: 1
+CATHOLIC: 1
+WESTERN: 1
+PLAZA: 1
+VET: 1
+CEMTICS: 1
+CEQUINT: 1
+CHAMELEON: 1
+CHARLES: 1
+CHANG: 1
+CHARMED: 1
+CHATECK: 1
+CHAINGUARD: 1
+CHEMPOINT: 1
+CHEQ: 1
+LIFESTYLE: 1
+CHILDHAVEN: 1
+CHINOOK: 1
+CHIPSTACK: 1
+CHISON: 1
+CHOI: 1
+CHRISTOPHER: 1
+HUANG: 1
+CHRONOSPHERE: 1
+CHUDGAR: 1
+CIMPLESOFT: 1
+STEVENS: 1
+CIBERTECH: 1
+CINTILIGHT: 1
+CLICK2CLOUD: 1
+CLIMATE: 1
+VAULT: 1
+CLOBOTICS: 1
+CLOUDIQ: 1
+CLOUDIFY: 1
+CLOUDMOYO: 1
+ASSERT: 1
+CLOCKWORK: 1
+CLARENT: 1
+BARNES: 1
+RAYMOND: 1
+REPUBLIC: 1
+SODO: 1
+CLEARBRIEF: 1
+CMTY: 1
+COFFMAN: 1
+COINME: 1
+COLOR: 1
+COLLIERS: 1
+COMMANDLINK: 1
+FABRIC: 1
+SNOHOMI: 1
+HOUSE: 1
+MENTAL: 1
+AGENCY: 1
+PASSAGEWAYS: 1
+COMMON: 1
+COMPUSIGHT: 1
+CONFIZ: 1
+CONFLUENCE: 1
+CONSOLIDATED: 1
+CONVOY: 1
+CONE: 1
+COOSEA: 1
+COPPERTREE: 1
+CORESTACK: 1
+CORETEK: 1
+MARBLE: 1
+COST: 1
+WHOLESALE: 1
+COUGHLIN: 1
+PORTER: 1
+LUNDEEN: 1
+COVESTIC: 1
+COWI: 1
+CODING: 1
+WITH: 1
+KIDS: 1
+CODIFIED: 1
+CODE: 1
+COGENT: 1
+BRAIN: 1
+COCRE8ED: 1
+CREATE: 1
+MINDS: 1
+BOEING: 1
+EMPLOYEES: 1
+WASH: 1
+CRESENTTECH: 1
+CRITIGEN: 1
+CRISTA: 1
+MINISTRIES: 1
+CSI: 1
+INTERFUSION: 1
+CTS: 1
+CUREVO: 1
+CURI: 1
+CURTA: 1
+CWC: 1
+TRAVEL: 1
+CYPHERD: 1
+WALLET: 1
+CBIZ: 1
+AMATO: 1
+DADOES: 1
+DARCH: 1
+DARIGOLD: 1
+DOJO: 1
+DATADIGM: 1
+BLANKET: 1
+DATAFI: 1
+COLEMAN: 1
+HAWTHORNE: 1
+LL: 1
+DAVIES: 1
+DAVIS: 1
+TREMAINE: 1
+DAWSON: 1
+GERBIC: 1
+DAH: 1
+DAKSA: 1
+DAMATO: 1
+DEFINEDCROWD: 1
+DELEE: 1
+TRIMMER: 1
+DELIGHTFUL: 1
+DEMANA: 1
+DEMO: 1
+GORILLA: 1
+DENALI: 1
+DEVINFRA: 1
+DEVICEBOOK: 1
+DEVOTE: 1
+DEXCARE: 1
+DEXTERITY: 1
+OPERATION: 1
+DEAKO: 1
+DECH: 1
+PPS: 1
+DEEPWELL: 1
+DTX: 1
+DERIVE: 1
+LABORATORY: 1
+DIGIPEN: 1
+DIGISIGNALS: 1
+LADDER: 1
+DIGITALAPICRAFT: 1
+DIRECTAPPS: 1
+DISCOVER: 1
+YOUR: 1
+DIAGRID: 1
+DIANA: 1
+WU: 1
+DIBIT: 1
+MEASURING: 1
+TECHNIQUE: 1
+DIMENSIONAL: 1
+MECHANICS: 1
+DIVERSIFICATION: 1
+DIVERSITY: 1
+DOCEQUITY: 1
+DOCTORS: 1
+EXCHANGE: 1
+DOCUGAMI: 1
+DOCUSMART: 1
+DOMAIN: 1
+DOMESTIC: 1
+ABUSE: 1
+WOMEN: 1
+DAWN: 1
+DOOSAN: 1
+GRIDTECH: 1
+DOWBUILT: 1
+DESC: 1
+DOXO: 1
+DOREMI: 1
+MUSIC: 1
+DORE: 1
+DODODATA: 1
+DOUGLAS: 1
+BLOME: 1
+DUODUO: 1
+DURANTA: 1
+DYNAMIC: 1
+DAVIDSON: 1
+ARCH: 1
+DHALIWAL: 1
+NGUYEN: 1
+DMP: 1
+DREAM: 1
+DTC: 1
+TC: 1
+EAGLEVIEW: 1
+EAGLE: 1
+ACCESSORY: 1
+EAN: 1
+PREPARATORY: 1
+EAST: 1
+GATE: 1
+EBD: 1
+ECHONOUS: 1
+ECAC: 1
+ECELLIX: 1
+ECOFLOW: 1
+ECOM: 1
+SMARTILES: 1
+EDIFECS: 1
+EDIFEES: 1
+EDDIE: 1
+BAUER: 1
+EDGENEXT: 1
+EFINANCIAL: 1
+EGENCIA: 1
+EJK: 1
+EKATA: 1
+EKAA: 1
+ELDEC: 1
+ELEKTROBIT: 1
+AUTOMOTIVE: 1
+AMERICAS: 1
+ERA: 1
+EL: 1
+CENTRO: 1
+DE: 1
+LA: 1
+RAZA: 1
+ELLEN: 1
+POLSKY: 1
+BOBBY: 1
+VIRK: 1
+ENFEC: 1
+ENTRE: 1
+HERMANOS: 1
+ENVIROISSUES: 1
+ENDOGASTRIC: 1
+ENZYM: 1
+ESPER: 1
+SCHOOLS: 1
+EVERGREEN: 1
+TRAINING: 1
+EVERY: 1
+WOMAN: 1
+TREATY: 1
+EVIATION: 1
+AIRCRAFT: 1
+EVIL: 1
+GENIUSES: 1
+EG: 1
+EXLSERVICE: 1
+EXPEDIA: 1
+WASHIN: 1
+EXTRAHOP: 1
+EYAS: 1
+EIPAI: 1
+EIGEN: 1
+EMURASOFT: 1
+EPIONE: 1
+HEALING: 1
+EUCLIDEAN: 1
+FACTSPAN: 1
+FARMERS: 1
+FAITH: 1
+BIBLE: 1
+CHURCH: 1
+FAL: 1
+SULT: 1
+FEATURESPOINT: 1
+FINACIAL: 1
+FERAL: 1
+FIDALAB: 1
+FIDELITY: 1
+FINAL: 1
+STRIKE: 1
+FINPILOT: 1
+SIIMPL: 1
+FIREWALK: 1
+FIREBOLT: 1
+FIVE: 1
+FIVEBY: 1
+FIERRO: 1
+FILSON: 1
+FIKES: 1
+FLAIR: 1
+FLEXE: 1
+FLYHOMES: 1
+FORTIVE: 1
+MANAGAEMENT: 1
+FOREST: 1
+RIDGE: 1
+SCARED: 1
+HEART: 1
+FOSTER: 1
+GARVEY: 1
+FOSS: 1
+OFFSHORE: 1
+WIND: 1
+AND: 1
+BEHAV: 1
+FRAGMENT: 1
+FOUNDRIES: 1
+CT: 1
+FREEFLY: 1
+FREELANCE: 1
+WRITING: 1
+FREESPIRA: 1
+SO: 1
+FRESH: 1
+FREIGHTMATE: 1
+FREIHEIT: 1
+FTV: 1
+EMPLOYMENT: 1
+FUELCOMM: 1
+FUJIFILM: 1
+SONOSITE: 1
+FUNKO: 1
+FUTURE: 1
+FJURI: 1
+FSI: 1
+TRADING: 1
+GARHWAL: 1
+GENCAP: 1
+UI: 1
+GEODESIC: 1
+GEOENGINEERS: 1
+GEORGE: 1
+GEOMETRICS: 1
+SEATLE: 1
+GERSH: 1
+GEYER: 1
+COBURN: 1
+HUTCHINS: 1
+RENEWABLE: 1
+GRID: 1
+PHYSICS: 1
+GLOBALLOGIC: 1
+GLOBIXS: 1
+GLOBENET: 1
+GLOBYS: 1
+GLOWFORGE: 1
+GLY: 1
+GOODREADS: 1
+GOOGLE: 1
+GORDIAN: 1
+GOLDEN: 1
+GRAB: 1
+GRACE: 1
+YING: 1
+GUO: 1
+PHD: 1
+TOP: 1
+GRAVITY: 1
+EARTH: 1
+OPERATIONS: 1
+GREENCITY: 1
+GREENINGTON: 1
+GREENTOWN: 1
+SUN: 1
+DIAMOND: 1
+FAMILY: 1
+PRINTING: 1
+GREAT: 1
+GROUNDSPEAK: 1
+GROUNDLIGHT: 1
+GGN: 1
+GGLO: 1
+INTERIOR: 1
+GITHUB: 1
+H10: 1
+H12A: 1
+HAGENS: 1
+SOBOL: 1
+SHAPIRO: 1
+HAN: 1
+AH: 1
+REUM: 1
+HANLIN: 1
+YI: 1
+HARBORTECH: 1
+MOBILITY: 1
+HARMAN: 1
+CONNECTED: 1
+HAUSER: 1
+JONES: 1
+SAS: 1
+HAYRE: 1
+MCELROY: 1
+HAYMINGWAY: 1
+HCL: 1
+HDT: 1
+HEADLIGHT: 1
+ADMINISTRATOR: 1
+HEALTHPOINT: 1
+HEARTDUB: 1
+HEARD: 1
+HEATCON: 1
+COMPOSITE: 1
+HERRERA: 1
+HEDGEHOG: 1
+SONIC: 1
+HESS: 1
+HELIOTROPE: 1
+HENRY: 1
+HIGHBROW: 1
+HIGHSPOT: 1
+HIMALAYA: 1
+HITECH: 1
+HIYA: 1
+HI: 1
+TALENTS: 1
+HID: 1
+HIPPOML: 1
+HOLLAND: 1
+LINE: 1
+HOLMAN: 1
+DISTRIBUTION: 1
+HOTWIRE: 1
+HONGXIN: 1
+HOPELINK: 1
+HORIZON: 1
+INDUSTRIES: 1
+HOUGH: 1
+BECK: 1
+BAIRD: 1
+HTC: 1
+HUAYU: 1
+HUDDLESTON: 1
+HUNTERS: 1
+HUSKY: 1
+REMODELING: 1
+ICAP: 1
+ICARE: 1
+ICERTIS: 1
+IDEA: 1
+ENTITY: 1
+IDENTITY: 1
+IDATALABS: 1
+IDB: 1
+IDD: 1
+ILINK: 1
+IMDB: 1
+IMMUNEEXPRESS: 1
+IMMUNEXPRESS: 1
+IMMURIO: 1
+IMPEL: 1
+PHARMACEUTICALS: 1
+IMPINJ: 1
+INABIA: 1
+INATAI: 1
+INFLUENCE: 1
+INFLECTION: 1
+INFOWAY: 1
+MASS: 1
+JUVO: 1
+PLU: 1
+ADVANTAGE: 1
+CONSULT: 1
+INNOVA: 1
+INRIX: 1
+INSPIRAGE: 1
+INSPUR: 1
+BIOLOGY: 1
+INSIGHT: 1
+REHABILITATION: 1
+FRIENDS: 1
+RECRUITING: 1
+INTERLUNE: 1
+INTELEX: 1
+INTRA: 1
+INVENTPRISE: 1
+INVENTIT: 1
+INVISO: 1
+INCLUDED: 1
+INDIGO: 1
+INDUPRO: 1
+INUIX: 1
+INBIOS: 1
+INWISE: 1
+IOACTIVE: 1
+IOCURRENTS: 1
+ISOFTSTONE: 1
+ISPOT: 1
+IUNU: 1
+IX: 1
+IFOODDECISIONSCIENCES: 1
+RUSH: 1
+MARKETING: 1
+JACKSON: 1
+MAIN: 1
+JACOBS: 1
+JACOBSON: 1
+JARVIS: 1
+JAM: 1
+JAMES: 1
+CHERBERG: 1
+MSD: 1
+JAYES: 1
+JASON: 1
+PEHLING: 1
+JA: 1
+WIRELESS: 1
+JOHNSON: 1
+SHUTE: 1
+JOURNEY: 1
+JPC: 1
+JUNO: 1
+JUN: 1
+FENG: 1
+JUNITY: 1
+JUST: 1
+EVOTEC: 1
+JUSTEVOTEC: 1
+JULIAN: 1
+CONNECTORS: 1
+LLLP: 1
+JIGO: 1
+JIRAV: 1
+KADLEC: 1
+SOLNS: 1
+KAI: 1
+KALUNGI: 1
+KALVI: 1
+KARDIN: 1
+KARBONARA: 1
+KAYE: 1
+KAPPES: 1
+KASTEN: 1
+KEN: 1
+KENSCI: 1
+KEEPE: 1
+UP: 1
+KEPION: 1
+KEVALA: 1
+KEY: 1
+PROTEO: 1
+KEYAMED: 1
+KIDUS: 1
+ECDC: 1
+KINDERING: 1
+KIN: 1
+KIMBERLEE: 1
+MARIE: 1
+INTERIORS: 1
+KISCHEL: 1
+FIRM: 1
+KNACKSOFT: 1
+KNACKHOOK: 1
+KNOCK: 1
+KNOW: 1
+KONKASOFT: 1
+KORE: 1
+REHAB: 1
+KOREAN: 1
+KOIDRA: 1
+KOOAPPS: 1
+KPFF: 1
+KYMETA: 1
+KYOTO: 1
+FUSIONEERING: 1
+KJELD: 1
+AAMODT: 1
+KBA: 1
+VUE: 1
+OPS: 1
+LAKESIDE: 1
+AUTISM: 1
+LAKLARA: 1
+LAMDA: 1
+LANDAU: 1
+LANKFORD: 1
+LANI: 1
+CAO: 1
+LASAI: 1
+PPLC: 1
+LAX: 1
+LAYR: 1
+LEADSCORZ: 1
+LEASE: 1
+CRUTCHER: 1
+LEWIS: 1
+LEANCODE: 1
+PBC: 1
+LENORA: 1
+LEVELTEN: 1
+LEVIATHAN: 1
+SECURITY: 1
+LIGHTEL: 1
+LIKEWISE: 1
+LIMEADE: 1
+LINEDATA: 1
+LINK: 1
+LITTLE: 1
+WARRIORS: 1
+LMN: 1
+LO: 1
+LOCATE: 1
+LOFTIUM: 1
+LOGIC: 1
+LOGIC20: 1
+LOOPIN: 1
+HQ: 1
+LOOPIE: 1
+LOOSE: 1
+CANNON: 1
+LOVERIDGE: 1
+HUNT: 1
+LOTUZ: 1
+LULULEMON: 1
+LUTHERAN: 1
+LUXE: 1
+LUXEPN: 1
+LUXOR: 1
+LUMEN: 1
+BIOSCIENCE: 1
+LUMOTIVE: 1
+PRICE: 1
+OPSAHL: 1
+LYNDEN: 1
+LHCG: 1
+LXIII: 1
+MAGNIX: 1
+MAGNUSSON: 1
+KLEMENCIC: 1
+MAGELLAN: 1
+MAKER: 1
+DESI: 1
+MAQ: 1
+MAR3: 1
+MARCHEX: 1
+MARKITCRAFT: 1
+LEADER: 1
+MARQE: 1
+MARPAC: 1
+MACDONALD: 1
+MACDONALDMILLER: 1
+MACROHEALTH: 1
+MAHLUM: 1
+MALIK: 1
+MANGOBOOST: 1
+MANNAT: 1
+DHILLON: 1
+MANUAL: 1
+PROFE: 1
+MC: 1
+MCG: 1
+ESSENTION: 1
+MCRT: 1
+MEDIAMOSAIC: 1
+MEMBRION: 1
+MENTIS: 1
+METEORCOMM: 1
+META: 1
+PLATFORMS: 1
+METRICDUST: 1
+METRO: 1
+MERCER: 1
+ISLAND: 1
+TELECOM: 1
+MERIDIAN: 1
+MG2: 1
+CORPORTION: 1
+MICROVISION: 1
+MICROBIOLOGIQUE: 1
+MIHAYLOV: 1
+ELIM: 1
+HAYASHI: 1
+MILLIMAN: 1
+MILBRANDT: 1
+MILESTONE: 1
+MILA: 1
+MIMIC: 1
+MINAR: 1
+NORTHEY: 1
+MINGLIAN: 1
+MITHUN: 1
+MOBICA: 1
+INTEGRATION: 1
+MOKSHAA: 1
+MOKAVIA: 1
+MOLECULAR: 1
+EPIDEMIOLOGY: 1
+MOMENTO: 1
+MOMENTIC: 1
+MONOD: 1
+EA: 1
+TEACHER: 1
+PREPARATION: 1
+SPRING: 1
+VALLE: 1
+MOODYS: 1
+MOONDIVE: 1
+MORGAN: 1
+WATSON: 1
+ADAMS: 1
+MOSES: 1
+FIELD: 1
+MOTHERDUCK: 1
+MOTIONSPACE: 1
+MOXIE: 1
+CIM: 1
+MOXIWORKS: 1
+MODERN: 1
+MOUNTAIN: 1
+WHISPER: 1
+MYNTRA: 1
+MYRIAD: 1
+MYSTERIES: 1
+GEEKS: 1
+MYLIO: 1
+MLOPTIC: 1
+ENUMCLAW: 1
+MUIR: 1
+WATTERSON: 1
+MBS: 1
+SOURCE: 1
+ETRADING: 1
+MZA: 1
+NANOSTRING: 1
+INDUSTRIAL: 1
+CONCEPTS: 1
+SUBSIDIARY: 1
+NAVIGATING: 1
+NAVIGATORSRVS: 1
+NAVIA: 1
+NAVANSOFT: 1
+NAVTOR: 1
+NBBJ: 1
+NEAL: 1
+NEON: 1
+MACHINE: 1
+NEST: 1
+NETEASE: 1
+ENGEN: 1
+BIOMETRICS: 1
+NEXTURN: 1
+NEURAL: 1
+IMAGE: 1
+NEEV: 1
+NIA: 1
+TERO: 1
+CORPO: 1
+NINTEX: 1
+NITEHAWK: 1
+SWEEPERS: 1
+NITEO: 1
+NOOSHIN: 1
+DARVISH: 1
+ND: 1
+NOONUM: 1
+ASSET: 1
+CRANE: 1
+NORTH30: 1
+FROZEN: 1
+HYDRAULIC: 1
+SHARED: 1
+BEHAVIORAL: 1
+IMMIGRANT: 1
+RIGHTS: 1
+PROJECT: 1
+KIDNEY: 1
+CLINICAL: 1
+30SC: 1
+RETURN: 1
+NORTIS: 1
+NORGREN: 1
+GT: 1
+NOBLE: 1
+ESTHETICS: 1
+NOVATEUR: 1
+MEAT: 1
+FACTORY: 1
+NOISEFIGURE: 1
+NUCLYDE: 1
+NUMBERS: 1
+STATION: 1
+ACCOUNTANTS: 1
+OCTOML: 1
+OEC: 1
+FREIGHT: 1
+OFFERUP: 1
+OLSON: 1
+KUNDIG: 1
+OL: 1
+REIGN: 1
+OMEROS: 1
+OMEGA: 1
+OMAP: 1
+OMNIVA: 1
+OMRON: 1
+MICROSCAN: 1
+ONELIN: 1
+WORKPLACE: 1
+FERRARI: 1
+ONG: 1
+OPENZOO: 1
+OPENTUG: 1
+OPALA: 1
+OPTIMUMS: 1
+OQ: 1
+ORCA: 1
+ORGWORKING: 1
+ORGANIZATION: 1
+ORBITZ: 1
+ORORA: 1
+OSBORN: 1
+OSSIA: 1
+OUR: 1
+BEGINNING: 1
+OUTPACE: 1
+OUTREACH: 1
+OUTGO: 1
+OAC: 1
+OZETTE: 1
+OWNERREZ: 1
+ENGINE: 1
+PACE: 1
+SOCCER: 1
+CLUB: 1
+PUBLISHING: 1
+ANESTHESIA: 1
+INSTITU: 1
+PILE: 1
+PACIFICA: 1
+PACMEDS: 1
+CLINICS: 1
+PACSTON: 1
+PACVUE: 1
+PANDION: 1
+PANOPTO: 1
+PARAMETRIC: 1
+PORTFOLIO: 1
+PARAMOUNT: 1
+PARSE: 1
+BIOSCIENCES: 1
+PARK: 1
+HONG: 1
+PARTNERTAP: 1
+PARISH: 1
+BERNADETTE: 1
+PATH: 1
+PATTERN: 1
+COMPUTER: 1
+PAULAS: 1
+PAI: 1
+PAWSITIVE: 1
+DREAMS: 1
+PEACH: 1
+PEARSON: 1
+PEBBLE: 1
+PEM: 1
+PEOPLECONNECT: 1
+BLOOM: 1
+INFRA: 1
+PERCENTS: 1
+PERKINS: 1
+COIE: 1
+PERGAM: 1
+PERIMATICS: 1
+PERIMETRICS: 1
+PENDULUM: 1
+ORAL: 1
+ULTRASOUND: 1
+PH: 1
+PHAIDRA: 1
+PICKET: 1
+HOUSES: 1
+PICNIC: 1
+WORKS: 1
+PICTORY: 1
+STREET: 1
+PRESERVATION: 1
+PIKTORLABS: 1
+PILLPACK: 1
+SQUARE: 1
+PIT: 1
+PITCHBOOK: 1
+PITCHSTONE: 1
+PIA: 1
+TEAM: 1
+PINEAPPLE: 1
+HOSPITALITY: 1
+PINEYRO: 1
+IMPLANT: 1
+DENTISTRY: 1
+PIUS: 1
+PIVOTAL: 1
+COMMWARE: 1
+PIVOTREE: 1
+PLANTEK: 1
+PLATFORM: 1
+PLAYEVERYWARE: 1
+PORCH: 1
+POSSIBLE: 1
+POWDER: 1
+APOGEE: 1
+POTTER: 1
+PREMERA: 1
+CROSS: 1
+PREMIUM: 1
+PRESCRYPTIVE: 1
+PRETTY: 1
+BOOKS: 1
+PRECEPT: 1
+PRIME: 1
+RAYS: 1
+PRIVACY: 1
+DYNAMICS: 1
+AN: 1
+PROKLIN: 1
+PROMETHEAN: 1
+PROMISE: 1
+XYZ: 1
+WASHI: 1
+SYSTEM: 1
+CENT: 1
+PROVOKE: 1
+PROWESS: 1
+PROBABLY: 1
+MONSTERS: 1
+PROFOUNDBIO: 1
+PROTECT: 1
+PRABHJOT: 1
+PSEB: 1
+OPERATOR: 1
+GASTYROENTEROLOGY: 1
+PURE: 1
+PMI: 1
+WW: 1
+QCENTUM: 1
+QUADRANT: 1
+QUANTARIUM: 1
+QUANTCONNECT: 1
+QUANTYZD: 1
+QUANTUM: 1
+QUARTECH: 1
+CORRECTIONS: 1
+QUMULO: 1
+RAD: 1
+BIKES: 1
+RAMMER: 1
+DRINK: 1
+REALSELF: 1
+GREEK: 1
+REASON: 1
+AUTOMATION: 1
+REC: 1
+BARN: 1
+REDAPT: 1
+ATTUNIX: 1
+REDBOX: 1
+AUTOMATED: 1
+RETAIL: 1
+REDFIN: 1
+REDKIRK: 1
+REDWOOD: 1
+VALUATION: 1
+LENS: 1
+REDCLOUD: 1
+REISCHLING: 1
+PRESS: 1
+REMITLY: 1
+RESTMESH: 1
+RESILIENT: 1
+FORESTRY: 1
+RETROCAUSAL: 1
+REVEFI: 1
+RELANTO: 1
+RELIANCE: 1
+REWORLD: 1
+RHAPSODY: 1
+RHOMBUZ: 1
+RH2: 1
+RHC: 1
+RIE: 1
+RIGHTCROWD: 1
+RIOS: 1
+DEFENSE: 1
+RISC0: 1
+RLSUN: 1
+RM: 1
+TECHNOTREE: 1
+HUTCHISON: 1
+TUTLAND: 1
+RPT: 1
+ROCKETREACH: 1
+ROLAND: 1
+VS: 1
+ROLLUDA: 1
+ROUNDGLASS: 1
+RON: 1
+ASSO: 1
+RUSSELL: 1
+RUSTCHAT: 1
+RYTHER: 1
+RYTHMOS: 1
+RYAN: 1
+SWANSON: 1
+CLEVELAND: 1
+CUBED: 1
+RDH: 1
+RPI: 1
+PRINT: 1
+S3: 1
+SABARCHITECTS: 1
+SAFRAN: 1
+BIONETWORKS: 1
+SAGAR: 1
+INFORMATICS: 1
+SALISH: 1
+SALESFORCE: 1
+SALESPOINT: 1
+SALT: 1
+SANA: 1
+SANKOFA: 1
+SAN: 1
+SANPACT: 1
+SAPIENCE: 1
+SAMAY: 1
+SATURDAY: 1
+SCARBOROUGH: 1
+FITNESS: 1
+SCALED: 1
+COATINGS: 1
+SCHEMA: 1
+SCHEMATA: 1
+WORKSHOP: 1
+SCHERMA: 1
+SEABIRD: 1
+SEAGEN: 1
+SEAGULL: 1
+SCIENTIFIC: 1
+ANXIETY: 1
+BOX: 1
+SAFETY: 1
+CELTIC: 1
+CHILDRENS: 1
+BIRD: 1
+SKY: 1
+FARMS: 1
+SEASALT: 1
+SEED: 1
+INTELLECTUAL: 1
+SEEK: 1
+SEIU: 1
+BENEFITS: 1
+SELLEN: 1
+SELLERY: 1
+SELTOSOFT: 1
+SENECA: 1
+SENTINEL: 1
+SEOMOZ: 1
+SERVICECHANNEL: 1
+SERVIFY: 1
+SHANNON: 1
+WILSON: 1
+SHANZE: 1
+SHAPE: 1
+SHINEFLOW: 1
+SHIPIUM: 1
+SHIVA: 1
+SH: 1
+SHEA: 1
+SHED: 1
+SHEENA: 1
+GAUR: 1
+SHYFT: 1
+SIMERICS: 1
+SIMPLYFUN: 1
+SINCRO: 1
+SINE: 1
+DRA: 1
+AVIATION: 1
+SIRIONLABS: 1
+SIXENSE: 1
+SIGMA: 1
+GENETICS: 1
+SILVER: 1
+SKILL: 1
+TAP: 1
+SKYTAP: 1
+SKYLINE: 1
+SK: 1
+TEK: 1
+SKAPA: 1
+SLALOM: 1
+SLR: 1
+SMART: 1
+SMARTEK21: 1
+SMARTSHEET: 1
+BUNDAY: 1
+BRITTON: 1
+SNC: 1
+LAVALIN: 1
+CONSTRUCTORS: 1
+AR: 1
+SNU: 1
+SOHAM: 1
+SOLSTICE: 1
+SONIKA: 1
+SINGLA: 1
+SOPHUS: 1
+SOFTSMART: 1
+REVOLUTION: 1
+BOOKKEEPERS: 1
+SOUNDVIEW: 1
+TAIWAN: 1
+SPACELABS: 1
+SPARK: 1
+SPROUT: 1
+SOCIAL: 1
+SPICE: 1
+REPLY: 1
+JUDE: 1
+STARBUCKS: 1
+STARBLAZER: 1
+STARMERX: 1
+STARGATE: 1
+STATSIG: 1
+ATTORNEY: 1
+STABLY: 1
+STAKE: 1
+STRATEGIC: 1
+DECISIONS: 1
+STREAMLINE: 1
+STRELLA: 1
+STUDIO19: 1
+STUDIO216: 1
+STOIC: 1
+STOKE: 1
+CALIFORN: 1
+STEEL: 1
+GRIT: 1
+STEMCELL: 1
+STYLES: 1
+SUNVIEW: 1
+ESTATES: 1
+SUSTAINABLE: 1
+SU: 1
+MASTER: 1
+SUBSTANBO: 1
+SUTRIX: 1
+EDMONDS: 1
+SWIFTLY: 1
+SYMETRA: 1
+SYMMETRY: 1
+SYNDIO: 1
+SYNERGY: 1
+SYRENCLOUD: 1
+SYSTIMMUNE: 1
+SJS: 1
+SSA: 1
+TACOMA: 1
+TIRE: 1
+TAIYO: 1
+TALIX: 1
+TALKING: 1
+TALLAMOND: 1
+TALON: 1
+TALOSIX: 1
+TANGO: 1
+TANIUM: 1
+TAO: 1
+ART: 1
+TASSO: 1
+TAGBOARD: 1
+TAPERT: 1
+TAXMAN: 1
+CC: 1
+TAD: 1
+TATANGO: 1
+TEAL: 1
+TECHNOVA: 1
+TECHNOVERT: 1
+TELECOMMUNICATION: 1
+TEMPERED: 1
+TEMPORAL: 1
+TERAWE: 1
+TERRENO: 1
+TERRACLEAR: 1
+TETRA: 1
+TENSAI: 1
+TEST: 1
+INNOVATORS: 1
+TESTSPRITE: 1
+ARNOLD: 1
+BLUELINE: 1
+CAROLINE: 1
+KLINE: 1
+GALLAND: 1
+HOME: 1
+ARTSCI: 1
+BERGER: 1
+RICHARD: 1
+MAUDE: 1
+FERRY: 1
+FOUNDA: 1
+THIRA: 1
+THINKIE: 1
+THRIVE: 1
+THRIVESOFTWARE: 1
+THUNK: 1
+TIDEWORKS: 1
+TIMBER: 1
+TINMAN: 1
+TMUD: 1
+TOLA: 1
+TORADEX: 1
+TOPOLITH: 1
+TRACTION: 1
+DEMAND: 1
+TRADITIONAL: 1
+MORTGAGE: 1
+ACCEPTANCE: 1
+TRANSLINK: 1
+SHIPPING: 1
+TRANSCEND: 1
+TRICOL: 1
+TRIDENT: 1
+TRILOGY: 1
+EQUITY: 1
+TRINE: 1
+TRIFORZA: 1
+TRUPANION: 1
+MANAGERS: 1
+TRUVETA: 1
+TRUEWIND: 1
+TREXIE: 1
+TUPL: 1
+TURNER: 1
+TURNPOINT: 1
+TVI: 1
+TWITCH: 1
+WANG: 1
+TMOBILE: 1
+TCA: 1
+TLM: 1
+TSP: 1
+UGURU: 1
+ULTRA: 1
+SAFE: 1
+NUCLEAR: 1
+UMOJA: 1
+BIOPHARMA: 1
+UMT: 1
+UMG: 1
+RECORDINGS: 1
+UNDEAD: 1
+UNITEDTEK: 1
+UNITY: 1
+UNIMARK: 1
+UNI: 1
+UPLEVEL: 1
+USER: 1
+VALVE: 1
+VANVI: 1
+VIOLET: 1
+VIOME: 1
+VIRTUAL: 1
+VIRTUE: 1
+VIRTUDESK: 1
+VIDYATECH: 1
+VILYA: 1
+VITALITY: 1
+VOLGA: 1
+VUEDATA: 1
+VEER: 1
+VERA: 1
+VERITY: 1
+VESTALABS: 1
+VECML: 1
+VELOCE: 1
+VENDARA: 1
+VBN: 1
+SALES: 1
+FAN: 1
+TUAN: 1
+WAFERWIRE: 1
+WAGGENER: 1
+EDSTROM: 1
+DORWIN: 1
+TEAGUE: 1
+CONFERENCE: 1
+SEVENTH: 1
+DAY: 1
+ADVENTISTS: 1
+INDY: 1
+ASSOC: 1
+CONSERVATION: 1
+MARITIME: 1
+PREP: 1
+WATCHGUARD: 1
+WATER: 1
+TECTONICS: 1
+WAYWARD: 1
+WESTRIVER: 1
+SIDE: 1
+WESTBANK: 1
+PROJECTS: 1
+WEYERHAEUSER: 1
+NR: 1
+THOMPSON: 1
+WIBOTIC: 1
+WILDCARD: 1
+WIMMER: 1
+WINGWORK: 1
+WIZARDS: 1
+COAST: 1
+WICRESOFT: 1
+WITTMAN: 1
+ESTES: 1
+WJL: 1
+HOMESERVICES: 1
+WOOLLY: 1
+WOOT: 1
+WORKLYTICS: 1
+WORKSPACE: 1
+VISION: 1
+WORMPEX: 1
+WPS: 1
+ONLINE: 1
+WRENCH: 1
+WYZE: 1
+WHITEPAGES: 1
+STERNOFF: 1
+XAVIENT: 1
+XCJ: 1
+XEALTH: 1
+XEMELGO: 1
+XEMBLY: 1
+XENON: 1
+XEVO: 1
+XETDATA: 1
+XING: 1
+LONG: 1
+XTRA: 1
+MATH: 1
+XPANSE: 1
+YETI: 1
+YELLOW: 1
+WOOD: 1
+YENLO: 1
+YOGAYA: 1
+YOUTH: 1
+YIFANG: 1
+YITA: 1
+YIXUE: 1
+ZEN3: 1
+INFOSOLUTIONS: 1
+ZENSA: 1
+ZEROEX: 1
+ZEROAVIA: 1
+ZILLOW: 1
+ZIPSTORM: 1
+ZIPSTROM: 1
+ZONES: 1
+ZONAR: 1
+ZULILY: 1
+ZUPLO: 1
+ZUMIEZ: 1
+BIOPHARMACEUTICALS: 1
+ZANIDATAMAB: 1
+ZYPMEDIA: 1
+ZACHARY: 1
+ZAP: 1
+
+Most Common Phrases
+------------------
+OF WASHINGTON: 13
+PROVIDENCE HEALTH: 10
+HEALTH SERVICES: 9
+PROVIDENCE HEALTH SERVICES: 7
+INSTITUTE FOR: 6
+COMMUNITY HEALTH: 5
+SNOHOMISH COUNTY: 5
+PUGET SOUND: 5
+
+Word Position Statistics
+----------------------
+
+LABS:
+  Frequency: 18
+  Average position: 1.17
+  Position distribution:
+    Position 1: 15
+    Position 2: 3
+
+ARCHITECTS:
+  Frequency: 13
+  Average position: 1.38
+  Position distribution:
+    Position 1: 9
+    Position 2: 3
+    Position 3: 1
+
+TECHNOLOGIES:
+  Frequency: 58
+  Average position: 1.05
+  Position distribution:
+    Position 1: 55
+    Position 2: 3
+
+A:
+  Frequency: 5
+  Average position: 1.40
+  Position distribution:
+    Position 0: 2
+    Position 1: 2
+    Position 5: 1
+
+BIO:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 1: 4
+    Position 2: 1
+
+FOR:
+  Frequency: 15
+  Average position: 1.80
+  Position distribution:
+    Position 1: 6
+    Position 2: 6
+    Position 3: 3
+
+COM:
+  Frequency: 13
+  Average position: 1.31
+  Position distribution:
+    Position 1: 12
+    Position 5: 1
+
+HEALTH:
+  Frequency: 43
+  Average position: 1.49
+  Position distribution:
+    Position 0: 1
+    Position 1: 27
+    Position 2: 9
+    Position 3: 5
+    Position 4: 1
+
+INSTITUTE:
+  Frequency: 16
+  Average position: 1.88
+  Position distribution:
+    Position 0: 2
+    Position 1: 5
+    Position 2: 6
+    Position 4: 2
+    Position 5: 1
+
+CONSULTING:
+  Frequency: 30
+  Average position: 1.37
+  Position distribution:
+    Position 1: 21
+    Position 2: 7
+    Position 3: 2
+
+SOLUTIONS:
+  Frequency: 36
+  Average position: 1.47
+  Position distribution:
+    Position 0: 1
+    Position 1: 20
+    Position 2: 12
+    Position 3: 3
+
+THERAPY:
+  Frequency: 8
+  Average position: 1.88
+  Position distribution:
+    Position 1: 2
+    Position 2: 5
+    Position 3: 1
+
+I:
+  Frequency: 6
+  Average position: 2.33
+  Position distribution:
+    Position 0: 1
+    Position 2: 2
+    Position 3: 2
+    Position 4: 1
+
+CLOUD:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 0: 2
+    Position 2: 3
+
+DEVELOPMENT:
+  Frequency: 13
+  Average position: 1.69
+  Position distribution:
+    Position 1: 5
+    Position 2: 7
+    Position 3: 1
+
+PACIFIC:
+  Frequency: 16
+  Average position: 0.56
+  Position distribution:
+    Position 0: 8
+    Position 1: 7
+    Position 2: 1
+
+NORTHWEST:
+  Frequency: 19
+  Average position: 0.47
+  Position distribution:
+    Position 0: 12
+    Position 1: 5
+    Position 2: 2
+
+LAW:
+  Frequency: 13
+  Average position: 1.46
+  Position distribution:
+    Position 0: 1
+    Position 1: 7
+    Position 2: 3
+    Position 3: 2
+
+AEROSPACE:
+  Frequency: 5
+  Average position: 0.80
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+
+ENGINEERING:
+  Frequency: 11
+  Average position: 1.27
+  Position distribution:
+    Position 1: 8
+    Position 2: 3
+
+AI:
+  Frequency: 11
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 9
+    Position 2: 1
+
+EDUCATION:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 1: 3
+    Position 2: 1
+    Position 3: 1
+
+L:
+  Frequency: 6
+  Average position: 2.17
+  Position distribution:
+    Position 1: 2
+    Position 2: 2
+    Position 3: 1
+    Position 4: 1
+
+SERVICE:
+  Frequency: 11
+  Average position: 2.36
+  Position distribution:
+    Position 2: 7
+    Position 3: 4
+
+SOFTWARE:
+  Frequency: 13
+  Average position: 0.92
+  Position distribution:
+    Position 0: 1
+    Position 1: 12
+
+ALLEN:
+  Frequency: 5
+  Average position: 0.60
+  Position distribution:
+    Position 0: 2
+    Position 1: 3
+
+HEALTHCARE:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 2
+    Position 1: 1
+    Position 2: 2
+
+SEATTLE:
+  Frequency: 28
+  Average position: 1.14
+  Position distribution:
+    Position 0: 14
+    Position 1: 2
+    Position 2: 8
+    Position 3: 2
+    Position 4: 2
+
+AMAZON:
+  Frequency: 13
+  Average position: 0.31
+  Position distribution:
+    Position 0: 12
+    Position 4: 1
+
+CAPITAL:
+  Frequency: 12
+  Average position: 1.08
+  Position distribution:
+    Position 1: 11
+    Position 2: 1
+
+SERVICES:
+  Frequency: 40
+  Average position: 2.17
+  Position distribution:
+    Position 1: 3
+    Position 2: 31
+    Position 3: 4
+    Position 4: 1
+    Position 6: 1
+
+DATA:
+  Frequency: 9
+  Average position: 0.78
+  Position distribution:
+    Position 0: 2
+    Position 1: 7
+
+CENTER:
+  Frequency: 25
+  Average position: 2.60
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 6
+    Position 3: 12
+    Position 4: 1
+    Position 5: 2
+
+US:
+  Frequency: 16
+  Average position: 1.75
+  Position distribution:
+    Position 1: 8
+    Position 2: 5
+    Position 3: 2
+    Position 4: 1
+
+PARTNERS:
+  Frequency: 7
+  Average position: 1.71
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+    Position 3: 1
+
+AMERICAN:
+  Frequency: 5
+  Average position: 0.80
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+
+HOSPITAL:
+  Frequency: 7
+  Average position: 2.71
+  Position distribution:
+    Position 2: 4
+    Position 3: 2
+    Position 5: 1
+
+SCIENCE:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 0: 1
+    Position 1: 2
+    Position 2: 2
+
+THE:
+  Frequency: 21
+  Average position: 0.90
+  Position distribution:
+    Position 0: 15
+    Position 2: 2
+    Position 3: 2
+    Position 4: 1
+    Position 5: 1
+
+TECHNOLOGY:
+  Frequency: 19
+  Average position: 1.53
+  Position distribution:
+    Position 0: 1
+    Position 1: 10
+    Position 2: 6
+    Position 3: 1
+    Position 4: 1
+
+TECH:
+  Frequency: 19
+  Average position: 1.21
+  Position distribution:
+    Position 1: 15
+    Position 2: 4
+
+ASIAN:
+  Frequency: 7
+  Average position: 0.14
+  Position distribution:
+    Position 0: 6
+    Position 1: 1
+
+COUNSELING:
+  Frequency: 7
+  Average position: 1.29
+  Position distribution:
+    Position 1: 5
+    Position 2: 2
+
+SCHOOL:
+  Frequency: 18
+  Average position: 1.83
+  Position distribution:
+    Position 1: 6
+    Position 2: 9
+    Position 3: 3
+
+USA:
+  Frequency: 23
+  Average position: 1.43
+  Position distribution:
+    Position 1: 15
+    Position 2: 6
+    Position 3: 2
+
+MANAGEMENT:
+  Frequency: 23
+  Average position: 1.78
+  Position distribution:
+    Position 1: 7
+    Position 2: 14
+    Position 3: 2
+
+MONTESSORI:
+  Frequency: 11
+  Average position: 0.64
+  Position distribution:
+    Position 0: 6
+    Position 1: 3
+    Position 2: 2
+
+ACADEMY:
+  Frequency: 10
+  Average position: 1.70
+  Position distribution:
+    Position 1: 4
+    Position 2: 5
+    Position 3: 1
+
+RESEARCH:
+  Frequency: 17
+  Average position: 1.76
+  Position distribution:
+    Position 1: 8
+    Position 2: 6
+    Position 3: 2
+    Position 4: 1
+
+CONSTRUCTION:
+  Frequency: 15
+  Average position: 1.07
+  Position distribution:
+    Position 1: 14
+    Position 2: 1
+
+B:
+  Frequency: 8
+  Average position: 0.50
+  Position distribution:
+    Position 0: 4
+    Position 1: 4
+
+OF:
+  Frequency: 41
+  Average position: 2.37
+  Position distribution:
+    Position 1: 16
+    Position 2: 5
+    Position 3: 13
+    Position 4: 3
+    Position 5: 4
+
+AMERICA:
+  Frequency: 13
+  Average position: 1.54
+  Position distribution:
+    Position 1: 6
+    Position 2: 7
+
+LLP:
+  Frequency: 11
+  Average position: 2.91
+  Position distribution:
+    Position 2: 5
+    Position 3: 2
+    Position 4: 4
+
+DISTRICT:
+  Frequency: 6
+  Average position: 2.83
+  Position distribution:
+    Position 2: 3
+    Position 3: 1
+    Position 4: 2
+
+ASSOCIATES:
+  Frequency: 13
+  Average position: 2.00
+  Position distribution:
+    Position 1: 3
+    Position 2: 7
+    Position 3: 3
+
+CONSULTANTS:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 1: 2
+    Position 2: 3
+
+GAMES:
+  Frequency: 5
+  Average position: 1.80
+  Position distribution:
+    Position 1: 1
+    Position 2: 4
+
+FOUNDATION:
+  Frequency: 9
+  Average position: 2.11
+  Position distribution:
+    Position 1: 3
+    Position 2: 4
+    Position 3: 1
+    Position 5: 1
+
+BLUE:
+  Frequency: 6
+  Average position: 0.67
+  Position distribution:
+    Position 0: 3
+    Position 1: 2
+    Position 2: 1
+
+ENERGY:
+  Frequency: 6
+  Average position: 1.17
+  Position distribution:
+    Position 1: 5
+    Position 2: 1
+
+SYSTEMS:
+  Frequency: 22
+  Average position: 1.41
+  Position distribution:
+    Position 1: 15
+    Position 2: 5
+    Position 3: 2
+
+DESIGN:
+  Frequency: 10
+  Average position: 2.10
+  Position distribution:
+    Position 0: 1
+    Position 1: 5
+    Position 2: 1
+    Position 3: 2
+    Position 8: 1
+
+COMMUNITY:
+  Frequency: 13
+  Average position: 0.62
+  Position distribution:
+    Position 0: 7
+    Position 1: 4
+    Position 2: 2
+
+GLOBAL:
+  Frequency: 7
+  Average position: 0.71
+  Position distribution:
+    Position 0: 2
+    Position 1: 5
+
+WA:
+  Frequency: 8
+  Average position: 1.75
+  Position distribution:
+    Position 0: 2
+    Position 1: 1
+    Position 2: 2
+    Position 3: 3
+
+WASHINGTON:
+  Frequency: 28
+  Average position: 2.21
+  Position distribution:
+    Position 0: 7
+    Position 1: 6
+    Position 2: 4
+    Position 3: 3
+    Position 4: 3
+    Position 5: 3
+    Position 6: 2
+
+DDS:
+  Frequency: 9
+  Average position: 2.11
+  Position distribution:
+    Position 1: 1
+    Position 2: 6
+    Position 3: 2
+
+S:
+  Frequency: 7
+  Average position: 2.57
+  Position distribution:
+    Position 1: 1
+    Position 2: 1
+    Position 3: 5
+
+UNIVERSITY:
+  Frequency: 8
+  Average position: 0.75
+  Position distribution:
+    Position 0: 3
+    Position 1: 4
+    Position 2: 1
+
+POWER:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+
+ENGINEERS:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 1: 2
+    Position 2: 3
+
+SNOHOMISH:
+  Frequency: 5
+  Average position: 2.00
+  Position distribution:
+    Position 0: 3
+    Position 4: 1
+    Position 6: 1
+
+COUNTY:
+  Frequency: 7
+  Average position: 2.43
+  Position distribution:
+    Position 1: 5
+    Position 5: 1
+    Position 7: 1
+
+PROPERTY:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 1: 4
+    Position 2: 1
+
+ARCHITECTURE:
+  Frequency: 14
+  Average position: 1.64
+  Position distribution:
+    Position 1: 8
+    Position 2: 5
+    Position 5: 1
+
+INTELLIGENCE:
+  Frequency: 8
+  Average position: 2.38
+  Position distribution:
+    Position 1: 5
+    Position 4: 1
+    Position 5: 2
+
+MEDICAL:
+  Frequency: 9
+  Average position: 1.89
+  Position distribution:
+    Position 1: 4
+    Position 2: 3
+    Position 3: 1
+    Position 4: 1
+
+NORTH:
+  Frequency: 9
+  Average position: 0.44
+  Position distribution:
+    Position 0: 5
+    Position 1: 4
+
+WORLD:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+
+REAL:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+
+TAX:
+  Frequency: 7
+  Average position: 1.57
+  Position distribution:
+    Position 1: 3
+    Position 2: 4
+
+D:
+  Frequency: 7
+  Average position: 0.29
+  Position distribution:
+    Position 0: 5
+    Position 1: 2
+
+ADVISORS:
+  Frequency: 6
+  Average position: 1.67
+  Position distribution:
+    Position 1: 2
+    Position 2: 4
+
+NETWORK:
+  Frequency: 5
+  Average position: 2.80
+  Position distribution:
+    Position 1: 1
+    Position 2: 1
+    Position 3: 1
+    Position 4: 2
+
+PUBLIC:
+  Frequency: 6
+  Average position: 1.50
+  Position distribution:
+    Position 0: 1
+    Position 1: 1
+    Position 2: 4
+
+FINANCIAL:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 1: 5
+
+LIFE:
+  Frequency: 6
+  Average position: 1.33
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+    Position 3: 1
+
+PUGET:
+  Frequency: 6
+  Average position: 1.50
+  Position distribution:
+    Position 0: 3
+    Position 1: 1
+    Position 4: 2
+
+SOUND:
+  Frequency: 7
+  Average position: 1.43
+  Position distribution:
+    Position 0: 2
+    Position 1: 3
+    Position 2: 1
+    Position 5: 1
+
+LEARNING:
+  Frequency: 5
+  Average position: 2.20
+  Position distribution:
+    Position 0: 1
+    Position 2: 2
+    Position 3: 1
+    Position 4: 1
+
+CANCER:
+  Frequency: 6
+  Average position: 2.33
+  Position distribution:
+    Position 1: 1
+    Position 2: 3
+    Position 3: 1
+    Position 4: 1
+
+W:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 3: 1
+
+GREEN:
+  Frequency: 5
+  Average position: 0.00
+  Position distribution:
+    Position 0: 5
+
+SVCS:
+  Frequency: 6
+  Average position: 2.00
+  Position distribution:
+    Position 2: 6
+
+MILLER:
+  Frequency: 5
+  Average position: 0.60
+  Position distribution:
+    Position 0: 2
+    Position 1: 3
+
+NINTENDO:
+  Frequency: 5
+  Average position: 0.00
+  Position distribution:
+    Position 0: 5
+
+ST:
+  Frequency: 7
+  Average position: 0.43
+  Position distribution:
+    Position 0: 5
+    Position 1: 1
+    Position 2: 1
+
+PROVIDENCE:
+  Frequency: 19
+  Average position: 0.11
+  Position distribution:
+    Position 0: 18
+    Position 2: 1
+
+Name Variations
+--------------
+
+Normalized: 0965688 BC
+Originals:
+  - 0965688 BC LTD. DBA PROCOGIA
+  - 0965688 BC LTD DBA PROCOGIA
+
+Normalized: 110
+Originals:
+  - 110 HOLDINGS LLC
+  - 110 HOLDINGS LLC DBA LAUNCH CONSULTING
+
+Normalized: 1POINT3ACRES
+Originals:
+  - 1POINT3ACRES LLC
+
+Normalized: 17SHIPPINGS
+Originals:
+  - 17SHIPPINGS INC
+
+Normalized: 3MD
+Originals:
+  - 3MD INC DBA DENALI ADVANCED
+  - 3MD INC DBA DENALI ADVANCED INTEGRATION
+
+Normalized: 3SHARP
+Originals:
+  - 3SHARP LLC
+
+Normalized: 404 LABS
+Originals:
+  - 404 LABS INC
+
+Normalized: 42LAYERS
+Originals:
+  - 42LAYERS CORP
+
+Normalized: 5FT2 STUDIO ARCHITECTS
+Originals:
+  - 5FT2 STUDIO ARCHITECTS
+
+Normalized: 98POINT6
+Originals:
+  - 98POINT6 INC
+
+Normalized: 98POINT6 TECHNOLOGIES
+Originals:
+  - 98POINT6 TECHNOLOGIES INC
+
+Normalized: 9LLABS
+Originals:
+  - 9LLABS LLC
+
+Normalized: 9LOGIC TECHNOLOGIES
+Originals:
+  - 9LOGIC TECHNOLOGIES INC
+
+Normalized: A ALPHA BIO
+Originals:
+  - A ALPHA BIO INC
+
+Normalized: A PLACE FOR MOM
+Originals:
+  - A PLACE FOR MOM INC
+
+Normalized: A9 COM
+Originals:
+  - A9 COM INC
+  - A9.COM INC
+
+Normalized: ACCELALPHA
+Originals:
+  - ACCELALPHA INC
+
+Normalized: ACCELBYTE
+Originals:
+  - ACCELBYTE INC
+
+Normalized: ACCEL BI
+Originals:
+  - ACCEL BI CORPORATION
+
+Normalized: ACCESS TO ADVANCED HEALTH INSTITUTE
+Originals:
+  - ACCESS TO ADVANCED HEALTH INSTITUTE

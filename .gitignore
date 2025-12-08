@@ -3,7 +3,7 @@
 **/.credentials.json
 **/backups
 **/ide
-**/local
+**/__pycache__/
 **/logs
 **/projects
 **/shell-snapshots
@@ -13,6 +13,7 @@
 **/debug
 **/file-history
 **/history.jsonl
+*/local
 .env
 downloads/
 tmp/

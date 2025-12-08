@@ -1,0 +1,1671 @@
+Company Name Analysis Results
+============================
+
+Total number of company names: 1683
+Total number of unique words: 2094
+
+Most Common Words
+----------------
+AND: 75
+TECHNOLOGIES: 63
+HEALTH: 50
+SERVICES: 48
+OF: 44
+SOLUTIONS: 38
+CONSULTING: 31
+WASHINGTON: 31
+SEATTLE: 29
+USA: 27
+CENTER: 26
+MANAGEMENT: 26
+SYSTEMS: 26
+B: 24
+PS: 24
+D: 23
+TECH: 23
+A: 22
+THE: 22
+TECHNOLOGY: 22
+PROVIDENCE: 21
+LABS: 20
+NORTHWEST: 19
+CONSTRUCTION: 19
+COM: 18
+SCHOOL: 18
+INC: 18
+INSTITUTE: 17
+RESEARCH: 17
+FOR: 16
+PACIFIC: 16
+US: 16
+S: 16
+ARCHITECTS: 15
+AMAZON: 15
+ASSOCIATES: 15
+ENGINEERING: 14
+ARCHITECTURE: 14
+DEVELOPMENT: 13
+LAW: 13
+SOFTWARE: 13
+AMERICA: 13
+COMMUNITY: 13
+SERVICE: 12
+CAPITAL: 12
+AI: 11
+INTERNATIONAL: 11
+MONTESSORI: 11
+MEDICAL: 11
+L: 10
+DATA: 10
+ACADEMY: 10
+FOUNDATION: 10
+DESIGN: 10
+P: 9
+DDS: 9
+NORTH: 9
+COMPANY: 9
+THERAPY: 8
+WA: 8
+UNIVERSITY: 8
+INTELLIGENCE: 8
+TAX: 8
+FINANCIAL: 8
+SWEDISH: 8
+I: 7
+PARTNERS: 7
+HOSPITAL: 7
+ASIAN: 7
+COUNSELING: 7
+BLUE: 7
+ENERGY: 7
+GLOBAL: 7
+COUNTY: 7
+ADVISORS: 7
+LIFE: 7
+SOUND: 7
+ST: 7
+BIO: 6
+AEROSPACE: 6
+HEALTHCARE: 6
+DISTRICT: 6
+CONSULTANTS: 6
+PUBLIC: 6
+PUGET: 6
+CANCER: 6
+SVCS: 6
+MILLER: 6
+CLOUD: 5
+EDUCATION: 5
+ALLEN: 5
+SCIENCES: 5
+LLC: 5
+AMERICAN: 5
+SCIENCE: 5
+GAMES: 5
+POWER: 5
+ENGINEERS: 5
+SNOHOMISH: 5
+PROPERTY: 5
+WORLD: 5
+REAL: 5
+CREDIT: 5
+UNION: 5
+NETWORK: 5
+DBA: 5
+IO: 5
+INSURANCE: 5
+LEARNING: 5
+GRAHAM: 5
+GROUP: 5
+GREEN: 5
+MOBILE: 5
+IT: 5
+NINTENDO: 5
+NORDSTROM: 5
+
+Most Common Prefixes
+-------------------
+PROVIDENCE: 20
+THE: 15
+AMAZON: 14
+SEATTLE: 14
+NORTHWEST: 12
+PACIFIC: 8
+WASHINGTON: 7
+ASIAN: 6
+SWEDISH: 6
+COMMUNITY: 5
+D: 5
+GRAHAM: 5
+GREEN: 5
+MONTESSORI: 5
+NINTENDO: 5
+NORTH: 5
+ST: 5
+
+Most Common Suffixes
+-------------------
+TECHNOLOGIES: 54
+SOLUTIONS: 35
+SERVICES: 35
+CONSULTING: 26
+USA: 24
+PS: 24
+SYSTEMS: 22
+MANAGEMENT: 20
+LABS: 18
+TECH: 17
+WASHINGTON: 17
+SEATTLE: 15
+US: 15
+CENTER: 15
+TECHNOLOGY: 14
+ASSOCIATES: 14
+ARCHITECTS: 12
+COM: 12
+HEALTH: 12
+SCHOOL: 11
+CONSTRUCTION: 11
+AI: 9
+ENGINEERING: 9
+S: 9
+FOUNDATION: 9
+AMERICA: 9
+DEVELOPMENT: 8
+LAW: 8
+INSTITUTE: 7
+ACADEMY: 7
+ADVISORS: 7
+FINANCIAL: 7
+BIO: 6
+SOFTWARE: 6
+PARTNERS: 6
+RESEARCH: 6
+CONSULTANTS: 6
+ENERGY: 6
+DESIGN: 6
+WA: 6
+ARCHITECTURE: 6
+SERVICE: 5
+SCIENCES: 5
+HOSPITAL: 5
+GAMES: 5
+CAPITAL: 5
+ENGINEERS: 5
+INTELLIGENCE: 5
+DBA: 5
+INSURANCE: 5
+
+Most Common Acronyms
+-------------------
+AND: 75
+TECHNOLOGIES: 63
+HEALTH: 50
+SERVICES: 48
+OF: 44
+SOLUTIONS: 38
+CONSULTING: 31
+WASHINGTON: 31
+SEATTLE: 29
+USA: 27
+CENTER: 26
+MANAGEMENT: 26
+SYSTEMS: 26
+PS: 24
+TECH: 23
+THE: 22
+TECHNOLOGY: 22
+PROVIDENCE: 21
+LABS: 20
+NORTHWEST: 19
+CONSTRUCTION: 19
+COM: 18
+SCHOOL: 18
+INC: 18
+INSTITUTE: 17
+RESEARCH: 17
+FOR: 16
+PACIFIC: 16
+US: 16
+ARCHITECTS: 15
+AMAZON: 15
+ASSOCIATES: 15
+ENGINEERING: 14
+ARCHITECTURE: 14
+DEVELOPMENT: 13
+LAW: 13
+SOFTWARE: 13
+AMERICA: 13
+COMMUNITY: 13
+SERVICE: 12
+CAPITAL: 12
+AI: 11
+INTERNATIONAL: 11
+MONTESSORI: 11
+MEDICAL: 11
+DATA: 10
+ACADEMY: 10
+FOUNDATION: 10
+DESIGN: 10
+DDS: 9
+NORTH: 9
+COMPANY: 9
+THERAPY: 8
+WA: 8
+UNIVERSITY: 8
+INTELLIGENCE: 8
+TAX: 8
+FINANCIAL: 8
+SWEDISH: 8
+PARTNERS: 7
+HOSPITAL: 7
+ASIAN: 7
+COUNSELING: 7
+BLUE: 7
+ENERGY: 7
+GLOBAL: 7
+COUNTY: 7
+ADVISORS: 7
+LIFE: 7
+SOUND: 7
+ST: 7
+BIO: 6
+AEROSPACE: 6
+HEALTHCARE: 6
+DISTRICT: 6
+CONSULTANTS: 6
+PUBLIC: 6
+PUGET: 6
+CANCER: 6
+SVCS: 6
+MILLER: 6
+CLOUD: 5
+EDUCATION: 5
+ALLEN: 5
+SCIENCES: 5
+LLC: 5
+AMERICAN: 5
+SCIENCE: 5
+GAMES: 5
+POWER: 5
+ENGINEERS: 5
+SNOHOMISH: 5
+PROPERTY: 5
+WORLD: 5
+REAL: 5
+CREDIT: 5
+UNION: 5
+NETWORK: 5
+DBA: 5
+IO: 5
+INSURANCE: 5
+LEARNING: 5
+GRAHAM: 5
+GROUP: 5
+GREEN: 5
+MOBILE: 5
+IT: 5
+NINTENDO: 5
+NORDSTROM: 5
+INCORPORATED: 4
+VENTURES: 4
+IN: 4
+HILL: 4
+ANALYTICS: 4
+COFFEE: 4
+BELLEVUE: 4
+BENAROYA: 4
+AT: 4
+MASON: 4
+INVESTMENT: 4
+DENTAL: 4
+CTR: 4
+THERAPEUTICS: 4
+LAKE: 4
+COMPASS: 4
+CONCORD: 4
+GRANITE: 4
+WEST: 4
+COURSE5: 4
+STATE: 4
+ACCOUNTING: 4
+DAVID: 4
+DIGITAL: 4
+DMD: 4
+HUTCHINSON: 4
+RESOURCE: 4
+ENTERPRISES: 4
+MARKET: 4
+INVESTMENTS: 4
+JOHN: 4
+NO: 4
+ON: 4
+CHIROPRACTIC: 4
+OFFICE: 4
+POINT: 4
+KITCHEN: 4
+BATH: 4
+PARTNERSHIP: 4
+PACCAR: 4
+PEOPLE: 4
+SAINT: 4
+SEA: 4
+STUDIO: 3
+TO: 3
+ADAPTIVE: 3
+ADROIT: 3
+TESTING: 3
+BIOLOGICS: 3
+IMMIGRATION: 3
+ALTIUS: 3
+INST: 3
+FKA: 3
+PAYMENTS: 3
+ROBOTICS: 3
+PLLC: 3
+SOLUTION: 3
+REFERRAL: 3
+NA: 3
+COLLEGE: 3
+CAMPFIRE: 3
+GATES: 3
+SPORTS: 3
+INTERACTIVE: 3
+BRIGHT: 3
+ARTS: 3
+BROOKS: 3
+INTEGRATED: 3
+CARE: 3
+CHILDREN: 3
+CHINESE: 3
+INFORMATION: 3
+CPAS: 3
+ENTERTAINMENT: 3
+CLEAN: 3
+PLAN: 3
+GENERAL: 3
+III: 3
+PRIVATE: 3
+ESTATE: 3
+UNIONS: 3
+TECHNICAL: 3
+COMMUNICATIONS: 3
+DIGIPEN: 3
+EMERGENCY: 3
+BEVERAGE: 3
+EASTSIDE: 3
+STRATEGIES: 3
+EDGE: 3
+EXPEDITORS: 3
+NETWORKS: 3
+FIRST: 3
+CHOICE: 3
+FLUKE: 3
+ELECTRONICS: 3
+FOUNDATIONS: 3
+FRED: 3
+AL: 3
+GETTY: 3
+IMAGES: 3
+GE: 3
+NORTHERN: 3
+PLANNING: 3
+ENVIRONMENTAL: 3
+INNOVATION: 3
+ILINK: 3
+INNOVATIVE: 3
+HLTH: 3
+NW: 3
+SCOTT: 3
+KAISER: 3
+KING: 3
+LAND: 3
+WILLIAM: 3
+LUXE: 3
+HEARTS: 3
+CHILDCARE: 3
+MY: 3
+MUTUAL: 3
+NATIONAL: 3
+BIOTECHNOLOGY: 3
+CARD: 3
+PHILIPS: 3
+POSSIBLE: 3
+UTILITY: 3
+RAMMER: 3
+FOOD: 3
+RED: 3
+ROBERT: 3
+WELLNESS: 3
+FUND: 3
+YOUNG: 3
+BUSINESS: 3
+SPECTRUM: 3
+ARTIFICIAL: 3
+ZYMEWORKS: 3
+BC: 2
+3MD: 2
+98POINT6: 2
+PLACE: 2
+A9: 2
+ACCESS: 2
+ACCOLADE: 2
+ACTION: 2
+PHYSICAL: 2
+PROTOCOLS: 2
+AECON: 2
+AERO: 2
+CONTROLS: 2
+PORT: 2
+CERTIFICATION: 2
+AFFINE: 2
+BUILDING: 2
+MACHINES: 2
+CLINIC: 2
+RENTON: 2
+STAR: 2
+CREEK: 2
+BIOMEDICAL: 2
+ADVERTISING: 2
+MECHANICAL: 2
+STUDIOS: 2
+SIDHU: 2
+SEAFOODS: 2
+ANGEL: 2
+APP: 2
+AIR: 2
+APPEN: 2
+APPLEXUS: 2
+ARC: 2
+ELECTRIC: 2
+TV: 2
+ASIA: 2
+LANGUAGE: 2
+IQ: 2
+BIOTECH: 2
+AVERLON: 2
+ATLAS: 2
+JOHNSTON: 2
+BAY: 2
+VIRGINIA: 2
+SUPPLY: 2
+BHC: 2
+HOUSE: 2
+BIG: 2
+BILL: 2
+MELINDA: 2
+CONSULTANCY: 2
+REALTY: 2
+BLUEPRINT: 2
+APPLIED: 2
+CO: 2
+CERAMIC: 2
+C2S: 2
+FLOW: 2
+CARBON: 2
+AUTONOMOUS: 2
+CEDAR: 2
+RIVER: 2
+CENTIFIC: 2
+MS: 2
+CHEQ: 2
+LIFESTYLE: 2
+RADIO: 2
+CE: 2
+CITY: 2
+CLARK: 2
+CREATIVE: 2
+COMMERCE: 2
+ROOM: 2
+RESOURCES: 2
+COSMOS: 2
+LIMITED: 2
+COVENANT: 2
+BOEING: 2
+EMPLOYEES: 2
+CRITIGEN: 2
+CWC: 2
+TRAVEL: 2
+ADVISORY: 2
+CONVERSANO: 2
+OPPENHEIMER: 2
+CPA: 2
+WRIGHT: 2
+DELTA: 2
+SOURCING: 2
+DEVINFRA: 2
+ONE: 2
+DISCOVERY: 2
+DOCTORS: 2
+EXCHANGE: 2
+DOCUSMART: 2
+DOWNTOWN: 2
+DOUGLAS: 2
+BLOME: 2
+HOMES: 2
+REDMOND: 2
+PRODUCTS: 2
+GARDEN: 2
+ECOFLOW: 2
+ENFEC: 2
+EVERETT: 2
+F5: 2
+NEW: 2
+FEATHER: 2
+FIDELITY: 2
+FIRESIGHT: 2
+FLAIR: 2
+MANUFACTURING: 2
+FOREGROUND: 2
+FRENCH: 2
+FRESH: 2
+FUELCOMM: 2
+GARHWAL: 2
+SEAFOOD: 2
+LANDSCAPE: 2
+URBAN: 2
+H10: 2
+BERMAN: 2
+MOSS: 2
+HAIDILAO: 2
+HOT: 2
+POT: 2
+HDT: 2
+ADMINISTRATORS: 2
+HITECH: 2
+WEALTH: 2
+WALTER: 2
+HF: 2
+ACQUISITION: 2
+IDATALABS: 2
+IMDB: 2
+INFLUENCE: 2
+INFINITE: 2
+INSPUR: 2
+INTL: 2
+INVENTPRISE: 2
+INICIO: 2
+JACOBS: 2
+BRENNAN: 2
+JEEVA: 2
+JTM: 2
+WEBER: 2
+REGIONAL: 2
+SMITH: 2
+ELECTRICAL: 2
+KOIDRA: 2
+LASAI: 2
+FRICK: 2
+LEE: 2
+LEVELTEN: 2
+LUND: 2
+MAQ: 2
+MARPAC: 2
+FACILITY: 2
+COMPANIES: 2
+MCKINSTRY: 2
+MICROSOFT: 2
+MICROVISION: 2
+MIHAYLOV: 2
+ELIM: 2
+HAYASHI: 2
+HULL: 2
+MILBRANDT: 2
+EARLY: 2
+PLUS: 2
+MORINE: 2
+LIGHT: 2
+MYNTRA: 2
+GEEKS: 2
+ENUMCLAW: 2
+NAUTILUS: 2
+BENEFIT: 2
+NEXT: 2
+NFOLKS: 2
+CENTERS: 2
+VALLEY: 2
+INNOVATIONS: 2
+OPENZOO: 2
+WORLDWIDE: 2
+MARINE: 2
+PACTERA: 2
+PARAMOUNT: 2
+ORAL: 2
+PIKE: 2
+DEV: 2
+PIKTORLABS: 2
+PIONEER: 2
+PINEYRO: 2
+IMPLANT: 2
+DENTISTRY: 2
+POKEMON: 2
+PORCH: 2
+BRANDS: 2
+PROCTOR: 2
+ACCOUNTANCY: 2
+SOUTHERN: 2
+CALIFORNIA: 2
+MONTANA: 2
+OREGON: 2
+JOHNS: 2
+QUANTYZD: 2
+RAIN: 2
+REALSELF: 2
+RETROCAUSAL: 2
+RIE: 2
+TUTLAND: 2
+RPT: 2
+SAGE: 2
+MAR: 2
+SCHEMATA: 2
+WORKSHOP: 2
+SEAGULL: 2
+SCIENTIFIC: 2
+ECONOMIC: 2
+SELLEN: 2
+SHANNON: 2
+WILSON: 2
+SIMERICS: 2
+SIMPLYFUN: 2
+SLALOM: 2
+SONIKA: 2
+SINGLA: 2
+SPUR: 2
+JOSEPH: 2
+STARBLAZER: 2
+MARY: 2
+TANGO: 2
+TANIUM: 2
+TELECOMMUNICATION: 2
+STEM: 2
+II: 2
+TRUPANION: 2
+MANAGERS: 2
+TVI: 2
+UNIV: 2
+CHILD: 2
+PROPERTIES: 2
+VIOLET: 2
+VIOME: 2
+WHOLE: 2
+WALSH: 2
+WYZE: 2
+XEALTH: 2
+ZIPSTORM: 2
+BIOPHARMACEUTICALS: 2
+
+DBA Patterns
+------------
+DBA: 142
+D/B/A: 19
+
+Most Common Phrases
+------------------
+D B: 16
+D B A: 16
+B A: 16
+OF WASHINGTON: 15
+PROVIDENCE HEALTH: 12
+PROVIDENCE HEALTH AND: 11
+HEALTH AND: 11
+P S: 9
+HEALTH AND SERVICES: 9
+AND SERVICES: 9
+INSTITUTE FOR: 7
+INC D: 7
+INC D B: 7
+AMAZON COM: 6
+HEALTH SERVICES: 6
+AMAZON COM SERVICES: 5
+COM SERVICES: 5
+COMMUNITY HEALTH: 5
+SNOHOMISH COUNTY: 5
+MEDICAL CENTER: 5
+PUGET SOUND: 5
+SWEDISH HEALTH: 5
+SWEDISH HEALTH SERVICES: 5
+
+Word Position Statistics
+----------------------
+
+LABS:
+  Frequency: 20
+  Average position: 1.20
+  Position distribution:
+    Position 1: 16
+    Position 2: 4
+
+ARCHITECTS:
+  Frequency: 15
+  Average position: 1.47
+  Position distribution:
+    Position 1: 10
+    Position 2: 4
+    Position 4: 1
+
+TECHNOLOGIES:
+  Frequency: 63
+  Average position: 1.05
+  Position distribution:
+    Position 1: 60
+    Position 2: 3
+
+A:
+  Frequency: 22
+  Average position: 4.09
+  Position distribution:
+    Position 0: 2
+    Position 1: 2
+    Position 2: 1
+    Position 4: 3
+    Position 5: 10
+    Position 6: 4
+
+BIO:
+  Frequency: 6
+  Average position: 1.17
+  Position distribution:
+    Position 1: 5
+    Position 2: 1
+
+FOR:
+  Frequency: 16
+  Average position: 1.75
+  Position distribution:
+    Position 1: 7
+    Position 2: 6
+    Position 3: 3
+
+COM:
+  Frequency: 18
+  Average position: 1.28
+  Position distribution:
+    Position 1: 17
+    Position 6: 1
+
+HEALTH:
+  Frequency: 50
+  Average position: 1.50
+  Position distribution:
+    Position 1: 33
+    Position 2: 10
+    Position 3: 6
+    Position 4: 1
+
+INSTITUTE:
+  Frequency: 17
+  Average position: 1.76
+  Position distribution:
+    Position 0: 3
+    Position 1: 5
+    Position 2: 6
+    Position 4: 2
+    Position 5: 1
+
+CONSULTING:
+  Frequency: 31
+  Average position: 1.39
+  Position distribution:
+    Position 1: 22
+    Position 2: 6
+    Position 3: 3
+
+SOLUTIONS:
+  Frequency: 38
+  Average position: 1.47
+  Position distribution:
+    Position 0: 2
+    Position 1: 19
+    Position 2: 14
+    Position 3: 3
+
+THERAPY:
+  Frequency: 8
+  Average position: 2.00
+  Position distribution:
+    Position 1: 2
+    Position 2: 4
+    Position 3: 2
+
+I:
+  Frequency: 7
+  Average position: 3.14
+  Position distribution:
+    Position 0: 1
+    Position 3: 2
+    Position 4: 4
+
+AND:
+  Frequency: 75
+  Average position: 2.00
+  Position distribution:
+    Position 1: 15
+    Position 2: 49
+    Position 3: 10
+    Position 7: 1
+
+CLOUD:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 0: 2
+    Position 2: 1
+    Position 3: 2
+
+DEVELOPMENT:
+  Frequency: 13
+  Average position: 1.69
+  Position distribution:
+    Position 1: 5
+    Position 2: 7
+    Position 3: 1
+
+PACIFIC:
+  Frequency: 16
+  Average position: 0.56
+  Position distribution:
+    Position 0: 8
+    Position 1: 7
+    Position 2: 1
+
+NORTHWEST:
+  Frequency: 19
+  Average position: 0.47
+  Position distribution:
+    Position 0: 12
+    Position 1: 5
+    Position 2: 2
+
+LAW:
+  Frequency: 13
+  Average position: 1.46
+  Position distribution:
+    Position 0: 1
+    Position 1: 7
+    Position 2: 3
+    Position 3: 2
+
+AEROSPACE:
+  Frequency: 6
+  Average position: 0.67
+  Position distribution:
+    Position 0: 2
+    Position 1: 4
+
+ENGINEERING:
+  Frequency: 14
+  Average position: 1.36
+  Position distribution:
+    Position 1: 9
+    Position 2: 5
+
+AI:
+  Frequency: 11
+  Average position: 1.45
+  Position distribution:
+    Position 0: 1
+    Position 1: 9
+    Position 7: 1
+
+INTERNATIONAL:
+  Frequency: 11
+  Average position: 0.73
+  Position distribution:
+    Position 0: 4
+    Position 1: 6
+    Position 2: 1
+
+EDUCATION:
+  Frequency: 5
+  Average position: 1.80
+  Position distribution:
+    Position 1: 2
+    Position 2: 2
+    Position 3: 1
+
+L:
+  Frequency: 10
+  Average position: 2.40
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+    Position 3: 2
+    Position 4: 1
+    Position 5: 1
+
+SERVICE:
+  Frequency: 12
+  Average position: 2.67
+  Position distribution:
+    Position 2: 5
+    Position 3: 6
+    Position 4: 1
+
+SOFTWARE:
+  Frequency: 13
+  Average position: 0.92
+  Position distribution:
+    Position 0: 1
+    Position 1: 12
+
+ALLEN:
+  Frequency: 5
+  Average position: 0.60
+  Position distribution:
+    Position 0: 2
+    Position 1: 3
+
+HEALTHCARE:
+  Frequency: 6
+  Average position: 1.17
+  Position distribution:
+    Position 0: 2
+    Position 1: 1
+    Position 2: 3
+
+SEATTLE:
+  Frequency: 29
+  Average position: 1.14
+  Position distribution:
+    Position 0: 14
+    Position 1: 3
+    Position 2: 8
+    Position 3: 2
+    Position 4: 2
+
+SCIENCES:
+  Frequency: 5
+  Average position: 2.40
+  Position distribution:
+    Position 2: 4
+    Position 4: 1
+
+AMAZON:
+  Frequency: 15
+  Average position: 0.33
+  Position distribution:
+    Position 0: 14
+    Position 5: 1
+
+CAPITAL:
+  Frequency: 12
+  Average position: 1.08
+  Position distribution:
+    Position 1: 11
+    Position 2: 1
+
+SERVICES:
+  Frequency: 48
+  Average position: 2.40
+  Position distribution:
+    Position 1: 3
+    Position 2: 29
+    Position 3: 13
+    Position 4: 2
+    Position 7: 1
+
+LLC:
+  Frequency: 5
+  Average position: 2.20
+  Position distribution:
+    Position 2: 4
+    Position 3: 1
+
+DATA:
+  Frequency: 10
+  Average position: 0.80
+  Position distribution:
+    Position 0: 2
+    Position 1: 8
+
+CENTER:
+  Frequency: 26
+  Average position: 2.88
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 6
+    Position 3: 11
+    Position 4: 2
+    Position 5: 1
+    Position 6: 1
+    Position 8: 1
+
+US:
+  Frequency: 16
+  Average position: 2.00
+  Position distribution:
+    Position 1: 6
+    Position 2: 7
+    Position 3: 2
+    Position 6: 1
+
+D:
+  Frequency: 23
+  Average position: 2.22
+  Position distribution:
+    Position 0: 5
+    Position 1: 2
+    Position 2: 3
+    Position 3: 9
+    Position 4: 4
+
+B:
+  Frequency: 24
+  Average position: 2.96
+  Position distribution:
+    Position 0: 4
+    Position 1: 2
+    Position 2: 2
+    Position 3: 3
+    Position 4: 9
+    Position 5: 4
+
+PARTNERS:
+  Frequency: 7
+  Average position: 1.71
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+    Position 3: 1
+
+AMERICAN:
+  Frequency: 5
+  Average position: 0.80
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+
+HOSPITAL:
+  Frequency: 7
+  Average position: 2.71
+  Position distribution:
+    Position 2: 4
+    Position 3: 2
+    Position 5: 1
+
+SCIENCE:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 0: 1
+    Position 1: 2
+    Position 2: 2
+
+THE:
+  Frequency: 22
+  Average position: 1.00
+  Position distribution:
+    Position 0: 15
+    Position 2: 2
+    Position 3: 3
+    Position 4: 1
+    Position 5: 1
+
+TECHNOLOGY:
+  Frequency: 22
+  Average position: 1.50
+  Position distribution:
+    Position 0: 1
+    Position 1: 12
+    Position 2: 7
+    Position 3: 1
+    Position 4: 1
+
+TECH:
+  Frequency: 23
+  Average position: 1.26
+  Position distribution:
+    Position 1: 17
+    Position 2: 6
+
+ASIAN:
+  Frequency: 7
+  Average position: 0.14
+  Position distribution:
+    Position 0: 6
+    Position 1: 1
+
+COUNSELING:
+  Frequency: 7
+  Average position: 1.29
+  Position distribution:
+    Position 1: 5
+    Position 2: 2
+
+SCHOOL:
+  Frequency: 18
+  Average position: 1.94
+  Position distribution:
+    Position 1: 4
+    Position 2: 11
+    Position 3: 3
+
+USA:
+  Frequency: 27
+  Average position: 1.44
+  Position distribution:
+    Position 1: 18
+    Position 2: 7
+    Position 3: 1
+    Position 4: 1
+
+MANAGEMENT:
+  Frequency: 26
+  Average position: 1.88
+  Position distribution:
+    Position 1: 8
+    Position 2: 13
+    Position 3: 5
+
+MONTESSORI:
+  Frequency: 11
+  Average position: 0.73
+  Position distribution:
+    Position 0: 5
+    Position 1: 4
+    Position 2: 2
+
+ACADEMY:
+  Frequency: 10
+  Average position: 1.80
+  Position distribution:
+    Position 1: 3
+    Position 2: 6
+    Position 3: 1
+
+RESEARCH:
+  Frequency: 17
+  Average position: 1.76
+  Position distribution:
+    Position 1: 8
+    Position 2: 6
+    Position 3: 2
+    Position 4: 1
+
+CONSTRUCTION:
+  Frequency: 19
+  Average position: 1.05
+  Position distribution:
+    Position 1: 18
+    Position 2: 1
+
+P:
+  Frequency: 9
+  Average position: 3.22
+  Position distribution:
+    Position 2: 1
+    Position 3: 6
+    Position 4: 1
+    Position 5: 1
+
+S:
+  Frequency: 16
+  Average position: 3.50
+  Position distribution:
+    Position 1: 1
+    Position 2: 1
+    Position 3: 6
+    Position 4: 6
+    Position 5: 1
+    Position 6: 1
+
+OF:
+  Frequency: 44
+  Average position: 2.50
+  Position distribution:
+    Position 1: 13
+    Position 2: 10
+    Position 3: 13
+    Position 4: 3
+    Position 5: 4
+    Position 6: 1
+
+AMERICA:
+  Frequency: 13
+  Average position: 1.54
+  Position distribution:
+    Position 1: 6
+    Position 2: 7
+
+DISTRICT:
+  Frequency: 6
+  Average position: 2.83
+  Position distribution:
+    Position 2: 3
+    Position 3: 1
+    Position 4: 2
+
+ASSOCIATES:
+  Frequency: 15
+  Average position: 2.07
+  Position distribution:
+    Position 1: 4
+    Position 2: 6
+    Position 3: 5
+
+CONSULTANTS:
+  Frequency: 6
+  Average position: 1.50
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+
+GAMES:
+  Frequency: 5
+  Average position: 1.80
+  Position distribution:
+    Position 1: 1
+    Position 2: 4
+
+FOUNDATION:
+  Frequency: 10
+  Average position: 2.50
+  Position distribution:
+    Position 1: 2
+    Position 2: 5
+    Position 4: 2
+    Position 5: 1
+
+BLUE:
+  Frequency: 7
+  Average position: 0.57
+  Position distribution:
+    Position 0: 4
+    Position 1: 2
+    Position 2: 1
+
+INC:
+  Frequency: 18
+  Average position: 2.44
+  Position distribution:
+    Position 1: 3
+    Position 2: 8
+    Position 3: 5
+    Position 4: 1
+    Position 6: 1
+
+ENERGY:
+  Frequency: 7
+  Average position: 1.14
+  Position distribution:
+    Position 1: 6
+    Position 2: 1
+
+SYSTEMS:
+  Frequency: 26
+  Average position: 1.35
+  Position distribution:
+    Position 1: 19
+    Position 2: 5
+    Position 3: 2
+
+DESIGN:
+  Frequency: 10
+  Average position: 2.30
+  Position distribution:
+    Position 0: 1
+    Position 1: 5
+    Position 2: 1
+    Position 3: 1
+    Position 4: 1
+    Position 9: 1
+
+COMMUNITY:
+  Frequency: 13
+  Average position: 0.77
+  Position distribution:
+    Position 0: 5
+    Position 1: 6
+    Position 2: 2
+
+GLOBAL:
+  Frequency: 7
+  Average position: 0.71
+  Position distribution:
+    Position 0: 2
+    Position 1: 5
+
+WA:
+  Frequency: 8
+  Average position: 2.12
+  Position distribution:
+    Position 0: 2
+    Position 2: 2
+    Position 3: 3
+    Position 4: 1
+
+PS:
+  Frequency: 24
+  Average position: 3.33
+  Position distribution:
+    Position 1: 1
+    Position 2: 2
+    Position 3: 13
+    Position 4: 5
+    Position 5: 2
+    Position 6: 1
+
+WASHINGTON:
+  Frequency: 31
+  Average position: 2.52
+  Position distribution:
+    Position 0: 7
+    Position 1: 6
+    Position 2: 3
+    Position 3: 4
+    Position 4: 5
+    Position 5: 3
+    Position 6: 2
+    Position 7: 1
+
+DDS:
+  Frequency: 9
+  Average position: 2.11
+  Position distribution:
+    Position 1: 1
+    Position 2: 6
+    Position 3: 2
+
+UNIVERSITY:
+  Frequency: 8
+  Average position: 0.75
+  Position distribution:
+    Position 0: 3
+    Position 1: 4
+    Position 2: 1
+
+POWER:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 3: 1
+
+ENGINEERS:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 1: 2
+    Position 2: 3
+
+SNOHOMISH:
+  Frequency: 5
+  Average position: 2.00
+  Position distribution:
+    Position 0: 3
+    Position 4: 1
+    Position 6: 1
+
+COUNTY:
+  Frequency: 7
+  Average position: 2.43
+  Position distribution:
+    Position 1: 5
+    Position 5: 1
+    Position 7: 1
+
+PROPERTY:
+  Frequency: 5
+  Average position: 1.20
+  Position distribution:
+    Position 1: 4
+    Position 2: 1
+
+ARCHITECTURE:
+  Frequency: 14
+  Average position: 1.64
+  Position distribution:
+    Position 1: 8
+    Position 2: 5
+    Position 5: 1
+
+INTELLIGENCE:
+  Frequency: 8
+  Average position: 2.50
+  Position distribution:
+    Position 1: 5
+    Position 5: 3
+
+MEDICAL:
+  Frequency: 11
+  Average position: 2.82
+  Position distribution:
+    Position 1: 4
+    Position 2: 3
+    Position 3: 1
+    Position 4: 1
+    Position 7: 2
+
+NORTH:
+  Frequency: 9
+  Average position: 0.44
+  Position distribution:
+    Position 0: 5
+    Position 1: 4
+
+WORLD:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+
+REAL:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 2: 1
+
+CREDIT:
+  Frequency: 5
+  Average position: 3.60
+  Position distribution:
+    Position 0: 3
+    Position 9: 2
+
+UNION:
+  Frequency: 5
+  Average position: 5.20
+  Position distribution:
+    Position 0: 2
+    Position 6: 1
+    Position 10: 2
+
+TAX:
+  Frequency: 8
+  Average position: 1.88
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+    Position 3: 2
+
+COMPANY:
+  Frequency: 9
+  Average position: 2.00
+  Position distribution:
+    Position 1: 3
+    Position 2: 3
+    Position 3: 3
+
+ADVISORS:
+  Frequency: 7
+  Average position: 1.57
+  Position distribution:
+    Position 1: 3
+    Position 2: 4
+
+NETWORK:
+  Frequency: 5
+  Average position: 2.80
+  Position distribution:
+    Position 1: 1
+    Position 2: 1
+    Position 3: 1
+    Position 4: 2
+
+DBA:
+  Frequency: 5
+  Average position: 3.40
+  Position distribution:
+    Position 3: 3
+    Position 4: 2
+
+IO:
+  Frequency: 5
+  Average position: 0.80
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+
+PUBLIC:
+  Frequency: 6
+  Average position: 1.50
+  Position distribution:
+    Position 0: 1
+    Position 1: 1
+    Position 2: 4
+
+FINANCIAL:
+  Frequency: 8
+  Average position: 1.00
+  Position distribution:
+    Position 1: 8
+
+LIFE:
+  Frequency: 7
+  Average position: 1.29
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+    Position 2: 1
+    Position 3: 1
+
+INSURANCE:
+  Frequency: 5
+  Average position: 2.80
+  Position distribution:
+    Position 2: 2
+    Position 3: 2
+    Position 4: 1
+
+PUGET:
+  Frequency: 6
+  Average position: 1.50
+  Position distribution:
+    Position 0: 3
+    Position 1: 1
+    Position 4: 2
+
+SOUND:
+  Frequency: 7
+  Average position: 1.43
+  Position distribution:
+    Position 0: 2
+    Position 1: 3
+    Position 2: 1
+    Position 5: 1
+
+LEARNING:
+  Frequency: 5
+  Average position: 2.60
+  Position distribution:
+    Position 0: 1
+    Position 2: 2
+    Position 4: 1
+    Position 5: 1
+
+CANCER:
+  Frequency: 6
+  Average position: 2.33
+  Position distribution:
+    Position 1: 1
+    Position 2: 3
+    Position 3: 1
+    Position 4: 1
+
+GRAHAM:
+  Frequency: 5
+  Average position: 0.00
+  Position distribution:
+    Position 0: 5
+
+GROUP:
+  Frequency: 5
+  Average position: 1.60
+  Position distribution:
+    Position 0: 1
+    Position 1: 3
+    Position 5: 1
+
+GREEN:
+  Frequency: 5
+  Average position: 0.00
+  Position distribution:
+    Position 0: 5
+
+MOBILE:
+  Frequency: 5
+  Average position: 0.80
+  Position distribution:
+    Position 0: 1
+    Position 1: 4
+
+IT:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 1: 5
+
+SVCS:
+  Frequency: 6
+  Average position: 2.83
+  Position distribution:
+    Position 2: 1
+    Position 3: 5
+
+MILLER:
+  Frequency: 6
+  Average position: 0.50
+  Position distribution:
+    Position 0: 3
+    Position 1: 3
+
+NINTENDO:
+  Frequency: 5
+  Average position: 0.00
+  Position distribution:
+    Position 0: 5
+
+NORDSTROM:
+  Frequency: 5
+  Average position: 1.00
+  Position distribution:
+    Position 0: 4
+    Position 5: 1
+
+ST:
+  Frequency: 7
+  Average position: 0.43
+  Position distribution:
+    Position 0: 5
+    Position 1: 1
+    Position 2: 1
+
+PROVIDENCE:
+  Frequency: 21
+  Average position: 0.10
+  Position distribution:
+    Position 0: 20
+    Position 2: 1
+
+SWEDISH:
+  Frequency: 8
+  Average position: 1.50
+  Position distribution:
+    Position 0: 6
+    Position 6: 2
