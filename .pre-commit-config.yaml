@@ -44,7 +44,7 @@ repos:
     hooks:
       - id: system-python-check
         name: Check for System Python (Virtualenv)
-        entry: python -c "import sys; p=sys.executable; patterns=['venv','.venv','virtualenv','env','conda','envs','miniconda','anaconda']; ok=any(x in p for x in patterns); print(f'Python: {p}'); ok or (print('ERROR: Not in a virtualenv!'), exit(1))"
+        entry: python -c "import sys; p=sys.executable; patterns=['venv','.venv','virtualenv','env','conda','envs','miniconda','anaconda']; ok=any(x in p for x in patterns); print('Python path -', p); ok or (print('ERROR - Not in a virtualenv!'), exit(1))"
         language: system
         pass_filenames: false
         always_run: true
