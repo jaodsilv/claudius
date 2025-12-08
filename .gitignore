@@ -20,3 +20,6 @@ dotclaude/dotclaude/
 
 # Private data junction (linked to private data repository)
 **/data/
+
+# Temporary plan files
+dotclaude/plans/
