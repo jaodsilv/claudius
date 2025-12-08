@@ -14,7 +14,6 @@
 **/file-history
 **/history.jsonl
 .env
-.venv/
 downloads/
 tmp/
 dotclaude/dotclaude/
