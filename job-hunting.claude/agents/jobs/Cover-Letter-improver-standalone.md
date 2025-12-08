@@ -5,6 +5,8 @@ tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
 argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
 ---
 
+# Cover Letter Improver
+
 ## Context
 
 You will be improving a cover letter for a job application and providing a comprehensive quality assessment with specific improvement recommendations and then improving the cover letter based on this feedback. You have been provided with four key documents to inform your analysis.
@@ -37,39 +39,42 @@ Research the company's culture, values, and communication style.
 **STEP 2: Cover Letter Guidelines**
 Write a list of the company's cover letter guidelines. Keep it simple and concise.
 
-**STEP 2: UNTRUTH CHECK**
+**STEP 3: UNTRUTH CHECK**
 Check the cover letter for any factual inaccuracies or inconsistencies with the resume. Also look for any statements that are not supported by the resume.
 
-**STEP 3: OPTIONAL OVERLAP ANALYSIS**
+**STEP 4: OPTIONAL OVERLAP ANALYSIS**
 Compare the cover letter content with the "Why this company?" response if available. Identify any sentences, phrases, or concepts that appear in both documents. Calculate the percentage of overlapping content and assess whether this overlap is excessive (generally, more than 30% overlap should be flagged as problematic).
 
-**STEP 4: JOB DESCRIPTION KEYWORDS COVERAGE**
+**STEP 5: JOB DESCRIPTION KEYWORDS COVERAGE**
 Extract key terms, skills, qualifications, and requirements from the job description. Then scan the cover letter to identify which of these keywords are present. Calculate the coverage percentage and identify critical missing keywords that should be incorporated.
 
-**STEP 5: ATS FRIENDLINESS ASSESSMENT**
+**STEP 6: ATS FRIENDLINESS ASSESSMENT**
 Evaluate the cover letter's compatibility with Applicant Tracking Systems by checking for:
+
 - Use of standard section headers
 - Proper formatting (no tables, graphics, or unusual fonts mentioned)
 - Keyword density and placement
 - Consistent terminology that matches the job description
 
-**STEP 6: SKILLS AND EXPERIENCE ALIGNMENT**
+**STEP 7: SKILLS AND EXPERIENCE ALIGNMENT**
 Compare the experiences and skills mentioned in the cover letter against both the resume and job requirements. Identify:
+
 - Skills from the resume that could be better highlighted in the cover letter
 - Job requirements that are not adequately addressed
 - Quantifiable achievements that could strengthen the application
 
-**STEP 7: TERMINOLOGY ANALYSIS**
+**STEP 8: TERMINOLOGY ANALYSIS**
 Identify instances where the cover letter uses different terminology than the job description for the same concepts (e.g., "team leadership" vs "people management"). Suggest alignment opportunities to improve ATS matching.
 
-**STEP 8: COMMUNICATION STYLE ALIGNMENT WITH COMPANY CULTURE AND APPROPRIATENESS**
+**STEP 9: COMMUNICATION STYLE ALIGNMENT WITH COMPANY CULTURE AND APPROPRIATENESS**
 Evaluate the communication style of the cover letter to ensure it aligns with the company culture and is appropriate for the role and company.
 
-**STEP 9: COMMUNICATION STYLE CONSISTENCY**
+**STEP 10: COMMUNICATION STYLE CONSISTENCY**
 Identify instances where the cover letter uses different styles of writing (e.g., formal vs. casual, innovative vs. traditional). Suggest alignment opportunities to improve consistency.
 
-**STEP 10: IMPACT DEMONSTRATION**
+**STEP 11: IMPACT DEMONSTRATION**
 Evaluate the quality of quantified achievements and technical contributions in the cover letter. Focus on:
+
 - Quantified Achievements: Look for specific metrics, numbers, percentages, timeframes, and measurable business impact
 - Technical Contributions: Assess how well technical accomplishments are presented with concrete results
 - Relevance: Determine if the quantified achievements align with the job requirements
@@ -77,42 +82,42 @@ Evaluate the quality of quantified achievements and technical contributions in t
 - Consistency: Look for achievements that are not backed by the resume or that are conflicting with the resume
 - Impact Clarity: Check if the business value and technical significance are clearly communicated
 
-**STEP 11: TECHNICAL POSITIONING**
+**STEP 12: PROFESSIONAL PRESENTATION**
+Delegate to `cover-letter-evaluator:presentation` agent
 
+### Results Compilation (Steps 13-14)
 
-18. **PROFESSIONAL PRESENTATION**: Delegate to `cover-letter-evaluator:presentation` agent
+You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 7 to each:
 
-### Phase 4: Results Compilation (Steps 19-20)
+**STEP 13: TRUE GAPS CLEANUP**
+Delegate to `cover-letter-evaluator:true-gaps` agent with the aggregated content from Step 7
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent.Even using separate subagents, run them in series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 6 to each:
-
-19. **TRUE GAPS CLEANUP**: Delegate to `cover-letter-evaluator:true-gaps` agent with the aggregated content from Step 6
-
-20. **RESULT COMBINER
+**STEP 14: RESULT COMBINER**
+Delegate to `cover-letter-evaluator:combiner` agent with the aggregated content from Step 7
 
 <analysis>
-**STEP 1: OVERLAP ANALYSIS**
+**STEP 4: OVERLAP ANALYSIS**
 [Provide detailed analysis of content overlap between cover letter and why company response]
 Overlap Assessment: [Percentage and severity]
 Issues Identified: [List specific overlapping content]
 
-**STEP 2: KEYWORDS COVERAGE**
+**STEP 5: KEYWORDS COVERAGE**
 [List key job description terms and their presence/absence in cover letter]
 Coverage Score: [Percentage of key terms covered]
 Critical Missing Keywords: [List important missing terms]
 
-**STEP 3: ATS FRIENDLINESS**
+**STEP 6: ATS FRIENDLINESS**
 [Evaluate ATS compatibility factors]
 ATS Compatibility Score: [Score out of 10]
 ATS Issues: [List specific formatting or terminology problems]
 
-**STEP 4: SKILLS ALIGNMENT**
+**STEP 7: SKILLS ALIGNMENT**
 [Compare cover letter content with resume and job requirements]
 Alignment Score: [Score out of 10]
 Underutilized Resume Elements: [List relevant resume items not mentioned]
 Unaddressed Job Requirements: [List missing requirement coverage]
 
-**STEP 5: ALTERNATIVE NAMING**
+**STEP 8: TERMINOLOGY ANALYSIS**
 [Identify terminology mismatches]
 Terminology Mismatches: [List instances where different terms are used for same concepts]
 Recommended Alignments: [Suggest specific term replacements]

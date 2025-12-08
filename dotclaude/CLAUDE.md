@@ -78,11 +78,14 @@ probably some leak, hopefully it is resolved soon
 
 ### Bash Commands
 
+**Always use native tools instead of bash tools when available**
+
 #### Development
 
 #### Git
 
-- `git worktree add -b <branch-name> <remote-branch-name>` - Add a worktree for a new branch
+- `git worktree add -b ../<branch-name> <branch-name>` - Add a worktree for a new branch
+  - worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
 - `git worktree list` - List all worktrees
 - `git worktree remove <worktree-path>` - Remove a worktree
 
@@ -224,5 +227,3 @@ Read @~/.claude/instructions/conventional-branch.md for more details.
 - **Version File**: The version is stored in the `version.txt` file.
 - **Version Tag**: The version is tagged with the `v` prefix.
 - **Version History**: The version history is stored in the `version-history.md` file.
-- worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
-- Always use native tools instead of bash tools when available

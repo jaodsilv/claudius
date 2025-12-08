@@ -29,6 +29,7 @@ Read the why company response file.
 ## Skill Reference
 
 Use the job hunting skill as a guide for improvements:
+
 1. Consult `@job-hunting.claude/skills/job-hunting/SKILL.md` sections:
    1. "Cover Letter Excellence" for structure and best practices
    2. "Opening Paragraph", "Body Paragraphs", "Closing Paragraph" for specific guidance

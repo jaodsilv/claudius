@@ -1,0 +1,202 @@
+{
+  "source": "dotclaude",
+  "source_type": "local",
+  "discovered_at": "2025-01-18",
+  "total_items": 14,
+  "items": [
+    {
+      "name": "docs-downloader",
+      "type": "agent",
+      "path": "dotclaude/agents/docs/downloader.md",
+      "category": "Documentation",
+      "quality_score": 5,
+      "description": "Downloads documentation from URLs with verification",
+      "keywords": [
+        "documentation",
+        "download",
+        "automation"
+      ]
+    },
+    {
+      "name": "docs-converter",
+      "type": "agent",
+      "path": "dotclaude/agents/docs/converter.md",
+      "category": "Documentation",
+      "quality_score": 5,
+      "description": "Converts documentation between formats",
+      "keywords": [
+        "documentation",
+        "conversion",
+        "markdown"
+      ]
+    },
+    {
+      "name": "docs-conversion-verifier",
+      "type": "agent",
+      "path": "dotclaude/agents/docs/conversion-verifier.md",
+      "category": "Documentation",
+      "quality_score": 5,
+      "description": "Verifies documentation conversion quality",
+      "keywords": [
+        "documentation",
+        "verification",
+        "quality"
+      ]
+    },
+    {
+      "name": "docs-batch-downloader",
+      "type": "agent",
+      "path": "dotclaude/agents/docs/batch-downloader.md",
+      "category": "Documentation",
+      "quality_score": 5,
+      "description": "Batch download manager for multiple documentation sources",
+      "keywords": [
+        "documentation",
+        "batch",
+        "download",
+        "automation"
+      ]
+    },
+    {
+      "name": "prompt-to-pipeline-architect",
+      "type": "agent",
+      "path": "dotclaude/agents/prompt-to-pipeline-architect.md",
+      "category": "AI & Prompts",
+      "quality_score": 5,
+      "description": "Transforms single-agent prompts into multi-agent workflows",
+      "keywords": [
+        "prompts",
+        "multi-agent",
+        "workflow",
+        "architecture"
+      ]
+    },
+    {
+      "name": "file-output-writer",
+      "type": "agent",
+      "path": "dotclaude/agents/file-output-writer.md",
+      "category": "Productivity",
+      "quality_score": 5,
+      "description": "Writes structured content to files with proper tag organization",
+      "keywords": [
+        "file",
+        "output",
+        "writer",
+        "structured"
+      ]
+    },
+    {
+      "name": "curator",
+      "type": "agent",
+      "path": "dotclaude/agents/curator.md",
+      "category": "Productivity",
+      "quality_score": 5,
+      "description": "Automated plugin discovery and curation agent",
+      "keywords": [
+        "curation",
+        "discovery",
+        "plugins",
+        "marketplace"
+      ]
+    },
+    {
+      "name": "docs-download",
+      "type": "command",
+      "path": "dotclaude/commands/docs/download.md",
+      "category": "Documentation",
+      "quality_score": 5,
+      "description": "Slash command for downloading documentation",
+      "keywords": [
+        "documentation",
+        "download",
+        "command"
+      ]
+    },
+    {
+      "name": "agent-evolution",
+      "type": "script",
+      "path": "dotclaude/scripts/agent-evolution.sh",
+      "category": "Development Workflow",
+      "quality_score": 5,
+      "description": "Script to evolve agents through evaluation and improvement loops",
+      "keywords": [
+        "agent",
+        "evolution",
+        "improvement",
+        "automation"
+      ]
+    },
+    {
+      "name": "conventional-commits",
+      "type": "skill",
+      "path": "dotclaude/skills/conventional-commits/SKILL.md",
+      "category": "Git & Version Control",
+      "quality_score": 5,
+      "description": "Auto-invoked skill for conventional commit message guidance",
+      "keywords": [
+        "git",
+        "commits",
+        "conventional",
+        "semantic-versioning"
+      ]
+    },
+    {
+      "name": "conventional-branch",
+      "type": "skill",
+      "path": "dotclaude/skills/conventional-branch/SKILL.md",
+      "category": "Git & Version Control",
+      "quality_score": 5,
+      "description": "Auto-invoked skill for branch naming conventions",
+      "keywords": [
+        "git",
+        "branch",
+        "naming",
+        "workflow"
+      ]
+    },
+    {
+      "name": "tdd-workflow",
+      "type": "skill",
+      "path": "dotclaude/skills/tdd-workflow/SKILL.md",
+      "category": "Development Workflow",
+      "quality_score": 5,
+      "description": "Comprehensive TDD workflow with multi-agent coordination",
+      "keywords": [
+        "tdd",
+        "testing",
+        "workflow",
+        "agents",
+        "quality"
+      ]
+    },
+    {
+      "name": "code-quality",
+      "type": "skill",
+      "path": "dotclaude/skills/code-quality/SKILL.md",
+      "category": "Testing & QA",
+      "quality_score": 5,
+      "description": "Code review and quality assessment skill",
+      "keywords": [
+        "quality",
+        "review",
+        "best-practices",
+        "code-smells"
+      ]
+    },
+    {
+      "name": "job-hunting",
+      "type": "skill",
+      "path": "dotclaude/skills/job-hunting/SKILL.md",
+      "category": "Job Hunting & Career",
+      "quality_score": 5,
+      "description": "Comprehensive job hunting skill for career development",
+      "keywords": [
+        "career",
+        "job-hunting",
+        "cover-letter",
+        "interview",
+        "resume"
+      ]
+    }
+  ]
+}

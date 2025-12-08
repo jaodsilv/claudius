@@ -39,6 +39,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 ## Input Sources
 
 ### Community Marketplaces
+
 1. anthropics/claude-code
 2. ccplugins/marketplace
 3. wshobson/agents
@@ -47,6 +48,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 6. Dev-GOM/claude-code-marketplace
 
 ### External Resources
+
 1. super-claude
 2. awesome-claude-prompts
 3. awesome-claude-code-agents
@@ -136,6 +138,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 ### Phase 1: Discovery
 
 1. **Clone/Pull All Sources**
+
    ```bash
    # For each marketplace
    git clone https://github.com/{org}/{repo} temp/marketplaces/{name}
@@ -173,6 +176,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 
 3. **Functionality Mapping**
    Create matrix:
+
    ```
    Functionality      | Plugin A | Plugin B | Plugin C
    -------------------|----------|----------|----------
@@ -220,6 +224,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 ## Quality Criteria
 
 ### 5 Stars - Excellent
+
 - Comprehensive documentation
 - Active maintenance (updated within 3 months)
 - Well-tested code
@@ -227,23 +232,27 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 - Clean, maintainable code
 
 ### 4 Stars - Good
+
 - Good documentation
 - Updated within 6 months
 - Functional code
 - Some community use
 
 ### 3 Stars - Acceptable
+
 - Basic documentation
 - Updated within 1 year
 - Works but could be improved
 - Limited community use
 
 ### 2 Stars - Poor
+
 - Minimal documentation
 - Outdated (1+ years)
 - Code quality issues
 
 ### 1 Star - Unusable
+
 - No documentation
 - Abandoned
 - Broken or non-functional
@@ -253,6 +262,7 @@ Automated discovery, analysis, and categorization of Claude Code plugins from mu
 To run the curator agent:
 
 1. **Full Discovery**
+
    ```
    Launch Task agent with prompt:
    "Run full plugin discovery across all 6 marketplaces and 6 external resources.
@@ -260,6 +270,7 @@ To run the curator agent:
    ```
 
 2. **Categorization**
+
    ```
    Launch Task agent with prompt:
    "Categorize plugins from raw-inventory.json into functional categories.
@@ -267,6 +278,7 @@ To run the curator agent:
    ```
 
 3. **Analysis**
+
    ```
    Launch Task agent with prompt:
    "Analyze plugins and generate:
@@ -276,6 +288,7 @@ To run the curator agent:
    ```
 
 4. **Deduplication**
+
    ```
    Launch Task agent with prompt:
    "Identify duplicate and overlapping plugins.

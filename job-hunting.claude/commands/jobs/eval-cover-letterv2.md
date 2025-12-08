@@ -28,6 +28,7 @@ It will be presented with xml tags or in yaml format with the following tags and
 ## Skill Reference
 
 Before delegating evaluations, reference the job hunting skill for quality standards:
+
 1. Consult `@job-hunting.claude/skills/job-hunting/SKILL.md` sections:
    1. "Cover Letter Quality Checklist" for evaluation criteria
    2. "Common Cover Letter Mistakes" for issues to flag
@@ -76,8 +77,8 @@ Pass all the marked tags and their content to each:
 
 Group 1: Style
 10. **COMMUNICATION**: Delegate to `cover-letter-evaluator:communication` agent. Tags to pass: `<cover_letter>`, `<output_filepath>`, `<job_description>`,
-10. **COMPANY CULTURE ALIGNMENT**: Delegate to `cover-letter-evaluator:culture` agent. Tags to pass: `<cover_letter>`, `<cover_letter_guidelines>`, `<output_filepath>`
-11. **PERSONALIZATION LEVEL**: Delegate to `cover-letter-evaluator:personalization` agent. Tags to pass: `<cover_letter>`, `<job_description>`, `<resume>`, `<output_filepath>`
+11. **COMPANY CULTURE ALIGNMENT**: Delegate to `cover-letter-evaluator:culture` agent. Tags to pass: `<cover_letter>`, `<cover_letter_guidelines>`, `<output_filepath>`
+12. **PERSONALIZATION LEVEL**: Delegate to `cover-letter-evaluator:personalization` agent. Tags to pass: `<cover_letter>`, `<job_description>`, `<resume>`, `<output_filepath>`
 
 Group 2: Why Company
 13. **OVERLAP ANALYSIS**: Delegate to `cover-letter-evaluator:overlap` agent. Tags to pass: `<cover_letter>`, `<why_company_response>`, `<output_filepath>`

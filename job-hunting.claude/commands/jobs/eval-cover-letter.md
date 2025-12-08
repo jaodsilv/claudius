@@ -27,6 +27,7 @@ It will be presented with xml tags or in yaml format with the following tags and
 ## Skill Reference
 
 Before delegating evaluations, reference the job hunting skill for quality standards:
+
 1. Consult `@job-hunting.claude/skills/job-hunting/SKILL.md` sections:
    1. "Cover Letter Quality Checklist" for evaluation criteria
    2. "Common Cover Letter Mistakes" for issues to flag
@@ -48,6 +49,7 @@ Before delegating evaluations, reference the job hunting skill for quality stand
 ### Phase 2: Content Tagging (Step 6)
 
 Wrap all read content into a XML tags:
+
 ```xml
 <resume>[content]</resume>
 <job_description>[content]</job_description>

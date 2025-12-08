@@ -169,12 +169,14 @@ Then install any plugin:
 ### Quick Start
 
 **Install Everything**:
+
 ```bash
 /plugin marketplace add jaodsilv/claude
 /plugin install community-bundle  # All 6 community collections
 ```
 
 **Install by Category**:
+
 ```bash
 /plugin install community-testing      # Testing & QA tools
 /plugin install community-git-tools    # Git workflows
@@ -182,6 +184,7 @@ Then install any plugin:
 ```
 
 **Install Featured Collections**:
+
 ```bash
 /plugin install jaodsilv-workflow  # Complete TDD workflow
 /plugin install jaodsilv-career    # Career development (UNIQUE)
@@ -222,16 +225,19 @@ This marketplace was built through systematic discovery and curation:
 4. **Collection Assembly**: Curated 6 community + 3 featured collections
 
 **Quality Distribution**:
+
 - 88% production-ready (5 stars)
 - 10% adequate (3 stars)
 - 2% high quality (4 stars)
 
 **Documentation**:
+
 - `curation/analysis/discovery-summary.md` - Discovery statistics and findings
 - `curation/analysis/deduplication-analysis.md` - Overlap analysis and selections
 - `curation/inventory/` - Structured JSON inventories for all sources
 
 **Future Work**:
+
 - 6 external marketplaces identified for future curation
 - Ongoing community contributions welcome
 - Quarterly maintenance and updates planned
