@@ -19,4 +19,4 @@ tmp/
 dotclaude/dotclaude/
 
 # Private data junction (linked to private data repository)
-*/data/
+**/data/
