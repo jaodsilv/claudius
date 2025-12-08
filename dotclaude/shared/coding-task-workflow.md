@@ -10,12 +10,30 @@ This workflow is designed to be followed sequentially, where each upper-level ta
 
 ### 0. Initial Setup
 
-**In the main agent**: Create a new git worktree for the task. Memorize the name of the worktree.
+**In the main agent**: Create a new git worktree for the task.
 
-```bash
-git worktree add -b feature/task-name ../task-name-worktree
-cd ../task-name-worktree
-```
+1. Create the worktree:
+
+   ```bash
+   git worktree add -b feature/task-name ../task-name-worktree
+   ```
+
+2. **Data Folder Setup**: Ask user if this worktree needs a data folder link.
+   - If YES and `D:\src\{project-name}\data` exists:
+
+     ```cmd
+     mklink /J D:\src\{project-name}\{worktree-name}\data D:\src\{project-name}\data
+     ```
+
+   - If YES but data repo doesn't exist: Ask if user wants to create it (use `/project:create-data`)
+
+3. Change to the new worktree:
+
+   ```bash
+   cd ../task-name-worktree
+   ```
+
+4. Memorize the worktree name for later steps.
 
 ### 1. Test Requirement Evaluation
 
