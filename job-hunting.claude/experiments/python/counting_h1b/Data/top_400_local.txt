@@ -1,0 +1,408 @@
+Top 400 Companies by Total Approvals
+
+----------------------------------------------------------------------------------------------------
+  2. AMAZON.COM SERVICES LLC                                             2783  43  98.5%
+  3. EXPEDIA INC                                                         1314  15  98.9%
+  4. T MOBILE USA INC                                                     891   8  99.1%
+  6. AMAZON COM SERVICES LLC                                              686  49  93.3%
+  7. UNIVERSITY OF WASHINGTON                                             497   7  98.6%
+  8. NORDSTROM INC                                                        438   5  98.9%
+  9. ZILLOW INC                                                           435  11  97.5%
+ 10. STARBUCKS COFFEE COMPANY                                             423   7  98.4%
+ 11. T-MOBILE USA INC                                                     396   2  99.5%
+ 12. F5 INC                                                               378   2  99.5%
+ 13. SLALOM LLC                                                           319   4  98.8%
+ 14. COSTCO WHOLESALE CORPORATION                                         294   2  99.3%
+ 15. SLALOM INC                                                           291   4  98.6%
+ 16. AMAZON DEVELOPMENT CENTER US INC                                     240   3  98.8%
+ 17. FRED HUTCHINSON CANCER CENTER                                        198   5  97.5%
+ 18. PACCAR INC                                                           155   5  96.9%
+ 19. EDIFECS INC                                                          147   4  97.4%
+ 20. SMARTSHEET INC                                                       141   1  99.3%
+ 21. AVANADE INC                                                          141   2  98.6%
+ 22. LULULEMON USA INC                                                    140   0 100.0%
+ 23. NORDSTROM INC D B A NORDSTROM                                        129   3  97.7%
+ 24. SEAGEN INC                                                           127   2  98.4%
+ 25. REMITLY INC                                                          125   2  98.4%
+ 26. HARMAN CONNECTED SERVICES INC                                        100   5  95.2%
+ 27. AMAZON DATA SERVICES INC                                              97   1  99.0%
+ 28. LASAI TECHNOLOGIES LLC DBA DIGITECH LABS                              88   2  97.8%
+ 29. ZEN3 INFOSOLUTIONS AMERICA INC                                        82   3  96.5%
+ 30. ILINK SYSTEMS INC DBA ILINK DIGITAL                                   81   1  98.8%
+ 31. ALLEN INSTITUTE                                                       80   1  98.8%
+ 32. ACCELALPHA INC                                                        78   0 100.0%
+ 33. AVALARA INC                                                           78   1  98.7%
+ 34. SEA MAR COMMUNITY HEALTH CENTERS                                      73   2  97.3%
+ 35. ADITI CONSULTING LLC                                                  72   2  97.3%
+ 36. PROVIDENCE HEALTH & SERVICES                                          69   1  98.6%
+ 37. ZULILY LLC                                                            67   3  95.7%
+ 38. SEATTLE CHILDREN S HOSPITAL                                           63   0 100.0%
+ 39. TETRA SYSTEMS LLC                                                     63   1  98.4%
+ 40. INSPIRAGE LLC                                                         62   0 100.0%
+ 41. MAQ LLC DBA MAQ SOFTWARE                                              58   0 100.0%
+----------------------------------------------------------------------------------------------------
+ 42. REDFIN CORPORATION                                                    56   0 100.0%
+ 43. AXON ENTERPRISE INC                                                   54   2  96.4%
+ 44. PREMERA BLUE CROSS                                                    53   0 100.0%
+ 45. 9LOGIC TECHNOLOGIES INC                                               51   1  98.1%
+ 46. LENORA SYSTEMS INC                                                    50   3  94.3%
+ 47. HIGHSPOT INC                                                          50   1  98.0%
+ 48. CONVOY INC                                                            49   1  98.0%
+ 49. OUTREACH CORPORATION                                                  48   1  98.0%
+ 50. PROVIDENCE HEALTH & SERVICES WASHINGTON                               45   0 100.0%
+ 51. MOSS ADAMS LLP                                                        45   2  95.7%
+ 52. RUSSELL INVESTMENTS GROUP LLC                                         43   1  97.7%
+ 53. SANA BIOTECHNOLOGY INC                                                42   0 100.0%
+ 54. RELANTO INC                                                           41   0 100.0%
+ 55. ADROIT TECHNOLOGIES CLOUD SOLUTIONS INC                               39   0 100.0%
+ 56. FACTSPAN INC                                                          39   3  92.9%
+ 57. C2S TECHNOLOGIES INC                                                  39   0 100.0%
+ 58. PUGET SOUND ENERGY INC                                                39   0 100.0%
+ 59. WYZE LABS INC                                                         35   0 100.0%
+ 60. BEYONDSOFT CONSULTING INC                                             35   1  97.2%
+ 61. NBBJ LP                                                               35   2  94.6%
+ 62. TRUVETA INC                                                           34   0 100.0%
+ 63. EDIFEES INC                                                           34   0 100.0%
+ 64. FRED HUTCHINSON CANCER RESEARCH CT                                    33   1  97.1%
+ 65. CONFIZ LLC                                                            33   0 100.0%
+ 66. SEATTLE UNIVERSITY                                                    32   1  97.0%
+ 67. CORETEK LABS LLC                                                      32   0 100.0%
+ 68. ALASKA AIRLINES INC                                                   31   1  96.9%
+ 69. ICERTIS INC                                                           31   1  96.9%
+ 70. BILL & MELINDA GATES FOUNDATION                                       31   0 100.0%
+ 71. FLUKE ELECTRONICS CORPORATION                                         31   2  93.9%
+ 72. GE ENERGY MANAGEMENT SERVICES LLC                                     31   0 100.0%
+ 73. MILLIMAN INC                                                          30   0 100.0%
+ 74. CWC TRAVEL INC DBA COSTCO TRAVEL                                      29   1  96.7%
+ 75. CENTIFIC GLOBAL SOLUTIONS INC                                         28   0 100.0%
+ 76. OMNIVA LLC                                                            28   0 100.0%
+ 77. KADLEC REGIONAL MEDICAL CENTER                                        27   2  93.1%
+ 78. SYRENCLOUD INC                                                        26   2  92.9%
+ 79. TWITCH INTERACTIVE INC                                                26   3  89.7%
+ 80. INABIA SOFTWARE AND CONSULTING INC                                    26   2  92.9%
+ 81. VIRGINIA MASON MEDICAL CENTER                                         25   0 100.0%
+ 82. CENTIFIC TECHNOLOGIES INC                                             25   1  96.2%
+ 83. SMARTEK21 LLC                                                         25   2  92.6%
+ 84. INSTITUTE FOR SYSTEMS BIOLOGY                                         24   0 100.0%
+ 85. NINTENDO OF AMERICA INC                                               24   0 100.0%
+ 86. BUNGIE INC                                                            24   0 100.0%
+ 87. PROVIDENCE HEALTH & SERVICES OREGON                                   23   2  92.0%
+ 88. SOPHUS IT SOLUTIONS LLC                                               23   0 100.0%
+ 89. C2S TECHNOLOGIES, INC.                                                23   0 100.0%
+ 90. APPLEXUS TECHNOLOGIES INC                                             23   2  92.0%
+ 91. GE DIGITAL HOLDINGS LLC                                               23   0 100.0%
+ 92. EXPEDITORS INTERNATIONAL OF WASHINGTON INC                            23   0 100.0%
+ 93. SEATTLE CHILDRENS HOSPITAL                                            23   0 100.0%
+ 94. ILINK SYSTEMS, INC. DBA ILINK DIGITAL                                 23   0 100.0%
+ 95. MAGNUSSON KLEMENCIC ASSOCIATES INC                                    23   0 100.0%
+ 96. PROVIDENCE HEALTH AND SERVICES - W                                    22   0 100.0%
+ 97. SEATTLE PACIFIC UNIVERSITY                                            22   1  95.7%
+ 98. NEXTURN INC                                                           22   0 100.0%
+ 99. ISOFTSTONE INC                                                        21   2  91.3%
+100. PHILIPS ULTRASOUND INC                                                21   0 100.0%
+101. TELECOMMUNICATION SYSTEMS INC DBA COMTECH TELECOMMUNICATIONS CORP     21   1  95.5%
+102. PROVIDENCE HEALTH AND SERVICES                                        20   0 100.0%
+103. D AMATO CONVERSANO INC DBA DCI ENGINEERS                              20   1  95.2%
+104. FLEXE INC                                                             20   2  90.9%
+105. MCG HEALTH LLC                                                        20   1  95.2%
+106. METEORCOMM LLC                                                        20   0 100.0%
+107. CLOUDIQ TECHNOLOGIES INC                                              19   0 100.0%
+108. DAVID OPPENHEIMER & COMPANY I LLC                                     19   2  90.5%
+109. PEOPLE TECH GROUP INC                                                 19   1  95.0%
+110. SWEDISH HEALTH SERVICES                                               19   0 100.0%
+111. SYMETRA LIFE INSURANCE COMPANY                                        19   0 100.0%
+112. KPFF INC                                                              19   0 100.0%
+113. TEMPORAL TECHNOLOGIES INC                                             18   0 100.0%
+114. GEOENGINEERS INC                                                      18   0 100.0%
+115. ECOM STRATEGIES LLC                                                   17   0 100.0%
+116. FRED HUTCHINSON CANCER RESEARCH CE                                    17   0 100.0%
+117. ADAPTIVE BIOTECHNOLOGIES CORPORATION                                  17   0 100.0%
+118. ADROIT TECHNOLOGIES AND CLOUD SOLU                                    17   1  94.4%
+119. ISPOT TV INC                                                          17   0 100.0%
+120. FLYHOMES INC                                                          17   0 100.0%
+121. PACTERA TECHNOLOGIES INC                                              17   0 100.0%
+122. APPTIO INC                                                            17   0 100.0%
+123. FTV EMPLOYMENT SERVICES LLC                                           17   0 100.0%
+124. ALTIUS INSTITUTE FOR BIOMEDICAL SCIENCES                              17   0 100.0%
+125. OFFERUP INC                                                           16   0 100.0%
+126. AMAZON ADVERTISING LLC                                                16   2  88.9%
+127. TRIDENT SEAFOODS CORPORATION                                          16   0 100.0%
+128. 9LLABS LLC                                                            15   0 100.0%
+129. AEGIS COMPANY                                                         15   0 100.0%
+130. STATSIG INC                                                           15   0 100.0%
+131. BILL AND MELINDA GATES FOUNDATION                                     15   0 100.0%
+132. SPACELABS HEALTHCARE LLC                                              15   1  93.8%
+133. GITHUB INC                                                            15   0 100.0%
+134. FUELCOMM INC DBA STACKLINE                                            15   0 100.0%
+135. BLUE NILE INC                                                         15   0 100.0%
+136. MC GROUP OF COMPANIES LLC                                             14   0 100.0%
+137. DARIGOLD INC                                                          14   0 100.0%
+138. MOBILE INTEGRATION WORKGROUP INC                                      14   0 100.0%
+139. POKEMON COMPANY INTERNATIONAL INC                                     14   1  93.3%
+140. AGC BIOLOGICS INC                                                     14   0 100.0%
+141. SKILL ON TAP LLC                                                      14   0 100.0%
+142. PROVIDENCE HLTH & SVCS OREGON                                         13   0 100.0%
+143. COMMERCE FABRIC INC                                                   13   0 100.0%
+144. APTLY TECHNOLOGY CORPORATION                                          13   0 100.0%
+145. AFFINE                                                                13   1  92.9%
+146. TRINE LLC                                                             13   0 100.0%
+147. CTS TECHNICAL SERVICES INC                                            13   1  92.9%
+148. UNITEDTEKGROUP INC                                                    13   0 100.0%
+149. GRAB TECHNOLOGY LLC                                                   13   1  92.9%
+150. FUELCOMM INC DBA STACKLINE INC                                        13   0 100.0%
+151. THE ALLEN INSTITUTE FOR ARTIFICIAL INTELLIGENCE                       13   0 100.0%
+152. REC ROOM INC                                                          13   0 100.0%
+153. OCTOML INC                                                            13   0 100.0%
+154. PACTERA TECHNOLOGIES NA INC                                           12   1  92.3%
+155. CLOUDIFY TECHNOLOGIES LLC                                             12   0 100.0%
+156. THE POKEMON COMPANY INTERNATIONAL INC                                 12   0 100.0%
+157. AARIYA TECH INC.                                                      12   0 100.0%
+158. SKYTAP INC                                                            12   1  92.3%
+159. VALVE CORPORATION                                                     11   1  91.7%
+160. MAGNIX USA INC                                                        11   1  91.7%
+161. AMPERITY INC                                                          11   0 100.0%
+162. BITTREX INC                                                           11   0 100.0%
+163. BELLEVUE COLLEGE                                                      11   0 100.0%
+164. AXIO RESEARCH LLC                                                     11   0 100.0%
+165. BNBUILDERS INC                                                        11   0 100.0%
+166. BIG FISH GAMES INC                                                    11   0 100.0%
+167. WEYERHAEUSER NR COMPANY                                               11   0 100.0%
+168. WYZE LABS, INC.                                                       10   0 100.0%
+169. CHATECK INC                                                           10   0 100.0%
+170. REDAPT ATTUNIX INC                                                    10   0 100.0%
+171. TANIUM INC                                                            10   0 100.0%
+172. ENFEC LLC                                                             10   0 100.0%
+173. NFOLKS LLC                                                            10   1  90.9%
+174. CLOUDMOYO INC                                                         10   0 100.0%
+175. COURSE5 INTELLIGENCE PRIVATE LTD                                      10   0 100.0%
+176. JUNO THERAPEUTICS INC                                                 10   1  90.9%
+177. SAGE BIONETWORKS                                                      10   0 100.0%
+178. KIN ON HEALTH CARE CENTER                                             10   0 100.0%
+179. KING COUNTY                                                           10   0 100.0%
+180. H10 SEATTLE LLC DBA H10 CAPITAL LLC                                   10   0 100.0%
+181. COFFMAN ENGINEERS INC                                                 10   0 100.0%
+182. HIGHBROW LLC                                                           9   0 100.0%
+183. DEXTERITY OPERATION US LLC                                             9   0 100.0%
+184. DAMATO CONVERSANO INC DBA DCI ENGI                                     9   0 100.0%
+185. BROOKS SPORTS INC                                                      9   0 100.0%
+186. PITCHBOOK DATA INC                                                     9   0 100.0%
+187. NAUTILUS SUBSIDIARY INC                                                9   0 100.0%
+188. RLSUN SYSTEMS INC                                                      9   1  90.0%
+189. JUST EVOTEC BIOLOGICS INC                                              9   0 100.0%
+190. PILLPACK LLC                                                           9   0 100.0%
+191. ESPER IO INC                                                           9   0 100.0%
+192. PATH                                                                   9   0 100.0%
+193. XPANSE LLC                                                             9   0 100.0%
+194. DOOSAN GRIDTECH INC                                                    9   0 100.0%
+195. INSPUR USA INC                                                         9   0 100.0%
+196. WAFERWIRE LLC                                                          9   0 100.0%
+197. INRIX INC                                                              9   1  90.0%
+198. SHANZE PARTNERS PLLC                                                   8   0 100.0%
+199. OSSIA INC                                                              8   0 100.0%
+200. TALKING RAIN BEVERAGE COMPANY INC                                      8   0 100.0%
+201. EVIATION AIRCRAFT INC                                                  8   0 100.0%
+202. ZENSA LLC                                                              8   0 100.0%
+203. QUMULO INC                                                             8   0 100.0%
+204. BIBLIOSO CORPORATION                                                   8   0 100.0%
+205. ASSURANCE IQ LLC                                                       8   0 100.0%
+206. APPEN BUTLER HILL INC                                                  8   1  88.9%
+207. CHINESE INFORMATION AND SERVICE CENTER                                 8   0 100.0%
+208. PROVIDENCE HEALTH AND SERVICES - O                                     8   0 100.0%
+209. WA FAN TUAN INC                                                        8   0 100.0%
+210. RYTHMOS INC                                                            8   1  88.9%
+211. COMPASS WASHINGTON LLC                                                 8   1  88.9%
+212. COWI NORTH AMERICA INC                                                 8   0 100.0%
+213. YITA LLC                                                               8   1  88.9%
+214. ANNAPURNA LABS US INC                                                  8   0 100.0%
+215. THE ALLEN INSTITUTE FOR ARTIFICIAL                                     8   0 100.0%
+216. DAKSA SOLUTIONS LLC                                                    8   0 100.0%
+217. MOODYS NORTH WEST CONSULTING LLC                                       7   0 100.0%
+218. CONCORD ENGINEERING INC                                                7   0 100.0%
+219. CWC TRAVEL INC                                                         7   1  87.5%
+220. ALAMERE SOFTWARE INC                                                   7   0 100.0%
+221. MICROVISION INC                                                        7   1  87.5%
+222. INNOVATIVE EDGE TECHNOLOGY CONSULTANCY SERVICES                        7   3  70.0%
+223. LINEDATA L C INC                                                       7   0 100.0%
+224. HIYA INC                                                               7   0 100.0%
+225. LOCATE SOFTWARE INC                                                    7   0 100.0%
+226. TECHNOVERT SOLUTIONS INC                                               7   0 100.0%
+227. PIONEER IT SYSTEMS LLC                                                 7   0 100.0%
+228. OLSON KUNDIG INC                                                       7   0 100.0%
+229. PACCAR ENGINE COMPANY                                                  7   0 100.0%
+230. ONELIN CAPITAL CORPORATION                                             7   0 100.0%
+231. OMEROS CORPORATION                                                     7   0 100.0%
+232. AFFIRMA LLC                                                            7   0 100.0%
+233. ZONAR SYSTEMS INC                                                      7   0 100.0%
+234. CASH FLOW PORTAL INC                                                   7   0 100.0%
+235. AUTEL ROBOTICS USA LLC                                                 7   0 100.0%
+236. THE ALLEN INST FOR ARTIFICIAL INTELLIGENCE                             7   0 100.0%
+237. INVENTPRISE INC                                                        7   0 100.0%
+238. GETTY IMAGES SEATTLE INC                                               7   1  87.5%
+239. CSI INTERFUSION INC                                                    7   0 100.0%
+240. ASTRUMU INC                                                            7   0 100.0%
+241. DAVIS WRIGHT TREMAINE LLP                                              7   0 100.0%
+242. SIMERICS INC                                                           7   1  87.5%
+243. TECHNOVA SYSTEMS INC                                                   7   0 100.0%
+244. ASIAN COUNSELING & REFERRAL SERVICE                                    7   0 100.0%
+245. CORESTACK INC                                                          7   0 100.0%
+246. PIT SOLUTIONS LLC                                                      7   0 100.0%
+247. AFOUR TECHNOLOGIES INC                                                 7   0 100.0%
+248. PICKET HOUSES INC                                                      6   1  85.7%
+249. SPECTRUM TECHNOLOGIES LLC                                              6   0 100.0%
+250. SHAPE THERAPEUTICS INC                                                 6   0 100.0%
+251. F5 NETWORKS INC                                                        6   0 100.0%
+252. EIGEN LABS INC                                                         6   0 100.0%
+253. SLR INTERNATIONAL CORPORATION                                          6   0 100.0%
+254. ST JOSEPH HEALTH NORTHERN CALIFORNIA LLC                               6   0 100.0%
+255. EKAA SOLUTIONS INC                                                     6   0 100.0%
+256. CARIAD INC                                                             6   0 100.0%
+257. 98POINT6 INC                                                           6   0 100.0%
+258. BENAROYA RESEARCH INSTITUTE AT VIRGINIA MASON                          6   2  75.0%
+259. NOVATEUR INC                                                           6   0 100.0%
+260. OPALA HEALTH INC                                                       6   0 100.0%
+261. LEASE CRUTCHER LEWIS WA LLC                                            6   0 100.0%
+262. MAQ L L C DBA MAQ SOFTWARE                                             6   0 100.0%
+263. POWER MOBILE LIFE LLC                                                  6   0 100.0%
+264. MCKINSTRY ESSENTION LLC                                                6   0 100.0%
+265. FUJIFILM SONOSITE INC                                                  6   0 100.0%
+266. H10 SEATTLE LLC DBA H10 CAPITAL LL                                     6   0 100.0%
+267. NAUTILUS BIOTECHNOLOGY INC                                             6   0 100.0%
+268. TIDEWORKS TECHNOLOGY INC                                               6   0 100.0%
+269. WATCHGUARD TECHNOLOGIES INC                                            6   1  85.7%
+270. ALL STAR DIRECTORIES INC                                               6   0 100.0%
+271. VUEDATA LLC                                                            6   0 100.0%
+272. ILINK SYSTEMS INC                                                      6   0 100.0%
+273. KNACKHOOK LLC                                                          6   0 100.0%
+274. SALESPOINT INC                                                         6   0 100.0%
+275. REVEFI INC                                                             6   0 100.0%
+276. 110 HOLDINGS LLC DBA LAUNCH CONSULTING                                 6   0 100.0%
+277. JACOBS ASSOCIATES INC                                                  5   0 100.0%
+278. ZONES LLC                                                              5   0 100.0%
+279. VIOME LIFE SCIENCES INC                                                5   0 100.0%
+280. AIRBIQUITY INC                                                         5   0 100.0%
+281. ADISYS CORPORATION                                                     5   0 100.0%
+282. IMDB.COM INC                                                           5   1  83.3%
+283. HOTWIRE INC                                                            5   0 100.0%
+284. ULTRA SAFE NUCLEAR CORPORATION                                         5   0 100.0%
+285. TRANSCEND SOLUTIONS LLC                                                5   0 100.0%
+286. THRIVE SOFTWARE SOLUTIONS INC                                          5   0 100.0%
+287. GLOBAL HEALTH LABS LLC                                                 5   0 100.0%
+288. MOMENTO INC                                                            5   0 100.0%
+289. MOLECULAR EPIDEMIOLOGY INC                                             5   0 100.0%
+290. FLAIR TECH SOLUTIONS INC                                               5   0 100.0%
+291. NANOSTRING TECHNOLOGIES INC                                            5   0 100.0%
+292. ASIAN COUNSELING AND REFERRAL SVC                                      5   0 100.0%
+293. FLAIR TECH SOLUTIONS LLC                                               5   0 100.0%
+294. EXPEDITORS INTERNATIONAL OF WASHIN                                     5   0 100.0%
+295. AUDAX LABS LLC                                                         5   0 100.0%
+296. TERAWE CORPORATION                                                     5   0 100.0%
+297. RETROCAUSAL INC                                                        5   0 100.0%
+298. RESTMESH TECHNOLOGIES LLC                                              5   0 100.0%
+299. TANGO CARD INC                                                         5   0 100.0%
+300. BELLEVUE SCHOOL DISTRICT                                               5   0 100.0%
+301. SYSTIMMUNE INC                                                         5   0 100.0%
+302. SWEDISH HEALTH SERVICES D B A SWEDISH MEDICAL CENTER FIRST HILL        5   0 100.0%
+303. BAMBOO TECHNOLOGIES INC                                                5   0 100.0%
+304. EAN COM LP                                                             5   0 100.0%
+305. PACIFIC MARKET INTERNATIONAL LLC DBA PMI WORLDWIDE                     5   0 100.0%
+306. PANDION INC                                                            5   0 100.0%
+307. POINT APOGEE LLC                                                       5   0 100.0%
+308. CREATE WORLD REAL ESTATE INC                                           5   0 100.0%
+309. SELLEN CONSTRUCTION CO INC                                             5   0 100.0%
+310. DATADIGM LLC                                                           5   0 100.0%
+311. COSMOS GRANITE WEST LLC                                                5   0 100.0%
+312. RYTHER                                                                 5   0 100.0%
+313. CHISON USA INC                                                         5   0 100.0%
+314. COMPASS HEALTH                                                         5   0 100.0%
+315. RIGHTCROWD SOFTWARE INC                                                5   0 100.0%
+316. COURSE5 INTELLIGENCE INC                                               5   0 100.0%
+317. COUGHLIN PORTER LUNDEEN INC                                            5   0 100.0%
+318. IDENTITY DIGITAL INC                                                   5   0 100.0%
+319. YETI GAMES LLC                                                         5   0 100.0%
+320. ACCOLADE INC                                                           4   0 100.0%
+321. ABBOTT CONSTRUCTION LLC                                                4   0 100.0%
+322. XEMELGO INC                                                            4   0 100.0%
+323. INUIX LLC                                                              4   0 100.0%
+324. 1POINT3ACRES LLC                                                       4   0 100.0%
+325. 3MD INC DBA DENALI ADVANCED INTEGRATION                                4   0 100.0%
+326. AI SQUARED                                                             4   1  80.0%
+327. ALTASCIENCES PRECLINICAL SEATTLE LLC                                   4   0 100.0%
+328. SEATTLE CELTIC LLC                                                     4   0 100.0%
+329. ROBERT E TUTLAND RPT INC PS                                            4   0 100.0%
+330. MALIK LAW PLLC                                                         4   0 100.0%
+331. WAGGENER EDSTROM WORLDWIDE INC                                         4   0 100.0%
+332. PORT OF SEATTLE                                                        4   0 100.0%
+333. RM TECHNOTREE INC                                                      4   0 100.0%
+334. LOGIC20 20 INC                                                         4   0 100.0%
+335. QUANTYZD INC DBA SOFY AI                                               4   0 100.0%
+336. PROTECT AI INC                                                         4   0 100.0%
+337. KNOCK INC                                                              4   0 100.0%
+338. WIZARDS OF THE COAST LLC                                               4   1  80.0%
+339. FIREWALK STUDIOS LLC                                                   4   0 100.0%
+340. SOHAM INC                                                              4   0 100.0%
+341. SOFTSMART CONSULTING LLC                                               4   0 100.0%
+342. PERKINS COIE LLP                                                       4   0 100.0%
+343. ARTICA INC                                                             4   0 100.0%
+344. PANOPTO INC                                                            4   0 100.0%
+345. DUODUO TECH INC                                                        4   0 100.0%
+346. PEMCO MUTUAL INSURANCE COMPANY                                         4   0 100.0%
+347. DOMAIN 6 INC                                                           4   0 100.0%
+348. PACSTON CORPORATION                                                    4   0 100.0%
+349. PHILIPS ORAL HEALTHCARE INC                                            4   0 100.0%
+350. SWEDISH HEALTH SERVICES D B A SWED                                     4   0 100.0%
+351. PORCH.COM INC                                                          4   0 100.0%
+352. DENALI SOURCING SERVICES                                               4   0 100.0%
+353. EXTRAHOP NETWORKS INC                                                  4   0 100.0%
+354. NOISEFIGURE RESEARCH INC                                               4   0 100.0%
+355. FRENCH AMERICAN SCHOOL OF PUGET SO                                     4   0 100.0%
+356. SINCRO LLC                                                             4   0 100.0%
+357. NEAL ANALYTICS LLC                                                     4   0 100.0%
+358. DELTA DENTAL OF WASHINGTON                                             4   0 100.0%
+359. SHIPIUM CORP                                                           4   0 100.0%
+360. NEURAL IMAGE CORPORATION                                               4   0 100.0%
+361. BLOODWORKS NORTHWEST                                                   4   0 100.0%
+362. THE SPUR GROUP INC                                                     4   0 100.0%
+363. MOKSHAA LLC                                                            4   1  80.0%
+364. MLOPTIC CORP                                                           4   0 100.0%
+365. MICROVISION INC.                                                       4   0 100.0%
+366. THRIVESOFTWARE SOLUTIONS INC                                           4   0 100.0%
+367. PRESCRYPTIVE HEALTH INC                                                4   0 100.0%
+368. GORDIAN SOFTWARE INC                                                   4   0 100.0%
+369. RPI PRINT INC                                                          4   0 100.0%
+370. CHRISTOPHER HUANG CPAS PLLC                                            4   0 100.0%
+371. TAIYO PACIFIC PARTNERS LP                                              4   0 100.0%
+372. FARMERS NEW WORLD LIFE INSURANCE CO                                    4   0 100.0%
+373. BENAROYA RESEARCH INSTITUTE AT VIR                                     4   1  80.0%
+374. BENAROYA RESEARCH INSTITUTE                                            4   0 100.0%
+375. INICIO TECH INC                                                        4   0 100.0%
+376. SWEDISH HEALTH SERVICES D/B/A SWEDISH MEDICAL GROUP                    4   0 100.0%
+377. EAGLEVIEW TECHNOLOGIES INC                                             4   0 100.0%
+378. STREAMLINE LLC                                                         4   0 100.0%
+379. OQ POINT LLC                                                           4   0 100.0%
+380. PARAMOUNT DATA MANAGEMENT INC                                          4   0 100.0%
+381. EVERETT PUBLIC SCHOOLS                                                 4   0 100.0%
+382. VIRTUAL THERAPEUTICS CORPORATION                                       4   0 100.0%
+383. JAYES TECH LLC                                                         4   0 100.0%
+384. INNOVATIVE EDGE TECHNOLOGY CONSULT                                     4   0 100.0%
+385. OUR BEGINNING LLC                                                      4   0 100.0%
+386. KYMETA CORPORATION                                                     3   0 100.0%
+387. KNACKSOFT LLC                                                          3   0 100.0%
+388. WILDCARD PROPERTIES LLC                                                3   0 100.0%
+389. ACITLABS LLC                                                           3   0 100.0%
+390. SEA BIRD ELECTRONICS INC                                               3   0 100.0%
+391. 0965688 BC LTD DBA PROCOGIA                                            3   0 100.0%
+392. XEALTH INC                                                             3   0 100.0%
+393. RAMMER TECHNOLOGIES INC DBA SYMBL AI                                   3   0 100.0%
+394. CARBON AUTONOMOUS ROBOTIC SYSTEMS                                      3   0 100.0%
+395. AIM INTELLIGENT MACHINES INC                                           3   0 100.0%
+396. WORMPEX AI RESEARCH LLC                                                3   0 100.0%
+397. 0965688 BC LTD. DBA PROCOGIA                                           3   0 100.0%
+398. CHAINGUARD INC                                                         3   0 100.0%
+399. PROVIDENCE SAINT JOHNS HEALTH CENT                                     3   0 100.0%
+400. INVISO CORPORATION                                                     3   0 100.0%
+----------------------------------------------------------------------------------------------------
+Max chars len: 65
+Max approvals: 16723
+Max denials: 183
+Max approval rate len: 6
+----------------------------------------------------------------------------------------------------

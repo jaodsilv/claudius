@@ -3,6 +3,7 @@
 **/.credentials.json
 **/backups
 **/ide
+**/__pycache__/
 **/logs
 **/projects
 **/shell-snapshots
