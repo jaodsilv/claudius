@@ -40,5 +40,13 @@ repos:
     hooks:
       - id: markdownlint-cli2
         args: [--config, config/base.markdownlint-cli2.yaml]
+  - repo: local
+    hooks:
+      - id: system-python-check
+        name: Check for System Python (Virtualenv)
+        entry: python -c "import sys; print(sys.executable)"
+        language: system
+        pass_filenames: false
+        always_run: true
 
 # Consider visiting <https://blog.nshephard.dev/posts/pre-commit-hooks/index.html> for more hooks
