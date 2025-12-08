@@ -227,3 +227,15 @@ Read @~/.claude/instructions/conventional-branch.md for more details.
 - **Version File**: The version is stored in the `version.txt` file.
 - **Version Tag**: The version is tagged with the `v` prefix.
 - **Version History**: The version history is stored in the `version-history.md` file.
+- worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
+- Always use native tools instead of bash tools when available
+
+### Data Folder Convention
+
+- Projects with encrypted data use a paired `{project-name}-data` repository
+- Data repos are stored at `D:\src\{project-name}\data`
+- Worktrees link to data via Windows junction: `mklink /J {worktree}\data {project}\data`
+- When creating a new worktree, ALWAYS ask if a data folder link is needed
+- Use `/project:create` to initialize new projects with paired data repos
+- Use `/project:create-data` to add a data repo to an existing project
+- Use the native Search tool, not dir nor ls
