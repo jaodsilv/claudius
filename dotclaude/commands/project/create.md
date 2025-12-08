@@ -21,6 +21,35 @@ Follow the instructions described in the numbered list below:
 3. Validate that `$project-name` is provided, if not ask user for it
 4. Execute the following steps:
 
+### Prerequisites
+
+Before proceeding, verify that all required tools are installed and properly configured:
+
+#### Check 1: Verify git-crypt Installation
+
+```bash
+git-crypt --version
+```
+
+If git-crypt is not installed:
+1. On Windows: Install via Chocolatey (`choco install git-crypt`)
+2. On macOS: Install via Homebrew (`brew install git-crypt`)
+3. On Linux: Install via package manager (`sudo apt-get install git-crypt`)
+
+#### Check 2: Verify gh CLI Authentication
+
+```bash
+gh auth status
+```
+
+If not authenticated:
+1. Run `gh auth login` to authenticate with GitHub
+2. Follow the prompts to complete authentication
+
+#### Error Handling
+
+If either check fails, do NOT proceed. Install the missing tool or complete authentication first.
+
 ### Step 1: Create Main Repository
 
 ```bash
@@ -65,10 +94,10 @@ mklink /J D:/src/$project-name/main/data D:/src/$project-name/data
 
 ### Step 8: Update Main Repository .gitignore
 
-Add `data/` to the `.gitignore` file in the main repository:
+Add `data/` to the `.gitignore` file in the main repository (idempotent - only adds if not already present):
 
 ```bash
-echo "data/" >> D:/src/$project-name/main/.gitignore
+grep -q "^data/$" D:/src/$project-name/main/.gitignore || echo "data/" >> D:/src/$project-name/main/.gitignore
 ```
 
 ### Step 9: Commit .gitignore Change

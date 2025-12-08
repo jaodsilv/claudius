@@ -219,6 +219,11 @@ Read @~/.claude/instructions/conventional-branch.md for more details.
 - **Authoring**: Do NOT add "Co-authors", "Co-Authored-By: Claude <noreply@anthropic.com>" or
   "🤖 Generated with [Claude Code](https://claude.ai/code)" to the commit message.
 
+#### Worktree Guidelines
+
+- Worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
+- When creating a new worktree, follow the Data Folder Convention section for data folder linking
+
 ### Versioning
 
 - **Basics**: Read @~/.claude/shared/docs/semver.md for more details.
@@ -227,8 +232,6 @@ Read @~/.claude/instructions/conventional-branch.md for more details.
 - **Version File**: The version is stored in the `version.txt` file.
 - **Version Tag**: The version is tagged with the `v` prefix.
 - **Version History**: The version history is stored in the `version-history.md` file.
-- worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
-- Always use native tools instead of bash tools when available
 
 ### Data Folder Convention
 

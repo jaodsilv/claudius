@@ -16,14 +16,45 @@ argument-hint: project-name: <project-name>
 Follow the instructions described in the numbered list below:
 
 1. Parse arguments considering it as a yaml object and assign its values to variables of the same names
-2. Validate that `$project-name` is provided, if not ask user for it
-3. Verify that the project exists at `D:/src/$project-name/`
-4. Execute the following steps:
+2. Set default values:
+   1. `$visibility` defaults to `private` if not provided
+3. Validate that `$project-name` is provided, if not ask user for it
+4. Verify that the project exists at `D:/src/$project-name/`
+5. Execute the following steps:
+
+### Prerequisites
+
+Before proceeding, verify that all required tools are installed and properly configured:
+
+#### Check 1: Verify git-crypt Installation
+
+```bash
+git-crypt --version
+```
+
+If git-crypt is not installed:
+1. On Windows: Install via Chocolatey (`choco install git-crypt`)
+2. On macOS: Install via Homebrew (`brew install git-crypt`)
+3. On Linux: Install via package manager (`sudo apt-get install git-crypt`)
+
+#### Check 2: Verify gh CLI Authentication
+
+```bash
+gh auth status
+```
+
+If not authenticated:
+1. Run `gh auth login` to authenticate with GitHub
+2. Follow the prompts to complete authentication
+
+#### Error Handling
+
+If either check fails, do NOT proceed. Install the missing tool or complete authentication first.
 
 ### Step 1: Create Data Repository on GitHub
 
 ```bash
-gh repo create $project-name-data --private
+gh repo create $project-name-data --$visibility
 ```
 
 ### Step 2: Clone Data Repository
@@ -40,16 +71,16 @@ cd D:/src/$project-name/data && git-crypt init
 
 ### Step 4: Find Existing Worktrees
 
-Scan `D:/src/$project-name/` for existing worktrees (directories that are git repositories but NOT the `data` folder):
+Use the Glob tool to scan `D:/src/$project-name/` for directories (worktrees), then filter for git repositories:
 
-```bash
-ls D:/src/$project-name/
-```
+1. Use Glob to find all directories at `D:/src/$project-name/`:
+   1. Pattern: `$project-name/*` (with glob parameter `path: D:/src`)
+   2. Returns all top-level directories in the project folder
 
-For each directory found (excluding `data`):
-1. Check if it's a git repository
-2. Check if it already has a `data` folder/junction
-3. If no `data` folder exists, create a junction
+2. For each directory found by Glob (excluding `data`):
+   1. Check if it's a git repository by verifying `.git` directory exists
+   2. Check if it already has a `data` folder/junction
+   3. If no `data` folder exists, mark it for Step 5 (junction creation)
 
 ### Step 5: Create Junction Links for Each Worktree
 
@@ -88,8 +119,21 @@ project-create-data-arguments:
     project-name:
       type: string
       description: Name of the existing project
+    visibility:
+      type: string
+      enum:
+        - private
+        - public
+      description: Repository visibility (default: private)
   required:
     - project-name
+```
+
+### Default Parameters Values
+
+```yaml
+arguments-defaults:
+  visibility: private
 ```
 
 ## Usage Examples
@@ -98,4 +142,10 @@ project-create-data-arguments:
 
 ```yaml
 /project:create-data project-name: my-existing-project
+```
+
+### Add data repo with public visibility
+
+```yaml
+/project:create-data project-name: my-open-source-project visibility: public
 ```
