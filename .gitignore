@@ -23,3 +23,6 @@ dotclaude/dotclaude/
 
 # Temporary plan files
 dotclaude/plans/
+
+# Temporary walkthrough files
+**/.thoughts/
