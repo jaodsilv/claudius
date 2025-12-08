@@ -24,6 +24,7 @@ doc-understanding.claude/
 │   └── docs/
 │       └── download.md               # /docs:download command
 └── agents/                           # Sub-agents
+    ├── file-output-writer.md        # Structured file output writer
     └── docs/
         ├── downloader.md            # Single document downloader
         ├── batch-downloader.md      # Batch document downloader
@@ -96,6 +97,12 @@ Document format converter for transforming documents between different formats.
 Conversion quality verifier that checks and validates document conversions.
 
 **Sub-agent Type**: `docs:conversion-verifier`
+
+### `file-output-writer`
+
+Specialized agent for writing structured content to files. Particularly useful when content contains XML-like tags that need to be properly organized and nested. Handles tag parsing, content reorganization, and clean file output.
+
+**Sub-agent Type**: `file-output-writer`
 
 ## Integration
 
