@@ -268,32 +268,49 @@ Splitting into specialized directories:
 3. Makes configurations more maintainable
 4. Allows for workflow-specific customization
 
-<!-- TODO: Add instructions for Windows and MacOS -->
 ## How I suggest you to use this
+
+### Option 1: Marketplace Installation (Recommended)
+
+The easiest way to use this repository is through the Claude Code marketplace:
+
+1. **Add the marketplace**:
+   ```bash
+   /plugin marketplace add jaodsilv/claude
+   ```
+
+2. **Browse available plugins**:
+   ```bash
+   /plugin list
+   ```
+
+3. **Install plugins**:
+   ```bash
+   /plugin install community-bundle     # All community collections
+   /plugin install jaodsilv-workflow    # TDD workflow
+   /plugin install jaodsilv-career      # Job hunting tools
+   ```
+
+See the [Quick Start](#quick-start) section above for more installation options.
+
+### Option 2: Direct Repository Usage
+
+If you prefer to fork and customize:
 
 1. git clone or fork into your src folder
 2. Create a new branch for your own stuff, this will make it easier to merge with whatever I add later
 3. Copy everything from your own ~/.claude into the .claude here
 4. If needed add whatever file you have with secrets in the .gitignore, this .gitignore already includes .credentials.json
-5. Further instructions for Linux and WSL users are below:
-    1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
-    2. Mount or create symlink to *.claude* into your home:
-        1. `export CLAUDE_USER_PATH=/path/to/your/src/folder/claude/.claude`
-        2. Mount Alternative 1 (mount with `mount --bind`):
-            1. Mount this *.claude* path into *~/.claude*: `sudo mount --bind $CLAUDE_USER_PATH ~/.claude`
-            2. If you liked it and this to mount once you start your system, edit your *.bashrc* or *.zshrc*:
-               `echo "sudo mount --bind \$CLAUDE_USER_PATH ~/.claude" >> ~/.bashrc`
-        3. Mount Alternative 2 (Create symlink with `ln -s`):
-            1. Create a symlink from your home to the .claude path in your src folder: `ln -s $CLAUDE_USER_PATH ~/.claude`
-            2. This is the easiest way to mount, and it is persistent, as it creates a symlink in your home.
-        4. Mount Alternative 3 (mount with `bindfs`):
-            1. `sudo apt-get update && sudo apt-get install bindfs`
-            2. `sudo bindfs --no-allow-other $CLAUDE_USER_PATH ~/.claude`
-            3. If you liked it and want this path to mount once you start your shell, edit your *.bashrc* or *.zshrc*:
-               `echo "sudo bindfs --no-allow-other \$CLAUDE_USER_PATH ~/.claude" >> ~/.bashrc`
-        5. Mount Alternative 4 (mount with `/etc/fstab`):
-            1. If you liked it and this to mount once you start your system, edit your `/etc/fstab`:
-               `sudo echo "\$CLAUDE_USER_PATH /home/\$USER/.claude none bind" >> /etc/fstab && sudo systemctl daemon-reload`
+5. Mount the repository's .claude directory:
+    1. **For Linux/WSL users**:
+        1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
+        2. Create symlink (recommended): `ln -s /path/to/your/src/folder/claude/dotclaude ~/.claude`
+    2. **For Windows users**:
+        1. Backup your existing Claude config
+        2. Create junction point or symbolic link to the dotclaude directory
+    3. **For macOS users**:
+        1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
+        2. Create symlink: `ln -s /path/to/your/src/folder/claude/dotclaude ~/.claude`
 
 ## Contributing
 
