@@ -34,9 +34,9 @@ Placeholder for personal project configurations.
 
 Placeholder for learning project configurations.
 
-### external-resources/
+### external-resources/ (via data repository)
 
-Git submodules containing community resources:
+Git submodules containing community resources are stored in the private `claude-data` repository and accessible via the `data/external-resources/` junction link:
 
 1. super-claude
 2. awesome-claude-prompts
@@ -44,6 +44,8 @@ Git submodules containing community resources:
 4. awesome-claude-code-subagents
 5. awesome-claude-code
 6. dynamic-sub-agents
+
+**Note**: Submodules are automatically updated weekly via GitHub Actions.
 
 ### .claude-plugin/
 

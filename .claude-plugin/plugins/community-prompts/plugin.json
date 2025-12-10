@@ -25,19 +25,19 @@
   },
   "agents": [
     "dotclaude/agents/prompt-to-pipeline-architect.md",
-    "external-resources/awesome-claude-code-subagents/categories/05-data-ai/prompt-engineer.md",
-    "external-resources/awesome-claude-code-subagents/categories/05-data-ai/llm-architect.md"
+    "data/external-resources/awesome-claude-code-subagents/categories/05-data-ai/prompt-engineer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/05-data-ai/llm-architect.md"
   ],
   "commands": [
-    "external-resources/super-claude/SuperClaude/Commands/spawn.md"
+    "data/external-resources/super-claude/SuperClaude/Commands/spawn.md"
   ],
   "scripts": [
     "dotclaude/scripts/agent-evolution.sh"
   ],
   "docs": [
-    "external-resources/super-claude/SuperClaude/Core/ORCHESTRATOR.md",
-    "external-resources/super-claude/SuperClaude/Core/PERSONAS.md",
-    "external-resources/awesome-claude-prompts/README.md"
+    "data/external-resources/super-claude/SuperClaude/Core/ORCHESTRATOR.md",
+    "data/external-resources/super-claude/SuperClaude/Core/PERSONAS.md",
+    "data/external-resources/awesome-claude-prompts/README.md"
   ],
   "notes": "Features jaodsilv's unique prompt-to-pipeline-architect for transforming single prompts into multi-agent workflows, plus agent-evolution script and 100+ community prompt examples."
 }

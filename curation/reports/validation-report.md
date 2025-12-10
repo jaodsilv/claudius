@@ -97,7 +97,7 @@ All expected files and structures have been successfully validated:
 **Validation Details**:
 - ✅ All manifests valid JSON
 - ✅ Multi-source aggregation properly attributed
-- ✅ File paths correctly reference external-resources and dotclaude directories
+- ✅ File paths correctly reference data/external-resources and dotclaude directories
 - ✅ Notes explain curation rationale
 - ✅ Clear thematic coherence per collection
 
@@ -182,13 +182,13 @@ All expected files and structures have been successfully validated:
 | Agent | `dotclaude/agents/docs/downloader.md` | ✅ EXISTS | Web content downloader |
 | Skill | `dotclaude/skills/tdd-workflow/SKILL.md` | ✅ EXISTS | Auto-invoked TDD skill |
 | Agent | `job-hunting.claude/agents/cover-letter-evaluator/ats.md` | ✅ EXISTS | ATS evaluator agent |
-| Command | `external-resources/super-claude/SuperClaude/Commands/test.md` | ✅ EXISTS | Test execution command |
-| Agent | `external-resources/awesome-claude-code-subagents/categories/04-quality-security/test-automator.md` | ✅ EXISTS | Test automation specialist |
+| Command | `data/external-resources/super-claude/SuperClaude/Commands/test.md` | ✅ EXISTS | Test execution command |
+| Agent | `data/external-resources/awesome-claude-code-subagents/categories/04-quality-security/test-automator.md` | ✅ EXISTS | Test automation specialist |
 
 **Validation Approach**:
 - Sampled 6 files across different plugin types
-- Covered all major directory structures (dotclaude, job-hunting.claude, external-resources)
-- Verified both local and submodule paths
+- Covered all major directory structures (dotclaude, job-hunting.claude, data/external-resources)
+- Verified both local and submodule paths (submodules now via data repo junction)
 - All files confirmed accessible and parseable
 
 **File Structure Observations**:

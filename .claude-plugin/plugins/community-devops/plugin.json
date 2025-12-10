@@ -24,18 +24,18 @@
     "url": "https://github.com/jaodsilv/claude.git"
   },
   "commands": [
-    "external-resources/super-claude/SuperClaude/Commands/build.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/release/release.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/husky/husky.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/act/act.md"
+    "data/external-resources/super-claude/SuperClaude/Commands/build.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/release/release.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/husky/husky.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/act/act.md"
   ],
   "agents": [
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/devops-engineer.md",
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/kubernetes-specialist.md",
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/cloud-architect.md",
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/deployment-engineer.md",
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/platform-engineer.md",
-    "external-resources/awesome-claude-code-subagents/categories/03-infrastructure/sre-engineer.md"
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/devops-engineer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/kubernetes-specialist.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/cloud-architect.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/deployment-engineer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/platform-engineer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/03-infrastructure/sre-engineer.md"
   ],
   "notes": "Comprehensive DevOps toolkit combining SuperClaude build/release automation with community CI/CD tools and production-ready infrastructure specialists."
 }
