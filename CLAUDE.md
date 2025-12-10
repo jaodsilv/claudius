@@ -30,6 +30,18 @@ External resources are stored in the paired data repository (`claude-data`) and 
 
 **Note**: These submodules are automatically updated weekly via GitHub Actions in the data repository.
 
+**Development Setup**: To access external resources, create a junction link to the data repository:
+
+```cmd
+# Windows (run as Administrator or with Developer Mode enabled)
+mklink /J data D:\src\claude\data
+```
+
+```bash
+# Linux/macOS
+ln -s /path/to/claude-data data
+```
+
 ### `dotclaude/`
 
 - `agents` - Personal agents for Claude Code.
