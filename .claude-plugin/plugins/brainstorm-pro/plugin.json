@@ -1,0 +1,57 @@
+{
+  "name": "brainstorm-pro",
+  "version": "1.0.0",
+  "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation. Transforms ambiguous ideas into actionable specifications through interactive dialogue and comprehensive analysis.",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "category": "productivity",
+  "keywords": [
+    "brainstorming",
+    "requirements",
+    "discovery",
+    "socratic",
+    "feature-exploration",
+    "ideation",
+    "multi-agent",
+    "orchestration",
+    "specification",
+    "product-management"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claude",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaodsilv/claude.git"
+  },
+  "agents": [
+    "brainstorm.claude/agents/brainstorm/facilitator.md",
+    "brainstorm.claude/agents/brainstorm/technical-analyst.md",
+    "brainstorm.claude/agents/brainstorm/requirements-synthesizer.md",
+    "brainstorm.claude/agents/brainstorm/domain-explorer.md",
+    "brainstorm.claude/agents/brainstorm/constraint-analyst.md",
+    "brainstorm.claude/agents/brainstorm/specification-writer.md"
+  ],
+  "commands": [
+    "brainstorm.claude/commands/brainstorm/start.md",
+    "brainstorm.claude/commands/brainstorm/continue.md",
+    "brainstorm.claude/commands/brainstorm/export.md"
+  ],
+  "skills": [
+    "brainstorm.claude/skills/brainstorming/SKILL.md"
+  ],
+  "templates": [
+    {
+      "name": "requirements-document",
+      "path": "brainstorm.claude/templates/requirements-document.md",
+      "description": "Template for generating comprehensive specification documents"
+    },
+    {
+      "name": "session-summary",
+      "path": "brainstorm.claude/templates/session-summary.md",
+      "description": "Template for generating session summary reports"
+    }
+  ],
+  "notes": "## Brainstorm Pro Plugin\n\nThis plugin provides a comprehensive multi-agent workflow for software/feature requirements discovery.\n\n### Key Features\n\n1. **Socratic Dialogue**: Interactive exploration through strategic questioning\n2. **Multi-Agent Analysis**: Domain research, technical feasibility, constraint analysis\n3. **Structured Output**: Professional specification documents\n4. **Session Management**: Pause, resume, and export capabilities\n\n### Workflow\n\n1. Phase 1: Socratic Dialogue (3/5/8 rounds based on depth)\n2. Phase 2: Domain Exploration\n3. Phase 3: Technical Analysis\n4. Phase 4: Constraint Analysis\n5. Phase 5: Requirements Synthesis\n6. Phase 6: Document Generation\n\n### Commands\n\n- `/brainstorm:start topic: \"Your idea\" --depth: normal`\n- `/brainstorm:continue --session-path: ./output/`\n- `/brainstorm:export --session-path: ./output/`"
+}

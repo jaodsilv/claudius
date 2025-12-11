@@ -132,6 +132,22 @@
         "meta",
         "collection"
       ]
+    },
+    {
+      "name": "brainstorm-pro",
+      "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation",
+      "source": ".claude-plugin/plugins/brainstorm-pro",
+      "category": "productivity",
+      "version": "1.0.0",
+      "keywords": [
+        "brainstorming",
+        "requirements",
+        "discovery",
+        "socratic",
+        "ideation",
+        "multi-agent",
+        "orchestration"
+      ]
     }
   ]
 }
