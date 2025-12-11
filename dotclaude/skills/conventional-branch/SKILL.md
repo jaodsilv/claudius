@@ -11,7 +11,8 @@ This skill is automatically invoked when:
 
 ## Overview
 
-Conventional Branch provides a structured and standardized naming convention for Git branches that makes branch purposes immediately clear, enables CI/CD automation, and improves team collaboration.
+Conventional Branch provides a structured and standardized naming convention for Git branches that makes branch purposes immediately
+clear, enables CI/CD automation, and improves team collaboration.
 
 ## Branch Naming Format
 

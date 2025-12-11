@@ -2,7 +2,8 @@
 
 ## Overview
 
-Expert Java code review focusing on naming conventions, modern Java features, SOLID principles, exception handling, design patterns, and best practices.
+Expert Java code review focusing on naming conventions, modern Java features, SOLID principles, exception handling, design patterns,
+and best practices.
 
 ## Naming Conventions and Style
 

@@ -12,7 +12,9 @@ This skill is automatically invoked when:
 
 ## Overview
 
-This workflow ensures consistent, high-quality development using Test-Driven Development (TDD) principles with multi-agent collaboration. It follows a sequential process where each phase builds upon the previous, with iterative design-review cycles throughout.
+This workflow ensures consistent, high-quality development using Test-Driven Development (TDD) principles with multi-agent
+collaboration. It follows a sequential process where each phase builds upon the previous, with iterative design-review cycles
+throughout.
 
 ## Core Principles
 
@@ -668,6 +670,7 @@ Workflow is successful when:
 
 ## Reference
 
-This skill embodies TDD principles with systematic quality assurance through multi-agent collaboration. It ensures maintainable, well-tested code with clear documentation of decisions and tradeoffs.
+This skill embodies TDD principles with systematic quality assurance through multi-agent collaboration. It ensures maintainable,
+well-tested code with clear documentation of decisions and tradeoffs.
 
 Use this workflow for all substantial coding tasks to maintain consistency and quality across the codebase.

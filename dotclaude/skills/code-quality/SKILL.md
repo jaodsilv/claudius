@@ -12,7 +12,8 @@ This skill is automatically invoked when:
 
 ## Overview
 
-Code quality guidelines ensure maintainable, readable, and robust software. This skill provides comprehensive checklists and best practices for evaluating and improving code quality across multiple dimensions.
+Code quality guidelines ensure maintainable, readable, and robust software. This skill provides comprehensive checklists and best
+practices for evaluating and improving code quality across multiple dimensions.
 
 ## Quality Dimensions
 

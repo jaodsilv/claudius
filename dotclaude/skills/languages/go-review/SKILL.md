@@ -2,7 +2,8 @@
 
 ## Overview
 
-Expert Go code review focusing on idiomatic Go patterns, effective error handling, concurrency safety, interface design, and adherence to Effective Go principles.
+Expert Go code review focusing on idiomatic Go patterns, effective error handling, concurrency safety, interface design, and
+adherence to Effective Go principles.
 
 ## Go Formatting and Style
 

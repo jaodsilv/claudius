@@ -8,7 +8,8 @@ description: "Automated discovery, analysis, and categorization of Claude Code p
 
 ## Purpose
 
-Automated discovery, analysis, and categorization of Claude Code plugins from multiple sources including community marketplaces and external resources.
+Automated discovery, analysis, and categorization of Claude Code plugins from multiple sources including community marketplaces
+and external resources.
 
 ## Responsibilities
 

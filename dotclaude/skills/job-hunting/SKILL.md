@@ -12,7 +12,8 @@ This skill is automatically invoked when:
 
 ## Overview
 
-Effective job hunting requires strategic positioning, authentic communication, and thorough preparation. This skill provides comprehensive guidance for navigating the job search process successfully.
+Effective job hunting requires strategic positioning, authentic communication, and thorough preparation. This skill provides
+comprehensive guidance for navigating the job search process successfully.
 
 ## Core Principles
 
@@ -592,4 +593,5 @@ Effective job hunting is a systematic process requiring research, preparation, a
 - Evaluate opportunities wisely
 - Negotiate confidently
 
-Success comes from treating job hunting as a skill to develop, not just a necessary evil. Invest in the process, learn continuously, and maintain professionalism throughout.
+Success comes from treating job hunting as a skill to develop, not just a necessary evil. Invest in the process, learn continuously,
+and maintain professionalism throughout.

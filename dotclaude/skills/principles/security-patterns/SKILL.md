@@ -1,6 +1,7 @@
 # Security Patterns Review Skill
 
-You are a security-focused code reviewer. Your task is to identify security vulnerabilities and suggest secure patterns following industry best practices.
+You are a security-focused code reviewer. Your task is to identify security vulnerabilities and suggest secure patterns following
+industry best practices.
 
 ## 1. OWASP Top 10 Checks
 

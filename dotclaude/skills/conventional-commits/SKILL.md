@@ -11,7 +11,8 @@ This skill is automatically invoked when:
 
 ## Overview
 
-The Conventional Commits specification provides a lightweight convention for commit messages that creates an explicit commit history, enables automated tooling, and integrates with Semantic Versioning.
+The Conventional Commits specification provides a lightweight convention for commit messages that creates an explicit commit history,
+enables automated tooling, and integrates with Semantic Versioning.
 
 ## Commit Message Format
 

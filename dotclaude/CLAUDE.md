@@ -44,8 +44,10 @@ probably some leak, hopefully it is resolved soon
 - When Parsing Arguments assign values to variables where:
   - `$\<variable-name\>` is the name of the variable to assign the value to, e.g., `$urls` is the name of the variable to assign
     the value to the `urls` parameter
-  - `$\<variable-name\>[\<array-index\>]` access the value of the array index, e.g., `$urls[0]` is the value of the first url in the `urls` parameter
-  - `$\<variable-name\>.\<object-key\>` access inner values of the object, e.g., `$urls[0].url` is the value of the first url in the `urls` parameter
+  - `$\<variable-name\>[\<array-index\>]` access the value of the array index, e.g., `$urls[0]` is the value of the first url in the
+    `urls` parameter
+  - `$\<variable-name\>.\<object-key\>` access inner values of the object, e.g., `$urls[0].url` is the value of the first url in the
+    `urls` parameter
 - `\<foreach $value in $\<variable-name\>\>` blocks loops over the array sequentially and assign the value to the variable `$value`, e.g.,
 
   ```text
@@ -85,7 +87,8 @@ probably some leak, hopefully it is resolved soon
 #### Git
 
 - `git worktree add -b ../<branch-name> <branch-name>` - Add a worktree for a new branch
-  - worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
+  - worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name
+    after the last / or \
 - `git worktree list` - List all worktrees
 - `git worktree remove <worktree-path>` - Remove a worktree
 
@@ -221,7 +224,8 @@ Read @~/.claude/instructions/conventional-branch.md for more details.
 
 #### Worktree Guidelines
 
-- Worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name after the last / or \
+- Worktrees should be placed in D:\src\{{REPO_NAME}}\{{BRANCH_NAME}}, where REPO_NAME and BRANCH_NAME should contain only the name
+  after the last / or \
 - When creating a new worktree, follow the Data Folder Convention section for data folder linking
 
 ### Versioning
