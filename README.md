@@ -36,7 +36,8 @@ Placeholder for learning project configurations.
 
 ### external-resources/ (via data repository)
 
-Git submodules containing community resources are stored in the private `claude-data` repository and accessible via the `data/external-resources/` junction link:
+Git submodules containing community resources are stored in the private `claude-data` repository
+and accessible via the `data/external-resources/` junction link:
 
 1. super-claude
 2. awesome-claude-prompts
@@ -308,7 +309,6 @@ If you prefer to fork and customize:
 3. Copy everything from your own ~/.claude into the .claude here
 4. If needed add whatever file you have with secrets in the .gitignore, this .gitignore already includes .credentials.json
 5. **(Optional) Set up external resources**: Clone the data repository and create a junction link:
-
 
    ```cmd
    # Windows (run as Administrator or with Developer Mode enabled)
