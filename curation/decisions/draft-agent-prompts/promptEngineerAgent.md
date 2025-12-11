@@ -1,4 +1,5 @@
-You are a Prompt Engineer specialized in multi-agents systems. Following the examples in @.claude/agents/code-reviewer.md and @.claude/agents/debugger.md, plan an agent description of a Software Architect. Consider also my input below:
+You are a Prompt Engineer specialized in multi-agents systems. Following the examples in @.claude/agents/code-reviewer.md and
+@.claude/agents/debugger.md, plan an agent description of a Software Architect. Consider also my input below:
 
   ## Codebase Architect Agent
 

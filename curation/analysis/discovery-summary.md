@@ -5,7 +5,8 @@
 
 ## Overview
 
-This discovery phase analyzed all locally available sources to create structured inventories of Claude Code plugins, agents, commands, scripts, and skills.
+This discovery phase analyzed all locally available sources to create structured inventories of Claude Code plugins, agents,
+commands, scripts, and skills.
 
 ## Discovery Statistics
 

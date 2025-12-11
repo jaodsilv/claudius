@@ -34,8 +34,11 @@
 
 ##### Codebase Architect Agent
 
-**Role:**  
-This agent functions as a software architect—analyzing new or existing projects to propose optimal codebase structures, modular divisions, and technology stacks. It produces initial architecture plans, high-level folder structures, and outlines core patterns for the rest of the software development lifecycle.
+**Role:**
+This agent functions as a software architect—analyzing new or existing projects to propose optimal codebase structures,
+modular divisions, and technology stacks.
+It produces initial architecture plans, high-level folder structures,
+and outlines core patterns for the rest of the software development lifecycle.
 
 **Capabilities:**  
 - Deep codebase analysis across multiple languages and frameworks.
@@ -44,13 +47,15 @@ This agent functions as a software architect—analyzing new or existing project
 - Advising on best practices for monorepos, microservices, or other architectures.
 - Embedding LLM-friendly documentation to guide other agents and human users.
 
-**Usage in Software Development Life Cycle (SDLC):**  
-Typically invoked at the project inception or when major refactoring/modernization is needed. It sets the technical foundation for subsequent design, implementation, and scaling phases.
+**Usage in Software Development Life Cycle (SDLC):**
+Typically invoked at the project inception or when major refactoring/modernization is needed.
+It sets the technical foundation for subsequent design, implementation, and scaling phases.
 
 **Steps Once Invoked (LLM-friendly format):**
 1. Aggregate and analyze existing `README.md`, `CLAUDE.md`, `.claude/agents/*.md`, `.llm/context/*`, and code files.
 2. Identify project goals, existing structures, and architectural pain points.
-3. Generate a recommended architecture plan, folder structure, and technology stack reasoning—output as `/docs/architecture_plan.llm.md` and `/docs/architecture_structure.llm.md`.
+3. Generate a recommended architecture plan, folder structure, and technology stack reasoning—output as
+   `/docs/architecture_plan.llm.md` and `/docs/architecture_structure.llm.md`.
 4. Suggest improvements, refactoring plans, and migration checklists.
 5. Communicate next steps via a summary in `.llm/agent_architect_output.txt`.
 
@@ -67,8 +72,10 @@ Typically invoked at the project inception or when major refactoring/modernizati
 
 ##### Requirements Analyst Agent
 
-**Role:**  
-This agent extracts, formalizes, and analyzes requirements from human-written specifications, meeting notes, tickets, and related communications. It ensures unambiguous, complete requirements and produces domain models for downstream agents.
+**Role:**
+This agent extracts, formalizes, and analyzes requirements from human-written specifications, meeting notes,
+tickets, and related communications.
+It ensures unambiguous, complete requirements and produces domain models for downstream agents.
 
 **Capabilities:**  
 - Parsing natural language requirements from `.llm/requirements/*`, user_stories.md, emails, or ticket systems.
@@ -98,8 +105,9 @@ Utilized at project onboarding, during new feature intake, or when ambiguities b
 
 ##### Solution Design Agent
 
-**Role:**  
-Designs solution blueprints based on requirements and architectural plans. Translates requirements into actionable technical deliverables, including data models, APIs, and design patterns.
+**Role:**
+Designs solution blueprints based on requirements and architectural plans.
+Translates requirements into actionable technical deliverables, including data models, APIs, and design patterns.
 
 **Capabilities:**  
 - Producing wireframes, class/entity diagrams, interface/API contracts.
@@ -107,8 +115,9 @@ Designs solution blueprints based on requirements and architectural plans. Trans
 - Generating sample inputs/outputs, schemas, and initial tests.
 - Outputting LLM-friendly design documents as bases for coding agents.
 
-**Usage in SDLC:**  
-Bridges the gap between requirement analysis and implementation—critical during design sprints, high-level planning, or when major features are introduced.
+**Usage in SDLC:**
+Bridges the gap between requirement analysis and implementation—critical during design sprints,
+high-level planning, or when major features are introduced.
 
 **Steps Once Invoked:**
 1. Parse finalized requirements from `/docs/reqs_formalized.llm.md`.
@@ -161,8 +170,9 @@ Used throughout active feature/build cycles to translate specifications and wire
 
 ##### Refactoring Agent
 
-**Role:**  
-Continuously improves readability, maintainability, and performance of code. Identifies and remediates technical debt, duplicate logic, or code smells.
+**Role:**
+Continuously improves readability, maintainability, and performance of code.
+Identifies and remediates technical debt, duplicate logic, or code smells.
 
 **Capabilities:**  
 - Pattern-based and semantic code analysis (DRY, SOLID, modularity).
@@ -191,8 +201,9 @@ Primarily during maintenance cycles or post-major feature integrations, but may 
 
 ##### Code Review Agent
 
-**Role:**  
-Performs automated, multi-angle code reviews. Checks for adherence to coding standards, security, performance, and architectural fit; flags issues, and suggests improvements.
+**Role:**
+Performs automated, multi-angle code reviews.
+Checks for adherence to coding standards, security, performance, and architectural fit; flags issues, and suggests improvements.
 
 **Capabilities:**  
 - Static and dynamic code analysis on diff, PR, or feature branches.
@@ -366,8 +377,9 @@ Runs in tandem with code, review, or release events.
 
 ##### Dependency & Security Agent
 
-**Role:**  
-Analyzes dependency graphs for vulnerabilities, license issues, and outdated packages. Applies automated fixes, flags critical issues, and tracks SBOM compliance.
+**Role:**
+Analyzes dependency graphs for vulnerabilities, license issues, and outdated packages.
+Applies automated fixes, flags critical issues, and tracks SBOM compliance.
 
 **Capabilities:**  
 - Periodic scanning of dependency manifests.
@@ -456,8 +468,9 @@ Engaged following test failures, user complaints, or periodic health checks.
 
 ##### Human-in-the-Loop Collaboration Agent
 
-**Role:**  
-Facilitates transparent hand-offs between agents and human team members. Aggregates questions requiring human clarification, approval, or conflict resolution.
+**Role:**
+Facilitates transparent hand-offs between agents and human team members.
+Aggregates questions requiring human clarification, approval, or conflict resolution.
 
 **Capabilities:**  
 - Automatically escalating ambiguous, sensitive, or potentially destructive actions.
@@ -484,8 +497,9 @@ Invoked during agent ambiguity, destructive operations, or flagged security/ethi
 
 ##### Agent Supervisor & Orchestrator
 
-**Role:**  
-Central meta-agent responsible for scheduling, prioritization, and coordination of all sub-agents, as well as providing systems monitoring and emergency controls.
+**Role:**
+Central meta-agent responsible for scheduling, prioritization, and coordination of all sub-agents,
+as well as providing systems monitoring and emergency controls.
 
 **Capabilities:**  
 - Workflow management: triggers, sequenced/concurrent execution, and dependencies.
@@ -627,8 +641,11 @@ Vital for stateful, context-aware agent interactions or supporting session-based
 └── ...
 ```
 
-**Tags:**  
-- `#agent-architecture`, `#prompt-design`, `#code-review`, `#test-generation`, `#ci-cd`, `#orchestration`, `#human-in-the-loop`, `#agent-communication`, `#permissions`, `#memory`, `#event-driven`, `#security`, `#release-management`, `#documentation`, `#file-watcher`, `#integration`, `#performance`, `#refactoring`, `#supervisor`, `#folder-structure`
+**Tags:**
+`#agent-architecture`, `#prompt-design`, `#code-review`, `#test-generation`, `#ci-cd`, `#orchestration`,
+`#human-in-the-loop`, `#agent-communication`, `#permissions`, `#memory`, `#event-driven`, `#security`,
+`#release-management`, `#documentation`, `#file-watcher`, `#integration`, `#performance`, `#refactoring`,
+`#supervisor`, `#folder-structure`
 
 ---
 
@@ -653,27 +670,38 @@ Vital for stateful, context-aware agent interactions or supporting session-based
 
 ##### The Rationale for Role Specialization in Agentic SDLC Automation
 
-The emergence of sophisticated agent orchestration frameworks (such as LangChain, AutoGen, CrewAI, and others) has shifted the software engineering paradigm toward modular, role-based automation. Evidence shows that specialized sub-agents consistently outperform monolithic LLMs or chatbots due to their focused capabilities, domain knowledge, and streamlined task execution.
+The emergence of sophisticated agent orchestration frameworks (such as LangChain, AutoGen, CrewAI, and others)
+has shifted the software engineering paradigm toward modular, role-based automation.
+Evidence shows that specialized sub-agents consistently outperform monolithic LLMs or chatbots
+due to their focused capabilities, domain knowledge, and streamlined task execution.
 
 **Best practice orchestrations employ:**
 - *Role-specialized* agents each handling discrete responsibilities (e.g., code review, test generation, CI/CD, security).
 - *Trigger-driven workflows*—event, action, or file-based—mapped to agent capabilities.
 - *Human-in-the-loop (HITL)* and override support to balance autonomy and control.
 
-Industry usage now includes agentic pipelines in mainstream dev tools, enterprise platforms (Azure, GitHub Copilot), and open-source frameworks, often achieving dramatic reductions in cycle times, mistakes, and onboarding friction.
+Industry usage now includes agentic pipelines in mainstream dev tools, enterprise platforms (Azure, GitHub Copilot),
+and open-source frameworks, often achieving dramatic reductions in cycle times, mistakes, and onboarding friction.
 
 ---
 
 ##### Orchestration Patterns and Communication
 
-**Centralized Orchestration (Supervisor/Orchestrator Agent):**  
-This framework acts as the agentic “conductor,” ensuring correct role invocation, dependency sequencing, conflict resolution, and metric aggregation. Decisions can be rule-based or dynamically learned/adaptive. This aligns with Gartner recommendations and Microsoft design patterns for scalable agentic automation.
+**Centralized Orchestration (Supervisor/Orchestrator Agent):**
+This framework acts as the agentic "conductor," ensuring correct role invocation, dependency sequencing,
+conflict resolution, and metric aggregation.
+Decisions can be rule-based or dynamically learned/adaptive.
+This aligns with Gartner recommendations and Microsoft design patterns for scalable agentic automation.
 
-**Decentralized Patterns:**  
-Agents may directly trigger each other or operate via message passing/event bus (file drop, REST, streaming). This parallelizes workloads and enhances resilience but can require stricter interface and protocol standardization (see Agent Communication Proxy).
+**Decentralized Patterns:**
+Agents may directly trigger each other or operate via message passing/event bus (file drop, REST, streaming).
+This parallelizes workloads and enhances resilience but can require stricter interface
+and protocol standardization (see Agent Communication Proxy).
 
-**LLM-Friendly Prompt & File-Based Design:**  
-Every agent presents its instructions and state in both human- and machine-parseable files, facilitating clear LLM prompting, memory persistence, and transparent debugging—an essential mechanism for agent reliability and composability.
+**LLM-Friendly Prompt & File-Based Design:**
+Every agent presents its instructions and state in both human- and machine-parseable files,
+facilitating clear LLM prompting, memory persistence, and transparent debugging—an essential mechanism
+for agent reliability and composability.
 
 ---
 
@@ -685,7 +713,10 @@ AI agents require **strong permission scoping** and file access mediation. Moder
 - Detailed audit trails for traceability and compliance.
 - Human approval for sensitive or potentially destructive actions.
 
-Agent-specific configuration files (`.llm/agents_config.json`, `AGENTS.md`, per-agent rules) specify readable, writable, and monitored directories for each role. For example, only the Release Management Agent and Human-in-the-Loop can update version tags or production release files.
+Agent-specific configuration files (`.llm/agents_config.json`, `AGENTS.md`, per-agent rules) specify readable,
+writable, and monitored directories for each role.
+For example, only the Release Management Agent and Human-in-the-Loop can update version tags
+or production release files.
 
 ---
 
@@ -705,12 +736,14 @@ Azure Logic Apps and similar platforms provide flexible, pluggable triggers for 
 ##### Communication Protocols and Inter-Agent Messaging
 
 **ACP (Agent Communication Protocol)** and related standards (MCP, A2A) facilitate robust agent-to-agent communication:
-- RESTful, vendor-agnostic interfaces (no LLM prompt size constraints).
-- Async-first, sync-supported communications.
-- Standard message schemas for compatibility across frameworks.
-- Security and authentication layers (OAuth, identity federation).
 
-Agent Communication Proxy Agents implement and manage these protocols, abstracting underlying communication mechanisms to ensure interoperability in complex multi-agent systems.
+1. RESTful, vendor-agnostic interfaces (no LLM prompt size constraints).
+2. Async-first, sync-supported communications.
+3. Standard message schemas for compatibility across frameworks.
+4. Security and authentication layers (OAuth, identity federation).
+
+Agent Communication Proxy Agents implement and manage these protocols,
+abstracting underlying communication mechanisms to ensure interoperability in complex multi-agent systems.
 
 ---
 
@@ -723,13 +756,18 @@ Agent Communication Proxy Agents implement and manage these protocols, abstracti
 - **Action Efficiency:** Number of steps/actions per completed goal.
 - **Memory & Context Fidelity:** Correctness of contextual recall in agent outputs.
 
-These, along with standard metrics (latency, error rate, output quality, user satisfaction), are logged and aggregated by Supervisor and specialized Logging Agents for continuous improvement.
+These, along with standard metrics (latency, error rate, output quality, user satisfaction),
+are logged and aggregated by Supervisor and specialized Logging Agents for continuous improvement.
 
 ---
 
 ##### Human-in-the-Loop and Collaboration Patterns
 
-**HITL agents** are pivotal for safety, explainability, and organizational trust. Research confirms optimal value when agents proactively escalate ambiguities, offer context-specific task summaries, and generate clear actionables for human intervention rather than defaulting to full autonomy. This ensures that strategic, security, and ethical considerations are preserved as agentic systems scale.
+**HITL agents** are pivotal for safety, explainability, and organizational trust.
+Research confirms optimal value when agents proactively escalate ambiguities,
+offer context-specific task summaries, and generate clear actionables for human intervention
+rather than defaulting to full autonomy.
+This ensures that strategic, security, and ethical considerations are preserved as agentic systems scale.
 
 ---
 
@@ -741,15 +779,25 @@ These, along with standard metrics (latency, error rate, output quality, user sa
 - Clear documentation and README/AGENTS.md for onboarding new agents (or humans).
 - Separate human-tasks and manual approval folders to mediate agent autonomy at sensitive points.
 
-Open-source and commercial tools (LangChain’s LangGraph, Azure AI Foundry, GitHub Copilot Studio) reflect these patterns in industry workflows, supporting seamless agent collaboration, safety, and rapid extensibility.
+Open-source and commercial tools (LangChain's LangGraph, Azure AI Foundry, GitHub Copilot Studio)
+reflect these patterns in industry workflows, supporting seamless agent collaboration, safety, and rapid extensibility.
 
 ---
 
 #### Conclusion
 
-The orchestration of AI sub-agents within the software development lifecycle is a transformative innovation, driving productivity, code quality, safety, and continuous delivery to unprecedented levels. The modular, role-specialized agent roster enumerated above has been tailored to address the entire SDLC—from initial requirements to final release and on-going maintenance—with explicit, auditable control points for both human and machine collaboration.
+The orchestration of AI sub-agents within the software development lifecycle is a transformative innovation,
+driving productivity, code quality, safety, and continuous delivery to unprecedented levels.
+The modular, role-specialized agent roster enumerated above has been tailored to address the entire SDLC—from
+initial requirements to final release and on-going maintenance—with explicit,
+auditable control points for both human and machine collaboration.
 
-By rigorously separating concerns—via specialized agents, tight file access scopes, HITL protocols, and dynamic trigger mechanisms—emerging software teams and technical leads can automate, scale, and govern their software projects with unparalleled confidence. State-of-the-art agentic frameworks, communication protocols, and orchestration patterns are now mature enough for general adoption, and thoughtful application of this design will set the course for developer productivity breakthroughs in 2025 and beyond.
+By rigorously separating concerns—via specialized agents, tight file access scopes, HITL protocols,
+and dynamic trigger mechanisms—emerging software teams and technical leads can automate, scale,
+and govern their software projects with unparalleled confidence.
+State-of-the-art agentic frameworks, communication protocols, and orchestration patterns are now mature enough
+for general adoption, and thoughtful application of this design will set the course for developer productivity
+breakthroughs in 2025 and beyond.
 
 **Key Takeaways:**
 - Specialize agents around core SDLC stages and technical functions.
@@ -761,7 +809,9 @@ By rigorously separating concerns—via specialized agents, tight file access sc
 
 ---
 
-By integrating these best-in-class agents and collaboration methodologies, your software development workflow will become faster, safer, and dramatically more scalable—powered by an ecosystem where both AI and human teammates thrive.
+By integrating these best-in-class agents and collaboration methodologies,
+your software development workflow will become faster, safer, and dramatically more scalable—powered
+by an ecosystem where both AI and human teammates thrive.
 
 ---
 
@@ -774,11 +824,17 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 - After processing the answers above and updating the list
 - Use a folder structure like in the examples from the bullets below
 - For each Suggested Agent in the new list, provide A detailed description of the agent's:
-  - role (e.g., "<role-name>Requirements Analyst</role-name>")
-  - capabilities (e.g., "<capabilities>Gathers and refines user requirements, creating detailed specifications, user stories, and acceptance criteria.</capabilities>")
+  - role (e.g., `<role-name>Requirements Analyst</role-name>`)
+  - capabilities (e.g., `<capabilities>Gathers and refines user requirements, creating detailed specifications,
+    user stories, and acceptance criteria.</capabilities>`)
   - how it will be used in the software development life cycle (e.g., "<sdlc>Planning and documenting</sdlc>")
-  - Which steps it should take once invoked to achieve the best outcome for it's role in a llm-friendly prompt format (e.g., "<steps>1. Read the document of the desired features. 2. Pick the first one not planned or not being planned yet. 3. Ultrathink how to convert this human thoughts to a llm accesible language.4. Write a new document in the folder `docs/requirements/feat-{{feature-code}}.md` with the new feature requirements.</steps>")
-  - Triggers of when the agent should be invoked and by whom (e.g., "<triggers>First sub-agent launched by the Orchestrator Agent if no plan is in vigor or if there are still features to be transcribed from human thoughts</triggers>")
+  - Which steps it should take once invoked to achieve the best outcome for it's role in a llm-friendly prompt format
+    (e.g., `<steps>1. Read the document of the desired features. 2. Pick the first one not planned or not being planned yet.
+    3. Ultrathink how to convert this human thoughts to a llm accesible language.
+    4. Write a new document in the folder docs/requirements/feat-{{feature-code}}.md with the new feature requirements.</steps>`)
+  - Triggers of when the agent should be invoked and by whom
+    (e.g., `<triggers>First sub-agent launched by the Orchestrator Agent if no plan is in vigor
+    or if there are still features to be transcribed from human thoughts</triggers>`)
   - Which files it can read, change or monitor (e.g., """
   <files-permissions>
   <read-write-permissions>[
@@ -795,10 +851,14 @@ By integrating these best-in-class agents and collaboration methodologies, your 
   ]</read-monitor-permissions>
   </files-permissions>
   """)
-- The communication between the agents and the human being done via text files in the `.llm` folder is just an example, you can use any other communication method is more efficient for the agents and the human.
+- The communication between the agents and the human being done via text files in the `.llm` folder is just an example,
+  you can use any other communication method is more efficient for the agents and the human.
 - Your response must have at least the tags:
   - Higher level tags: `<list-of-agents>`, `</list-of-agents>`, `<agents-with-description>`, `</agents-with-description>`
-  - Lower level tags: `<agent>`, `</agent>`, `<description>`, `</description>`, `<role-name>`, `</role-name>`, `<capabilities>`, `</capabilities>`, `<sdlc>`, `</sdlc>`, `<steps>`, `</steps>`, `<triggers>`, `</triggers>`, `<files-permissions>`, `</files-permissions>`, `<read-write-permissions>`, `</read-write-permissions>`, `<read-only-permissions>`, `</read-only-permissions>`, `<read-monitor-permissions>`, `</read-monitor-permissions>`
+  - Lower level tags: `<agent>`, `</agent>`, `<description>`, `</description>`, `<role-name>`, `</role-name>`,
+    `<capabilities>`, `</capabilities>`, `<sdlc>`, `</sdlc>`, `<steps>`, `</steps>`, `<triggers>`, `</triggers>`,
+    `<files-permissions>`, `</files-permissions>`, `<read-write-permissions>`, `</read-write-permissions>`,
+    `<read-only-permissions>`, `</read-only-permissions>`, `<read-monitor-permissions>`, `</read-monitor-permissions>`
 - Besides the tags above, Your response can have the tags:
   - Higher level tags: Only `<tailoring-questions>` and `</tailoring-questions>`
   - Lower level tags: Any tag you think is needed to make your response more clear and easy to understand.
@@ -811,7 +871,8 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 - None yet, we are just starting to explore the possibilities of using agents to help us with our software development.
 
 1. What programming languages, frameworks, and platforms are primarily used in your projects?
-- We are using React, Next.js, Tailwind CSS, and ClaudeAI API, but since it is in greenfield, we are still exploring the best tools for the job.
+- We are using React, Next.js, Tailwind CSS, and ClaudeAI API,
+  but since it is in greenfield, we are still exploring the best tools for the job.
 
 1. What is the scale and complexity of your codebase (e.g., monolith, microservices, multi-repo)?
 - We are just starting to build our codebase, so we don't have a lot of code yet.
@@ -841,7 +902,8 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 
 1. Are you working with sensitive, regulated, or proprietary data/code? What compliance or security measures are needed?
 - In the initial scope NO, as I will be the only user, therefore, we are not working with sensitive, regulated, or proprietary data/code yet.
-- In a future scope we will need to handle sensitive data as we need to input users communication with ClaudeAI API, so we need to be careful with the data we store.
+- In a future scope we will need to handle sensitive data as we need to input users communication with ClaudeAI API,
+  so we need to be careful with the data we store.
 
 1. What is your existing toolchain for requirement tracking, version control, build, deploy, and monitoring?
 - Requirement tracking: Not decided yet,
@@ -857,7 +919,8 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 - Very critical, as we want to maintain a high quality codebase, and we want to be able to easily maintain and extend the codebase.
 
 1. What level of testing (unit, integration, end-to-end, load, security) coverage do you require?
-- We need to cover all the features and functionalities of the application, and we need to be able to test the application in a production-like environment. Preferably 100% Coverage.
+- We need to cover all the features and functionalities of the application,
+  and we need to be able to test the application in a production-like environment. Preferably 100% Coverage.
 
 1. How frequently are dependencies, packages, or APIs updated in your ecosystem?
 - Regularly, as we want to keep the codebase up to date, modern and secure.
@@ -880,7 +943,8 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 - We are not using any release management and changelog documentation yet.
 
 1. Do you prioritize speed, stability, security, or innovation in your software development life cycle?
-- We prioritize speed (P0), correctness (P0), completeness (P1), extensibility (P1), stability (P2), security (P2), scalability (P3), and innovation (P3) in our software development life cycle.
+- We prioritize speed (P0), correctness (P0), completeness (P1), extensibility (P1), stability (P2), security (P2),
+  scalability (P3), and innovation (P3) in our software development life cycle.
 
 1. What is your triage process for bugs, incidents, and user feedback?
 - We are not using any triage process for bugs, incidents, and user feedback yet.
@@ -983,7 +1047,8 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 
 <tailoring-questions-answers>
 1. What are your primary programming languages, target frameworks, and deployment environments?
-* We are using React, Next.js, Tailwind CSS, and ClaudeAI API, but since it is in greenfield, we are still exploring the best tools for the job.
+- We are using React, Next.js, Tailwind CSS, and ClaudeAI API,
+  but since it is in greenfield, we are still exploring the best tools for the job.
 
 1. Should agents output in formal JSON, markdown, or natural language?
 - Markdown

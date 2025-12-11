@@ -221,7 +221,8 @@
 
 ### 8. Code Generation (30+ items from subagents)
 
-**Note**: awesome-claude-code-subagents contains 110+ agents including extensive code generation agents (frontend, backend, 24 language specialists). Not analyzed in detail here due to volume, but noted for collection creation.
+**Note**: awesome-claude-code-subagents contains 110+ agents including extensive code generation agents (frontend, backend,
+24 language specialists). Not analyzed in detail here due to volume, but noted for collection creation.
 
 **Recommendation**: Create separate language-specific collections or general "community-code-generation" collection
 

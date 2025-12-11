@@ -7,7 +7,9 @@ I'm building my orchestration of AI sub-agents to help me develop faster. To do 
 
 Ultrathink on a list of agent roles I should think in adding in the context of software development.
 You can ask me questions to better understand my needs.
-In the main output only the list and the questions. No comments, preambles or after thoughts/ after considerations. Leave anything else needed into your thinking output.
+In the main output only the list and the questions.
+No comments, preambles or after thoughts/ after considerations.
+Leave anything else needed into your thinking output.
 
 # Example Output
 
@@ -59,63 +61,108 @@ orchestrator.md
 
 ### Planning & Analysis
 
-- **Product Vision Agent**: This agent supports Product Owners by championing the business vision, prioritizing features, maximizing return on investment (ROI), and represents user needs. It assists in brainstorming high-level ideas, defining the problem or use case, conducting market research, and evaluating prototypes to ensure alignment with business objectives.
+- **Product Vision Agent**: This agent supports Product Owners by championing the business vision,
+prioritizing features, maximizing return on investment (ROI), and represents user needs.
+It assists in brainstorming high-level ideas, defining the problem or use case,
+conducting market research, and evaluating prototypes to ensure alignment with business objectives.
 
-- **Business Requirements Agent**: This agent translates high-level business requirements into detailed technical specifications. Its functions include identifying stakeholders, gathering comprehensive requirements, and bridging communication gaps between business and technical teams. It drafts and maintains the Software Requirement Specification (SRS) document, outlining functions, necessary resources, and potential risks.
+- **Business Requirements Agent**: This agent translates high-level business requirements into detailed technical specifications.
+Its functions include identifying stakeholders, gathering comprehensive requirements,
+and bridging communication gaps between business and technical teams.
+It drafts and maintains the Software Requirement Specification (SRS) document,
+outlining functions, necessary resources, and potential risks.
 
-- **Project Management Agent**: Orchestrates the entire development cycle, including planning timelines, allocating resources, and tracking progress against milestones. This agent can manage budgets, handle change requests, perform continuous risk management by identifying potential delays or budget overruns, optimize resource allocation, automate scheduling, generate reports, and manage stakeholder communication. It ensures project health and stakeholder alignment.
+- **Project Management Agent**: Orchestrates the entire development cycle,
+including planning timelines, allocating resources, and tracking progress against milestones.
+This agent can manage budgets, handle change requests,
+perform continuous risk management by identifying potential delays or budget overruns,
+optimize resource allocation, automate scheduling, generate reports, and manage stakeholder communication.
+It ensures project health and stakeholder alignment.
 
 ### Design
 
-- **Software Design Agent**: This agent designs the project's architecture, including software navigation, user interfaces, and database structure. It assesses how new software integrates with existing applications and systems. This agent creates the Software Design Document (SDD) and can assist in generating prototypes. It can also generate high-order components and core application structures rapidly.
+- **Software Design Agent**: This agent designs the project's architecture,
+including software navigation, user interfaces, and database structure.
+It assesses how new software integrates with existing applications and systems.
+This agent creates the Software Design Document (SDD) and can assist in generating prototypes.
+It can also generate high-order components and core application structures rapidly.
 
-- **UX/UI Design Agent**: This agent focuses on user-centered design principles. It researches users, maps user journeys (UX), creates visual elements, maintains design systems (UI), crafts micro-interactions (Interaction Design), and validates designs through user testing (UX Research). It ensures the product meets both user needs and business objectives, potentially boosting customer satisfaction and conversion rates.
+- **UX/UI Design Agent**: This agent focuses on user-centered design principles.
+It researches users, maps user journeys (UX), creates visual elements, maintains design systems (UI),
+crafts micro-interactions (Interaction Design), and validates designs through user testing (UX Research).
+It ensures the product meets both user needs and business objectives,
+potentially boosting customer satisfaction and conversion rates.
 
 ### Development
 
-- **Frontend Development Agent**: Specializes in building responsive user interfaces, utilizing frameworks like React or Angular. This agent can generate UI components, ensure cross-browser compatibility, and implement interaction logic.
+- **Frontend Development Agent**: Specializes in building responsive user interfaces,
+utilizing frameworks like React or Angular.
+This agent can generate UI components, ensure cross-browser compatibility, and implement interaction logic.
 
-- **Backend Development Agent**: Focuses on creating server logic, managing databases, and developing robust APIs. It handles data processing, authentication, and integration with other services.
+- **Backend Development Agent**: Focuses on creating server logic, managing databases, and developing robust APIs.
+It handles data processing, authentication, and integration with other services.
 
-- **Mobile Development Agent**: Specializes in crafting native or cross-platform mobile applications. This agent can generate code for specific mobile platforms and ensure performance and user experience on mobile devices.
+- **Mobile Development Agent**: Specializes in crafting native or cross-platform mobile applications.
+This agent can generate code for specific mobile platforms and ensure performance and user experience on mobile devices.
 
-- **Code Generation Agent**: This agent writes and optimizes code, detects inefficiencies, suggests improvements, and can even implement fixes in real time. It provides inline code suggestions  and can handle full workflows, from generating code snippets to entire application components.
+- **Code Generation Agent**: This agent writes and optimizes code, detects inefficiencies,
+suggests improvements, and can even implement fixes in real time.
+It provides inline code suggestions  and can handle full workflows,
+from generating code snippets to entire application components.
 
-- **Code Review Agent**: Automatically analyzes code for quality, style, potential issues, and vulnerabilities. It suggests fixes and helps catch errors early, ensuring clean, high-quality code and adherence to coding standards.  
+- **Code Review Agent**: Automatically analyzes code for quality, style, potential issues, and vulnerabilities.
+It suggests fixes and helps catch errors early, ensuring clean, high-quality code and adherence to coding standards.  
 
 ### Quality Assurance & Testing
 
-- **QA Test Automation Agent**: Creates test plans and automates testing workflows, including unit, integration, and regression tests. It can build complex test cases from plain English prompts, maintain test scripts by adapting to UI or requirement changes, and generate large amounts of realistic test data.
+- **QA Test Automation Agent**: Creates test plans and automates testing workflows,
+including unit, integration, and regression tests.
+It can build complex test cases from plain English prompts,
+maintain test scripts by adapting to UI or requirement changes, and generate large amounts of realistic test data.
 
-- **Performance Testing Agent**: Optimizes system performance under various loads. This agent can simulate user traffic, identify bottlenecks, and suggest performance improvements.
+- **Performance Testing Agent**: Optimizes system performance under various loads.
+This agent can simulate user traffic, identify bottlenecks, and suggest performance improvements.
 
-- **Security Testing Agent**: Performs vulnerability assessments. This agent acts as a continuous security scanner, actively searching for vulnerabilities in code, analyzing dependencies, flagging risks, and suggesting fixes before threats escalate.
+- **Security Testing Agent**: Performs vulnerability assessments.
+This agent acts as a continuous security scanner, actively searching for vulnerabilities in code,
+analyzing dependencies, flagging risks, and suggesting fixes before threats escalate.
 
-- **User Acceptance Testing (UAT) Agent**: Coordinates with Subject Matter Experts (SMEs) to validate that solutions meet business requirements. It creates real-world test scenarios, documents findings, and facilitates feedback sessions, contributing to reduced post-release defects and increased user adoption.
+- **User Acceptance Testing (UAT) Agent**: Coordinates with Subject Matter Experts (SMEs) to validate that solutions meet
+business requirements.
+It creates real-world test scenarios, documents findings, and facilitates feedback sessions,
+contributing to reduced post-release defects and increased user adoption.
 
-- **Debugging Agent**: Extends beyond simple find-and-fix procedures. This agent uses data analytics and machine learning to identify where bugs are most likely to occur in the codebase, thereby improving the efficiency of testing processes and allowing human developers to focus their efforts on potentially problematic or high-risk areas.  
+- **Debugging Agent**: Extends beyond simple find-and-fix procedures.
+This agent uses data analytics and machine learning to identify where bugs are most likely to occur in the codebase,
+thereby improving the efficiency of testing processes and allowing human developers to focus their efforts on potentially
+problematic or high-risk areas.  
 
 ### Operations & Infrastructure
 
-- **DevOps/Deployment Agent**: Manages infrastructure and deployment processes. This agent automates CI/CD workflows, ensuring smooth and continuous delivery of software updates.  
+- **DevOps/Deployment Agent**: Manages infrastructure and deployment processes.
+This agent automates CI/CD workflows, ensuring smooth and continuous delivery of software updates.  
 
 ### Cross-functional/Support Agents
 
-- **Documentation Agent**: Generates and updates various forms of documentation, including API documentation, user manuals, and internal technical specifications.  
+- **Documentation Agent**: Generates and updates various forms of documentation,
+including API documentation, user manuals, and internal technical specifications.  
 
-- **Knowledge Management Agent**: Stores and retrieves past interactions, project history, and accumulated knowledge, enabling personalized experiences and providing comprehensive responses to queries from other agents or humans.  
+- **Knowledge Management Agent**: Stores and retrieves past interactions, project history, and accumulated knowledge,
+enabling personalized experiences and providing comprehensive responses to queries from other agents or humans.  
 
-- **Compliance Agent**: Automatically audits project data and processes against regulatory requirements (e.g., healthcare, finance, technology standards), flags inconsistencies, and recommends corrective actions. It ensures data integrity and adherence to industry standards.  
+- **Compliance Agent**: Automatically audits project data and processes against regulatory requirements
+(e.g., healthcare, finance, technology standards), flags inconsistencies, and recommends corrective actions.
+It ensures data integrity and adherence to industry standards.  
 
 ### As Table
 
 | Traditional Role | Proposed AI Agent Role | Core Functions | Key AI Capabilities | Primary SDLC Phase(s) | Recommended Agent Type |
 |---|---|---|---|---|---|
-| Product Owner | Product Vision Agent | Champions business vision, prioritizes features, maximizes ROI, represents user needs | LLM-driven reasoning & planning, Market analysis, Prototype evaluation | Planning | Goal-based, Utility-based |
-| Business Analyst | Business Requirements Agent | Gathers & translates business requirements into technical specifications | Requirement analysis, SRS generation, Communication bridging | Planning | Goal-based |
-| Project Manager | Project Management Agent | Orchestrates development cycle, plans timelines, allocates resources, tracks progress | Predictive analytics, Risk assessment, Resource optimization, Automated scheduling, Reporting, Stakeholder communication | Planning, Development, Operations, Cross-cutting | Utility-based |
-| Software Architect | Software Design Agent | Designs project architecture, navigation, UI, database; assesses system integration | Architecture generation, Component generation, Prototype assistance | Design | Goal-based, Utility-based |
-| UX/UI Designer | UX/UI Design Agent | Researches users, maps journeys, creates visual elements, validates designs | User research analysis, Design system generation, User testing analysis | Design | Model-based Reflex, Goal-based |
+| Product Owner | Product Vision Agent | Champions vision, prioritizes features, maximizes ROI, represents user needs | LLM reasoning & planning, Market analysis, Prototype evaluation | Planning | Goal-based, Utility-based |
+| Business Analyst | Business Requirements Agent | Gathers & translates requirements into technical specs | Requirement analysis, SRS generation, Communication bridging | Planning | Goal-based |
+| Project Manager | Project Management Agent | Orchestrates development cycle, plans timelines, allocates resources | Predictive analytics, Risk assessment, Scheduling, Reporting, Stakeholder communication | Planning, Development, Operations, Cross-cutting | Utility-based |
+| Software Architect | Software Design Agent | Designs architecture, navigation, UI, database; assesses integration | Architecture generation, Component generation, Prototype assistance | Design | Goal-based, Utility-based |
+| UX/UI Designer | UX/UI Design Agent | Researches users, maps journeys, creates visuals, validates designs | User research analysis, Design system generation, User testing analysis | Design | Model-based Reflex, Goal-based |
 | Frontend Developer | Frontend Development Agent | Builds responsive user interfaces with frameworks (e.g., React, Angular) | Code generation, UI component generation, Cross-browser compatibility | Development | Goal-based |
 | Backend Developer | Backend Development Agent | Creates server logic, manages databases, develops APIs | Code generation, Database schema design, API development | Development | Goal-based |
 | Mobile Developer | Mobile Development Agent | Crafts native or cross-platform mobile applications | Code generation (platform-specific), Performance optimization | Development | Goal-based |
@@ -134,19 +181,33 @@ orchestrator.md
 ## Pro
 
 - **Orchestrator_Agent**: Decomposes high-level goals into specific tasks and coordinates the work of other agents.
-- **Requirements_Analyst_Agent**: Gathers and refines user requirements, creating detailed specifications, user stories, and acceptance criteria.
-- **System_Architect_Agent**: Designs the overall software architecture, selects the technology stack, and defines the primary components and their interactions.
-- **Developer_Agent**: Writes, refactors, and debugs source code based on specifications provided by the architect and requirements analyst.
-- **Test_Engineer_Agent**: Creates and executes unit, integration, and end-to-end tests to verify functionality and find defects.
-- **Code_Reviewer_Agent**: Analyzes source code for quality, adherence to coding standards, maintainability, and potential bugs.
-- **Security_Analyst_Agent**: Scans code and infrastructure for security vulnerabilities and suggests remediation strategies.
-- **DevOps_Engineer_Agent**: Manages the CI/CD pipeline, automates builds, testing, and deployment processes.
-- **Technical_Writer_Agent**: Generates and maintains documentation, including API references, system design documents, and user guides.
-- **Research_Agent**: Explores external knowledge bases, documentation, and open-source libraries to find solutions, best practices, or relevant code examples.
+- **Requirements_Analyst_Agent**: Gathers and refines user requirements,
+creating detailed specifications, user stories, and acceptance criteria.
+- **System_Architect_Agent**: Designs the overall software architecture, selects the technology stack,
+and defines the primary components and their interactions.
+- **Developer_Agent**: Writes, refactors, and debugs source code based on specifications provided by the architect
+and requirements analyst.
+- **Test_Engineer_Agent**: Creates and executes unit, integration, and end-to-end tests to verify functionality
+and find defects.
+- **Code_Reviewer_Agent**: Analyzes source code for quality, adherence to coding standards,
+maintainability, and potential bugs.
+- **Security_Analyst_Agent**: Scans code and infrastructure for security vulnerabilities
+and suggests remediation strategies.
+- **DevOps_Engineer_Agent**: Manages the CI/CD pipeline, automates builds,
+testing, and deployment processes.
+- **Technical_Writer_Agent**: Generates and maintains documentation,
+including API references, system design documents, and user guides.
+- **Research_Agent**: Explores external knowledge bases, documentation, and open-source libraries
+to find solutions, best practices, or relevant code examples.
 
-Excellent. Thank you for providing that context. Your answers clearly indicate that the initial friction is in the **planning and design phase** for a **new, security-conscious web application**.
+Excellent.
+Thank you for providing that context.
+Your answers clearly indicate that the initial friction is in the **planning and design phase** for a
+**new, security-conscious web application**.
 
-Based on this, I recommend prioritizing the development of your sub-agents to front-load the conceptual and architectural work. Here is a refined and prioritized list of roles tailored to your needs.
+Based on this, I recommend prioritizing the development of your sub-agents to front-load the conceptual
+and architectural work.
+Here is a refined and prioritized list of roles tailored to your needs.
 
 ### Recommended Sub-Agent Orchestration Strategy
 
@@ -154,23 +215,37 @@ Based on this, I recommend prioritizing the development of your sub-agents to fr
 
 ### **Tier 1: High-Priority (The "Blueprint" Crew)**
 
-These agents directly address your primary pain point: **Planning**. They work together to transform your initial idea into a well-structured, secure, and maintainable project plan before significant code is written.
+These agents directly address your primary pain point: **Planning**.
+They work together to transform your initial idea into a well-structured, secure,
+and maintainable project plan before significant code is written.
 
 - **Role**: `Requirements_Analyst_Agent`
-  - **Description**: Takes your high-level goals for the web application and breaks them down into detailed feature specifications, user stories, and functional requirements.
-  - **Justification**: This is the starting point for any **greenfield** project and the core of the **planning** phase. It ensures clarity on what to build.
+  - **Description**: Takes your high-level goals for the web application and breaks them down into detailed feature
+  specifications, user stories, and functional requirements.
+  - **Justification**: This is the starting point for any **greenfield** project and the core of the **planning** phase.
+  It ensures clarity on what to build.
 
 - **Role**: `System_Architect_Agent`
-  - **Description**: Designs the high-level structure of the **React** application. It will propose a component hierarchy, select a state management strategy (e.g., Redux, Zustand), and design the data flow between the frontend and the **ClaudeAI API**.
-  - **Justification**: Crucial for ensuring long-term **extensibility and maintainability**. A solid architecture is the foundation of a successful greenfield project.
+  - **Description**: Designs the high-level structure of the **React** application.
+  It will propose a component hierarchy, select a state management strategy (e.g., Redux, Zustand),
+  and design the data flow between the frontend and the **ClaudeAI API**.
+  - **Justification**: Crucial for ensuring long-term **extensibility and maintainability**.
+  A solid architecture is the foundation of a successful greenfield project.
 
 - **Role**: `Security_Analyst_Agent`
-  - **Description**: Works alongside the `System_Architect_Agent` from day one. It will specifically design the strategy for securely managing and using the ClaudeAI API keys on the client-side or through a backend-for-frontend (BFF), and define security best practices for the React application (e.g., preventing XSS).
-  - **Justification**: Addresses your explicit requirement for high **security** from the very beginning of the design process, which is the most effective approach.
+  - **Description**: Works alongside the `System_Architect_Agent` from day one.
+  It will specifically design the strategy for securely managing and using the ClaudeAI API keys on the client-side
+  or through a backend-for-frontend (BFF), and define security best practices for the React application
+  (e.g., preventing XSS).
+  - **Justification**: Addresses your explicit requirement for high **security** from the very beginning of the design process,
+  which is the most effective approach.
 
 - **Role**: `Research_Agent`
-  - **Description**: Acts as a specialist support agent for the Architect and Analyst. It will investigate best practices for integrating third-party APIs like ClaudeAI into React, compare different state management libraries, or find reference architectures for secure and scalable web apps.
-  - **Justification**: Accelerates the planning and design phase by providing data-driven recommendations and preventing common pitfalls.
+  - **Description**: Acts as a specialist support agent for the Architect and Analyst.
+  It will investigate best practices for integrating third-party APIs like ClaudeAI into React,
+  compare different state management libraries, or find reference architectures for secure and scalable web apps.
+  - **Justification**: Accelerates the planning and design phase by providing data-driven recommendations
+  and preventing common pitfalls.
 
 ---
 
@@ -179,16 +254,19 @@ These agents directly address your primary pain point: **Planning**. They work t
 Once the blueprint is complete, these agents execute the plan.
 
 - **Role**: `Developer_Agent`
-  - **Description**: An expert in React and JavaScript/TypeScript. It takes the component designs and user stories and writes the actual code. It will implement the logic for calling the ClaudeAI API as designed by the architect.
+  - **Description**: An expert in React and JavaScript/TypeScript. It takes the component designs and user stories and writes the
+    actual code. It will implement the logic for calling the ClaudeAI API as designed by the architect.
   - **Justification**: The primary executor of the plan. Its effectiveness is maximized by the detailed specifications from the Tier 1 agents.
 
 - **Role**: `Test_Engineer_Agent`
-  - **Description**: Reads the requirements and acceptance criteria to generate corresponding unit and integration tests using a framework like Jest and React Testing Library.
+  - **Description**: Reads the requirements and acceptance criteria to generate corresponding unit and integration tests using a
+    framework like Jest and React Testing Library.
   - **Justification**: Ensures code quality and application correctness from the start, which is vital for **maintainability**.
 
 - **Role**: `Technical_Writer_Agent`
   - **Description**: Documents the architecture decisions, component APIs, and setup instructions as they are being created.
-  - **Justification**: Directly supports your goal of **maintainability and extensibility** by creating a living document that makes it easier for the system (or humans) to understand and modify the codebase in the future.
+  - **Justification**: Directly supports your goal of **maintainability and extensibility** by creating a living document that
+    makes it easier for the system (or humans) to understand and modify the codebase in the future.
 
 ---
 
@@ -198,13 +276,16 @@ These agents are important for a mature project but are not critical for getting
 
 - **Role**: `DevOps_Engineer_Agent`
   - **Description**: Automates the build and deployment process (CI/CD) to a hosting service (e.g., Vercel, Netlify).
-  - **Justification**: For a **greenfield** project, initial deployments can be manual. This role becomes more critical as the application grows and updates become more frequent.
+  - **Justification**: For a **greenfield** project, initial deployments can be manual. This role becomes more critical as the
+    application grows and updates become more frequent.
 
 - **Role**: `Code_Reviewer_Agent`
   - **Description**: Provides an automated second opinion on code quality, style guide adherence, and potential logic flaws.
-  - **Justification**: While beneficial for **maintainability**, its function is partially covered by strong architectural guidelines and a robust `Test_Engineer_Agent` in the early stages.
+  - **Justification**: While beneficial for **maintainability**, its function is partially covered by strong architectural guidelines
+    and a robust `Test_Engineer_Agent` in the early stages.
 
-This tiered approach allows you to focus your development efforts on building an orchestration system that solves your most immediate problem—**planning**—while laying out a clear roadmap for future expansion.
+This tiered approach allows you to focus your development efforts on building an orchestration system that solves your most
+immediate problem—**planning**—while laying out a clear roadmap for future expansion.
 
 # Copilot
 
@@ -346,7 +427,9 @@ This tiered approach allows you to focus your development efforts on building an
 
 ### Round 3
 
-# Specialized AI Sub-Agent Roles and Orchestration for Accelerated Software Development: A Comprehensive Agent Design Framework
+# Specialized AI Sub-Agent Roles and Orchestration for Accelerated Software Development
+
+A Comprehensive Agent Design Framework
 
 ---
 
@@ -379,19 +462,28 @@ This tiered approach allows you to focus your development efforts on building an
 
 ### 1. **Feature Orchestrator Agent**
 
-**Role**: The core coordinator responsible for managing workflows, delegating sub-tasks, handling handoffs between specialized agents, and prioritizing tasks based on the project state, triggers, and the feature's current state, as well as providing systems monitoring and emergency controls. It is assigned to a single feature per instance.
+**Role**: The core coordinator responsible for managing workflows, delegating sub-tasks,
+handling handoffs between specialized agents, and prioritizing tasks based on the project state, triggers,
+and the feature's current state, as well as providing systems monitoring and emergency controls.
+It is assigned to a single feature per instance.
 
 **Capabilities**:
-- Maintains a global overview of all available agents, active tasks, and their current states for the feature.
-- Interprets high-level objectives from humans or external systems and decomposes them into sub-tasks for invocation by specific specialized agents.
-- Manages the queue of requests, monitors agent availability/states, detects bottlenecks or stalls, and dynamically reallocates work to optimize throughput.
-- Maintains state, context, and task logs for traceability and recovery in case of workflow interruptions.
+- Maintains a global overview of all available agents, active tasks,
+and their current states for the feature.
+- Interprets high-level objectives from humans or external systems and decomposes them into sub-tasks
+for invocation by specific specialized agents.
+- Manages the queue of requests, monitors agent availability/states, detects bottlenecks or stalls,
+and dynamically reallocates work to optimize throughput.
+- Maintains state, context, and task logs for traceability and recovery
+in case of workflow interruptions.
 - Workflow management: triggers, sequenced/concurrent execution, and dependencies.
 - Logs agent status, failures, performance, and outcomes.
 - Provides audit logs and triggers human-in-the-loop if unrecoverable errors occur.
 
 **Usage in SDLC**:
-- Present throughout the process, particularly crucial at orchestration "decision points" within a feature: project kickoff, milestone transitions, or complex multi-agent coordination (e.g., code requiring simultaneous testing and security review).
+- Present throughout the process, particularly crucial at orchestration "decision points" within a feature:
+project kickoff, milestone transitions, or complex multi-agent coordination
+(e.g., code requiring simultaneous testing and security review).
 
 **Steps once invoked (LLM-friendly prompt format)**:
 
@@ -401,15 +493,21 @@ Steps:
 1. Analyze high-level objective and decompose into sub-tasks.
 2. Assign each sub-task to the relevant specialized agent.
 3. Collect sub-task results; monitor for errors or workflow blocks.
-4. Re-assign/retry failed steps; escalate to HITL agent for ambiguous or critical issues.
+4. Re-assign/retry failed steps; escalate to HITL agent for ambiguous
+or critical issues.
 5. Maintain execution log and update project status summary in .llm/orchestration_log.txt
 ```
 
-**When/Who Triggers**: Invoked one per feature being developed, new project goals, major user commands, automation events (e.g., CI triggers), or by user via project management interfaces.
+**When/Who Triggers**: Invoked one per feature being developed, new project goals,
+major user commands, automation events (e.g., CI triggers),
+or by user via project management interfaces.
 
 **Files it can read/change/monitor**:
-- Reads/writes `.llm/feat-{{feature-code}}/orchestra/log.txt`, `.llm/feat-{{feature-code}}/orchestra/workflow_status.json`, and all agent state files in `.llm/feat-{{feature-code}}/`.
-- Can read project status, meta-files, error logs for effective coordination and handoff clarity.
+- Reads/writes `.llm/feat-{{feature-code}}/orchestra/log.txt`,
+`.llm/feat-{{feature-code}}/orchestra/workflow_status.json`,
+and all agent state files in `.llm/feat-{{feature-code}}/`.
+- Can read project status, meta-files, error logs for effective coordination
+and handoff clarity.
 
 **Tag**: `@orchestrator @core @workflow @entrypoint`
 
@@ -417,15 +515,19 @@ Steps:
 
 ### 2. **Requirements Analysis Agent**
 
-**Role**: Translates business or stakeholder input into structured, actionable software requirements, refining ambiguities before handoff to downstream agents.
+**Role**: Translates business or stakeholder input into structured, actionable software requirements,
+refining ambiguities before handoff to downstream agents.
 
 **Capabilities**:
 - Parses various input formats: emails, meeting transcripts, user stories, contracts.
-- Extracts explicit requirements, identifies missing or ambiguous areas, and generates clarifying questions.
-- Produces formal requirements artifacts (markdown/JSON specifications) for traceability and further design.
+- Extracts explicit requirements, identifies missing or ambiguous areas,
+and generates clarifying questions.
+- Produces formal requirements artifacts (markdown/JSON specifications)
+for traceability and further design.
 
 **Usage in SDLC**:
-- Invoked at project origination, or whenever a requirement file is updated or a new feature is proposed.
+- Invoked at project origination, or whenever a requirement file is updated
+or a new feature is proposed.
 
 **Steps once invoked (LLM-friendly prompt format)**:
 
@@ -435,10 +537,13 @@ Steps:
 1. Parse input (text, transcript, user story, etc.).
 2. Extract functional, non-functional, and edge case requirements.
 3. List ambiguities and generate follow-up clarification queries.
-4. Save structured requirements artifacts; notify architects for further design.
+4. Save structured requirements artifacts; notify architects for further
+design.
 ```
 
-**When/Who Triggers**: Activated by product owners, project managers, or automated triggers on new requirement inputs. Handoff to architects upon completion.
+**When/Who Triggers**: Activated by product owners, project managers,
+or automated triggers on new requirement inputs.
+Handoff to architects upon completion.
 
 **Files it can read/change/monitor**:
 - Reads `.req_inbox/`, `.meetings/`, `.contracts/`.
@@ -450,15 +555,19 @@ Steps:
 
 ### 3. **Architecture Design Agent**
 
-**Role**: Designs the high-level system architecture based on requirements and best practices, outputting diagrams, tech stacks, and component relationships.
+**Role**: Designs the high-level system architecture based on requirements and best practices,
+outputting diagrams, tech stacks, and component relationships.
 
 **Capabilities**:
-- Auto-generates UML diagrams, system blueprints, and recommends technology stacks.
-- Assesses technical feasibility and scalability, flags risky or conflicting design elements.
+- Auto-generates UML diagrams, system blueprints,
+and recommends technology stacks.
+- Assesses technical feasibility and scalability,
+flags risky or conflicting design elements.
 - Iterates with stakeholders on proposed architecture.
 
 **Usage in SDLC**:
-- Employed after initial requirements are captured or when major refactors/redesigns occur.
+- Employed after initial requirements are captured or when major
+refactors/redesigns occur.
 
 **Steps once invoked (LLM-friendly prompt format)**:
 
@@ -516,7 +625,8 @@ Steps:
 
 ### 5. **Coding Generation Agent**
 
-**Role**: Autonomously writes, refactors, and optimizes code according to defined tasks with modular, reusable patterns and adhering to coding standards.
+**Role**: Autonomously writes, refactors, and optimizes code according to defined tasks with modular, reusable patterns and
+adhering to coding standards.
 
 **Capabilities**:
 - Generates code from natural language prompts or formal task inputs.
@@ -880,7 +990,8 @@ Steps:
 
 ### 16. **Human-in-the-Loop and Approval Agent**
 
-**Role**: Serves as the primary interface for human approvals, expertise input, escalation of ambiguous cases, and real-time HITL interactions at critical workflow points.
+**Role**: Serves as the primary interface for human approvals, expertise input, escalation of ambiguous cases, and real-time HITL
+interactions at critical workflow points.
 
 **Capabilities**:
 - Pauses automated workflows for human input at pre-designated checkpoints.
@@ -913,7 +1024,8 @@ Steps:
 
 ### 17. **Metrics & Observability Agent**
 
-**Role**: Provides unified monitoring, telemetry, health metrics, and visualization across all agents, surfacing both technical KPIs and business SLAs.
+**Role**: Provides unified monitoring, telemetry, health metrics, and visualization across all agents, surfacing both technical KPIs
+and business SLAs.
 
 **Capabilities**:
 - Tracks latency, throughput, task completion rate, failure/error frequency, and agent-specific metrics.
@@ -946,7 +1058,8 @@ Steps:
 
 ### 18. **Version Control & Change Management Agent**
 
-**Role**: Integrates workflows with version control systems (e.g., Git), automates commits, tagging, branching, and manages rollbacks for all code and artifact changes.
+**Role**: Integrates workflows with version control systems (e.g., Git), automates commits, tagging, branching, and manages
+rollbacks for all code and artifact changes.
 
 **Capabilities**:
 - Automates commit/tag actions after changes/approval; maintains traceability between code and agent actions.
@@ -978,10 +1091,13 @@ Steps:
 
 ## Tailoring Questions (Round 3)
 
-- Are there specific workflows or compliance gates in your SDLC that require additional human oversight, custom approvals, or escalation logic? (`@hitl`)
-- How do you intend to scope agent file access for particularly sensitive or regulated sections of your codebase? (`@security`, `@filemonitor`)
+- Are there specific workflows or compliance gates in your SDLC that require additional human oversight, custom approvals, or
+  escalation logic? (`@hitl`)
+- How do you intend to scope agent file access for particularly sensitive or regulated sections of your codebase?
+  (`@security`, `@filemonitor`)
 - What external observability or analytics platforms should be integrated for end-to-end monitoring? (`@metrics`)
-- Do your orchestration needs require classical pipeline models (sequential/concurrent/group chat/handoff/magentic), or a hybrid, and how should these workflows be recorded in the `.llm` folder? (`@orchestrator`)
+- Do your orchestration needs require classical pipeline models (sequential/concurrent/group chat/handoff/magentic), or a hybrid,
+  and how should these workflows be recorded in the `.llm` folder? (`@orchestrator`)
 - Which agent triggers require direct user input versus automated monitoring/event-based invocation? (`@orchestrator`, `@filemonitor`)
 - Should any specialized agents be further broken down by programming language, domain expertise, or project-specific patterns for maximum efficacy?
 
@@ -991,43 +1107,70 @@ Steps:
 
 ### **Frameworks and Orchestration Patterns**
 
-Modern agent orchestration leverages robust frameworks such as LangGraph (stateful, graph-based control), CrewAI (role-driven, collaborative pipelines), and AutoGen (conversational, event-driven workflows), each providing differing strengths for coordination, memory management, and multi-agent interactions. For production-grade reliability, layered orchestration patterns—such as sequential, concurrent, group chat, handoff, and magentic—should be mapped to business objectives and technical KPIs, as each pattern is suited for a specific type of workflow or complexity.
+Modern agent orchestration leverages robust frameworks such as LangGraph (stateful, graph-based control), CrewAI (role-driven,
+collaborative pipelines), and AutoGen (conversational, event-driven workflows), each providing differing strengths for coordination,
+memory management, and multi-agent interactions. For production-grade reliability, layered orchestration patterns—such as sequential,
+concurrent, group chat, handoff, and magentic—should be mapped to business objectives and technical KPIs, as each pattern is suited
+for a specific type of workflow or complexity.
 
-A central Orchestrator Agent will map goals to orchestration sub-patterns, invoke sub-agents as routines, and combine agent outputs into a coherent project state.
+A central Orchestrator Agent will map goals to orchestration sub-patterns, invoke sub-agents as routines, and combine agent outputs
+into a coherent project state.
 
 **Triggers and Agent Invocation:**
-- Agents may be invoked via explicit user input, automated workflow events (e.g., file change monitors, test failures), schedule-based periodicity, or inter-agent handoff based on workflow state and dynamic needs.
-- File monitoring agents ensure real-time, granular change tracking and prompt responsive downstream actions (e.g., code change → invoke testing agent).
+- Agents may be invoked via explicit user input, automated workflow events (e.g., file change monitors, test failures),
+  schedule-based periodicity, or inter-agent handoff based on workflow state and dynamic needs.
+- File monitoring agents ensure real-time, granular change tracking and prompt responsive downstream actions
+  (e.g., code change → invoke testing agent).
 
 ### **Communication, Collaboration, and Handoffs**
 
-Agent communication uses shared state files in a dedicated `.llm` folder (as per your specified convention), text-based messaging, and structured protocol handoffs—ensuring that each agent maintains context and accountability for its actions. Handoff patterns, including direct responsibility transfers and group chat coordination, leverage memory and context logs so agents can build upon prior outputs and decisions, supporting transparency and continuity.
+Agent communication uses shared state files in a dedicated `.llm` folder (as per your specified convention), text-based messaging,
+and structured protocol handoffs—ensuring that each agent maintains context and accountability for its actions. Handoff patterns,
+including direct responsibility transfers and group chat coordination, leverage memory and context logs so agents can build upon
+prior outputs and decisions, supporting transparency and continuity.
 
-Open protocols, such as the Agent Communication Protocol (ACP) or proprietary equivalents, provide guaranteed interoperability and auditability for agent-to-agent (and human-agent) interactions, critical for scaling orchestration frameworks. These protocols should be secured via mutual authentication and versioned contracts.
+Open protocols, such as the Agent Communication Protocol (ACP) or proprietary equivalents, provide guaranteed interoperability and
+auditability for agent-to-agent (and human-agent) interactions, critical for scaling orchestration frameworks. These protocols
+should be secured via mutual authentication and versioned contracts.
 
 ### **LLM Function Calling and Prompt Engineering**
 
-Function-calling workflows are utilized for safe, deterministic agent actions, mapping LLM outputs to structured calls that can be sandboxed, audited, and parsed for role-based execution. Prompt engineering must be role-aware, principled, and modular, using reusable templates and examples to guide agents in adhering to both software and communication best practices.
+Function-calling workflows are utilized for safe, deterministic agent actions, mapping LLM outputs to structured calls that can be
+sandboxed, audited, and parsed for role-based execution. Prompt engineering must be role-aware, principled, and modular, using
+reusable templates and examples to guide agents in adhering to both software and communication best practices.
 
 ### **File Access, Change Management, and Traceability**
 
-Each agent has explicit, scoped permissions for file access—aligned with the principle of least privilege—to support both operational efficiency and security governance. File monitoring agents track all changes, support rollbacks via version control, and provide audit trails for compliance and troubleshooting.
+Each agent has explicit, scoped permissions for file access—aligned with the principle of least privilege—to support both
+operational efficiency and security governance. File monitoring agents track all changes, support rollbacks via version control,
+and provide audit trails for compliance and troubleshooting.
 
 ### **Security and Governance**
 
-Agent actions are tracked and audited; sensitive operations (e.g., deployments, production data access) are guarded by Human-in-the-Loop checkpoints, with HITL agents mediating approvals and decision escalation for ambiguous or safety-critical scenarios. Zero-trust orchestrator agents may enforce authentication and privilege checks, using short-lived identity tokens and fine-grained authorization policies to secure agent-to-agent calls and sensitive tool actions.
+Agent actions are tracked and audited; sensitive operations (e.g., deployments, production data access) are guarded by
+Human-in-the-Loop checkpoints, with HITL agents mediating approvals and decision escalation for ambiguous or safety-critical
+scenarios. Zero-trust orchestrator agents may enforce authentication and privilege checks, using short-lived identity tokens and
+fine-grained authorization policies to secure agent-to-agent calls and sensitive tool actions.
 
 ### **CI/CD and Version Control Integration**
 
-CI/CD Orchestration agents tightly integrate pipeline actions with agent workflows, supporting full automation (build, test, deploy) and providing hooks for custom agent routines and rollback mechanisms. Version control agents ensure all changes are committed, tagged, and traceable—linking code diffs and deployment histories with agent action logs for end-to-end accountability.
+CI/CD Orchestration agents tightly integrate pipeline actions with agent workflows, supporting full automation (build, test, deploy)
+and providing hooks for custom agent routines and rollback mechanisms. Version control agents ensure all changes are committed,
+tagged, and traceable—linking code diffs and deployment histories with agent action logs for end-to-end accountability.
 
 ### **Metrics, Observability, and Monitoring**
 
-A dedicated Metrics & Observability Agent provides centralized logging, dashboarding, and alerting (using platforms such as OpenTelemetry, App Insights, Datadog, or Galileo AI), tracking core KPIs: response time, error rates, task completion percentage, agent utilization, and more. This enables both real-time monitoring and continuous improvement—critical for large-scale agent ecosystems with many autonomous and semi-autonomous components.
+A dedicated Metrics & Observability Agent provides centralized logging, dashboarding, and alerting (using platforms such as
+OpenTelemetry, App Insights, Datadog, or Galileo AI), tracking core KPIs: response time, error rates, task completion percentage,
+agent utilization, and more. This enables both real-time monitoring and continuous improvement—critical for large-scale agent
+ecosystems with many autonomous and semi-autonomous components.
 
 ### **Human-in-the-Loop Orchestration**
 
-HITL agents manage collaboration between autonomous AI and human experts, applying approval, interruption, and review workflows at pre-defined gates or for high-uncertainty tasks. Leading frameworks (LangGraph, CrewAI, HumanLayer, Permit.io MCP) provide robust integration points for these checkpoints, logging decisions for auditability and smoothing collaboration without introducing unnecessary friction.
+HITL agents manage collaboration between autonomous AI and human experts, applying approval, interruption, and review workflows at
+pre-defined gates or for high-uncertainty tasks. Leading frameworks (LangGraph, CrewAI, HumanLayer, Permit.io MCP) provide robust
+integration points for these checkpoints, logging decisions for auditability and smoothing collaboration without introducing
+unnecessary friction.
 
 ---
 
@@ -1069,6 +1212,11 @@ config/
 
 ---
 
-**In summary:** This comprehensive agent role taxonomy and orchestration design provides a robust, modular foundation for accelerating next-generation software development, supporting granular specialization, rigorous security/traceability, and scalable automation while safeguarding with human oversight at all critical points. Each recommended agent includes roles, triggers, capabilities, prompt instructions, file operations, and tags to support scalable real-world implementation and future extensibility. The workflow is designed for diverse development teams building with or on top of modern LLM-powered AI frameworks, and is adaptable to evolving organizational or project needs, from startups to large enterprise SDLCs.
+**In summary:** This comprehensive agent role taxonomy and orchestration design provides a robust, modular foundation for accelerating
+next-generation software development, supporting granular specialization, rigorous security/traceability, and scalable automation
+while safeguarding with human oversight at all critical points. Each recommended agent includes roles, triggers, capabilities, prompt
+instructions, file operations, and tags to support scalable real-world implementation and future extensibility. The workflow is
+designed for diverse development teams building with or on top of modern LLM-powered AI frameworks, and is adaptable to evolving
+organizational or project needs, from startups to large enterprise SDLCs.
 
 ---

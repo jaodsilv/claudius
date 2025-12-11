@@ -19,7 +19,10 @@ To achieve the final result follow the below steps:
 - `.llm/` - Folder for the LLM to work on
 - `.llm/todo.md` - List of features to be developed, ultra high-level, 1000 words or less per feature. Only exists in the main branch.
 - `.llm/plans/` - Folder for the LLM to work on and add plans for each feature and update status. Exists in all branches.
-- `.llm/plans/plan-<feature-id>.md` - List of steps to be developed for a feature, includes steps for planning, execution and testing. Each `step` here should be a single commitable unit. Each step may contain multiple items to be done, but they should sum up to a single commitable unit. The plan should include any interfaces that are needed to be implemented or changed, so tests and code should be written in parallel.
+- `.llm/plans/plan-<feature-id>.md` - List of steps to be developed for a feature, includes steps for planning, execution and
+  testing. Each `step` here should be a single commitable unit. Each step may contain multiple items to be done, but they should
+  sum up to a single commitable unit. The plan should include any interfaces that are needed to be implemented or changed, so tests
+  and code should be written in parallel.
 - `.llm/monitoring/` - Folder for the LLM to work on and add monitoring information for each agent. Exists in all branches.
 
 ## Requirements
@@ -28,11 +31,16 @@ Workflow should include specialized agents working in parallel
 
 ### Components
 
-- Agentic Orchestrator (AO): the main agent, launches Feature orchestrators agents and edit a common .llm/todo.features.md file. Creates in .llm an empty file for each feature, this will let us know which features are still running.
-<!-- * Agentic Result Listener (AL): periodically checks if files appeared or disapeared in .llm.Listens to the results of the subagents and updates the .llm/todo.md file. -->
-- Feature Orchestrator (FO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator using git worktree. This should launch (PO) and (EO)
-- Planning Orchestrator (PO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator using git worktree. This should launch (P) and (PRev)
-- Execution Orchestrator (EO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator using git worktree. This should launch (T), (I) and (CR)
+- Agentic Orchestrator (AO): the main agent, launches Feature orchestrators agents and edit a common .llm/todo.features.md file.
+  Creates in .llm an empty file for each feature, this will let us know which features are still running.
+<!-- * Agentic Result Listener (AL): periodically checks if files appeared or disapeared in .llm.Listens to the results of the
+     subagents and updates the .llm/todo.md file. -->
+- Feature Orchestrator (FO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator
+  using git worktree. This should launch (PO) and (EO)
+- Planning Orchestrator (PO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator
+  using git worktree. This should launch (P) and (PRev)
+- Execution Orchestrator (EO): Orchestrates subagents for a specific feature. Works on a separate branch from the main Orchestrator
+  using git worktree. This should launch (T), (I) and (CR)
 - Code Reviewer (CR): Review both the code and the tests
 - Planner (P): Creates a plan and answer to (PRev) reviews
 - Plan Reviewer (PRev): Alternates turns with (P). Review (P) work
@@ -74,6 +82,7 @@ It can launch 1 trio per commitable unit in the planned feature
 
 Once there is nothing more from (CR), ifa PR should be created. This will launch a third-part independent review
 
-Once PR is created, (FO) should look for PR reviews and restart the planning duo with the review as input. Once plan is ready, restart the coding trio. Loop until there is no new review relevant in the PR
+Once PR is created, (FO) should look for PR reviews and restart the planning duo with the review as input. Once plan is ready,
+restart the coding trio. Loop until there is no new review relevant in the PR
 
 (FO) Should end once the feature is complete and PR is merged
