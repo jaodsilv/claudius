@@ -19,7 +19,8 @@ claude/
 │   ├── instructions/            # Instructions
 │   ├── scripts/                 # Scripts
 │   └── [other directories]
-├── external-resources/          # Git submodules (keep as-is)
+├── data/                         # Junction to claude-data repo
+│   └── external-resources/      # Git submodules (moved to data repo)
 ├── job-hunting.claude/          # Currently empty placeholder
 ├── CLAUDE.base.md              # Base config template
 ├── CLAUDE.md                   # Project-specific CLAUDE.md
@@ -46,7 +47,8 @@ claude/
 │   └── README.md
 ├── learning.claude/             # Placeholder for future
 │   └── README.md
-├── external-resources/          # Git submodules (no changes)
+├── data/                         # Junction to claude-data repo
+│   └── external-resources/      # Git submodules (moved to data repo)
 ├── CLAUDE.base.md              # Base config template (stays)
 ├── CLAUDE.md                   # Update to document new structure
 └── README.md                   # Update with restructuring info
@@ -277,14 +279,16 @@ Placeholder for personal project configurations.
 ### learning.claude/
 Placeholder for learning project configurations.
 
-### external-resources/
-Git submodules containing community resources:
-- super-claude
-- awesome-claude-prompts
-- awesome-claude-code-agents
-- awesome-claude-code-subagents
-- awesome-claude-code
-- dynamic-sub-agents
+### external-resources/ (via data repository)
+Git submodules containing community resources are stored in the private `claude-data` repository and accessible via the `data/external-resources/` junction link:
+1. super-claude
+2. awesome-claude-prompts
+3. awesome-claude-code-agents
+4. awesome-claude-code-subagents
+5. awesome-claude-code
+6. dynamic-sub-agents
+
+**Note**: Submodules are automatically updated weekly via GitHub Actions.
 
 ## Motivation for Restructuring
 

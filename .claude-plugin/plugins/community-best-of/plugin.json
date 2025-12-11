@@ -31,19 +31,19 @@
   "agents": [
     "dotclaude/agents/docs/batch-downloader.md",
     "dotclaude/agents/prompt-to-pipeline-architect.md",
-    "external-resources/awesome-claude-code-subagents/categories/01-core-development/frontend-developer.md",
-    "external-resources/awesome-claude-code-subagents/categories/01-core-development/backend-developer.md",
-    "external-resources/awesome-claude-code-subagents/categories/04-quality-security/code-reviewer.md"
+    "data/external-resources/awesome-claude-code-subagents/categories/01-core-development/frontend-developer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/01-core-development/backend-developer.md",
+    "data/external-resources/awesome-claude-code-subagents/categories/04-quality-security/code-reviewer.md"
   ],
   "commands": [
-    "external-resources/super-claude/SuperClaude/Commands/analyze.md",
-    "external-resources/super-claude/SuperClaude/Commands/test.md",
-    "external-resources/super-claude/SuperClaude/Commands/design.md",
-    "external-resources/super-claude/SuperClaude/Commands/implement.md",
-    "external-resources/super-claude/SuperClaude/Commands/build.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/commit/commit.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/create-pr/create-pr.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/context-prime/context-prime.md"
+    "data/external-resources/super-claude/SuperClaude/Commands/analyze.md",
+    "data/external-resources/super-claude/SuperClaude/Commands/test.md",
+    "data/external-resources/super-claude/SuperClaude/Commands/design.md",
+    "data/external-resources/super-claude/SuperClaude/Commands/implement.md",
+    "data/external-resources/super-claude/SuperClaude/Commands/build.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/commit/commit.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/create-pr/create-pr.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/context-prime/context-prime.md"
   ],
   "scripts": [
     "dotclaude/scripts/agent-evolution.sh"

@@ -28,15 +28,15 @@
     "dotclaude/skills/conventional-branch/SKILL.md"
   ],
   "commands": [
-    "external-resources/super-claude/SuperClaude/Commands/git.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/commit/commit.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/create-pr/create-pr.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/pr-review/pr-review.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/create-worktrees/create-worktrees.md",
-    "external-resources/awesome-claude-code/resources/slash-commands/update-branch-name/update-branch-name.md"
+    "data/external-resources/super-claude/SuperClaude/Commands/git.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/commit/commit.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/create-pr/create-pr.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/pr-review/pr-review.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/create-worktrees/create-worktrees.md",
+    "data/external-resources/awesome-claude-code/resources/slash-commands/update-branch-name/update-branch-name.md"
   ],
   "agents": [
-    "external-resources/awesome-claude-code-subagents/categories/06-developer-experience/git-workflow-manager.md"
+    "data/external-resources/awesome-claude-code-subagents/categories/06-developer-experience/git-workflow-manager.md"
   ],
   "notes": "Combines jaodsilv's auto-invoked conventional commits/branch skills with comprehensive community git automation tools for complete version control workflow."
 }

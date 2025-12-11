@@ -34,9 +34,9 @@ Placeholder for personal project configurations.
 
 Placeholder for learning project configurations.
 
-### external-resources/
+### external-resources/ (via data repository)
 
-Git submodules containing community resources:
+Git submodules containing community resources are stored in the private `claude-data` repository and accessible via the `data/external-resources/` junction link:
 
 1. super-claude
 2. awesome-claude-prompts
@@ -44,6 +44,8 @@ Git submodules containing community resources:
 4. awesome-claude-code-subagents
 5. awesome-claude-code
 6. dynamic-sub-agents
+
+**Note**: Submodules are automatically updated weekly via GitHub Actions.
 
 ### .claude-plugin/
 
@@ -301,7 +303,18 @@ If you prefer to fork and customize:
 2. Create a new branch for your own stuff, this will make it easier to merge with whatever I add later
 3. Copy everything from your own ~/.claude into the .claude here
 4. If needed add whatever file you have with secrets in the .gitignore, this .gitignore already includes .credentials.json
-5. Mount the repository's .claude directory:
+5. **(Optional) Set up external resources**: Clone the data repository and create a junction link:
+   ```cmd
+   # Windows (run as Administrator or with Developer Mode enabled)
+   git clone https://github.com/jaodsilv/claude-data ../data
+   mklink /J data ..\data
+   ```
+   ```bash
+   # Linux/macOS
+   git clone https://github.com/jaodsilv/claude-data ../data
+   ln -s ../data data
+   ```
+6. Mount the repository's .claude directory:
     1. **For Linux/WSL users**:
         1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
         2. Create symlink (recommended): `ln -s /path/to/your/src/folder/claude/dotclaude ~/.claude`

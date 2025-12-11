@@ -17,15 +17,30 @@ This is a personal configuration repository for Claude Code custom base configs,
 - `.claude` - Project specific configuration for Claude Code
 - `dotclaude` - Actual .claude mounted at `~/.claude`. This is where you should put non-project specific configuration.
 - `CLAUDE.base.md` - Base configuration for Claude Code to copy to other projects
-- `external-resources` - External resources for Claude Code.
+### External Resources (via data repository)
 
-### External Resources
+External resources are stored in the paired data repository (`claude-data`) and accessed via the `data/` junction link:
 
-- `super-claude` - Super Claude, a collection of Claude Code agents and prompts.
-- `awesome-claude-prompts` - Awesome Claude Prompts, a collection of Claude Code prompts.
-- `awesome-claude-code-agents` - Awesome Claude Code Agents, a collection of Claude Code agents.
-- `awesome-claude-code-subagents` - Awesome Claude Code Subagents, a collection of Claude Code agents.
-- `awesome-claude-code` - Awesome Claude Code, a collection of Claude Code resources.
+1. `data/external-resources/super-claude` - Super Claude, a collection of Claude Code agents and prompts.
+2. `data/external-resources/awesome-claude-prompts` - Awesome Claude Prompts, a collection of Claude Code prompts.
+3. `data/external-resources/awesome-claude-code-agents` - Awesome Claude Code Agents, a collection of Claude Code agents.
+4. `data/external-resources/awesome-claude-code-subagents` - Awesome Claude Code Subagents, a collection of Claude Code agents.
+5. `data/external-resources/awesome-claude-code` - Awesome Claude Code, a collection of Claude Code resources.
+6. `data/external-resources/dynamic-sub-agents` - Dynamic Sub-Agents, dynamic agent generation tools.
+
+**Note**: These submodules are automatically updated weekly via GitHub Actions in the data repository.
+
+**Development Setup**: To access external resources, create a junction link to the data repository:
+
+```cmd
+# Windows (run as Administrator or with Developer Mode enabled)
+mklink /J data D:\src\claude\data
+```
+
+```bash
+# Linux/macOS
+ln -s /path/to/claude-data data
+```
 
 ### `dotclaude/`
 
