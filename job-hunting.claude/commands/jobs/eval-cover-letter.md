@@ -1,4 +1,5 @@
 ---
+
 description: evaluate a cover letter
 allowed-tools: Task, Read, TodoWrite, Write, LS, Grep, Glob, Edit, Skill
 argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
@@ -42,9 +43,9 @@ Before delegating evaluations, reference the job hunting skill for quality stand
 - The Resume content
 - The Cover Letter filepath
 
-3. **READ JOB DESCRIPTION**: Use the read tool to access the job description. Wrap the content in `<job_description>` tags.
-4. **READ WHY COMPANY RESPONSE**: If provided, use the read tool to access this file. Wrap the content in `<why_company_response>` tags. If not provided, use empty tags.
-5. **READ COVER LETTER**: Use the read tool to access the cover letter. Wrap the content in `<cover_letter>` tags.
+1. **READ JOB DESCRIPTION**: Use the read tool to access the job description. Wrap the content in `<job_description>` tags.
+2. **READ WHY COMPANY RESPONSE**: If provided, use the read tool to access this file. Wrap the content in `<why_company_response>` tags. If not provided, use empty tags.
+3. **READ COVER LETTER**: Use the read tool to access the cover letter. Wrap the content in `<cover_letter>` tags.
 
 ### Phase 2: Content Tagging (Step 6)
 
@@ -64,34 +65,34 @@ Store this tagged content in memory. This will be passed to all evaluation sub-a
 
 IF `cover_letter_guidelines_filepath` is provided, Read it, wrap the content in `<cover_letter_guidelines>` tags and skip the step 7 and 8 and go to step 9.
 
-7. **COMPANY CULTURE RESEARCH**: Delegate to `cover-letter-evaluator:culture-research` agent with the all content wrapped in tags from Step 6 as input
+1. **COMPANY CULTURE RESEARCH**: Delegate to `cover-letter-evaluator:culture-research` agent with the all content wrapped in tags from Step 6 as input
 
-8. **COVER LETTER GUIDELINES**: Delegate to `cover-letter-evaluator:company-guidelines` Based on the result from the step 7, provide the guidelines for writing a good cover letter to this company.
+2. **COVER LETTER GUIDELINES**: Delegate to `cover-letter-evaluator:company-guidelines` Based on the result from the step 7, provide the guidelines for writing a good cover letter to this company.
 
 ### Phase 4: Evaluation Delegation (Steps 9-20)
 
 You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent.Even using separate subagents, run them in series as they are not totally independent. Pass all the tagged content from Step 6 to each:
 
-9. **COMPANY CULTURE ALIGNMENT**: Delegate to `cover-letter-evaluator:culture` agent
-10. **COMMUNICATION STYLE**: Delegate to `cover-letter-evaluator:communication` agent
-11. **OVERLAP ANALYSIS**: Delegate to `cover-letter-evaluator:overlap` agent
-12. **JOB DESCRIPTION KEYWORDS COVERAGE**: Delegate to `cover-letter-evaluator:keywords` agent
-13. **SKILLS AND EXPERIENCE ALIGNMENT**: Delegate to `cover-letter-evaluator:skills` agent
-14. **ALTERNATIVE NAMING ANALYSIS**: Delegate to `cover-letter-evaluator:terminology` agent
-15. **RELEVANCE**: Delegate to `cover-letter-evaluator:relevance` agent
-16. **IMPACT DEMONSTRATION**: Delegate to `cover-letter-evaluator:impact` agent
-17. **PERSONALIZATION LEVEL**: Delegate to `cover-letter-evaluator:personalization` agent
-18. **TECHNICAL POSITIONING**: Delegate to `cover-letter-evaluator:tech-positioning` agent
-19. **PROFESSIONAL PRESENTATION**: Delegate to `cover-letter-evaluator:presentation` agent
-20. **ATS FRIENDLINESS ASSESSMENT**: Delegate to `cover-letter-evaluator:ats` agent
+1. **COMPANY CULTURE ALIGNMENT**: Delegate to `cover-letter-evaluator:culture` agent
+2. **COMMUNICATION STYLE**: Delegate to `cover-letter-evaluator:communication` agent
+3. **OVERLAP ANALYSIS**: Delegate to `cover-letter-evaluator:overlap` agent
+4. **JOB DESCRIPTION KEYWORDS COVERAGE**: Delegate to `cover-letter-evaluator:keywords` agent
+5. **SKILLS AND EXPERIENCE ALIGNMENT**: Delegate to `cover-letter-evaluator:skills` agent
+6. **ALTERNATIVE NAMING ANALYSIS**: Delegate to `cover-letter-evaluator:terminology` agent
+7. **RELEVANCE**: Delegate to `cover-letter-evaluator:relevance` agent
+8. **IMPACT DEMONSTRATION**: Delegate to `cover-letter-evaluator:impact` agent
+9. **PERSONALIZATION LEVEL**: Delegate to `cover-letter-evaluator:personalization` agent
+10. **TECHNICAL POSITIONING**: Delegate to `cover-letter-evaluator:tech-positioning` agent
+11. **PROFESSIONAL PRESENTATION**: Delegate to `cover-letter-evaluator:presentation` agent
+12. **ATS FRIENDLINESS ASSESSMENT**: Delegate to `cover-letter-evaluator:ats` agent
 
 ### Phase 6: Results Compilation (Steps 19-20)
 
 You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent.Even using separate subagents, run them in series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 6 to each:
 
-19. **TRUE GAPS CLEANUP**: Delegate to `cover-letter-evaluator:true-gaps` agent with the content from tags resume and cover_letter
+1. **TRUE GAPS CLEANUP**: Delegate to `cover-letter-evaluator:true-gaps` agent with the content from tags resume and cover_letter
 
-20. **RESULT COMBINER**: Delegate to `cover-letter-evaluator:result-combiner` agent with the aggregated content from Step 6
+2. **RESULT COMBINER**: Delegate to `cover-letter-evaluator:result-combiner` agent with the aggregated content from Step 6
 
 ## Quality Control
 

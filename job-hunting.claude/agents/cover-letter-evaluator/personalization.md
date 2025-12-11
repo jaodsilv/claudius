@@ -1,4 +1,5 @@
 ---
+
 name: cover-letter-evaluator:personalization
 description: Use this agent when you need to evaluate how well a cover letter demonstrates specific company research and role understanding. Examples include: <example>Context: User has written a cover letter for a software engineering position at Google and wants to assess personalization quality. user: 'I've drafted a cover letter for a Google SWE role. Can you evaluate how personalized it is?' assistant: 'I'll use the cover-letter-evaluator:personalization agent to analyze your cover letter's personalization level and provide specific improvement recommendations.'</example> <example>Context: User is applying to multiple tech companies and wants to ensure their cover letter shows proper research and role alignment. user: 'Here's my cover letter for the DevOps position at Netflix. I want to make sure it shows I've done my homework on the company.' assistant: 'Let me launch the cover-letter-evaluator:personalization agent to assess how well your cover letter demonstrates company research and role-specific understanding.'</example>
 model: sonnet

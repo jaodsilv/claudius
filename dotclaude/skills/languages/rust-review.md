@@ -49,6 +49,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - Never have aliasing mutable references
 
 4. **Ownership transfer**
+
    ```rust
    // ✅ Clear ownership transfer
    fn take_ownership(s: String) { /* s is dropped here */ }
@@ -67,6 +68,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
 ### Lifetime Annotations
 
 1. **Explicit lifetimes when needed**
+
    ```rust
    // ✅ Clear lifetime relationship
    fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
@@ -75,6 +77,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    ```
 
 2. **Struct lifetimes**
+
    ```rust
    // ✅ Struct holding references
    struct Config<'a> {
@@ -101,6 +104,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - ✅ `File::open(path)?` with proper error propagation
 
 2. **The ? operator**
+
    ```rust
    // ✅ Clean error propagation
    fn read_config(path: &Path) -> Result<Config, Error> {
@@ -110,6 +114,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    ```
 
 3. **Custom error types**
+
    ```rust
    // ✅ Use thiserror or implement Error trait
    #[derive(Debug, thiserror::Error)]
@@ -136,6 +141,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
 ### Enums and Match
 
 1. **Exhaustive matching**
+
    ```rust
    // ✅ Handle all variants
    match result {
@@ -145,6 +151,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    ```
 
 2. **Match guards**
+
    ```rust
    // ✅ Clear conditional matching
    match value {
@@ -155,6 +162,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    ```
 
 3. **Destructuring**
+
    ```rust
    // ✅ Extract fields directly
    let Point { x, y } = point;
@@ -179,6 +187,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - Use `#[derive(...)]` when possible
 
 2. **Trait bounds**
+
    ```rust
    // ✅ Clear trait requirements
    fn process<T: Display + Clone>(item: T) -> String {
@@ -214,6 +223,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - Document invariants thoroughly
 
 2. **Justification required**
+
    ```rust
    // ✅ Document why unsafe is needed
    /// SAFETY: Pointer is guaranteed valid because...
@@ -242,6 +252,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - Compiler enforces these automatically
 
 2. **Arc and Mutex patterns**
+
    ```rust
    // ✅ Shared mutable state
    let data = Arc::new(Mutex::new(HashMap::new()));
@@ -270,6 +281,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
 ### Rust Test Framework
 
 1. **Unit tests**
+
    ```rust
    #[cfg(test)]
    mod tests {
@@ -294,6 +306,7 @@ Expert Rust code review focusing on ownership, borrowing, lifetimes, memory safe
    - One file per integration test suite
 
 3. **Property-based testing**
+
    ```rust
    // ✅ Use proptest or quickcheck
    use proptest::prelude::*;

@@ -1,19 +1,31 @@
 # Configuration
 config:
   # MD013 - line-length
-  line_length:
+  MD013:
     line_length: 140
     code_blocks: false
     tables: false
     headings: false
-  no-inline-html: false
-  heading-style:
+  # MD004 - ul-style: use dash for all unordered lists
+  MD004:
+    style: dash
+  # MD023 - heading-start-left: disabled
+  MD023: false
+  # MD025 - single-title: disabled
+  MD025: false
+  # MD032 - blanks-around-lists: disabled (no "after only" option)
+  MD032: false
+  # MD033 - no-inline-html: disabled
+  MD033: false
+  # MD041 - first-line-h1: disabled
+  MD041: false
+  # MD003 - heading-style
+  MD003:
     style: atx
-  first-line-h1: false
 
-frontMatter: ^(---\n(((?!---).)*\n)*---\n|(\[!\[[-\w\. ]+\]\([^\)]+\)\]\([^\)]+\)\n)+|\[[^\]]\]\([^\)]*\)|)
+frontMatter: ^(---\r?\n(((?!---).)*\r?\n)*---\r?\n|(\[!\[[-\w\. ]+\]\([^\)]+\)\]\([^\)]+\)\r?\n)+|\[[^\]]\]\([^\)]*\)|)
 
-fix: false
+fix: true
 
 # Globs
 

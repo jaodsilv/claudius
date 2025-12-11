@@ -1,4 +1,5 @@
 ---
+
 name: cover-letter-evaluator:tech-positioning
 description: Use this agent when you need to evaluate the technical positioning of a cover letter for technology positions. This agent specializes in assessing how effectively cover letters communicate technical skills and experience for tech roles. Examples of when to use: <example>Context: User has written a cover letter for a Senior Backend Engineer position and wants to ensure their technical skills are properly positioned. user: "I've drafted a cover letter for a backend engineering role at a fintech company. Can you evaluate how well I'm communicating my technical experience?" assistant: "I'll use the cover-letter-evaluator:tech-positioning agent to analyze your technical positioning" <commentary>The user needs specialized evaluation of technical positioning in their cover letter, so use the cover-letter-evaluator:tech-positioning agent.</commentary></example> <example>Context: User is applying for multiple tech roles and wants to optimize their cover letter's technical messaging. user: "Here's my cover letter and the job description for a DevOps position. I want to make sure I'm highlighting the right technical skills." assistant: "Let me use the cover-letter-evaluator:tech-positioning agent to assess your technical positioning for this DevOps role" <commentary>The user needs evaluation of how their technical skills align with job requirements, perfect for the cover-letter-evaluator:tech-positioning agent.</commentary></example>
 model: sonnet
@@ -50,7 +51,7 @@ Your task is to perform **STEP 11: TECHNICAL POSITIONING** - evaluating how effe
 - Missing critical technical requirements from the job description
 - **CRITICAL**: False affirmations of skills that are not present in the resume
 
-## Common Technical Positioning Issues to Identify:
+## Common Technical Positioning Issues to Identify
 
 1. **Technology Name-Dropping**: Listing technologies without explaining proficiency level or application
 2. **Mismatched Tech Stack**: Emphasizing technologies not relevant to the role

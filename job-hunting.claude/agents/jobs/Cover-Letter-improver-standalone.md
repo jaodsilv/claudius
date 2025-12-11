@@ -1,4 +1,5 @@
 ---
+
 name: jobs:Cover-Letter-improver-standalone
 description: Standalone agent to evaluate and improve a cover letter
 tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit

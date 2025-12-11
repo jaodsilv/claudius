@@ -482,36 +482,42 @@ function getOrders(userId) {
 ## Code Review Checklist
 
 ### Functionality
+
 - [ ] Code does what it's supposed to do
 - [ ] Edge cases are handled
 - [ ] Error cases are handled
 - [ ] No obvious bugs
 
 ### Design
+
 - [ ] Code follows SOLID principles
 - [ ] Design patterns are appropriate
 - [ ] Abstraction level is appropriate
 - [ ] No over-engineering
 
 ### Readability
+
 - [ ] Code is self-explanatory
 - [ ] Naming is clear and consistent
 - [ ] Comments explain "why" not "what"
 - [ ] Code structure is logical
 
 ### Tests
+
 - [ ] Tests are comprehensive
 - [ ] Tests are maintainable
 - [ ] Tests test the right things
 - [ ] Edge cases are tested
 
 ### Performance
+
 - [ ] No obvious performance issues
 - [ ] Algorithm complexity is appropriate
 - [ ] Resource usage is reasonable
 - [ ] No memory leaks
 
 ### Security
+
 - [ ] Input is validated
 - [ ] No SQL injection vulnerabilities
 - [ ] No XSS vulnerabilities
@@ -519,12 +525,14 @@ function getOrders(userId) {
 - [ ] No secrets in code
 
 ### Maintainability
+
 - [ ] Code follows DRY
 - [ ] Functions are small and focused
 - [ ] Dependencies are minimal
 - [ ] Code is easy to modify
 
 ### Consistency
+
 - [ ] Follows project style guide
 - [ ] Naming is consistent
 - [ ] Patterns match existing code
@@ -548,28 +556,33 @@ function getOrders(userId) {
 ## Code Smells
 
 ### Bloaters
+
 - **Long Method:** Extract smaller methods
 - **Large Class:** Split into multiple classes
 - **Long Parameter List:** Create parameter object
 - **Data Clumps:** Group related data into objects
 
 ### Object-Orientation Abusers
+
 - **Switch Statements:** Use polymorphism
 - **Temporary Field:** Extract to separate class
 - **Refused Bequest:** Break inheritance hierarchy
 
 ### Change Preventers
+
 - **Divergent Change:** Split class
 - **Shotgun Surgery:** Move related code together
 - **Parallel Inheritance:** Combine hierarchies
 
 ### Dispensables
+
 - **Comments:** Make code self-explanatory
 - **Duplicate Code:** Extract and reuse
 - **Dead Code:** Delete it
 - **Speculative Generality:** Remove unused abstraction
 
 ### Couplers
+
 - **Feature Envy:** Move method to proper class
 - **Inappropriate Intimacy:** Reduce coupling
 - **Message Chains:** Hide delegation
@@ -577,7 +590,7 @@ function getOrders(userId) {
 
 ## Best Practices Summary
 
-### DO:
+### DO
 
 1. Write self-documenting code
 2. Keep functions small and focused
@@ -590,7 +603,7 @@ function getOrders(userId) {
 9. Use meaningful names
 10. Keep it simple (KISS)
 
-### DON'T:
+### DON'T
 
 1. Write clever code (be clear instead)
 2. Ignore edge cases

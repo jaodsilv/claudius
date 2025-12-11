@@ -1,7 +1,10 @@
 # Copilot
+
 ## Deep Research
+
 ### Round 2
-#### <list-of-agents>
+
+#### List of Agents
 
 - Codebase Architect Agent
 - Requirements Analyst Agent
@@ -25,7 +28,7 @@
 
 ---
 
-#### <agents-with-description>
+#### Agent Descriptions (Round 2)
 
 ---
 
@@ -623,12 +626,13 @@ Vital for stateful, context-aware agent interactions or supporting session-based
 ├── README.md
 └── ...
 ```
+
 **Tags:**  
 - `#agent-architecture`, `#prompt-design`, `#code-review`, `#test-generation`, `#ci-cd`, `#orchestration`, `#human-in-the-loop`, `#agent-communication`, `#permissions`, `#memory`, `#event-driven`, `#security`, `#release-management`, `#documentation`, `#file-watcher`, `#integration`, `#performance`, `#refactoring`, `#supervisor`, `#folder-structure`
 
 ---
 
-#### <tailoring-questions>
+#### Tailoring Questions (Round 2)
 
 **If needed in your orchestration, clarifying tailoring questions may include:**
 - What are your primary programming languages, target frameworks, and deployment environments?
@@ -763,12 +767,7 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 
 **[End of Report]**
 
-
-
-
-
 ### Prompt for Round 3
-
 
 ---
 <extra-request>
@@ -809,201 +808,201 @@ By integrating these best-in-class agents and collaboration methodologies, your 
 <tailoring-questions-answers>
 
 1. What software development methodology (e.g., Agile, DevOps, Waterfall) does your team follow?
-* None yet, we are just starting to explore the possibilities of using agents to help us with our software development.
+- None yet, we are just starting to explore the possibilities of using agents to help us with our software development.
 
-2. What programming languages, frameworks, and platforms are primarily used in your projects?
-* We are using React, Next.js, Tailwind CSS, and ClaudeAI API, but since it is in greenfield, we are still exploring the best tools for the job.
+1. What programming languages, frameworks, and platforms are primarily used in your projects?
+- We are using React, Next.js, Tailwind CSS, and ClaudeAI API, but since it is in greenfield, we are still exploring the best tools for the job.
 
-3. What is the scale and complexity of your codebase (e.g., monolith, microservices, multi-repo)?
-* We are just starting to build our codebase, so we don't have a lot of code yet.
+1. What is the scale and complexity of your codebase (e.g., monolith, microservices, multi-repo)?
+- We are just starting to build our codebase, so we don't have a lot of code yet.
 
-4. Do you need support for multiple programming languages or polyglot codebases?
-* No, we are not using multiple programming languages or polyglot codebases.
+1. Do you need support for multiple programming languages or polyglot codebases?
+- No, we are not using multiple programming languages or polyglot codebases.
 
-5. What types of applications do you build (e.g., web, mobile, desktop, embedded, cloud)?
-* We are building a web application.
+1. What types of applications do you build (e.g., web, mobile, desktop, embedded, cloud)?
+- We are building a web application.
 
-6. Which user roles (developers, QA, product managers, operations, designers, etc.) will interact with the agent system?
-* Just one, the product owner and single developer, @me.
+1. Which user roles (developers, QA, product managers, operations, designers, etc.) will interact with the agent system?
+- Just one, the product owner and single developer, @me.
 
-7. Are there specific pain points or bottlenecks in your current SDLC that you wish to address first?
-* We are just starting to build our codebase, so we don't have any pain points or bottlenecks yet.
+1. Are there specific pain points or bottlenecks in your current SDLC that you wish to address first?
+- We are just starting to build our codebase, so we don't have any pain points or bottlenecks yet.
 
-8. What level of automation and autonomy do you expect from each agent? Is human-in-the-loop review required?
-* The ideal is to have full automation, no human-in-the-loop review, just some human monitoring and human input.
+1. What level of automation and autonomy do you expect from each agent? Is human-in-the-loop review required?
+- The ideal is to have full automation, no human-in-the-loop review, just some human monitoring and human input.
 
-9. What integration points (e.g., IDEs, CI/CD systems, issue trackers, communication tools) must the agents support?
-* IDEs: Cursor AI
-* AI code generation: Claude Code and Cursor AI
-* AI agents and agents orchestration: Claude Code
-* CI/CD systems: Not decided yet,
-* Issue trackers: Github Issues and Github Projects
-* Communication tools: Not decided yet,
+1. What integration points (e.g., IDEs, CI/CD systems, issue trackers, communication tools) must the agents support?
+- IDEs: Cursor AI
+- AI code generation: Claude Code and Cursor AI
+- AI agents and agents orchestration: Claude Code
+- CI/CD systems: Not decided yet,
+- Issue trackers: Github Issues and Github Projects
+- Communication tools: Not decided yet,
 
-10. Are you working with sensitive, regulated, or proprietary data/code? What compliance or security measures are needed?
-* In the initial scope NO, as I will be the only user, therefore, we are not working with sensitive, regulated, or proprietary data/code yet.
-* In a future scope we will need to handle sensitive data as we need to input users communication with ClaudeAI API, so we need to be careful with the data we store.
+1. Are you working with sensitive, regulated, or proprietary data/code? What compliance or security measures are needed?
+- In the initial scope NO, as I will be the only user, therefore, we are not working with sensitive, regulated, or proprietary data/code yet.
+- In a future scope we will need to handle sensitive data as we need to input users communication with ClaudeAI API, so we need to be careful with the data we store.
 
-11. What is your existing toolchain for requirement tracking, version control, build, deploy, and monitoring?
-* Requirement tracking: Not decided yet,
-* Version control: Github
-* Build: Not decided yet,
-* Deploy: Not decided yet,
-* Monitoring: Not decided yet,
+1. What is your existing toolchain for requirement tracking, version control, build, deploy, and monitoring?
+- Requirement tracking: Not decided yet,
+- Version control: Github
+- Build: Not decided yet,
+- Deploy: Not decided yet,
+- Monitoring: Not decided yet,
 
-12. Do you require code generation or modification, or just code review and reporting?
-* Full automation, including planning, designing and coding.
+1. Do you require code generation or modification, or just code review and reporting?
+- Full automation, including planning, designing and coding.
 
-13. How critical are code quality and style consistency to your workflows?
-* Very critical, as we want to maintain a high quality codebase, and we want to be able to easily maintain and extend the codebase.
+1. How critical are code quality and style consistency to your workflows?
+- Very critical, as we want to maintain a high quality codebase, and we want to be able to easily maintain and extend the codebase.
 
-14. What level of testing (unit, integration, end-to-end, load, security) coverage do you require?
-* We need to cover all the features and functionalities of the application, and we need to be able to test the application in a production-like environment. Preferably 100% Coverage.
+1. What level of testing (unit, integration, end-to-end, load, security) coverage do you require?
+- We need to cover all the features and functionalities of the application, and we need to be able to test the application in a production-like environment. Preferably 100% Coverage.
 
-15. How frequently are dependencies, packages, or APIs updated in your ecosystem?
-* Regularly, as we want to keep the codebase up to date, modern and secure.
+1. How frequently are dependencies, packages, or APIs updated in your ecosystem?
+- Regularly, as we want to keep the codebase up to date, modern and secure.
 
-16. Do you need multilingual support for documentation or internationalization agents?
-* Not in the initial scope, as we are not planning to support multiple languages yet.
-* Yes in the future scope, as we want to support multiple languages.
+1. Do you need multilingual support for documentation or internationalization agents?
+- Not in the initial scope, as we are not planning to support multiple languages yet.
+- Yes in the future scope, as we want to support multiple languages.
 
-17. Are you deploying in cloud, on-premises, hybrid, or edge environments?
-* We are deploying locally in the initial scope, therefore, we are not deploying in any cloud, on-premises, hybrid, or edge environments yet.
+1. Are you deploying in cloud, on-premises, hybrid, or edge environments?
+- We are deploying locally in the initial scope, therefore, we are not deploying in any cloud, on-premises, hybrid, or edge environments yet.
 
-18. What are your main observability and monitoring needs (e.g., performance, uptime, security alerts)?
-* We need to be able to monitor the performance of the application, and we need to be able to detect and respond to security alerts.
-* We need to be able to monitor the development process and the agents orchestration and their interactions.
+1. What are your main observability and monitoring needs (e.g., performance, uptime, security alerts)?
+- We need to be able to monitor the performance of the application, and we need to be able to detect and respond to security alerts.
+- We need to be able to monitor the development process and the agents orchestration and their interactions.
 
-19. Which notification channels (e.g., email, Slack, Teams) must agents use for alerts and reports?
-* We are not using any notification channels yet.
+1. Which notification channels (e.g., email, Slack, Teams) must agents use for alerts and reports?
+- We are not using any notification channels yet.
 
-20. How is release management and changelog documentation currently handled?
-* We are not using any release management and changelog documentation yet.
+1. How is release management and changelog documentation currently handled?
+- We are not using any release management and changelog documentation yet.
 
-21. Do you prioritize speed, stability, security, or innovation in your software development life cycle?
-* We prioritize speed (P0), correctness (P0), completeness (P1), extensibility (P1), stability (P2), security (P2), scalability (P3), and innovation (P3) in our software development life cycle.
+1. Do you prioritize speed, stability, security, or innovation in your software development life cycle?
+- We prioritize speed (P0), correctness (P0), completeness (P1), extensibility (P1), stability (P2), security (P2), scalability (P3), and innovation (P3) in our software development life cycle.
 
-22. What is your triage process for bugs, incidents, and user feedback?
-* We are not using any triage process for bugs, incidents, and user feedback yet.
+1. What is your triage process for bugs, incidents, and user feedback?
+- We are not using any triage process for bugs, incidents, and user feedback yet.
 
-23. What scalability and concurrency requirements must the agent orchestration system support?
-* As much as possible, as we want to be able to handle a large number of sub-agents.
+1. What scalability and concurrency requirements must the agent orchestration system support?
+- As much as possible, as we want to be able to handle a large number of sub-agents.
 
-24. Is there a need to generate, anonymize, or synthesize data for testing or AI training?
-* Yes, generate and synthesize data for testing.
+1. Is there a need to generate, anonymize, or synthesize data for testing or AI training?
+- Yes, generate and synthesize data for testing.
 
-25. What are your requirements for explainability, transparency, and auditability for AI decisions made by agents?
-* We need to be able to explain the decisions made by the agents, and we need to be able to audit the decisions made by the agents.
+1. What are your requirements for explainability, transparency, and auditability for AI decisions made by agents?
+- We need to be able to explain the decisions made by the agents, and we need to be able to audit the decisions made by the agents.
 
-26. Are there legal or regulatory constraints (e.g., GDPR, HIPAA, SOX) your agents must conform to?
-* Not in the initial scope, as we are not working with sensitive, regulated, or proprietary data/code yet.
-* In the future scope, we need to be able to handle GDPR, HIPAA, SOX, and other legal or regulatory constraints.
+1. Are there legal or regulatory constraints (e.g., GDPR, HIPAA, SOX) your agents must conform to?
+- Not in the initial scope, as we are not working with sensitive, regulated, or proprietary data/code yet.
+- In the future scope, we need to be able to handle GDPR, HIPAA, SOX, and other legal or regulatory constraints.
 
-27. Do you need to support custom workflows, plugins, or specialized integrations unique to your organization?
-* I don't know
+1. Do you need to support custom workflows, plugins, or specialized integrations unique to your organization?
+- I don't know
 
-28. How often does your organization undergo architectural migrations, major refactors, or cloud provider changes?
-* We are not using any architectural migrations, major refactors, or cloud provider changes yet.
+1. How often does your organization undergo architectural migrations, major refactors, or cloud provider changes?
+- We are not using any architectural migrations, major refactors, or cloud provider changes yet.
 
-29. What is your process for onboarding new developers or contributors, and how can agents help?
-* We are not using any onboarding process for new developers or contributors yet.
+1. What is your process for onboarding new developers or contributors, and how can agents help?
+- We are not using any onboarding process for new developers or contributors yet.
 
-30. How is knowledge (documentation, best practices, troubleshooting) currently captured and shared?
-* We are not using any knowledge capture and sharing yet.
-* We need to be able to capture and share knowledge about the codebase and the agents orchestration system.
+1. How is knowledge (documentation, best practices, troubleshooting) currently captured and shared?
+- We are not using any knowledge capture and sharing yet.
+- We need to be able to capture and share knowledge about the codebase and the agents orchestration system.
 
-31. Are there existing AI/ML models or prompt templates that specific agents should leverage or extend?
-* AI Models: Claude Code with Claude Sonnet 4.0 with extended thinking.
+1. Are there existing AI/ML models or prompt templates that specific agents should leverage or extend?
+- AI Models: Claude Code with Claude Sonnet 4.0 with extended thinking.
 
-32. How should agents handle ambiguous, conflicting, or incomplete requirements?
-* Ask the human for clarification.
+1. How should agents handle ambiguous, conflicting, or incomplete requirements?
+- Ask the human for clarification.
 
-33. What mechanisms must be in place for rollback, disaster recovery, and data integrity?
-* We need to be able to rollback, disaster recovery, and data integrity.
-* We need to be able to handle secrets, credentials, and configuration data, and we need to be able to secure them.
+1. What mechanisms must be in place for rollback, disaster recovery, and data integrity?
+- We need to be able to rollback, disaster recovery, and data integrity.
+- We need to be able to handle secrets, credentials, and configuration data, and we need to be able to secure them.
 
-34. What access controls, authentication, and authorization protocols are required for agents?
-* Not in the initial scope, except for Claude and Github, which need to be authenticated, but these are already setup.
+1. What access controls, authentication, and authorization protocols are required for agents?
+- Not in the initial scope, except for Claude and Github, which need to be authenticated, but these are already setup.
 
-35. Are there specific performance or cost goals for the orchestration of sub-agents?
-* The cost and budget are very limited as it is a personal project, and we are not using any cloud services yet.
+1. Are there specific performance or cost goals for the orchestration of sub-agents?
+- The cost and budget are very limited as it is a personal project, and we are not using any cloud services yet.
 
-36. Do you need real-time analytics or reporting on agent and pipeline health?
-* About the Agents: Yes, we need to be able to monitor the agents and their interactions.
-* About the System being developed: Not in the initial scope, as we are not using any real-time analytics or reporting yet.
+1. Do you need real-time analytics or reporting on agent and pipeline health?
+- About the Agents: Yes, we need to be able to monitor the agents and their interactions.
+- About the System being developed: Not in the initial scope, as we are not using any real-time analytics or reporting yet.
 
-37. How should agents interact with human team members (e.g., notifications, recommendations, auto-approvals)?
-* Notifications: Not in the initial scope, as we are not using any notifications yet.
-* Recommendations: Yes, it can be via text files, or via Claude Code chat interface.
-* Auto-approvals: Mostly, as we want to automate the approval process.
+1. How should agents interact with human team members (e.g., notifications, recommendations, auto-approvals)?
+- Notifications: Not in the initial scope, as we are not using any notifications yet.
+- Recommendations: Yes, it can be via text files, or via Claude Code chat interface.
+- Auto-approvals: Mostly, as we want to automate the approval process.
 
-38. What level of customization and configurability do you require per agent or per project?
-* Each agent role can be customized and configured as it is supported by the new Claude Code agents interface.
+1. What level of customization and configurability do you require per agent or per project?
+- Each agent role can be customized and configured as it is supported by the new Claude Code agents interface.
 
-39. Are you open to using open-source, commercial, or fully custom agent platforms and tools?
-* We are using Claude Code.
+1. Are you open to using open-source, commercial, or fully custom agent platforms and tools?
+- We are using Claude Code.
 
-40. What is the desired user experience for interacting with agent recommendations and outputs?
-* There is no requirement on that, any user experience is good.
+1. What is the desired user experience for interacting with agent recommendations and outputs?
+- There is no requirement on that, any user experience is good.
 
-41. Will agents need to support continuous learning, self-improvement, or feedback loops?
-* Yes, we need to be able to continuously learn and improve the agents and the system being developed.
+1. Will agents need to support continuous learning, self-improvement, or feedback loops?
+- Yes, we need to be able to continuously learn and improve the agents and the system being developed.
 
-42. Should agents handle code/search across public/private repositories or adhere to strict access boundaries?
-* Yes, they can handle code/search across public repositories, but they will mostly not need to.
+1. Should agents handle code/search across public/private repositories or adhere to strict access boundaries?
+- Yes, they can handle code/search across public repositories, but they will mostly not need to.
 
-43. How will you evaluate the effectiveness and ROI of agent roles in your development cycle?
-* By the speed of the development process, the quality of the code, and product outcome.
+1. How will you evaluate the effectiveness and ROI of agent roles in your development cycle?
+- By the speed of the development process, the quality of the code, and product outcome.
 
-44. How critical is traceability from requirements through implementation, testing, and deployment?
-* Critical
+1. How critical is traceability from requirements through implementation, testing, and deployment?
+- Critical
 
-45. Are you interested in leveraging agents for onboarding, upskilling, or documentation of team and process knowledge?
-* Yes, but in the loop for new agents whenever needed a new role.
+1. Are you interested in leveraging agents for onboarding, upskilling, or documentation of team and process knowledge?
+- Yes, but in the loop for new agents whenever needed a new role.
 
-46. Do you need agents that specialize in migration, modernization, or technology upgrades (e.g., moving to cloud, new language)?
-* Not in the initial scope, as we are not using any migration, modernization, or technology upgrades yet.
-* Yes, in the future scope, as we want to be able to migrate to a cloud provider.
+1. Do you need agents that specialize in migration, modernization, or technology upgrades (e.g., moving to cloud, new language)?
+- Not in the initial scope, as we are not using any migration, modernization, or technology upgrades yet.
+- Yes, in the future scope, as we want to be able to migrate to a cloud provider.
 
-47. How do you currently manage incident response and escalation, and can agents automate/improve this flow?
-* We are not using any incident response and escalation yet.
+1. How do you currently manage incident response and escalation, and can agents automate/improve this flow?
+- We are not using any incident response and escalation yet.
 
-48. Are you interested in agents that bridge technical/non-technical collaboration (e.g., between developers and business owners)?
-* Yes, but in the loop between the agents and the human.
+1. Are you interested in agents that bridge technical/non-technical collaboration (e.g., between developers and business owners)?
+- Yes, but in the loop between the agents and the human.
 
-49. How do you handle secrets, credentials, and configuration data, and what role should agents have in securing them?
-* We need to be able to handle secrets, credentials, and configuration data, and we need to be able to secure them.
-* We are not doing those in any way yet.
+1. How do you handle secrets, credentials, and configuration data, and what role should agents have in securing them?
+- We need to be able to handle secrets, credentials, and configuration data, and we need to be able to secure them.
+- We are not doing those in any way yet.
 
-50. Are there events, workflows, or actions that must trigger multi-agent collaboration/coordination?
-* Yes, both between agents and the human and the agents.
+1. Are there events, workflows, or actions that must trigger multi-agent collaboration/coordination?
+- Yes, both between agents and the human and the agents.
 
-51. What is your expected rollout plan for agent adoption—gradual integration, pilot programs, or full replacement from day one?
-* Full replacement from day one, as we are not using any existing tools or processes yet.
+1. What is your expected rollout plan for agent adoption—gradual integration, pilot programs, or full replacement from day one?
+- Full replacement from day one, as we are not using any existing tools or processes yet.
 </tailoring-questions-answers>
 
 <tailoring-questions-answers>
 1. What are your primary programming languages, target frameworks, and deployment environments?
 * We are using React, Next.js, Tailwind CSS, and ClaudeAI API, but since it is in greenfield, we are still exploring the best tools for the job.
 
-2. Should agents output in formal JSON, markdown, or natural language?
-* Markdown
+1. Should agents output in formal JSON, markdown, or natural language?
+- Markdown
 
-3. Are there code quality standards, security compliance requirements, or CICD systems in use?
-* We are not using any code quality standards, security compliance requirements, or CICD systems yet, but they are a must.
+1. Are there code quality standards, security compliance requirements, or CICD systems in use?
+- We are not using any code quality standards, security compliance requirements, or CICD systems yet, but they are a must.
 
-4. What are the most pain points or high-priority stages in your development lifecycle?
-* We do not have any pain points or high-priority stages in our development lifecycle yet.
+1. What are the most pain points or high-priority stages in your development lifecycle?
+- We do not have any pain points or high-priority stages in our development lifecycle yet.
 
-5. Which areas should always require human-in-the-loop approval (e.g., production deploys, destructive refactoring)?
-* Destructive refactoring and marking a feature as completed.
+1. Which areas should always require human-in-the-loop approval (e.g., production deploys, destructive refactoring)?
+- Destructive refactoring and marking a feature as completed.
 
-6. Which files, directories, or secrets must never be modified by agents?
-* None yet
+1. Which files, directories, or secrets must never be modified by agents?
+- None yet
 
-7. Will agent inter-communication be via explicit file-passing, REST APIs, or a hybrid pattern?
-* Explicit file-passing, as we are not using any REST APIs yet. In the future maybe mcp or other tools.
+1. Will agent inter-communication be via explicit file-passing, REST APIs, or a hybrid pattern?
+- Explicit file-passing, as we are not using any REST APIs yet. In the future maybe mcp or other tools.
 
-8. Is versioning or audit logging required for every agent action?
-* Yes, we need to be able to audit the actions of the agents and have a versioning system for the codebase.
+1. Is versioning or audit logging required for every agent action?
+- Yes, we need to be able to audit the actions of the agents and have a versioning system for the codebase.
 </tailoring-questions-answers>

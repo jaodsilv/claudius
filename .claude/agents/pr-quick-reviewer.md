@@ -1,4 +1,5 @@
 ---
+
 name: pr-quick-reviewer
 description: Fast, focused review for small PRs - checks critical issues only
 tools: Bash, Read, Grep, Glob, Skill

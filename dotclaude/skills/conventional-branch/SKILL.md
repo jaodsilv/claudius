@@ -15,7 +15,7 @@ Conventional Branch provides a structured and standardized naming convention for
 
 ## Branch Naming Format
 
-```
+```text
 <type>/<description>
 ```
 
@@ -28,7 +28,7 @@ Conventional Branch provides a structured and standardized naming convention for
 - Long-lived, protected
 - No prefix needed
 
-```
+```text
 main
 develop
 ```
@@ -37,7 +37,7 @@ develop
 
 **feature/** - New features and enhancements
 
-```
+```text
 feature/user-authentication
 feature/add-dark-mode
 feature/issue-123-payment-integration
@@ -53,7 +53,7 @@ feature/api-v2-endpoints
 
 **bugfix/** - Non-urgent bug fixes
 
-```
+```text
 bugfix/fix-login-error
 bugfix/issue-456-validation-bug
 bugfix/correct-date-formatting
@@ -69,7 +69,7 @@ bugfix/resolve-memory-leak
 
 **hotfix/** - Urgent production fixes
 
-```
+```text
 hotfix/security-vulnerability
 hotfix/critical-crash-fix
 hotfix/payment-gateway-down
@@ -86,7 +86,7 @@ hotfix/v1.2.1-patch
 
 **release/** - Release preparation
 
-```
+```text
 release/v1.2.0
 release/v2.0.0-beta
 release/2025-Q1
@@ -103,7 +103,7 @@ release/sprint-15
 
 **chore/** - Maintenance and non-code changes
 
-```
+```text
 chore/update-dependencies
 chore/refactor-tests
 chore/improve-documentation
@@ -134,7 +134,7 @@ chore/cleanup-unused-code
 - Spaces
 - Special characters (`@`, `#`, `$`, etc.)
 
-```
+```text
 ✅ feature/add-user-profile
 ✅ release/v1.2.0
 ✅ bugfix/issue-789-null-check
@@ -154,7 +154,7 @@ chore/cleanup-unused-code
 - Use consecutive hyphens or dots
 - Start or end with hyphen or dot
 
-```
+```text
 ✅ feature/new-login-page
 ✅ release/v1.2.0
 
@@ -167,7 +167,8 @@ chore/cleanup-unused-code
 ### 3. Clarity and Conciseness
 
 **Good:**
-```
+
+```text
 feature/oauth-integration
 bugfix/null-pointer-error
 hotfix/sql-injection-patch
@@ -176,14 +177,16 @@ chore/upgrade-webpack
 ```
 
 **Too Vague:**
-```
+
+```text
 feature/new-stuff
 bugfix/fix-bug
 hotfix/urgent
 ```
 
 **Too Verbose:**
-```
+
+```text
 feature/implement-complete-user-authentication-system-with-oauth-and-jwt
 bugfix/fix-the-issue-where-users-cannot-login-when-username-has-spaces
 ```
@@ -192,7 +195,7 @@ bugfix/fix-the-issue-where-users-cannot-login-when-username-has-spaces
 
 Include ticket/issue numbers for traceability:
 
-```
+```text
 feature/issue-123-user-dashboard
 bugfix/JIRA-456-validation-error
 hotfix/PROD-789-memory-leak
@@ -208,7 +211,7 @@ chore/task-321-update-docs
 
 ### Feature Development
 
-```
+```text
 # Simple feature
 feature/search-functionality
 
@@ -224,7 +227,7 @@ feature/us-567-export-reports
 
 ### Bug Fixes
 
-```
+```text
 # Standard bug fix
 bugfix/fix-dropdown-alignment
 
@@ -240,7 +243,7 @@ bugfix/navbar-mobile-display
 
 ### Hotfixes
 
-```
+```text
 # Security issue
 hotfix/xss-vulnerability-patch
 
@@ -256,7 +259,7 @@ hotfix/v1.2.3-security-patch
 
 ### Releases
 
-```
+```text
 # Semantic versioning
 release/v1.0.0
 release/v2.3.1
@@ -275,7 +278,7 @@ release/sprint-24
 
 ### Chores
 
-```
+```text
 # Dependencies
 chore/update-npm-packages
 chore/upgrade-react-18
@@ -350,7 +353,7 @@ main → Deploy to production
 
 ## Best Practices
 
-### DO:
+### DO
 
 1. Create descriptive, clear branch names
 2. Use appropriate type prefixes
@@ -360,7 +363,7 @@ main → Deploy to production
 6. Follow team conventions consistently
 7. Delete branches after merging
 
-### DON'T:
+### DON'T
 
 1. Use generic names like `temp`, `test`, `wip`
 2. Include personal names in branches
@@ -386,14 +389,14 @@ Before creating a branch, verify:
 
 ### Issue-Driven Development
 
-```
+```text
 feature/issue-123-user-profile
 bugfix/bug-456-login-error
 ```
 
 ### Component-Based
 
-```
+```text
 feature/auth-oauth-integration
 bugfix/api-error-handling
 chore/database-migration-scripts
@@ -401,14 +404,14 @@ chore/database-migration-scripts
 
 ### Version-Based
 
-```
+```text
 release/v1.2.0
 hotfix/v1.1.1-patch
 ```
 
 ### Time-Based
 
-```
+```text
 release/2025-Q1
 release/sprint-15
 ```
@@ -459,6 +462,6 @@ feat: add user authentication system (#123)
 
 ## Reference
 
-Full specification: https://conventional-branch.github.io/
+Full specification: <https://conventional-branch.github.io/>
 
 This skill helps maintain organized, professional branch management that integrates seamlessly with modern development workflows and CI/CD pipelines.

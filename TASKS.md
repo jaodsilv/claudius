@@ -6,11 +6,12 @@
 
 ## Overview
 
-Restructure the claude repository to split the monolithic `dotclaude/` directory into specialized Claude Code configuration directories to improve startup performance and reduce command/agent loading issues.
+Restructure the claude repository to split the monolithic `dotclaude/` directory into specialized Claude Code configuration
+directories to improve startup performance and reduce command/agent loading issues.
 
 ## Current Structure
 
-```
+```text
 claude/
 ├── dotclaude/                    # Currently mounted as ~/.claude
 │   ├── agents/                  # All agents (general + job-specific)
@@ -29,7 +30,7 @@ claude/
 
 ## Target Structure
 
-```
+```text
 claude/
 ├── dotclaude/                    # General configs only
 │   ├── agents/                  # General-purpose agents only

@@ -17,7 +17,7 @@ This plugin should be mounted at `~/.claude` alongside or instead of the default
 
 ## Plugin Structure
 
-```
+```text
 doc-understanding.claude/
 ├── README.md                           # This file
 ├── commands/                          # Custom slash commands

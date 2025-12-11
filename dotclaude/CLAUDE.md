@@ -78,7 +78,7 @@ probably some leak, hopefully it is resolved soon
 
 ### Bash Commands
 
-**Always use native tools instead of bash tools when available**
+#### Always use native tools instead of bash tools when available
 
 #### Development
 

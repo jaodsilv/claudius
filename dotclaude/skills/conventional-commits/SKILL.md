@@ -15,7 +15,7 @@ The Conventional Commits specification provides a lightweight convention for com
 
 ## Commit Message Format
 
-```
+```text
 <type>[optional scope]: <description>
 
 [optional body]
@@ -28,20 +28,23 @@ The Conventional Commits specification provides a lightweight convention for com
 ### Required Types
 
 1. **feat:** - New feature (correlates with MINOR in SemVer)
-   ```
+
+   ```text
    feat: add user authentication system
    feat(auth): implement OAuth2 login flow
    ```
 
 2. **fix:** - Bug fix (correlates with PATCH in SemVer)
-   ```
+
+   ```text
    fix: prevent race condition in request handling
    fix(api): correct validation error messages
    ```
 
 3. **BREAKING CHANGE** - Breaking API change (correlates with MAJOR in SemVer)
    - Use `!` after type/scope OR footer `BREAKING CHANGE:`
-   ```
+
+   ```text
    feat!: redesign authentication API
 
    feat(api)!: remove deprecated endpoints
@@ -56,49 +59,57 @@ The Conventional Commits specification provides a lightweight convention for com
 Use these for better commit categorization:
 
 1. **build:** - Build system or external dependencies
-   ```
+
+   ```text
    build: upgrade webpack to v5
    build(deps): update all npm packages
    ```
 
 2. **chore:** - Maintenance tasks
-   ```
+
+   ```text
    chore: update .gitignore
    chore(release): bump version to 2.1.0
    ```
 
 3. **ci:** - CI configuration changes
-   ```
+
+   ```text
    ci: add automated testing workflow
    ci(actions): configure dependabot
    ```
 
 4. **docs:** - Documentation only
-   ```
+
+   ```text
    docs: update API documentation
    docs(readme): add installation instructions
    ```
 
 5. **style:** - Code style changes (no logic change)
-   ```
+
+   ```text
    style: format code with prettier
    style(components): fix indentation
    ```
 
 6. **refactor:** - Code restructuring (no feat/fix)
-   ```
+
+   ```text
    refactor: extract helper functions
    refactor(auth): simplify token validation
    ```
 
 7. **perf:** - Performance improvements
-   ```
+
+   ```text
    perf: optimize database queries
    perf(cache): implement Redis caching
    ```
 
 8. **test:** - Adding or updating tests
-   ```
+
+   ```text
    test: add unit tests for auth module
    test(e2e): improve test coverage
    ```
@@ -107,7 +118,7 @@ Use these for better commit categorization:
 
 Optional component identifier in parentheses:
 
-```
+```text
 feat(parser): add array parsing support
 fix(api): handle null responses
 docs(contributing): update pr guidelines
@@ -121,13 +132,15 @@ docs(contributing): update pr guidelines
 - Lowercase first letter (by convention)
 
 **Good:**
-```
+
+```text
 fix: prevent memory leak in event listeners
 feat: add dark mode toggle
 ```
 
 **Avoid:**
-```
+
+```text
 fix: Fixed the bug.
 feat: Added new feature.
 ```
@@ -139,7 +152,7 @@ feat: Added new feature.
 - Explains the "why" and "what", not the "how"
 - Provide context and motivation
 
-```
+```text
 fix: prevent racing of requests
 
 Introduce a request id and a reference to latest request. Dismiss
@@ -160,7 +173,7 @@ obsolete now.
   - `Reviewed-by:` - Code review attribution
   - `Closes:` or `Fixes:` - Auto-close issues
 
-```
+```text
 fix: correct user validation logic
 
 Updated validation to handle edge cases properly and added
@@ -175,13 +188,13 @@ Closes: #789
 
 ### Simple Feature
 
-```
+```text
 feat: add user profile page
 ```
 
 ### Feature with Scope and Body
 
-```
+```text
 feat(dashboard): implement real-time data updates
 
 Add WebSocket connection for live data streaming.
@@ -191,7 +204,7 @@ Add loading states and error handling.
 
 ### Bug Fix with Footer
 
-```
+```text
 fix: resolve memory leak in component cleanup
 
 Previously, event listeners were not being properly removed
@@ -202,7 +215,7 @@ Closes: #234
 
 ### Breaking Change (Method 1: Using !)
 
-```
+```text
 feat!: redesign configuration API
 
 Replace JSON config with YAML format for better readability
@@ -211,7 +224,7 @@ and comment support.
 
 ### Breaking Change (Method 2: Using Footer)
 
-```
+```text
 chore: update minimum Node version
 
 BREAKING CHANGE: Node 16+ is now required due to use of
@@ -220,7 +233,7 @@ native ES modules and crypto APIs.
 
 ### Multiple Footers
 
-```
+```text
 fix: prevent data corruption on concurrent writes
 
 Implement pessimistic locking mechanism to ensure data
@@ -234,7 +247,7 @@ Closes: #123
 
 ## Best Practices
 
-### DO:
+### DO
 
 1. Use imperative mood: "add" not "added" or "adds"
 2. Be specific and concise in descriptions
@@ -244,7 +257,7 @@ Closes: #123
 6. Reference issues in footers
 7. Use BREAKING CHANGE for incompatible API changes
 
-### DON'T:
+### DON'T
 
 1. Mix unrelated changes in one commit
 2. Write vague descriptions like "fix bug" or "update code"
@@ -267,7 +280,7 @@ This enables automated version bumping and changelog generation.
 
 If a change touches multiple concerns:
 
-```
+```text
 feat(auth): implement OAuth2 login
 test(auth): add OAuth2 integration tests
 docs(auth): document OAuth2 configuration
@@ -275,7 +288,7 @@ docs(auth): document OAuth2 configuration
 
 ### Reverting Commits
 
-```
+```text
 revert: let us never speak of the noodle incident
 
 Refs: 676104e, a215868
@@ -285,7 +298,7 @@ Refs: 676104e, a215868
 
 Use `wip:` type for incomplete work (if needed):
 
-```
+```text
 wip(feature-x): initial implementation
 ```
 
@@ -314,7 +327,7 @@ Before committing, verify:
 
 ## Reference
 
-Full specification: https://www.conventionalcommits.org/
+Full specification: <https://www.conventionalcommits.org/>
 
 This skill helps maintain a clean, semantic commit history that enables:
 

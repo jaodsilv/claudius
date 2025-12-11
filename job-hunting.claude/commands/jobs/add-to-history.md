@@ -1,4 +1,5 @@
 ---
+
 description: Updates a conversation history file in the @job-hunting/history directory.
 argument-hint: Raw text copy-pasted from either email or linkedin
 allowed-tools: Task, Read, TodoWrite, Write, LS, Grep, Glob, Edit
@@ -25,13 +26,13 @@ Your task is to update 1 file in the @job-hunting/history directory
 
 You should parse the arguments to extract the following information:
 
-* The company name, either from the person's title or from the message body
-* The recruiting company name (for contract positions), either from the person's title or from the message body
-* The recruiter's name
-* The date and time of the message, if it is only a day of the week or a hours ago calculate the datetime it was received.
+- The company name, either from the person's title or from the message body
+- The recruiting company name (for contract positions), either from the person's title or from the message body
+- The recruiter's name
+- The date and time of the message, if it is only a day of the week or a hours ago calculate the datetime it was received.
   Note that it is always presented in the -07:00 timezone, unless explicitly stated otherwise.
-* Subject of the message (if available)
-* The message body
+- Subject of the message (if available)
+- The message body
 
 #### Input format
 
@@ -41,15 +42,15 @@ It comes in one of the following formats:
 
 ##### Format 1 - LinkedIn
 
-* Note that, sometimes, the person includes their company in their title, like "Talent Partner@ Amazon Robotics".
-* In that case, you should extract the company name from the title.
-* Gender pronouns are optional
-* "\nVerified recruiter" is optional
-* ", #HIRING" is optional
-* "\n👏\n👍\n😊\n+" is optional
-* "{{subject}}\n" is optional
-* "\n{2,}{{attachment_filename}}\n\n{{attachment_size}}\n\nDownload" is optional
-* You should infer the desired variables from the text.
+- Note that, sometimes, the person includes their company in their title, like "Talent Partner@ Amazon Robotics".
+- In that case, you should extract the company name from the title.
+- Gender pronouns are optional
+- "\nVerified recruiter" is optional
+- ", #HIRING" is optional
+- "\n👏\n👍\n😊\n+" is optional
+- "{{subject}}\n" is optional
+- "\n{2,}{{attachment_filename}}\n\n{{attachment_size}}\n\nDownload" is optional
+- You should infer the desired variables from the text.
 
 ```text
 {{full_name}}(\n\({{gender_pronouns}}\))?\n{{degree_connection}} degree connection\n· {{degree_connection}}\n{{person_title}}\n(\nVerified recruiter)?\n{{day_of_week_or_date}}\n{{full_name}} sent the following messages at {{time}}\nView {{first_name}}'s profile{{full_name}}(, #HIRING)?\n{{full_name}}( \({{gender_pronouns}}\))?  {{time}}(\n👏\n👍\n😊\n+)?\n+({{subject}}\n)?{{message_body}}(\n{2,}{{attachment_filename}}\n\n{{attachment_size}}\n\nDownload)?
@@ -57,8 +58,8 @@ It comes in one of the following formats:
 
 ##### Format 2 - Email
 
-* "{{labels_names}}" is optional
-* You should infer the desired variables from the text.
+- "{{labels_names}}" is optional
+- You should infer the desired variables from the text.
 
 ```text
 {{subject}}\n({{labels_names}})?\n\n{{from}} <{{email_address}}>\n{{datetime_info}}\nto {{João}}\n\n{{message_body}}
@@ -81,9 +82,9 @@ The generated content should follow one of the templates below:
 
 ##### Template Group 1 - LinkedIn
 
-* Note that `optional_subject` is optional
-* `timestamp` should be printed in ISO format with the day of the week after it, e.g., `2025-08-20T15:21:00-07:00 Wednesday`
-* Datetimes are always in -07:00 timezone
+- Note that `optional_subject` is optional
+- `timestamp` should be printed in ISO format with the day of the week after it, e.g., `2025-08-20T15:21:00-07:00 Wednesday`
+- Datetimes are always in -07:00 timezone
 
 ###### Template Group 1.1 - Reach-Out for contract positions
 

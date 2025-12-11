@@ -1,4 +1,5 @@
 ---
+
 name: cover-letter-evaluator:keywords
 description: Use this agent when you need to analyze keyword coverage between a cover letter and job description for ATS optimization. This agent performs Step 2 of a systematic cover letter analysis process. Examples: <example>Context: User is working on optimizing their cover letter for a software engineering position and needs to ensure proper keyword coverage. user: "I've written a cover letter for this backend developer role, can you analyze how well it covers the job description keywords?" assistant: "I'll use the cover-letter-evaluator:keywords agent to perform a comprehensive keyword coverage analysis between your cover letter and the job description."</example> <example>Context: User has completed Step 1 of cover letter analysis and now needs keyword coverage evaluation. user: "Here's my cover letter draft and the job posting - I need to check if I'm hitting the right keywords for ATS systems" assistant: "Let me launch the cover-letter-evaluator:keywords agent to evaluate your keyword coverage and identify any critical gaps that could impact ATS compatibility."</example>
 model: sonnet

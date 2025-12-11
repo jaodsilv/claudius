@@ -39,6 +39,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - ✅ `result, err := doSomething(); if err != nil { return err }`
 
 2. **Error wrapping (Go 1.13+)**
+
    ```go
    // ✅ Good
    if err := validate(data); err != nil {
@@ -50,6 +51,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    ```
 
 3. **Custom errors**
+
    ```go
    // ✅ Sentinel errors for expected conditions
    var ErrNotFound = errors.New("user not found")
@@ -66,6 +68,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    ```
 
 4. **Error checking in defer**
+
    ```go
    // ✅ Good
    defer func() {
@@ -85,6 +88,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
 ### Safe Concurrent Patterns
 
 1. **Mutex protection**
+
    ```go
    type SafeCounter struct {
        mu    sync.Mutex
@@ -110,6 +114,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - ✅ Always provide way to stop goroutines
 
 4. **Context usage**
+
    ```go
    // ✅ Good - respect context cancellation
    func process(ctx context.Context, data []Item) error {
@@ -140,6 +145,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - ✅ `func New() *PostgresUserRepo`
 
 2. **Small interfaces**
+
    ```go
    // ✅ Good - single method interface
    type Reader interface {
@@ -163,6 +169,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - ✅ Define near the code that uses them
 
 4. **Implicit implementation**
+
    ```go
    // ✅ No explicit "implements" needed
    type MyWriter struct{}
@@ -205,6 +212,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
 ### Test Conventions
 
 1. **Table-driven tests**
+
    ```go
    func TestAdd(t *testing.T) {
        tests := []struct {
@@ -233,6 +241,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - Use standard library when possible
 
 3. **Parallel tests**
+
    ```go
    func TestSomething(t *testing.T) {
        t.Parallel() // Run concurrently with other parallel tests
@@ -263,6 +272,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    - ✅ `var b strings.Builder; for _, x := range items { b.WriteString(x) }`
 
 4. **Slice capacity**
+
    ```go
    // ✅ Pre-allocate if size known
    items := make([]Item, 0, expectedSize)
@@ -271,6 +281,7 @@ Expert Go code review focusing on idiomatic Go patterns, effective error handlin
    ```
 
 5. **Benchmark tests**
+
    ```go
    func BenchmarkOperation(b *testing.B) {
        for i := 0; i < b.N; i++ {

@@ -46,8 +46,10 @@ probably some leak, hopefully it is resolved soon
 - When Parsing Arguments assign values to variables where:
   - `$\<variable-name\>` is the name of the variable to assign the value to, e.g., `$urls` is the name of the variable to assign
     the value to the `urls` parameter
-  - `$\<variable-name\>[\<array-index\>]` access the value of the array index, e.g., `$urls[0]` is the value of the first url in the `urls` parameter
-  - `$\<variable-name\>.\<object-key\>` access inner values of the object, e.g., `$urls[0].url` is the value of the first url in the `urls` parameter
+  - `$\<variable-name\>[\<array-index\>]` access the value of the array index,
+    e.g., `$urls[0]` is the value of the first url in the `urls` parameter
+  - `$\<variable-name\>.\<object-key\>` access inner values of the object,
+    e.g., `$urls[0].url` is the value of the first url in the `urls` parameter
 - `\<foreach $value in $\<variable-name\>\>` blocks loops over the array sequentially and assign the value to the variable `$value`, e.g.,
 
   ```text

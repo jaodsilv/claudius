@@ -1,4 +1,5 @@
 ---
+
 name: documentation-reviewer
 description: Documentation completeness and quality analysis for PRs
 tools: Bash, Read, Grep, Glob

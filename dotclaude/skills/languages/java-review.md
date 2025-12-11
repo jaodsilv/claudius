@@ -47,6 +47,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
 ### Java 14+ Features
 
 1. **Records (Java 14+)**
+
    ```java
    // ✅ Immutable data carriers
    public record User(String name, String email) {}
@@ -57,11 +58,13 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    - ✅ `if (obj instanceof String s) { // use s directly }`
 
 3. **Sealed classes (Java 17+)**
+
    ```java
    public sealed interface Shape permits Circle, Rectangle, Triangle {}
    ```
 
 4. **Text blocks (Java 15+)**
+
    ```java
    String json = """
        {
@@ -83,6 +86,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    - System errors should propagate
 
 3. **Custom exceptions**
+
    ```java
    public class ValidationException extends RuntimeException {
        public ValidationException(String message) {
@@ -92,6 +96,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 4. **Try-with-resources**
+
    ```java
    // ✅ Automatic resource management
    try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -112,6 +117,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    - ✅ `List<String> list = new ArrayList<>();`
 
 2. **Immutable collections**
+
    ```java
    List<String> immutable = List.of("a", "b", "c");
    Map<String, Integer> immutableMap = Map.of("key", 1);
@@ -160,6 +166,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
 ### Pattern Implementation
 
 1. **Builder pattern**
+
    ```java
    User user = User.builder()
        .name("John")
@@ -168,6 +175,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 2. **Factory pattern**
+
    ```java
    public interface ShapeFactory {
        Shape createShape(String type);
@@ -175,6 +183,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 3. **Strategy pattern**
+
    ```java
    public interface PaymentStrategy {
        void pay(BigDecimal amount);
@@ -182,6 +191,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 4. **Singleton (prefer enum)**
+
    ```java
    public enum Configuration {
        INSTANCE;
@@ -207,6 +217,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    - Use `ThreadLocal` carefully (memory leaks)
 
 4. **WeakReference for caches**
+
    ```java
    Map<Key, WeakReference<Value>> cache = new WeakHashMap<>();
    ```
@@ -216,6 +227,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
 ### Testing Best Practices
 
 1. **JUnit 5 annotations**
+
    ```java
    @Test
    void shouldCalculateTotalWhenItemsProvided() {
@@ -229,6 +241,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 2. **Parametrized tests**
+
    ```java
    @ParameterizedTest
    @ValueSource(ints = {1, 2, 3})
@@ -238,6 +251,7 @@ Expert Java code review focusing on naming conventions, modern Java features, SO
    ```
 
 3. **Mockito usage**
+
    ```java
    @Mock
    private UserRepository userRepository;

@@ -116,7 +116,7 @@ This discovery phase analyzed all locally available sources to create structured
 
 ## Outstanding Sources
 
-### Not Yet Inventoried (6 external marketplaces):
+### Not Yet Inventoried (6 external marketplaces)
 
 1. **anthropics/claude-code** (official)
 2. **ccplugins/marketplace**

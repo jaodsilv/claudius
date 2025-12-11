@@ -16,7 +16,10 @@
       "Bash(mv:*)",
       "Bash(awk:*)",
       "Bash(git add:*)",
-      "Bash(git worktree:*)"
+      "Bash(git worktree:*)",
+      "Bash(npx markdownlint-cli2:*)",
+      "Bash(markdownlint-cli2:*)",
+      "Bash(grep:*)"
     ],
     "deny": []
   },

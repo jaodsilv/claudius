@@ -27,6 +27,7 @@ This directory tracks the curation process for community plugins integrated into
 ## Curation Sources
 
 ### Community Marketplaces
+
 1. anthropics/claude-code (official)
 2. ccplugins/marketplace
 3. wshobson/agents
@@ -35,6 +36,7 @@ This directory tracks the curation process for community plugins integrated into
 6. Dev-GOM/claude-code-marketplace
 
 ### External Resources (Submodules)
+
 1. super-claude
 2. awesome-claude-prompts
 3. awesome-claude-code-agents

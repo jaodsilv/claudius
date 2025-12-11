@@ -16,12 +16,14 @@ Review Mermaid diagrams for syntax validity, clarity, consistency, and common is
 3. **Labels**: Use quotes for spaces/special chars
 
 ❌ **Bad**:
+
 ```mermaid
 flowchart TD
     A --> B with spaces
 ```
 
 ✅ **Good**:
+
 ```mermaid
 flowchart TD
     A --> B["B with spaces"]
@@ -82,7 +84,7 @@ flowchart TD
 ### Consistent Arrow Types
 
 1. **Solid `-->`**: Standard flow
-2. **Dotted `-.->` **: Optional/async flow
+2. **Dotted `-.->`**: Optional/async flow
 3. **Bold `==>`**: Primary/critical path
 4. **Labeled**: Use consistently `--label-->`
 
@@ -91,6 +93,7 @@ flowchart TD
 1. **classDef**: Define reusable styles
 2. **class**: Apply to nodes
 3. **Example**:
+
 ```mermaid
 classDef errorClass fill:#f96,stroke:#333
 A:::errorClass
