@@ -10,7 +10,8 @@ model: sonnet
 
 ## Purpose
 
-Fast-track review agent for small PRs with 10-minute maximum turnaround. Focuses exclusively on critical issues that would block merging. Skip comprehensive analysis - check only what matters.
+Fast-track review agent for small PRs with 10-minute maximum turnaround. Focuses exclusively on critical issues that would block
+merging. Skip comprehensive analysis - check only what matters.
 
 ## When to Use
 

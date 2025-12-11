@@ -10,7 +10,9 @@ model: sonnet
 
 ## Purpose
 
-Performs comprehensive security analysis on PR changes, focusing exclusively on security vulnerabilities, OWASP Top 10 risks, secrets exposure, and security best practices. This agent does NOT review code quality, performance, or other non-security concerns.
+Performs comprehensive security analysis on PR changes, focusing exclusively on security vulnerabilities, OWASP Top 10 risks,
+secrets exposure, and security best practices. This agent does NOT review code quality, performance, or other non-security
+concerns.
 
 ## Input Format
 

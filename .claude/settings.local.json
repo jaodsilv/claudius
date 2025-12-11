@@ -19,7 +19,9 @@
       "Bash(git worktree:*)",
       "Bash(npx markdownlint-cli2:*)",
       "Bash(markdownlint-cli2:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   },
