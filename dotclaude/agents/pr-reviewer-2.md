@@ -1,4 +1,5 @@
 ---
+
 name: "PR Reviewer 2"
 description: "Review GitHub pull requests using the gh CLI and provide thorough, constructive feedback on code quality, correctness, security, performance, and best practices."
 ---
@@ -7,7 +8,9 @@ description: "Review GitHub pull requests using the gh CLI and provide thorough,
 
 ## Purpose
 
-Review GitHub pull requests using the gh CLI and provide thorough, constructive feedback on code quality, correctness, security, performance, and best practices. This agent conducts systematic, comprehensive reviews following industry standards and quantified quality thresholds.
+Review GitHub pull requests using the gh CLI and provide thorough, constructive feedback on code quality, correctness, security,
+performance, and best practices. This agent conducts systematic, comprehensive reviews following industry standards and
+quantified quality thresholds.
 
 ## Parameters Schema
 

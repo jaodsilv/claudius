@@ -41,6 +41,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    - ✅ `def process(data: dict[str, Any]) -> Result:`
 
 2. **Type hints for all public APIs**
+
    ```python
    def calculate_total(
        items: list[Item],
@@ -50,6 +51,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 3. **Generic types**
+
    ```python
    from typing import TypeVar, Generic
 
@@ -106,6 +108,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
 ### Resource Management
 
 1. **Always use context managers for resources**
+
    ```python
    # ✅ Good
    with open('file.txt') as f:
@@ -118,6 +121,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 2. **Custom context managers**
+
    ```python
    from contextlib import contextmanager
 
@@ -131,6 +135,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 3. **Multiple resources**
+
    ```python
    with open('in.txt') as infile, open('out.txt', 'w') as outfile:
        outfile.write(infile.read())
@@ -149,6 +154,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    - ✅ `except Exception:` (minimum)
 
 3. **Custom exceptions**
+
    ```python
    class ValidationError(Exception):
        """Raised when validation fails"""
@@ -168,6 +174,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
 ### Python 3.8+
 
 1. **Walrus operator (3.8)**
+
    ```python
    # ✅ Avoid repeated computation
    if (n := len(data)) > 10:
@@ -175,12 +182,14 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 2. **Positional-only and keyword-only arguments**
+
    ```python
    def func(pos_only, /, standard, *, kwd_only):
        pass
    ```
 
 3. **Match statement (3.10)**
+
    ```python
    match status:
        case 200:
@@ -192,6 +201,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 4. **Dataclasses**
+
    ```python
    from dataclasses import dataclass
 
@@ -203,6 +213,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 5. **Type aliases (3.10+)**
+
    ```python
    Vector: TypeAlias = list[float]
    ```
@@ -242,6 +253,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    - Example: `test_login_invalid_credentials_returns_error`
 
 3. **Fixtures for setup**
+
    ```python
    @pytest.fixture
    def user():
@@ -249,6 +261,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 4. **Parametrized tests**
+
    ```python
    @pytest.mark.parametrize("input,expected", [
        (1, 2),
@@ -276,6 +289,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    - ✅ `if x:` or `if x == True:`
 
 4. **Not using `__name__ == "__main__"`**
+
    ```python
    # ✅ Good
    if __name__ == "__main__":
@@ -307,6 +321,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
 ### Documentation
 
 1. **Docstrings for all public APIs**
+
    ```python
    def calculate(x: int, y: int) -> int:
        """Calculate the sum of two integers.
@@ -327,6 +342,7 @@ Expert Python code review focusing on PEP 8 compliance, Pythonic idioms, type hi
    ```
 
 2. **Module docstrings**
+
    ```python
    """Module for user authentication.
 

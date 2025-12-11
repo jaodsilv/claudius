@@ -1,4 +1,5 @@
 ---
+
 name: architecture-reviewer
 description: Design patterns, SOLID principles, and architecture alignment analysis
 tools: Bash, Read, Grep, Glob, Skill
@@ -42,7 +43,7 @@ This agent expects JSON context from the orchestrator:
 
 Invoke the `solid-principles` skill to analyze all changed files:
 
-```
+```text
 @skills/principles/solid-principles.md
 ```
 
@@ -103,7 +104,7 @@ Validate correct usage of common design patterns:
 
 Check for violations:
 
-```
+```text
 Grep: Look for mixed concerns (e.g., SQL in UI, business rules in controllers)
 ```
 

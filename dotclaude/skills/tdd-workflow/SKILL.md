@@ -12,7 +12,9 @@ This skill is automatically invoked when:
 
 ## Overview
 
-This workflow ensures consistent, high-quality development using Test-Driven Development (TDD) principles with multi-agent collaboration. It follows a sequential process where each phase builds upon the previous, with iterative design-review cycles throughout.
+This workflow ensures consistent, high-quality development using Test-Driven Development (TDD) principles with multi-agent
+collaboration. It follows a sequential process where each phase builds upon the previous, with iterative design-review cycles
+throughout.
 
 ## Core Principles
 
@@ -27,14 +29,14 @@ This workflow ensures consistent, high-quality development using Test-Driven Dev
 
 ### Workflow Phases
 
-**0. Setup** → Create git worktree
-**1. Evaluation** → Determine if tests are needed
-**2. Testing** → Design, plan, write unit & integration tests
-**3. Solution** → Design, plan, implement, fix
-**4. Commit** → Create conventional commit message
-**5. Refactor** → Evaluate improvement opportunities
-**6. PR** → Create/update pull request, handle reviews
-**7. Close** → Complete task and cleanup
+1. **0. Setup** → Create git worktree
+2. **1. Evaluation** → Determine if tests are needed
+3. **2. Testing** → Design, plan, write unit & integration tests
+4. **3. Solution** → Design, plan, implement, fix
+5. **4. Commit** → Create conventional commit message
+6. **5. Refactor** → Evaluate improvement opportunities
+7. **6. PR** → Create/update pull request, handle reviews
+8. **7. Close** → Complete task and cleanup
 
 ### Key Pattern: Design → Review → Loop
 
@@ -50,26 +52,36 @@ Every major step follows:
 
 **Purpose:** Isolate work in dedicated git worktree
 
-**Steps:**
+#### Steps
+
 ```bash
 git worktree add -b <branch-type>/<task-name> ../task-name-worktree
 cd ../task-name-worktree
 ```
 
-**Remember:** Worktree name for entire workflow
+#### Remember
 
-**Branch naming:** Follow `conventional-branch` skill
+Worktree name for entire workflow
+
+#### Branch naming
+
+Follow `conventional-branch` skill
 
 ### Phase 1: Test Requirement Evaluation
 
-**Purpose:** Determine testing strategy
+#### Purpose
 
-**Launch agent to evaluate:**
+Determine testing strategy
+
+#### Launch agent to evaluate
+
 - **Refactoring:** May or may not need new tests
 - **Cleanup/chores:** Usually no new tests
 - **Bug fix/new feature:** Requires new tests
 
-**Decision:** Skip to Phase 3 if no tests needed
+#### Decision
+
+Skip to Phase 3 if no tests needed
 
 ### Phase 2: Testing Phase
 
@@ -77,201 +89,266 @@ Only if tests are required from Phase 1.
 
 #### 2.1 Unit Tests Design
 
-**Agent 1: Design**
+#### Agent 1: Unit Test Design
+
 - Identify what needs unit testing
 - Define test cases and edge cases
 - Document expected behavior
 - Consider test structure
 
-**Agent 2: Review Design**
+#### Agent 2: Review Unit Test Design
+
 - Validate completeness
 - Check edge case coverage
 - Ensure clarity
 - Suggest improvements
 
-**Loop:** If design needs refinement
+#### Unit Test Design Loop
 
-**Compact:** Save task, worktree, unit test design, step number
+If design needs refinement
+
+#### Compact After Unit Test Design
+
+Save task, worktree, unit test design, step number
 
 #### 2.2 Unit Tests Plan
 
-**Agent 1: Plan**
+#### Agent 1: Unit Test Plan
+
 - Create specific test implementation plan
 - Define test file structure
 - List test functions/classes
 - Specify assertions and fixtures
 
-**Agent 2: Review Plan**
+#### Agent 2: Review Unit Test Plan
+
 - Validate against design
 - Check practical feasibility
 - Ensure coverage
 
-**Loop:** If plan needs adjustment
+#### Unit Test Plan Loop
 
-**Compact:** Save task, worktree, unit test plan, design, step number
+If plan needs adjustment
+
+#### Compact After Unit Test Plan
+
+Save task, worktree, unit test plan, design, step number
 
 #### 2.3 Unit Tests Writing
 
-**Agent 1: Write**
+#### Agent 1: Write Unit Tests
+
 - Implement unit tests
 - **Tests should fail** (no implementation yet)
 - Follow testing framework conventions
 - Include descriptive test names
 
-**Agent 2: Review**
+#### Agent 2: Review Unit Tests
+
 - Check test quality
 - Validate test logic
 - Ensure tests will catch issues
 - OK if tests are failing
 
-**Loop:** If tests need improvement
+#### Unit Tests Writing Loop
 
-**Compact:** Save task, worktree, step number
+If tests need improvement
+
+#### Compact After Unit Tests Writing
+
+Save task, worktree, step number
 
 #### 2.4 Integration Tests Design
 
-**Agent 1: Design**
+#### Agent 1: Integration Test Design
+
 - Identify integration points
 - Define integration test scenarios
 - Consider system interactions
 - Document integration behavior
 
-**Agent 2: Review Design**
+#### Agent 2: Review Integration Test Design
+
 - Validate coverage
 - Check realistic scenarios
 - Ensure proper scope
 
-**Loop:** If design needs refinement
+#### Integration Test Design Loop
 
-**Compact:** Save task, worktree, integration test design, step number
+If design needs refinement
+
+#### Compact After Integration Test Design
+
+Save task, worktree, integration test design, step number
 
 #### 2.5 Integration Tests Plan
 
-**Agent 1: Plan**
+#### Agent 1: Integration Test Plan
+
 - Create implementation plan
 - Define test setup/teardown
 - Specify mocks and fixtures
 - Plan test data
 
-**Agent 2: Review Plan**
+#### Agent 2: Review Integration Test Plan
+
 - Validate against design
 - Check feasibility
 - Ensure adequate coverage
 
-**Loop:** If plan needs adjustment
+#### Integration Test Plan Loop
 
-**Compact:** Save task, worktree, integration test plan, design, step number
+If plan needs adjustment
+
+#### Compact After Integration Test Plan
+
+Save task, worktree, integration test plan, design, step number
 
 #### 2.6 Integration Tests Writing
 
-**Agent 1: Write**
+#### Agent 1: Write Integration Tests
+
 - Implement integration tests
 - **Tests should fail** (no implementation yet)
 - Set up test environment
 - Handle async operations
 
-**Agent 2: Review**
+#### Agent 2: Review Integration Tests
+
 - Check test quality
 - Validate integration points
 - Ensure realistic scenarios
 - OK if tests are failing
 
-**Loop:** If tests need improvement
+#### Integration Tests Writing Loop
 
-**Compact:** Save task, worktree, step number
+If tests need improvement
+
+#### Compact After Integration Tests Writing
+
+Save task, worktree, step number
 
 ### Phase 3: Solution Phase
 
 #### 3.1 Solution Design
 
-**Agent 1: Design**
+#### Agent 1: Solution Design
+
 - Design solution architecture
 - **Consider tests written in Phase 2**
 - Plan code structure
 - Identify components needed
 - Document approach
 
-**Agent 2: Review Design**
+#### Agent 2: Review Solution Design
+
 - Validate it solves the problem
 - Check it passes tests
 - Ensure maintainability
 - Suggest improvements
 
-**Loop:** If design needs refinement
+#### Solution Design Loop
 
-**Compact:** Save task, worktree, solution design, step number
+If design needs refinement
+
+#### Compact After Solution Design
+
+Save task, worktree, solution design, step number
 
 #### 3.2 Development Plan
 
-**Agent 1: Plan**
+#### Agent 1: Development Plan
+
 - Create implementation steps
 - List files to modify/create
 - Plan code changes
 - Define order of implementation
 
-**Agent 2: Review Plan**
+#### Agent 2: Review Development Plan
+
 - Validate against design
 - Check completeness
 - Ensure logical order
 
-**Loop:** If plan needs adjustment
+#### Development Plan Loop
 
-**Compact:** Save task, worktree, solution plan, design, step number
+If plan needs adjustment
+
+#### Compact After Development Plan
+
+Save task, worktree, solution plan, design, step number
 
 #### 3.3 Solution Writing
 
-**Agent 1: Write**
+#### Agent 1: Write Solution
+
 - Implement the solution
 - **Make unit tests pass**
 - Follow design and plan
 - Write clean, maintainable code
 
-**Agent 2: Review**
+#### Agent 2: Review Solution
+
 - Check code quality
 - Validate against design
 - **Ensure unit tests pass**
 - Suggest improvements
 
-**Loop:** If code needs improvement
+#### Solution Writing Loop
 
-**Compact:** Save task, worktree, solution design, step number
+If code needs improvement
+
+#### Compact After Solution Writing
+
+Save task, worktree, solution design, step number
 
 #### 3.4 Fix Code for Integration Tests
 
-**Agent 1: Fix**
+#### Agent 1: Fix Code
+
 - **Make integration tests pass**
 - Adjust code as needed
 - Handle integration edge cases
 
-**Agent 2: Review**
+#### Agent 2: Review Code Fixes
+
 - Validate fixes
 - **Ensure integration tests pass**
 - Check for regressions
 
-**Loop:** If more fixes needed
+#### Code Fixes Loop
 
-**Compact:** Save task, worktree, development design, step number
+If more fixes needed
+
+#### Compact After Code Fixes
+
+Save task, worktree, development design, step number
 
 #### 3.5 Design vs Code Review
 
-**Agent 1: Validate Alignment**
+#### Agent 1: Validate Alignment
+
 - Compare code to design
 - Identify deviations
 - Assess if deviations are justified
 
-**If misalignment:**
+#### If Misalignment Detected
 
-**Agent 2: Determine Action**
+#### Agent 2: Determine Action
+
 - Should design change?
 - Should code refactor?
 - What's better for the task?
 
-**Decision:**
+#### Alignment Decision
+
 - If design needs change: Return to 3.1
 - If code needs refactor: Return to 3.3
 - If aligned: Proceed
 
-**Compact:** Save task, worktree, step number
+#### Compact After Design vs Code Review
+
+Save task, worktree, step number
 
 ### Phase 4: Commit Changes
 
@@ -288,7 +365,9 @@ Only if tests are required from Phase 1.
 - Check clarity
 - Ensure accuracy
 
-**Loop:** If message needs improvement
+#### Commit Message Loop
+
+If message needs improvement
 
 #### Main Agent: Execute Commit
 
@@ -297,7 +376,9 @@ git add <relevant-files>
 git commit -m "message"
 ```
 
-**Compact:** Save task, worktree, step number
+#### Compact After Commit
+
+Save task, worktree, step number
 
 ### Phase 5: Refactor
 
@@ -308,73 +389,95 @@ git commit -m "message"
 - Assess technical debt
 - **OK to have no changes**
 
-**Compact:** Save task, worktree, evaluation, step number
+#### Compact After Refactor Evaluation
 
-**If refactoring needed:**
+Save task, worktree, evaluation, step number
+
+#### If Refactoring Needed
+
 - Restart from Phase 1 with refactoring as new task
 
-**If no refactoring:**
+#### If No Refactoring
+
 - Proceed to Phase 6
 
-**Compact:** Save task, worktree, step number
+#### Compact After Refactor Decision
+
+Save task, worktree, step number
 
 ### Phase 6: Pull Request Management
 
 #### 6.1 PR Creation (If no PR exists)
 
-**Agent 1: Write PR Message**
+#### Agent 1: Write PR Message
+
 - Summarize all changes
 - Explain motivation
 - List testing done
 - Reference issues
 
-**Agent 2: Review PR Message**
+#### Agent 2: Review PR Message
+
 - Validate completeness
 - Check clarity
 - Ensure proper format
 
-**Loop:** If message needs improvement
+#### PR Message Loop
 
-**Main Agent: Create PR**
+If message needs improvement
+
+#### Main Agent: Create PR
+
 ```bash
 gh pr create -a @me --title "..." --body "..."
 ```
 
-**Compact:** Save task, worktree, step number
+#### Compact After PR Creation
+
+Save task, worktree, step number
 
 #### 6.2 Push Changes (If PR exists)
 
-**Simple push:**
+#### Simple Push
+
 ```bash
 git push
 ```
 
 #### 6.3 Review Wait Period
 
-**Wait:** 10 minutes for automated review
+#### Wait for Review
+
+10 minutes for automated review
 
 #### 6.4 Acting on Review Comments
 
-**Agent 1: Check Comments**
+#### Agent 1: Check Comments
+
 - Fetch latest PR comments
 - Identify if review is ready
 
-**If no comment or failed:** Wait for user input
+#### If No Comment or Failed
 
-**If there are comments:**
+Wait for user input
 
-**Agent 2: Parse Comments**
+#### If There Are Comments
+
+#### Agent 2: Parse Comments
+
 - Extract issues found
 - Categorize by severity
 - Understand feedback
 
-**Agent 3: Categorize Issues**
+#### Agent 3: Categorize Issues
 
 Create two lists:
+
 1. **Issues to address NOW**
 2. **Issues to address LATER** (follow-up PR)
 
-**For each LATER issue:**
+#### For Each LATER Issue
+
 1. Ask user if GitHub issue should be created
 2. If yes:
    - **Agent 4:** Write issue text
@@ -383,28 +486,34 @@ Create two lists:
 3. Remove from LATER list
 4. **Compact:** Save task, worktree, lists, step number
 
-**Mark comment as resolved:**
+#### Mark Comment as Resolved
+
 ```bash
 gh api --method PATCH /repos/owner/repo/pulls/comments/<id> \
   -f "minimizedReason=RESOLVED" -f 'isMinimized=true'
 ```
 
-**For NOW issues:**
+#### For NOW Issues
+
 1. Ask user which to address NOW, ignore, or move to LATER
 2. Update lists accordingly
 3. **Compact:** Save NOW list, worktree, step number
 4. **Restart from Phase 1** with NOW issues as new task
 
-**If no issues:** Merge the PR
+#### If No Issues Remain
+
+Merge the PR
 
 ### Phase 7: Closing the Task
 
 1. **If GitHub issue exists:** Close it
 2. **Agent:** Update roadmap/task list if exists
 3. **Remove worktree:**
+
    ```bash
    git worktree remove ../task-name-worktree
    ```
+
 4. **Clear context:** Run `/clear`
 
 ## Agent Coordination Patterns
@@ -413,7 +522,7 @@ gh api --method PATCH /repos/owner/repo/pulls/comments/<id> \
 
 Standard pattern for most phases:
 
-```
+```text
 1. Launch Agent (Design/Plan/Write)
 2. Launch Agent (Review)
 3. If improvements needed: goto 1
@@ -423,12 +532,14 @@ Standard pattern for most phases:
 
 ### Context Compaction
 
-**When to compact:**
+#### When to compact
+
 - After each major sub-phase
 - Before launching new agents
 - When context is growing large
 
-**What to remember:**
+#### What to remember
+
 - Current task description
 - Worktree name
 - Current phase/step number
@@ -436,7 +547,8 @@ Standard pattern for most phases:
 
 ### Agent Handoffs
 
-**Clear handoffs require:**
+#### Clear handoffs require
+
 - Summary of what was done
 - Current artifacts (design docs, test plans)
 - What the next agent should do
@@ -478,7 +590,7 @@ Standard pattern for most phases:
 
 ## Best Practices
 
-### DO:
+### DO
 
 1. Follow phases sequentially
 2. Use dedicated agents for each step
@@ -489,7 +601,7 @@ Standard pattern for most phases:
 7. Document decisions in design phases
 8. Handle review feedback systematically
 
-### DON'T:
+### DON'T
 
 1. Skip testing phases for features/fixes
 2. Write code before tests (except refactoring)
@@ -502,9 +614,9 @@ Standard pattern for most phases:
 
 ## Integration with Other Skills
 
-- **conventional-commits:** Phase 4 commit messages
-- **conventional-branch:** Phase 0 branch naming
-- **code-quality:** Review checkpoints throughout
+1. **conventional-commits:** Phase 4 commit messages
+2. **conventional-branch:** Phase 0 branch naming
+3. **code-quality:** Review checkpoints throughout
 
 ## When to Deviate
 
@@ -514,26 +626,32 @@ This workflow is comprehensive and may be overkill for:
 - **Emergency hotfixes:** Critical production issues (but still test!)
 - **Experiments:** Spike/POC work (document as such)
 
-**Rule:** Deviation requires explicit justification
+### Deviation Rule
+
+Deviation requires explicit justification
 
 ## Troubleshooting
 
-**Too many agents/context issues:**
+### Too many agents/context issues
+
 - Compact more frequently
 - Combine similar review steps
 - Use shorter agent prompts
 
-**Tests are too complex:**
+### Tests are too complex
+
 - Break into smaller units
 - Reconsider design
 - May need simpler approach
 
-**Design-code misalignment:**
+### Design-code misalignment
+
 - Phase 3.5 exists for this
 - Either update design or refactor code
 - Don't skip this validation
 
-**Review feedback overwhelming:**
+### Review feedback overwhelming
+
 - Categorize NOW vs LATER
 - Create follow-up issues
 - Address incrementally
@@ -552,6 +670,7 @@ Workflow is successful when:
 
 ## Reference
 
-This skill embodies TDD principles with systematic quality assurance through multi-agent collaboration. It ensures maintainable, well-tested code with clear documentation of decisions and tradeoffs.
+This skill embodies TDD principles with systematic quality assurance through multi-agent collaboration. It ensures maintainable,
+well-tested code with clear documentation of decisions and tradeoffs.
 
 Use this workflow for all substantial coding tasks to maintain consistency and quality across the codebase.

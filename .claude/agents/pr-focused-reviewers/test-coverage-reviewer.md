@@ -1,4 +1,5 @@
 ---
+
 name: test-coverage-reviewer
 description: Test coverage, quality, and TDD compliance analysis
 tools: Bash, Read, Grep, Glob
@@ -9,7 +10,9 @@ model: sonnet
 
 ## Purpose
 
-This agent performs **TEST QUALITY AND COVERAGE VALIDATION** only. It analyzes test files, calculates coverage metrics, validates test quality, and identifies missing test scenarios. This agent is designed to be invoked by the pr-quality-reviewer orchestrator.
+This agent performs **TEST QUALITY AND COVERAGE VALIDATION** only. It analyzes test files, calculates coverage metrics,
+validates test quality, and identifies missing test scenarios. This agent is designed to be invoked by the pr-quality-reviewer
+orchestrator.
 
 ## Input Format
 
@@ -153,6 +156,6 @@ Provide results in the following format:
 ### Coverage Status: ✓ PASS / ✗ FAIL (based on 80% threshold)
 ```
 
-## Integration
-
-This agent is designed to be invoked by the pr-quality-reviewer orchestrator with a JSON context. It focuses exclusively on test coverage and quality validation, leaving other PR aspects to specialized agents.
+This agent is designed to be invoked by the pr-quality-reviewer orchestrator with a JSON context.
+It focuses exclusively on test coverage and quality validation,
+leaving other PR aspects to specialized agents.

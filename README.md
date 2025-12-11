@@ -36,7 +36,8 @@ Placeholder for learning project configurations.
 
 ### external-resources/ (via data repository)
 
-Git submodules containing community resources are stored in the private `claude-data` repository and accessible via the `data/external-resources/` junction link:
+Git submodules containing community resources are stored in the private `claude-data` repository
+and accessible via the `data/external-resources/` junction link:
 
 1. super-claude
 2. awesome-claude-prompts
@@ -55,7 +56,8 @@ See [Marketplace Documentation](#claude-code-marketplace) below for details.
 
 ## Claude Code Marketplace
 
-This repository provides a comprehensive curated marketplace of Claude Code plugins, combining original tools with best-of-breed selections from across the community ecosystem.
+This repository provides a comprehensive curated marketplace of Claude Code plugins,
+combining original tools with best-of-breed selections from across the community ecosystem.
 
 ### Installation
 
@@ -73,7 +75,7 @@ Then install any plugin:
 
 ### Plugin Catalog
 
-**14 plugins | 100+ tools | 7 sources curated**
+### 14 plugins | 100+ tools | 7 sources curated
 
 #### Original Plugins (3)
 
@@ -97,37 +99,37 @@ Then install any plugin:
 
 #### Community Collections (6) - 86+ tools
 
-4. **community-testing** (12 items)
+1. **community-testing** (12 items)
    - TDD workflow and code quality skills
    - Test automation and QA agents
    - SuperClaude test and analyze commands
    - Keywords: `testing`, `qa`, `tdd`, `automation`
 
-5. **community-documentation** (13 items)
+2. **community-documentation** (13 items)
    - Batch docs pipeline (unique)
    - PRD, Roadmap, JTBD frameworks
    - API documentation and changelog tools
    - Keywords: `documentation`, `docs`, `prd`, `api-docs`
 
-6. **community-devops** (10 items)
+3. **community-devops** (10 items)
    - CI/CD automation (release, husky, act)
    - Kubernetes and cloud architecture agents
    - Build and deployment tools
    - Keywords: `devops`, `ci-cd`, `kubernetes`, `cloud`
 
-7. **community-prompts** (8 items)
+4. **community-prompts** (8 items)
    - Prompt-to-pipeline architect (unique)
    - Agent orchestration and evolution
    - 100+ prompt examples from community
    - Keywords: `prompts`, `ai`, `llm`, `agents`
 
-8. **community-git-tools** (9 items)
+5. **community-git-tools** (9 items)
    - Conventional commits and branch skills
    - PR workflows and automation
    - Git worktree and branch management
    - Keywords: `git`, `version-control`, `commits`, `pr`
 
-9. **community-best-of** (25 items)
+6. **community-best-of** (25 items)
    - Top-rated tools across all categories
    - Unique innovations highlighted
    - Cross-category best practices
@@ -135,19 +137,19 @@ Then install any plugin:
 
 #### jaodsilv Featured Collections (3)
 
-10. **jaodsilv-workflow** (8 items)
+1. **jaodsilv-workflow** (8 items)
     - Complete development workflow system
     - TDD, conventional standards, multi-agent
     - Agent evolution and curation tools
     - Keywords: `tdd`, `workflow`, `conventional`, `multi-agent`
 
-11. **jaodsilv-docs** (5 items)
+2. **jaodsilv-docs** (5 items)
     - **UNIQUE** batch documentation pipeline
     - Download, convert, verify automation
     - Multi-agent coordination
     - Keywords: `documentation`, `batch`, `automation`, `pipeline`
 
-12. **jaodsilv-career** (1 skill - 593 lines)
+3. **jaodsilv-career** (1 skill - 593 lines)
     - **UNIQUE** - Only career tool in ecosystem
     - Cover letters, resumes, interviews
     - Negotiation and offer evaluation
@@ -155,14 +157,14 @@ Then install any plugin:
 
 #### Meta-Plugins (2)
 
-13. **marketplace-curator**
+1. **marketplace-curator**
     - Tools for curating your own marketplace
     - Discovery agent for 13+ sources
     - Analysis and categorization tools
     - Templates and documentation
     - Keywords: `curation`, `marketplace`, `discovery`, `meta`
 
-14. **community-bundle**
+2. **community-bundle**
     - Single-command install of all 6 community collections
     - 86+ tools across all categories
     - Easy ecosystem access
@@ -277,16 +279,19 @@ Splitting into specialized directories:
 The easiest way to use this repository is through the Claude Code marketplace:
 
 1. **Add the marketplace**:
+
    ```bash
    /plugin marketplace add jaodsilv/claude
    ```
 
 2. **Browse available plugins**:
+
    ```bash
    /plugin list
    ```
 
 3. **Install plugins**:
+
    ```bash
    /plugin install community-bundle     # All community collections
    /plugin install jaodsilv-workflow    # TDD workflow
@@ -304,16 +309,21 @@ If you prefer to fork and customize:
 3. Copy everything from your own ~/.claude into the .claude here
 4. If needed add whatever file you have with secrets in the .gitignore, this .gitignore already includes .credentials.json
 5. **(Optional) Set up external resources**: Clone the data repository and create a junction link:
+
    ```cmd
    # Windows (run as Administrator or with Developer Mode enabled)
    git clone https://github.com/jaodsilv/claude-data ../data
    mklink /J data ..\data
+
    ```
+
    ```bash
    # Linux/macOS
    git clone https://github.com/jaodsilv/claude-data ../data
+
    ln -s ../data data
    ```
+
 6. Mount the repository's .claude directory:
     1. **For Linux/WSL users**:
         1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`

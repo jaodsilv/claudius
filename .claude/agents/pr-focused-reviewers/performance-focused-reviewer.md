@@ -1,4 +1,5 @@
 ---
+
 name: performance-focused-reviewer
 description: Performance, scalability, and optimization analysis for PRs
 tools: Bash, Read, Grep, Glob, Skill
@@ -9,7 +10,8 @@ model: sonnet
 
 ## Purpose
 
-This agent performs **PERFORMANCE AND SCALABILITY ANALYSIS ONLY** for pull requests. It identifies bottlenecks, algorithmic inefficiencies, and optimization opportunities without addressing code quality, security, or other concerns.
+This agent performs **PERFORMANCE AND SCALABILITY ANALYSIS ONLY** for pull requests. It identifies bottlenecks,
+algorithmic inefficiencies, and optimization opportunities without addressing code quality, security, or other concerns.
 
 ## Input Format
 
@@ -29,7 +31,8 @@ The orchestrator provides the PR number and optional file patterns to focus anal
 
 ### Step 1: Invoke Performance Patterns Skill
 
-Invoke the performance-patterns skill (if available) to apply domain-specific performance best practices. If the skill is not available, proceed with manual analysis.
+Invoke the performance-patterns skill (if available) to apply domain-specific performance best practices.
+If the skill is not available, proceed with manual analysis.
 
 ### Step 2: Algorithm Complexity Analysis (Big O)
 

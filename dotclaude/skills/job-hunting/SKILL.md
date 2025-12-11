@@ -12,7 +12,8 @@ This skill is automatically invoked when:
 
 ## Overview
 
-Effective job hunting requires strategic positioning, authentic communication, and thorough preparation. This skill provides comprehensive guidance for navigating the job search process successfully.
+Effective job hunting requires strategic positioning, authentic communication, and thorough preparation. This skill provides
+comprehensive guidance for navigating the job search process successfully.
 
 ## Core Principles
 
@@ -44,7 +45,7 @@ Effective job hunting requires strategic positioning, authentic communication, a
 - Brief compelling statement about your fit
 - Genuine interest in company/role
 
-```
+```text
 Good:
 I am excited to apply for the Senior Software Engineer position at
 Anthropic. With 5 years of experience building scalable AI systems and
@@ -64,7 +65,7 @@ I am writing to apply for the position I saw on your website.
 - Connect to job requirements
 - Provide concrete examples with metrics
 
-```
+```text
 Good:
 In my current role at TechCorp, I architected a distributed system
 that processes 10M+ requests daily, reducing latency by 40% and
@@ -81,7 +82,7 @@ I have experience with distributed systems and can write code.
 - Explain why you're excited about this specific company
 - Connect your values to theirs
 
-```
+```text
 Good:
 I am particularly drawn to your commitment to transparency and
 safety in AI development. Having contributed to open-source AI
@@ -102,7 +103,7 @@ Your company seems like a good place to work.
 - Availability for interview
 - Thank you
 
-```
+```text
 Good:
 I would welcome the opportunity to discuss how my experience in
 building scalable AI systems can contribute to Anthropic's mission.
@@ -179,14 +180,16 @@ Let me know if you want to talk.
 **Use STAR or XYZ format:**
 
 **STAR:** Situation, Task, Action, Result
-```
+
+```text
 Redesigned authentication system (S/T), implementing OAuth2 and JWT
 (A), reducing security incidents by 80% and improving login speed by
 50% (R).
 ```
 
 **XYZ:** Accomplished X by doing Y, resulting in Z
-```
+
+```text
 Improved API response times by 60% by implementing Redis caching,
 resulting in better user experience for 100K+ daily users.
 ```
@@ -202,7 +205,7 @@ resulting in better user experience for 100K+ daily users.
 - Adoption rate
 - Efficiency gains
 
-```
+```text
 Good:
 - Led team of 5 engineers to deliver product 2 weeks ahead of schedule
 - Reduced deployment time from 2 hours to 15 minutes via CI/CD automation
@@ -297,7 +300,7 @@ Avoid:
 3. **Action:** Describe what YOU did (focus on your contribution)
 4. **Result:** Share the outcome with metrics
 
-```
+```text
 Example: "Tell me about a time you improved a process"
 
 Situation: Our deployment process took 3 hours and required manual steps
@@ -362,7 +365,7 @@ deployment errors, and enabled team to deploy 3x more frequently
 - Reference specific discussion point
 - Offer to provide additional information
 
-```
+```text
 Subject: Thank you - Software Engineer Interview
 
 Dear [Name],
@@ -545,7 +548,7 @@ Best regards,
 
 ## Best Practices Summary
 
-### DO:
+### DO
 
 1. Research thoroughly
 2. Customize everything
@@ -558,7 +561,7 @@ Best regards,
 9. Maintain professionalism
 10. Stay organized
 
-### DON'T:
+### DON'T
 
 1. Send generic applications
 2. Lie or exaggerate
@@ -590,4 +593,5 @@ Effective job hunting is a systematic process requiring research, preparation, a
 - Evaluate opportunities wisely
 - Negotiate confidently
 
-Success comes from treating job hunting as a skill to develop, not just a necessary evil. Invest in the process, learn continuously, and maintain professionalism throughout.
+Success comes from treating job hunting as a skill to develop, not just a necessary evil. Invest in the process, learn continuously,
+and maintain professionalism throughout.

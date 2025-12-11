@@ -5,7 +5,8 @@
 
 ## Overview
 
-This discovery phase analyzed all locally available sources to create structured inventories of Claude Code plugins, agents, commands, scripts, and skills.
+This discovery phase analyzed all locally available sources to create structured inventories of Claude Code plugins, agents,
+commands, scripts, and skills.
 
 ## Discovery Statistics
 
@@ -116,7 +117,7 @@ This discovery phase analyzed all locally available sources to create structured
 
 ## Outstanding Sources
 
-### Not Yet Inventoried (6 external marketplaces):
+### Not Yet Inventoried (6 external marketplaces)
 
 1. **anthropics/claude-code** (official)
 2. **ccplugins/marketplace**

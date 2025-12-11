@@ -58,10 +58,11 @@
 
 **Source**: Local repository
 **Total Items**: 14
-**Categories Used**: Documentation (4), AI & Prompts (1), Productivity (2), Development Workflow (2), Git & Version Control (2), Testing & QA (1), Job Hunting & Career (1), Skills (1)
+**Categories Used**: Documentation (4), AI & Prompts (1), Productivity (2), Development Workflow (2), Git & Version Control (2),
+Testing & QA (1), Job Hunting & Career (1), Skills (1)
 **Quality Distribution**: 5 stars (14 items, 100%)
 
-### Categorization Review
+### dotclaude Categorization Review
 
 **✅ Correct**: 14 items (100%)
 
@@ -79,7 +80,7 @@ All items are correctly categorized:
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### dotclaude Quality Score Review
 
 **All items rated 5 stars** - This needs scrutiny:
 
@@ -98,12 +99,12 @@ All items appear to be well-documented, complete, and maintained. The 5-star rat
 1. Basic utilities (could be 4 stars)
 2. Complex workflows (5 stars justified)
 
-### Deduplication Review
+### dotclaude Deduplication Review
 
 **Duplicates identified**: 0 (local source, no cross-source duplicates)
 **Missed duplicates**: None
 
-### Completeness Review
+### dotclaude Completeness Review
 
 **Complete**: Yes
 **Total items count**: 14 (matches items array length)
@@ -119,9 +120,11 @@ All items have:
 6. description
 7. keywords
 
-### Overall Assessment
+### dotclaude Overall Assessment
 
-The dotclaude local inventory represents high-quality, well-maintained personal tools. All items are correctly categorized with consistent 5-star ratings that appear justified. The collection focuses on documentation workflows (28.5%), development automation, and specialized skills.
+The dotclaude local inventory represents high-quality, well-maintained personal tools. All items are correctly categorized with
+consistent 5-star ratings that appear justified. The collection focuses on documentation workflows (28.5%), development automation,
+and specialized skills.
 
 **Strengths**:
 
@@ -140,12 +143,13 @@ The dotclaude local inventory represents high-quality, well-maintained personal 
 
 ## 2. super-claude Quality Review
 
-**Source**: https://github.com/SuperClaude-Org/SuperClaude
+**Source**: <https://github.com/SuperClaude-Org/SuperClaude>
 **Total Items**: 24
-**Categories Used**: Testing & QA (2), Development Workflow (8), Documentation (1), Productivity (4), Git & Version Control (1), AI & Prompts (5), DevOps & Infrastructure (3)
+**Categories Used**: Testing & QA (2), Development Workflow (8), Documentation (1), Productivity (4), Git & Version Control (1),
+AI & Prompts (5), DevOps & Infrastructure (3)
 **Quality Distribution**: 5 stars (24 items, 100%)
 
-### Categorization Review
+### super-claude Categorization Review
 
 **✅ Correct**: 24 items (100%)
 
@@ -163,7 +167,7 @@ Well-categorized comprehensive development framework:
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### super-claude Quality Score Review
 
 **All items rated 5 stars** - Needs differentiation:
 
@@ -185,7 +189,7 @@ The SuperClaude framework is a comprehensive, well-documented system. 5-star rat
 
 However, the current uniform rating may be intentional to reflect "production-ready" status.
 
-### Deduplication Review
+### super-claude Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: None
@@ -198,7 +202,7 @@ Potential overlap with other sources:
 
 All correctly identified as non-duplicates.
 
-### Completeness Review
+### super-claude Completeness Review
 
 **Complete**: Yes
 **Total items count**: 24 (matches items array length)
@@ -206,9 +210,10 @@ All correctly identified as non-duplicates.
 
 All items have complete metadata including repository URL.
 
-### Overall Assessment
+### super-claude Overall Assessment
 
-SuperClaude represents a mature, comprehensive development framework with excellent organization. The uniform 5-star rating reflects consistent production-ready quality across all components.
+SuperClaude represents a mature, comprehensive development framework with excellent organization. The uniform 5-star rating
+reflects consistent production-ready quality across all components.
 
 **Strengths**:
 
@@ -228,12 +233,12 @@ SuperClaude represents a mature, comprehensive development framework with excell
 
 ## 3. awesome-claude-code-subagents Quality Review
 
-**Source**: https://github.com/voltagent/awesome-claude-code-subagents
+**Source**: <https://github.com/voltagent/awesome-claude-code-subagents>
 **Total Items**: 110 (22 sampled in inventory)
 **Categories Used**: Code Generation (9), DevOps & Infrastructure (3), Security (2), Testing & QA (4), AI & Prompts (3), Documentation (1)
 **Quality Distribution**: 5 stars (22 sampled items, 100%)
 
-### Categorization Review
+### awesome-claude-code-subagents Categorization Review
 
 **✅ Correct**: 21 items (95.5%)
 
@@ -247,7 +252,7 @@ SuperClaude represents a mature, comprehensive development framework with excell
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### awesome-claude-code-subagents Quality Score Review
 
 **All 22 sampled items rated 5 stars** - Very high consistency:
 
@@ -273,7 +278,7 @@ The repository follows production-ready standards with:
 2. Adding maturity indicators (stable/beta)
 3. Differentiating by complexity/use frequency
 
-### Deduplication Review
+### awesome-claude-code-subagents Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: None
@@ -286,7 +291,7 @@ Potential overlaps reviewed:
 
 All correctly identified as distinct agents.
 
-### Completeness Review
+### awesome-claude-code-subagents Completeness Review
 
 **Complete**: Yes (for sampled items)
 **Total items count**: 110 total, 22 sampled (20% sample)
@@ -305,9 +310,10 @@ All correctly identified as distinct agents.
 
 **Recommendation**: Full inventory should list all 110 items for complete marketplace coverage.
 
-### Overall Assessment
+### awesome-claude-code-subagents Overall Assessment
 
-This is the largest and most comprehensive collection with 110 production-ready agents following strict quality standards. The sampled items demonstrate excellent categorization and consistent quality.
+This is the largest and most comprehensive collection with 110 production-ready agents following strict quality standards.
+The sampled items demonstrate excellent categorization and consistent quality.
 
 **Strengths**:
 
@@ -328,12 +334,13 @@ This is the largest and most comprehensive collection with 110 production-ready 
 
 ## 4. awesome-claude-code Quality Review
 
-**Source**: https://github.com/hesreallyhim/awesome-claude-code
+**Source**: <https://github.com/hesreallyhim/awesome-claude-code>
 **Total Items**: 50 (21 commands + 25 CLAUDE.md files, inventory focuses on commands)
-**Categories Used**: Git & Version Control (7), Development Workflow (3), Productivity (3), Testing & QA (1), DevOps & Infrastructure (4), Documentation (3)
+**Categories Used**: Git & Version Control (7), Development Workflow (3), Productivity (3), Testing & QA (1),
+DevOps & Infrastructure (4), Documentation (3)
 **Quality Distribution**: 5 stars (21 items, 100%)
 
-### Categorization Review
+### awesome-claude-code Categorization Review
 
 **✅ Correct**: 21 items (100%)
 
@@ -350,7 +357,7 @@ Well-categorized practical workflow commands:
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### awesome-claude-code Quality Score Review
 
 **All items rated 5 stars** - High but justified:
 
@@ -378,7 +385,7 @@ All commands appear to be:
 
 However, current uniform rating may be appropriate for "battle-tested" status.
 
-### Deduplication Review
+### awesome-claude-code Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: 1 potential duplicate within same source
@@ -396,7 +403,7 @@ However, current uniform rating may be appropriate for "battle-tested" status.
 2. Should one be marked as deprecated?
 3. Should they be merged into a single command?
 
-### Completeness Review
+### awesome-claude-code Completeness Review
 
 **Complete**: Yes
 **Total items count**: 50 total (21 commands inventoried)
@@ -410,9 +417,10 @@ However, current uniform rating may be appropriate for "battle-tested" status.
 2. Python automation scripts
 3. Workflow templates
 
-### Overall Assessment
+### awesome-claude-code Overall Assessment
 
-Excellent collection of practical, production-ready slash commands focused on GitHub workflows and development automation. High quality with strong Git integration focus.
+Excellent collection of practical, production-ready slash commands focused on GitHub workflows and development automation.
+High quality with strong Git integration focus.
 
 **Strengths**:
 
@@ -433,12 +441,12 @@ Excellent collection of practical, production-ready slash commands focused on Gi
 
 ## 5. awesome-claude-prompts Quality Review
 
-**Source**: https://github.com/yzfly/awesome-claude-prompts
+**Source**: <https://github.com/yzfly/awesome-claude-prompts>
 **Total Items**: 1 (consolidated prompt library)
 **Categories Used**: AI & Prompts (1)
 **Quality Distribution**: 4 stars (1 item, 100%)
 
-### Categorization Review
+### awesome-claude-prompts Categorization Review
 
 **✅ Correct**: 1 item (100%)
 
@@ -448,7 +456,7 @@ Excellent collection of practical, production-ready slash commands focused on Gi
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### awesome-claude-prompts Quality Score Review
 
 **4 stars** - Appropriately lower than other sources:
 
@@ -471,14 +479,14 @@ Rating of 4 stars is appropriate because:
 
 **Needs adjustment**: None - 4 stars is appropriate differentiation
 
-### Deduplication Review
+### awesome-claude-prompts Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: None
 
 This is a unique resource type (prompt examples) rather than executable agents/commands.
 
-### Completeness Review
+### awesome-claude-prompts Completeness Review
 
 **Complete**: Yes
 **Total items count**: 1 (matches items array length)
@@ -492,9 +500,10 @@ This is a unique resource type (prompt examples) rather than executable agents/c
 2. Extract top 10-20 prompts as individual items
 3. Categorize prompts by domain (business, technical, career, etc.)
 
-### Overall Assessment
+### awesome-claude-prompts Overall Assessment
 
-Valuable resource providing prompt examples and templates. Appropriately rated 4 stars due to format limitations. The single-item approach is reasonable for a consolidated prompt library.
+Valuable resource providing prompt examples and templates. Appropriately rated 4 stars due to format limitations.
+The single-item approach is reasonable for a consolidated prompt library.
 
 **Strengths**:
 
@@ -514,12 +523,12 @@ Valuable resource providing prompt examples and templates. Appropriately rated 4
 
 ## 6. awesome-claude-code-agents Quality Review
 
-**Source**: https://github.com/hesreallyhim/awesome-claude-code-agents
+**Source**: <https://github.com/hesreallyhim/awesome-claude-code-agents>
 **Total Items**: 4
 **Categories Used**: Code Generation (3), Testing & QA (1)
 **Quality Distribution**: 5 stars (4 items, 100%)
 
-### Categorization Review
+### awesome-claude-code-agents Categorization Review
 
 **✅ Correct**: 4 items (100%)
 
@@ -536,7 +545,7 @@ All correctly categorized:
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### awesome-claude-code-agents Quality Score Review
 
 **All items rated 5 stars** - Justified:
 
@@ -554,7 +563,7 @@ All descriptions suggest comprehensive, production-ready agents.
 
 **Needs adjustment**: None - ratings appear appropriate
 
-### Deduplication Review
+### awesome-claude-code-agents Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: Potential overlaps with awesome-claude-code-subagents
@@ -579,7 +588,7 @@ All descriptions suggest comprehensive, production-ready agents.
 
 All deduplication decisions appear correct.
 
-### Completeness Review
+### awesome-claude-code-agents Completeness Review
 
 **Complete**: Yes
 **Total items count**: 4 (matches items array length)
@@ -587,9 +596,10 @@ All deduplication decisions appear correct.
 
 All items have complete metadata.
 
-### Overall Assessment
+### awesome-claude-code-agents Overall Assessment
 
-Small but high-quality collection of specialized agents. All items are well-categorized with appropriate 5-star ratings. Good differentiation from similar agents in other sources.
+Small but high-quality collection of specialized agents. All items are well-categorized with appropriate 5-star ratings.
+Good differentiation from similar agents in other sources.
 
 **Strengths**:
 
@@ -609,12 +619,12 @@ Small but high-quality collection of specialized agents. All items are well-cate
 
 ## 7. dynamic-sub-agents Quality Review
 
-**Source**: https://github.com/[unknown]/dynamic-sub-agents
+**Source**: <https://github.com/[unknown]/dynamic-sub-agents>
 **Total Items**: 2
 **Categories Used**: AI & Prompts (1), Documentation (1)
 **Quality Distribution**: 3 stars (2 items, 100%)
 
-### Categorization Review
+### dynamic-sub-agents Categorization Review
 
 **✅ Correct**: 1 item (50%)
 
@@ -623,13 +633,14 @@ Small but high-quality collection of specialized agents. All items are well-cate
 **⚠️ Questionable**: 1 item (50%)
 
 1. **readme** - Categorized as "Documentation"
-   - **Reasoning**: README is technically documentation, but in marketplace context, it's project-level documentation rather than a reusable tool
+   - **Reasoning**: README is technically documentation, but in marketplace context, it's project-level documentation rather than
+     a reusable tool
    - **Recommendation**: Consider excluding project READMEs unless they provide standalone value
    - Alternatively: Recategorize as "AI & Prompts" if README contains substantial agent system documentation
 
 **❌ Incorrect**: None
 
-### Quality Score Review
+### dynamic-sub-agents Quality Score Review
 
 **Both items rated 3 stars** - Appropriately conservative:
 
@@ -655,7 +666,7 @@ Small but high-quality collection of specialized agents. All items are well-cate
 2. If abandoned or minimal content: consider removing
 3. If high-quality but niche: maintain 3 stars
 
-### Deduplication Review
+### dynamic-sub-agents Deduplication Review
 
 **Duplicates identified**: 0
 **Missed duplicates**: None
@@ -667,7 +678,7 @@ Concepts may overlap with:
 
 However, implementation appears distinct enough to warrant separate inclusion.
 
-### Completeness Review
+### dynamic-sub-agents Completeness Review
 
 **Complete**: Partial
 **Total items count**: 2 (matches items array length)
@@ -683,9 +694,10 @@ However, implementation appears distinct enough to warrant separate inclusion.
 3. Update descriptions with specifics
 4. Determine if project is maintained
 
-### Overall Assessment
+### dynamic-sub-agents Overall Assessment
 
-Small collection with limited information and conservative quality ratings. The 3-star rating appropriately reflects uncertainty and need for further investigation.
+Small collection with limited information and conservative quality ratings. The 3-star rating appropriately reflects uncertainty
+and need for further investigation.
 
 **Strengths**:
 
@@ -872,9 +884,11 @@ The marketplace curation demonstrates **high overall quality** with:
 3. **99.5% completeness**
 4. **Strong metadata consistency**
 
-The primary area for improvement is **quality score differentiation**, where 98.5% of items are rated 5 stars. Implementing a more nuanced scoring rubric will improve marketplace value by helping users identify truly exceptional items.
+The primary area for improvement is **quality score differentiation**, where 98.5% of items are rated 5 stars. Implementing a more
+nuanced scoring rubric will improve marketplace value by helping users identify truly exceptional items.
 
-The inventory is production-ready with minor enhancements recommended. The recommendations above will further strengthen the marketplace and improve user experience.
+The inventory is production-ready with minor enhancements recommended. The recommendations above will further strengthen the
+marketplace and improve user experience.
 
 **Next Steps**:
 

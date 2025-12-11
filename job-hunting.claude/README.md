@@ -15,7 +15,7 @@ This directory contains Claude Code configurations specifically for job hunting 
 
 ## Structure
 
-```
+```text
 job-hunting.claude/
 ├── agents/              # Job hunting specialized agents
 │   ├── cover-letter-evaluator/    # 14 evaluation aspect agents
@@ -150,7 +150,7 @@ The data repository separation ensures:
 
 ### Required Directory Structure
 
-```
+```text
 job-hunting.claude/
 ├── data/                          # Junction to private data repo
 │   ├── personal-info.yaml         # Personal data for template substitution

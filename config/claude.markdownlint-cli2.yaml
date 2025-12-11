@@ -2,15 +2,29 @@
 
 config:
   # MD013 - line-length
-  line_length:
+  MD013:
     line_length: 140
     code_blocks: false
     tables: false
     headings: false
-  no-inline-html: false
-  heading-style:
+  # MD004 - ul-style: use dash for all unordered lists
+  MD004:
+    style: dash
+  # MD023 - heading-start-left: disabled
+  MD023: false
+  # MD025 - single-title: disabled
+  MD025: false
+  # MD032 - blanks-around-lists: disabled
+  MD032: false
+  # MD033 - no-inline-html: disabled
+  MD033: false
+  # MD041 - first-line-h1: disabled
+  MD041: false
+  # MD003 - heading-style
+  MD003:
     style: atx
-  first-line-h1: false
+  # MD060 - table-column-style: disabled (tables have mixed styles)
+  MD060: false
 
 # Globs
 
@@ -27,6 +41,20 @@ globs:
   - ".claude/commands/*.md"
   - ".claude/output-styles/**/*.md"
   - ".claude/output-styles/*.md"
+  - "doc-understanding.claude/agents/**/*.md"
+  - "doc-understanding.claude/agents/*.md"
+  - "doc-understanding.claude/commands/**/*.md"
+  - "doc-understanding.claude/commands/*.md"
+  - "doc-understanding.claude/output-styles/**/*.md"
+  - "doc-understanding.claude/output-styles/*.md"
+  - "job-hunting.claude/agents/**/*.md"
+  - "job-hunting.claude/agents/*.md"
+  - "job-hunting.claude/commands/**/*.md"
+  - "job-hunting.claude/commands/*.md"
+  - "job-hunting.claude/output-styles/**/*.md"
+  - "job-hunting.claude/output-styles/*.md"
+  - "job-hunting.claude/experiments/**/*.md"
+  - "job-hunting.claude/experiments/*.md"
 
 # Fix any fixable errors
 
@@ -34,7 +62,7 @@ fix: true
 
 # Define a custom front matter pattern
 
-frontMatter: ^---\n(((?!---).)*\n)*---\n
+frontMatter: ^---\r?\n(((?!---).)*\r?\n)*---\r?\n
 
 # Ignore files referenced by .gitignore (only valid at root)
 

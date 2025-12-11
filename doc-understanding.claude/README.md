@@ -13,18 +13,18 @@ This plugin provides tools and workflows for:
 
 ## Mount Location
 
-This plugin should be mounted at `~/.claude` alongside or instead of the default `dotclaude` configuration, or in a project-specific `.claude` directory.
+This plugin should be mounted at `~/.claude` alongside or instead of the default `dotclaude` configuration, or in a
+project-specific `.claude` directory.
 
 ## Plugin Structure
 
-```
+```text
 doc-understanding.claude/
 ├── README.md                           # This file
 ├── commands/                          # Custom slash commands
 │   └── docs/
 │       └── download.md               # /docs:download command
 └── agents/                           # Sub-agents
-    ├── file-output-writer.md        # Structured file output writer
     └── docs/
         ├── downloader.md            # Single document downloader
         ├── batch-downloader.md      # Batch document downloader
@@ -98,15 +98,10 @@ Conversion quality verifier that checks and validates document conversions.
 
 **Sub-agent Type**: `docs:conversion-verifier`
 
-### `file-output-writer`
-
-Specialized agent for writing structured content to files. Particularly useful when content contains XML-like tags that need to be properly organized and nested. Handles tag parsing, content reorganization, and clean file output.
-
-**Sub-agent Type**: `file-output-writer`
-
 ## Integration
 
-This plugin integrates seamlessly with Claude Code's command and agent system. Simply mount it in your `.claude` directory and the commands and agents will be available for use.
+This plugin integrates seamlessly with Claude Code's command and agent system. Simply mount it in your `.claude` directory and the
+commands and agents will be available for use.
 
 ## Development
 

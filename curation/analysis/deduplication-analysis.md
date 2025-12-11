@@ -16,6 +16,7 @@
 ### 1. Git & Version Control (20+ items)
 
 #### Commit Message Management
+
 **Overlapping Items**:
 - dotclaude `conventional-commits` (skill, 5★) - Auto-invoked conventional commits guidance
 - awesome-claude-code `/commit` (command, 5★) - Conventional commits with emoji + pre-commit
@@ -31,6 +32,7 @@
 - **Alternative**: awesome-claude-code `/commit` (command) - For emoji lovers and pre-commit workflows
 
 #### Branch Management
+
 **Overlapping Items**:
 - dotclaude `conventional-branch` (skill, 5★) - Branch naming conventions
 - awesome-claude-code `/update-branch-name` (command, 5★) - Branch naming enforcement
@@ -41,6 +43,7 @@
 - **Complementary**: `/create-worktrees` (command) - Active worktree management
 
 #### Pull Request Workflows
+
 **Overlapping Items**:
 - awesome-claude-code `/create-pr` (command, 5★)
 - awesome-claude-code `/create-pull-request` (command, 5★) - Likely duplicate
@@ -52,6 +55,7 @@
 ### 2. Testing & QA (15+ items)
 
 #### Code Quality & Analysis
+
 **Overlapping Items**:
 - dotclaude `code-quality` (skill, 5★) - Comprehensive quality checklist, auto-invoked
 - super-claude `/sc:analyze` (command, 5★) - Quality, security, performance, architecture analysis
@@ -67,6 +71,7 @@
 - **Deep Analysis**: super-claude `/sc:analyze` (command) - When detailed report needed
 
 #### Testing Workflows
+
 **Overlapping Items**:
 - dotclaude `tdd-workflow` (skill, 5★) - Comprehensive 7-phase TDD process with multi-agent
 - super-claude `/sc:test` (command, 5★) - Test execution and reporting
@@ -79,6 +84,7 @@
 ### 3. Documentation (20+ items)
 
 #### Documentation Generation
+
 **Overlapping Items**:
 - dotclaude docs agents (4 agents, 5★) - Specialized pipeline: download, convert, verify, batch
 - super-claude `/sc:document` (command, 5★) - General documentation generation
@@ -97,6 +103,7 @@
 **Recommendation**: All three serve different use cases, no duplication
 
 #### Changelog Management
+
 **Overlapping Items**:
 - awesome-claude-code `/add-to-changelog` (command, 5★)
 - awesome-claude-code `/release` (command, 5★) - Includes changelog generation
@@ -105,6 +112,7 @@
 **Best-of-Breed**: Use `/release` for comprehensive release management
 
 #### Product Documentation
+
 **Unique Items** (No overlap):
 - awesome-claude-code `/create-prd` (command, 5★) - Product Requirements
 - awesome-claude-code `/create-prp` (command, 5★) - Product Roadmap
@@ -115,6 +123,7 @@
 ### 4. Development Workflow (25+ items)
 
 #### Build & Implementation
+
 **Overlapping Items**:
 - super-claude `/sc:build` (command, 5★) - Build, compile, package
 - super-claude `/sc:implement` (command, 5★) - Feature implementation
@@ -124,6 +133,7 @@
 **Recommendation**: Bundle together as "SuperClaude Development Suite"
 
 #### Code Improvement
+
 **Overlapping Items**:
 - super-claude `/sc:improve` (command, 5★) - Code improvement suggestions
 - super-claude `/sc:cleanup` (command, 5★) - Code cleanup and refactoring
@@ -133,6 +143,7 @@
 **Best-of-Breed**: super-claude `/sc:cleanup` (more comprehensive)
 
 #### Debugging & Troubleshooting
+
 **Unique Items**:
 - super-claude `/sc:troubleshoot` (command, 5★)
 - super-claude `/sc:explain` (command, 5★)
@@ -142,6 +153,7 @@
 ### 5. AI & Prompts (15+ items)
 
 #### Agent Management
+
 **Overlapping Items**:
 - dotclaude `prompt-to-pipeline-architect` (agent, 5★) - Transforms single prompts to multi-agent
 - super-claude `/sc:spawn` (command, 5★) - Spawn specialized agents
@@ -155,6 +167,7 @@
 **Recommendation**: All serve different purposes, include all
 
 #### Agent Evolution
+
 **Unique Items**:
 - dotclaude `agent-evolution` (script, 5★) - Agent evaluation/improvement loops
 - dotclaude `curator` (agent, 5★) - Plugin discovery and curation
@@ -164,6 +177,7 @@
 ### 6. Productivity (12+ items)
 
 #### Context Management
+
 **Overlapping Items**:
 - super-claude `/sc:load` (command, 5★) - Load context
 - super-claude `/sc:index` (command, 5★) - Index resources
@@ -176,6 +190,7 @@
 - **LLM Standard**: awesome-claude-code `/load-llms-txt` (standards-based)
 
 #### Task Management
+
 **Overlapping Items**:
 - super-claude `/sc:task` (command, 5★) - Task tracking
 - super-claude `/sc:estimate` (command, 5★) - Estimation
@@ -187,6 +202,7 @@
 ### 7. DevOps & Infrastructure (15+ items)
 
 #### CI/CD & Release
+
 **Overlapping Items**:
 - awesome-claude-code `/release` (command, 5★) - Release management
 - awesome-claude-code `/husky` (command, 5★) - Git hooks with Husky
@@ -196,6 +212,7 @@
 **Recommendation**: Bundle as "CI/CD Toolkit", no duplication
 
 #### Installation & Setup
+
 **Unique Items**:
 - super-claude installer (script, 5★) - Python installation suite
 - awesome-claude-code `/initref` (command, 5★) - Project initialization
@@ -204,7 +221,8 @@
 
 ### 8. Code Generation (30+ items from subagents)
 
-**Note**: awesome-claude-code-subagents contains 110+ agents including extensive code generation agents (frontend, backend, 24 language specialists). Not analyzed in detail here due to volume, but noted for collection creation.
+**Note**: awesome-claude-code-subagents contains 110+ agents including extensive code generation agents (frontend, backend,
+24 language specialists). Not analyzed in detail here due to volume, but noted for collection creation.
 
 **Recommendation**: Create separate language-specific collections or general "community-code-generation" collection
 
@@ -227,17 +245,20 @@
 
 ## Duplication Summary
 
-### Confirmed Duplicates (Eliminate):
+### Confirmed Duplicates (Eliminate)
+
 1. `/create-pr` vs `/create-pull-request` - Keep `/create-pr` (shorter)
 
-### Functional Overlap (Choose Best-of-Breed):
+### Functional Overlap (Choose Best-of-Breed)
+
 1. **Commits**: `conventional-commits` (skill) + `/commit` (command, emoji variant)
 2. **Code Quality**: `code-quality` (skill) + `/sc:analyze` (command, deep analysis)
 3. **Cleanup**: `/sc:cleanup` vs `/clean` - Keep `/sc:cleanup`
 4. **Tasks**: `/sc:task` vs `/todo` - Keep `/sc:task`
 5. **Context**: `/context-prime` vs `/load` - Keep `/context-prime`
 
-### Complementary (Keep Both):
+### Complementary (Keep Both)
+
 1. `conventional-commits` (skill) + `/commit` (command) - Different workflows
 2. `tdd-workflow` (skill) + `/sc:test` (command) - Process vs execution
 3. dotclaude docs agents + `/sc:document` - Specialized vs general
@@ -246,6 +267,7 @@
 ## Best-of-Breed Selections by Category
 
 ### Git & Version Control
+
 1. ⭐ dotclaude `conventional-commits` (skill)
 2. ⭐ dotclaude `conventional-branch` (skill)
 3. ⭐ awesome-claude-code `/commit` (command, emoji variant)
@@ -254,12 +276,14 @@
 6. awesome-claude-code `/create-worktrees` (command)
 
 ### Testing & QA
+
 1. ⭐ dotclaude `tdd-workflow` (skill)
 2. ⭐ dotclaude `code-quality` (skill)
 3. super-claude `/sc:analyze` (command)
 4. super-claude `/sc:test` (command)
 
 ### Documentation
+
 1. ⭐ dotclaude docs agents (4 agents) - Unique pipeline
 2. super-claude `/sc:document` (command)
 3. awesome-claude-code `/update-docs` (command)
@@ -267,6 +291,7 @@
 5. awesome-claude-code product docs (3 commands: PRD, PRP, JTBD)
 
 ### Development Workflow
+
 1. ⭐ dotclaude `tdd-workflow` (skill)
 2. super-claude implementation suite (`/sc:design`, `/sc:implement`, `/sc:build`)
 3. super-claude `/sc:improve` (command)
@@ -275,12 +300,14 @@
 6. super-claude `/sc:explain` (command)
 
 ### AI & Prompts
+
 1. ⭐ dotclaude `prompt-to-pipeline-architect` (agent) - Unique
 2. ⭐ dotclaude `agent-evolution` (script) - Unique
 3. super-claude `/sc:spawn` (command)
 4. super-claude ORCHESTRATOR (doc)
 
 ### Productivity
+
 1. awesome-claude-code `/context-prime` (command)
 2. super-claude `/sc:task` (command)
 3. super-claude `/sc:estimate` (command)
@@ -288,17 +315,20 @@
 5. dotclaude `file-output-writer` (agent)
 
 ### DevOps & Infrastructure
+
 1. awesome-claude-code `/release` (command)
 2. awesome-claude-code `/husky` (command)
 3. awesome-claude-code `/act` (command)
 4. super-claude installer (script)
 
 ### Job Hunting & Career
+
 1. ⭐ dotclaude `job-hunting` (skill) - **ONLY TOOL IN CATEGORY**
 
 ## Collection Assignment Matrix
 
 ### community-testing
+
 **Primary Sources**: awesome-claude-code-subagents + dotclaude + super-claude
 **Items**:
 - dotclaude: `tdd-workflow` (skill), `code-quality` (skill)
@@ -309,6 +339,7 @@
 **Total**: ~15 items
 
 ### community-documentation
+
 **Primary Sources**: dotclaude + awesome-claude-code + subagents
 **Items**:
 - dotclaude: 4 docs agents + 1 command (unique pipeline)
@@ -319,6 +350,7 @@
 **Total**: ~14 items
 
 ### community-devops
+
 **Primary Sources**: awesome-claude-code + super-claude + subagents
 **Items**:
 - awesome-claude-code: `/release`, `/husky`, `/act`
@@ -328,6 +360,7 @@
 **Total**: ~12 items
 
 ### community-prompts
+
 **Primary Sources**: dotclaude + awesome-claude-prompts + subagents
 **Items**:
 - dotclaude: `prompt-to-pipeline-architect` (unique), `agent-evolution` (unique)
@@ -338,6 +371,7 @@
 **Total**: ~8 tools + 100 prompts
 
 ### community-git-tools
+
 **Primary Sources**: dotclaude + awesome-claude-code + subagents
 **Items**:
 - dotclaude: `conventional-commits` (skill), `conventional-branch` (skill)
@@ -348,6 +382,7 @@
 **Total**: ~10 items
 
 ### community-best-of
+
 **Cross-category top-rated tools**:
 - dotclaude: `tdd-workflow`, `code-quality`, `conventional-commits`, `job-hunting` (unique), docs pipeline
 - super-claude: `/sc:analyze`, `/sc:test`, development suite (design/implement/build)
@@ -359,6 +394,7 @@
 ## jaodsilv Featured Collections
 
 ### jaodsilv-workflow
+
 **Comprehensive development workflow tools**:
 - `tdd-workflow` (skill)
 - `conventional-commits` (skill)
@@ -373,6 +409,7 @@
 **Theme**: TDD, conventional standards, agent-driven development
 
 ### jaodsilv-docs
+
 **Documentation automation pipeline**:
 - `docs-downloader` (agent)
 - `docs-converter` (agent)
@@ -384,6 +421,7 @@
 **Theme**: Unique batch documentation pipeline
 
 ### jaodsilv-job-hunting
+
 **Career development tools**:
 - `job-hunting` (skill)
 
