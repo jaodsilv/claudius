@@ -233,6 +233,8 @@ The following items need further clarification:
 | FR-001      | [Need]    | [High/Med/Low]       | P1       |
 | FR-002      | [Need]    | [High/Med/Low]       | P1       |
 | FR-003      | [Need]    | [High/Med/Low]       | P2       |
+
+
 ```
 
 ## Quality Standards

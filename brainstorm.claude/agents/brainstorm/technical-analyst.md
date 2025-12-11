@@ -249,6 +249,8 @@ You will receive:
 | Question | Impact | Priority |
 |----------|--------|----------|
 | [Question] | [High/Med/Low] | [1/2/3] |
+
+
 ```
 
 ## Analysis Guidelines
