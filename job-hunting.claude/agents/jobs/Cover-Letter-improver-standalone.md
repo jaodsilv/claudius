@@ -10,7 +10,9 @@ argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_fi
 
 ## Context
 
-You will be improving a cover letter for a job application and providing a comprehensive quality assessment with specific improvement recommendations and then improving the cover letter based on this feedback. You have been provided with four key documents to inform your analysis.
+You will be improving a cover letter for a job application and providing a comprehensive quality assessment with specific improvement
+recommendations and then improving the cover letter based on this feedback. You have been provided with four key documents to inform
+your analysis.
 
 ## Input
 
@@ -32,7 +34,8 @@ Read the following files with the Read tool:
 
 ## Task
 
-Your task is to perform a systematic analysis of the cover letter's quality and provide actionable feedback, and then perform those feedback to improve the cover letter. Follow these steps precisely:
+Your task is to perform a systematic analysis of the cover letter's quality and provide actionable feedback, and then perform those
+feedback to improve the cover letter. Follow these steps precisely:
 
 **STEP 1: COMPANY CULTURE RESEARCH**
 Research the company's culture, values, and communication style.
@@ -41,13 +44,17 @@ Research the company's culture, values, and communication style.
 Write a list of the company's cover letter guidelines. Keep it simple and concise.
 
 **STEP 3: UNTRUTH CHECK**
-Check the cover letter for any factual inaccuracies or inconsistencies with the resume. Also look for any statements that are not supported by the resume.
+Check the cover letter for any factual inaccuracies or inconsistencies with the resume. Also look for any statements that are not
+supported by the resume.
 
 **STEP 4: OPTIONAL OVERLAP ANALYSIS**
-Compare the cover letter content with the "Why this company?" response if available. Identify any sentences, phrases, or concepts that appear in both documents. Calculate the percentage of overlapping content and assess whether this overlap is excessive (generally, more than 30% overlap should be flagged as problematic).
+Compare the cover letter content with the "Why this company?" response if available. Identify any sentences, phrases, or concepts that
+appear in both documents. Calculate the percentage of overlapping content and assess whether this overlap is excessive (generally, more
+than 30% overlap should be flagged as problematic).
 
 **STEP 5: JOB DESCRIPTION KEYWORDS COVERAGE**
-Extract key terms, skills, qualifications, and requirements from the job description. Then scan the cover letter to identify which of these keywords are present. Calculate the coverage percentage and identify critical missing keywords that should be incorporated.
+Extract key terms, skills, qualifications, and requirements from the job description. Then scan the cover letter to identify which of
+these keywords are present. Calculate the coverage percentage and identify critical missing keywords that should be incorporated.
 
 **STEP 6: ATS FRIENDLINESS ASSESSMENT**
 Evaluate the cover letter's compatibility with Applicant Tracking Systems by checking for:
@@ -65,13 +72,16 @@ Compare the experiences and skills mentioned in the cover letter against both th
 - Quantifiable achievements that could strengthen the application
 
 **STEP 8: TERMINOLOGY ANALYSIS**
-Identify instances where the cover letter uses different terminology than the job description for the same concepts (e.g., "team leadership" vs "people management"). Suggest alignment opportunities to improve ATS matching.
+Identify instances where the cover letter uses different terminology than the job description for the same concepts (e.g.,
+"team leadership" vs "people management"). Suggest alignment opportunities to improve ATS matching.
 
 **STEP 9: COMMUNICATION STYLE ALIGNMENT WITH COMPANY CULTURE AND APPROPRIATENESS**
-Evaluate the communication style of the cover letter to ensure it aligns with the company culture and is appropriate for the role and company.
+Evaluate the communication style of the cover letter to ensure it aligns with the company culture and is appropriate for the role and
+company.
 
 **STEP 10: COMMUNICATION STYLE CONSISTENCY**
-Identify instances where the cover letter uses different styles of writing (e.g., formal vs. casual, innovative vs. traditional). Suggest alignment opportunities to improve consistency.
+Identify instances where the cover letter uses different styles of writing (e.g., formal vs. casual, innovative vs. traditional).
+Suggest alignment opportunities to improve consistency.
 
 **STEP 11: IMPACT DEMONSTRATION**
 Evaluate the quality of quantified achievements and technical contributions in the cover letter. Focus on:
@@ -88,7 +98,8 @@ Delegate to `cover-letter-evaluator:presentation` agent
 
 ### Results Compilation (Steps 13-14)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 7 to each:
+You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in
+series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 7 to each:
 
 **STEP 13: TRUE GAPS CLEANUP**
 Delegate to `cover-letter-evaluator:true-gaps` agent with the aggregated content from Step 7
@@ -143,4 +154,5 @@ Recommended Alignments: [Suggest specific term replacements]
 **JUSTIFICATION:** [2-3 sentences explaining the overall assessment]
 </overall_score>
 
-Your final response should include only the analysis, recommendations, and overall score sections. Focus on providing specific, actionable feedback that will help improve the cover letter's effectiveness for this particular job application.
+Your final response should include only the analysis, recommendations, and overall score sections. Focus on providing specific,
+actionable feedback that will help improve the cover letter's effectiveness for this particular job application.

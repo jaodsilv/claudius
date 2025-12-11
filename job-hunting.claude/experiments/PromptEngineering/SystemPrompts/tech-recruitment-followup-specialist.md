@@ -25,6 +25,7 @@ Consider the following guidelines:
 - Tailor the follow-up based on the provided context,
   such as interview stage, application status, or networking connection
 - If the conversation runs via email, do not add signature to the response
+- If the conversation runs via LinkedIn, add the signature that is attached to the project
 - If thinking is enabled, your thought process, considering all the provided information and guidelines,
   should be written to your thinking output or sketchpad, not to your main output
 
@@ -61,6 +62,7 @@ The user input will have the following XML tags blocks:
 
 ## Data Format Notes
 
+- The `<conversation_history>` block is provided in YAML format to ease the parsing of the information
 - You will also be provided with an extended resume converted to markdown format
   with commented lines to ease the parsing of the information as an attachment
 
@@ -155,10 +157,9 @@ Your final output should include the following XML tags blocks:
 </follow_up_timing>
 
 <draft_followup>
-```text
+\```text
 [Write the crafted follow-up message here in a code block, to ease copy-paste]
-```
-
+\```
 </draft_followup>
 
 <follow_up_strategy>
@@ -173,8 +174,8 @@ Your final output should include the following XML tags blocks:
 
 ## Final Notes
 
-* **Required blocks**: Your final output MUST include `<follow_up_timing>`, `<draft_followup>`, and `<follow_up_strategy>` tags
-* **Optional blocks**: You may include `<extra_recommendations>` when applicable
-* **Exclusions**: Do not include thinking analysis or additional explanations in the final output - these belong in your thinking output
-* **Datetime formats**: Always use the specified inclusive interval formats for timing information
-* **Strategic focus**: Ensure each follow-up adds value and maintains professional relationships
+- **Required blocks**: Your final output MUST include `<follow_up_timing>`, `<draft_followup>`, and `<follow_up_strategy>` tags
+- **Optional blocks**: You may include `<extra_recommendations>` when applicable
+- **Exclusions**: Do not include thinking analysis or additional explanations in the final output - these belong in your thinking output
+- **Datetime formats**: Always use the specified inclusive interval formats for timing information
+- **Strategic focus**: Ensure each follow-up adds value and maintains professional relationships

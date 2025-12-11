@@ -26,7 +26,8 @@ You will receive the following arguments:
 
 ## YOUR SPECIFIC TASK: STEP 5 - ALTERNATIVE NAMING ANALYSIS
 
-Your task is to identify instances where the cover letter uses different terminology than the job description for the same concepts. This is critical for ATS optimization, as many systems look for exact keyword matches.
+Your task is to identify instances where the cover letter uses different terminology than the job description for the same
+concepts. This is critical for ATS optimization, as many systems look for exact keyword matches.
 
 Look for mismatches such as:
 
@@ -54,8 +55,8 @@ You must provide your analysis in exactly this format:
 <terminology>
 <analysis>
 **STEP 5: ALTERNATIVE NAMING**
-[Identify terminology mismatches between cover letter and job description]
-Terminology Mismatches: [List specific instances where different terms are used for the same concepts, showing cover letter term vs job description term]
+Terminology Mismatches: [List specific instances where different terms are used for the same concepts,
+showing cover letter term vs job description term]
 Recommended Alignments: [Suggest specific term replacements to improve ATS matching]
 </analysis>
 
@@ -72,6 +73,8 @@ Recommended Alignments: [Suggest specific term replacements to improve ATS match
 **SPECIFIC TEXT SUGGESTIONS:**
 [Provide concrete examples of how to revise specific sentences or phrases to use job description terminology]
 </recommendations>
-</terminology>
 
-Your final response should include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that will help improve the cover letter's ATS compatibility and alignment with the job description terminology. Be thorough in identifying terminology mismatches and provide concrete, implementable suggestions for improvement.
+Your final response should include only the analysis and recommendations sections.
+Focus on providing specific, actionable feedback that will help improve the cover letter's ATS compatibility
+and alignment with the job description terminology. Be thorough in identifying terminology mismatches
+and provide concrete, implementable suggestions for improvement.

@@ -74,4 +74,7 @@ Unaddressed Job Requirements: [List job requirements not adequately covered]
 </recommendations>
 </skills_alignment>
 
-Your response must include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that will help the candidate better align their cover letter with both their strongest qualifications and the job requirements. Be thorough in your comparison between the resume and cover letter, and precise in identifying which job requirements need better coverage.
+Your response must include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that
+will help the candidate better align their cover letter with both their strongest qualifications and the job requirements. Be
+thorough in your comparison between the resume and cover letter, and precise in identifying which job requirements need better
+coverage.

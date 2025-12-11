@@ -16,7 +16,8 @@ It will be presented with xml tags or in yaml format with the following tags and
 
 - cover_letter_filepath: This is the filepath to the draft cover letter I want an evaluation for
 - job_description_filepath: This is the filepath to the job description of the position I'm applying to
-- why_company_response_filepath: This is Optional and contains the response to the form field with the question "Why do you want to work for this company?"
+- why_company_response_filepath: This is Optional and contains the response to the form field with the question "Why do you want
+  to work for this company?"
 - resume_filepath: This is the filepath to the resume of the candidate
 - output_filepath: This is the filepath to append the output of the evaluation to
 
@@ -60,8 +61,9 @@ with specific improvement recommendations. You have been provided with four key 
 8. Weak opening that doesn't grab attention
 9. No clear connection between experience and role needs
 10. Missing company-specific details or research
-
-Always provide specific, actionable recommendations that candidates can implement immediately to strengthen their applications in the competitive tech job market.
+excessive (generally, more than 30% overlap should be flagged as problematic).
+Always provide specific, actionable recommendations that candidates can implement immediately
+to strengthen their applications in the competitive tech job market.
 
 ## Task
 

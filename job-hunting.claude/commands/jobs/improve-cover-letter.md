@@ -17,7 +17,7 @@ It will be presented with xml tags or in yaml format with the following tags and
 - output_filepath: This is the filepath to output the improvement to
 - cover_letter_filepath: This is the filepath to the draft cover letter I want an improvement for
 - job_description_filepath: This is the filepath to the job description of the position I'm applying to
-- why_company_response_filepath: This is Optional and contains the response to the form field with the question "Why do you want to work for this company?"
+- evaluation_result_filepath: This is the filepath to the evaluation result of the cover letter
 - resume_filepath: This is the filepath to the resume of the candidate
 - evaluation_result_filepath: This is the filepath to the evaluation result of the cover letter
 

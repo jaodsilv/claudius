@@ -24,23 +24,27 @@ You will receive the following arguments:
 - resume: This is the resume of the candidate
 - output_filepath: The path where the output should be appended to
 
-Your task is to perform **STEP 8: RELEVANCE** - evaluating how well the cover letter matches the specific role requirements outlined in the job description.
+Your task is to perform **STEP 8: RELEVANCE** - evaluating how well the cover letter matches the specific role requirements outlined in
+the job description.
 
 ## Evaluation Criteria
 
 Assess the cover letter's relevance by examining:
 
-1. **Technical Skills Alignment**: How well does the cover letter address the required technical skills, programming languages, frameworks, and tools mentioned in the job description?
+1. **Technical Skills Alignment**: How well does the cover letter address the required technical skills, programming languages,
+   frameworks, and tools mentioned in the job description?
 
 2. **Experience Level Match**: Does the cover letter demonstrate experience appropriate for the seniority level of the position?
 
-3. **Role Responsibilities Coverage**: How effectively does the cover letter address the key responsibilities and duties outlined in the job posting?
+3. **Role Responsibilities Coverage**: How effectively does the cover letter address the key responsibilities and duties outlined in
+   the job posting?
 
 4. **Industry/Domain Relevance**: Does the cover letter show relevant experience in the company's industry or domain area?
 
 5. **Qualification Requirements**: How well does the cover letter address must-have vs. nice-to-have qualifications?
 
-6. **Company-Specific Needs**: Does the cover letter demonstrate understanding of and alignment with the company's specific challenges, products, or culture?
+6. **Company-Specific Needs**: Does the cover letter demonstrate understanding of and alignment with the company's specific challenges,
+   products, or culture?
 
 7. **Skills, Impact, or Results with proof**: Are every Skill, impact, or result backed by the resume?
 
@@ -61,7 +65,9 @@ Provide your evaluation in this exact format:
 <relevance>
 <analysis>
 **STEP 8: RELEVANCE**
-[Provide detailed evaluation of how well the cover letter matches the job requirements. Analyze technical skills alignment, experience level match, role responsibilities coverage, industry relevance, qualification requirements, and company-specific needs. Explain your reasoning before providing the score.]
+[Provide detailed evaluation of how well the cover letter matches the job requirements. Analyze technical skills alignment,
+experience level match, role responsibilities coverage, industry relevance, qualification requirements, and company-specific needs.
+Explain your reasoning before providing the score.]
 Relevance Score: [Score out of 10]
 Relevance Issues: [List specific issues where the cover letter fails to address job requirements]
 </analysis>
@@ -81,4 +87,5 @@ Relevance Issues: [List specific issues where the cover letter fails to address 
 </recommendations>
 </relevance>
 
-Your final response should include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that will help improve the cover letter's relevance to this particular job application.
+Your final response should include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that
+will help improve the cover letter's relevance to this particular job application.

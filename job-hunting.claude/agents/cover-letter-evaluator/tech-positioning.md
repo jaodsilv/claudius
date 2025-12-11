@@ -72,7 +72,8 @@ You must provide your evaluation in this exact format:
 <tech_positioning>
 <analysis>
 **STEP 11: TECHNICAL POSITIONING**
-[Provide detailed evaluation of how effectively the cover letter communicates technical skills and experience, referencing specific examples from the cover letter and comparing against job requirements]
+[Provide detailed evaluation of how effectively the cover letter communicates technical skills and experience, referencing
+specific examples from the cover letter and comparing against job requirements]
 Technical Positioning Score: [Score out of 10]
 Technical Positioning Issues: [List specific issues identified in the technical positioning]
 </analysis>
@@ -92,4 +93,7 @@ Technical Positioning Issues: [List specific issues identified in the technical 
 </recommendations>
 </tech_positioning>
 
-Your response must include only the analysis and recommendations sections. Focus on providing specific, actionable feedback that will help the candidate better communicate their technical qualifications for this particular role. Reference specific examples from the provided cover letter and job description to support your evaluation.
+Your response must include only the analysis and recommendations sections.
+Focus on providing specific, actionable feedback that will help the candidate better communicate
+their technical qualifications for this particular role. Reference specific examples
+from the provided cover letter and job description to support your evaluation.
