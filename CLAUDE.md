@@ -19,8 +19,6 @@ This is a personal configuration repository for Claude Code custom base configs,
 - `CLAUDE.base.md` - Base configuration for Claude Code to copy to other projects
 
 
-### External Resources (via data repository)
-
 External resources are stored in the paired data repository (`claude-data`) and accessed via the `data/` junction link:
 
 1. `data/external-resources/super-claude` - Super Claude, a collection of Claude Code agents and prompts.
