@@ -13,7 +13,8 @@ This plugin provides tools and workflows for:
 
 ## Mount Location
 
-This plugin should be mounted at `~/.claude` alongside or instead of the default `dotclaude` configuration, or in a project-specific `.claude` directory.
+This plugin should be mounted at `~/.claude` alongside or instead of the default `dotclaude` configuration, or in a
+project-specific `.claude` directory.
 
 ## Plugin Structure
 
@@ -99,7 +100,8 @@ Conversion quality verifier that checks and validates document conversions.
 
 ## Integration
 
-This plugin integrates seamlessly with Claude Code's command and agent system. Simply mount it in your `.claude` directory and the commands and agents will be available for use.
+This plugin integrates seamlessly with Claude Code's command and agent system. Simply mount it in your `.claude` directory and the
+commands and agents will be available for use.
 
 ## Development
 
