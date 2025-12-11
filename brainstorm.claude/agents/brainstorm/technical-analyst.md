@@ -127,9 +127,9 @@ You will receive:
 **Approach**: [Description of the architecture]
 
 **Diagram**:
-```text
+\`\`\`text
 [ASCII architecture diagram]
-```
+\`\`\`
 
 **Pros**:
 
