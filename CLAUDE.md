@@ -18,6 +18,7 @@ This is a personal configuration repository for Claude Code custom base configs,
 - `dotclaude` - Actual .claude mounted at `~/.claude`. This is where you should put non-project specific configuration.
 - `CLAUDE.base.md` - Base configuration for Claude Code to copy to other projects
 
+### External Resources (via data repository)
 
 External resources are stored in the paired data repository (`claude-data`) and accessed via the `data/` junction link:
 

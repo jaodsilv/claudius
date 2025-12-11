@@ -21,7 +21,8 @@
       "Bash(markdownlint-cli2:*)",
       "Bash(grep:*)",
       "Bash(git commit:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   },
