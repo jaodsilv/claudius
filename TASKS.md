@@ -132,7 +132,7 @@ This directory contains Claude Code configurations specifically for job hunting 
 ## Structure
 
 \```
-job-hunting.ClaudeForge/
+job-hunting.claude/
 ├── agents/              # Job hunting specialized agents
 ├── commands/            # Job hunting slash commands
 ├── shared/              # Job hunting shared resources
