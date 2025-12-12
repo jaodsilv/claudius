@@ -17,10 +17,10 @@
     "agent-evolution"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/jaodsilv/claude",
+  "homepage": "https://github.com/jaodsilv/ClaudeForge",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaodsilv/claude.git"
+    "url": "https://github.com/jaodsilv/ClaudeForge.git"
   },
   "instructions": [
     "dotclaude/shared/coding-task-workflow.md",

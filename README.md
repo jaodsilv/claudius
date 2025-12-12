@@ -1,10 +1,10 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jaodsilv/claude/main.svg)](https://results.pre-commit.ci/latest/github/jaodsilv/claude/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jaodsilv/ClaudeForge/main.svg)](https://results.pre-commit.ci/latest/github/jaodsilv/ClaudeForge/main)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Conventional Branch](https://img.shields.io/badge/Conventional%20Branch-1.0.0-blue)](https://github.com/conventional-branch/conventional-branch)
-[![Code License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jaodsilv/claude?tab=MIT-1-ov-file)
+[![Code License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jaodsilv/ClaudeForge?tab=MIT-1-ov-file)
 
-# Claude 🤖
+# ClaudeForge 🤖
 
 My custom base config for my personal projects, including a very basic `CLAUDE.md` (named `CLAUDE.base.md`, the `CLAUDE.md` here is
 actually the `CLAUDE.md` of this repo), sub agents, custom slash commands and workflows
@@ -36,7 +36,7 @@ Placeholder for learning project configurations.
 
 ### external-resources/ (via data repository)
 
-Git submodules containing community resources are stored in the private `claude-data` repository
+Git submodules containing community resources are stored in the private `ClaudeForge-data` repository
 and accessible via the `data/external-resources/` junction link:
 
 1. super-claude
@@ -64,7 +64,7 @@ combining original tools with best-of-breed selections from across the community
 Add this marketplace to Claude Code:
 
 ```bash
-/plugin marketplace add jaodsilv/claude
+/plugin marketplace add jaodsilv/ClaudeForge
 ```
 
 Then install any plugin:
@@ -175,7 +175,7 @@ Then install any plugin:
 **Install Everything**:
 
 ```bash
-/plugin marketplace add jaodsilv/claude
+/plugin marketplace add jaodsilv/ClaudeForge
 /plugin install community-bundle  # All 6 community collections
 ```
 
@@ -281,7 +281,7 @@ The easiest way to use this repository is through the Claude Code marketplace:
 1. **Add the marketplace**:
 
    ```bash
-   /plugin marketplace add jaodsilv/claude
+   /plugin marketplace add jaodsilv/ClaudeForge
    ```
 
 2. **Browse available plugins**:
@@ -312,14 +312,14 @@ If you prefer to fork and customize:
 
    ```cmd
    # Windows (run as Administrator or with Developer Mode enabled)
-   git clone https://github.com/jaodsilv/claude-data ../data
+   git clone https://github.com/jaodsilv/ClaudeForge-data ../data
    mklink /J data ..\data
 
    ```
 
    ```bash
    # Linux/macOS
-   git clone https://github.com/jaodsilv/claude-data ../data
+   git clone https://github.com/jaodsilv/ClaudeForge-data ../data
 
    ln -s ../data data
    ```
@@ -327,13 +327,13 @@ If you prefer to fork and customize:
 6. Mount the repository's .claude directory:
     1. **For Linux/WSL users**:
         1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
-        2. Create symlink (recommended): `ln -s /path/to/your/src/folder/claude/dotclaude ~/.claude`
+        2. Create symlink (recommended): `ln -s /path/to/your/src/folder/ClaudeForge/dotclaude ~/.claude`
     2. **For Windows users**:
         1. Backup your existing Claude config
         2. Create junction point or symbolic link to the dotclaude directory
     3. **For macOS users**:
         1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
-        2. Create symlink: `ln -s /path/to/your/src/folder/claude/dotclaude ~/.claude`
+        2. Create symlink: `ln -s /path/to/your/src/folder/ClaudeForge/dotclaude ~/.claude`
 
 ## Contributing
 

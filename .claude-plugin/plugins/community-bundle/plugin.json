@@ -17,10 +17,10 @@
     "ecosystem"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/jaodsilv/claude",
+  "homepage": "https://github.com/jaodsilv/ClaudeForge",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaodsilv/claude.git"
+    "url": "https://github.com/jaodsilv/ClaudeForge.git"
   },
   "dependencies": [
     "community-testing",
@@ -30,5 +30,5 @@
     "community-git-tools",
     "community-best-of"
   ],
-  "notes": "Install all 6 community collections with a single command.\n\n**Included Collections** (86+ items total):\n\n1. **community-testing** (12 items)\n   - TDD workflow, code quality, test automation, QA agents\n\n2. **community-documentation** (13 items)\n   - Batch docs pipeline, generation, product docs (PRD/Roadmap/JTBD)\n\n3. **community-devops** (10 items)\n   - CI/CD tools, Kubernetes, cloud architecture, SRE\n\n4. **community-prompts** (8 items)\n   - Prompt engineering, agent orchestration, 100+ examples\n\n5. **community-git-tools** (9 items)\n   - Conventional commits/branches, PR workflows, git automation\n\n6. **community-best-of** (25 items)\n   - Top-rated tools across all categories\n   - Unique innovations highlighted\n\n**Coverage**: Testing, Documentation, DevOps, AI/Prompts, Git, and cross-category best practices\n\n**Installation**:\n```bash\n/plugin marketplace add jaodsilv/claude\n/plugin install community-bundle\n```\n\nThis installs all 6 collections, giving you instant access to 86+ curated, production-ready tools from across the Claude Code ecosystem."
+  "notes": "Install all 6 community collections with a single command.\n\n**Included Collections** (86+ items total):\n\n1. **community-testing** (12 items)\n   - TDD workflow, code quality, test automation, QA agents\n\n2. **community-documentation** (13 items)\n   - Batch docs pipeline, generation, product docs (PRD/Roadmap/JTBD)\n\n3. **community-devops** (10 items)\n   - CI/CD tools, Kubernetes, cloud architecture, SRE\n\n4. **community-prompts** (8 items)\n   - Prompt engineering, agent orchestration, 100+ examples\n\n5. **community-git-tools** (9 items)\n   - Conventional commits/branches, PR workflows, git automation\n\n6. **community-best-of** (25 items)\n   - Top-rated tools across all categories\n   - Unique innovations highlighted\n\n**Coverage**: Testing, Documentation, DevOps, AI/Prompts, Git, and cross-category best practices\n\n**Installation**:\n```bash\n/plugin marketplace add jaodsilv/ClaudeForge\n/plugin install community-bundle\n```\n\nThis installs all 6 collections, giving you instant access to 86+ curated, production-ready tools from across the Claude Code ecosystem."
 }

@@ -20,7 +20,7 @@ This is a personal configuration repository for Claude Code custom base configs,
 
 ### External Resources (via data repository)
 
-External resources are stored in the paired data repository (`claude-data`) and accessed via the `data/` junction link:
+External resources are stored in the paired data repository (`ClaudeForge-data`) and accessed via the `data/` junction link:
 
 1. `data/external-resources/super-claude` - Super Claude, a collection of Claude Code agents and prompts.
 2. `data/external-resources/awesome-claude-prompts` - Awesome Claude Prompts, a collection of Claude Code prompts.
@@ -35,12 +35,12 @@ External resources are stored in the paired data repository (`claude-data`) and 
 
 ```cmd
 # Windows (run as Administrator or with Developer Mode enabled)
-mklink /J data D:\src\claude\data
+mklink /J data D:\src\ClaudeForge\data
 ```
 
 ```bash
 # Linux/macOS
-ln -s /path/to/claude-data data
+ln -s /path/to/ClaudeForge-data data
 ```
 
 ### `dotclaude/`
