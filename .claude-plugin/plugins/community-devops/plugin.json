@@ -18,10 +18,10 @@
     "community-curated"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/jaodsilv/claudeforge",
+  "homepage": "https://github.com/jaodsilv/claudius",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaodsilv/claudeforge.git"
+    "url": "https://github.com/jaodsilv/claudius.git"
   },
   "commands": [
     "data/external-resources/super-claude/SuperClaude/Commands/build.md",

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "plugins": {
+    "brainstorm-pro@jaodsilv-claudius-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "C:\\Users\\joaod\\.claude\\plugins\\cache\\jaodsilv-claudius-marketplace\\brainstorm-pro\\0.1.1",
+        "version": "0.1.1",
+        "installedAt": "2025-12-12T04:33:29.172Z",
+        "lastUpdated": "2025-12-12T04:33:29.172Z",
+        "gitCommitSha": "145024bd95bedc64d67c60fbbeb3105f3a863243",
+        "isLocal": true
+      }
+    ]
+  }
+}
