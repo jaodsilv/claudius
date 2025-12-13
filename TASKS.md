@@ -1,6 +1,6 @@
-# ClaudeForge Repository - Restructuring Tasks
+# claudeforge Repository - Restructuring Tasks
 
-**Repository**: <https://github.com/jaodsilv/ClaudeForge>
+**Repository**: <https://github.com/jaodsilv/claudeforge>
 **Status**: Existing repository needs configuration restructuring
 **Visibility**: PUBLIC
 
@@ -12,7 +12,7 @@ directories to improve startup performance and reduce command/agent loading issu
 ## Current Structure
 
 ```text
-ClaudeForge/
+claudeforge/
 ├── dotclaude/                    # Currently mounted as ~/.claude
 │   ├── agents/                  # All agents (general + job-specific)
 │   ├── commands/                # All commands (general + job-specific)
@@ -31,7 +31,7 @@ ClaudeForge/
 ## Target Structure
 
 ```text
-ClaudeForge/
+claudeforge/
 ├── dotclaude/                    # General configs only
 │   ├── agents/                  # General-purpose agents only
 │   ├── commands/                # General-purpose commands only
@@ -60,7 +60,7 @@ ClaudeForge/
 ### 1. Create New Directory Structure
 
 ```bash
-cd D:/src/ClaudeForge
+cd D:/src/claudeforge
 
 # Create new specialized directories
 mkdir -p job-hunting.claude/agents
@@ -335,7 +335,7 @@ git status
 ### 8. Commit and Push
 
 ```bash
-cd D:/src/ClaudeForge
+cd D:/src/claudeforge
 
 git add .
 git commit -m "feat: restructure into specialized Claude configurations
