@@ -1,7 +1,5 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
-<!-- Badge commented out until GitHub repo rename is complete
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jaodsilv/claudius/main.svg)](https://results.pre-commit.ci/latest/github/jaodsilv/claudius/main)
--->
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Conventional Branch](https://img.shields.io/badge/Conventional%20Branch-1.0.0-blue)](https://github.com/conventional-branch/conventional-branch)
 [![Code License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jaodsilv/claudius?tab=MIT-1-ov-file)
