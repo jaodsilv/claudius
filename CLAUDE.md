@@ -61,22 +61,6 @@ ln -s /path/to/claudius-data data
 - `docs` - Shared documents for Claude Code.
 - `downloads` - Shared downloads for Claude Code.
 
-### Template Configuration Files
-
-The following files in `dotclaude/` contain machine-specific paths and serve as templates. Users must customize these for their environment:
-
-1. **dotclaude/settings.json**
-   - `statusLine.command`: Update path to your local statusline script
-   - Example: `"bash ~/.claude/statusline-command.sh"` (Unix) or `"bash C:\\Users\\YOUR_USER\\.claude\\statusline-command.sh"` (Windows)
-
-2. **dotclaude/plugins/installed_plugins.json**
-   - `installPath`: Automatically managed by Claude Code plugin system
-   - Contains cached plugin locations specific to your machine
-
-3. **dotclaude/plugins/known_marketplaces.json**
-   - `path` and `installLocation`: Local marketplace source paths
-   - Update to match your local directory structure
-
 ## Specialized Claude Configurations
 
 This repository now uses specialized .claude directories for different workflows:
