@@ -124,13 +124,13 @@ The data repository separation ensures:
 2. **Clone to your data location**:
 
    ```bash
-   git clone https://github.com/yourusername/job-hunting-data D:\src\claude\data
+   git clone https://github.com/yourusername/job-hunting-data D:\src\claudius\data
    ```
 
 3. **Create the required directory structure**:
 
    ```bash
-   cd D:\src\claude\data
+   cd D:\src\claudius\data
    mkdir job-hunting
    mkdir job-hunting\history
    mkdir job-hunting\input
@@ -139,7 +139,7 @@ The data repository separation ensures:
 4. **Create Windows junction** (run as Administrator):
 
    ```cmd
-   mklink /J D:\src\claude\job-hunting-configs\job-hunting.claude\data D:\src\claude\data\job-hunting
+   mklink /J D:\src\claudius\job-hunting-configs\job-hunting.claude\data D:\src\claudius\data\job-hunting
    ```
 
    Or on Linux/macOS:

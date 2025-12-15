@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "jaodsilv-claude-marketplace",
+  "name": "jaodsilv-claudius-marketplace",
   "version": "1.0.0",
   "description": "Personal productivity marketplace: TDD workflows, job hunting automation, and curated community development tools",
   "owner": {
