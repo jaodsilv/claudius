@@ -2,6 +2,7 @@
   "name": "tdd-pro",
   "version": "1.0.0",
   "description": "Professional TDD workflow with multi-agent coordination, conventional commits, and branch management",
+  "enabled": false,
   "author": {
     "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
@@ -14,7 +15,8 @@
     "automation",
     "conventional-commits",
     "git",
-    "agent-evolution"
+    "multi-agent",
+    "code-quality"
   ],
   "license": "MIT",
   "homepage": "https://github.com/jaodsilv/claudius",
@@ -22,12 +24,21 @@
     "type": "git",
     "url": "https://github.com/jaodsilv/claudius.git"
   },
+  "skills": [
+    "dotclaude/skills/tdd-workflow/SKILL.md",
+    "dotclaude/skills/conventional-commits/SKILL.md",
+    "dotclaude/skills/conventional-branch/SKILL.md",
+    "dotclaude/skills/code-quality/SKILL.md"
+  ],
+  "agents": [
+    "dotclaude/agents/curator.md",
+    "dotclaude/agents/prompt-to-pipeline-architect.md",
+    "doc-understanding.claude/agents/file-output-writer.md"
+  ],
   "instructions": [
     "dotclaude/shared/coding-task-workflow.md",
     "dotclaude/shared/conventional-commits.md",
     "dotclaude/shared/conventional-branch.md"
   ],
-  "scripts": [
-    "dotclaude/scripts/agent-evolution.sh"
-  ]
+  "notes": "DISABLED: Merged content from jaodsilv-workflow. Features 7-phase TDD process with multi-agent coordination, auto-invoked skills for conventional commits/branches, code quality, and prompt-to-pipeline transformation."
 }
