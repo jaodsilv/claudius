@@ -16,6 +16,19 @@ This workflow ensures consistent, high-quality development using Test-Driven Dev
 collaboration. It follows a sequential process where each phase builds upon the previous, with iterative design-review cycles
 throughout.
 
+## Plugin Integration
+
+This skill integrates with the `tdd-workflows` plugin for enhanced TDD capabilities:
+
+| Command | Purpose |
+|---------|---------|
+| `/tdd-workflows:tdd-cycle` | Complete TDD cycle (recommended for standard tasks) |
+| `/tdd-workflows:tdd-red` | Write failing tests with framework patterns |
+| `/tdd-workflows:tdd-green` | Minimal implementation to pass tests |
+| `/tdd-workflows:tdd-refactor` | Improve code while keeping tests green |
+
+See `tdd-approach-selection` skill for guidance on choosing between full cycle and individual commands.
+
 ## Core Principles
 
 1. **Tests First** - Write tests before implementation (TDD)
@@ -86,6 +99,10 @@ Skip to Phase 3 if no tests needed
 ### Phase 2: Testing Phase
 
 Only if tests are required from Phase 1.
+
+> **Plugin Option**: For standard tasks, use `/tdd-workflows:tdd-cycle` instead of manual agent
+> coordination. For complex tasks requiring intervention, use individual commands
+> (`/tdd-workflows:tdd-red`, `/tdd-workflows:tdd-green`). See `tdd-approach-selection` skill.
 
 #### 2.1 Unit Tests Design
 
@@ -229,6 +246,9 @@ If tests need improvement
 Save task, worktree, step number
 
 ### Phase 3: Solution Phase
+
+> **Plugin Option**: If using `/tdd-workflows:tdd-cycle`, this phase is handled automatically.
+> For individual commands approach, continue with manual agent coordination below.
 
 #### 3.1 Solution Design
 
@@ -381,6 +401,10 @@ git commit -m "message"
 Save task, worktree, step number
 
 ### Phase 5: Refactor
+
+> **Plugin Note**: If using `/tdd-workflows:tdd-cycle`, refactoring is included in the cycle.
+> This phase is optional - only evaluate if additional refactoring is needed based on new insights.
+> Use `/tdd-workflows:tdd-refactor` for structured refactoring with test safety.
 
 #### Agent: Evaluate Refactoring Needs
 
@@ -614,9 +638,18 @@ Standard pattern for most phases:
 
 ## Integration with Other Skills
 
-1. **conventional-commits:** Phase 4 commit messages
-2. **conventional-branch:** Phase 0 branch naming
-3. **code-quality:** Review checkpoints throughout
+1. **tdd-approach-selection:** Phase 2 approach selection (full cycle vs individual commands)
+2. **conventional-commits:** Phase 4 commit messages
+3. **conventional-branch:** Phase 0 branch naming
+4. **code-quality:** Review checkpoints throughout
+
+## Integration with Plugins
+
+1. **tdd-workflows:** `/tdd-cycle`, `/tdd-red`, `/tdd-green`, `/tdd-refactor` commands
+
+## Related Commands
+
+1. `/coding-task:start` - Start a coding task with TDD orchestration
 
 ## When to Deviate
 

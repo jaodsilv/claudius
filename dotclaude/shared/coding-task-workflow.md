@@ -47,96 +47,135 @@ Create a new agent for the task using the Task tool to evaluate the need for tes
 2. **If it is a cleanup** or something that does not require new tests: Consider it does not need new tests  
 3. **If it is a bug fix or a new feature**: New tests are required
 
-### 2. Testing Phase (If tests are needed)
+### 2. TDD Approach Selection
 
-#### 2.1 Unit Tests Design
+Based on task complexity, choose the appropriate TDD approach:
 
-1. **In a new agent** (using the Task tool to create this agent): Design and document design of unit tests
-2. **In a new agent** (using the Task tool to create this agent): Review design, especially if it handles the task at hand and edge cases
-   - *Looping between 2.1.1 and 2.1.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, the unit test design,
+#### When to use `/tdd-workflows:tdd-cycle` (Full Cycle)
+
+Use the full cycle for:
+
+1. Standard features with well-defined requirements
+2. New modules or components with clear boundaries
+3. Bug fixes where test coverage already exists
+4. Tasks with straightforward test scenarios
+
+#### When to use individual commands
+
+Use individual commands (`tdd-red`, `tdd-green`, `tdd-refactor`) for:
+
+1. Complex tasks requiring iterative design exploration
+2. Experimental or research-oriented development
+3. Tasks where you need intervention between phases
+4. Integration with existing complex test suites
+5. Performance-critical code requiring custom optimization
+
+---
+
+### 2A. Full Cycle Approach (Recommended for most tasks)
+
+Use the tdd-workflows plugin for the complete TDD cycle:
+
+1. Run `/tdd-workflows:tdd-cycle` with the task requirements
+   - Handles test specification, design, and architecture
+   - Executes complete RED-GREEN-REFACTOR cycle
+   - Includes integration tests with failing-first discipline
+   - Provides performance testing and final review
+   - Uses specialized agents (test-automator, backend-architect, code-reviewer, architect-review)
+
+2. Run `/compact` to compact the context window, remember the task, the worktree name,
    and the step number you are working on
 
-#### 2.2 Unit Tests Plan
+3. Skip to Phase 3: Design Alignment Check
 
-1. **In a new agent** (using the Task tool to create this agent): Plan unit tests for the task based on design
-2. **In a new agent** (using the Task tool to create this agent): Review plan
-   - *Looping between 2.2.1 and 2.2.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, the unit test plan,
-   the unit test design, and the step number you are working on
+---
 
-#### 2.3 Tests Writing
+### 2B. Individual Commands Approach (For complex tasks)
 
-1. **In a new agent** (using the Task tool to create this agent): Write unit tests, it is ok to be failing now
-2. **In a new agent** (using the Task tool to create this agent): Review unit tests, it is ok to be failing now
-   - *Looping between 2.3.1 and 2.3.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, and the step number you are working on
+#### 2B.1 Unit Tests (RED Phase)
 
-#### 2.4 Integration Tests Design
+Use the tdd-workflows plugin for structured failing test creation:
 
-1. **In a new agent** (using the Task tool to create this agent): Design and document design of integration tests
-2. **In a new agent** (using the Task tool to create this agent): Review design, especially if it handles the task at hand and edge cases
-   - *Looping between 2.4.1 and 2.4.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, the integration test design,
+1. Run `/tdd-workflows:tdd-red` with the task requirements
+   - Plugin provides framework-specific patterns (Jest, pytest, Go, RSpec)
+   - Enforces test-first discipline with failure verification
+   - Covers happy paths, edge cases, and error scenarios
+
+2. **GATE**: Verify all tests fail with meaningful error messages before proceeding
+
+3. Run `/compact` to compact the context window, remember the task, the worktree name,
    and the step number you are working on
 
-#### 2.5 Integration Tests Plan
-
-1. **In a new agent** (using the Task tool to create this agent): Plan integration tests based on design
-2. **In a new agent** (using the Task tool to create this agent): Review plan
-   - *Looping between 2.5.1 and 2.5.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, the integration test plan,
-   the integration test design, and the step number you are working on
-
-#### 2.6 Integration Tests Writing
-
-1. **In a new agent** (using the Task tool to create this agent): Write integration tests, it is ok for them to be failing now
-2. **In a new agent** (using the Task tool to create this agent): Review integration tests, it is ok to be failing now
-   - *Looping between 2.6.1 and 2.6.2 if needed, two new agents (Task tool) per loop round*
-3. Run `/compact` to compact the context window, remember the task, the worktree name, and the step number you are working on
-
-### 3. Solution Phase
-
-#### 3.1 Solution Design
+#### 2B.2 Solution Design
 
 1. **In a new agent** (using the Task tool to create this agent): Design and document design of the solution. Consider the tests written.
 2. **In a new agent** (using the Task tool to create this agent): Review design, especially if it handles the task at hand
-   - *Looping between 3.1.1 and 3.1.2 if needed, two new agents (Task tool) per loop round*
+   - *Looping between 2B.2.1 and 2B.2.2 if needed, two new agents (Task tool) per loop round*
 3. Run `/compact` to compact the context window, remember the task, the worktree name, the solution design,
    and the step number you are working on
 
-#### 3.2 Development Plan
+#### 2B.3 Development Plan
 
 1. **In a new agent** (using the Task tool to create this agent): Plan changes based on design
 2. **In a new agent** (using the Task tool to create this agent): Review plan
-   - *Looping between 3.2.1 and 3.2.2 if needed, two new agents (Task tool) per loop round*
+   - *Looping between 2B.3.1 and 2B.3.2 if needed, two new agents (Task tool) per loop round*
 3. Run `/compact` to compact the context window, remember the task, the worktree name, the solution plan,
    the development design, and the step number you are working on
 
-#### 3.3 Solution Writing
+#### 2B.4 Implementation (GREEN Phase)
 
-1. **In a new agent** (using the Task tool to create this agent): Write solution and make the unit tests pass
-2. **In a new agent** (using the Task tool to create this agent): Review solution and make the unit tests pass
-   - *Looping between 3.3.1 and 3.3.2 if needed, two new agents (Task tool) per loop round*
+1. Run `/tdd-workflows:tdd-green` to implement minimal code that passes unit tests
+   - Plugin enforces "minimal code that could possibly work"
+   - Uses techniques: Fake It, Obvious Implementation, Triangulation
+   - Avoids over-engineering during this phase
+
+2. **GATE**: All unit tests must pass before proceeding
+
 3. Run `/compact` to compact the context window, remember the task, the worktree name, the solution design,
    and the step number you are working on
 
-#### 3.4 Fix Code for Integration Tests
+#### 2B.5 Integration Tests (RED Phase)
 
-1. **In a new agent** (using the Task tool to create this agent): Fix code in the case of the integration tests are not passing yet
-2. **In a new agent** (using the Task tool to create this agent): Review the code
-   - *Looping between 3.4.1 and 3.4.2 if needed, two new agents (Task tool) per loop round*
+1. Run `/tdd-workflows:tdd-red` for integration tests
+   - Focus on component interactions and API contracts
+   - Tests must fail initially
+
+2. **GATE**: Verify integration tests fail for the right reasons
+
+3. Run `/compact` to compact the context window, remember the task, the worktree name,
+   and the step number you are working on
+
+#### 2B.6 Integration Implementation (GREEN Phase)
+
+1. Run `/tdd-workflows:tdd-green` for integration test requirements
+   - Focus on component interaction and data flow
+
+2. **GATE**: All integration tests must pass
+
 3. Run `/compact` to compact the context window, remember the task, the worktree name, the development design,
    and the step number you are working on
 
-#### 3.5 Design vs Code Review
+#### 2B.7 Refactoring (REFACTOR Phase)
 
-1. **In a new agent** (using the Task tool to create this agent): Review if code follows design
+1. Run `/tdd-workflows:tdd-refactor` to improve code quality
+   - Plugin applies SOLID principles, removes duplication
+   - Includes code smell detection and design patterns
+   - Ensures tests stay green throughout
+
+2. Run `/compact` to compact the context window, remember the task, the worktree name,
+   and the step number you are working on
+
+---
+
+### 3. Design Alignment Check
+
+1. **In a new agent** (using the Task tool to create this agent): Review if code follows original design intent
 2. **If it does not follow the design**:
    1. **In a new agent** (using the Task tool to create this agent):
       Review if the design should be changed or the code should be refactored considering the task at hand
-   2. If needed, looping back to 3.1 or to 3.3 as needed
-3. Run `/compact` to compact the context window, remember the task, the worktree name, and the step number you are working on
+   2. If needed, loop back to Phase 2 (re-run tdd-cycle or individual commands as appropriate)
+3. Run `/compact` to compact the context window, remember the task, the worktree name,
+   and the step number you are working on
 
 ### 4. Commit Changes
 
@@ -147,6 +186,10 @@ Create a new agent for the task using the Task tool to evaluate the need for tes
 4. Run `/compact` to compact the context window, remember the task, the worktree name, and the step number you are working on
 
 ### 5. Refactor
+
+> **Note**: If you used `/tdd-workflows:tdd-cycle` in Phase 2, this phase is optional
+> as refactoring is already included in the cycle. Only evaluate if additional
+> refactoring is needed based on new insights.
 
 1. **In a new agent** (using the Task tool to create this agent):
    Evaluate the code for refactoring needs. It is ok to not have anything to change
