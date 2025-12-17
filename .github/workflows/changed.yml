@@ -4,15 +4,15 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       with:
         fetch-depth: 0
-    - uses: tj-actions/changed-files@v46
+    - uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46
       id: changed-files
       with:
         files: '**/*.md'
         separator: ","
-    - uses: DavidAnson/markdownlint-cli2-action@v20
+    - uses: DavidAnson/markdownlint-cli2-action@992badcdf24e3b8eb7e87ff9287fe931bcb00c6e # v20
       continue-on-error: true
       if: steps.changed-files.outputs.any_changed == 'true'
       with:

@@ -6,15 +6,21 @@
   "scripts": {
     "validate": "node scripts/validate-plugins.mjs",
     "docs": "node scripts/generate-docs.mjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
-    "conventional-changelog-cli": "^5.0.0",
-    "conventional-recommended-bump": "^10.0.0",
+    "@vitest/coverage-v8": "^4.0.16",
+    "conventional-changelog-cli": "^4.1.0",
+    "conventional-recommended-bump": "^11.2.0",
     "glob": "^10.3.0",
-    "husky": "^9.0.0"
+    "husky": "^9.0.0",
+    "mock-fs": "^5.5.0",
+    "vitest": "^4.0.16"
   },
   "repository": {
     "type": "git",

@@ -11,11 +11,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20'
           cache: 'npm'
@@ -32,7 +32,7 @@ jobs:
             echo "should_release=true" >> $GITHUB_OUTPUT
           else
             # Check for feat/fix commits since last tag
-            COMMITS=$(git log $LAST_TAG..HEAD --oneline --grep="^feat" --grep="^fix" --grep="^perf" 2>/dev/null || echo "")
+            COMMITS=$(git log $LAST_TAG..HEAD --oneline --extended-regexp --grep="^(feat|fix|perf)" 2>/dev/null || echo "")
             if [ -n "$COMMITS" ]; then
               echo "Found releasable commits"
               echo "should_release=true" >> $GITHUB_OUTPUT
@@ -52,8 +52,10 @@ jobs:
       - name: Bump version
         if: steps.check.outputs.should_release == 'true'
         id: bump
+        env:
+          BUMP_TYPE: ${{ steps.version.outputs.bump }}
         run: |
-          npm version ${{ steps.version.outputs.bump }} --no-git-tag-version
+          npm version $BUMP_TYPE --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
@@ -76,7 +78,7 @@ jobs:
 
       - name: Create GitHub Release
         if: steps.check.outputs.should_release == 'true'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
           tag_name: v${{ steps.bump.outputs.version }}
           name: Release v${{ steps.bump.outputs.version }}
