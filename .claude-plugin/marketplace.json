@@ -14,6 +14,7 @@
       "source": ".claude-plugin/plugins/tdd-pro",
       "category": "development-workflow",
       "version": "1.0.0",
+      "enabled": false,
       "keywords": [
         "tdd",
         "testing",
@@ -29,6 +30,7 @@
       "source": ".claude-plugin/plugins/docs-automation",
       "category": "documentation",
       "version": "1.0.0",
+      "enabled": false,
       "keywords": [
         "documentation",
         "download",
@@ -65,20 +67,6 @@
       ]
     },
     {
-      "name": "community-documentation",
-      "description": "Curated documentation tools: batch pipeline, generation, PRD, Roadmap, and API docs",
-      "source": ".claude-plugin/plugins/community-documentation",
-      "category": "documentation",
-      "version": "1.0.0",
-      "keywords": [
-        "documentation",
-        "docs",
-        "prd",
-        "api-docs",
-        "community"
-      ]
-    },
-    {
       "name": "community-devops",
       "description": "Curated DevOps tools: CI/CD, Kubernetes, cloud architecture, and SRE",
       "source": ".claude-plugin/plugins/community-devops",
@@ -89,20 +77,6 @@
         "ci-cd",
         "kubernetes",
         "cloud",
-        "community"
-      ]
-    },
-    {
-      "name": "community-prompts",
-      "description": "Curated AI and prompt tools: prompt engineering, agent orchestration, and 100+ examples",
-      "source": ".claude-plugin/plugins/community-prompts",
-      "category": "ai-prompts",
-      "version": "1.0.0",
-      "keywords": [
-        "prompts",
-        "ai",
-        "llm",
-        "agents",
         "community"
       ]
     },
@@ -118,47 +92,6 @@
         "commits",
         "pr",
         "community"
-      ]
-    },
-    {
-      "name": "community-best-of",
-      "description": "Top-rated tools across all categories with unique innovations highlighted",
-      "source": ".claude-plugin/plugins/community-best-of",
-      "category": "productivity",
-      "version": "1.0.0",
-      "keywords": [
-        "best-practices",
-        "curated",
-        "top-rated",
-        "community"
-      ]
-    },
-    {
-      "name": "jaodsilv-workflow",
-      "description": "jaodsilv's complete development workflow: TDD, conventional standards, multi-agent coordination",
-      "source": ".claude-plugin/plugins/jaodsilv-workflow",
-      "category": "development-workflow",
-      "version": "1.0.0",
-      "keywords": [
-        "tdd",
-        "workflow",
-        "conventional",
-        "multi-agent",
-        "jaodsilv"
-      ]
-    },
-    {
-      "name": "jaodsilv-docs",
-      "description": "jaodsilv's unique batch documentation pipeline: download, convert, verify",
-      "source": ".claude-plugin/plugins/jaodsilv-docs",
-      "category": "documentation",
-      "version": "1.0.0",
-      "keywords": [
-        "documentation",
-        "batch",
-        "automation",
-        "pipeline",
-        "jaodsilv"
       ]
     },
     {
