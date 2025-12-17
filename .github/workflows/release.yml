@@ -1,0 +1,86 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Check for releasable commits
+        id: check
+        run: |
+          # Check if there are any conventional commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tag found, will create initial release"
+            echo "should_release=true" >> $GITHUB_OUTPUT
+          else
+            # Check for feat/fix commits since last tag
+            COMMITS=$(git log $LAST_TAG..HEAD --oneline --extended-regexp --grep="^(feat|fix|perf)" 2>/dev/null || echo "")
+            if [ -n "$COMMITS" ]; then
+              echo "Found releasable commits"
+              echo "should_release=true" >> $GITHUB_OUTPUT
+            else
+              echo "No releasable commits found"
+              echo "should_release=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Get version bump type
+        if: steps.check.outputs.should_release == 'true'
+        id: version
+        run: |
+          BUMP=$(npx conventional-recommended-bump -p angular)
+          echo "bump=$BUMP" >> $GITHUB_OUTPUT
+
+      - name: Bump version
+        if: steps.check.outputs.should_release == 'true'
+        id: bump
+        env:
+          BUMP_TYPE: ${{ steps.version.outputs.bump }}
+        run: |
+          npm version $BUMP_TYPE --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        if: steps.check.outputs.should_release == 'true'
+        run: npx conventional-changelog -p angular -i CHANGELOG.md -s
+
+      - name: Commit and tag
+        if: steps.check.outputs.should_release == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json CHANGELOG.md
+          git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
+          git tag "v${{ steps.bump.outputs.version }}"
+          git push origin main --follow-tags || {
+            echo "::error::Push failed. Check branch protection settings or permissions."
+            exit 1
+          }
+
+      - name: Create GitHub Release
+        if: steps.check.outputs.should_release == 'true'
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
+        with:
+          tag_name: v${{ steps.bump.outputs.version }}
+          name: Release v${{ steps.bump.outputs.version }}
+          body_path: CHANGELOG.md
+          generate_release_notes: true

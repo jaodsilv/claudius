@@ -41,4 +41,12 @@ repos:
       - id: markdownlint-cli2
         args: [--config, config/base.markdownlint-cli2.yaml]
 
+  - repo: local
+    hooks:
+      - id: commitlint
+        name: Lint commit message
+        entry: npx --no -- commitlint --edit
+        language: system
+        stages: [commit-msg]
+
 # Consider visiting <https://blog.nshephard.dev/posts/pre-commit-hooks/index.html> for more hooks

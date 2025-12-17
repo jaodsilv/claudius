@@ -26,3 +26,9 @@ dotclaude/plans/
 
 # Temporary walkthrough files
 **/.thoughts/
+
+# Node.js dependencies
+node_modules/
+
+# Generated documentation (built by CI/CD)
+docs/_site/
