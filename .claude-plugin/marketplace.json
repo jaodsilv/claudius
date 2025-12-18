@@ -11,7 +11,7 @@
     {
       "name": "tdd-pro",
       "description": "Professional TDD workflow with multi-agent coordination, conventional commits, and branch management",
-      "source": ".claude-plugin/plugins/tdd-pro",
+      "source": "./.claude-plugin/plugins/tdd-pro",
       "category": "development-workflow",
       "version": "1.0.0",
       "enabled": false,
@@ -27,7 +27,7 @@
     {
       "name": "docs-automation",
       "description": "Automated documentation download, conversion, and verification with multi-agent coordination",
-      "source": ".claude-plugin/plugins/docs-automation",
+      "source": "./.claude-plugin/plugins/docs-automation",
       "category": "documentation",
       "version": "1.0.0",
       "enabled": false,
@@ -41,7 +41,7 @@
     {
       "name": "job-hunting-pro",
       "description": "Comprehensive job hunting automation: cover letter evaluation, improvement, interview prep, and company research",
-      "source": ".claude-plugin/plugins/job-hunting-pro",
+      "source": "./.claude-plugin/plugins/job-hunting-pro",
       "category": "productivity",
       "version": "1.0.0",
       "keywords": [
@@ -55,7 +55,7 @@
     {
       "name": "community-testing",
       "description": "Curated testing and QA tools: TDD workflows, code quality, test automation, and QA agents",
-      "source": ".claude-plugin/plugins/community-testing",
+      "source": "./.claude-plugin/plugins/community-testing",
       "category": "testing-qa",
       "version": "1.0.0",
       "keywords": [
@@ -69,7 +69,7 @@
     {
       "name": "community-devops",
       "description": "Curated DevOps tools: CI/CD, Kubernetes, cloud architecture, and SRE",
-      "source": ".claude-plugin/plugins/community-devops",
+      "source": "./.claude-plugin/plugins/community-devops",
       "category": "devops-infrastructure",
       "version": "1.0.0",
       "keywords": [
@@ -83,7 +83,7 @@
     {
       "name": "community-git-tools",
       "description": "Curated Git tools: conventional commits/branches, PR workflows, and automation",
-      "source": ".claude-plugin/plugins/community-git-tools",
+      "source": "./.claude-plugin/plugins/community-git-tools",
       "category": "git-version-control",
       "version": "1.0.0",
       "keywords": [
@@ -97,7 +97,7 @@
     {
       "name": "jaodsilv-career",
       "description": "jaodsilv's comprehensive career skill - ONLY career tool in Claude Code ecosystem",
-      "source": ".claude-plugin/plugins/jaodsilv-career",
+      "source": "./.claude-plugin/plugins/jaodsilv-career",
       "category": "job-hunting-career",
       "version": "1.0.0",
       "keywords": [
@@ -110,7 +110,7 @@
     {
       "name": "marketplace-curator",
       "description": "Tools for curating your own marketplace: discovery, analysis, and collection creation",
-      "source": ".claude-plugin/plugins/marketplace-curator",
+      "source": "./.claude-plugin/plugins/marketplace-curator",
       "category": "productivity",
       "version": "1.0.0",
       "keywords": [
@@ -123,7 +123,7 @@
     {
       "name": "community-bundle",
       "description": "Meta-plugin bundling all 6 community collections (86+ tools) for easy installation",
-      "source": ".claude-plugin/plugins/community-bundle",
+      "source": "./.claude-plugin/plugins/community-bundle",
       "category": "productivity",
       "version": "1.0.0",
       "keywords": [
@@ -131,6 +131,22 @@
         "community",
         "meta",
         "collection"
+      ]
+    },
+    {
+      "name": "brainstorm-pro",
+      "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation",
+      "source": "./.claude-plugin/plugins/brainstorm-pro",
+      "category": "productivity",
+      "version": "1.0.0",
+      "keywords": [
+        "brainstorming",
+        "requirements",
+        "discovery",
+        "socratic",
+        "ideation",
+        "multi-agent",
+        "orchestration"
       ]
     }
   ]
