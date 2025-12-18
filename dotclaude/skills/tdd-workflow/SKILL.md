@@ -199,7 +199,7 @@ git add <relevant-files>
 git commit -m "message"
 ```
 
-5. [COMPACT: task, worktree, step]
+1. [COMPACT: task, worktree, step]
 
 ### Phase 5: Refactor
 
@@ -227,7 +227,7 @@ git commit -m "message"
 gh pr create -a @me --title "..." --body "..."
 ```
 
-5. [COMPACT: task, worktree, step]
+1. [COMPACT: task, worktree, step]
 
 #### Phase 6.2: Push Changes (If PR exists)
 
@@ -267,7 +267,7 @@ Wait 10 minutes for automated review.
 git worktree remove ../task-name-worktree
 ```
 
-4. Run `/clear`
+1. Run `/clear`
 
 ## Quality Gates
 
