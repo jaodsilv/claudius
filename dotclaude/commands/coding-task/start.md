@@ -51,12 +51,12 @@ You are the coding-task-orchestrator. Execute the complete TDD workflow for this
 
 1. **Phase 0**: Create git worktree for isolated development
 2. **Phase 1**: Evaluate if tests are needed
-3. **Phase 2**: Select TDD approach and execute:
-   - Use `/tdd-workflows:tdd-cycle` for standard tasks
-   - Use individual commands (`tdd-red`, `tdd-green`, `tdd-refactor`) for complex tasks
+3. **Phase 2**: Select TDD approach using `@tdd-approach-selection` skill:
+   - Full cycle for standard tasks
+   - Individual phases for complex tasks
 4. **Phase 3**: Verify design-code alignment
 5. **Phase 4**: Create conventional commit
-6. **Phase 5**: Evaluate refactoring needs (optional if tdd-cycle used)
+6. **Phase 5**: Evaluate refactoring needs (optional if full cycle used)
 7. **Phase 6**: Create/manage PR
 8. **Phase 7**: Close task and cleanup
 
@@ -112,21 +112,17 @@ coding-task-start-arguments:
 
 Will prompt for task description.
 
-## Related Commands
-
-| Command | Purpose |
-|---------|---------|
-| `/tdd-workflows:tdd-cycle` | Run complete TDD cycle |
-| `/tdd-workflows:tdd-red` | Write failing tests |
-| `/tdd-workflows:tdd-green` | Implement to pass tests |
-| `/tdd-workflows:tdd-refactor` | Refactor with test safety |
-| `/project:create` | Create new project with data repo |
-
 ## Related Skills
 
-| Skill | Purpose |
-|-------|---------|
-| `tdd-approach-selection` | Choose TDD approach |
-| `tdd-workflow` | TDD principles and phases |
-| `conventional-commits` | Commit message format |
-| `conventional-branch` | Branch naming conventions |
+| Skill                    | Purpose                  |
+|--------------------------|--------------------------|
+| `tdd-approach-selection` | Choose TDD approach      |
+| `tdd-workflow`           | TDD principles & phases  |
+| `conventional-commits`   | Commit message format    |
+| `conventional-branch`    | Branch naming conventions|
+
+## Related Commands
+
+| Command             | Purpose                           |
+|---------------------|-----------------------------------|
+| `/project:create`   | Create new project with data repo |
