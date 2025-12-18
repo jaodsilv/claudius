@@ -134,10 +134,10 @@ Generate a specification document following this structure:
 
 #### Persona 1: [Name]
 
-- **Role**: [Job title/role]
-- **Goals**: [What they want to achieve]
-- **Pain Points**: [Current frustrations]
-- **Technical Proficiency**: [Low/Medium/High]
+1. **Role**: [Job title/role]
+2. **Goals**: [What they want to achieve]
+3. **Pain Points**: [Current frustrations]
+4. **Technical Proficiency**: [Low/Medium/High]
 
 [Additional personas as needed]
 
@@ -319,10 +319,10 @@ The following items are explicitly excluded:
 
 ### Session Overview
 
-- **Date**: [Date]
-- **Duration**: [Time]
-- **Depth Level**: [Shallow/Normal/Deep]
-- **Dialogue Rounds**: [Number]
+1. **Date**: [Date]
+2. **Duration**: [Time]
+3. **Depth Level**: [Shallow/Normal/Deep]
+4. **Dialogue Rounds**: [Number]
 
 ### Key Discussion Points
 

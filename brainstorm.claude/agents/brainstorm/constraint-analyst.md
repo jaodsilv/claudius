@@ -191,8 +191,8 @@ You will receive:
 
 **Conflicting Constraints**:
 
-- [Constraint A]: [Brief description]
-- [Constraint B]: [Brief description]
+1. [Constraint A]: [Brief description]
+2. [Constraint B]: [Brief description]
 
 **Tension Description**: [How these constraints conflict]
 

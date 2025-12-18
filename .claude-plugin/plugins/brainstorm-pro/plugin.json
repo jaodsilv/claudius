@@ -20,10 +20,10 @@
     "product-management"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/jaodsilv/claude",
+  "homepage": "https://github.com/jaodsilv/claudius",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaodsilv/claude.git"
+    "url": "https://github.com/jaodsilv/claudius.git"
   },
   "agents": [
     "brainstorm.claude/agents/brainstorm/facilitator.md",
@@ -45,7 +45,7 @@
     {
       "name": "requirements-document",
       "path": "brainstorm.claude/templates/requirements-document.md",
-      "description": "Template for generating comprehensive specification documents"
+      "description": "Template for generating comprehensive requirements documents"
     },
     {
       "name": "session-summary",

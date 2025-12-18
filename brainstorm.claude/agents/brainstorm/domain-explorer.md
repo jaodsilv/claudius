@@ -129,13 +129,13 @@ You will receive:
 
 #### [Competitor 1]
 
-- **Product**: [Name and description]
-- **Target Market**: [Who they serve]
-- **Key Features**: [Notable capabilities]
-- **Pricing Model**: [How they charge]
-- **Strengths**: [What they do well]
-- **Weaknesses**: [Where they fall short]
-- **Lessons**: [What we can learn]
+1. **Product**: [Name and description]
+2. **Target Market**: [Who they serve]
+3. **Key Features**: [Notable capabilities]
+4. **Pricing Model**: [How they charge]
+5. **Strengths**: [What they do well]
+6. **Weaknesses**: [Where they fall short]
+7. **Lessons**: [What we can learn]
 
 #### [Competitor 2]
 
@@ -164,9 +164,9 @@ You will receive:
 ### 3.2 Common Patterns
 
 1. **[Pattern Name]**
-   - Description: [What it is]
-   - When to use: [Applicable scenarios]
-   - Example: [Where it's used]
+   1. Description: [What it is]
+   2. When to use: [Applicable scenarios]
+   3. Example: [Where it's used]
 
 2. **[Pattern Name]**
    [Same structure]
@@ -174,9 +174,9 @@ You will receive:
 ### 3.3 Anti-patterns to Avoid
 
 1. **[Anti-pattern]**
-   - Description: [What it is]
-   - Why problematic: [Consequences]
-   - Better approach: [Alternative]
+   1. Description: [What it is]
+   2. Why problematic: [Consequences]
+   3. Better approach: [Alternative]
 
 ---
 
@@ -191,15 +191,15 @@ You will receive:
 ### 4.2 Common Pain Points
 
 1. **[Pain Point]**
-   - Description: [What frustrates users]
-   - Frequency: [How common]
-   - Opportunity: [How to address]
+   1. Description: [What frustrates users]
+   2. Frequency: [How common]
+   3. Opportunity: [How to address]
 
 ### 4.3 Delight Opportunities
 
 1. **[Opportunity]**
-   - Description: [What could exceed expectations]
-   - Competitor gap: [Who doesn't do this well]
+   1. Description: [What could exceed expectations]
+   2. Competitor gap: [Who doesn't do this well]
 
 ---
 

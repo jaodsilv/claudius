@@ -53,7 +53,7 @@ arguments-defaults:
 
 ## Execution Workflow
 
-### Phase 0: Session Initialization
+### Initialization
 
 1. Validate that `$topic` is provided
 2. Set defaults for `$depth` (normal) and `$output_path` (./brainstorm-output/)
@@ -263,7 +263,7 @@ arguments-defaults:
 
 4. Mark all todos as completed
 
-### Phase 7: Session Summary
+### Completion
 
 Present to the user:
 

@@ -126,6 +126,9 @@ After a session completes, you'll find:
 └── session-log.md      # Complete session log
 ```
 
+**Note**: The `summary.md` file is created by the `/brainstorm:export` command for executive summaries.
+It is not generated during the main session workflow.
+
 ## Parameters
 
 ### /brainstorm:start
