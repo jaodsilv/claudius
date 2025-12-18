@@ -42,6 +42,8 @@ ignores:
   - "dotclaude/commands/*.md"
   - "dotclaude/output-styles/**/*.md"
   - "dotclaude/output-styles/*.md"
+  - "dotclaude/skills/**/*.md"
+  - "dotclaude/skills/*.md"
   - ".claude/agents/**/*.md"
   - ".claude/agents/*.md"
   - ".claude/commands/**/*.md"
