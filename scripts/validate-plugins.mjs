@@ -1,5 +1,5 @@
 import { readFileSync, existsSync } from 'fs';
-import { glob } from 'glob';
+import { dirname, join } from 'path';
 
 /**
  * Load and validate marketplace.json
@@ -52,8 +52,16 @@ export function validateFileReferences(plugin, file, fs = { existsSync }) {
     ...(plugin.scripts || [])
   ].filter(ref => typeof ref === 'string');
 
+  // Get the plugin's base directory (parent of .claude-plugin/)
+  const pluginBaseDir = dirname(dirname(file));
+
   for (const ref of refs) {
-    if (!ref.startsWith('data/') && !fs.existsSync(ref)) {
+    // Skip data/ references (external submodules)
+    if (ref.startsWith('data/')) continue;
+
+    // Resolve path relative to plugin's base directory
+    const resolvedPath = join(pluginBaseDir, ref.replace(/^\.\//, ''));
+    if (!fs.existsSync(resolvedPath)) {
       errors.push(`${file}: referenced file not found: ${ref}`);
     }
   }
@@ -123,17 +131,13 @@ export function parsePluginFile(file, fs = { readFileSync }) {
  * Main validation function
  * @param {object} options - Configuration options
  * @param {string} options.marketplacePath - Path to marketplace.json
- * @param {string} options.pluginGlob - Glob pattern for plugin files
  * @param {object} options.fs - File system module (for testing)
- * @param {function} options.globFn - Glob function (for testing)
  * @returns {Promise<{ errors: string[], pluginCount: number }>}
  */
 export async function validatePlugins(options = {}) {
   const {
     marketplacePath = '.claude-plugin/marketplace.json',
-    pluginGlob = '.claude-plugin/plugins/*/plugin.json',
-    fs = { readFileSync, existsSync },
-    globFn = glob
+    fs = { readFileSync, existsSync }
   } = options;
 
   const errors = [];
@@ -146,8 +150,8 @@ export async function validatePlugins(options = {}) {
 
   const declaredPlugins = new Set(marketplace.plugins.map(p => p.name));
 
-  // 2. Find all plugin.json files
-  const pluginFiles = await globFn(pluginGlob);
+  // 2. Build plugin file paths from marketplace sources
+  const pluginFiles = marketplace.plugins.map(p => `${p.source}/.claude-plugin/plugin.json`);
   const foundPlugins = new Set();
 
   // 3. Validate each plugin
@@ -183,12 +187,13 @@ export async function validatePlugins(options = {}) {
 }
 
 // Run when executed directly
-const isMainModule = import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}`;
+// On Windows, import.meta.url is file:///C:/... (3 slashes), so we need file:///${path}
+const isMainModule = process.argv[1] && import.meta.url === `file:///${process.argv[1].replace(/\\/g, '/')}`;
 if (isMainModule) {
   const { errors, pluginCount } = await validatePlugins();
 
   if (pluginCount === 0) {
-    console.warn('⚠️  Warning: No plugin.json files found in .claude-plugin/plugins/');
+    console.warn('⚠️  Warning: No plugins found in marketplace.json');
   }
 
   if (errors.length > 0) {
