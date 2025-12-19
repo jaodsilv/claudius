@@ -1,5 +1,19 @@
+/**
+ * Plugin Validation Script for Claude Code Marketplace
+ *
+ * This script validates plugin configurations against the marketplace.json manifest.
+ *
+ * BREAKING CHANGES (v1.1.0):
+ * - Removed `pluginGlob` parameter: Plugin paths are now derived from marketplace.json `source` field
+ * - Removed `globFn` parameter: No longer needed since we don't glob for plugins
+ * - Added `verbose` parameter: Enable with --verbose or -v flag to see skipped data/ references
+ *
+ * @module validate-plugins
+ */
+
 import { readFileSync, existsSync } from 'fs';
-import { glob } from 'glob';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 /**
  * Load and validate marketplace.json
@@ -41,10 +55,13 @@ export function validatePluginFields(plugin, file) {
  * @param {object} plugin - Plugin object
  * @param {string} file - Plugin file path
  * @param {object} fs - File system module (for testing)
+ * @param {object} options - Additional options
+ * @param {string[]} [options.skippedRefs] - Array to collect skipped data/ references (for logging)
  * @returns {string[]} Array of error messages
  */
-export function validateFileReferences(plugin, file, fs = { existsSync }) {
+export function validateFileReferences(plugin, file, fs = { existsSync }, options = {}) {
   const errors = [];
+  const { skippedRefs } = options;
   const refs = [
     ...(plugin.skills || []),
     ...(plugin.agents || []),
@@ -52,8 +69,21 @@ export function validateFileReferences(plugin, file, fs = { existsSync }) {
     ...(plugin.scripts || [])
   ].filter(ref => typeof ref === 'string');
 
+  // Get the plugin's base directory (parent of .claude-plugin/)
+  const pluginBaseDir = dirname(dirname(file));
+
   for (const ref of refs) {
-    if (!ref.startsWith('data/') && !fs.existsSync(ref)) {
+    // Skip data/ references (external submodules)
+    if (ref.startsWith('data/')) {
+      if (skippedRefs) {
+        skippedRefs.push({ file, ref });
+      }
+      continue;
+    }
+
+    // Resolve path relative to plugin's base directory
+    const resolvedPath = join(pluginBaseDir, ref.replace(/^\.\//, ''));
+    if (!fs.existsSync(resolvedPath)) {
       errors.push(`${file}: referenced file not found: ${ref}`);
     }
   }
@@ -111,8 +141,14 @@ export function validateMarketplaceRefs(marketplacePlugins, foundPlugins) {
  * @returns {{ plugin: object|null, error: string|null }}
  */
 export function parsePluginFile(file, fs = { readFileSync }) {
+  let content;
   try {
-    const content = fs.readFileSync(file, 'utf-8');
+    content = fs.readFileSync(file, 'utf-8');
+  } catch (e) {
+    return { plugin: null, error: `${file}: failed to read file - ${e.message}` };
+  }
+
+  try {
     return { plugin: JSON.parse(content), error: null };
   } catch (e) {
     return { plugin: null, error: `${file}: invalid JSON - ${e.message}` };
@@ -123,31 +159,37 @@ export function parsePluginFile(file, fs = { readFileSync }) {
  * Main validation function
  * @param {object} options - Configuration options
  * @param {string} options.marketplacePath - Path to marketplace.json
- * @param {string} options.pluginGlob - Glob pattern for plugin files
  * @param {object} options.fs - File system module (for testing)
- * @param {function} options.globFn - Glob function (for testing)
- * @returns {Promise<{ errors: string[], pluginCount: number }>}
+ * @param {boolean} options.verbose - Enable verbose output for skipped files
+ * @returns {Promise<{ errors: string[], pluginCount: number, skippedRefs: Array }>}
  */
 export async function validatePlugins(options = {}) {
   const {
     marketplacePath = '.claude-plugin/marketplace.json',
-    pluginGlob = '.claude-plugin/plugins/*/plugin.json',
     fs = { readFileSync, existsSync },
-    globFn = glob
+    verbose = false
   } = options;
 
   const errors = [];
+  const skippedRefs = [];
 
   // 1. Load marketplace.json
   const { marketplace, error: marketplaceError } = loadMarketplace(marketplacePath, fs);
   if (marketplaceError) {
-    return { errors: [marketplaceError], pluginCount: 0 };
+    return { errors: [marketplaceError], pluginCount: 0, skippedRefs: [] };
   }
 
   const declaredPlugins = new Set(marketplace.plugins.map(p => p.name));
 
-  // 2. Find all plugin.json files
-  const pluginFiles = await globFn(pluginGlob);
+  // 2. Validate marketplace entries have required fields and build plugin file paths
+  const pluginFiles = [];
+  for (const p of marketplace.plugins) {
+    if (!p.source) {
+      errors.push(`marketplace.json: plugin '${p.name || '(unnamed)'}' missing 'source' field`);
+      continue;
+    }
+    pluginFiles.push(`${p.source}/.claude-plugin/plugin.json`);
+  }
   const foundPlugins = new Set();
 
   // 3. Validate each plugin
@@ -172,30 +214,73 @@ export async function validatePlugins(options = {}) {
       if (declError) errors.push(declError);
     }
 
-    // Check referenced files exist
-    errors.push(...validateFileReferences(plugin, file, fs));
+    // Check referenced files exist (collect skipped refs for logging)
+    errors.push(...validateFileReferences(plugin, file, fs, { skippedRefs: verbose ? skippedRefs : undefined }));
   }
 
   // 4. Check marketplace references valid plugins
   errors.push(...validateMarketplaceRefs(marketplace.plugins, foundPlugins));
 
-  return { errors, pluginCount: pluginFiles.length };
+  return { errors, pluginCount: pluginFiles.length, skippedRefs };
+}
+
+/**
+ * Run CLI validation
+ * @param {object} options - CLI options
+ * @param {string[]} options.argv - Command line arguments (default: process.argv)
+ * @param {object} options.console - Console object (default: global console)
+ * @param {function} options.exit - Exit function (default: process.exit)
+ * @param {object} options.env - Environment variables (default: process.env)
+ * @param {function} options.validateFn - Validation function (default: validatePlugins)
+ * @returns {Promise<{ exitCode: number }>}
+ */
+export async function runCli(options = {}) {
+  const {
+    argv = process.argv,
+    console: con = console,
+    exit = process.exit,
+    env = process.env,
+    validateFn = validatePlugins
+  } = options;
+
+  try {
+    const verbose = argv.includes('--verbose') || argv.includes('-v');
+    const { errors, pluginCount, skippedRefs } = await validateFn({ verbose });
+
+    if (pluginCount === 0) {
+      con.warn('Warning: No plugins found in marketplace.json');
+    }
+
+    if (errors.length > 0) {
+      con.error('Validation errors:\n');
+      errors.forEach(e => con.error(`  - ${e}`));
+      exit(1);
+      return { exitCode: 1 };
+    }
+
+    con.log(`All ${pluginCount} plugins validated successfully`);
+
+    // Log skipped data/ references in verbose mode
+    if (verbose && skippedRefs.length > 0) {
+      con.log(`\nSkipped ${skippedRefs.length} data/ references (external submodules):`);
+      skippedRefs.forEach(({ file, ref }) => con.log(`  - ${file}: ${ref}`));
+    }
+
+    return { exitCode: 0 };
+  } catch (e) {
+    con.error(`Validation failed with unexpected error: ${e.message}`);
+    if (env.DEBUG) {
+      con.error(e.stack);
+    }
+    exit(1);
+    return { exitCode: 1 };
+  }
 }
 
 // Run when executed directly
-const isMainModule = import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}`;
+// Use fileURLToPath for cross-platform compatibility (handles Windows/Unix path differences)
+const currentFilePath = fileURLToPath(import.meta.url);
+const isMainModule = process.argv[1] && currentFilePath === process.argv[1];
 if (isMainModule) {
-  const { errors, pluginCount } = await validatePlugins();
-
-  if (pluginCount === 0) {
-    console.warn('⚠️  Warning: No plugin.json files found in .claude-plugin/plugins/');
-  }
-
-  if (errors.length > 0) {
-    console.error('❌ Validation errors:\n');
-    errors.forEach(e => console.error(`  - ${e}`));
-    process.exit(1);
-  }
-
-  console.log(`✅ All ${pluginCount} plugins validated successfully`);
+  runCli();
 }

@@ -7,7 +7,8 @@ import {
   checkMarketplaceDeclaration,
   validateMarketplaceRefs,
   parsePluginFile,
-  validatePlugins
+  validatePlugins,
+  runCli
 } from '../scripts/validate-plugins.mjs';
 
 describe('validate-plugins', () => {
@@ -159,6 +160,39 @@ describe('validate-plugins', () => {
       const errors = validateFileReferences(plugin, 'test.json', mockFs);
       expect(mockFs.existsSync).toHaveBeenCalledTimes(1);
     });
+
+    it('should strip ./ prefix from paths before resolution', () => {
+      const plugin = { skills: ['./skills/test.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      // File is at project/.claude-plugin/plugin.json
+      // Plugin base dir should be project/ (dirname of dirname)
+      // Reference ./skills/test.md should resolve to project/skills/test.md
+      validateFileReferences(plugin, 'project/.claude-plugin/plugin.json', mockFs);
+      // Use path.join expectation to handle cross-platform path separators
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('project/skills/test.md');
+    });
+
+    it('should resolve paths relative to plugin base directory (parent of .claude-plugin)', () => {
+      const plugin = { agents: ['agents/my-agent.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      // Plugin file at workspace/my-plugin/.claude-plugin/plugin.json
+      // Base dir should be workspace/my-plugin (two levels up from plugin.json)
+      validateFileReferences(plugin, 'workspace/my-plugin/.claude-plugin/plugin.json', mockFs);
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('workspace/my-plugin/agents/my-agent.md');
+    });
+
+    it('should correctly handle nested plugin directories', () => {
+      const plugin = { commands: ['./commands/cmd.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      validateFileReferences(plugin, 'root/plugins/feature/.claude-plugin/plugin.json', mockFs);
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('root/plugins/feature/commands/cmd.md');
+    });
   });
 
   describe('checkDuplicate', () => {
@@ -243,7 +277,7 @@ describe('validate-plugins', () => {
       };
 
       const result = parsePluginFile('missing.json', mockFs);
-      expect(result.error).toContain('invalid JSON');
+      expect(result.error).toContain('failed to read file');
       expect(result.plugin).toBeNull();
     });
   });
@@ -253,7 +287,7 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockImplementation((path) => {
           if (path.includes('marketplace')) {
-            return JSON.stringify({ plugins: [{ name: 'test-plugin' }] });
+            return JSON.stringify({ plugins: [{ name: 'test-plugin', source: './test-plugin' }] });
           }
           return JSON.stringify({
             name: 'test-plugin',
@@ -263,11 +297,9 @@ describe('validate-plugins', () => {
         }),
         existsSync: vi.fn().mockReturnValue(true)
       };
-      const mockGlob = vi.fn().mockResolvedValue(['plugins/test/plugin.json']);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(0);
@@ -280,11 +312,9 @@ describe('validate-plugins', () => {
           throw new Error('File not found');
         })
       };
-      const mockGlob = vi.fn().mockResolvedValue([]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(1);
@@ -295,21 +325,21 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockImplementation((path) => {
           if (path.includes('marketplace')) {
-            return JSON.stringify({ plugins: [] });
+            return JSON.stringify({
+              plugins: [
+                { name: 'plugin1', source: './plugin1' },
+                { name: 'plugin2', source: './plugin2' }
+              ]
+            });
           }
           // Return invalid plugin (missing fields)
           return JSON.stringify({});
         }),
         existsSync: vi.fn().mockReturnValue(true)
       };
-      const mockGlob = vi.fn().mockResolvedValue([
-        'plugins/plugin1/plugin.json',
-        'plugins/plugin2/plugin.json'
-      ]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       // Each plugin should have 3 errors (missing name, version, description)
@@ -320,15 +350,232 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockReturnValue(JSON.stringify({ plugins: [] }))
       };
-      const mockGlob = vi.fn().mockResolvedValue([]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(0);
       expect(result.pluginCount).toBe(0);
+    });
+
+    it('should return error for plugin missing source field', async () => {
+      const mockFs = {
+        readFileSync: vi.fn().mockReturnValue(JSON.stringify({
+          plugins: [
+            { name: 'plugin-without-source' }
+          ]
+        }))
+      };
+
+      const result = await validatePlugins({
+        fs: mockFs
+      });
+
+      // Expect two errors: missing source field + marketplace references non-existent plugin
+      expect(result.errors).toHaveLength(2);
+      expect(result.errors[0]).toContain("missing 'source' field");
+      expect(result.errors[1]).toContain("references non-existent plugin");
+      expect(result.pluginCount).toBe(0);
+    });
+
+    it('should handle plugin with missing source and missing name', async () => {
+      const mockFs = {
+        readFileSync: vi.fn().mockReturnValue(JSON.stringify({
+          plugins: [
+            { description: 'A plugin with no name or source' }
+          ]
+        }))
+      };
+
+      const result = await validatePlugins({
+        fs: mockFs
+      });
+
+      // Expect two errors: missing source field + marketplace references non-existent plugin (undefined)
+      expect(result.errors).toHaveLength(2);
+      expect(result.errors[0]).toContain('(unnamed)');
+      expect(result.errors[0]).toContain("missing 'source' field");
+      expect(result.errors[1]).toContain("references non-existent plugin");
+    });
+  });
+
+  describe('runCli', () => {
+    it('should recognize --verbose flag', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: [{ file: 'test.json', ref: 'data/ext.md' }]
+      });
+
+      await runCli({
+        argv: ['node', 'script.js', '--verbose'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockValidate).toHaveBeenCalledWith({ verbose: true });
+      expect(mockConsole.log).toHaveBeenCalledWith(expect.stringContaining('Skipped 1 data/ references'));
+    });
+
+    it('should recognize -v flag', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: []
+      });
+
+      await runCli({
+        argv: ['node', 'script.js', '-v'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockValidate).toHaveBeenCalledWith({ verbose: true });
+    });
+
+    it('should warn when no plugins found', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 0,
+        skippedRefs: []
+      });
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.warn).toHaveBeenCalledWith('Warning: No plugins found in marketplace.json');
+    });
+
+    it('should print errors to stderr and exit with code 1', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: ['Error 1', 'Error 2'],
+        pluginCount: 2,
+        skippedRefs: []
+      });
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith('Validation errors:\n');
+      expect(mockConsole.error).toHaveBeenCalledWith('  - Error 1');
+      expect(mockConsole.error).toHaveBeenCalledWith('  - Error 2');
+      expect(mockExit).toHaveBeenCalledWith(1);
+      expect(result.exitCode).toBe(1);
+    });
+
+    it('should print success message with plugin count', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 5,
+        skippedRefs: []
+      });
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.log).toHaveBeenCalledWith('All 5 plugins validated successfully');
+      expect(result.exitCode).toBe(0);
+    });
+
+    it('should not log skipped refs when not in verbose mode', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: [{ file: 'test.json', ref: 'data/ext.md' }]
+      });
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      // Should only have success message, not skipped refs
+      expect(mockConsole.log).toHaveBeenCalledTimes(1);
+      expect(mockConsole.log).toHaveBeenCalledWith('All 1 plugins validated successfully');
+    });
+
+    it('should handle unexpected errors', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockRejectedValue(new Error('Unexpected failure'));
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: {},
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith('Validation failed with unexpected error: Unexpected failure');
+      expect(mockExit).toHaveBeenCalledWith(1);
+      expect(result.exitCode).toBe(1);
+    });
+
+    it('should print stack trace when DEBUG is set', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const testError = new Error('Debug failure');
+      const mockValidate = vi.fn().mockRejectedValue(testError);
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: { DEBUG: 'true' },
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith(testError.stack);
+    });
+
+    it('should not print stack trace when DEBUG is not set', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const testError = new Error('No debug failure');
+      const mockValidate = vi.fn().mockRejectedValue(testError);
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: {},
+        validateFn: mockValidate
+      });
+
+      // error should be called twice: once for message, but NOT for stack
+      const errorCalls = mockConsole.error.mock.calls;
+      const hasStackCall = errorCalls.some(call => call[0] && call[0].includes('at '));
+      expect(hasStackCall).toBe(false);
     });
   });
 });

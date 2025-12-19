@@ -1,0 +1,22 @@
+{
+  "name": "community-devops",
+  "version": "1.0.0",
+  "description": "Curated DevOps and infrastructure tools from the Claude Code community, including CI/CD, deployment automation, Kubernetes, and cloud architecture",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "devops",
+    "ci-cd",
+    "kubernetes",
+    "cloud",
+    "deployment",
+    "infrastructure",
+    "automation",
+    "community-curated"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}
