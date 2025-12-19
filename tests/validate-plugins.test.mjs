@@ -159,6 +159,39 @@ describe('validate-plugins', () => {
       const errors = validateFileReferences(plugin, 'test.json', mockFs);
       expect(mockFs.existsSync).toHaveBeenCalledTimes(1);
     });
+
+    it('should strip ./ prefix from paths before resolution', () => {
+      const plugin = { skills: ['./skills/test.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      // File is at project/.claude-plugin/plugin.json
+      // Plugin base dir should be project/ (dirname of dirname)
+      // Reference ./skills/test.md should resolve to project/skills/test.md
+      validateFileReferences(plugin, 'project/.claude-plugin/plugin.json', mockFs);
+      // Use path.join expectation to handle cross-platform path separators
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('project/skills/test.md');
+    });
+
+    it('should resolve paths relative to plugin base directory (parent of .claude-plugin)', () => {
+      const plugin = { agents: ['agents/my-agent.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      // Plugin file at workspace/my-plugin/.claude-plugin/plugin.json
+      // Base dir should be workspace/my-plugin (two levels up from plugin.json)
+      validateFileReferences(plugin, 'workspace/my-plugin/.claude-plugin/plugin.json', mockFs);
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('workspace/my-plugin/agents/my-agent.md');
+    });
+
+    it('should correctly handle nested plugin directories', () => {
+      const plugin = { commands: ['./commands/cmd.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(true) };
+
+      validateFileReferences(plugin, 'root/plugins/feature/.claude-plugin/plugin.json', mockFs);
+      const call = mockFs.existsSync.mock.calls[0][0];
+      expect(call.replace(/\\/g, '/')).toBe('root/plugins/feature/commands/cmd.md');
+    });
   });
 
   describe('checkDuplicate', () => {
@@ -243,7 +276,7 @@ describe('validate-plugins', () => {
       };
 
       const result = parsePluginFile('missing.json', mockFs);
-      expect(result.error).toContain('invalid JSON');
+      expect(result.error).toContain('failed to read file');
       expect(result.plugin).toBeNull();
     });
   });
@@ -323,6 +356,46 @@ describe('validate-plugins', () => {
 
       expect(result.errors).toHaveLength(0);
       expect(result.pluginCount).toBe(0);
+    });
+
+    it('should return error for plugin missing source field', async () => {
+      const mockFs = {
+        readFileSync: vi.fn().mockReturnValue(JSON.stringify({
+          plugins: [
+            { name: 'plugin-without-source' }
+          ]
+        }))
+      };
+
+      const result = await validatePlugins({
+        fs: mockFs
+      });
+
+      // Expect two errors: missing source field + marketplace references non-existent plugin
+      expect(result.errors).toHaveLength(2);
+      expect(result.errors[0]).toContain("missing 'source' field");
+      expect(result.errors[1]).toContain("references non-existent plugin");
+      expect(result.pluginCount).toBe(0);
+    });
+
+    it('should handle plugin with missing source and missing name', async () => {
+      const mockFs = {
+        readFileSync: vi.fn().mockReturnValue(JSON.stringify({
+          plugins: [
+            { description: 'A plugin with no name or source' }
+          ]
+        }))
+      };
+
+      const result = await validatePlugins({
+        fs: mockFs
+      });
+
+      // Expect two errors: missing source field + marketplace references non-existent plugin (undefined)
+      expect(result.errors).toHaveLength(2);
+      expect(result.errors[0]).toContain('(unnamed)');
+      expect(result.errors[0]).toContain("missing 'source' field");
+      expect(result.errors[1]).toContain("references non-existent plugin");
     });
   });
 });
