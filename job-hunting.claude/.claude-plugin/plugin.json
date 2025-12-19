@@ -1,0 +1,48 @@
+{
+  "name": "job-hunting-pro",
+  "version": "1.0.0",
+  "description": "Comprehensive job hunting automation: cover letter evaluation, improvement, interview prep, and company research",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "job-hunting",
+    "career",
+    "cover-letter",
+    "resume",
+    "interview",
+    "ats",
+    "automation"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git",
+  "agents": [
+    "./agents/cover-letter-evaluator/ats.md",
+    "./agents/cover-letter-evaluator/communication.md",
+    "./agents/cover-letter-evaluator/false-assertion-cleaner.md",
+    "./agents/cover-letter-evaluator/impact.md",
+    "./agents/cover-letter-evaluator/keywords.md",
+    "./agents/cover-letter-evaluator/overlap.md",
+    "./agents/cover-letter-evaluator/personalization.md",
+    "./agents/cover-letter-evaluator/presentation.md",
+    "./agents/cover-letter-evaluator/relevance.md",
+    "./agents/cover-letter-evaluator/result-combiner.md",
+    "./agents/cover-letter-evaluator/skills.md",
+    "./agents/cover-letter-evaluator/tech-positioning.md",
+    "./agents/cover-letter-evaluator/terminology.md",
+    "./agents/cover-letter-evaluator/true-gaps.md",
+    "./agents/interview-company-researcher.md",
+    "./agents/jobs/Cover-Letter-improver-standalone.md",
+    "./agents/jobs/cover-letter-improver.md",
+    "./agents/jobs/cover-letter-shortener.md",
+    "./agents/jobs/message-parser.md"
+  ],
+  "commands": [
+    "./commands/eval-cover-letter.md",
+    "./commands/eval-cover-letterv2.md",
+    "./commands/improve-cover-letter.md",
+    "./commands/overlap-analysis.md"
+  ]
+}
