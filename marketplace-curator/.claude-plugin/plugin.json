@@ -1,0 +1,25 @@
+{
+  "name": "marketplace-curator",
+  "version": "1.0.0",
+  "description": "Meta-plugin providing tools for curating your own Claude Code marketplace - discover, analyze, categorize, and create plugin collections",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "curation",
+    "marketplace",
+    "discovery",
+    "analysis",
+    "meta",
+    "plugin-development",
+    "automation",
+    "tools"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git",
+  "agents": [
+    "./agents/curator.md"
+  ]
+}

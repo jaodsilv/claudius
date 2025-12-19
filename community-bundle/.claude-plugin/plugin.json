@@ -1,0 +1,21 @@
+{
+  "name": "community-bundle",
+  "version": "1.0.0",
+  "description": "Meta-plugin bundling all 6 community-curated collections for easy installation of best-of-breed tools across the Claude Code ecosystem",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "bundle",
+    "community",
+    "curated",
+    "collection",
+    "meta",
+    "best-practices",
+    "ecosystem"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}

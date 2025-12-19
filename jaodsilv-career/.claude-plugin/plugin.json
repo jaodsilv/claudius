@@ -1,0 +1,26 @@
+{
+  "name": "jaodsilv-career",
+  "version": "1.0.0",
+  "description": "jaodsilv's comprehensive career development and job hunting skill - the ONLY career-focused tool in the entire Claude Code ecosystem",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "career",
+    "job-hunting",
+    "cover-letter",
+    "resume",
+    "interview",
+    "ats",
+    "negotiation",
+    "unique",
+    "jaodsilv"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git",
+  "skills": [
+    "./skills/job-hunting/SKILL.md"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "tdd-pro",
+  "version": "1.0.0",
+  "description": "Professional TDD workflow with multi-agent coordination, conventional commits, and branch management",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "tdd",
+    "testing",
+    "workflow",
+    "automation",
+    "conventional-commits",
+    "git",
+    "multi-agent",
+    "code-quality"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git",
+  "skills": [
+    "./skills/tdd-workflow/SKILL.md",
+    "./skills/conventional-commits/SKILL.md",
+    "./skills/conventional-branch/SKILL.md",
+    "./skills/code-quality/SKILL.md"
+  ],
+  "agents": [
+    "./agents/curator.md",
+    "./agents/prompt-to-pipeline-architect.md",
+    "./agents/file-output-writer.md"
+  ]
+}

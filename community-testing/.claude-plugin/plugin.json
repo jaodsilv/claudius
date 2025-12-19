@@ -1,0 +1,25 @@
+{
+  "name": "community-testing",
+  "version": "1.0.0",
+  "description": "Curated collection of testing and QA tools from the Claude Code community, including TDD workflows, code quality analysis, and test automation",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "testing",
+    "qa",
+    "tdd",
+    "code-quality",
+    "test-automation",
+    "coverage",
+    "community-curated"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git",
+  "skills": [
+    "./skills/tdd-workflow/SKILL.md",
+    "./skills/code-quality/SKILL.md"
+  ]
+}
