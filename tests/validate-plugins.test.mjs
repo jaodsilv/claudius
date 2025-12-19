@@ -253,7 +253,7 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockImplementation((path) => {
           if (path.includes('marketplace')) {
-            return JSON.stringify({ plugins: [{ name: 'test-plugin' }] });
+            return JSON.stringify({ plugins: [{ name: 'test-plugin', source: './test-plugin' }] });
           }
           return JSON.stringify({
             name: 'test-plugin',
@@ -263,11 +263,9 @@ describe('validate-plugins', () => {
         }),
         existsSync: vi.fn().mockReturnValue(true)
       };
-      const mockGlob = vi.fn().mockResolvedValue(['plugins/test/plugin.json']);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(0);
@@ -280,11 +278,9 @@ describe('validate-plugins', () => {
           throw new Error('File not found');
         })
       };
-      const mockGlob = vi.fn().mockResolvedValue([]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(1);
@@ -295,21 +291,21 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockImplementation((path) => {
           if (path.includes('marketplace')) {
-            return JSON.stringify({ plugins: [] });
+            return JSON.stringify({
+              plugins: [
+                { name: 'plugin1', source: './plugin1' },
+                { name: 'plugin2', source: './plugin2' }
+              ]
+            });
           }
           // Return invalid plugin (missing fields)
           return JSON.stringify({});
         }),
         existsSync: vi.fn().mockReturnValue(true)
       };
-      const mockGlob = vi.fn().mockResolvedValue([
-        'plugins/plugin1/plugin.json',
-        'plugins/plugin2/plugin.json'
-      ]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       // Each plugin should have 3 errors (missing name, version, description)
@@ -320,11 +316,9 @@ describe('validate-plugins', () => {
       const mockFs = {
         readFileSync: vi.fn().mockReturnValue(JSON.stringify({ plugins: [] }))
       };
-      const mockGlob = vi.fn().mockResolvedValue([]);
 
       const result = await validatePlugins({
-        fs: mockFs,
-        globFn: mockGlob
+        fs: mockFs
       });
 
       expect(result.errors).toHaveLength(0);
