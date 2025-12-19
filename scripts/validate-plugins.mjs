@@ -224,37 +224,63 @@ export async function validatePlugins(options = {}) {
   return { errors, pluginCount: pluginFiles.length, skippedRefs };
 }
 
+/**
+ * Run CLI validation
+ * @param {object} options - CLI options
+ * @param {string[]} options.argv - Command line arguments (default: process.argv)
+ * @param {object} options.console - Console object (default: global console)
+ * @param {function} options.exit - Exit function (default: process.exit)
+ * @param {object} options.env - Environment variables (default: process.env)
+ * @param {function} options.validateFn - Validation function (default: validatePlugins)
+ * @returns {Promise<{ exitCode: number }>}
+ */
+export async function runCli(options = {}) {
+  const {
+    argv = process.argv,
+    console: con = console,
+    exit = process.exit,
+    env = process.env,
+    validateFn = validatePlugins
+  } = options;
+
+  try {
+    const verbose = argv.includes('--verbose') || argv.includes('-v');
+    const { errors, pluginCount, skippedRefs } = await validateFn({ verbose });
+
+    if (pluginCount === 0) {
+      con.warn('Warning: No plugins found in marketplace.json');
+    }
+
+    if (errors.length > 0) {
+      con.error('Validation errors:\n');
+      errors.forEach(e => con.error(`  - ${e}`));
+      exit(1);
+      return { exitCode: 1 };
+    }
+
+    con.log(`All ${pluginCount} plugins validated successfully`);
+
+    // Log skipped data/ references in verbose mode
+    if (verbose && skippedRefs.length > 0) {
+      con.log(`\nSkipped ${skippedRefs.length} data/ references (external submodules):`);
+      skippedRefs.forEach(({ file, ref }) => con.log(`  - ${file}: ${ref}`));
+    }
+
+    return { exitCode: 0 };
+  } catch (e) {
+    con.error(`Validation failed with unexpected error: ${e.message}`);
+    if (env.DEBUG) {
+      con.error(e.stack);
+    }
+    exit(1);
+    return { exitCode: 1 };
+  }
+}
+
 // Run when executed directly
 // Use fileURLToPath for cross-platform compatibility (handles Windows/Unix path differences)
 const currentFilePath = fileURLToPath(import.meta.url);
 const isMainModule = process.argv[1] && currentFilePath === process.argv[1];
 if (isMainModule) {
-  try {
-    const verbose = process.argv.includes('--verbose') || process.argv.includes('-v');
-    const { errors, pluginCount, skippedRefs } = await validatePlugins({ verbose });
-
-    if (pluginCount === 0) {
-      console.warn('Warning: No plugins found in marketplace.json');
-    }
-
-    if (errors.length > 0) {
-      console.error('Validation errors:\n');
-      errors.forEach(e => console.error(`  - ${e}`));
-      process.exit(1);
-    }
-
-    console.log(`All ${pluginCount} plugins validated successfully`);
-
-    // Log skipped data/ references in verbose mode
-    if (verbose && skippedRefs.length > 0) {
-      console.log(`\nSkipped ${skippedRefs.length} data/ references (external submodules):`);
-      skippedRefs.forEach(({ file, ref }) => console.log(`  - ${file}: ${ref}`));
-    }
-  } catch (e) {
-    console.error(`Validation failed with unexpected error: ${e.message}`);
-    if (process.env.DEBUG) {
-      console.error(e.stack);
-    }
-    process.exit(1);
-  }
+  runCli();
 }

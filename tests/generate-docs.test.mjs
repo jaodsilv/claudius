@@ -327,6 +327,25 @@ describe('generate-docs', () => {
 
       expect(result.content).not.toContain('**Tags:**');
     });
+
+    it('should handle non-array plugins field', async () => {
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+      const mockFs = {
+        readFileSync: vi.fn().mockReturnValue(JSON.stringify({
+          name: 'Test',
+          version: '1.0.0',
+          description: 'Test',
+          plugins: 'not-an-array'
+        }))
+      };
+
+      const result = await generatePluginsCatalog({ fs: mockFs });
+
+      expect(result.count).toBe(0);
+      expect(result.content).toBe('');
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('must contain a "plugins" array'));
+      consoleSpy.mockRestore();
+    });
   });
 
   describe('generateIndexContent', () => {

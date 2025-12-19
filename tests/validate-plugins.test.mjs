@@ -7,7 +7,8 @@ import {
   checkMarketplaceDeclaration,
   validateMarketplaceRefs,
   parsePluginFile,
-  validatePlugins
+  validatePlugins,
+  runCli
 } from '../scripts/validate-plugins.mjs';
 
 describe('validate-plugins', () => {
@@ -396,6 +397,185 @@ describe('validate-plugins', () => {
       expect(result.errors[0]).toContain('(unnamed)');
       expect(result.errors[0]).toContain("missing 'source' field");
       expect(result.errors[1]).toContain("references non-existent plugin");
+    });
+  });
+
+  describe('runCli', () => {
+    it('should recognize --verbose flag', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: [{ file: 'test.json', ref: 'data/ext.md' }]
+      });
+
+      await runCli({
+        argv: ['node', 'script.js', '--verbose'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockValidate).toHaveBeenCalledWith({ verbose: true });
+      expect(mockConsole.log).toHaveBeenCalledWith(expect.stringContaining('Skipped 1 data/ references'));
+    });
+
+    it('should recognize -v flag', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: []
+      });
+
+      await runCli({
+        argv: ['node', 'script.js', '-v'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockValidate).toHaveBeenCalledWith({ verbose: true });
+    });
+
+    it('should warn when no plugins found', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 0,
+        skippedRefs: []
+      });
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.warn).toHaveBeenCalledWith('Warning: No plugins found in marketplace.json');
+    });
+
+    it('should print errors to stderr and exit with code 1', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: ['Error 1', 'Error 2'],
+        pluginCount: 2,
+        skippedRefs: []
+      });
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith('Validation errors:\n');
+      expect(mockConsole.error).toHaveBeenCalledWith('  - Error 1');
+      expect(mockConsole.error).toHaveBeenCalledWith('  - Error 2');
+      expect(mockExit).toHaveBeenCalledWith(1);
+      expect(result.exitCode).toBe(1);
+    });
+
+    it('should print success message with plugin count', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 5,
+        skippedRefs: []
+      });
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.log).toHaveBeenCalledWith('All 5 plugins validated successfully');
+      expect(result.exitCode).toBe(0);
+    });
+
+    it('should not log skipped refs when not in verbose mode', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockResolvedValue({
+        errors: [],
+        pluginCount: 1,
+        skippedRefs: [{ file: 'test.json', ref: 'data/ext.md' }]
+      });
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        validateFn: mockValidate
+      });
+
+      // Should only have success message, not skipped refs
+      expect(mockConsole.log).toHaveBeenCalledTimes(1);
+      expect(mockConsole.log).toHaveBeenCalledWith('All 1 plugins validated successfully');
+    });
+
+    it('should handle unexpected errors', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const mockValidate = vi.fn().mockRejectedValue(new Error('Unexpected failure'));
+
+      const result = await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: {},
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith('Validation failed with unexpected error: Unexpected failure');
+      expect(mockExit).toHaveBeenCalledWith(1);
+      expect(result.exitCode).toBe(1);
+    });
+
+    it('should print stack trace when DEBUG is set', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const testError = new Error('Debug failure');
+      const mockValidate = vi.fn().mockRejectedValue(testError);
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: { DEBUG: 'true' },
+        validateFn: mockValidate
+      });
+
+      expect(mockConsole.error).toHaveBeenCalledWith(testError.stack);
+    });
+
+    it('should not print stack trace when DEBUG is not set', async () => {
+      const mockConsole = { log: vi.fn(), warn: vi.fn(), error: vi.fn() };
+      const mockExit = vi.fn();
+      const testError = new Error('No debug failure');
+      const mockValidate = vi.fn().mockRejectedValue(testError);
+
+      await runCli({
+        argv: ['node', 'script.js'],
+        console: mockConsole,
+        exit: mockExit,
+        env: {},
+        validateFn: mockValidate
+      });
+
+      // error should be called twice: once for message, but NOT for stack
+      const errorCalls = mockConsole.error.mock.calls;
+      const hasStackCall = errorCalls.some(call => call[0] && call[0].includes('at '));
+      expect(hasStackCall).toBe(false);
     });
   });
 });
