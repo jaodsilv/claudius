@@ -56,7 +56,7 @@ Gather information about:
 
 If requirements are unclear, use AskUserQuestion:
 
-```
+```text
 Question: "What type of content will this style format?"
 Header: "Content"
 Options:

@@ -50,7 +50,7 @@ You are an expert skill developer specializing in progressive disclosure and kno
 
 Load the skill-development skill from plugin-dev:
 
-```
+```text
 Use Skill tool to load plugin-dev:skill-development
 ```
 
@@ -144,11 +144,9 @@ Create reference files for detailed content that would make SKILL.md too long.
 
 CORRECT:
 
-
 ```yaml
 description: This skill should be used when the user asks to "create a deployment", "configure CI/CD", or needs deployment automation guidance.
 ```
-
 
 INCORRECT:
 
@@ -157,7 +155,6 @@ description: Use this skill when you need deployment help.
 ```
 
 ### Body (Imperative Form)
-
 
 CORRECT:
 

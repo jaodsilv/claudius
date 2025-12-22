@@ -1,6 +1,10 @@
 ---
 name: Orchestration Patterns
-description: This skill should be used when designing "orchestration architectures", "multi-agent workflows", "agent coordination", "workflow patterns", "phase-based workflows", "coordinator patterns", or implementing complex multi-agent orchestrations in Claude Code plugins.
+description: >-
+  This skill should be used when designing "orchestration architectures",
+  "multi-agent workflows", "agent coordination", "workflow patterns",
+  "phase-based workflows", "coordinator patterns", or implementing complex
+  multi-agent orchestrations in Claude Code plugins.
 version: 1.0.0
 ---
 
@@ -10,7 +14,9 @@ Patterns for designing and implementing multi-agent orchestrations that coordina
 
 ## What is an Orchestration?
 
-An orchestration is a command that coordinates multiple agents to complete complex workflows. Unlike simple commands that execute directly, orchestrations delegate work to specialized agents and manage the overall workflow.
+An orchestration is a command that coordinates multiple agents to complete complex workflows.
+Unlike simple commands that execute directly, orchestrations delegate work to specialized
+agents and manage the overall workflow.
 
 ## When to Use Orchestrations
 
@@ -28,7 +34,7 @@ Use orchestrations when:
 
 Agents execute in order, each depending on the previous.
 
-```
+```text
 Phase 1 (Agent A) → Phase 2 (Agent B) → Phase 3 (Agent C)
 ```
 
@@ -38,7 +44,7 @@ Best for: Linear workflows with dependencies, pipelines, step-by-step processes.
 
 Independent agents execute concurrently.
 
-```
+```text
         → Agent A →
 Start →             → Merge
         → Agent B →
@@ -50,7 +56,7 @@ Best for: Independent analysis from multiple perspectives, gathering diverse inp
 
 Phases may loop back based on conditions.
 
-```
+```text
 Design → Implement → Review → [Loop if needed]
 ```
 
@@ -60,7 +66,7 @@ Best for: Refinement workflows, design-implement-review cycles, quality gates.
 
 Coordinator manages sub-coordinators.
 
-```
+```text
 Main Coordinator
 ├── Analysis Coordinator
 │   ├── Agent A1

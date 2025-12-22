@@ -8,7 +8,7 @@ Multi-step approval and batch processing patterns for improvement workflows.
 
 For single-item changes:
 
-```
+```text
 1. Present change
 2. Ask: "Apply this change?" (Yes/No)
 3. Apply or skip based on response
@@ -18,7 +18,7 @@ For single-item changes:
 
 For multiple related changes:
 
-```
+```text
 1. Present all changes in category
 2. Ask: "Apply all X changes?" (All/Select/Skip)
 3. If "Select": present individual selection
@@ -29,7 +29,7 @@ For multiple related changes:
 
 For changes with dependencies:
 
-```
+```text
 1. Present change A
 2. If approved, present dependent change B
 3. Continue through dependency chain
@@ -40,7 +40,7 @@ For changes with dependencies:
 
 For changes that need review:
 
-```
+```text
 1. Present all suggested changes
 2. Ask: "Which to apply now?"
 3. Save unapplied for later
@@ -51,7 +51,7 @@ For changes that need review:
 
 ### Full Improvement Workflow
 
-```
+```text
 Step 1: Analysis
 ├── Read component
 ├── Apply analysis framework
@@ -82,7 +82,7 @@ Step 5: Summary
 
 For time-sensitive improvements:
 
-```
+```text
 Step 1: Quick Analysis
 ├── Focus on CRITICAL and HIGH only
 └── Skip detailed assessment
@@ -97,7 +97,7 @@ Step 2: Batch Apply
 
 ### Severity-Based Batching
 
-```
+```text
 Batch 1: CRITICAL (must fix)
 ├── Present all critical issues
 ├── Apply all (or abort)
@@ -123,7 +123,7 @@ Batch 4: LOW (polish)
 
 For multi-file components (plugins, skills with references):
 
-```
+```text
 Batch 1: Main file (SKILL.md, plugin.json)
 ├── Apply structural changes first
 └── Validate main file
@@ -142,7 +142,7 @@ Batch 3: Cross-file changes
 
 For mixed improvement types:
 
-```
+```text
 Category 1: Structural changes
 ├── File moves, renames
 ├── Directory restructuring
@@ -168,7 +168,7 @@ Maintain a list of applied changes for:
 - Summary generation
 - Conflict detection
 
-```
+```json
 appliedChanges = [
   { file: "agent.md", line: 5, type: "edit", description: "Fixed frontmatter" },
   { file: "SKILL.md", line: 20, type: "edit", description: "Updated trigger" }
@@ -179,7 +179,7 @@ appliedChanges = [
 
 Maintain for later reference:
 
-```
+```json
 skippedChanges = [
   { severity: "MEDIUM", description: "Add more examples", reason: "User skipped" },
   { severity: "LOW", description: "Reformat tables", reason: "User skipped" }
@@ -192,7 +192,7 @@ skippedChanges = [
 
 When some changes fail:
 
-```
+```text
 1. Log successful changes
 2. Report failed change with error
 3. Ask: Continue with remaining changes?
@@ -204,7 +204,7 @@ When some changes fail:
 
 If changes break functionality:
 
-```
+```text
 1. Detect failure (test, validation)
 2. Identify last known good state
 3. Offer rollback option

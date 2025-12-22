@@ -8,7 +8,7 @@ Detailed patterns for user interaction in improvement workflows.
 
 Use when presenting multiple severity levels:
 
-```
+```json
 questions: [
   {
     question: "Which severity levels would you like to address?",
@@ -28,7 +28,7 @@ questions: [
 
 Use when user wants fine-grained control:
 
-```
+```json
 questions: [
   {
     question: "Which improvements would you like to apply?",
@@ -48,7 +48,7 @@ questions: [
 
 Use for significant structural changes:
 
-```
+```json
 questions: [
   {
     question: "This will restructure the skill into SKILL.md + references/. Proceed?",
@@ -67,7 +67,7 @@ questions: [
 
 Always provide escape routes:
 
-```
+```json
 questions: [
   {
     question: "Apply all HIGH priority improvements?",

@@ -75,7 +75,7 @@ Execute each step in order:
 
 #### Step 1: Read Current State
 
-```
+```text
 Read the component file completely
 Verify file exists and is accessible
 ```

@@ -35,14 +35,13 @@ Use TodoWrite to track progress:
 
 Load the improvement-workflow skill:
 
-
-```
+```text
 Use Skill tool to load cc:improvement-workflow
 ```
 
 Use Task tool with @cc:output-style-improver agent:
 
-```
+```text
 Analyze output-style: [output_style_path]
 Focus area: [focus if provided, otherwise "general analysis"]
 
@@ -68,7 +67,7 @@ Categorize suggestions:
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Which categories would you like to address?"
 Header: "Categories"
 multiSelect: true
@@ -83,7 +82,7 @@ Options:
 
 For each selected category, present specific improvements:
 
-```
+```text
 Question: "Which [category] improvements would you like to apply?"
 Header: "Changes"
 multiSelect: true
@@ -96,7 +95,7 @@ Mark todo: Phase 3 complete, Phase 4 in progress.
 
 Use Task tool with @cc:change-planner agent:
 
-```
+```text
 Plan changes for output-style: [output_style_path]
 
 Selected improvements:
@@ -114,7 +113,7 @@ Mark todo: Phase 4 complete, Phase 5 in progress.
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Apply change plan to: [output_style_path]
 
 Change plan:

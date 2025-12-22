@@ -25,15 +25,13 @@ If focus provided, prioritize analysis of that aspect.
 
 Load the improvement-workflow skill:
 
-
-```
+```text
 Use Skill tool to load cc:improvement-workflow
 ```
 
-
 Load orchestration patterns:
 
-```
+```text
 Use Skill tool to load cc:orchestration-patterns
 ```
 
@@ -46,7 +44,7 @@ Use TodoWrite to track:
 
 Use Task tool with @cc:orchestration-improver agent:
 
-```
+```text
 Analyze orchestration: [orchestration_path]
 Focus area: [focus if provided, otherwise "general analysis"]
 
@@ -70,7 +68,7 @@ Mark todo: Analyze workflow structure - Complete
 
 Use Task tool with @cc:orchestration-architect agent:
 
-```
+```text
 Review orchestration architecture: [orchestration-path]
 
 Evaluate:
@@ -98,7 +96,7 @@ Categorize by type:
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Which categories would you like to address?"
 Header: "Categories"
 multiSelect: true
@@ -114,7 +112,7 @@ Options:
 
 For each selected category, present specific improvements:
 
-```
+```text
 Question: "Which [category] improvements would you like to apply?"
 Header: "Changes"
 multiSelect: true
@@ -127,7 +125,7 @@ Mark todo: Present suggestions - Complete
 
 Use Task tool with @cc:change-planner agent:
 
-```
+```text
 Plan changes for orchestration: [orchestration_path]
 
 Selected improvements:
@@ -146,7 +144,7 @@ Mark todo: Plan changes - Complete
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Apply change plan to: [orchestration_path]
 
 Change plan:

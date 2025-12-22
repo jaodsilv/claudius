@@ -35,8 +35,7 @@ Use TodoWrite to track progress:
 
 If plugin not found at path:
 
-
-```
+```text
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the command?"
   Header: "Location"
@@ -50,7 +49,7 @@ Use AskUserQuestion:
 
 Use AskUserQuestion to gather command details:
 
-```
+```text
 Question: "What will this command do?"
 Header: "Purpose"
 Options:
@@ -60,7 +59,7 @@ Options:
 - Interactive wizard (user input required)
 ```
 
-```
+```text
 Question: "What tools does this command need?"
 Header: "Tools"
 multiSelect: true
@@ -71,7 +70,7 @@ Options:
 - AskUserQuestion (user interaction)
 ```
 
-```
+```text
 Question: "What arguments does the command accept?"
 Header: "Arguments"
 Options:
@@ -87,7 +86,7 @@ Mark todo: Step 2 complete, Step 3 in progress.
 
 Use Task tool with @cc:command-creator agent:
 
-```
+```text
 Design command: [command_name]
 Plugin path: [plugin_path]
 Purpose: [answer from purpose question]
@@ -105,7 +104,7 @@ Mark todo: Step 3 complete, Step 4 in progress.
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Write new command file:
 - Path: [plugin_path]/commands/[command_name].md
 - Content: [content from Step 3]
@@ -139,10 +138,9 @@ Show:
 
 ## Error Handling
 
-
 If command already exists:
 
-```
+```text
 Use AskUserQuestion:
   Question: "Command already exists. What would you like to do?"
   Header: "Conflict"

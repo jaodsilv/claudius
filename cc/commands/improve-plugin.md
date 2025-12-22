@@ -160,12 +160,12 @@ For each selected severity level:
 1. Present all improvements at that level
 2. Allow selection of specific improvements:
 
-   ```text
-   Question: "Which [severity] improvements to apply?"
-   Header: "Changes"
-   multiSelect: true
-   Options: [List improvements]
-   ```
+```text
+Question: "Which [severity] improvements to apply?"
+Header: "Changes"
+multiSelect: true
+Options: [List improvements]
+```
 
 ### Phase 7: Plan Changes
 

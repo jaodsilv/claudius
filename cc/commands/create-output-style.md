@@ -36,8 +36,7 @@ Use TodoWrite to track progress:
 
 If plugin not found:
 
-
-```
+```text
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the output-style?"
   Header: "Location"
@@ -51,7 +50,7 @@ Use AskUserQuestion:
 
 Use AskUserQuestion to gather output-style details:
 
-```
+```text
 Question: "What is the primary purpose of this output-style?"
 Header: "Purpose"
 Options:
@@ -61,7 +60,7 @@ Options:
 - Custom format (specific structure needed)
 ```
 
-```
+```text
 Question: "What tone should the output use?"
 Header: "Tone"
 Options:
@@ -71,7 +70,7 @@ Options:
 - Instructional and educational
 ```
 
-```
+```text
 Question: "What formatting elements are important?"
 Header: "Format"
 multiSelect: true
@@ -83,7 +82,6 @@ Options:
 ```
 
 ### Step 3: Create Directory
-
 
 If output-styles/ directory doesn't exist:
 
@@ -97,7 +95,7 @@ Mark todo: Step 3 complete, Step 4 in progress.
 
 Use Task tool with @cc:output-style-creator agent:
 
-```
+```text
 Design output-style: [style_name]
 Plugin path: [plugin_path]
 Purpose: [answer from purpose question]
@@ -120,7 +118,7 @@ Mark todo: Step 4 complete, Step 5 in progress.
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Write output-style file:
 - Path: [plugin_path]/output-styles/[style_name].md
 - Content: [content from Step 4]
@@ -155,10 +153,9 @@ Show:
 
 ## Error Handling
 
-
 If output-style already exists:
 
-```
+```text
 Use AskUserQuestion:
   Question: "Output-style already exists. What would you like to do?"
   Header: "Conflict"

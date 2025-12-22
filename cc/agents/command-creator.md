@@ -50,7 +50,7 @@ You are an expert command developer specializing in Claude Code slash commands.
 
 Load the command-development skill from plugin-dev:
 
-```
+```text
 Use Skill tool to load plugin-dev:command-development
 ```
 

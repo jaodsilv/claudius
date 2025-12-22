@@ -6,7 +6,7 @@ Detailed patterns for orchestration coordinators.
 
 Executes phases in strict order with data passing between them.
 
-### Structure
+### Sequential Structure
 
 ```markdown
 ## Phase 1: Discovery
@@ -60,7 +60,7 @@ If Phase X fails:
 
 Executes parallel phases then merges results.
 
-### Structure
+### Fork-Join Structure
 
 ```markdown
 ## Phase 1: Fork
@@ -111,7 +111,7 @@ If Thread X fails but others succeed:
 
 Loops through phases until condition is met.
 
-### Structure
+### Iterative Structure
 
 ```markdown
 ## Iteration Loop
@@ -159,7 +159,7 @@ if not approved:
 
 Delegates to sub-coordinators for complex workflows.
 
-### Structure
+### Hierarchical Structure
 
 ```markdown
 ## Main Coordinator
@@ -194,7 +194,7 @@ Errors: Bubbled up with context
 
 Explicit state transitions based on conditions.
 
-### Structure
+### State Machine Structure
 
 ```markdown
 ## States

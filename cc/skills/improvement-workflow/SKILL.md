@@ -1,6 +1,10 @@
 ---
 name: Improvement Workflow
-description: This skill should be used when implementing "interactive improvements", "analyze-suggest-approve-apply patterns", "component improvement workflows", "user approval workflows", "severity-based suggestions", or designing interactive improvement experiences for Claude Code components.
+description: >-
+  This skill should be used when implementing "interactive improvements",
+  "analyze-suggest-approve-apply patterns", "component improvement workflows",
+  "user approval workflows", "severity-based suggestions", or designing
+  interactive improvement experiences for Claude Code components.
 version: 1.0.0
 ---
 
@@ -10,7 +14,8 @@ Patterns for implementing interactive improvement workflows that analyze compone
 
 ## Why Use This Pattern
 
-The interactive improvement workflow ensures changes are transparent, reversible, and user-controlled. Instead of applying improvements silently, this pattern:
+The interactive improvement workflow ensures changes are transparent, reversible, and user-controlled.
+Instead of applying improvements silently, this pattern:
 
 1. **Builds trust** - Users see exactly what will change before it happens
 2. **Prevents surprises** - Severity-based grouping helps users prioritize
@@ -72,7 +77,7 @@ Obtain user approval before making changes using AskUserQuestion.
 
 **Batch Approval Pattern:**
 
-```
+```text
 Question: "Which severity levels would you like to address?"
 Header: "Severity"
 multiSelect: true
@@ -85,7 +90,7 @@ Options:
 
 **Individual Selection Pattern:**
 
-```
+```text
 Question: "Which improvements would you like to apply?"
 Header: "Changes"
 multiSelect: true

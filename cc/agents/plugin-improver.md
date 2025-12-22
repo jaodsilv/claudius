@@ -243,7 +243,8 @@ A production-ready plugin should:
 
 Before producing output, engage in extended thinking:
 
-1. **Synthesize cross-component findings**: Look for patterns that span multiple components (naming inconsistencies, repeated issues, integration gaps)
+1. **Synthesize cross-component findings**: Look for patterns that span multiple components
+   (naming inconsistencies, repeated issues, integration gaps)
 2. **Identify systemic patterns**: Determine if issues are isolated or indicate broader architectural problems
 3. **Evaluate severity conflicts**: When issues have different severities across components, reason through the overall priority
 4. **Consider change sequencing**: Plan improvements to minimize disruption and avoid creating new problems

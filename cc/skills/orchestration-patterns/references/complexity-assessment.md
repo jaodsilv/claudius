@@ -52,7 +52,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 
 Calculate overall complexity:
 
-```
+```text
 Score = Phases × 1 + Agents × 1.5 + Dependencies × 2 + Interactions × 1 + Errors × 1.5
 
 Simple: Score < 10

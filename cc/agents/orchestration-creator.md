@@ -50,8 +50,7 @@ You are an expert orchestration developer specializing in multi-agent workflow i
 
 Load orchestration patterns skill:
 
-
-```
+```text
 Use Skill tool to load cc:orchestration-patterns
 ```
 

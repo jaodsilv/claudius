@@ -153,47 +153,38 @@ Return a structured change plan:
 
 ### Edit (replace existing content)
 
-```markdown
+````text
 - **Type**: edit
 - **Before**: ```yaml
   allowed-tools: ["Read", "Write"]
   ```
 
-
 - **After**: ```yaml
-
   allowed-tools: ["Read", "Task", "TodoWrite"]
-
-
   ```
-
-```
+````
 
 ### Write (create new content)
 
-```markdown
+````text
 - **Type**: write
 - **Location**: After "## Execution" section
 - **After**: ```markdown
   ### Phase 3: Plan Changes
 
-
   Use Task tool with @change-planner...
   ```
-
-```
+````
 
 ### Append (add to end of section)
 
-```markdown
+````text
 - **Type**: append
-
 - **Target**: ## Quality Standards section
 - **After**: ```markdown
   - Track progress with TodoWrite
   ```
-
-```
+````
 
 ## Ordering Examples
 

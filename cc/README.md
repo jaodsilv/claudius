@@ -14,13 +14,13 @@ The `cc` plugin provides specialized tools for plugin developers who want to:
 
 This plugin requires `plugin-dev@claude-plugins-official`. Install it first:
 
-```
+```bash
 /plugin install plugin-dev@claude-plugins-official
 ```
 
 ## Installation
 
-```
+```bash
 /plugin install cc@jaodsilv-claudius-marketplace
 ```
 
@@ -85,19 +85,19 @@ This plugin requires `plugin-dev@claude-plugins-official`. Install it first:
 
 ### Creating a Command
 
-```
+```bash
 /cc:create-command deploy --plugin ./my-plugin
 ```
 
 ### Improving an Agent
 
-```
+```bash
 /cc:improve-agent ./my-plugin/agents/my-agent.md
 ```
 
 ### Creating an Orchestration
 
-```
+```bash
 /cc:create-orchestration code-review --plugin ./my-plugin
 ```
 

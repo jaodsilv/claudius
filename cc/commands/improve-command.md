@@ -33,14 +33,13 @@ Use TodoWrite to track progress:
 
 Load the improvement-workflow skill:
 
-
-```
+```text
 Use Skill tool to load cc:improvement-workflow
 ```
 
 Use Task tool with @cc:command-improver agent:
 
-```
+```text
 Analyze command: [command_path]
 Focus area: [focus if provided, otherwise "general analysis"]
 
@@ -67,7 +66,7 @@ Present analysis results to user.
 
 For each category of suggestions, use AskUserQuestion:
 
-```
+```text
 Question: "Which severity levels would you like to address?"
 Header: "Severity"
 multiSelect: true
@@ -82,7 +81,7 @@ Options:
 
 If user selected severity levels, present individual improvements:
 
-```
+```text
 Question: "Which improvements would you like to apply?"
 Header: "Changes"
 multiSelect: true
@@ -95,7 +94,7 @@ Mark todo: Phase 3 complete, Phase 4 in progress.
 
 Use Task tool with @cc:change-planner agent:
 
-```
+```text
 Plan changes for command: [command_path]
 
 Selected improvements:
@@ -114,7 +113,7 @@ Mark todo: Phase 4 complete, Phase 5 in progress.
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Apply change plan to: [command_path]
 
 Change plan:

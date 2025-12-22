@@ -94,7 +94,7 @@ For each phase:
 
 ### Sequential Coordinator
 
-```
+```text
 Phase 1 → Phase 2 → Phase 3 → Complete
 ```
 
@@ -102,7 +102,7 @@ Best for: Linear workflows with dependencies.
 
 ### Fork-Join Coordinator
 
-```
+```text
         → Agent A →
 Start →             → Merge → Complete
         → Agent B →
@@ -112,7 +112,7 @@ Best for: Parallel work that reunites.
 
 ### Iterative Coordinator
 
-```
+```text
 Start → Phase 1 → Phase 2 → Review
           ↑                    ↓
           └────── Loop if needed
@@ -122,7 +122,7 @@ Best for: Refinement loops.
 
 ### Hierarchical Coordinator
 
-```
+```text
 Main Coordinator
   ├── Sub-Coordinator A
   │     ├── Agent A1
@@ -210,8 +210,10 @@ A good architecture should:
 
 Before producing output, engage in extended thinking:
 
-1. **Enumerate patterns**: Consider all coordination patterns (Sequential, Parallel, Iterative, Hierarchical, State Machine) and their trade-offs for this specific workflow
-2. **Evaluate complexity factors**: Use the scoring formula (Phases × 1 + Agents × 1.5 + Dependencies × 2 + Interactions × 1 + Errors × 1.5) to assess complexity objectively
+1. **Enumerate patterns**: Consider all coordination patterns (Sequential, Parallel, Iterative,
+   Hierarchical, State Machine) and their trade-offs for this specific workflow
+2. **Evaluate complexity factors**: Use the scoring formula
+   (Phases × 1 + Agents × 1.5 + Dependencies × 2 + Interactions × 1 + Errors × 1.5) to assess complexity
 3. **Consider data flow implications**: Reason through what data must flow between each phase and how context will be preserved
 4. **Assess agent capability boundaries**: Determine what each agent can reasonably handle and where responsibilities should split
 5. **Validate architectural decisions**: Before finalizing, verify the design is implementable and doesn't introduce unnecessary complexity

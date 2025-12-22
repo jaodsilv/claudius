@@ -36,8 +36,7 @@ Use TodoWrite to track progress:
 
 If plugin not found:
 
-
-```
+```text
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the skill?"
   Header: "Location"
@@ -51,7 +50,7 @@ Use AskUserQuestion:
 
 Use AskUserQuestion to gather skill details:
 
-```
+```text
 Question: "What domain knowledge does this skill provide?"
 Header: "Domain"
 Options:
@@ -61,7 +60,7 @@ Options:
 - Domain expertise (industry-specific knowledge)
 ```
 
-```
+```text
 Question: "What resources will this skill include?"
 Header: "Resources"
 multiSelect: true
@@ -72,7 +71,7 @@ Options:
 - Templates (starter files)
 ```
 
-```
+```text
 Question: "What should trigger this skill?"
 Header: "Triggers"
 Options: [User will provide custom trigger phrases]
@@ -94,7 +93,7 @@ Mark todo: Step 3 complete, Step 4 in progress.
 
 Use Task tool with @cc:skill-creator agent:
 
-```
+```text
 Design skill: [skill_name]
 Plugin path: [plugin_path]
 Domain: [answer from domain question]
@@ -118,7 +117,7 @@ Mark todo: Step 4 complete, Step 5 in progress.
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Write skill files:
 - Skill path: [plugin_path]/skills/[skill_name]
 - Files to write: [list from Step 4]
@@ -158,10 +157,9 @@ Show:
 
 ## Error Handling
 
-
 If skill already exists:
 
-```
+```text
 Use AskUserQuestion:
   Question: "Skill already exists. What would you like to do?"
   Header: "Conflict"

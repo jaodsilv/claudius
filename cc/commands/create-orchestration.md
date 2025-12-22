@@ -37,7 +37,7 @@ Use TodoWrite to track progress:
 
 Use AskUserQuestion to understand the workflow:
 
-```
+```text
 Question: "What type of workflow is this?"
 Header: "Workflow"
 Options:
@@ -47,7 +47,7 @@ Options:
 - Custom workflow (describe phases)
 ```
 
-```
+```text
 Question: "How many phases will this workflow have?"
 Header: "Phases"
 Options:
@@ -58,8 +58,7 @@ Options:
 
 For each phase, ask:
 
-
-```
+```text
 Question: "Describe phase [N]: What does it do?"
 Header: "Phase [N]"
 Options: [User provides description]
@@ -69,7 +68,7 @@ Options: [User provides description]
 
 Use Task tool with @cc:orchestration-architect agent:
 
-```
+```text
 Design orchestration: [orchestration_name]
 
 Workflow type: [from question 1]
@@ -90,7 +89,7 @@ Mark todo: Design architecture - Complete
 
 Present architecture to user:
 
-```
+```text
 Question: "Does this orchestration design look correct?"
 Header: "Review"
 Options:
@@ -108,7 +107,7 @@ Mark todo: Review with user - Complete
 
 Use Task tool with @cc:orchestration-creator agent:
 
-```
+```text
 Create orchestration: [orchestration_name]
 Plugin path: [plugin_path]
 Architecture: [from design phase]
