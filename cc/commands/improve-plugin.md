@@ -23,21 +23,22 @@ If focus provided, prioritize analysis of that aspect across all components.
 ### Phase 1: Discovery
 
 Load improvement-workflow skill:
-```
+
+```text
 Use Skill tool to load cc:improvement-workflow
 ```
 
 1. Read plugin.json manifest
 2. Scan for all components:
 
-```
+```text
 Glob pattern="[plugin-path]/commands/**/*.md"
 Glob pattern="[plugin-path]/agents/**/*.md"
 Glob pattern="[plugin-path]/skills/**/SKILL.md"
 Glob pattern="[plugin-path]/hooks/hooks.json"
 ```
 
-3. Create TodoWrite with all components to analyze:
+1. Create TodoWrite with all components to analyze:
    - [ ] Analyze plugin structure
    - [ ] Analyze commands (X total)
    - [ ] Analyze agents (X total)
@@ -51,7 +52,7 @@ Glob pattern="[plugin-path]/hooks/hooks.json"
 
 Use Task tool with @cc:plugin-improver agent:
 
-```
+```text
 Analyze plugin structure: [plugin_path]
 Focus area: [focus if provided, otherwise "general analysis"]
 
@@ -74,7 +75,8 @@ For each component type, launch analysis in parallel if many components, or sequ
 #### Commands Analysis
 
 For each command:
-```
+
+```text
 Use Task tool with @cc:command-improver:
   Analyze command: [command-path]
   Provide summary of issues by severity.
@@ -85,7 +87,8 @@ Mark todo: Analyze commands - Complete
 #### Agents Analysis
 
 For each agent:
-```
+
+```text
 Use Task tool with @cc:agent-improver:
   Analyze agent: [agent-path]
   Provide summary of issues by severity.
@@ -96,7 +99,8 @@ Mark todo: Analyze agents - Complete
 #### Skills Analysis
 
 For each skill:
-```
+
+```text
 Use Task tool with @cc:skill-improver:
   Analyze skill: [skill-path]
   Provide summary of issues by severity.
@@ -136,7 +140,7 @@ Group by severity:
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Which severity levels would you like to address?"
 Header: "Severity"
 multiSelect: true
@@ -155,7 +159,8 @@ For each selected severity level:
 
 1. Present all improvements at that level
 2. Allow selection of specific improvements:
-   ```
+
+   ```text
    Question: "Which [severity] improvements to apply?"
    Header: "Changes"
    multiSelect: true
@@ -166,7 +171,7 @@ For each selected severity level:
 
 Use Task tool with @cc:change-planner agent:
 
-```
+```text
 Plan changes for plugin: [plugin_path]
 
 Selected improvements:
@@ -186,7 +191,7 @@ Mark todo: Plan changes - Complete
 
 Use Task tool with @cc:component-writer agent:
 
-```
+```text
 Apply change plan to plugin: [plugin_path]
 
 Change plan:
