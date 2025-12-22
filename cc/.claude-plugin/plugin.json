@@ -1,0 +1,21 @@
+{
+  "name": "cc",
+  "version": "1.0.0",
+  "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components",
+  "author": {
+    "name": "Joao da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "meta-tools",
+    "plugin-development",
+    "commands",
+    "agents",
+    "skills",
+    "orchestration",
+    "improvement"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}

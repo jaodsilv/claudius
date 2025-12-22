@@ -144,6 +144,22 @@
         "meta",
         "collection"
       ]
+    },
+    {
+      "name": "cc",
+      "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components. Requires plugin-dev@claude-plugins-official",
+      "source": "./cc",
+      "category": "development-workflow",
+      "version": "1.0.0",
+      "keywords": [
+        "meta-tools",
+        "plugin-development",
+        "commands",
+        "agents",
+        "skills",
+        "orchestration",
+        "improvement"
+      ]
     }
   ]
 }
