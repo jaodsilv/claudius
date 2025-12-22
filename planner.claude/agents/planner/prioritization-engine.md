@@ -88,8 +88,6 @@ Collect items to prioritize from:
 
 1. **GitHub Issues** (via gh CLI):
 
-
-   ```bash
    gh issue list --state open --json number,title,labels,body
    ```
 
@@ -130,19 +128,15 @@ If unclear, ask the user which framework to use.
 
 ### Step 4: Apply Framework
 
-
 **RICE Calculation**:
-
 ```
 For each item:
   Score = (Reach × Impact × Confidence) / Effort
 Sort by Score descending
 ```
 
-
 **MoSCoW Classification**:
 
-```
 For each item:
   Evaluate criticality
   Assign to Must/Should/Could/Won't

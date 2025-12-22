@@ -78,8 +78,6 @@ Quick Mode:
 
 2. Load prioritization matrix:
 
-
-   ```
    Read: {{prioritization_path}}
    ```
 
@@ -87,9 +85,7 @@ Quick Mode:
    - If file exists at `$context`: Load as roadmap
    - Otherwise: Treat as goal string
 
-
 4. Load context:
-
    ```
    If roadmap: Read: {{context}}
    If goal: Use as string
@@ -124,10 +120,8 @@ Quick Mode:
 
 2. Launch agents in parallel:
 
-
    **Domain Reviewer** (planner-plan-reviewer - prioritization mode):
 
-   ```
    Use Task tool with planner-plan-reviewer agent:
 
    Review this prioritization:
@@ -170,11 +164,9 @@ Quick Mode:
 
 #### Step 3B: Adversarial Challenge
 
-
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-
    ```
    Use Task tool with planner-review-challenger agent:
 
@@ -205,12 +197,10 @@ Quick Mode:
 
 3. Receive adversarial analysis
 
-
 #### Step 3C: Synthesis
 
 1. Mark Synthesis as in_progress
 
-2. Launch synthesizer agent:
 
    ```
    Use Task tool with planner-review-synthesizer agent:
@@ -238,13 +228,11 @@ Quick Mode:
 
 ### Quick Mode Analysis
 
-
 If mode == "quick", use single agent:
 
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only:
-
    ```
    Use Task tool with planner-plan-reviewer agent:
 
@@ -269,14 +257,12 @@ If mode == "quick", use single agent:
 
 3. Proceed directly to Phase 4
 
-
 ### Phase 4: Interactive Review
 
 1. Mark Interactive Review as in_progress
 
 2. Present findings:
 
-   **For Thorough Mode**:
 
    ```markdown
    ## Prioritization Alignment Review (Multi-Agent Analysis)
@@ -438,8 +424,6 @@ gh issue edit ... --add-label "P0"
 
 ### Next Steps
 
-
-
 1. Run suggested label commands
 2. Create missing issues manually
 3. Re-run prioritization: `/planner:prioritize ALL`
@@ -448,13 +432,9 @@ gh issue edit ... --add-label "P0"
 
 
 
-## Usage Examples
-
 ### Against Goal (Thorough Mode)
 
 ```
-
-
 
 /planner:review-prioritization "Ship MVP authentication by end of month"
 
@@ -465,8 +445,6 @@ gh issue edit ... --add-label "P0"
 
 
 ```
-
-/planner:review-prioritization "API v2" --mode quick
 
 ```
 

@@ -283,8 +283,6 @@ This is an interactive review:
 
 **Example Interaction**:
 
-
-```
 "Requirement FR-003 says 'System should be fast'. This is too
 vague to test.
 

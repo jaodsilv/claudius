@@ -67,39 +67,25 @@ graph TD
 
 {{#if RICE}}
 
-
-| # | Title | Reach | Impact | Confidence | Effort | Score |
 |---|-------|-------|--------|------------|--------|-------|
 | #{{issue_number}} | {{issue_title}} | {{reach}} | {{impact}} | {{confidence}} | {{effort}} | {{score}} |
 {{/if}}
 
-
 {{#if MoSCoW}}
-
-
 #### Must Have
 
 
-{{must_have_list}}
-
 #### Should Have
-
-
 {{should_have_list}}
-
 
 #### Could Have
 
-{{could_have_list}}
-
 
 #### Won't Have (This Release)
-
 {{wont_have_list}}
 {{/if}}
 
 {{#if WeightedScoring}}
-
 | # | Title | Value ({{value_weight}}%) | Feasibility ({{feasibility_weight}}%) | Alignment ({{alignment_weight}}%) | Risk ({{risk_weight}}%) | Total |
 |---|-------|--------------------------|-------------------------------------|-----------------------------------|------------------------|-------|
 | #{{issue_number}} | {{issue_title}} | {{value_score}} | {{feasibility_score}} | {{alignment_score}} | {{risk_score}} | {{total_score}} |

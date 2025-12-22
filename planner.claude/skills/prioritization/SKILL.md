@@ -205,25 +205,19 @@ When prioritizing GitHub issues, interpret common labels:
 
 ### Priority Labels
 
-
-- `P0`, `critical`, `blocker` → Must Have / Score boost
 - `P1`, `high-priority` → Should Have / High value
 - `P2`, `medium` → Could Have / Medium value
 - `P3`, `low` → Lower priority
 
-
 ### Effort Labels
-
 - `XS`, `trivial` → 0.5 person-days
 - `S`, `small` → 1-2 person-days
 - `M`, `medium` → 3-5 person-days
 - `L`, `large` → 1-2 person-weeks
 - `XL`, `epic` → 2+ person-weeks
 
-
 ### Type Labels
 
-- `bug` → Often higher priority (affects existing users)
 - `feature` → Evaluate by framework
 - `enhancement` → Improvements to existing features
 - `tech-debt` → Consider long-term impact

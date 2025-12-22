@@ -232,8 +232,6 @@ This is an interactive review:
 
 **Example interaction**:
 
-
-```
 "I've reviewed the roadmap. Overall score: 3.5/5.
 
 The main concern is Phase 2 seems to start before Phase 1

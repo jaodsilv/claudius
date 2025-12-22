@@ -155,8 +155,6 @@ Define SMART milestones for each phase:
 
 **Milestone Template**:
 
-
-```
 Milestone: [Name]
 Target: [Relative date or duration]
 Success Criteria:

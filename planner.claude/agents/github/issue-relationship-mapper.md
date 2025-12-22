@@ -219,11 +219,7 @@ Independent work that can proceed simultaneously:
 #### Circular Dependencies
 
 
-{list or "None detected"}
-
-
 #### Long Chains (>5 deep)
-
 {list or "None detected"}
 
 ### Recommendations

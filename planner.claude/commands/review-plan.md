@@ -76,8 +76,6 @@ Quick Mode:
 
 2. Read the plan file:
 
-
-   ```
    Read: {{plan_path}}
    ```
 
@@ -93,9 +91,7 @@ Quick Mode:
 
 1. If goal not provided, attempt to extract from plan
 
-
 2. If still unclear, ask user:
-
    ```
    What is the primary goal this plan should achieve?
    ```
@@ -117,10 +113,8 @@ Quick Mode:
 
 2. Launch agents in parallel:
 
-
    **Domain Reviewer** (planner-plan-reviewer):
 
-   ```
    Use Task tool with planner-plan-reviewer agent:
 
    Review this plan:
@@ -161,11 +155,9 @@ Quick Mode:
 
 #### Step 3B: Adversarial Challenge
 
-
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-
    ```
    Use Task tool with planner-review-challenger agent:
 
@@ -192,12 +184,10 @@ Quick Mode:
 
 3. Receive adversarial analysis
 
-
 #### Step 3C: Synthesis
 
 1. Mark Synthesis as in_progress
 
-2. Launch synthesizer agent:
 
    ```
    Use Task tool with planner-review-synthesizer agent:
@@ -225,13 +215,11 @@ Quick Mode:
 
 ### Quick Mode Analysis
 
-
 If mode == "quick", use single agent:
 
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only:
-
    ```
    Use Task tool with planner-plan-reviewer agent:
 
@@ -257,14 +245,12 @@ If mode == "quick", use single agent:
 
 3. Proceed directly to Phase 4
 
-
 ### Phase 4: Interactive Review
 
 1. Mark Interactive Review as in_progress
 
 2. Present findings to user:
 
-   **For Thorough Mode**:
 
    ```markdown
    ## Plan Review Findings (Multi-Agent Analysis)

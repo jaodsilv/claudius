@@ -80,8 +80,6 @@ Round N (repeat for --rounds):
 
 2. Load ultrathink skill:
 
-
-   ```
    Use Skill tool to load: planner:ultrathink
    ```
 
@@ -91,17 +89,13 @@ Round N (repeat for --rounds):
    - If file path: Read roadmap/goal from file
    - If string: Use as goal directly
 
-
 5. Ensure output directory:
-
    ```bash
    mkdir -p {{output}}
    ```
 
-
 6. Set session context:
 
-   ```
    Goal: {{goal}}
    Mode: {{mode}}
    Max Rounds: {{rounds}}
@@ -115,11 +109,9 @@ For each round (1 to {{rounds}}):
 
 1. Mark Round N as in_progress
 
-
 2. Launch ideation agents in parallel:
 
    **Deep Thinker (Opus with extended thinking)**:
-
    ```
    Use Task tool with planner-ideas-deep-thinker agent:
 
@@ -167,12 +159,10 @@ For each round (1 to {{rounds}}):
    5. Novel combinations
    ```
 
-
 3. Collect outputs from both agents
 
 #### Step 2: Adversarial Analysis
 
-1. Launch Adversarial Critic:
 
    ```
    Use Task tool with planner-ideas-adversarial-critic agent:
@@ -195,13 +185,11 @@ For each round (1 to {{rounds}}):
    Be rigorous but constructive.
    ```
 
-
 2. Receive critique and challenges
 
 #### Step 3: Synthesis
 
 1. Launch Convergence Synthesizer:
-
    ```
    Use Task tool with planner-ideas-convergence-synthesizer agent:
 
@@ -313,14 +301,12 @@ For each round (1 to {{rounds}}):
 
 ## Mode Variations
 
-
 ### Full Mode (default)
 
 All agents engaged:
 - Deep Thinker
 - Innovation Explorer
 - Adversarial Critic
-- Convergence Synthesizer
 - Facilitator
 
 ### Focused Mode

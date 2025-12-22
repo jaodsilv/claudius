@@ -52,14 +52,10 @@ prioritize-arguments:
 
 2. Load prioritization skill:
 
-
-   ```
    Use Skill tool to load: planner:prioritization
    ```
 
-
 3. Verify gh CLI:
-
    ```bash
    gh auth status
    ```
@@ -68,10 +64,8 @@ prioritize-arguments:
 
 ### Phase 2: Issue Fetching
 
-
 1. Launch `planner-github-issue-analyzer` agent:
 
-   ```
    Use Task tool with planner-github-issue-analyzer agent:
 
    Fetch and analyze issues: {{issues}}
@@ -91,11 +85,9 @@ prioritize-arguments:
 
 ### Phase 3: Relationship Mapping
 
-
 1. Mark Phase 3 as in_progress
 
 2. Launch `planner-github-issue-relationship-mapper` agent:
-
    ```
    Use Task tool with planner-github-issue-relationship-mapper agent:
 
@@ -112,12 +104,10 @@ prioritize-arguments:
 
 ### Phase 4: Framework Application
 
-
 1. Mark Phase 4 as in_progress
 
 2. Launch `planner-prioritization-engine` agent:
 
-   ```
    Use Task tool with planner-prioritization-engine agent:
 
    Apply {{framework}} framework to prioritize:
@@ -143,13 +133,11 @@ prioritize-arguments:
 
 3. Receive prioritized list
 
-
 ### Phase 5: Interactive Review
 
 1. Mark Phase 5 as in_progress
 
 2. Present draft rankings to user:
-
    ```markdown
    ## Draft Prioritization
 
@@ -172,14 +160,12 @@ prioritize-arguments:
 
 4. Incorporate user feedback into final rankings
 
-
 ### Phase 6: Output Generation
 
 1. Mark Phase 6 as in_progress
 
 2. Ensure output directory:
 
-   ```bash
    mkdir -p {{output}}
    ```
 
@@ -242,7 +228,6 @@ See `{{output}}/prioritization.md` for full analysis.
 
 /planner:prioritize ALL
 
-
 ```
 
 
@@ -250,7 +235,6 @@ See `{{output}}/prioritization.md` for full analysis.
 
 ```
 
-/planner:prioritize 1,2,3,5,8,13 --framework MoSCoW
 
 ```
 

@@ -59,8 +59,6 @@ You are an adversarial analysis specialist for the planner plugin review workflo
 
 For each assumption found:
 
-
-```
 Assumption: [Statement]
 Type: Explicit/Implicit
 Validity: High/Medium/Low/Questionable

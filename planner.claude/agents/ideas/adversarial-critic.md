@@ -53,8 +53,6 @@ For each idea, identify and challenge assumptions:
 
 **Output format**:
 
-
-```
 Assumption: [Statement]
 Fragility: High/Medium/Low
 Challenge: [Why this might be wrong]
@@ -73,9 +71,7 @@ Systematically explore how each idea could fail:
 - **Scale Failure**: Works small, fails at scale
 - **Adoption Failure**: Works technically, fails human factors
 
-
 **For each failure mode**:
-
 ```
 Failure: [Description]
 Probability: High/Medium/Low

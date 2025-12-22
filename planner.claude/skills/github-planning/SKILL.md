@@ -124,8 +124,6 @@ github\.com/[\w-]+/[\w-]+/issues/(\d+)
 2. Extract dependency patterns from body/comments
 3. Build adjacency list:
 
-
-   ```
    {
      123: { blocks: [456, 789], blockedBy: [111] },
      456: { blocks: [], blockedBy: [123] }

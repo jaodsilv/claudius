@@ -233,21 +233,13 @@
 ### Deep Thinker Raw Output
 
 
-{{deep_thinker_raw}}
-
-
 ### Innovation Explorer Raw Output
-
 {{innovation_raw}}
-
 
 ### Adversarial Critic Raw Output
 
 
-{{critic_raw}}
-
 ### Convergence Synthesizer Raw Output
-
 {{synthesizer_raw}}
 
 ---
