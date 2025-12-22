@@ -18,7 +18,7 @@ clear, enables CI/CD automation, and improves team collaboration.
 
 ```text
 <type>/<description>
-```
+```text
 
 ## Branch Types
 
@@ -32,7 +32,7 @@ clear, enables CI/CD automation, and improves team collaboration.
 ```text
 main
 develop
-```
+```text
 
 ### Feature Branches
 
@@ -43,7 +43,7 @@ feature/user-authentication
 feature/add-dark-mode
 feature/issue-123-payment-integration
 feature/api-v2-endpoints
-```
+```text
 
 **Use for:**
 - New functionality
@@ -59,7 +59,7 @@ bugfix/fix-login-error
 bugfix/issue-456-validation-bug
 bugfix/correct-date-formatting
 bugfix/resolve-memory-leak
-```
+```text
 
 **Use for:**
 - Standard bug fixes
@@ -75,7 +75,7 @@ hotfix/security-vulnerability
 hotfix/critical-crash-fix
 hotfix/payment-gateway-down
 hotfix/v1.2.1-patch
-```
+```text
 
 **Use for:**
 - Critical production bugs
@@ -92,7 +92,7 @@ release/v1.2.0
 release/v2.0.0-beta
 release/2025-Q1
 release/sprint-15
-```
+```text
 
 **Use for:**
 - Version release preparation
@@ -110,7 +110,7 @@ chore/refactor-tests
 chore/improve-documentation
 chore/configure-ci
 chore/cleanup-unused-code
-```
+```text
 
 **Use for:**
 - Dependency updates
@@ -143,7 +143,7 @@ chore/cleanup-unused-code
 ❌ feature/Add_User_Profile
 ❌ Feature/add user profile
 ❌ feature/add-user-profile!
-```
+```text
 
 ### 2. Hyphen and Dot Rules
 
@@ -163,7 +163,7 @@ chore/cleanup-unused-code
 ❌ feature/-new-login
 ❌ feature/new-login-
 ❌ release/v1.-2.0
-```
+```text
 
 ### 3. Clarity and Conciseness
 
@@ -175,7 +175,7 @@ bugfix/null-pointer-error
 hotfix/sql-injection-patch
 release/v2.0.0
 chore/upgrade-webpack
-```
+```text
 
 **Too Vague:**
 
@@ -183,14 +183,14 @@ chore/upgrade-webpack
 feature/new-stuff
 bugfix/fix-bug
 hotfix/urgent
-```
+```text
 
 **Too Verbose:**
 
 ```text
 feature/implement-complete-user-authentication-system-with-oauth-and-jwt
 bugfix/fix-the-issue-where-users-cannot-login-when-username-has-spaces
-```
+```text
 
 ### 4. Ticket Number Integration
 
@@ -201,7 +201,7 @@ feature/issue-123-user-dashboard
 bugfix/JIRA-456-validation-error
 hotfix/PROD-789-memory-leak
 chore/task-321-update-docs
-```
+```text
 
 **Format options:**
 - `<type>/issue-<number>-<description>`
@@ -224,7 +224,7 @@ feature/api-rate-limiting
 
 # User story based
 feature/us-567-export-reports
-```
+```text
 
 ### Bug Fixes
 
@@ -240,7 +240,7 @@ bugfix/api-error-handling
 
 # Component-specific
 bugfix/navbar-mobile-display
-```
+```text
 
 ### Hotfixes
 
@@ -256,7 +256,7 @@ hotfix/prod-payment-failure
 
 # Version-specific
 hotfix/v1.2.3-security-patch
-```
+```text
 
 ### Releases
 
@@ -275,7 +275,7 @@ release/2025-03-15
 
 # Sprint-based
 release/sprint-24
-```
+```text
 
 ### Chores
 
@@ -295,7 +295,7 @@ chore/setup-eslint
 # Cleanup
 chore/remove-deprecated-code
 chore/refactor-utils
-```
+```text
 
 ## Workflow Integration
 
@@ -311,7 +311,7 @@ git checkout -b feature/issue-123-new-dashboard
 # ...
 
 # Merge back to main via PR
-```
+```text
 
 ### Hotfix Workflow
 
@@ -324,7 +324,7 @@ git checkout -b hotfix/critical-security-fix
 # ...
 
 # Merge to both main and develop
-```
+```text
 
 ### Release Workflow
 
@@ -337,7 +337,7 @@ git checkout -b release/v1.2.0
 # ...
 
 # Merge to main and back to develop
-```
+```text
 
 ## CI/CD Integration
 
@@ -350,7 +350,7 @@ bugfix/* → Run tests, lint
 hotfix/* → Run tests, deploy to staging
 release/* → Run full test suite, build artifacts
 main → Deploy to production
-```
+```text
 
 ## Best Practices
 
@@ -393,7 +393,7 @@ Before creating a branch, verify:
 ```text
 feature/issue-123-user-profile
 bugfix/bug-456-login-error
-```
+```text
 
 ### Component-Based
 
@@ -401,21 +401,21 @@ bugfix/bug-456-login-error
 feature/auth-oauth-integration
 bugfix/api-error-handling
 chore/database-migration-scripts
-```
+```text
 
 ### Version-Based
 
 ```text
 release/v1.2.0
 hotfix/v1.1.1-patch
-```
+```text
 
 ### Time-Based
 
 ```text
 release/2025-Q1
 release/sprint-15
-```
+```text
 
 ## Integration with Conventional Commits
 
@@ -432,7 +432,7 @@ test(auth): add authentication integration tests
 
 # PR merge commit
 feat: add user authentication system (#123)
-```
+```text
 
 ## Benefits
 

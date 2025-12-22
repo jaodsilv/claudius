@@ -52,7 +52,7 @@ If "Summarize recent changes":
 If "Request review":
 Template:
 
-```
+```text
 ## Ready for Review
 
 This PR is ready for review. Key changes:
@@ -60,12 +60,12 @@ This PR is ready for review. Key changes:
 - <change 2>
 
 Please review when you have time. @<team-or-reviewer>
-```
+```text
 
 If "Status update":
 Template:
 
-```
+```text
 ## Status Update
 
 ### Progress
@@ -76,7 +76,7 @@ Template:
 
 ### ETA
 <estimated completion>
-```
+```text
 
 ## Post Comment
 

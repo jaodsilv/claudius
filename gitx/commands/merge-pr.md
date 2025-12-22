@@ -90,7 +90,7 @@ gh pr merge <number> --merge
 
 # Rebase
 gh pr merge <number> --rebase
-```
+```text
 
 Add delete branch flag if appropriate:
 - `--delete-branch` to clean up after merge
@@ -131,7 +131,7 @@ Show merge outcome:
 - Branch cleanup: done/pending
 - Link to merged PR
 
-```
+```text
 PR #123 merged successfully!
 
 Merge commit: abc1234
@@ -139,7 +139,7 @@ Issues closed: #45, #67
 Branch 'feature/my-feature' deleted locally
 
 View: https://github.com/owner/repo/pull/123
-```
+```text
 
 ## Error Handling
 

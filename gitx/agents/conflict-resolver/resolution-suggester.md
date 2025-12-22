@@ -125,13 +125,13 @@ What tests verify the resolution:
 =======
 [theirs code]
 >>>>>>> branch-name
-```
+```text
 
 **Suggested Resolution**:
 
 ```typescript
 [resolved code - ready to paste]
-```
+```text
 
 **Reasoning**:
 [Why this resolution is correct]
@@ -145,13 +145,13 @@ What tests verify the resolution:
 ```bash
 # Run after applying this resolution
 npm run test -- --testPathPattern="affected.test.ts"
-```
+```text
 
 **Alternative** (if applicable):
 
 ```typescript
 [alternative resolution if there's another valid approach]
-```
+```text
 
 *Choose this if: [condition for alternative]*
 
@@ -165,13 +165,13 @@ npm run test -- --testPathPattern="affected.test.ts"
 
 ```typescript
 [conflict code]
-```
+```text
 
 **Suggested Resolution**:
 
 ```typescript
 [resolved code]
-```
+```text
 
 **⚠️ Human Review Required**:
 This resolution makes assumptions about:
@@ -209,7 +209,7 @@ npm run test
 
 # 4. Check for runtime issues
 npm run dev  # and manually verify
-```
+```text
 
 ### Unresolvable Conflicts
 
@@ -231,16 +231,16 @@ Lines X-Y: Replace conflict with:
 
 ```typescript
 [ready to paste code]
-```
+```text
 
 **File: path/to/file2.ts**
 Lines X-Y: Replace conflict with:
 
 ```typescript
 [ready to paste code]
-```
+```text
 
-```
+```text
 
 ## Quality Standards
 

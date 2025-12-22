@@ -41,7 +41,7 @@ gh issue list --label "priority:low" --state open --limit 1 --json number,title,
 
 # If none found, get any open issue without priority
 gh issue list --state open --limit 5 --json number,title,labels,assignees
-```
+```text
 
 ## Handle Multiple Same-Priority Issues
 
@@ -58,9 +58,9 @@ Use AskUserQuestion:
 
 Just output the issue number:
 
-```
+```text
 #123
-```
+```text
 
 ### Detailed mode (-d flag)
 
@@ -69,7 +69,7 @@ Fetch full details:
 
 Output formatted details:
 
-```
+```text
 Issue #123: <title>
 Priority: <priority-label>
 Assignees: <assignees or "unassigned">
@@ -78,19 +78,19 @@ Labels: <other labels>
 
 Description:
 <first 500 chars of body>
-```
+```text
 
 ## Suggest Next Steps
 
 After showing the issue:
 
-```
+```text
 To start working on this issue:
   /gitx:fix-issue 123
 
 Or create a worktree manually:
   /gitx:worktree 123
-```
+```text
 
 ## Error Handling
 

@@ -16,7 +16,7 @@ From $ARGUMENTS, extract:
 
 ## Initialize Progress Tracking
 
-```
+```text
 TodoWrite:
 1. [ ] Gather PR context
 2. [ ] Analyze feedback (parallel)
@@ -24,7 +24,7 @@ TodoWrite:
 4. [ ] Synthesize and present plan
 5. [ ] Execute approved changes
 6. [ ] Commit and push
-```
+```text
 
 ## Phase 1: Gather Context
 
@@ -55,29 +55,29 @@ REVIEW_COUNT=$(gh pr view --json reviewThreads --jq '[.reviewThreads[] | select(
 
 # Count CI failures
 CI_FAILURES=$(gh pr checks --json conclusion --jq '[.[] | select(.conclusion == "failure")] | length')
-```
+```text
 
 ### Launch Analyzers
 
 **If review comments exist AND (no --ci flag OR both exist)**:
 
-```
+```text
 Task (gitx:review-comment-analyzer):
   PR Number: [number]
   Analyze all unresolved review comments.
   Categorize by type and effort.
   Output to respond-analysis.md
-```
+```text
 
 **If CI failures exist AND --ci flag (OR both exist)**:
 
-```
+```text
 Task (gitx:ci-failure-analyzer):
   PR Number: [number]
   Analyze all CI check failures.
   Identify root causes and fixes.
   Output to respond-analysis.md
-```
+```text
 
 **If both exist, launch BOTH in parallel**.
 
@@ -91,7 +91,7 @@ Mark "Plan changes" as in_progress.
 
 Launch planner with combined analysis:
 
-```
+```text
 Task (gitx:code-change-planner):
   PR Number: [number]
 
@@ -105,7 +105,7 @@ Task (gitx:code-change-planner):
   - Change sequence
   - Dependencies
   - Quality gates
-```
+```text
 
 Mark "Plan changes" as completed.
 
@@ -115,13 +115,13 @@ Mark "Synthesize and present plan" as in_progress.
 
 Launch synthesizer:
 
-```
+```text
 Task (gitx:respond-synthesizer):
   Combine all analysis results.
   Create tiered action plan.
   Detect conflicts.
   Present to user for approval.
-```
+```text
 
 The synthesizer will use AskUserQuestion to get user approval:
 - "How would you like to address PR feedback?"
@@ -170,14 +170,14 @@ For each approved change in planned order:
 
 For each quality gate identified in the plan:
 
-```
+```text
 AskUserQuestion:
   Question: "[Description of change]. Proceed?"
   Options:
   1. "Apply this change"
   2. "Skip this change"
   3. "Modify approach"
-```
+```text
 
 Mark "Execute approved changes" as completed.
 
@@ -204,7 +204,7 @@ EOF
 
 # Push changes
 git push
-```
+```text
 
 Mark "Commit and push" as completed.
 
@@ -231,7 +231,7 @@ After responding:
 - Wait for CI to complete
 - Wait for reviewer re-review
 - Use `/gitx:respond` again if new feedback
-```
+```text
 
 ## Error Handling
 

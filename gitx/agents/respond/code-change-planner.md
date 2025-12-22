@@ -64,12 +64,12 @@ Common dependencies:
 
 Identify changes that modify the same file:
 
-```
+```text
 File: src/utils.ts
   - Comment #2: Line 42-45 (logic fix)
   - CI Lint: Line 42 (formatting)
   - Comment #5: Line 50-55 (rename)
-```
+```text
 
 These should be batched together to avoid repeated file modifications.
 
@@ -173,7 +173,7 @@ npm run lint
 |------|------------|
 | Change #3 might break other tests | Run full test suite after |
 | Lint auto-fix might conflict with manual changes | Run lint last |
-```
+```text
 
 ## Quality Standards
 

@@ -40,7 +40,7 @@ If PR already exists:
 ```bash
 git fetch origin
 git log origin/<branch>..HEAD 2>/dev/null
-```
+```text
 
 If local is ahead of remote:
 - Push first: `git push -u origin <branch>`
@@ -52,7 +52,7 @@ If remote doesn't exist:
 
 Launch change analyzer:
 
-```
+```text
 Task (gitx:change-analyzer):
   Branch: [current-branch]
   Base: [main-branch]
@@ -64,7 +64,7 @@ Task (gitx:change-analyzer):
   - Related issues
   - Breaking changes
   - Test coverage assessment
-```
+```text
 
 Wait for analysis to complete.
 
@@ -78,7 +78,7 @@ Store key results:
 
 Launch description generator and review preparer in parallel:
 
-```
+```text
 Task (gitx:description-generator):
   Change Analysis: [output from Phase 1]
 
@@ -86,9 +86,9 @@ Task (gitx:description-generator):
   - PR title (conventional format)
   - PR body (Summary, Changes, Related Issues, Test Plan)
   - Suggested labels
-```
+```text
 
-```
+```text
 Task (gitx:review-preparer):
   Change Analysis: [output from Phase 1]
 
@@ -97,7 +97,7 @@ Task (gitx:review-preparer):
   - Suggested reviewers
   - Self-review checklist
   - Areas needing attention
-```
+```text
 
 Wait for both to complete.
 
@@ -131,11 +131,11 @@ Present generated content:
 **Potential Concerns**:
 - [Concern 1]
 - [Concern 2]
-```
+```text
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Review the generated PR content. How would you like to proceed?"
 Options:
 1. "Create PR as shown (Recommended)"
@@ -143,7 +143,7 @@ Options:
 3. "Edit description" - Modify the body
 4. "Add draft flag" - Create as draft PR
 5. "Cancel" - Abort PR creation
-```
+```text
 
 Handle user response:
 - **Create**: Proceed to creation
@@ -165,7 +165,7 @@ EOF
 )" \
   --assignee @me \
   --base [main-branch]
-```
+```text
 
 If draft requested:
 - Add `--draft` flag
@@ -192,7 +192,7 @@ Show:
 To add reviewers:
 ```bash
 gh pr edit [number] --add-reviewer @reviewer1,@reviewer2
-```
+```text
 
 ### Next Steps
 
@@ -205,12 +205,12 @@ If you need to:
 
 [Summary of review-preparer output]
 
-```
+```text
 
 ## Fallback Mode
 
 If orchestration fails:
-```
+```text
 
 AskUserQuestion:
   Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
@@ -219,7 +219,7 @@ AskUserQuestion:
   2. "Retry orchestration" - Try again
   3. "Cancel" - Abort
 
-```
+```text
 
 For basic mode:
 
@@ -243,7 +243,7 @@ Based on:
 ## Test Plan
 - [ ] Tests added/updated
 - [ ] Manual testing completed
-```
+```text
 
 ## Error Handling
 

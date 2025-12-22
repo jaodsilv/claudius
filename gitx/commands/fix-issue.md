@@ -6,7 +6,8 @@ allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, Ask
 
 # Fix Issue (Orchestrated)
 
-Complete orchestrated workflow to fix a GitHub issue: analyzes the issue, explores the codebase, plans implementation, creates a worktree, and delegates to a development workflow.
+Complete orchestrated workflow to fix a GitHub issue: analyzes the issue, explores the codebase,
+plans implementation, creates a worktree, and delegates to a development workflow.
 
 ## Parse Arguments
 
@@ -15,7 +16,7 @@ From $ARGUMENTS, extract:
 
 ## Initialize Progress Tracking
 
-```
+```text
 TodoWrite:
 1. [ ] Analyze issue requirements
 2. [ ] Explore codebase for relevant files
@@ -24,7 +25,7 @@ TodoWrite:
 5. [ ] Set up worktree
 6. [ ] Complete development
 7. [ ] Commit and prepare for PR
-```
+```text
 
 ## Phase 1: Issue Analysis
 
@@ -32,7 +33,7 @@ Mark "Analyze issue requirements" as in_progress.
 
 Launch issue analyzer:
 
-```
+```text
 Task (gitx:issue-analyzer):
   Issue Number: [number]
 
@@ -43,7 +44,7 @@ Task (gitx:issue-analyzer):
   - Issue type (bug/feature/enhancement/refactor)
   - Key terms for code search
   - Related issues and dependencies
-```
+```text
 
 Wait for analysis to complete.
 
@@ -61,7 +62,7 @@ Mark "Explore codebase for relevant files" as in_progress.
 
 Launch codebase navigator:
 
-```
+```text
 Task (gitx:codebase-navigator):
   Issue Analysis: [summary from Phase 1]
   Key Terms: [terms from Phase 1]
@@ -72,7 +73,7 @@ Task (gitx:codebase-navigator):
   - Test files needed
   - Impact assessment
   - Similar implementations to reference
-```
+```text
 
 Wait for exploration to complete.
 
@@ -89,7 +90,7 @@ Mark "Create implementation plan" as in_progress.
 
 Launch implementation planner:
 
-```
+```text
 Task (gitx:implementation-planner):
   Issue Analysis:
   [Full output from Phase 1]
@@ -103,7 +104,7 @@ Task (gitx:implementation-planner):
   - Test strategy
   - Commit boundaries
   - Verification steps
-```
+```text
 
 Wait for plan to complete.
 
@@ -135,18 +136,18 @@ Present the implementation plan summary:
 
 ### Estimated Effort
 [complexity and time description]
-```
+```text
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Review the implementation plan for Issue #[number]. How would you like to proceed?"
 Options:
 1. "Approve and continue (Recommended)" - Proceed with worktree setup and development
 2. "Modify the plan" - Adjust approach before proceeding
 3. "Add more detail" - Expand specific sections
 4. "Cancel" - Abort the workflow
-```
+```text
 
 Handle user response:
 - **Approve**: Mark complete, proceed to Phase 5
@@ -180,17 +181,17 @@ MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remo
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH" "$MAIN"
-```
+```text
 
 Report worktree location:
 
-```
+```text
 Worktree created:
   Path: [path]
   Branch: [branch-name]
 
 Note: Development will continue in the worktree context.
-```
+```text
 
 Mark "Set up worktree" as completed.
 
@@ -202,20 +203,20 @@ Mark "Complete development" as in_progress.
 
 Use AskUserQuestion:
 
-```
+```text
 Question: "Which development approach would you like to use for Issue #[number]?"
 Options:
 1. "Feature development workflow (Recommended)" - Guided feature development with code architecture
 2. "TDD workflow" - Test-driven development with red-green-refactor
 3. "Manual development" - Work independently with implementation plan
 4. "Skip development" - I'll develop later, just set up the worktree
-```
+```text
 
 ### Delegate Based on Choice
 
 **Feature Development Workflow**:
 
-```
+```text
 Skill (feature-dev:feature-dev):
   Context: Issue #[number] - [title]
 
@@ -227,11 +228,11 @@ Skill (feature-dev:feature-dev):
 
   Relevant Files:
   [Files to modify from codebase navigation]
-```
+```text
 
 **TDD Workflow**:
 
-```
+```text
 Skill (tdd-workflows:tdd-orchestrator):
   Context: Issue #[number] - [title]
 
@@ -240,7 +241,7 @@ Skill (tdd-workflows:tdd-orchestrator):
 
   Implementation:
   [Implementation phases from plan]
-```
+```text
 
 **Manual Development**:
 Provide the full implementation plan:
@@ -261,17 +262,17 @@ Provide the full implementation plan:
 [How to verify changes]
 
 I'm available to help with any questions as you implement.
-```
+```text
 
 **Skip Development**:
 
-```
+```text
 Worktree is ready at [path] on branch [branch-name].
 
 When you're ready to continue:
 - Use `/gitx:commit-push` to commit changes
 - Use `/gitx:pr` to create a pull request
-```
+```text
 
 Skip to Phase 7 reporting.
 
@@ -279,7 +280,7 @@ Skip to Phase 7 reporting.
 
 If requested workflow not available:
 
-```
+```text
 The [workflow] workflow is not available in your setup.
 
 Available options:
@@ -287,7 +288,7 @@ Available options:
 2. Basic guided development
 
 Would you like to proceed with an alternative?
-```
+```text
 
 Mark "Complete development" as completed.
 
@@ -302,7 +303,7 @@ Once development is complete:
 ```bash
 git status
 git diff --stat
-```
+```text
 
 If no changes:
 - Report: "No changes detected in worktree"
@@ -313,7 +314,7 @@ If no changes:
 
 If changes exist:
 
-```
+```text
 Invoke /gitx:commit-push
 
 The commit message should reference the issue:
@@ -322,7 +323,7 @@ The commit message should reference the issue:
 Fixes #[number]
 
 [Details from implementation]"
-```
+```text
 
 ### Suggest PR Creation
 
@@ -338,19 +339,20 @@ Fixes #[number]
 ### Next Steps
 
 To create a pull request:
-```
+```text
 
 /gitx:pr
 
-```
+```text
 
 Or to comment on the issue with progress:
-```
+```text
 
 /gitx:comment-to-issue [number] "Implementation complete, PR forthcoming"
 
 ```
-```
+
+```text
 
 Mark "Commit and prepare for PR" as completed.
 
@@ -373,13 +375,13 @@ Maintain issue context throughout the workflow:
 
 If context grows large or workflow is interrupted, preserve:
 
-```
+```text
 Essential context for Issue #[number]:
 - Branch: [branch-name]
 - Worktree: [path]
 - Phase: [current phase]
 - Key files: [list]
 - Acceptance criteria: [summary]
-```
+```text
 
 Use /compact if needed, ensuring this context is maintained.

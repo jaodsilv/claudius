@@ -56,7 +56,7 @@ If "Summarize recent work":
 If "Report progress":
 Template:
 
-```
+```text
 ## Progress Update
 
 ### Completed
@@ -67,7 +67,7 @@ Template:
 
 ### Blockers
 - None
-```
+```text
 
 ## Post Comment
 

@@ -42,27 +42,32 @@ Creating accurate implementation plans requires deep analysis:
 
 Break work into logical phases:
 
-**Phase 1: Foundation**
+#### Phase 1: Foundation
+
 - Type definitions
 - Interface contracts
 - Configuration setup
 
-**Phase 2: Core Implementation**
+#### Phase 2: Core Implementation
+
 - Main functionality
 - Business logic
 - Data handling
 
-**Phase 3: Integration**
+#### Phase 3: Integration
+
 - Connect components
 - Wire up APIs
 - Handle state
 
-**Phase 4: Testing**
+#### Phase 4: Testing
+
 - Unit tests
 - Integration tests
 - Edge cases
 
-**Phase 5: Polish**
+#### Phase 5: Polish
+
 - Error handling
 - Documentation
 - Code cleanup
@@ -137,7 +142,7 @@ Before starting:
 interface FeatureConfig {
   // ...
 }
-```
+```text
 
 **Verification**: `npm run typecheck` passes
 
@@ -152,7 +157,7 @@ interface FeatureConfig {
 export const featureConfig = {
   // ...
 };
-```
+```text
 
 **Verification**: Import works in other files
 
@@ -176,7 +181,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
   // 2. Process data
   // 3. Return result
 }
-```
+```text
 
 **Verification**: Unit tests pass
 
@@ -200,7 +205,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
 ```typescript
 // Add route:
 router.post('/feature', featureHandler);
-```
+```text
 
 **Verification**: API responds correctly
 
@@ -282,9 +287,9 @@ npm run test -- path/to/test.ts  # Single file
 # Quality
 npm run lint          # Check lint
 npm run lint:fix      # Fix lint issues
-```
+```text
 
-```
+```text
 
 ## Quality Standards
 

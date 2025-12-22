@@ -35,7 +35,7 @@ gh pr checks <PR> --json name,status,conclusion,detailsUrl
 
 # Filter for failures
 gh pr checks <PR> --json name,status,conclusion,detailsUrl | jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled")]'
-```
+```text
 
 ### 2. Categorize Failures
 
@@ -58,7 +58,7 @@ For each failure:
 ```bash
 # Try to get run logs via GitHub API
 gh run view <run-id> --log-failed
-```
+```text
 
 If logs not accessible via CLI, note the detailsUrl for manual review.
 
@@ -97,7 +97,7 @@ For each identified failure point:
 
 Produce a structured analysis:
 
-```markdown
+````markdown
 ## CI Failure Analysis
 
 ### Summary
@@ -114,11 +114,10 @@ Produce a structured analysis:
   - path/to/file.ts:42 - specific issue
   - path/to/file.ts:87 - related issue
 - **Error Messages**:
-  ```
-
+  ```text
   Actual error output from logs
-
   ```
+
 - **Suggested Fix**:
   1. Step-by-step remediation
   2. Commands to run locally to verify
@@ -126,22 +125,28 @@ Produce a structured analysis:
 - **Can Auto-Fix**: Yes/No
 
 #### Check 2: [CHECK_NAME] - [CATEGORY]
+
 ...
 
 ### Local Verification Commands
 
 \`\`\`bash
-# Run these commands locally to verify fixes:
+
+# Run these commands locally to verify fixes
+
 npm run test -- --testNamePattern="failing test name"
 npm run lint -- --fix
 npm run typecheck
 \`\`\`
 
+<!-- markdownlint-disable MD001 -->
 ### Inaccessible Logs
+<!-- markdownlint-enable MD001 -->
 
 If any logs could not be fetched:
 - [Check Name]: Manual review required at [URL]
-```
+<!-- markdownlint-disable-next-line MD040 -->
+````
 
 ### 6. Priority Ordering
 

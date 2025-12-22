@@ -40,7 +40,7 @@ git log --oneline main..HEAD
 
 # Full commit details
 git log --pretty=format:"%h|%s|%b|%an|%ad" --date=short main..HEAD
-```
+```text
 
 ### 2. Analyze Commit History
 
@@ -67,7 +67,7 @@ git diff --numstat main..HEAD
 
 # Files added/modified/deleted
 git diff --name-status main..HEAD
-```
+```text
 
 Categorize files:
 - **Source code**: Implementation changes
@@ -98,7 +98,7 @@ git log --oneline main..HEAD | grep -oE '#[0-9]+'
 
 # Check branch name for issue number
 echo "branch-name" | grep -oE '[0-9]+'
-```
+```text
 
 ### 6. Assess Impact
 
@@ -135,7 +135,7 @@ git diff --name-only main..HEAD | grep -E '\.(test|spec)\.[tj]sx?$' | wc -l
 
 # Compare to source files changed
 git diff --name-only main..HEAD | grep -E '\.[tj]sx?$' | grep -v -E '\.(test|spec)\.' | wc -l
-```
+```text
 
 ### 9. Output Format
 
@@ -242,7 +242,7 @@ For reviewers to focus on:
 - **Commit hygiene**: Good | Needs cleanup (squash recommended)
 - **Test coverage**: Adequate | Needs more tests
 - **Documentation**: Up to date | Needs updates
-```
+```text
 
 ## Quality Standards
 

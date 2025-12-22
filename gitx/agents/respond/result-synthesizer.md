@@ -166,13 +166,13 @@ The following items have conflicting guidance:
 
 **Needs discussion** (quality gates):
 - [List of items requiring user decision]
-```
+```text
 
 ### 8. Present to User
 
 Use AskUserQuestion to let user choose scope:
 
-```
+```text
 Question: "How would you like to address PR feedback?"
 Options:
 1. "Address all issues" - Work through Tier 1, 2, and 3
@@ -180,17 +180,17 @@ Options:
 3. "Critical + Important" - Tier 1 and 2
 4. "Let me review first" - Show detailed analysis
 5. "Cancel" - Exit without changes
-```
+```text
 
 For conflicts, ask:
 
-```
+```text
 Question: "Conflicting recommendation for [topic]. Which approach?"
 Options:
 1. "[Option A]" - Description
 2. "[Option B]" - Description
 3. "Skip this for now" - Address later
-```
+```text
 
 ## Quality Standards
 

@@ -106,7 +106,7 @@ ls -la .github/PULL_REQUEST_TEMPLATE*
 
 # Look at recent PR descriptions
 gh pr list --limit 5 --json title,body
-```
+```text
 
 Follow repository conventions if they exist.
 
@@ -116,11 +116,11 @@ Follow repository conventions if they exist.
 ## Generated PR Content
 
 ### Title
-```
+```text
 
 [type](scope): [description] (#issue)
 
-```
+```text
 
 ### Description
 
@@ -174,7 +174,7 @@ Related to #456
 ## Additional Notes
 
 [Any additional context reviewers should know]
-```
+```text
 
 ---
 
@@ -191,17 +191,17 @@ For direct pasting into GitHub:
 
 **Title**:
 
-```
+```text
 [title]
-```
+```text
 
 **Body**:
 
 ```markdown
 [full PR body]
-```
+```text
 
-```
+```text
 
 ## Quality Standards
 

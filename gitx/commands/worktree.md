@@ -6,7 +6,8 @@ allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bas
 
 # Worktree Management
 
-Manage git worktrees for isolated feature development. Without arguments, lists existing worktrees. With an argument, creates a new worktree with appropriate branch naming.
+Manage git worktrees for isolated feature development. Without arguments, lists existing worktrees.
+With an argument, creates a new worktree with appropriate branch naming.
 
 ## Gather Context
 

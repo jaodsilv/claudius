@@ -62,7 +62,7 @@ Stage relevant files:
 
 Commit with the drafted message:
 
-```
+```text
 git commit -m "$(cat <<'EOF'
 <type>(<scope>): <description>
 
@@ -71,7 +71,7 @@ git commit -m "$(cat <<'EOF'
 <footer if needed>
 EOF
 )"
-```
+```text
 
 ## Push to Remote
 
