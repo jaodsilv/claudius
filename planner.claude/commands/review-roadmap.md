@@ -363,8 +363,13 @@ If mode == "quick", use single agent:
    ```
 
 3. Ask user:
-   - Which recommendations should we implement?
-   - Want me to update the roadmap?
+   - Which recommendations should we address?
+   - Would you like specific edit suggestions to apply?
+
+4. If user wants to implement changes:
+   - Present specific edits as code blocks
+   - User applies changes manually with Edit tool
+   - Document decisions in review discussion
 
 ### Completion
 
@@ -383,9 +388,13 @@ If mode == "quick", use single agent:
 
 1. {{change}}
 
+### Suggested Edits
+
+Present as code blocks for user to apply manually.
+
 ### Next Steps
 
-1. Update roadmap with changes
+1. Apply agreed changes to roadmap
 2. Review with stakeholders
 3. Create Phase 1 tasks
 ```

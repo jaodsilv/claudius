@@ -340,12 +340,12 @@ If mode == "quick", use single agent:
 
 3. Ask user:
    - Which recommendations should we address now?
-   - Do you want me to help implement any changes?
+   - Would you like specific edit suggestions to apply?
 
-4. If user wants changes, offer to:
-   - Edit the plan file
-   - Create updated version
-   - Document for later
+4. If user wants to implement changes:
+   - Present specific edits as code blocks
+   - User applies changes manually with Edit tool
+   - Document decisions in review discussion
 
 ### Completion
 

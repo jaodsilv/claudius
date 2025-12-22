@@ -408,7 +408,12 @@ If mode == "quick", use single agent:
 3. Ask user:
    - Which recommendations should be prioritized?
    - Are there constraints I should factor in?
-   - Want me to create issues for follow-up?
+   - Would you like specific edit suggestions to apply?
+
+4. If user wants to implement changes:
+   - Present specific edits as code blocks
+   - User applies changes manually with Edit tool
+   - Document decisions in review discussion
 
 ### Completion
 
@@ -430,9 +435,13 @@ If mode == "quick", use single agent:
 
 1. {{item}}
 
+### Suggested Edits
+
+Present as code blocks for user to apply manually.
+
 ### Next Steps
 
-1. Address critical concerns
+1. Apply agreed changes to architecture docs
 2. Document decisions in ADR
 3. Review with team
 ```

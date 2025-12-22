@@ -370,7 +370,9 @@ If mode == "quick", use single agent:
    1. **#130 - Defer to post-MVP**
       - Reason: Nice-to-have, not goal-aligned
 
-   ### Label Updates
+   ### Suggested Label Commands
+
+   Run these commands to apply priority changes:
 
    ```bash
    gh issue edit 127 --add-label "P0" --remove-label "P1"
@@ -380,7 +382,12 @@ If mode == "quick", use single agent:
 
 3. Ask user:
    - Which changes should we apply?
-   - Want me to update labels?
+   - Would you like specific edit suggestions to apply?
+
+4. If user wants to implement changes:
+   - Present gh commands for label updates (user runs them)
+   - Show edit suggestions as code blocks for manual application
+   - Document decisions in review discussion
 
 ### Completion
 
@@ -398,10 +405,18 @@ If mode == "quick", use single agent:
 
 1. {{change}}
 
+### Suggested Commands
+
+Run these commands to apply label changes:
+
+```bash
+gh issue edit ... --add-label "P0"
+```
+
 ### Next Steps
 
-1. Apply label updates
-2. Create missing issues
+1. Run suggested label commands
+2. Create missing issues manually
 3. Re-run prioritization: `/planner:prioritize ALL`
 ```
 

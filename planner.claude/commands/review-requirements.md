@@ -384,9 +384,10 @@ If mode == "quick", use single agent:
    1. {{recommendation}}
    ```
 
-3. Offer to update the requirements file:
-   - Apply all agreed changes
-   - Or provide diff for manual application
+3. Present suggested updates:
+   - Show improved requirement text as code blocks
+   - User applies changes with Edit tool
+   - Or copy/paste into requirements file
 
 ### Completion
 
@@ -421,7 +422,7 @@ See `{{requirements_path}}` for updated requirements.
 
 ## Error Handling
 
-1. **Requirements not found**: Offer to run `/planner:gather-requirements`
+1. **Requirements not found**: Suggest user run `/planner:gather-requirements` command
 2. **User unresponsive**: Save progress, allow resume
 3. **Too many issues**: Prioritize by severity, batch
 4. **Agent failure**: Log error, continue with available outputs
