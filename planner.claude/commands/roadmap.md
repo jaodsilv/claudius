@@ -71,6 +71,8 @@ roadmap-arguments:
    - Related issues or PRs
 
 3. Load the roadmapping skill for patterns:
+
+
    ```
    Use Skill tool to load: planner:roadmapping
    ```
@@ -79,12 +81,16 @@ roadmap-arguments:
 
 1. Mark Phase 3 as in_progress
 
+
 2. Check if gh CLI is available:
+
    ```bash
    gh --version
    ```
 
+
 3. If available, launch `planner-github-issue-analyzer` agent:
+
    ```
    Use Task tool with planner-github-issue-analyzer agent:
 
@@ -101,9 +107,11 @@ roadmap-arguments:
 
 ### Phase 4: Roadmap Generation
 
+
 1. Mark Phase 4 as in_progress
 
 2. Launch `planner-roadmap-architect` agent:
+
    ```
    Use Task tool with planner-roadmap-architect agent:
 
@@ -130,9 +138,11 @@ roadmap-arguments:
 
 ### Phase 5: Output Generation
 
+
 1. Mark Phase 5 as in_progress
 
 2. Ensure output directory exists:
+
    ```bash
    mkdir -p {{output}}
    ```
@@ -145,11 +155,13 @@ roadmap-arguments:
    - Issue-to-phase mapping
    - Suggested issue updates
 
+
 ### Completion
 
 1. Mark all todos as completed
 
 2. Present summary:
+
    ```markdown
    ## Roadmap Created
 

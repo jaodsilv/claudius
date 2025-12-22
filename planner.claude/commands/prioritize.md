@@ -51,11 +51,15 @@ prioritize-arguments:
    - Phase 5: Output Generation (pending)
 
 2. Load prioritization skill:
+
+
    ```
    Use Skill tool to load: planner:prioritization
    ```
 
+
 3. Verify gh CLI:
+
    ```bash
    gh auth status
    ```
@@ -64,7 +68,9 @@ prioritize-arguments:
 
 ### Phase 2: Issue Fetching
 
+
 1. Launch `planner-github-issue-analyzer` agent:
+
    ```
    Use Task tool with planner-github-issue-analyzer agent:
 
@@ -85,9 +91,11 @@ prioritize-arguments:
 
 ### Phase 3: Relationship Mapping
 
+
 1. Mark Phase 3 as in_progress
 
 2. Launch `planner-github-issue-relationship-mapper` agent:
+
    ```
    Use Task tool with planner-github-issue-relationship-mapper agent:
 
@@ -104,9 +112,11 @@ prioritize-arguments:
 
 ### Phase 4: Framework Application
 
+
 1. Mark Phase 4 as in_progress
 
 2. Launch `planner-prioritization-engine` agent:
+
    ```
    Use Task tool with planner-prioritization-engine agent:
 
@@ -133,11 +143,13 @@ prioritize-arguments:
 
 3. Receive prioritized list
 
+
 ### Phase 5: Interactive Review
 
 1. Mark Phase 5 as in_progress
 
 2. Present draft rankings to user:
+
    ```markdown
    ## Draft Prioritization
 
@@ -160,11 +172,13 @@ prioritize-arguments:
 
 4. Incorporate user feedback into final rankings
 
+
 ### Phase 6: Output Generation
 
 1. Mark Phase 6 as in_progress
 
 2. Ensure output directory:
+
    ```bash
    mkdir -p {{output}}
    ```
@@ -174,6 +188,7 @@ prioritize-arguments:
 4. Include:
    - Ranked issue list by priority
    - Framework scoring breakdown
+
    - Dependency graph (Mermaid)
    - Recommendations
    - Suggested label updates
@@ -181,6 +196,7 @@ prioritize-arguments:
 ### Completion
 
 Present summary:
+
 ```markdown
 ## Prioritization Complete
 
@@ -196,6 +212,7 @@ Present summary:
 
 1. Apply priority labels:
    ```bash
+
    gh issue edit {{issue}} --add-label "P0"
    ```
 
@@ -204,30 +221,43 @@ Present summary:
 ### Output
 
 See `{{output}}/prioritization.md` for full analysis.
+
 ```
 
 ## Error Handling
 
+
 1. **gh not authenticated**: Prompt to run `gh auth login`
+
 2. **No issues found**: Report and suggest checking filters
 3. **Missing label data**: Note assumptions made
 
 ## Usage Examples
 
+
 ### Prioritize All Issues
 
+
 ```
+
 /planner:prioritize ALL
+
+
 ```
+
 
 ### Specific Issues with MoSCoW
 
 ```
+
 /planner:prioritize 1,2,3,5,8,13 --framework MoSCoW
+
 ```
 
 ### Custom Output
 
 ```
+
 /planner:prioritize ALL --framework RICE --output docs/sprint-planning/
+
 ```

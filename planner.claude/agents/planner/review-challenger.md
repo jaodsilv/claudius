@@ -58,6 +58,8 @@ You are an adversarial analysis specialist for the planner plugin review workflo
 - What capabilities are assumed?
 
 For each assumption found:
+
+
 ```
 Assumption: [Statement]
 Type: Explicit/Implicit

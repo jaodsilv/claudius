@@ -81,6 +81,8 @@ Quick Mode:
    - Otherwise: Treat as goal string
 
 3. Load context:
+
+
    ```
    If requirements: Read: {{context}}
    If goal: Use as string
@@ -90,12 +92,16 @@ Quick Mode:
 
 1. Mark Find Architecture as in_progress
 
+
 2. If architecture_path provided:
+
    ```
    Read: {{architecture_path}}
    ```
 
+
 3. If not provided, search:
+
    ```
    Glob: **/architecture*.md, **/design*.md, **/adr/*.md
    ```
@@ -122,9 +128,11 @@ Quick Mode:
 
 1. Mark Parallel Analysis as in_progress
 
+
 2. Launch agents in parallel:
 
    **Domain Reviewer** (planner-architecture-reviewer):
+
    ```
    Use Task tool with planner-architecture-reviewer agent:
 
@@ -147,10 +155,12 @@ Quick Mode:
    6. Security - Is it secure?
    7. Patterns - Good practices or anti-patterns?
 
+
    Research best practices where helpful.
    ```
 
    **Structural Analyzer** (planner-review-analyzer):
+
    ```
    Use Task tool with planner-review-analyzer agent:
 
@@ -172,11 +182,13 @@ Quick Mode:
 
 3. Collect outputs from both agents
 
+
 #### Step 3B: Adversarial Challenge
 
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
+
    ```
    Use Task tool with planner-review-challenger agent:
 
@@ -208,11 +220,13 @@ Quick Mode:
 
 3. Receive adversarial analysis
 
+
 #### Step 3C: Synthesis
 
 1. Mark Synthesis as in_progress
 
 2. Launch synthesizer agent:
+
    ```
    Use Task tool with planner-review-synthesizer agent:
 
@@ -237,6 +251,7 @@ Quick Mode:
 
 3. Receive synthesized report
 
+
 ### Quick Mode Analysis
 
 If mode == "quick", use single agent:
@@ -244,6 +259,7 @@ If mode == "quick", use single agent:
 1. Mark Analysis as in_progress
 
 2. Launch `planner-architecture-reviewer` agent only:
+
    ```
    Use Task tool with planner-architecture-reviewer agent:
 
@@ -267,6 +283,7 @@ If mode == "quick", use single agent:
 
 3. Proceed directly to Phase 4
 
+
 ### Phase 4: Interactive Review
 
 1. Mark Interactive Review as in_progress
@@ -274,6 +291,7 @@ If mode == "quick", use single agent:
 2. Present findings:
 
    **For Thorough Mode**:
+
    ```markdown
    ## Architecture Review (Multi-Agent Analysis)
 
@@ -323,6 +341,7 @@ If mode == "quick", use single agent:
 
    ### Patterns Identified
 
+
    **Good Practices**:
    1. {{pattern}}: {{why_good}}
 
@@ -331,6 +350,7 @@ If mode == "quick", use single agent:
    ```
 
    **For Quick Mode**:
+
    ```markdown
    ## Architecture Review
 
@@ -365,6 +385,7 @@ If mode == "quick", use single agent:
 
 3. Use AskUserQuestion:
    - Does this assessment align with your understanding?
+
    - Are there trade-offs I should know about?
    - Which areas are most concerning?
 
@@ -375,6 +396,7 @@ If mode == "quick", use single agent:
 1. Mark Recommendations as in_progress
 
 2. Present suggestions:
+
    ```markdown
    ## Architecture Recommendations
 

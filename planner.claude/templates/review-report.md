@@ -66,6 +66,8 @@ No critical issues identified.
 ### Gap Analysis
 
 {{#if has_gaps}}
+
+
 | Gap | Impact | Suggested Resolution |
 |-----|--------|---------------------|
 | {{gap1}} | {{gap1_impact}} | {{gap1_resolution}} |

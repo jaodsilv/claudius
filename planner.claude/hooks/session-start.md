@@ -19,7 +19,7 @@ Run: `gh --version`
 - Log: "GitHub CLI detected - full issue prioritization available"
 
 **If not available**:
-- Warn: "GitHub CLI (gh) not found - /planner:prioritize requires gh for issue fetching. Install from https://cli.github.com/"
+- Warn: "GitHub CLI (gh) not found - /planner:prioritize requires gh for issue fetching. Install from <https://cli.github.com/>/>"
 
 ### 2. Brainstorm Pro Plugin
 

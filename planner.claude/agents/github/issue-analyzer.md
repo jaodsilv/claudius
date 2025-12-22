@@ -171,7 +171,7 @@ Issues needing attention:
 
 ## Error Handling
 
-- If gh CLI not available: Inform user to install from https://cli.github.com/
+- If gh CLI not available: Inform user to install from <https://cli.github.com/>/>
 - If not authenticated: Guide user to run `gh auth login`
 - If rate limited: Report and suggest waiting
 - If no issues found: Report empty state

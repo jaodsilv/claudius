@@ -79,6 +79,8 @@ Round N (repeat for --rounds):
    - Finalization (pending)
 
 2. Load ultrathink skill:
+
+
    ```
    Use Skill tool to load: planner:ultrathink
    ```
@@ -89,12 +91,16 @@ Round N (repeat for --rounds):
    - If file path: Read roadmap/goal from file
    - If string: Use as goal directly
 
+
 5. Ensure output directory:
+
    ```bash
    mkdir -p {{output}}
    ```
 
+
 6. Set session context:
+
    ```
    Goal: {{goal}}
    Mode: {{mode}}
@@ -109,9 +115,11 @@ For each round (1 to {{rounds}}):
 
 1. Mark Round N as in_progress
 
+
 2. Launch ideation agents in parallel:
 
    **Deep Thinker (Opus with extended thinking)**:
+
    ```
    Use Task tool with planner-ideas-deep-thinker agent:
 
@@ -132,10 +140,12 @@ For each round (1 to {{rounds}}):
    4. Challenge assumptions
    5. Make cross-domain connections
 
+
    Take your time - extended thinking is valuable here.
    ```
 
    **Innovation Explorer (Opus with web research)**:
+
    ```
    Use Task tool with planner-ideas-innovation-explorer agent:
 
@@ -157,11 +167,13 @@ For each round (1 to {{rounds}}):
    5. Novel combinations
    ```
 
+
 3. Collect outputs from both agents
 
 #### Step 2: Adversarial Analysis
 
 1. Launch Adversarial Critic:
+
    ```
    Use Task tool with planner-ideas-adversarial-critic agent:
 
@@ -183,11 +195,13 @@ For each round (1 to {{rounds}}):
    Be rigorous but constructive.
    ```
 
+
 2. Receive critique and challenges
 
 #### Step 3: Synthesis
 
 1. Launch Convergence Synthesizer:
+
    ```
    Use Task tool with planner-ideas-convergence-synthesizer agent:
 
@@ -206,6 +220,7 @@ For each round (1 to {{rounds}}):
    3. Create hybrid proposals
    4. Rank by viability and impact
    5. Identify remaining gaps
+
    ```
 
 2. Receive synthesized proposals
@@ -213,6 +228,7 @@ For each round (1 to {{rounds}}):
 #### Step 4: User Interaction
 
 1. Launch Facilitator for presentation:
+
    ```
    Use Task tool with planner-ideas-facilitator agent:
 
@@ -252,6 +268,7 @@ For each round (1 to {{rounds}}):
 2. Generate final synthesis document:
    - Use ideas-synthesis template
    - Include all rounds' insights
+
    - Rank final proposals
    - Document discarded ideas
    - List open questions
@@ -260,6 +277,7 @@ For each round (1 to {{rounds}}):
 3. Write to `{{output}}/session-{{session_id}}.md`
 
 4. Present completion summary:
+
    ```markdown
    ## Ultrathink Session Complete
 
@@ -286,6 +304,7 @@ For each round (1 to {{rounds}}):
 
    ### Recommended Next Steps
 
+
    1. {{next_step1}}
    2. {{next_step2}}
    ```
@@ -294,7 +313,9 @@ For each round (1 to {{rounds}}):
 
 ## Mode Variations
 
+
 ### Full Mode (default)
+
 All agents engaged:
 - Deep Thinker
 - Innovation Explorer
@@ -303,6 +324,7 @@ All agents engaged:
 - Facilitator
 
 ### Focused Mode
+
 Subset of agents:
 - Deep Thinker
 - Adversarial Critic

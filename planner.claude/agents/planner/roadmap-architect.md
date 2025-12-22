@@ -154,6 +154,8 @@ Define SMART milestones for each phase:
 - **Time-bound**: Has target date
 
 **Milestone Template**:
+
+
 ```
 Milestone: [Name]
 Target: [Relative date or duration]

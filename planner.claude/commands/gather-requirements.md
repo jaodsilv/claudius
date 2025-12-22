@@ -70,6 +70,8 @@ gather-requirements-arguments:
 If using brainstorm-pro:
 
 1. Delegate to brainstorm:
+
+
    ```
    /brainstorm:start topic: "{{goal}}" --depth: {{depth}} --output-path: {{output}}
    ```
@@ -94,7 +96,9 @@ If not using brainstorm:
 
 1. Mark Phase 2 as in_progress
 
+
 2. Launch `planner-requirements-gatherer` agent:
+
    ```
    Use Task tool with planner-requirements-gatherer agent:
 
@@ -128,7 +132,9 @@ If not using brainstorm:
    - Identify gaps
    - Note open questions
 
+
 3. Load prioritization skill for framework guidance:
+
    ```
    Use Skill tool to load: planner:prioritization
    ```
@@ -137,9 +143,11 @@ If not using brainstorm:
 
 ### Phase 4: Documentation
 
+
 1. Mark Phase 4 as in_progress
 
 2. Ensure output directory:
+
    ```bash
    mkdir -p {{output}}
    ```
@@ -158,9 +166,11 @@ If not using brainstorm:
    - Open questions
    - Traceability matrix
 
+
 ### Completion
 
 Present summary:
+
 ```markdown
 ## Requirements Gathered
 

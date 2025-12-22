@@ -109,19 +109,25 @@ The plugin reads:
 ## Prioritization Frameworks
 
 ### RICE
+
+
 - **Reach** - How many users affected?
 - **Impact** - Impact per user (3/2/1/0.5/0.25)
 - **Confidence** - Estimate confidence (100%/80%/50%)
 - **Effort** - Person-weeks required
 - Score = (Reach × Impact × Confidence) / Effort
 
+
 ### MoSCoW
+
 - **Must Have** - Critical for delivery
 - **Should Have** - Important but not critical
 - **Could Have** - Desirable if resources permit
 - **Won't Have** - Explicitly excluded
 
+
 ### Weighted Scoring
+
 - Configurable criteria weights
 - Score each item per criterion
 - Calculate weighted total

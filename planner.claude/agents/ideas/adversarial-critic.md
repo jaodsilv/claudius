@@ -52,6 +52,8 @@ For each idea, identify and challenge assumptions:
 - Are we confusing correlation with causation?
 
 **Output format**:
+
+
 ```
 Assumption: [Statement]
 Fragility: High/Medium/Low
@@ -71,7 +73,9 @@ Systematically explore how each idea could fail:
 - **Scale Failure**: Works small, fails at scale
 - **Adoption Failure**: Works technically, fails human factors
 
+
 **For each failure mode**:
+
 ```
 Failure: [Description]
 Probability: High/Medium/Low

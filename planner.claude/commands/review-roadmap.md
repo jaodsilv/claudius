@@ -77,11 +77,15 @@ Quick Mode:
    - Recommendations (pending)
 
 2. Load roadmap:
+
+
    ```
    Read: {{roadmap_path}}
    ```
 
+
 3. If not found, search for roadmaps:
+
    ```
    Glob: **/roadmap*.md
    ```
@@ -119,7 +123,9 @@ Quick Mode:
 
 2. Launch agents in parallel:
 
+
    **Domain Reviewer** (planner-plan-reviewer - roadmap mode):
+
    ```
    Use Task tool with planner-plan-reviewer agent:
 
@@ -137,9 +143,11 @@ Quick Mode:
    6. Resource considerations - addressed?
 
    Identify alignment issues, structural problems, missing elements.
+
    ```
 
    **Structural Analyzer** (planner-review-analyzer):
+
    ```
    Use Task tool with planner-review-analyzer agent:
 
@@ -163,9 +171,11 @@ Quick Mode:
 
 #### Step 3B: Adversarial Challenge
 
+
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
+
    ```
    Use Task tool with planner-review-challenger agent:
 
@@ -195,11 +205,13 @@ Quick Mode:
 
 3. Receive adversarial analysis
 
+
 #### Step 3C: Synthesis
 
 1. Mark Synthesis as in_progress
 
 2. Launch synthesizer agent:
+
    ```
    Use Task tool with planner-review-synthesizer agent:
 
@@ -226,11 +238,13 @@ Quick Mode:
 
 ### Quick Mode Analysis
 
+
 If mode == "quick", use single agent:
 
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only (roadmap mode):
+
    ```
    Use Task tool with planner-plan-reviewer agent:
 
@@ -256,6 +270,7 @@ If mode == "quick", use single agent:
 
 3. Proceed directly to Phase 4
 
+
 ### Phase 4: Interactive Review
 
 1. Mark Interactive Review as in_progress
@@ -263,6 +278,7 @@ If mode == "quick", use single agent:
 2. Present findings:
 
    **For Thorough Mode**:
+
    ```markdown
    ## Roadmap Review: {{goal}} (Multi-Agent Analysis)
 
@@ -290,6 +306,7 @@ If mode == "quick", use single agent:
    ### Milestone Quality
 
    | Milestone | SMART Score | Issue |
+
    |-----------|-------------|-------|
    | M1 | 4/5 | Not time-bound |
 
@@ -298,6 +315,7 @@ If mode == "quick", use single agent:
    ```
 
    **For Quick Mode**:
+
    ```markdown
    ## Roadmap Review: {{goal}}
 
@@ -328,6 +346,7 @@ If mode == "quick", use single agent:
 3. Use AskUserQuestion to discuss:
    - Does this capture your sense of alignment?
    - Are there phases that feel misaligned?
+
    - What timeline concerns do you have?
 
 4. Dive deeper based on user interest
@@ -337,6 +356,7 @@ If mode == "quick", use single agent:
 1. Mark Recommendations as in_progress
 
 2. Present improvement suggestions:
+
    ```markdown
    ## Roadmap Recommendations
 

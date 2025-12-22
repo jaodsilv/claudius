@@ -231,6 +231,8 @@ This is an interactive review:
 7. Summarize agreed changes
 
 **Example interaction**:
+
+
 ```
 "I've reviewed the roadmap. Overall score: 3.5/5.
 

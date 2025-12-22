@@ -217,16 +217,22 @@ Independent work that can proceed simultaneously:
 ### Issues Detected
 
 #### Circular Dependencies
+
+
 {list or "None detected"}
 
+
 #### Long Chains (>5 deep)
+
 {list or "None detected"}
 
 ### Recommendations
 
 1. Prioritize hub issues (#123) to unblock multiple streams
+
 2. Consider breaking up long chains
 3. Address circular dependencies immediately
+
 ```
 
 ## Error Handling
