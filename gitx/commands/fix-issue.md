@@ -1,114 +1,366 @@
 ---
 description: Full workflow: worktree + development + push for an issue
 argument-hint: "[ISSUE]"
-allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion
 ---
 
-# Fix Issue
+# Fix Issue (Orchestrated)
 
-Complete workflow to fix a GitHub issue: creates a worktree, delegates to a development workflow, and prepares for PR.
+Complete orchestrated workflow to fix a GitHub issue: analyzes the issue, explores the codebase, plans implementation, creates a worktree, and delegates to a development workflow.
 
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
 - Issue number (required): Can be "123", "#123", or issue URL
 
-## Gather Issue Context
+## Initialize Progress Tracking
 
-Fetch issue details:
-- `gh issue view <number> --json number,title,body,labels,comments`
+```
+TodoWrite:
+1. [ ] Analyze issue requirements
+2. [ ] Explore codebase for relevant files
+3. [ ] Create implementation plan
+4. [ ] Get user approval on plan
+5. [ ] Set up worktree
+6. [ ] Complete development
+7. [ ] Commit and prepare for PR
+```
 
-Extract:
-- Issue number
-- Issue title
-- Issue description
-- Labels (for determining branch type)
+## Phase 1: Issue Analysis
 
-## Step 1: Create Worktree
+Mark "Analyze issue requirements" as in_progress.
 
-Invoke the worktree creation logic:
-- Use `/gitx:worktree <issue-number>` pattern
-- Branch name based on issue type:
-  - Bug label → `bugfix/issue-<num>-<title>`
-  - Feature label → `feature/issue-<num>-<title>`
-  - Default → `feature/issue-<num>-<title>`
+Launch issue analyzer:
+```
+Task (gitx:issue-analyzer):
+  Issue Number: [number]
 
-Create worktree as sibling directory.
+  Analyze the issue to extract:
+  - Explicit and implicit requirements
+  - Acceptance criteria
+  - Complexity estimate (XS/S/M/L/XL)
+  - Issue type (bug/feature/enhancement/refactor)
+  - Key terms for code search
+  - Related issues and dependencies
+```
 
-## Step 2: Workflow Detection
+Wait for analysis to complete.
 
-Check for available development workflows and ask user which to use:
+Store key results:
+- Issue type
+- Complexity
+- Key terms
+- Requirements summary
+
+Mark "Analyze issue requirements" as completed.
+
+## Phase 2: Codebase Exploration
+
+Mark "Explore codebase for relevant files" as in_progress.
+
+Launch codebase navigator:
+```
+Task (gitx:codebase-navigator):
+  Issue Analysis: [summary from Phase 1]
+  Key Terms: [terms from Phase 1]
+
+  Find:
+  - Files to modify
+  - Patterns to follow
+  - Test files needed
+  - Impact assessment
+  - Similar implementations to reference
+```
+
+Wait for exploration to complete.
+
+Store key results:
+- Files to modify
+- Patterns identified
+- Test requirements
+
+Mark "Explore codebase for relevant files" as completed.
+
+## Phase 3: Implementation Planning
+
+Mark "Create implementation plan" as in_progress.
+
+Launch implementation planner:
+```
+Task (gitx:implementation-planner):
+  Issue Analysis:
+  [Full output from Phase 1]
+
+  Codebase Navigation:
+  [Full output from Phase 2]
+
+  Create detailed implementation plan with:
+  - Phased approach
+  - Specific files and changes
+  - Test strategy
+  - Commit boundaries
+  - Verification steps
+```
+
+Wait for plan to complete.
+
+Mark "Create implementation plan" as completed.
+
+## Phase 4: User Approval (Quality Gate)
+
+Mark "Get user approval on plan" as in_progress.
+
+Present the implementation plan summary:
+```markdown
+## Implementation Plan for Issue #[number]
+
+### Issue: [title]
+**Type**: [bug/feature/etc]
+**Complexity**: [XS-XL]
+
+### Summary
+[2-3 sentence summary of the approach]
+
+### Files to Modify
+- [file1.ts] - [what changes]
+- [file2.ts] - [what changes]
+
+### Phases
+1. [Phase 1 name] - [description]
+2. [Phase 2 name] - [description]
+
+### Estimated Effort
+[complexity and time description]
+```
 
 Use AskUserQuestion:
-- "How would you like to develop this fix?"
-- Options:
-  1. "Feature development workflow (Recommended)" - Invoke feature-dev if available
-  2. "TDD workflow" - Use test-driven development approach
-  3. "Manual development" - Just provide issue context and let me work
-  4. "Cancel" - Abort and remove worktree
+```
+Question: "Review the implementation plan for Issue #[number]. How would you like to proceed?"
+Options:
+1. "Approve and continue (Recommended)" - Proceed with worktree setup and development
+2. "Modify the plan" - Adjust approach before proceeding
+3. "Add more detail" - Expand specific sections
+4. "Cancel" - Abort the workflow
+```
 
-## Step 3: Delegate to Workflow
+Handle user response:
+- **Approve**: Mark complete, proceed to Phase 5
+- **Modify**: Gather feedback, update plan, re-present
+- **Add detail**: Ask which section, expand, re-present
+- **Cancel**: Clean up and exit
 
-Based on user choice:
+Mark "Get user approval on plan" as completed.
 
-### Option 1: Feature Development Workflow
-If `feature-dev:feature-dev` skill/command is available:
-- Invoke with issue context:
-  ```
-  Issue #<number>: <title>
+## Phase 5: Worktree Setup
 
-  Description:
-  <body>
+Mark "Set up worktree" as in_progress.
 
-  Labels: <labels>
-  ```
-- Let the feature-dev workflow handle implementation
+### Determine Branch Name
 
-### Option 2: TDD Workflow
-If `tdd-workflow` skill is available:
-- Load the tdd-workflow skill
-- Follow TDD phases:
-  1. Write failing test
-  2. Implement minimal code to pass
-  3. Refactor
-- Provide issue context throughout
+Based on issue type from analysis:
+- Bug → `bugfix/issue-[number]-[slug]`
+- Feature → `feature/issue-[number]-[slug]`
+- Enhancement → `feature/issue-[number]-[slug]`
+- Refactor → `refactor/issue-[number]-[slug]`
+- Docs → `docs/issue-[number]-[slug]`
 
-### Option 3: Manual Development
-Provide structured guidance:
-1. Display issue details
-2. Suggest investigation approach
-3. Recommend implementation steps based on issue type
-4. Stay available for questions
+Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
+
+### Create Worktree
+
+```bash
+# Get main branch
+MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main")
+
+# Create worktree as sibling directory
+WORKTREE_PATH="../[branch-name]"
+git worktree add -b [branch-name] "$WORKTREE_PATH" "$MAIN"
+```
+
+Report worktree location:
+```
+Worktree created:
+  Path: [path]
+  Branch: [branch-name]
+
+Note: Development will continue in the worktree context.
+```
+
+Mark "Set up worktree" as completed.
+
+## Phase 6: Development Delegation
+
+Mark "Complete development" as in_progress.
+
+### Workflow Selection
+
+Use AskUserQuestion:
+```
+Question: "Which development approach would you like to use for Issue #[number]?"
+Options:
+1. "Feature development workflow (Recommended)" - Guided feature development with code architecture
+2. "TDD workflow" - Test-driven development with red-green-refactor
+3. "Manual development" - Work independently with implementation plan
+4. "Skip development" - I'll develop later, just set up the worktree
+```
+
+### Delegate Based on Choice
+
+**Feature Development Workflow**:
+```
+Skill (feature-dev:feature-dev):
+  Context: Issue #[number] - [title]
+
+  Issue Analysis:
+  [Summary of requirements and acceptance criteria]
+
+  Implementation Plan:
+  [Key phases and files from plan]
+
+  Relevant Files:
+  [Files to modify from codebase navigation]
+```
+
+**TDD Workflow**:
+```
+Skill (tdd-workflows:tdd-orchestrator):
+  Context: Issue #[number] - [title]
+
+  Test Requirements:
+  [Test strategy from implementation plan]
+
+  Implementation:
+  [Implementation phases from plan]
+```
+
+**Manual Development**:
+Provide the full implementation plan:
+```markdown
+## Manual Development Guide for Issue #[number]
+
+### Implementation Plan
+[Full plan content]
+
+### Files to Work On
+[File list with details]
+
+### Patterns to Follow
+[Pattern examples from codebase navigation]
+
+### Verification Steps
+[How to verify changes]
+
+I'm available to help with any questions as you implement.
+```
+
+**Skip Development**:
+```
+Worktree is ready at [path] on branch [branch-name].
+
+When you're ready to continue:
+- Use `/gitx:commit-push` to commit changes
+- Use `/gitx:pr` to create a pull request
+```
+Skip to Phase 7 reporting.
 
 ### Graceful Fallback
-If requested workflow not available:
-- Inform user: "The <workflow> workflow is not available in your setup."
-- Offer alternatives or proceed with manual guidance
 
-## Step 4: After Development
+If requested workflow not available:
+```
+The [workflow] workflow is not available in your setup.
+
+Available options:
+1. Manual development with implementation plan
+2. Basic guided development
+
+Would you like to proceed with an alternative?
+```
+
+Mark "Complete development" as completed.
+
+## Phase 7: Completion
+
+Mark "Commit and prepare for PR" as in_progress.
 
 Once development is complete:
 
-1. Run `/gitx:commit-push` to commit and push changes
-2. Suggest creating PR:
-   ```
-   Development complete. To create a pull request:
-     /gitx:pr
+### Check for Changes
 
-   Or comment on the issue with progress:
-     /gitx:comment-to-issue <number> "Implementation complete, PR forthcoming"
-   ```
+```bash
+git status
+git diff --stat
+```
+
+If no changes:
+- Report: "No changes detected in worktree"
+- Suggest: "Make changes and run `/gitx:commit-push` when ready"
+- Exit
+
+### Commit and Push
+
+If changes exist:
+```
+Invoke /gitx:commit-push
+
+The commit message should reference the issue:
+"[type]: [description]
+
+Fixes #[number]
+
+[Details from implementation]"
+```
+
+### Suggest PR Creation
+
+```markdown
+## Development Complete for Issue #[number]
+
+### Changes Made
+[Summary of changes]
+
+### Commits
+[List of commits]
+
+### Next Steps
+
+To create a pull request:
+```
+/gitx:pr
+```
+
+Or to comment on the issue with progress:
+```
+/gitx:comment-to-issue [number] "Implementation complete, PR forthcoming"
+```
+```
+
+Mark "Commit and prepare for PR" as completed.
 
 ## Context Throughout
 
 Maintain issue context throughout the workflow:
-- Reference issue number in commits
-- Include "Fixes #<number>" in commit messages where appropriate
+- Reference issue number in commits: "Fixes #[number]"
 - Keep issue requirements visible during development
+- Track progress against acceptance criteria
 
 ## Error Handling
 
-- Issue not found: Check issue number and repository
-- Worktree creation failed: Report error, suggest manual creation
-- Workflow not found: Fall back to manual development with guidance
-- Development interrupted: Save state, allow resumption
+- **Issue not found**: Check issue number and repository, suggest correct format
+- **Worktree creation failed**: Report error, suggest manual creation or cleanup
+- **Workflow not found**: Fall back to manual development with guidance
+- **Development interrupted**: Save state, allow resumption with context
+- **Agent failure**: Log error, offer retry or manual fallback
+
+## State Preservation
+
+If context grows large or workflow is interrupted, preserve:
+```
+Essential context for Issue #[number]:
+- Branch: [branch-name]
+- Worktree: [path]
+- Phase: [current phase]
+- Key files: [list]
+- Acceptance criteria: [summary]
+```
+
+Use /compact if needed, ensuring this context is maintained.

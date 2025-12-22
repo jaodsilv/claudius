@@ -1,6 +1,6 @@
 # gitx - Extended Git/GitHub Workflow Plugin
 
-Extended git/GitHub workflow commands for Claude Code, providing comprehensive worktree management, issue tracking, pull request workflows, and branch operations.
+Extended git/GitHub workflow commands for Claude Code, providing comprehensive worktree management, issue tracking, pull request workflows, and branch operations with **multi-agent orchestration** for improved output quality.
 
 ## Overview
 
@@ -11,6 +11,7 @@ The **gitx** plugin extends Claude Code with powerful git and GitHub workflow co
 3. Pull request creation and response handling
 4. Branch operations (rebase, merge, cleanup)
 5. Conventional commits and branch naming
+6. **Multi-agent orchestration** for complex workflows
 
 ## Requirements
 
@@ -38,8 +39,8 @@ claude plugin install gitx
 | `/gitx:worktree [ISSUE\|TASK\|BRANCH]` | List or create git worktrees |
 | `/gitx:remove-worktree [NAME] [-f] [-r]` | Remove worktree, branch, optionally remote |
 | `/gitx:remove-branch [-f] [-r] [-ro]` | Remove branch (local and/or remote) |
-| `/gitx:rebase [--base BRANCH]` | Rebase current branch onto base |
-| `/gitx:merge [--base BRANCH]` | Merge base branch into current |
+| `/gitx:rebase [--base BRANCH]` | Rebase current branch onto base (orchestrated conflict resolution) |
+| `/gitx:merge [--base BRANCH]` | Merge base branch into current (orchestrated conflict resolution) |
 
 ### Commit/Push
 
@@ -52,17 +53,126 @@ claude plugin install gitx
 | Command | Description |
 |---------|-------------|
 | `/gitx:next-issue [-d]` | Get next issue by priority labels |
-| `/gitx:fix-issue [ISSUE]` | Full workflow: worktree + development + push |
+| `/gitx:fix-issue [ISSUE]` | Full orchestrated workflow: analyze → plan → worktree → develop → push |
 | `/gitx:comment-to-issue [ISSUE] [comment]` | Comment on a GitHub issue |
 
 ### Pull Request Management
 
 | Command | Description |
 |---------|-------------|
-| `/gitx:pr` | Create pull request for current branch |
-| `/gitx:respond [--ci] [text]` | Respond to PR reviews or CI failures |
+| `/gitx:pr` | Create PR with orchestrated change analysis and description generation |
+| `/gitx:respond [--ci] [text]` | Orchestrated response to PR reviews or CI failures |
 | `/gitx:comment-to-pr [PR] [comment]` | Comment on a pull request |
 | `/gitx:merge-pr [PR]` | Merge PR and close related issues |
+
+## Multi-Agent Orchestration
+
+The gitx plugin uses specialized agents to improve output quality through parallel analysis, sequential execution, and quality gates.
+
+### Orchestration Architecture
+
+```
+gitx/agents/
+├── respond/              # PR Response orchestration
+├── fix-issue/            # Issue fix orchestration
+├── pr-create/            # PR creation orchestration
+└── conflict-resolver/    # Shared conflict resolution
+```
+
+### Agent Workflows
+
+#### Respond Workflow (4 agents)
+
+Handles PR review comments and CI failures:
+
+```
+┌─────────────────────────────────────────────────┐
+│                    PARALLEL                      │
+│  ┌──────────────────┐  ┌──────────────────────┐ │
+│  │ review-comment-  │  │  ci-failure-         │ │
+│  │ analyzer         │  │  analyzer            │ │
+│  └────────┬─────────┘  └──────────┬───────────┘ │
+└───────────┼────────────────────────┼────────────┘
+            │                        │
+            └──────────┬─────────────┘
+                       ▼
+            ┌──────────────────────┐
+            │  code-change-planner │
+            └──────────┬───────────┘
+                       ▼
+            ┌──────────────────────┐
+            │  result-synthesizer  │ → User Approval
+            └──────────────────────┘
+```
+
+#### Fix-Issue Workflow (4 agents)
+
+Complete issue-to-PR workflow:
+
+```
+┌──────────────────┐
+│  issue-analyzer  │ → Extract requirements
+└────────┬─────────┘
+         ▼
+┌──────────────────────┐
+│  codebase-navigator  │ → Find relevant files
+└────────┬─────────────┘
+         ▼
+┌────────────────────────┐
+│  implementation-planner │ → Create plan
+└────────┬────────────────┘
+         ▼
+    [USER APPROVAL]
+         ▼
+┌────────────────────────┐
+│  workflow-coordinator  │ → Orchestrate development
+└────────────────────────┘
+```
+
+#### PR Creation (3 agents)
+
+```
+┌────────────────────┐
+│   change-analyzer  │
+└─────────┬──────────┘
+          ▼
+┌─────────────────────────────────────┐
+│              PARALLEL                │
+│ ┌──────────────────┐ ┌────────────┐ │
+│ │ description-     │ │ review-    │ │
+│ │ generator        │ │ preparer   │ │
+│ └──────────────────┘ └────────────┘ │
+└─────────────────────────────────────┘
+          ▼
+    [USER APPROVAL]
+```
+
+#### Conflict Resolution (3 agents, shared)
+
+Used by both rebase and merge:
+
+```
+┌────────────────────┐
+│  conflict-analyzer │ → Understand both sides
+└─────────┬──────────┘
+          ▼
+┌────────────────────────┐
+│  resolution-suggester  │ → Generate solutions
+└─────────┬──────────────┘
+          ▼
+    [USER CHOICE]
+          ▼
+┌──────────────────┐
+│  merge-validator │ → Verify resolution
+└──────────────────┘
+```
+
+### Quality Features
+
+1. **Tiered Prioritization**: Issues categorized as Critical/Important/Enhancement
+2. **Quality Gates**: User approval required before destructive operations
+3. **Conflict Detection**: Conflicting recommendations highlighted for user decision
+4. **Graceful Fallback**: Manual mode available if orchestration fails
 
 ## Command Details
 
@@ -138,6 +248,11 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 /gitx:merge --base release/v2.0
 ```
 
+**Orchestrated conflict resolution** provides:
+- Analysis of what both sides changed
+- AI-suggested resolutions with confidence levels
+- Validation before continuing
+
 ### `/gitx:next-issue`
 
 Finds the next issue to work on based on priority labels.
@@ -158,36 +273,39 @@ Finds the next issue to work on based on priority labels.
 
 ### `/gitx:fix-issue`
 
-Complete workflow for fixing an issue:
+Complete orchestrated workflow for fixing an issue:
 
 ```bash
 /gitx:fix-issue 123
 ```
 
 This command:
-1. Creates a worktree for the issue
-2. Asks which development workflow to use
-3. Delegates to feature-dev, TDD, or manual workflow
-4. Guides through implementation
-5. Commits and pushes when complete
+1. **Analyzes** the issue to extract requirements and complexity
+2. **Explores** the codebase to find relevant files and patterns
+3. **Plans** the implementation with phased approach
+4. **Gets approval** from you on the plan
+5. **Creates** a worktree for isolated development
+6. **Delegates** to your chosen workflow (feature-dev, TDD, or manual)
+7. **Commits and pushes** when complete
 
 ### `/gitx:pr`
 
-Creates a pull request with auto-generated title and description.
+Creates a pull request with orchestrated analysis:
 
 ```bash
 /gitx:pr
 ```
 
 Features:
-- Auto-detects related issues from branch name
-- Generates structured PR description
-- Adds test plan checklist
+- Comprehensive change analysis
+- AI-generated title and description
+- Review preparation (suggested reviewers, focus areas)
+- Self-review checklist
 - Supports draft PRs
 
 ### `/gitx:respond`
 
-Responds to PR feedback.
+Orchestrated response to PR feedback:
 
 ```bash
 # Respond to review comments (default)
@@ -199,6 +317,12 @@ Responds to PR feedback.
 # Provide context for response
 /gitx:respond --ci "The test was flaky, added retry logic"
 ```
+
+Features:
+- Parallel analysis of review comments and CI failures
+- Categorized by type (code-style, logic, security, etc.)
+- Prioritized action plan (Critical → Important → Enhancement)
+- Quality gates for significant changes
 
 ### `/gitx:merge-pr`
 
@@ -263,12 +387,35 @@ All commands include:
 - Clear error messages
 - Suggested fixes
 - Graceful degradation when optional features unavailable
+- **Fallback to manual mode** if orchestration fails
+
+## Plugin Structure
+
+```
+gitx/
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest
+├── agents/
+│   ├── respond/             # PR response agents
+│   ├── fix-issue/           # Issue fix agents
+│   ├── pr-create/           # PR creation agents
+│   └── conflict-resolver/   # Conflict resolution agents
+├── commands/                # Slash commands
+├── hooks/                   # Session start dependency check
+├── scripts/                 # Cross-platform helpers
+├── shared/
+│   └── output-templates/    # Structured output formats
+└── skills/
+    ├── conventional-commits/
+    └── conventional-branch/
+```
 
 ## Related Plugins
 
 - `commit-commands@claude-plugins-official` - Core commit and clean commands
 - `feature-dev@claude-plugins-official` - Feature development workflow
 - `pr-review-toolkit@claude-plugins-official` - PR review tools
+- `tdd-workflows@claude-code-workflows` - Test-driven development
 
 ## License
 

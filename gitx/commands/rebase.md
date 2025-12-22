@@ -1,12 +1,12 @@
 ---
 description: Rebase current branch onto base branch (default: main)
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), AskUserQuestion
+allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Task, Read, AskUserQuestion
 ---
 
-# Rebase Branch
+# Rebase Branch (Orchestrated)
 
-Rebase the current branch onto a base branch to incorporate upstream changes and maintain a linear history.
+Rebase the current branch onto a base branch to incorporate upstream changes and maintain a linear history. Uses multi-agent orchestration for conflict resolution.
 
 ## Parse Arguments
 
@@ -66,23 +66,98 @@ Options:
 Run the rebase:
 - `git rebase origin/<base-branch>`
 
-## Handle Conflicts
+## Handle Conflicts (Orchestrated)
 
-If conflicts occur:
+If conflicts occur (`git rebase` exits with conflicts):
 
-1. Report conflict status: `git status`
-2. Show conflicting files
-3. Use AskUserQuestion:
-   - "Conflicts detected. How would you like to proceed?"
-   - Options:
-     - "Help me resolve conflicts" - provide guidance on each file
-     - "Abort rebase" - `git rebase --abort`
-     - "I'll resolve manually" - provide instructions
+### Phase 1: Conflict Analysis
 
-If helping with conflicts:
-- For each conflicting file, show the conflict markers
-- Suggest resolution based on context
-- After resolution: `git add <file>` then `git rebase --continue`
+Get conflict status:
+```bash
+git status --porcelain | grep "^UU\|^AA\|^DD"
+git diff --name-only --diff-filter=U
+```
+
+Launch conflict analyzer for comprehensive analysis:
+```
+Task (gitx:conflict-analyzer):
+  Operation: rebase
+  Base Branch: [base-branch]
+  Conflicting Files: [list from git status]
+
+  Analyze each conflict:
+  - What both sides changed
+  - Why they conflict
+  - Semantic vs syntactic conflict
+  - Recommended resolution strategy
+```
+
+### Phase 2: Resolution Suggestions
+
+Launch resolution suggester:
+```
+Task (gitx:resolution-suggester):
+  Conflict Analysis: [output from Phase 1]
+
+  For each conflict:
+  - Generate specific resolution code
+  - Provide confidence level
+  - Note verification steps
+```
+
+### Phase 3: User-Guided Resolution
+
+For each conflict, present analysis and options:
+
+```
+AskUserQuestion:
+  Question: "Conflict in [file] at lines [X-Y]. How would you like to resolve?"
+  Options:
+  1. "Apply suggested resolution (Recommended)" - Use AI-suggested resolution
+  2. "Keep ours" - Keep current branch version
+  3. "Keep theirs" - Keep base branch version
+  4. "Resolve manually" - Open for manual editing
+  5. "Abort rebase" - Cancel entire rebase
+```
+
+Apply chosen resolution:
+- **Suggested**: Apply the resolution code from suggester
+- **Keep ours**: `git checkout --ours <file>`
+- **Keep theirs**: `git checkout --theirs <file>`
+- **Manual**: Show conflict markers, wait for user
+
+After resolving each file:
+```bash
+git add <file>
+```
+
+### Phase 4: Validation
+
+After all conflicts resolved, launch validator:
+```
+Task (gitx:merge-validator):
+  Resolved Files: [list]
+  Operation: rebase
+
+  Validate:
+  - No remaining conflict markers
+  - Syntax is valid
+  - Types check (if applicable)
+```
+
+If validation fails:
+- Report issues
+- Allow fixing before continuing
+
+### Phase 5: Continue Rebase
+
+When all conflicts resolved and validated:
+```bash
+git rebase --continue
+```
+
+If more conflicts occur (during subsequent commits):
+- Repeat Phases 1-5
 
 ## Pop Stash
 
@@ -93,13 +168,44 @@ If changes were stashed:
 ## Report Results
 
 Show rebase outcome:
-- Success: "Rebased <count> commits onto <base>"
-- New HEAD commit
-- Suggest: "Run `git push --force-with-lease` to update remote (if previously pushed)"
+```markdown
+## Rebase Complete
+
+### Summary
+- Rebased: [count] commits onto [base]
+- Conflicts resolved: [count]
+- New HEAD: [commit hash]
+
+### Resolution Summary
+- [file1.ts]: [resolution applied]
+- [file2.ts]: [resolution applied]
+
+### Next Steps
+- Run tests to verify: `npm run test`
+- Push with: `git push --force-with-lease` (if previously pushed)
+```
+
+## Fallback Mode
+
+If orchestrated conflict resolution fails:
+```
+AskUserQuestion:
+  Question: "Orchestrated conflict resolution encountered an issue. Continue manually?"
+  Options:
+  1. "Yes, resolve manually" - Show standard conflict view
+  2. "Retry analysis" - Try orchestration again
+  3. "Abort rebase" - Cancel rebase
+```
+
+For manual mode, show:
+- Conflicting files
+- Standard instructions for manual resolution
+- Commands to continue: `git add <file>`, `git rebase --continue`
 
 ## Error Handling
 
 - Already up to date: Report "Already up to date with <base>"
 - Unrelated histories: Suggest `--allow-unrelated-histories` only with explicit confirmation
-- Merge conflicts: Guide through resolution (see above)
-- Rebase in progress: Offer to continue, skip, or abort
+- Merge conflicts: Guide through orchestrated resolution (see above)
+- Rebase in progress: Offer to continue, skip, or abort existing rebase
+- Agent failure: Fall back to manual resolution with guidance

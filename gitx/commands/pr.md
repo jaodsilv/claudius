@@ -1,12 +1,12 @@
 ---
 description: Create pull request for current branch
 argument-hint: ""
-allowed-tools: Bash(git:*), Bash(gh pr:*), AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion
 ---
 
-# Create Pull Request
+# Create Pull Request (Orchestrated)
 
-Create a GitHub pull request for the current branch.
+Create a GitHub pull request for the current branch using multi-agent orchestration for comprehensive change analysis and professional PR content.
 
 ## Gather Context
 
@@ -14,8 +14,6 @@ Get repository and branch state:
 - Current branch: !`git branch --show-current`
 - Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
 - Remote status: !`git status -sb`
-- Commits in branch: !`git log --oneline main..HEAD 2>/dev/null || git log --oneline -10`
-- Changed files: !`git diff --stat main..HEAD 2>/dev/null || echo ""`
 
 Check for existing PR:
 - `gh pr view --json number,url,state 2>/dev/null`
@@ -26,10 +24,21 @@ Check for existing PR:
 If on main/master:
 - Report: "Cannot create PR from main branch"
 - Suggest: Create a feature branch first
+- Exit
+
+### Check for existing PR
+If PR already exists:
+- Report: "PR #<number> already exists for this branch"
+- Show: URL and state
+- Suggest: Use `/gitx:respond` to address feedback
+- Exit
 
 ### Check remote is up to date
-- `git fetch origin`
-- Compare local and remote: `git log origin/<branch>..HEAD 2>/dev/null`
+
+```bash
+git fetch origin
+git log origin/<branch>..HEAD 2>/dev/null
+```
 
 If local is ahead of remote:
 - Push first: `git push -u origin <branch>`
@@ -37,102 +46,193 @@ If local is ahead of remote:
 If remote doesn't exist:
 - Create and push: `git push -u origin <branch>`
 
-### Check for existing PR
-If PR already exists:
-- Report: "PR #<number> already exists for this branch"
-- Show: URL and state
-- Suggest: Use `/gitx:respond` to address feedback
+## Phase 1: Change Analysis
 
-## Analyze Changes
+Launch change analyzer:
+```
+Task (gitx:change-analyzer):
+  Branch: [current-branch]
+  Base: [main-branch]
 
-Review all commits from base to HEAD:
-- `git log --pretty=format:"%s%n%b" main..HEAD`
-
-Identify:
-- Type of change (feature, fix, refactor, etc.)
-- Related issues (from commit messages or branch name)
-- Test coverage (look for test file changes)
-
-## Generate PR Content
-
-### Title
-Based on:
-- Branch name convention: `feature/issue-123-description` → "feat: description (#123)"
-- First commit message if it follows conventional commits
-- Ask user if unclear
-
-### Body
-Generate structured body:
-```markdown
-## Summary
-<1-3 bullet points summarizing changes>
-
-## Changes
-<list of significant changes>
-
-## Related Issues
-<Closes #123 if issue number found>
-
-## Test Plan
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
-- [ ] <specific test scenarios>
-
-## Screenshots
-<if UI changes, note to add screenshots>
+  Analyze:
+  - All commits from base to HEAD
+  - Files changed (added, modified, deleted)
+  - Change type and scope
+  - Related issues
+  - Breaking changes
+  - Test coverage assessment
 ```
 
-## Confirmation
+Wait for analysis to complete.
 
-Use AskUserQuestion to confirm PR details:
+Store key results:
+- Change type (feature, fix, etc.)
+- Related issues
+- Files summary
+- Breaking changes
 
-Show:
-- Title: <proposed title>
-- Base: <main branch>
-- Head: <current branch>
-- Summary preview
+## Phase 2: Content Generation (Parallel)
 
+Launch description generator and review preparer in parallel:
+
+```
+Task (gitx:description-generator):
+  Change Analysis: [output from Phase 1]
+
+  Generate:
+  - PR title (conventional format)
+  - PR body (Summary, Changes, Related Issues, Test Plan)
+  - Suggested labels
+```
+
+```
+Task (gitx:review-preparer):
+  Change Analysis: [output from Phase 1]
+
+  Identify:
+  - Potential review concerns
+  - Suggested reviewers
+  - Self-review checklist
+  - Areas needing attention
+```
+
+Wait for both to complete.
+
+## Phase 3: User Review
+
+Present generated content:
+
+```markdown
+## Pull Request Preview
+
+### Title
+[generated title]
+
+### Description
+[generated description]
+
+---
+
+### Review Preparation
+
+**Suggested Reviewers**: @reviewer1, @reviewer2
+
+**Focus Areas for Review**:
+1. [Area 1]
+2. [Area 2]
+
+**Self-Review Checklist**:
+- [ ] [Item 1]
+- [ ] [Item 2]
+
+**Potential Concerns**:
+- [Concern 1]
+- [Concern 2]
+```
+
+Use AskUserQuestion:
+```
+Question: "Review the generated PR content. How would you like to proceed?"
 Options:
-1. "Create PR as shown" - proceed
-2. "Edit title" - modify title
-3. "Edit description" - modify body
-4. "Add draft flag" - create as draft
-5. "Cancel" - abort
+1. "Create PR as shown (Recommended)"
+2. "Edit title" - Modify the title
+3. "Edit description" - Modify the body
+4. "Add draft flag" - Create as draft PR
+5. "Cancel" - Abort PR creation
+```
 
-## Create PR
+Handle user response:
+- **Create**: Proceed to creation
+- **Edit title**: Prompt for new title, update
+- **Edit description**: Show editor-friendly format, update
+- **Draft**: Add --draft flag
+- **Cancel**: Exit
+
+## Phase 4: Create PR
 
 Create the pull request:
 ```bash
 gh pr create \
-  --title "<title>" \
+  --title "[title]" \
   --body "$(cat <<'EOF'
-<body content>
+[generated body]
 EOF
 )" \
   --assignee @me \
-  --base <main-branch>
+  --base [main-branch]
 ```
 
 If draft requested:
 - Add `--draft` flag
 
+If labels suggested:
+- Add `--label [labels]` flag
+
 ## Report Results
 
 Show:
-- PR number and URL
-- Title
-- Status (open/draft)
+```markdown
+## Pull Request Created
 
-Suggest next steps:
+### Details
+- **PR Number**: #[number]
+- **Title**: [title]
+- **URL**: [url]
+- **Status**: [open/draft]
+
+### Suggested Reviewers
+@reviewer1, @reviewer2
+
+To add reviewers:
+```bash
+gh pr edit [number] --add-reviewer @reviewer1,@reviewer2
 ```
-PR created successfully!
 
-View PR: <url>
+### Next Steps
 
 If you need to:
-- Respond to reviews: /gitx:respond
-- Add comments: /gitx:comment-to-pr
-- Merge when ready: /gitx:merge-pr
+- Respond to reviews: `/gitx:respond`
+- Add comments: `/gitx:comment-to-pr`
+- Merge when ready: `/gitx:merge-pr`
+
+### Review Preparation Notes
+[Summary of review-preparer output]
+```
+
+## Fallback Mode
+
+If orchestration fails:
+```
+AskUserQuestion:
+  Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
+  Options:
+  1. "Yes, create basic PR" - Use simple title/body
+  2. "Retry orchestration" - Try again
+  3. "Cancel" - Abort
+```
+
+For basic mode:
+
+### Basic Title Generation
+Based on:
+- Branch name convention: `feature/issue-123-description` → "feat: description (#123)"
+- First commit message if it follows conventional commits
+- Ask user if unclear
+
+### Basic Body Generation
+```markdown
+## Summary
+<Brief description based on commits>
+
+## Changes
+<List of changed files>
+
+## Related Issues
+<Issue references from commits/branch>
+
+## Test Plan
+- [ ] Tests added/updated
+- [ ] Manual testing completed
 ```
 
 ## Error Handling
@@ -142,3 +242,4 @@ If you need to:
 - PR already exists: Show existing PR URL
 - No permission: Check repository access
 - CI required: Note that CI checks will run
+- Agent failure: Fall back to basic mode

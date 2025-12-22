@@ -1,12 +1,12 @@
 ---
 description: Merge base branch into current branch (default: main)
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git merge:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), AskUserQuestion
+allowed-tools: Bash(git merge:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Task, Read, AskUserQuestion
 ---
 
-# Merge Branch
+# Merge Branch (Orchestrated)
 
-Merge a base branch into the current branch to incorporate upstream changes.
+Merge a base branch into the current branch to incorporate upstream changes. Uses multi-agent orchestration for conflict resolution.
 
 ## Parse Arguments
 
@@ -59,25 +59,104 @@ Options:
 Run the merge:
 - `git merge origin/<base-branch>`
 
-## Handle Conflicts
+## Handle Conflicts (Orchestrated)
 
-If conflicts occur:
+If conflicts occur (`git merge` reports conflicts):
 
-1. Report conflict status: `git status`
-2. Show conflicting files
-3. Use AskUserQuestion:
-   - "Merge conflicts detected. How would you like to proceed?"
-   - Options:
-     - "Help me resolve conflicts" - provide guidance
-     - "Abort merge" - `git merge --abort`
-     - "I'll resolve manually" - provide instructions
+### Phase 1: Conflict Analysis
 
-If helping with conflicts:
-- For each conflicting file, analyze the conflict
-- Show both versions with context
-- Suggest resolution
-- After resolution: `git add <file>`
-- When all resolved: Commit the merge
+Get conflict status:
+```bash
+git status --porcelain | grep "^UU\|^AA\|^DD"
+git diff --name-only --diff-filter=U
+```
+
+Launch conflict analyzer for comprehensive analysis:
+```
+Task (gitx:conflict-analyzer):
+  Operation: merge
+  Base Branch: [base-branch]
+  Current Branch: [current-branch]
+  Conflicting Files: [list from git status]
+
+  Analyze each conflict:
+  - What both sides changed
+  - Why they conflict
+  - Semantic vs syntactic conflict
+  - Recommended resolution strategy
+```
+
+### Phase 2: Resolution Suggestions
+
+Launch resolution suggester:
+```
+Task (gitx:resolution-suggester):
+  Conflict Analysis: [output from Phase 1]
+
+  For each conflict:
+  - Generate specific resolution code
+  - Provide confidence level
+  - Note verification steps
+```
+
+### Phase 3: User-Guided Resolution
+
+For each conflict, present analysis and options:
+
+```
+AskUserQuestion:
+  Question: "Conflict in [file] at lines [X-Y]. How would you like to resolve?"
+  Options:
+  1. "Apply suggested resolution (Recommended)" - Use AI-suggested resolution
+  2. "Keep ours" - Keep current branch version
+  3. "Keep theirs" - Keep incoming branch version
+  4. "Resolve manually" - Open for manual editing
+  5. "Abort merge" - Cancel entire merge
+```
+
+Apply chosen resolution:
+- **Suggested**: Apply the resolution code from suggester
+- **Keep ours**: `git checkout --ours <file>`
+- **Keep theirs**: `git checkout --theirs <file>`
+- **Manual**: Show conflict markers, wait for user
+
+After resolving each file:
+```bash
+git add <file>
+```
+
+### Phase 4: Validation
+
+After all conflicts resolved, launch validator:
+```
+Task (gitx:merge-validator):
+  Resolved Files: [list]
+  Operation: merge
+
+  Validate:
+  - No remaining conflict markers
+  - Syntax is valid
+  - Types check (if applicable)
+```
+
+If validation fails:
+- Report issues
+- Allow fixing before continuing
+
+### Phase 5: Complete Merge
+
+When all conflicts resolved and validated:
+```bash
+# Create merge commit
+git commit -m "$(cat <<'EOF'
+Merge [base-branch] into [current-branch]
+
+Resolved conflicts:
+- [file1.ts]: [resolution summary]
+- [file2.ts]: [resolution summary]
+EOF
+)"
+```
 
 ## Pop Stash
 
@@ -88,12 +167,47 @@ If changes were stashed:
 ## Report Results
 
 Show merge outcome:
-- Success: "Merged <base> into <current>: <count> commits incorporated"
-- Merge commit hash (if not fast-forward)
-- Summary of changes
+```markdown
+## Merge Complete
+
+### Summary
+- Merged: [base] into [current]
+- Commits incorporated: [count]
+- Conflicts resolved: [count]
+- Merge commit: [hash] (if not fast-forward)
+
+### Resolution Summary
+- [file1.ts]: [resolution applied]
+- [file2.ts]: [resolution applied]
+
+### Changes Incorporated
+[summary of changes from base branch]
+
+### Next Steps
+- Run tests to verify: `npm run test`
+- Push with: `git push`
+```
+
+## Fallback Mode
+
+If orchestrated conflict resolution fails:
+```
+AskUserQuestion:
+  Question: "Orchestrated conflict resolution encountered an issue. Continue manually?"
+  Options:
+  1. "Yes, resolve manually" - Show standard conflict view
+  2. "Retry analysis" - Try orchestration again
+  3. "Abort merge" - Cancel merge
+```
+
+For manual mode, show:
+- Conflicting files with markers
+- Standard instructions for manual resolution
+- Commands to continue: `git add <file>`, `git commit`
 
 ## Error Handling
 
 - Already up to date: Report "Already up to date with <base>"
-- Merge conflicts: Guide through resolution (see above)
-- Merge in progress: Offer to continue or abort
+- Merge conflicts: Guide through orchestrated resolution (see above)
+- Merge in progress: Offer to continue or abort existing merge
+- Agent failure: Fall back to manual resolution with guidance
