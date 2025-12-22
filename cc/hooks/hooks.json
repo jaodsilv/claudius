@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "The cc plugin requires plugin-dev@claude-plugins-official to be installed. If the user attempts to use cc commands or agents and plugin-dev skills are not available, inform them to install it first with: /plugin install plugin-dev@claude-plugins-official"
+          }
+        ]
+      }
+    ]
+  }
+}
