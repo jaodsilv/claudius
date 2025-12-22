@@ -34,9 +34,11 @@ If no PR found:
 Verify PR is ready to merge:
 
 ### Check state
+
 - Must be "open" (not closed or merged)
 
 ### Check mergeable status
+
 - `mergeable`: true
 - `mergeStateStatus`: "clean" or "unstable" (with warning)
 
@@ -46,11 +48,13 @@ If not mergeable:
 - Suggest resolution
 
 ### Check reviews
+
 If reviews required:
 - Check for approvals
 - If not approved: Warn user
 
 ### Check CI status
+
 - `gh pr checks <number>`
 - If any failed: Warn and ask to proceed anyway
 

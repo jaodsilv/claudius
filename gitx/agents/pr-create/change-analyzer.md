@@ -91,6 +91,7 @@ Based on commit messages and files:
 ### 5. Extract Related Issues
 
 From commits and branch name:
+
 ```bash
 # Search for issue references in commits
 git log --oneline main..HEAD | grep -oE '#[0-9]+'

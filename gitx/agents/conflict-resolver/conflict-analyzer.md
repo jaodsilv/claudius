@@ -50,6 +50,7 @@ git diff --no-color <file>
 ```
 
 Conflict structure:
+
 ```
 <<<<<<< HEAD (ours)
 [Current branch changes]
@@ -148,14 +149,17 @@ Determine if changes:
 ```typescript
 [code from current branch]
 ```
+
 - **What changed**: [Description]
 - **Intent**: [Why this change was made]
 - **Commit**: [hash] - "[message]"
 
 **Theirs ([branch-name])**:
+
 ```typescript
 [code from incoming branch]
 ```
+
 - **What changed**: [Description]
 - **Intent**: [Why this change was made]
 - **Commit**: [hash] - "[message]"
@@ -177,6 +181,7 @@ Determine if changes:
 ---
 
 #### Conflict 2 (Lines X-Y)
+
 ...
 
 ### Conflict Dependencies
@@ -206,6 +211,7 @@ Some conflicts may need to be resolved in a specific order:
 If any conflicts are unclear:
 1. [Question about ambiguous conflict]
 2. [Question about intent]
+
 ```
 
 ## Quality Standards

@@ -31,6 +31,7 @@ TodoWrite:
 Mark "Analyze issue requirements" as in_progress.
 
 Launch issue analyzer:
+
 ```
 Task (gitx:issue-analyzer):
   Issue Number: [number]
@@ -59,6 +60,7 @@ Mark "Analyze issue requirements" as completed.
 Mark "Explore codebase for relevant files" as in_progress.
 
 Launch codebase navigator:
+
 ```
 Task (gitx:codebase-navigator):
   Issue Analysis: [summary from Phase 1]
@@ -86,6 +88,7 @@ Mark "Explore codebase for relevant files" as completed.
 Mark "Create implementation plan" as in_progress.
 
 Launch implementation planner:
+
 ```
 Task (gitx:implementation-planner):
   Issue Analysis:
@@ -111,6 +114,7 @@ Mark "Create implementation plan" as completed.
 Mark "Get user approval on plan" as in_progress.
 
 Present the implementation plan summary:
+
 ```markdown
 ## Implementation Plan for Issue #[number]
 
@@ -134,6 +138,7 @@ Present the implementation plan summary:
 ```
 
 Use AskUserQuestion:
+
 ```
 Question: "Review the implementation plan for Issue #[number]. How would you like to proceed?"
 Options:
@@ -178,6 +183,7 @@ git worktree add -b [branch-name] "$WORKTREE_PATH" "$MAIN"
 ```
 
 Report worktree location:
+
 ```
 Worktree created:
   Path: [path]
@@ -195,6 +201,7 @@ Mark "Complete development" as in_progress.
 ### Workflow Selection
 
 Use AskUserQuestion:
+
 ```
 Question: "Which development approach would you like to use for Issue #[number]?"
 Options:
@@ -207,6 +214,7 @@ Options:
 ### Delegate Based on Choice
 
 **Feature Development Workflow**:
+
 ```
 Skill (feature-dev:feature-dev):
   Context: Issue #[number] - [title]
@@ -222,6 +230,7 @@ Skill (feature-dev:feature-dev):
 ```
 
 **TDD Workflow**:
+
 ```
 Skill (tdd-workflows:tdd-orchestrator):
   Context: Issue #[number] - [title]
@@ -235,6 +244,7 @@ Skill (tdd-workflows:tdd-orchestrator):
 
 **Manual Development**:
 Provide the full implementation plan:
+
 ```markdown
 ## Manual Development Guide for Issue #[number]
 
@@ -254,6 +264,7 @@ I'm available to help with any questions as you implement.
 ```
 
 **Skip Development**:
+
 ```
 Worktree is ready at [path] on branch [branch-name].
 
@@ -261,11 +272,13 @@ When you're ready to continue:
 - Use `/gitx:commit-push` to commit changes
 - Use `/gitx:pr` to create a pull request
 ```
+
 Skip to Phase 7 reporting.
 
 ### Graceful Fallback
 
 If requested workflow not available:
+
 ```
 The [workflow] workflow is not available in your setup.
 
@@ -299,6 +312,7 @@ If no changes:
 ### Commit and Push
 
 If changes exist:
+
 ```
 Invoke /gitx:commit-push
 
@@ -325,12 +339,16 @@ Fixes #[number]
 
 To create a pull request:
 ```
+
 /gitx:pr
+
 ```
 
 Or to comment on the issue with progress:
 ```
+
 /gitx:comment-to-issue [number] "Implementation complete, PR forthcoming"
+
 ```
 ```
 
@@ -354,6 +372,7 @@ Maintain issue context throughout the workflow:
 ## State Preservation
 
 If context grows large or workflow is interrupted, preserve:
+
 ```
 Essential context for Issue #[number]:
 - Branch: [branch-name]

@@ -18,14 +18,14 @@ Get current repository state:
 
 ## Execution Logic
 
-### If no argument provided ($ARGUMENTS is empty):
+### If no argument provided ($ARGUMENTS is empty)
 
 Display the existing worktrees in a formatted table:
 1. Run `git worktree list` to get all worktrees
 2. Format output showing: path, branch, and commit hash
 3. Indicate which worktree is current
 
-### If argument provided:
+### If argument provided
 
 Parse the argument to determine its type and create appropriate worktree:
 
@@ -38,7 +38,7 @@ Parse the argument to determine its type and create appropriate worktree:
   - Default: `feature/issue-<number>-<short-title>`
 - Short title: lowercase, hyphens, max 30 chars, no special characters
 
-**2. GitHub issue URL (e.g., "https://github.com/owner/repo/issues/123"):**
+**2. GitHub issue URL (e.g., "<https://github.com/owner/repo/issues/123>"):**
 - Extract issue number from URL
 - Proceed as with issue number above
 

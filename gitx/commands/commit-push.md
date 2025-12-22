@@ -61,6 +61,7 @@ Stage relevant files:
 ## Create Commit
 
 Commit with the drafted message:
+
 ```
 git commit -m "$(cat <<'EOF'
 <type>(<scope>): <description>

@@ -28,12 +28,14 @@ Determine base branch:
 ## Pre-flight Checks
 
 ### Check for clean working tree
+
 If there are uncommitted changes:
 - Use AskUserQuestion: "You have uncommitted changes. Stash them before rebasing?"
 - Options: "Stash and continue", "Cancel"
 - If stash: `git stash push -m "gitx: pre-rebase stash"`
 
 ### Check commits to rebase
+
 Show commits that will be rebased:
 - Count: number of commits
 - List: abbreviated commit messages
@@ -73,12 +75,14 @@ If conflicts occur (`git rebase` exits with conflicts):
 ### Phase 1: Conflict Analysis
 
 Get conflict status:
+
 ```bash
 git status --porcelain | grep "^UU\|^AA\|^DD"
 git diff --name-only --diff-filter=U
 ```
 
 Launch conflict analyzer for comprehensive analysis:
+
 ```
 Task (gitx:conflict-analyzer):
   Operation: rebase
@@ -95,6 +99,7 @@ Task (gitx:conflict-analyzer):
 ### Phase 2: Resolution Suggestions
 
 Launch resolution suggester:
+
 ```
 Task (gitx:resolution-suggester):
   Conflict Analysis: [output from Phase 1]
@@ -127,6 +132,7 @@ Apply chosen resolution:
 - **Manual**: Show conflict markers, wait for user
 
 After resolving each file:
+
 ```bash
 git add <file>
 ```
@@ -134,6 +140,7 @@ git add <file>
 ### Phase 4: Validation
 
 After all conflicts resolved, launch validator:
+
 ```
 Task (gitx:merge-validator):
   Resolved Files: [list]
@@ -152,6 +159,7 @@ If validation fails:
 ### Phase 5: Continue Rebase
 
 When all conflicts resolved and validated:
+
 ```bash
 git rebase --continue
 ```
@@ -168,6 +176,7 @@ If changes were stashed:
 ## Report Results
 
 Show rebase outcome:
+
 ```markdown
 ## Rebase Complete
 
@@ -188,6 +197,7 @@ Show rebase outcome:
 ## Fallback Mode
 
 If orchestrated conflict resolution fails:
+
 ```
 AskUserQuestion:
   Question: "Orchestrated conflict resolution encountered an issue. Continue manually?"

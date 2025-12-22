@@ -72,27 +72,33 @@ If junctions detected, add warning:
 Execute in order:
 
 ### Step 1: Remove junctions (if any)
+
 For each junction pointing outside:
 - Windows: `cmd /c rmdir <junction-path>`
 - Unix: `rm <symlink-path>` (removes link, not target)
 
 ### Step 2: Check for uncommitted changes
+
 If not forcing:
 - Run `git -C <worktree-path> status --porcelain`
 - If changes exist: warn and abort (or proceed if -f)
 
 ### Step 3: Switch away if currently in worktree
+
 - If current directory is the worktree: `cd` to main worktree first
 
 ### Step 4: Remove worktree
+
 - Standard: `git worktree remove <worktree-path>`
 - Force: `git worktree remove --force <worktree-path>`
 
 ### Step 5: Delete local branch
+
 - Standard: `git branch -d <branch-name>`
 - Force: `git branch -D <branch-name>`
 
 ### Step 6: Delete remote branch (if -r flag)
+
 - `git push origin --delete <branch-name>`
 
 ## Report Results

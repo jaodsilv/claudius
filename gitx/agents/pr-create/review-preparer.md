@@ -272,6 +272,7 @@ Items that should be completed before merge:
 Use this when requesting review:
 
 ```
+
 @developer1 @developer2 - Ready for review
 
 Key areas to focus on:
@@ -283,6 +284,7 @@ Questions I'd like input on:
 2. [Specific question]
 
 Context: [Brief background]
+
 ```
 ```
 

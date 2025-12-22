@@ -48,6 +48,7 @@ Mark "Analyze feedback (parallel)" as in_progress.
 ### Determine Analysis Mode
 
 Check what feedback exists:
+
 ```bash
 # Count review comments
 REVIEW_COUNT=$(gh pr view --json reviewThreads --jq '[.reviewThreads[] | select(.isResolved == false)] | length')
@@ -59,6 +60,7 @@ CI_FAILURES=$(gh pr checks --json conclusion --jq '[.[] | select(.conclusion == 
 ### Launch Analyzers
 
 **If review comments exist AND (no --ci flag OR both exist)**:
+
 ```
 Task (gitx:review-comment-analyzer):
   PR Number: [number]
@@ -68,6 +70,7 @@ Task (gitx:review-comment-analyzer):
 ```
 
 **If CI failures exist AND --ci flag (OR both exist)**:
+
 ```
 Task (gitx:ci-failure-analyzer):
   PR Number: [number]
@@ -87,6 +90,7 @@ Mark "Analyze feedback (parallel)" as completed.
 Mark "Plan changes" as in_progress.
 
 Launch planner with combined analysis:
+
 ```
 Task (gitx:code-change-planner):
   PR Number: [number]
@@ -110,6 +114,7 @@ Mark "Plan changes" as completed.
 Mark "Synthesize and present plan" as in_progress.
 
 Launch synthesizer:
+
 ```
 Task (gitx:respond-synthesizer):
   Combine all analysis results.
@@ -138,9 +143,11 @@ Mark "Execute approved changes" as in_progress.
 For each approved change in planned order:
 
 ### For Review Comments
+
 1. Show the comment and related code
 2. Make the necessary code change
 3. After fixing, mark as resolved:
+
    ```bash
    gh api graphql -f query='mutation { resolveReviewThread(input: {threadId: "<id>"}) { thread { isResolved } } }'
    ```
@@ -162,6 +169,7 @@ For each approved change in planned order:
 ### Quality Gates
 
 For each quality gate identified in the plan:
+
 ```
 AskUserQuestion:
   Question: "[Description of change]. Proceed?"
@@ -203,6 +211,7 @@ Mark "Commit and push" as completed.
 ## Report Results
 
 After responding:
+
 ```markdown
 ## PR Feedback Response Complete
 

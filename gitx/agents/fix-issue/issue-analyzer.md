@@ -49,12 +49,14 @@ Based on labels and content, classify:
 ### 3. Extract Requirements
 
 #### Explicit Requirements
+
 Things directly stated in the issue:
 - "The button should..."
 - "When X happens, Y should..."
 - "Add support for..."
 
 #### Implicit Requirements
+
 Things implied but not stated:
 - Error handling for edge cases
 - Backwards compatibility
@@ -62,6 +64,7 @@ Things implied but not stated:
 - Security considerations
 
 #### Acceptance Criteria
+
 Conditions for "done":
 - Stated criteria from issue
 - Inferred criteria from context

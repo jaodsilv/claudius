@@ -64,6 +64,7 @@ TodoWrite:
 Mark "Analyze issue requirements" as in_progress.
 
 Launch gitx:issue-analyzer agent:
+
 ```
 Task (gitx:issue-analyzer):
   Analyze issue #[number] to extract:
@@ -80,6 +81,7 @@ Wait for results, then mark complete.
 Mark "Explore codebase for relevant files" as in_progress.
 
 Launch gitx:codebase-navigator agent:
+
 ```
 Task (gitx:codebase-navigator):
   Using these key terms from issue analysis:
@@ -99,6 +101,7 @@ Wait for results, then mark complete.
 Mark "Create implementation plan" as in_progress.
 
 Launch gitx:implementation-planner agent:
+
 ```
 Task (gitx:implementation-planner):
   Create implementation plan based on:
@@ -147,6 +150,7 @@ Determine branch name from issue analysis:
 - Default → `feature/issue-[number]-[slug]`
 
 Create worktree:
+
 ```bash
 # Get main branch
 MAIN=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
@@ -176,6 +180,7 @@ AskUserQuestion:
 Based on choice:
 
 **Feature Development**:
+
 ```
 Skill: feature-dev:feature-dev
   Context: Issue #[number] - [title]
@@ -184,6 +189,7 @@ Skill: feature-dev:feature-dev
 ```
 
 **TDD Workflow**:
+
 ```
 Skill: tdd-workflows:tdd-orchestrator
   Context: Issue #[number] - [title]
@@ -204,12 +210,14 @@ Mark "Commit and prepare for PR" as in_progress.
 After development completes:
 
 1. **Check for changes**:
+
 ```bash
 git status
 git diff --stat
 ```
 
 2. **If changes exist**, suggest commit:
+
 ```
 The following changes were made:
 [change summary]
@@ -218,11 +226,13 @@ Would you like to commit and push these changes?
 ```
 
 3. **Commit using gitx:commit-push**:
+
 ```
 Skill: gitx:commit-push
 ```
 
 4. **Suggest PR creation**:
+
 ```
 Development complete for Issue #[number].
 
@@ -260,6 +270,7 @@ Between phases, preserve:
 - Implementation plan summary
 
 If context grows large, use /compact while preserving:
+
 ```
 Essential context for Issue #[number]:
 - Branch: [branch-name]

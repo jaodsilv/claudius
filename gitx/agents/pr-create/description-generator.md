@@ -99,6 +99,7 @@ If changes include UI:
 ### 7. Check Repository Patterns
 
 Look for existing patterns:
+
 ```bash
 # Check for PR template
 ls -la .github/PULL_REQUEST_TEMPLATE*
@@ -116,7 +117,9 @@ Follow repository conventions if they exist.
 
 ### Title
 ```
+
 [type](scope): [description] (#issue)
+
 ```
 
 ### Description
@@ -187,14 +190,17 @@ If the primary title doesn't fit, here are alternatives:
 For direct pasting into GitHub:
 
 **Title**:
+
 ```
 [title]
 ```
 
 **Body**:
+
 ```markdown
 [full PR body]
 ```
+
 ```
 
 ## Quality Standards

@@ -53,6 +53,7 @@ cat <file.json> | jq . > /dev/null
 ### 3. Check for Common Issues
 
 #### Duplicate Code
+
 Look for:
 - Same function defined twice
 - Same import added twice
@@ -65,11 +66,13 @@ grep -n "const functionName" <file>
 ```
 
 #### Missing Imports
+
 Check that all used identifiers are imported:
 - New code may reference unimported items
 - Merged code may have removed needed imports
 
 #### Orphaned Code
+
 Look for:
 - Code referencing deleted items
 - Variables that are no longer used
@@ -143,7 +146,9 @@ Remaining markers (if any):
 
 Syntax errors (if any):
 ```
+
 path/to/file.ts:42:15 - error: Unexpected token
+
 ```
 
 **Action Required**: Fix syntax at indicated locations
@@ -156,7 +161,9 @@ path/to/file.ts:42:15 - error: Unexpected token
 
 Type errors (if any):
 ```
+
 path/to/file.ts:42:10 - error TS2322: Type 'string' is not assignable to type 'number'
+
 ```
 
 **Action Required**: Fix type mismatches
@@ -169,7 +176,9 @@ path/to/file.ts:42:10 - error TS2322: Type 'string' is not assignable to type 'n
 
 Lint issues (if any):
 ```
+
 path/to/file.ts:42:1 - warning: Unexpected console statement
+
 ```
 
 **Action Required**: Fix or acknowledge warnings
@@ -182,8 +191,10 @@ path/to/file.ts:42:1 - warning: Unexpected console statement
 
 Test failures (if any):
 ```
+
 FAIL tests/feature.test.ts
   ✕ should handle the merged case (15ms)
+
 ```
 
 **Action Required**: Fix failing tests before proceeding
@@ -240,6 +251,7 @@ Before running `git rebase/merge --continue`:
 - [ ] Type errors resolved
 - [ ] Tests passing (or failures understood)
 - [ ] Manual review complete (for low-confidence resolutions)
+
 ```
 
 ## Quality Standards

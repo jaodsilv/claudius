@@ -27,6 +27,7 @@ Determine base branch:
 ## Pre-flight Checks
 
 ### Check for clean working tree
+
 If uncommitted changes exist:
 - Use AskUserQuestion: "You have uncommitted changes. Stash them before merging?"
 - Options: "Stash and continue", "Cancel"
@@ -66,12 +67,14 @@ If conflicts occur (`git merge` reports conflicts):
 ### Phase 1: Conflict Analysis
 
 Get conflict status:
+
 ```bash
 git status --porcelain | grep "^UU\|^AA\|^DD"
 git diff --name-only --diff-filter=U
 ```
 
 Launch conflict analyzer for comprehensive analysis:
+
 ```
 Task (gitx:conflict-analyzer):
   Operation: merge
@@ -89,6 +92,7 @@ Task (gitx:conflict-analyzer):
 ### Phase 2: Resolution Suggestions
 
 Launch resolution suggester:
+
 ```
 Task (gitx:resolution-suggester):
   Conflict Analysis: [output from Phase 1]
@@ -121,6 +125,7 @@ Apply chosen resolution:
 - **Manual**: Show conflict markers, wait for user
 
 After resolving each file:
+
 ```bash
 git add <file>
 ```
@@ -128,6 +133,7 @@ git add <file>
 ### Phase 4: Validation
 
 After all conflicts resolved, launch validator:
+
 ```
 Task (gitx:merge-validator):
   Resolved Files: [list]
@@ -146,6 +152,7 @@ If validation fails:
 ### Phase 5: Complete Merge
 
 When all conflicts resolved and validated:
+
 ```bash
 # Create merge commit
 git commit -m "$(cat <<'EOF'
@@ -167,6 +174,7 @@ If changes were stashed:
 ## Report Results
 
 Show merge outcome:
+
 ```markdown
 ## Merge Complete
 
@@ -191,6 +199,7 @@ Show merge outcome:
 ## Fallback Mode
 
 If orchestrated conflict resolution fails:
+
 ```
 AskUserQuestion:
   Question: "Orchestrated conflict resolution encountered an issue. Continue manually?"

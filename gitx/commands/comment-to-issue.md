@@ -55,6 +55,7 @@ If "Summarize recent work":
 
 If "Report progress":
 Template:
+
 ```
 ## Progress Update
 

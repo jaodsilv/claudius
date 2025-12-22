@@ -142,6 +142,7 @@ interface FeatureConfig {
 **Verification**: `npm run typecheck` passes
 
 #### Step 1.2: [Action]
+
 **File**: `src/config/index.ts` (modify)
 **Action**: Add configuration entry
 **Lines**: After line 42
@@ -163,6 +164,7 @@ export const featureConfig = {
 **Goal**: [What this phase accomplishes]
 
 #### Step 2.1: [Action]
+
 **File**: `src/feature/handler.ts` (create new)
 **Action**: Implement main handler
 **Pattern**: Follow `src/existing/similar.ts`
@@ -179,6 +181,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
 **Verification**: Unit tests pass
 
 #### Step 2.2: [Action]
+
 ...
 
 **[CHECKPOINT 2]**: Core functionality works
@@ -189,6 +192,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
 **Goal**: [What this phase accomplishes]
 
 #### Step 3.1: [Action]
+
 **File**: `src/api/routes.ts` (modify)
 **Action**: Add API endpoint
 **Lines**: After line 87
@@ -208,6 +212,7 @@ router.post('/feature', featureHandler);
 **Goal**: [Comprehensive test coverage]
 
 #### Step 4.1: Unit Tests
+
 **File**: `tests/feature/handler.test.ts` (create new)
 **Tests to write**:
 - [ ] Happy path: valid input returns expected output
@@ -216,6 +221,7 @@ router.post('/feature', featureHandler);
 - [ ] Boundary: max limits respected
 
 #### Step 4.2: Integration Tests
+
 **File**: `tests/integration/feature.test.ts` (create new)
 **Tests to write**:
 - [ ] API endpoint returns 200 on success
@@ -230,11 +236,13 @@ router.post('/feature', featureHandler);
 **Goal**: [Production readiness]
 
 #### Step 5.1: Error Handling
+
 - Add try-catch blocks
 - Add meaningful error messages
 - Add logging
 
 #### Step 5.2: Documentation
+
 - Add JSDoc comments
 - Update README if needed
 - Add inline comments for complex logic
@@ -275,6 +283,7 @@ npm run test -- path/to/test.ts  # Single file
 npm run lint          # Check lint
 npm run lint:fix      # Fix lint issues
 ```
+
 ```
 
 ## Quality Standards

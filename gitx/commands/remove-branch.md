@@ -63,14 +63,17 @@ If targeting main/master:
 ## Execution
 
 ### Step 1: Switch if on target branch
+
 If current branch is target and not -ro:
 - `git switch <main-branch>`
 
 ### Step 2: Delete local branch (unless -ro)
+
 - Standard: `git branch -d <branch-name>`
 - Force: `git branch -D <branch-name>`
 
 ### Step 3: Delete remote branch (if -r or -ro)
+
 - Check if remote exists: `git ls-remote --heads origin <branch-name>`
 - If exists: `git push origin --delete <branch-name>`
 - If not exists: Note "Remote branch does not exist"

@@ -21,12 +21,14 @@ Check for existing PR:
 ## Pre-flight Checks
 
 ### Check branch is not main
+
 If on main/master:
 - Report: "Cannot create PR from main branch"
 - Suggest: Create a feature branch first
 - Exit
 
 ### Check for existing PR
+
 If PR already exists:
 - Report: "PR #<number> already exists for this branch"
 - Show: URL and state
@@ -49,6 +51,7 @@ If remote doesn't exist:
 ## Phase 1: Change Analysis
 
 Launch change analyzer:
+
 ```
 Task (gitx:change-analyzer):
   Branch: [current-branch]
@@ -131,6 +134,7 @@ Present generated content:
 ```
 
 Use AskUserQuestion:
+
 ```
 Question: "Review the generated PR content. How would you like to proceed?"
 Options:
@@ -151,6 +155,7 @@ Handle user response:
 ## Phase 4: Create PR
 
 Create the pull request:
+
 ```bash
 gh pr create \
   --title "[title]" \
@@ -171,6 +176,7 @@ If labels suggested:
 ## Report Results
 
 Show:
+
 ```markdown
 ## Pull Request Created
 
@@ -196,19 +202,23 @@ If you need to:
 - Merge when ready: `/gitx:merge-pr`
 
 ### Review Preparation Notes
+
 [Summary of review-preparer output]
+
 ```
 
 ## Fallback Mode
 
 If orchestration fails:
 ```
+
 AskUserQuestion:
   Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
   Options:
   1. "Yes, create basic PR" - Use simple title/body
   2. "Retry orchestration" - Try again
   3. "Cancel" - Abort
+
 ```
 
 For basic mode:

@@ -22,14 +22,17 @@ This template defines the structure for output from the conflict resolution agen
 ```typescript
 [code from current branch]
 ```
+
 - **What changed**: Description
 - **Intent**: Purpose
 - **Commit**: [hash] - "[message]"
 
 **Theirs ([branch])**:
+
 ```typescript
 [code from incoming]
 ```
+
 - **What changed**: Description
 - **Intent**: Purpose
 - **Commit**: [hash] - "[message]"
@@ -39,6 +42,7 @@ This template defines the structure for output from the conflict resolution agen
 **Semantic Overlap**: Exclusive | Additive | Dependent | Contradictory
 
 **Recommended Strategy**: Keep ours | Keep theirs | Combine | Rewrite
+
 ```
 
 ## Resolution Suggestions Output
@@ -66,9 +70,11 @@ This template defines the structure for output from the conflict resolution agen
 **Reasoning**: Explanation
 
 **Verification**:
+
 ```bash
 npm run test -- --testPathPattern="affected"
 ```
+
 ```
 
 ## Validation Output
@@ -90,4 +96,5 @@ npm run test -- --testPathPattern="affected"
 git add <files>
 git rebase --continue  # or git commit
 ```
+
 ```

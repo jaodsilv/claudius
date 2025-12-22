@@ -54,6 +54,7 @@ For each failed check, determine the category:
 For each failure:
 
 #### Fetch Logs (if accessible)
+
 ```bash
 # Try to get run logs via GitHub API
 gh run view <run-id> --log-failed
@@ -114,7 +115,9 @@ Produce a structured analysis:
   - path/to/file.ts:87 - related issue
 - **Error Messages**:
   ```
+
   Actual error output from logs
+
   ```
 - **Suggested Fix**:
   1. Step-by-step remediation

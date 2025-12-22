@@ -41,6 +41,7 @@ grep -r "relatedPattern" --include="*.ts"
 ```
 
 Use Glob to find files:
+
 ```
 **/[keyword]*.ts
 **/*[Feature]*.tsx
@@ -78,6 +79,7 @@ Understand how the relevant code fits together:
 ### 4. Find Similar Implementations
 
 Search for patterns to follow:
+
 ```bash
 # Find similar features
 grep -r "SimilarFeature" --include="*.ts"
@@ -95,6 +97,7 @@ Read examples to understand:
 ### 5. Check Git History
 
 Understand recent changes:
+
 ```bash
 # Recent changes to relevant files
 git log --oneline -10 -- path/to/file.ts
@@ -166,6 +169,7 @@ Areas that might be affected:
 ```
 
 #### Pattern 2: [Pattern Name]
+
 ...
 
 ### Test Files
@@ -176,6 +180,7 @@ Areas that might be affected:
 | src/api/feature.ts | tests/api/feature.integration.test.ts | Integration |
 
 ### Test Patterns to Follow
+
 - Mocking: Use `jest.mock()` as seen in tests/example.test.ts
 - Fixtures: See tests/fixtures/ for data patterns
 - Assertions: Use `expect().toMatchSnapshot()` for complex objects
@@ -183,16 +188,19 @@ Areas that might be affected:
 ### Impact Assessment
 
 #### Direct Impact
+
 Files that will definitely need changes:
 - [File 1]
 - [File 2]
 
 #### Potential Impact
+
 Files that might need updates:
 - [File 3] - If [condition]
 - [File 4] - For [edge case]
 
 #### No Impact (Verified)
+
 Areas that seem related but don't need changes:
 - [File 5] - Because [reason]
 
@@ -209,6 +217,7 @@ Areas that seem related but don't need changes:
 2. **Pattern to follow**: [Specific example]
 3. **Watch out for**: [Potential gotcha]
 4. **Ask about**: [Uncertainty needing clarification]
+
 ```
 
 ## Quality Standards

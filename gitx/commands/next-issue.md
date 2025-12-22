@@ -54,19 +54,21 @@ Use AskUserQuestion:
 
 ## Output Format
 
-### Basic mode (no -d flag):
+### Basic mode (no -d flag)
 
 Just output the issue number:
+
 ```
 #123
 ```
 
-### Detailed mode (-d flag):
+### Detailed mode (-d flag)
 
 Fetch full details:
 - `gh issue view <number> --json number,title,body,labels,assignees,milestone,state`
 
 Output formatted details:
+
 ```
 Issue #123: <title>
 Priority: <priority-label>
@@ -81,6 +83,7 @@ Description:
 ## Suggest Next Steps
 
 After showing the issue:
+
 ```
 To start working on this issue:
   /gitx:fix-issue 123

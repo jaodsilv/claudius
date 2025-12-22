@@ -183,6 +183,7 @@ Options:
 ```
 
 For conflicts, ask:
+
 ```
 Question: "Conflicting recommendation for [topic]. Which approach?"
 Options:

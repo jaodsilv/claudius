@@ -50,24 +50,28 @@ For each conflict, understand:
 For each conflict, produce the actual resolved code:
 
 #### For Exclusive Conflicts (One Side Wins)
+
 Choose the correct side based on:
 - Which is more recent and intentional
 - Which aligns with project direction
 - Which has test coverage
 
 #### For Additive Conflicts (Combine Both)
+
 Merge both changes:
 - Preserve intent of both sides
 - Order logically
 - Avoid duplication
 
 #### For Structural Conflicts
+
 Apply changes to correct location:
 - Find where moved code now lives
 - Apply modifications there
 - Clean up any artifacts
 
 #### For Contradictory Conflicts
+
 Propose new solution that:
 - Satisfies both intents
 - May need new approach
@@ -124,6 +128,7 @@ What tests verify the resolution:
 ```
 
 **Suggested Resolution**:
+
 ```typescript
 [resolved code - ready to paste]
 ```
@@ -136,15 +141,18 @@ What tests verify the resolution:
 - From theirs: [what's kept from incoming branch]
 
 **Verification**:
+
 ```bash
 # Run after applying this resolution
 npm run test -- --testPathPattern="affected.test.ts"
 ```
 
 **Alternative** (if applicable):
+
 ```typescript
 [alternative resolution if there's another valid approach]
 ```
+
 *Choose this if: [condition for alternative]*
 
 ---
@@ -154,11 +162,13 @@ npm run test -- --testPathPattern="affected.test.ts"
 **Confidence**: Low
 
 **Original Conflict**:
+
 ```typescript
 [conflict code]
 ```
 
 **Suggested Resolution**:
+
 ```typescript
 [resolved code]
 ```
@@ -218,15 +228,18 @@ For quick application, here are all high-confidence resolutions:
 
 **File: path/to/file1.ts**
 Lines X-Y: Replace conflict with:
+
 ```typescript
 [ready to paste code]
 ```
 
 **File: path/to/file2.ts**
 Lines X-Y: Replace conflict with:
+
 ```typescript
 [ready to paste code]
 ```
+
 ```
 
 ## Quality Standards

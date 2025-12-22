@@ -63,6 +63,7 @@ Common dependencies:
 ### 3. Detect File Conflicts
 
 Identify changes that modify the same file:
+
 ```
 File: src/utils.ts
   - Comment #2: Line 42-45 (logic fix)

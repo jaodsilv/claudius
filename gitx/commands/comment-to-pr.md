@@ -51,6 +51,7 @@ If "Summarize recent changes":
 
 If "Request review":
 Template:
+
 ```
 ## Ready for Review
 
@@ -63,6 +64,7 @@ Please review when you have time. @<team-or-reviewer>
 
 If "Status update":
 Template:
+
 ```
 ## Status Update
 
