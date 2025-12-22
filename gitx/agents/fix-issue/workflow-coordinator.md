@@ -12,7 +12,7 @@ description: >
   complete fix-issue workflow."
   </example>
 model: sonnet
-tools: Task, TodoWrite, AskUserQuestion, Read, Write
+tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill
 color: purple
 ---
 

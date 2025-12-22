@@ -11,7 +11,7 @@ description: >
   resolution code for each conflict."
   </example>
 model: sonnet
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Edit
 color: green
 ---
 

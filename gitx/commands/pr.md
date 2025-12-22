@@ -1,7 +1,7 @@
 ---
 description: Create pull request for current branch
 argument-hint: ""
-allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TodoWrite
 ---
 
 # Create Pull Request (Orchestrated)

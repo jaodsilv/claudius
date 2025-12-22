@@ -1,7 +1,7 @@
 ---
 description: Rebase current branch onto base branch (default: main)
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Task, Read, AskUserQuestion
+allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Task, Read, AskUserQuestion, TodoWrite
 ---
 
 # Rebase Branch (Orchestrated)
