@@ -34,6 +34,8 @@ Use TodoWrite to track progress:
 ### Phase 1: Analysis
 
 Load the improvement-workflow skill:
+
+
 ```
 Use Skill tool to load cc:improvement-workflow
 ```

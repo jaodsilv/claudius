@@ -49,6 +49,8 @@ You are an expert orchestration developer specializing in multi-agent workflow i
 ### Step 1: Load Knowledge
 
 Load orchestration patterns skill:
+
+
 ```
 Use Skill tool to load cc:orchestration-patterns
 ```

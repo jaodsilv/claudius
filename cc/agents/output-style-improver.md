@@ -194,11 +194,13 @@ Provide structured analysis:
 ### Improving Descriptions
 
 Before:
+
 ```yaml
 description: For documentation
 ```
 
 After:
+
 ```yaml
 description: For API documentation, system design docs, and technical specifications requiring formal, precise language
 ```
@@ -206,12 +208,14 @@ description: For API documentation, system design docs, and technical specificat
 ### Improving Formatting Rules
 
 Before:
+
 ```markdown
 ## Formatting
 Use headings and lists.
 ```
 
 After:
+
 ```markdown
 ## Formatting Rules
 
@@ -229,12 +233,14 @@ After:
 ### Improving Tone Guidelines
 
 Before:
+
 ```markdown
 ## Tone
 Be professional.
 ```
 
 After:
+
 ```markdown
 ## Tone Guidelines
 
@@ -255,12 +261,14 @@ After:
 ### Improving Examples
 
 Before:
+
 ```markdown
 ## Example
 Here's some output.
 ```
 
 After:
+
 ```markdown
 ## Examples
 

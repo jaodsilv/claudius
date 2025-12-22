@@ -158,9 +158,15 @@ Return a structured change plan:
 - **Before**: ```yaml
   allowed-tools: ["Read", "Write"]
   ```
+
+
 - **After**: ```yaml
+
   allowed-tools: ["Read", "Task", "TodoWrite"]
+
+
   ```
+
 ```
 
 ### Write (create new content)
@@ -171,18 +177,22 @@ Return a structured change plan:
 - **After**: ```markdown
   ### Phase 3: Plan Changes
 
+
   Use Task tool with @change-planner...
   ```
+
 ```
 
 ### Append (add to end of section)
 
 ```markdown
 - **Type**: append
+
 - **Target**: ## Quality Standards section
 - **After**: ```markdown
   - Track progress with TodoWrite
   ```
+
 ```
 
 ## Ordering Examples

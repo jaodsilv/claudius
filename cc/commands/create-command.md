@@ -34,6 +34,8 @@ Use TodoWrite to track progress:
 3. Check if command already exists
 
 If plugin not found at path:
+
+
 ```
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the command?"
@@ -137,7 +139,9 @@ Show:
 
 ## Error Handling
 
+
 If command already exists:
+
 ```
 Use AskUserQuestion:
   Question: "Command already exists. What would you like to do?"

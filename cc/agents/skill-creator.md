@@ -143,26 +143,34 @@ Create reference files for detailed content that would make SKILL.md too long.
 ### Description (Third-Person)
 
 CORRECT:
+
+
 ```yaml
 description: This skill should be used when the user asks to "create a deployment", "configure CI/CD", or needs deployment automation guidance.
 ```
 
+
 INCORRECT:
+
 ```yaml
 description: Use this skill when you need deployment help.
 ```
 
 ### Body (Imperative Form)
 
+
 CORRECT:
+
 ```markdown
 To create a deployment:
 1. Configure the environment
 2. Set up the pipeline
 3. Validate the configuration
+
 ```
 
 INCORRECT:
+
 ```markdown
 You should configure the environment first.
 Then you need to set up the pipeline.

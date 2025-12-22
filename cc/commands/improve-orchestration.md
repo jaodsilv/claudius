@@ -24,11 +24,15 @@ If focus provided, prioritize analysis of that aspect.
 ### Phase 1: Analysis
 
 Load the improvement-workflow skill:
+
+
 ```
 Use Skill tool to load cc:improvement-workflow
 ```
 
+
 Load orchestration patterns:
+
 ```
 Use Skill tool to load cc:orchestration-patterns
 ```

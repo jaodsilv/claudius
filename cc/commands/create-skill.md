@@ -35,6 +35,8 @@ Use TodoWrite to track progress:
 3. Check if skill already exists
 
 If plugin not found:
+
+
 ```
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the skill?"
@@ -156,7 +158,9 @@ Show:
 
 ## Error Handling
 
+
 If skill already exists:
+
 ```
 Use AskUserQuestion:
   Question: "Skill already exists. What would you like to do?"

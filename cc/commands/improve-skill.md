@@ -33,6 +33,8 @@ Use TodoWrite to track progress:
 ### Phase 1: Analysis
 
 Load the improvement-workflow skill:
+
+
 ```
 Use Skill tool to load cc:improvement-workflow
 ```
@@ -164,7 +166,9 @@ If moving content from SKILL.md to references/:
 
 ### Creating Missing Directories
 
+
 If examples/ or scripts/ needed:
+
 ```bash
 mkdir -p [skill-path]/examples
 mkdir -p [skill-path]/scripts

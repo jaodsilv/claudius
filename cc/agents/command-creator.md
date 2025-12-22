@@ -87,6 +87,7 @@ Plan the command structure:
 Create the command file with:
 
 1. **YAML frontmatter**
+
    ```yaml
    ---
    description: Brief description for /help

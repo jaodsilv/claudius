@@ -35,6 +35,8 @@ Use TodoWrite to track progress:
 3. Check if output-style already exists
 
 If plugin not found:
+
+
 ```
 Use AskUserQuestion:
   Question: "No plugin found. Where should I create the output-style?"
@@ -82,7 +84,9 @@ Options:
 
 ### Step 3: Create Directory
 
+
 If output-styles/ directory doesn't exist:
+
 ```bash
 mkdir -p [plugin_path]/output-styles
 ```
@@ -151,7 +155,9 @@ Show:
 
 ## Error Handling
 
+
 If output-style already exists:
+
 ```
 Use AskUserQuestion:
   Question: "Output-style already exists. What would you like to do?"
