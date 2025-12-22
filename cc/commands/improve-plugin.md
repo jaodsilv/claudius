@@ -1,7 +1,7 @@
 ---
 description: Comprehensive plugin-wide improvement with multi-component analysis
 argument-hint: <plugin-path> [--focus "<aspect>"]
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
 
 # Improve Plugin Workflow
@@ -149,7 +149,7 @@ Options:
 
 Mark todo: Present improvement roadmap - Complete
 
-### Phase 6: Apply Improvements
+### Phase 6: Select Specific Improvements
 
 For each selected severity level:
 
@@ -161,26 +161,57 @@ For each selected severity level:
    multiSelect: true
    Options: [List improvements]
    ```
-3. Apply approved changes
-4. Update TodoWrite progress
 
-For plugin-wide changes (naming, structure):
-- Apply systematically across all affected files
-- Validate each change
+### Phase 7: Plan Changes
 
-Mark todo: Apply selected improvements - In Progress/Complete
+Use Task tool with @cc:change-planner agent:
 
-### Phase 7: Validation
+```
+Plan changes for plugin: [plugin_path]
 
-1. Re-scan plugin structure
-2. Verify all components still valid
-3. Check cross-references work
-4. Validate naming consistency
-5. Test README accuracy
+Selected improvements:
+[List of all selected improvements across severity levels]
+
+For plugin-wide changes:
+- Group by file
+- Order by dependency
+- Identify cross-component impacts
+
+Return a structured change plan.
+```
+
+Mark todo: Plan changes - Complete
+
+### Phase 8: Apply Improvements
+
+Use Task tool with @cc:component-writer agent:
+
+```
+Apply change plan to plugin: [plugin_path]
+
+Change plan:
+[Change plan from Phase 7]
+
+Apply each change in order.
+Report success/failure for each step.
+```
+
+Update TodoWrite progress.
+
+Mark todo: Apply selected improvements - Complete
+
+### Phase 9: Validation
+
+1. Review the application report from component-writer
+2. Re-scan plugin structure
+3. Verify all components still valid
+4. Check cross-references work
+5. Validate naming consistency
+6. Test README accuracy
 
 Mark todo: Validate final state - Complete
 
-### Phase 8: Summary
+### Phase 10: Summary
 
 Present comprehensive report:
 

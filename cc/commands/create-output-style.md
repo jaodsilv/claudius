@@ -1,7 +1,7 @@
 ---
 description: Create a new output-style with formatting guidance
 argument-hint: <style-name> [--plugin <plugin-path>]
-allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
 
 # Create Output-Style Workflow
@@ -19,6 +19,14 @@ Parse:
 If style_name not provided, ask user to specify.
 
 ## Execution
+
+Use TodoWrite to track progress:
+- [ ] Step 1: Validate context
+- [ ] Step 2: Gather requirements
+- [ ] Step 3: Create directory
+- [ ] Step 4: Design output-style
+- [ ] Step 5: Write output-style file
+- [ ] Step 6: Validate result
 
 ### Step 1: Validate Context
 
@@ -79,34 +87,58 @@ If output-styles/ directory doesn't exist:
 mkdir -p [plugin_path]/output-styles
 ```
 
-### Step 4: Create Output-Style
+### Step 4: Design Output-Style
+
+Mark todo: Step 3 complete, Step 4 in progress.
 
 Use Task tool with @cc:output-style-creator agent:
 
 ```
-Create output-style: [style_name]
+Design output-style: [style_name]
 Plugin path: [plugin_path]
 Purpose: [answer from purpose question]
 Tone: [answer from tone question]
 Format elements: [answers from format question]
 
-Generate output-style file with:
+Generate output-style content with:
 1. YAML frontmatter (name, description)
 2. Formatting rules section
 3. Tone guidelines section
 4. Example output section
 
-Write the output-style file to [plugin_path]/output-styles/[style_name].md
+Return the complete content for writing.
+Do NOT write the file - return content only.
 ```
 
-### Step 5: Validate
+### Step 5: Write Output-Style File
 
-1. Read the created output-style file
-2. Verify frontmatter is valid YAML
-3. Check description is present
-4. Verify all sections are included
+Mark todo: Step 4 complete, Step 5 in progress.
 
-### Step 6: Present Results
+Use Task tool with @cc:component-writer agent:
+
+```
+Write output-style file:
+- Path: [plugin_path]/output-styles/[style_name].md
+- Content: [content from Step 4]
+
+Validate syntax after writing.
+Report success/failure.
+```
+
+### Step 6: Validate
+
+Mark todo: Step 5 complete, Step 6 in progress.
+
+1. Review the application report from component-writer
+2. If write failed, report error to user
+3. Read the created output-style file to verify
+4. Verify frontmatter is valid YAML
+5. Check description is present
+6. Verify all sections are included
+
+Mark todo: Step 6 complete.
+
+### Step 7: Present Results
 
 Show:
 1. Output-style file location

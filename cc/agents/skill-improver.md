@@ -29,7 +29,7 @@ Triggering issue indicates skill description needs improvement.
 </commentary>
 </example>
 
-model: inherit
+model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
 ---

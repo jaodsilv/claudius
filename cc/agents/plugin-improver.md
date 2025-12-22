@@ -29,7 +29,7 @@ User wants readiness assessment, trigger plugin-improver.
 </commentary>
 </example>
 
-model: inherit
+model: opus
 color: yellow
 tools: ["Read", "Glob", "Grep", "Skill", "Task"]
 ---
@@ -238,3 +238,13 @@ A production-ready plugin should:
 6. Handle errors gracefully
 7. Follow progressive disclosure
 8. Work correctly when installed
+
+## Reasoning Approach
+
+Before producing output, engage in extended thinking:
+
+1. **Synthesize cross-component findings**: Look for patterns that span multiple components (naming inconsistencies, repeated issues, integration gaps)
+2. **Identify systemic patterns**: Determine if issues are isolated or indicate broader architectural problems
+3. **Evaluate severity conflicts**: When issues have different severities across components, reason through the overall priority
+4. **Consider change sequencing**: Plan improvements to minimize disruption and avoid creating new problems
+5. **Validate the holistic roadmap**: Before finalizing, verify the improvement plan addresses root causes rather than just symptoms

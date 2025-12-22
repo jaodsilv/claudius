@@ -1,7 +1,7 @@
 ---
 description: Create a new skill with progressive disclosure structure
 argument-hint: <skill-name> [--plugin <plugin-path>]
-allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
 ---
 
 # Create Skill Workflow
@@ -19,6 +19,14 @@ Parse:
 If skill_name not provided, ask user to specify.
 
 ## Execution
+
+Use TodoWrite to track progress:
+- [ ] Step 1: Validate context
+- [ ] Step 2: Gather requirements
+- [ ] Step 3: Create directory structure
+- [ ] Step 4: Design skill content
+- [ ] Step 5: Write skill files
+- [ ] Step 6: Validate result
 
 ### Step 1: Validate Context
 
@@ -78,12 +86,14 @@ mkdir -p [plugin_path]/skills/[skill_name]/examples
 mkdir -p [plugin_path]/skills/[skill_name]/scripts
 ```
 
-### Step 4: Create Skill
+### Step 4: Design Skill Content
+
+Mark todo: Step 3 complete, Step 4 in progress.
 
 Use Task tool with @cc:skill-creator agent:
 
 ```
-Create skill: [skill_name]
+Design skill: [skill_name]
 Plugin path: [plugin_path]
 Domain: [answer from domain question]
 Resources needed: [answer from resources question]
@@ -92,21 +102,47 @@ Trigger phrases: [user-provided triggers]
 Follow plugin-dev skill-development skill for structure.
 Use progressive disclosure: lean SKILL.md (<2000 words), details in references/.
 
-Create:
+Return content for:
 1. SKILL.md with frontmatter and core content
 2. Reference files if domain requires detailed documentation
 3. Example files if practical demonstrations needed
+
+Do NOT write files - return content only.
 ```
 
-### Step 5: Validate
+### Step 5: Write Skill Files
 
-1. Read the created SKILL.md
-2. Verify frontmatter has name, description, version
-3. Check description uses third-person
-4. Verify word count is appropriate
-5. Check all referenced files exist
+Mark todo: Step 4 complete, Step 5 in progress.
 
-### Step 6: Present Results
+Use Task tool with @cc:component-writer agent:
+
+```
+Write skill files:
+- Skill path: [plugin_path]/skills/[skill_name]
+- Files to write: [list from Step 4]
+
+For each file:
+1. Write content
+2. Validate structure
+
+Report success/failure for each file.
+```
+
+### Step 6: Validate
+
+Mark todo: Step 5 complete, Step 6 in progress.
+
+1. Review the application report from component-writer
+2. If any writes failed, report errors to user
+3. Read the created SKILL.md to verify
+4. Verify frontmatter has name, description, version
+5. Check description uses third-person
+6. Verify word count is appropriate
+7. Check all referenced files exist
+
+Mark todo: Step 6 complete.
+
+### Step 7: Present Results
 
 Show:
 1. Skill directory location
@@ -133,6 +169,7 @@ Use AskUserQuestion:
 ```
 
 If creation fails:
+- Review component-writer's report
 - Report specific error
 - Clean up partial files
 - Suggest manual creation steps

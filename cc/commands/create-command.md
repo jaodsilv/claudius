@@ -1,7 +1,7 @@
 ---
 description: Create a new slash command with best practices guidance
 argument-hint: <command-name> [--plugin <plugin-path>]
-allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
 
 # Create Command Workflow
@@ -19,6 +19,13 @@ Parse:
 If command_name not provided, ask user to specify.
 
 ## Execution
+
+Use TodoWrite to track progress:
+- [ ] Step 1: Validate context
+- [ ] Step 2: Gather requirements
+- [ ] Step 3: Design command
+- [ ] Step 4: Write command file
+- [ ] Step 5: Validate result
 
 ### Step 1: Validate Context
 
@@ -72,29 +79,52 @@ Options:
 - Named parameters (--flag value)
 ```
 
-### Step 3: Create Command
+### Step 3: Design Command
+
+Mark todo: Step 2 complete, Step 3 in progress.
 
 Use Task tool with @cc:command-creator agent:
 
 ```
-Create command: [command_name]
+Design command: [command_name]
 Plugin path: [plugin_path]
 Purpose: [answer from purpose question]
 Tools needed: [answer from tools question]
 Argument style: [answer from arguments question]
 
-Generate command following plugin-dev command-development skill.
-Write the command file to [plugin_path]/commands/[command_name].md
+Generate command content following plugin-dev command-development skill.
+Return the complete command content (frontmatter + body) for writing.
+Do NOT write the file - return content only.
 ```
 
-### Step 4: Validate
+### Step 4: Write Command File
 
-1. Read the created command file
-2. Verify frontmatter is valid
-3. Check description is under 60 characters
-4. Verify allowed-tools matches requested tools
+Mark todo: Step 3 complete, Step 4 in progress.
 
-### Step 5: Present Results
+Use Task tool with @cc:component-writer agent:
+
+```
+Write new command file:
+- Path: [plugin_path]/commands/[command_name].md
+- Content: [content from Step 3]
+
+Validate syntax after writing.
+Report success/failure.
+```
+
+### Step 5: Validate
+
+Mark todo: Step 4 complete, Step 5 in progress.
+
+1. Review the application report from component-writer
+2. If write failed, report error to user
+3. Read the created command file to verify
+4. Check description is under 60 characters
+5. Verify allowed-tools matches requested tools
+
+Mark todo: Step 5 complete.
+
+### Step 6: Present Results
 
 Show:
 1. Command file location
@@ -119,5 +149,6 @@ Use AskUserQuestion:
 ```
 
 If creation fails:
+- Review component-writer's report
 - Report specific error
 - Suggest manual creation steps

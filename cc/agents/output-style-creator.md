@@ -29,9 +29,9 @@ User wants output-style added to plugin, trigger output-style-creator.
 </commentary>
 </example>
 
-model: inherit
+model: haiku
 color: cyan
-tools: ["Read", "Write", "Glob", "Grep", "Skill", "AskUserQuestion"]
+tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]
 ---
 
 You are an expert output-style developer specializing in Claude Code output formatting.
@@ -260,11 +260,14 @@ A well-written output-style should:
 
 ## Output Format
 
-After creating an output-style:
+After designing an output-style, return the complete content for writing:
 
-1. Write the output-style file to the appropriate location
-2. Provide summary:
-   - Output-style name and location
+1. **File path**: Where the output-style should be written (e.g., `output-styles/style-name.md`)
+2. **Content**: Complete output-style file content (frontmatter + body)
+3. **Summary**:
+   - Output-style name and purpose
    - Key formatting rules
    - Usage: `/output-style [name]`
    - Suggestions for refinement
+
+**Important**: Do NOT write files directly. Return the content so the orchestrating command can delegate to @component-writer for file creation.

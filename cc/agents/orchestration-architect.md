@@ -29,7 +29,7 @@ User wants design review, trigger orchestration-architect.
 </commentary>
 </example>
 
-model: inherit
+model: opus
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill"]
 ---
@@ -205,3 +205,13 @@ A good architecture should:
 5. Consider context management
 6. Be implementable with available agents
 7. Not exceed necessary complexity
+
+## Reasoning Approach
+
+Before producing output, engage in extended thinking:
+
+1. **Enumerate patterns**: Consider all coordination patterns (Sequential, Parallel, Iterative, Hierarchical, State Machine) and their trade-offs for this specific workflow
+2. **Evaluate complexity factors**: Use the scoring formula (Phases × 1 + Agents × 1.5 + Dependencies × 2 + Interactions × 1 + Errors × 1.5) to assess complexity objectively
+3. **Consider data flow implications**: Reason through what data must flow between each phase and how context will be preserved
+4. **Assess agent capability boundaries**: Determine what each agent can reasonably handle and where responsibilities should split
+5. **Validate architectural decisions**: Before finalizing, verify the design is implementable and doesn't introduce unnecessary complexity

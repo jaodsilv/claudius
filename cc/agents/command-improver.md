@@ -29,7 +29,7 @@ User has command issues, analyze with command-improver.
 </commentary>
 </example>
 
-model: inherit
+model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
 ---

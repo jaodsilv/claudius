@@ -1,7 +1,7 @@
 ---
 description: Analyze and improve an existing skill interactively
 argument-hint: <skill-path> [--focus "<aspect>"]
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
 ---
 
 # Improve Skill Workflow
@@ -21,6 +21,14 @@ If skill_path not provided, ask user to specify.
 If focus provided, prioritize analysis of that aspect.
 
 ## Execution
+
+Use TodoWrite to track progress:
+- [ ] Phase 1: Analyze skill
+- [ ] Phase 2: Present suggestions
+- [ ] Phase 3: Select improvements
+- [ ] Phase 4: Plan changes
+- [ ] Phase 5: Apply changes
+- [ ] Phase 6: Validate results
 
 ### Phase 1: Analysis
 
@@ -84,26 +92,63 @@ multiSelect: true
 Options: [List improvements in category]
 ```
 
-### Phase 4: Apply Changes
+### Phase 4: Plan Changes
 
-For each approved improvement:
+Mark todo: Phase 3 complete, Phase 4 in progress.
 
-1. Show the specific change
-2. For content moves (SKILL.md → references/):
-   - Create new reference file
-   - Remove content from SKILL.md
-   - Add reference pointer in SKILL.md
-3. Apply changes using appropriate tools
-4. Confirm each change was applied
+Use Task tool with @cc:change-planner agent:
 
-### Phase 5: Validation
+```
+Plan changes for skill: [skill_path]
 
-1. Re-read the modified skill
-2. Validate SKILL.md structure
-3. Verify all referenced files exist
-4. Check SKILL.md word count
-5. Present summary of all changes made
-6. Suggest testing trigger phrases
+Selected improvements:
+[List of selected improvements with their details]
+
+For content reorganization (SKILL.md → references/):
+- Plan new file creation first
+- Then plan content removal from SKILL.md
+- Then plan reference pointer addition
+
+Return a structured change plan with:
+- Ordered steps
+- Before/after content for each change
+- Validation criteria
+```
+
+### Phase 5: Apply Changes
+
+Mark todo: Phase 4 complete, Phase 5 in progress.
+
+Use Task tool with @cc:component-writer agent:
+
+```
+Apply change plan to skill: [skill_path]
+
+Change plan:
+[Change plan from Phase 4]
+
+For content reorganization:
+- Create new reference files first
+- Then modify SKILL.md
+
+Apply each change in order.
+Validate syntax after each edit.
+Report success/failure for each step.
+```
+
+### Phase 6: Validation
+
+Mark todo: Phase 5 complete, Phase 6 in progress.
+
+1. Review the application report from component-writer
+2. If any failures occurred, report them to user
+3. Re-read the modified skill to verify
+4. Validate SKILL.md structure and word count
+5. Verify all referenced files exist
+6. Present summary of all changes made
+7. Suggest testing trigger phrases
+
+Mark todo: Phase 6 complete.
 
 ## Special Operations
 
@@ -144,7 +189,13 @@ If analysis fails:
   3. Check body uses imperative form
   4. Review word count (1500-2000 ideal)
 
-If edit fails:
-- Report specific error (file locked, invalid syntax, etc.)
-- Show the intended change for manual application
-- Offer to retry or skip to next improvement
+If change planning fails:
+- Report error from change-planner agent
+- Show the selected improvements for manual review
+- Suggest manual ordering if needed
+
+If application fails:
+- Review component-writer's application report
+- Report which changes succeeded and which failed
+- For failed changes, show intended modification for manual application
+- Offer to retry failed changes or proceed with successful ones

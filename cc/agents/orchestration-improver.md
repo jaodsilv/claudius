@@ -29,7 +29,7 @@ Workflow has problems, use orchestration-improver to diagnose.
 </commentary>
 </example>
 
-model: inherit
+model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
 ---

@@ -1,7 +1,7 @@
 ---
 description: Analyze and improve an existing orchestration interactively
 argument-hint: <orchestration-path> [--focus "<aspect>"]
-allowed-tools: ["Read", "Write", "Edit", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
 
 # Improve Orchestration Workflow
@@ -119,31 +119,56 @@ Options: [List improvements in category]
 
 Mark todo: Present suggestions - Complete
 
-### Phase 5: Apply Changes
+### Phase 5: Plan Changes
 
-For each approved improvement:
+Use Task tool with @cc:change-planner agent:
 
-1. Show the specific change (before/after)
-2. Apply change using Edit tool
-3. If creating new files, use Write tool
-4. Confirm each change
+```
+Plan changes for orchestration: [orchestration_path]
+
+Selected improvements:
+[List of selected improvements with their details]
+
+For architectural changes:
+- Plan new file creation before reference updates
+- Order changes to avoid breaking references
+
+Return a structured change plan.
+```
+
+Mark todo: Plan changes - Complete
+
+### Phase 6: Apply Changes
+
+Use Task tool with @cc:component-writer agent:
+
+```
+Apply change plan to: [orchestration_path]
+
+Change plan:
+[Change plan from Phase 5]
 
 For architectural changes that require restructuring:
-1. Confirm with user before major changes
-2. Create new files first
-3. Update references
-4. Remove old files if replaced
+- Create new files first
+- Update references
+- Report each step
+
+Apply each change in order.
+Report success/failure for each step.
+```
 
 Mark todo: Apply improvements - Complete
 
-### Phase 6: Validation
+### Phase 7: Validation
 
-1. Re-read the modified orchestration
-2. Verify all referenced agents exist
-3. Check phase transitions are valid
-4. Validate error handling
-5. Check compact points present
-6. Present summary of all changes
+1. Review the application report from component-writer
+2. If any failures occurred, report them to user
+3. Re-read the modified orchestration
+4. Verify all referenced agents exist
+5. Check phase transitions are valid
+6. Validate error handling
+7. Check compact points present
+8. Present summary of all changes
 
 Mark todo: Validate changes - Complete
 
@@ -182,6 +207,11 @@ If analysis fails:
 - Report partial results
 - Suggest manual review
 
-If edit fails:
-- Report error
-- Offer retry or skip
+If change planning fails:
+- Report error from change-planner agent
+- Show the selected improvements for manual review
+
+If application fails:
+- Review component-writer's application report
+- Report which changes succeeded and which failed
+- Offer to retry failed changes or proceed with successful ones

@@ -29,7 +29,7 @@ Style issue indicates need for improvement analysis.
 </commentary>
 </example>
 
-model: inherit
+model: haiku
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]
 ---

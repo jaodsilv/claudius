@@ -29,7 +29,7 @@ User describes multi-phase workflow, trigger orchestration-creator.
 </commentary>
 </example>
 
-model: inherit
+model: opus
 color: green
 tools: ["Read", "Write", "Glob", "Grep", "Skill", "Task"]
 ---
