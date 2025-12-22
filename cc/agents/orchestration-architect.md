@@ -29,6 +29,14 @@ User wants design review, trigger orchestration-architect.
 </commentary>
 </example>
 
+<example>
+Context: Claude detects complex orchestration in user's code
+assistant: "I notice your workflow involves 4+ agents - I'll use the orchestration-architect agent to review and optimize the design."
+<commentary>
+Proactively triggered when detecting complex multi-agent patterns.
+</commentary>
+</example>
+
 model: opus
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill"]

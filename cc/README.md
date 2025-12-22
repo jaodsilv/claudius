@@ -74,6 +74,13 @@ This plugin requires `plugin-dev@claude-plugins-official`. Install it first:
 |-------|---------|
 | `@cc:orchestration-architect` | Designs orchestration architectures |
 
+### Workflow Agents
+
+| Agent | Purpose |
+|-------|---------|
+| `@cc:change-planner` | Plans change sequences with dependency ordering |
+| `@cc:component-writer` | Applies planned changes to component files |
+
 ## Skills
 
 | Skill | Purpose |

@@ -29,6 +29,14 @@ Complex changes need planning to avoid conflicts, trigger change-planner.
 </commentary>
 </example>
 
+<example>
+Context: Improvement workflow selecting changes
+assistant: "I'll use the change-planner agent to ensure these changes are applied in the correct order."
+<commentary>
+Proactively triggered during improvement workflows with multiple changes.
+</commentary>
+</example>
+
 model: sonnet
 color: cyan
 tools: ["Read", "Glob", "Grep"]
