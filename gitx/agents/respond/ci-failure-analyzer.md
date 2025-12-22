@@ -11,7 +11,7 @@ description: >
   assistant: "I'll launch the ci-failure-analyzer agent to identify the root causes
   of the CI failures."
   </example>
-model: sonnet
+model: haiku
 tools: Bash(gh:*), Bash(git:*), Read, WebFetch
 color: red
 ---

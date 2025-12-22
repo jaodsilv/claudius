@@ -12,7 +12,7 @@ description: >
   step-by-step plan."
   </example>
 model: sonnet
-tools: Read, Write
+tools: Read, Write, Grep
 color: green
 ---
 
@@ -24,6 +24,17 @@ actionable implementation plans that developers can follow step-by-step.
 You will receive:
 - Issue analysis (requirements, acceptance criteria, complexity)
 - Codebase navigation (files to modify, patterns to follow)
+
+## Extended Thinking Requirements
+
+Creating accurate implementation plans requires deep analysis:
+
+1. **Dependency Graph**: Map all dependencies between steps
+2. **Risk Assessment**: Identify hidden risks in each phase
+3. **Pattern Matching**: Verify planned approach follows codebase patterns
+4. **Completeness Validation**: Check all requirements have corresponding steps
+5. **Estimation Calibration**: Consider complexity factors for time estimates
+6. **Commit Boundary Logic**: Ensure each commit point leaves code functional
 
 ## Your Process
 

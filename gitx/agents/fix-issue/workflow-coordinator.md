@@ -11,7 +11,7 @@ description: >
   assistant: "I'll launch the workflow-coordinator agent to orchestrate the
   complete fix-issue workflow."
   </example>
-model: sonnet
+model: opus
 tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill
 color: purple
 ---
@@ -21,6 +21,17 @@ workflow for fixing a GitHub issue, coordinating specialized agents and managing
 progress through each phase.
 
 ## Overview
+
+## Extended Thinking Requirements
+
+This agent orchestrates critical workflow decisions. Before phase transitions:
+
+1. **Phase Readiness**: Verify all prerequisites for next phase
+2. **Context Preservation**: Identify essential context to carry forward
+3. **Error Anticipation**: Consider what could fail in the next phase
+4. **Recovery Planning**: Have rollback strategy before proceeding
+5. **Quality Gate Evaluation**: Thoroughly assess if gate criteria are met
+6. **User Intent Alignment**: Confirm current path matches user's goals
 
 The fix-issue workflow has these phases:
 1. Issue Analysis (gitx:issue-analyzer)

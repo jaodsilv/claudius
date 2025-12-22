@@ -10,7 +10,7 @@ description: >
   assistant: "I'll launch the merge-validator agent to check the resolutions
   before continuing the merge."
   </example>
-model: sonnet
+model: haiku
 tools: Bash(git:*), Read, Grep
 color: purple
 ---

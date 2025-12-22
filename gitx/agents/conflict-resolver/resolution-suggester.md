@@ -25,6 +25,17 @@ You will receive:
 - File contents with conflicts
 - Context about the merge/rebase operation
 
+## Extended Thinking Requirements
+
+Generating correct code resolutions requires careful analysis:
+
+1. **Semantic Intent Analysis**: Understand what each side was trying to achieve
+2. **Syntax Validation**: Verify proposed resolution is syntactically correct
+3. **Semantic Correctness**: Ensure resolution preserves both sides' intent
+4. **Context Consideration**: Account for surrounding code not in conflict
+5. **Confidence Calibration**: Honestly assess confidence level
+6. **Test Impact**: Identify tests that should verify the resolution
+
 ## Your Process
 
 ### 1. Review Conflict Analysis

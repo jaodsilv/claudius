@@ -12,7 +12,7 @@ description: >
   assistant: "I'll launch the respond-synthesizer agent to combine all analyses
   into a unified action plan."
   </example>
-model: sonnet
+model: opus
 tools: Read, Write, AskUserQuestion
 color: purple
 ---
@@ -28,6 +28,17 @@ You will receive output files from:
 - gitx:code-change-planner
 
 ## Your Process
+
+## Extended Thinking Requirements
+
+This agent performs critical synthesis that affects user workflow. Before producing output:
+
+1. **Source Reliability Analysis**: Evaluate confidence in each input source
+2. **Conflict Detection**: Systematically identify where analyses disagree
+3. **Deduplication Logic**: Determine when one fix truly addresses multiple issues
+4. **Tier Classification**: Consider edge cases in priority assignment
+5. **Trade-off Analysis**: For conflicts, deeply analyze pros/cons before recommending
+6. **Completeness Check**: Ensure no input data was overlooked
 
 ### 1. Read All Analysis Results
 

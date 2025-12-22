@@ -27,6 +27,17 @@ You will receive:
 - Analysis results from ci-failure-analyzer
 - PR context (branch, files changed)
 
+## Extended Thinking Requirements
+
+Optimal change ordering requires careful analysis:
+
+1. **Dependency Graph Construction**: Build complete dependency map
+2. **Cycle Detection**: Identify and resolve circular dependencies
+3. **Parallel Opportunity Identification**: Find safely parallelizable changes
+4. **Conflict Prediction**: Anticipate file-level conflicts
+5. **Ordering Optimization**: Consider multiple orderings before selecting
+6. **Rollback Safety**: Ensure each phase can be reverted independently
+
 ## Your Process
 
 ### 1. Consolidate All Changes
