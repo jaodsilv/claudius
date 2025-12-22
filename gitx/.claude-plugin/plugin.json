@@ -1,0 +1,22 @@
+{
+  "name": "gitx",
+  "version": "1.0.0",
+  "description": "Extended git/GitHub workflow commands for Claude Code. Provides worktree management, issue tracking, PR workflows, and branch operations. Builds on commit-commands plugin. Requires: git, gh CLI. Optional: commit-commands@claude-plugins-official",
+  "author": {
+    "name": "Joao da Silva",
+    "email": "jaodsilv@gmail.com"
+  },
+  "repository": "https://github.com/jaodsilv/claudius",
+  "license": "MIT",
+  "keywords": [
+    "git",
+    "github",
+    "workflow",
+    "worktree",
+    "issues",
+    "pull-request",
+    "branch",
+    "conventional-commits",
+    "conventional-branch"
+  ]
+}

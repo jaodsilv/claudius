@@ -1,0 +1,96 @@
+---
+description: Get next issue by priority (critical > high > medium > low)
+argument-hint: "[-d detailed]"
+allowed-tools: Bash(gh issue:*), AskUserQuestion
+---
+
+# Next Issue
+
+Find the next issue to work on based on priority labels.
+
+## Parse Arguments
+
+From $ARGUMENTS, extract:
+- `-d` or `--include-description`: Include full issue details
+
+## Priority Order
+
+Search for open issues in this priority order:
+1. `priority:critical`
+2. `priority:high`
+3. `priority:medium`
+4. `priority:low`
+5. No priority label (lowest)
+
+## Search for Issues
+
+Search issues in priority order until one is found:
+
+```bash
+# Critical priority
+gh issue list --label "priority:critical" --state open --limit 1 --json number,title,labels,assignees
+
+# If none found, try high
+gh issue list --label "priority:high" --state open --limit 1 --json number,title,labels,assignees
+
+# If none found, try medium
+gh issue list --label "priority:medium" --state open --limit 1 --json number,title,labels,assignees
+
+# If none found, try low
+gh issue list --label "priority:low" --state open --limit 1 --json number,title,labels,assignees
+
+# If none found, get any open issue without priority
+gh issue list --state open --limit 5 --json number,title,labels,assignees
+```
+
+## Handle Multiple Same-Priority Issues
+
+If multiple issues have the same priority:
+
+Use AskUserQuestion:
+- "Found multiple <priority> priority issues. Which one should be worked on?"
+- Show list with numbers and titles
+- Options: List each issue, plus "Show me more options"
+
+## Output Format
+
+### Basic mode (no -d flag):
+
+Just output the issue number:
+```
+#123
+```
+
+### Detailed mode (-d flag):
+
+Fetch full details:
+- `gh issue view <number> --json number,title,body,labels,assignees,milestone,state`
+
+Output formatted details:
+```
+Issue #123: <title>
+Priority: <priority-label>
+Assignees: <assignees or "unassigned">
+Milestone: <milestone or "none">
+Labels: <other labels>
+
+Description:
+<first 500 chars of body>
+```
+
+## Suggest Next Steps
+
+After showing the issue:
+```
+To start working on this issue:
+  /gitx:fix-issue 123
+
+Or create a worktree manually:
+  /gitx:worktree 123
+```
+
+## Error Handling
+
+- No open issues found: Report "No open issues found in this repository"
+- gh CLI not authenticated: Report authentication needed
+- No priority labels in repo: Suggest creating priority labels or show all open issues
