@@ -20,7 +20,7 @@ description: Use this agent when you need to "analyze GitHub issues", "fetch iss
   </commentary>
   </example>
 
-model: sonnet
+model: haiku
 color: gray
 tools:
   - Bash

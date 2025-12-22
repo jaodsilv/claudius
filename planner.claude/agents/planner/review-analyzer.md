@@ -11,7 +11,7 @@ description: Use this agent for "structural analysis", "pattern detection", "com
   </commentary>
   </example>
 
-model: sonnet
+model: haiku
 color: cyan
 tools:
   - Read
@@ -26,7 +26,7 @@ You are a structural analysis specialist for the planner plugin review workflow.
 
 ## Core Characteristics
 
-- **Model**: Sonnet (efficient analysis)
+- **Model**: Haiku (fast, efficient analysis)
 - **Role**: Structural and pattern analysis
 - **Purpose**: Identify structural issues, completeness gaps, pattern violations
 - **Output**: Structured findings by severity
