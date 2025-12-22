@@ -7,8 +7,32 @@ Strategic planning plugin for Claude Code with project roadmapping, issue priori
 1. **Roadmap Generation** - Create project roadmaps with phases, milestones, and dependencies
 2. **Issue Prioritization** - Prioritize GitHub issues using RICE, MoSCoW, or custom frameworks
 3. **Requirements Gathering** - Structured requirements discovery with optional brainstorm-pro integration
-4. **Interactive Reviews** - Review plans, roadmaps, architecture, and requirements with suggestions
+4. **Multi-Agent Reviews** - Review plans, roadmaps, architecture, and requirements with orchestrated multi-agent analysis
 5. **Ultrathink Ideation** - Multi-agent deep ideation using Opus extended thinking
+
+## Multi-Agent Orchestration
+
+All review commands use the **Diverge-Challenge-Synthesize** pattern for higher quality output:
+
+```
+Thorough Mode (default):
+┌─────────────────────────────────────────────────────┐
+│  Phase 1: Parallel Analysis                         │
+│  ├── Domain Reviewer (goal alignment, quality)      │
+│  └── Structural Analyzer (patterns, completeness)   │
+│                                                     │
+│  Phase 2: Adversarial Challenge                     │
+│  └── Review Challenger (devil's advocate)           │
+│                                                     │
+│  Phase 3: Synthesis                                 │
+│  └── Review Synthesizer (merge, prioritize)         │
+│                                                     │
+│  Phase 4: Interactive Discussion                    │
+│  └── Present findings, gather user feedback         │
+└─────────────────────────────────────────────────────┘
+```
+
+Use `--mode quick` to skip orchestration and use a single agent (faster, lower cost).
 
 ## Commands
 
@@ -17,12 +41,21 @@ Strategic planning plugin for Claude Code with project roadmapping, issue priori
 | `/planner:roadmap <goal>` | Create a project roadmap for achieving a goal |
 | `/planner:prioritize <issues\|ALL>` | Prioritize GitHub issues using configurable frameworks |
 | `/planner:gather-requirements <goal>` | Gather requirements, optionally leveraging brainstorm-pro |
-| `/planner:review-plan <path>` | Review a plan file with interactive suggestions |
-| `/planner:review-roadmap <goal>` | Review a roadmap against a goal |
-| `/planner:review-prioritization <goal>` | Review prioritization alignment |
-| `/planner:review-architecture <goal>` | Review architecture decisions |
-| `/planner:review-requirements <goal>` | Review requirements quality interactively |
+| `/planner:review-plan <path>` | Review a plan file with multi-agent analysis |
+| `/planner:review-roadmap <goal>` | Review a roadmap against a goal with orchestrated analysis |
+| `/planner:review-prioritization <goal>` | Review prioritization alignment with adversarial challenge |
+| `/planner:review-architecture <goal>` | Review architecture decisions with multi-perspective analysis |
+| `/planner:review-requirements <goal>` | Review requirements quality with gap analysis |
 | `/planner:ideas <goal>` | Multi-agent Ultrathink ideation session |
+
+### Review Command Options
+
+All review commands support:
+
+```
+--mode quick      # Single agent (faster, lower cost)
+--mode thorough   # Multi-agent orchestration (default)
+```
 
 ## Ultrathink Ideation
 

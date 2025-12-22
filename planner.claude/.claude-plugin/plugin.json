@@ -1,7 +1,7 @@
 {
   "name": "planner",
-  "version": "1.0.0",
-  "description": "Strategic planning plugin for project roadmapping, issue prioritization, and deep ideation. Features Ultrathink multi-agent ideation with Opus extended thinking, deep GitHub integration via gh CLI, and optional brainstorm-pro integration for enhanced requirements gathering.",
+  "version": "1.1.0",
+  "description": "Strategic planning plugin for project roadmapping, issue prioritization, and deep ideation. Features multi-agent orchestrated reviews with adversarial analysis, Ultrathink ideation with Opus extended thinking, deep GitHub integration via gh CLI, and optional brainstorm-pro integration.",
   "author": {
     "name": "Joao da Silva",
     "url": "https://github.com/jaodsilv"
@@ -15,8 +15,11 @@
     "github",
     "project-management",
     "multi-agent",
+    "multi-agent-orchestration",
+    "adversarial-analysis",
     "requirements",
     "architecture",
+    "review",
     "RICE",
     "MoSCoW"
   ],
