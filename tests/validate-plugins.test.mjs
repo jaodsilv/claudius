@@ -193,6 +193,16 @@ describe('validate-plugins', () => {
       const call = mockFs.existsSync.mock.calls[0][0];
       expect(call.replace(/\\/g, '/')).toBe('root/plugins/feature/commands/cmd.md');
     });
+    it('should collect skipped refs when options provided', () => {
+      const plugin = { skills: ['data/external/file.md'] };
+      const mockFs = { existsSync: vi.fn().mockReturnValue(false) };
+      const skippedRefs = [];
+
+      const errors = validateFileReferences(plugin, 'test.json', mockFs, { skippedRefs });
+      expect(errors).toHaveLength(0);
+      expect(skippedRefs).toHaveLength(1);
+      expect(skippedRefs[0]).toEqual({ file: 'test.json', ref: 'data/external/file.md' });
+    });
   });
 
   describe('checkDuplicate', () => {
@@ -397,6 +407,26 @@ describe('validate-plugins', () => {
       expect(result.errors[0]).toContain('(unnamed)');
       expect(result.errors[0]).toContain("missing 'source' field");
       expect(result.errors[1]).toContain("references non-existent plugin");
+    });
+    it('should return error when plugin file contains invalid JSON', async () => {
+      const mockFs = {
+        readFileSync: vi.fn().mockImplementation((path) => {
+          if (path.includes('marketplace')) {
+            return JSON.stringify({
+              plugins: [{ name: 'test-plugin', source: './test-plugin' }]
+            });
+          }
+          return '{ invalid json }';
+        }),
+        existsSync: vi.fn().mockReturnValue(true)
+      };
+
+      const result = await validatePlugins({
+        fs: mockFs
+      });
+
+      expect(result.errors.length).toBeGreaterThan(0);
+      expect(result.errors.some(e => e.includes('invalid JSON'))).toBe(true);
     });
   });
 
