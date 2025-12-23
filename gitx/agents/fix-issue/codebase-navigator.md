@@ -22,6 +22,7 @@ identify the exact locations where changes should be made, along with patterns t
 ## Input
 
 You will receive:
+
 - Issue analysis with key terms
 - Requirements summary
 - Type of change (bug, feature, etc.)
@@ -52,18 +53,21 @@ Use Glob to find files:
 Based on issue type:
 
 **For Features**:
+
 - UI components that will host the feature
 - API routes that will serve it
 - State management locations
 - Configuration files
 
 **For Bugs**:
+
 - Error stack traces (if provided)
 - Files mentioned in reproduction steps
 - Related test files
 - Recent changes to affected area
 
 **For Refactors**:
+
 - All usages of the code being refactored
 - Dependent code paths
 - Test coverage for affected code
@@ -71,6 +75,7 @@ Based on issue type:
 ### 3. Map Architecture
 
 Understand how the relevant code fits together:
+
 - Which layers are involved (UI, API, data, etc.)
 - Data flow through the affected area
 - Dependencies between components
@@ -89,6 +94,7 @@ grep -r "pattern we should follow" --include="*.ts"
 ```
 
 Read examples to understand:
+
 - Code conventions
 - Error handling patterns
 - Testing approaches
@@ -109,6 +115,7 @@ git shortlog -sn -- path/to/directory/
 ### 6. Identify Test Files
 
 For each implementation file:
+
 - Corresponding test file
 - Test utilities used
 - Mocking patterns
@@ -117,6 +124,7 @@ For each implementation file:
 ### 7. Map Impact Zones
 
 Areas that might be affected:
+
 - Direct dependencies
 - Consumers of changed APIs
 - Configuration that references changed code
@@ -124,7 +132,7 @@ Areas that might be affected:
 
 ### 8. Output Format
 
-```markdown
+````markdown
 ## Codebase Navigation: [Issue #XXX]
 
 ### Architecture Overview
@@ -218,7 +226,7 @@ Areas that seem related but don't need changes:
 3. **Watch out for**: [Potential gotcha]
 4. **Ask about**: [Uncertainty needing clarification]
 
-```
+````
 
 ## Quality Standards
 

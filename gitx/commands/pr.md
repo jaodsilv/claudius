@@ -11,11 +11,13 @@ Create a GitHub pull request for the current branch using multi-agent orchestrat
 ## Gather Context
 
 Get repository and branch state:
+
 - Current branch: !`git branch --show-current`
 - Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
 - Remote status: !`git status -sb`
 
 Check for existing PR:
+
 - `gh pr view --json number,url,state 2>/dev/null`
 
 ## Pre-flight Checks
@@ -23,6 +25,7 @@ Check for existing PR:
 ### Check branch is not main
 
 If on main/master:
+
 - Report: "Cannot create PR from main branch"
 - Suggest: Create a feature branch first
 - Exit
@@ -30,6 +33,7 @@ If on main/master:
 ### Check for existing PR
 
 If PR already exists:
+
 - Report: "PR #<number> already exists for this branch"
 - Show: URL and state
 - Suggest: Use `/gitx:respond` to address feedback
@@ -43,9 +47,11 @@ git log origin/<branch>..HEAD 2>/dev/null
 ```
 
 If local is ahead of remote:
+
 - Push first: `git push -u origin <branch>`
 
 If remote doesn't exist:
+
 - Create and push: `git push -u origin <branch>`
 
 ## Phase 1: Change Analysis
@@ -69,6 +75,7 @@ Task (gitx:change-analyzer):
 Wait for analysis to complete.
 
 Store key results:
+
 - Change type (feature, fix, etc.)
 - Related issues
 - Files summary
@@ -146,6 +153,7 @@ Options:
 ```
 
 Handle user response:
+
 - **Create**: Proceed to creation
 - **Edit title**: Prompt for new title, update
 - **Edit description**: Show editor-friendly format, update
@@ -157,27 +165,22 @@ Handle user response:
 Create the pull request:
 
 ```bash
-gh pr create \
-  --title "[title]" \
-  --body "$(cat <<'EOF'
-[generated body]
-EOF
-)" \
-  --assignee @me \
-  --base [main-branch]
+gh pr create --title "[title]" --body "[generated body]" --assignee @me --base [main-branch]
 ```
 
 If draft requested:
+
 - Add `--draft` flag
 
 If labels suggested:
+
 - Add `--label [labels]` flag
 
 ## Report Results
 
 Show:
 
-```markdown
+````markdown
 ## Pull Request Created
 
 ### Details
@@ -205,42 +208,48 @@ If you need to:
 
 [Summary of review-preparer output]
 
-```
+````
 
 ## Fallback Mode
 
 If orchestration fails:
-```
 
+```text
 AskUserQuestion:
   Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
   Options:
   1. "Yes, create basic PR" - Use simple title/body
   2. "Retry orchestration" - Try again
   3. "Cancel" - Abort
-
 ```
 
 For basic mode:
 
 ### Basic Title Generation
+
 Based on:
+
 - Branch name convention: `feature/issue-123-description` → "feat: description (#123)"
 - First commit message if it follows conventional commits
 - Ask user if unclear
 
 ### Basic Body Generation
+
 ```markdown
 ## Summary
+
 <Brief description based on commits>
 
 ## Changes
+
 <List of changed files>
 
 ## Related Issues
+
 <Issue references from commits/branch>
 
 ## Test Plan
+
 - [ ] Tests added/updated
 - [ ] Manual testing completed
 ```

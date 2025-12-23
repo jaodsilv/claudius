@@ -11,16 +11,19 @@ Merge a base branch into the current branch to incorporate upstream changes. Use
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
+
 - `--base <branch>`: Branch to merge from (default: main)
 
 ## Gather Context
 
 Get repository state:
+
 - Current branch: !`git branch --show-current`
 - Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
 - Working tree status: !`git status --porcelain`
 
 Determine base branch:
+
 - If --base provided: Use that branch
 - Otherwise: Use main branch
 
@@ -29,6 +32,7 @@ Determine base branch:
 ### Check for clean working tree
 
 If uncommitted changes exist:
+
 - Use AskUserQuestion: "You have uncommitted changes. Stash them before merging?"
 - Options: "Stash and continue", "Cancel"
 - If stash: `git stash push -m "gitx: pre-merge stash"`
@@ -36,9 +40,11 @@ If uncommitted changes exist:
 ## Fetch Latest
 
 Update remote tracking:
+
 - `git fetch origin <base-branch>`
 
 Show incoming changes:
+
 - `git log --oneline HEAD..origin/<base-branch> | head -10`
 
 ## Confirmation
@@ -46,11 +52,13 @@ Show incoming changes:
 Use AskUserQuestion:
 
 Show:
+
 - Current branch: <name>
 - Merging from: origin/<base>
 - Incoming commits: <count>
 
 Options:
+
 1. "Proceed with merge" - continue
 2. "View changes in detail" - show diff summary
 3. "Cancel" - abort
@@ -58,6 +66,7 @@ Options:
 ## Execute Merge
 
 Run the merge:
+
 - `git merge origin/<base-branch>`
 
 ## Handle Conflicts (Orchestrated)
@@ -119,6 +128,7 @@ AskUserQuestion:
 ```
 
 Apply chosen resolution:
+
 - **Suggested**: Apply the resolution code from suggester
 - **Keep ours**: `git checkout --ours <file>`
 - **Keep theirs**: `git checkout --theirs <file>`
@@ -146,6 +156,7 @@ Task (gitx:merge-validator):
 ```
 
 If validation fails:
+
 - Report issues
 - Allow fixing before continuing
 
@@ -155,19 +166,18 @@ When all conflicts resolved and validated:
 
 ```bash
 # Create merge commit
-git commit -m "$(cat <<'EOF'
-Merge [base-branch] into [current-branch]
+git commit -m "Merge [base-branch] into [current-branch]
 
 Resolved conflicts:
 - [file1.ts]: [resolution summary]
 - [file2.ts]: [resolution summary]
-EOF
-)"
+"
 ```
 
 ## Pop Stash
 
 If changes were stashed:
+
 - `git stash pop`
 - Report any conflicts with stash
 
@@ -210,6 +220,7 @@ AskUserQuestion:
 ```
 
 For manual mode, show:
+
 - Conflicting files with markers
 - Standard instructions for manual resolution
 - Commands to continue: `git add <file>`, `git commit`

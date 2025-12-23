@@ -11,6 +11,7 @@ Respond to pull request review comments or CI failures using multi-agent orchest
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
+
 - `--ci`: Flag indicating this is a CI failure response (not a review)
 - Response context (optional): Additional context about what to address
 
@@ -31,10 +32,12 @@ TodoWrite:
 Mark "Gather PR context" as in_progress.
 
 Get PR information:
+
 - Current branch: !`git branch --show-current`
 - PR for branch: !`gh pr view --json number,url,title,state,reviewDecision 2>/dev/null`
 
 If no PR found:
+
 - Report: "No PR found for current branch"
 - Suggest: Use `/gitx:pr` to create one
 - Exit
@@ -124,10 +127,12 @@ Task (gitx:respond-synthesizer):
 ```
 
 The synthesizer will use AskUserQuestion to get user approval:
+
 - "How would you like to address PR feedback?"
 - Options based on findings
 
 Handle user response:
+
 - **Address all**: Proceed with full plan
 - **Critical only**: Filter to Tier 1 issues
 - **Critical + Important**: Filter to Tier 1 + 2
@@ -155,14 +160,17 @@ For each approved change in planned order:
 ### For CI Failures
 
 **Test failures:**
+
 - Apply fix from analysis
 - Run tests locally to verify: `npm run test -- --testPathPattern="affected"`
 
 **Lint/Format failures:**
+
 - Apply auto-fix: `npm run lint -- --fix`
 - Verify locally
 
 **Build failures:**
+
 - Apply fix from analysis
 - Verify build: `npm run build`
 
@@ -192,15 +200,12 @@ After all changes applied:
 git add -A
 
 # Create commit with appropriate message
-git commit -m "$(cat <<'EOF'
-fix: address PR feedback
+git commit -m "fix: address PR feedback
 
 - [Summary of review comments addressed]
 - [Summary of CI fixes applied]
 
-[Details of changes]
-EOF
-)"
+[Details of changes]"
 
 # Push changes
 git push
@@ -247,6 +252,7 @@ After responding:
 If orchestration fails or user prefers manual mode:
 
 Use AskUserQuestion:
+
 - "Orchestrated analysis encountered an issue. Continue manually?"
 - Options:
   1. "Yes, proceed manually" - Use original non-orchestrated flow

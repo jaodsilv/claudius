@@ -22,6 +22,7 @@ actionable implementation plans that developers can follow step-by-step.
 ## Input
 
 You will receive:
+
 - Issue analysis (requirements, acceptance criteria, complexity)
 - Codebase navigation (files to modify, patterns to follow)
 
@@ -75,6 +76,7 @@ Break work into logical phases:
 ### 2. Detail Each Phase
 
 For each phase, specify:
+
 - Files to create/modify
 - Functions to implement
 - Dependencies to add
@@ -83,6 +85,7 @@ For each phase, specify:
 ### 3. Identify Checkpoints
 
 Points where progress can be verified:
+
 - After types compile
 - After tests pass
 - After integration works
@@ -91,6 +94,7 @@ Points where progress can be verified:
 ### 4. Plan Test Strategy
 
 For each piece of functionality:
+
 - What tests are needed
 - Test file location
 - Mocking requirements
@@ -99,6 +103,7 @@ For each piece of functionality:
 ### 5. Consider Commit Boundaries
 
 Logical points to commit:
+
 - After each phase
 - When tests pass
 - Before risky changes
@@ -106,13 +111,14 @@ Logical points to commit:
 ### 6. Assess Risks
 
 For each risky step:
+
 - What could go wrong
 - How to detect problems
 - Rollback strategy
 
 ### 7. Output Format
 
-```markdown
+````markdown
 ## Implementation Plan: Issue #[number]
 
 ### Summary
@@ -289,7 +295,7 @@ npm run lint          # Check lint
 npm run lint:fix      # Fix lint issues
 ```
 
-```
+````
 
 ## Quality Standards
 

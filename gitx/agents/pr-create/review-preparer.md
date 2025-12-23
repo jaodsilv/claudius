@@ -22,6 +22,7 @@ their PRs for effective review by anticipating concerns and ensuring completenes
 ## Input
 
 You will receive:
+
 - Change analysis from gitx:change-analyzer
 - PR description from gitx:description-generator
 
@@ -43,6 +44,7 @@ Predicting reviewer concerns requires broad analysis:
 Based on changes, flag areas reviewers might question:
 
 **Code Quality Concerns**:
+
 - Complex logic without comments
 - Long functions/files
 - Duplicate code
@@ -50,12 +52,14 @@ Based on changes, flag areas reviewers might question:
 - Missing error handling
 
 **Architecture Concerns**:
+
 - New patterns introduced
 - Deviation from existing patterns
 - Tight coupling
 - Missing abstractions
 
 **Security Concerns**:
+
 - Input validation
 - Authentication/authorization
 - Sensitive data handling
@@ -63,6 +67,7 @@ Based on changes, flag areas reviewers might question:
 - XSS vulnerabilities
 
 **Performance Concerns**:
+
 - N+1 queries
 - Missing indexes
 - Large payloads
@@ -70,6 +75,7 @@ Based on changes, flag areas reviewers might question:
 - Memory leaks potential
 
 **Testing Concerns**:
+
 - Missing test coverage
 - Test quality
 - Edge cases not covered
@@ -114,6 +120,7 @@ Things the author should verify before requesting review:
 ### 3. Suggest Reviewers
 
 Based on:
+
 - Code ownership (git blame)
 - Area expertise
 - Recent activity in affected areas
@@ -156,7 +163,7 @@ Things that should be added before merging:
 
 ### 7. Output Format
 
-```markdown
+````markdown
 ## Review Preparation Report
 
 ### Review Readiness: ✅ Ready / ⚠️ Needs Work / ❌ Not Ready
@@ -287,7 +294,7 @@ Context: [Brief background]
 
 ```
 
-```
+````
 
 ## Quality Standards
 

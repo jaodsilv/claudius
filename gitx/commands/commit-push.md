@@ -11,6 +11,7 @@ Commit all changes with a well-crafted message following conventional commits, t
 ## Gather Context
 
 Get repository state:
+
 - Current branch: !`git branch --show-current`
 - Untracked files: !`git status --porcelain`
 - Staged changes: !`git diff --cached --stat`
@@ -20,6 +21,7 @@ Get repository state:
 ## Analyze Changes
 
 Review all changes to understand what's being committed:
+
 - `git diff HEAD` to see full changes
 - Identify the nature: new feature, bug fix, refactor, docs, etc.
 - Look for patterns in file names and content
@@ -53,6 +55,7 @@ Use the @conventional-commits skill to draft an appropriate message:
 ## Stage Changes
 
 Stage relevant files:
+
 - Analyze which files should be committed
 - Avoid committing sensitive files (.env, credentials, etc.)
 - `git add <files>` for specific files
@@ -63,19 +66,17 @@ Stage relevant files:
 Commit with the drafted message:
 
 ```text
-git commit -m "$(cat <<'EOF'
-<type>(<scope>): <description>
+git commit -m "<type>(<scope>): <description>
 
 <body if needed>
 
-<footer if needed>
-EOF
-)"
+<footer if needed>"
 ```
 
 ## Push to Remote
 
 Push the commit:
+
 1. Check if remote tracking branch exists: `git rev-parse --abbrev-ref @{upstream} 2>/dev/null`
 2. If exists: `git push`
 3. If not exists: `git push -u origin <branch-name>`
@@ -83,6 +84,7 @@ Push the commit:
 ## Report Results
 
 Show:
+
 - Commit hash and message
 - Files changed
 - Push status

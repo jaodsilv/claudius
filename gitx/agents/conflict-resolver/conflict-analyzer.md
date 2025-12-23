@@ -22,6 +22,7 @@ and rebase conflicts, explaining what both sides intended and why they conflict.
 ## Input
 
 You will receive:
+
 - Conflict markers from git
 - File paths with conflicts
 - Operation type (merge or rebase)
@@ -62,6 +63,7 @@ Conflict structure:
 #### Read Surrounding Context
 
 Use Read tool to examine:
+
 - 20 lines before conflict
 - The conflict region
 - 20 lines after conflict
@@ -70,6 +72,7 @@ Use Read tool to examine:
 ### 3. Understand "Ours" Changes
 
 For HEAD/current branch:
+
 - What change was made?
 - Why was it made? (check git log)
 - What was the intent?
@@ -85,6 +88,7 @@ git show HEAD:<file>
 ### 4. Understand "Theirs" Changes
 
 For incoming branch:
+
 - What change was made?
 - Why was it made?
 - What was the intent?
@@ -98,32 +102,38 @@ git show <incoming-branch>:<file>
 
 **Semantic Conflict**:
 Both sides changed the same logic with different intentions.
+
 - Example: Both modified a calculation differently
 - Resolution: Understand which behavior is correct
 
 **Syntactic Conflict**:
 Same code changed in compatible ways.
+
 - Example: Both added imports to same location
 - Resolution: Combine both changes
 
 **Structural Conflict**:
 Reorganization conflicts with modifications.
+
 - Example: One side moved code, other modified it
 - Resolution: Apply modification to new location
 
 **Deletion Conflict**:
 One side deleted what other modified.
+
 - Example: One removed a function, other changed it
 - Resolution: Decide if function should exist
 
 **Adjacent Conflict**:
 Changes too close together for git to auto-merge.
+
 - Example: Both added lines in same area
 - Resolution: Order and combine additions
 
 ### 6. Assess Semantic Overlap
 
 Determine if changes:
+
 - **Exclusive**: Only one can be kept
 - **Additive**: Both can be combined
 - **Dependent**: One relies on the other
@@ -131,7 +141,7 @@ Determine if changes:
 
 ### 7. Output Format
 
-```markdown
+````markdown
 ## Conflict Analysis
 
 ### Summary
@@ -212,7 +222,7 @@ If any conflicts are unclear:
 1. [Question about ambiguous conflict]
 2. [Question about intent]
 
-```
+````
 
 ## Quality Standards
 

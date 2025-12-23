@@ -12,6 +12,7 @@ plans implementation, creates a worktree, and delegates to a development workflo
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
+
 - Issue number (required): Can be "123", "#123", or issue URL
 
 ## Initialize Progress Tracking
@@ -49,6 +50,7 @@ Task (gitx:issue-analyzer):
 Wait for analysis to complete.
 
 Store key results:
+
 - Issue type
 - Complexity
 - Key terms
@@ -78,6 +80,7 @@ Task (gitx:codebase-navigator):
 Wait for exploration to complete.
 
 Store key results:
+
 - Files to modify
 - Patterns identified
 - Test requirements
@@ -150,6 +153,7 @@ Options:
 ```
 
 Handle user response:
+
 - **Approve**: Mark complete, proceed to Phase 5
 - **Modify**: Gather feedback, update plan, re-present
 - **Add detail**: Ask which section, expand, re-present
@@ -164,6 +168,7 @@ Mark "Set up worktree" as in_progress.
 ### Determine Branch Name
 
 Based on issue type from analysis:
+
 - Bug → `bugfix/issue-[number]-[slug]`
 - Feature → `feature/issue-[number]-[slug]`
 - Enhancement → `feature/issue-[number]-[slug]`
@@ -306,6 +311,7 @@ git diff --stat
 ```
 
 If no changes:
+
 - Report: "No changes detected in worktree"
 - Suggest: "Make changes and run `/gitx:commit-push` when ready"
 - Exit
@@ -327,7 +333,7 @@ Fixes #[number]
 
 ### Suggest PR Creation
 
-```markdown
+````markdown
 ## Development Complete for Issue #[number]
 
 ### Changes Made
@@ -339,26 +345,25 @@ Fixes #[number]
 ### Next Steps
 
 To create a pull request:
-```
 
+```text
 /gitx:pr
-
 ```
 
 Or to comment on the issue with progress:
-```
 
+```text
 /gitx:comment-to-issue [number] "Implementation complete, PR forthcoming"
-
 ```
 
-```
+````
 
 Mark "Commit and prepare for PR" as completed.
 
 ## Context Throughout
 
 Maintain issue context throughout the workflow:
+
 - Reference issue number in commits: "Fixes #[number]"
 - Keep issue requirements visible during development
 - Track progress against acceptance criteria

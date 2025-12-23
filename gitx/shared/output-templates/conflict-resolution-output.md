@@ -4,7 +4,7 @@ This template defines the structure for output from the conflict resolution agen
 
 ## Conflict Analysis Output
 
-```markdown
+````markdown
 ## Conflict Analysis
 
 ### Summary
@@ -43,11 +43,11 @@ This template defines the structure for output from the conflict resolution agen
 
 **Recommended Strategy**: Keep ours | Keep theirs | Combine | Rewrite
 
-```
+````
 
 ## Resolution Suggestions Output
 
-```markdown
+````markdown
 ## Resolution Suggestions
 
 ### Summary
@@ -75,11 +75,11 @@ This template defines the structure for output from the conflict resolution agen
 npm run test -- --testPathPattern="affected"
 ```
 
-```
+````
 
 ## Validation Output
 
-```markdown
+````markdown
 ## Validation Report
 
 ### Summary
@@ -97,4 +97,4 @@ git add <files>
 git rebase --continue  # or git commit
 ```
 
-```
+````

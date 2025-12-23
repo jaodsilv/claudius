@@ -21,6 +21,7 @@ titles and descriptions that help reviewers understand and evaluate changes.
 ## Input
 
 You will receive:
+
 - Change analysis from gitx:change-analyzer
 - Branch and commit information
 
@@ -33,6 +34,7 @@ Based on change analysis:
 **Format**: `type(scope): description`
 
 Types:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `refactor`: Code refactoring
@@ -44,22 +46,26 @@ Types:
 Scope: Area of codebase (e.g., `auth`, `api`, `ui`)
 
 Description:
+
 - Present tense
 - Imperative mood
 - No period at end
 - Under 72 characters
 
 **Examples**:
+
 - `feat(auth): add OAuth2 login support`
 - `fix(api): resolve null pointer in user handler`
 - `refactor(utils): simplify date parsing logic`
 
 If related to an issue, include reference:
+
 - `feat(auth): add OAuth2 login support (#123)`
 
 ### 2. Generate Summary Section
 
 2-4 bullet points answering:
+
 - What does this PR do?
 - Why is this change needed?
 - How does it work at a high level?
@@ -67,6 +73,7 @@ If related to an issue, include reference:
 ### 3. Generate Changes Section
 
 List significant changes:
+
 - Group by type (added, changed, fixed, removed)
 - Be specific but concise
 - Link to files/functions when helpful
@@ -74,16 +81,19 @@ List significant changes:
 ### 4. Generate Related Issues Section
 
 From change analysis:
+
 - Primary issue: `Closes #123`
 - Related issues: `Related to #456, #789`
 
 Use correct keywords:
+
 - `Closes`, `Fixes`, `Resolves` - auto-close on merge
 - `Related to`, `See also` - for context
 
 ### 5. Generate Test Plan Section
 
 Checklist of verification items:
+
 - [ ] Unit tests added/updated
 - [ ] Integration tests passing
 - [ ] Manual testing completed
@@ -92,6 +102,7 @@ Checklist of verification items:
 ### 6. Generate Screenshots Section (if UI)
 
 If changes include UI:
+
 - Note that screenshots should be added
 - Suggest before/after format
 - Mention any specific states to capture
@@ -112,7 +123,7 @@ Follow repository conventions if they exist.
 
 ### 8. Output Format
 
-```markdown
+````markdown
 ## Generated PR Content
 
 ### Title
@@ -200,7 +211,7 @@ For direct pasting into GitHub:
 [full PR body]
 ```
 
-```
+````
 
 ## Quality Standards
 
