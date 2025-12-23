@@ -21,6 +21,7 @@ resolutions for git conflicts based on analysis of both sides' intentions.
 ## Input
 
 You will receive:
+
 - Conflict analysis from gitx:conflict-analyzer
 - File contents with conflicts
 - Context about the merge/rebase operation
@@ -41,6 +42,7 @@ Generating correct code resolutions requires careful analysis:
 ### 1. Review Conflict Analysis
 
 For each conflict, understand:
+
 - What both sides intended
 - The semantic overlap type
 - Recommended strategy from analysis
@@ -52,6 +54,7 @@ For each conflict, produce the actual resolved code:
 #### For Exclusive Conflicts (One Side Wins)
 
 Choose the correct side based on:
+
 - Which is more recent and intentional
 - Which aligns with project direction
 - Which has test coverage
@@ -59,6 +62,7 @@ Choose the correct side based on:
 #### For Additive Conflicts (Combine Both)
 
 Merge both changes:
+
 - Preserve intent of both sides
 - Order logically
 - Avoid duplication
@@ -66,6 +70,7 @@ Merge both changes:
 #### For Structural Conflicts
 
 Apply changes to correct location:
+
 - Find where moved code now lives
 - Apply modifications there
 - Clean up any artifacts
@@ -73,6 +78,7 @@ Apply changes to correct location:
 #### For Contradictory Conflicts
 
 Propose new solution that:
+
 - Satisfies both intents
 - May need new approach
 - Requires human review
@@ -80,6 +86,7 @@ Propose new solution that:
 ### 3. Verify Resolution Validity
 
 For each suggested resolution:
+
 - Check syntax is valid
 - Verify imports are present
 - Ensure types match
@@ -88,6 +95,7 @@ For each suggested resolution:
 ### 4. Rate Confidence
 
 For each resolution:
+
 - **High**: Clear correct choice, tested pattern
 - **Medium**: Reasonable solution, some assumptions
 - **Low**: Best guess, needs human review
@@ -95,13 +103,14 @@ For each resolution:
 ### 5. Identify Tests to Run
 
 What tests verify the resolution:
+
 - Unit tests for affected functions
 - Integration tests for affected flows
 - Manual verification steps
 
 ### 6. Output Format
 
-```markdown
+````markdown
 ## Conflict Resolution Suggestions
 
 ### Summary
@@ -125,13 +134,13 @@ What tests verify the resolution:
 =======
 [theirs code]
 >>>>>>> branch-name
-```text
+```
 
 **Suggested Resolution**:
 
 ```typescript
 [resolved code - ready to paste]
-```text
+```
 
 **Reasoning**:
 [Why this resolution is correct]
@@ -145,13 +154,13 @@ What tests verify the resolution:
 ```bash
 # Run after applying this resolution
 npm run test -- --testPathPattern="affected.test.ts"
-```text
+```
 
 **Alternative** (if applicable):
 
 ```typescript
 [alternative resolution if there's another valid approach]
-```text
+```
 
 *Choose this if: [condition for alternative]*
 
@@ -165,13 +174,13 @@ npm run test -- --testPathPattern="affected.test.ts"
 
 ```typescript
 [conflict code]
-```text
+```
 
 **Suggested Resolution**:
 
 ```typescript
 [resolved code]
-```text
+```
 
 **⚠️ Human Review Required**:
 This resolution makes assumptions about:
@@ -209,7 +218,7 @@ npm run test
 
 # 4. Check for runtime issues
 npm run dev  # and manually verify
-```text
+```
 
 ### Unresolvable Conflicts
 
@@ -231,16 +240,16 @@ Lines X-Y: Replace conflict with:
 
 ```typescript
 [ready to paste code]
-```text
+```
 
 **File: path/to/file2.ts**
 Lines X-Y: Replace conflict with:
 
 ```typescript
 [ready to paste code]
-```text
+```
 
-```text
+````
 
 ## Quality Standards
 

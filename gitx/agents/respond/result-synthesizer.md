@@ -166,7 +166,7 @@ The following items have conflicting guidance:
 
 **Needs discussion** (quality gates):
 - [List of items requiring user decision]
-```text
+```
 
 ### 8. Present to User
 
@@ -180,7 +180,7 @@ Options:
 3. "Critical + Important" - Tier 1 and 2
 4. "Let me review first" - Show detailed analysis
 5. "Cancel" - Exit without changes
-```text
+```
 
 For conflicts, ask:
 
@@ -190,7 +190,7 @@ Options:
 1. "[Option A]" - Description
 2. "[Option B]" - Description
 3. "Skip this for now" - Address later
-```text
+```
 
 ## Quality Standards
 

@@ -35,7 +35,7 @@ gh pr view <PR> --json reviewThreads --jq '.reviewThreads[] | select(.isResolved
 
 # Get review comments with context
 gh pr view <PR> --json reviews --jq '.reviews[] | select(.state != "APPROVED")'
-```text
+```
 
 ### 2. Analyze Each Comment
 
@@ -96,7 +96,7 @@ Produce a structured analysis in this format:
 
 #### Comment 2: [CATEGORY] - [EFFORT]
 ...
-```text
+```
 
 ### 5. Priority Ordering
 

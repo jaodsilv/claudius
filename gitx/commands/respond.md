@@ -24,7 +24,7 @@ TodoWrite:
 4. [ ] Synthesize and present plan
 5. [ ] Execute approved changes
 6. [ ] Commit and push
-```text
+```
 
 ## Phase 1: Gather Context
 
@@ -55,7 +55,7 @@ REVIEW_COUNT=$(gh pr view --json reviewThreads --jq '[.reviewThreads[] | select(
 
 # Count CI failures
 CI_FAILURES=$(gh pr checks --json conclusion --jq '[.[] | select(.conclusion == "failure")] | length')
-```text
+```
 
 ### Launch Analyzers
 
@@ -67,7 +67,7 @@ Task (gitx:review-comment-analyzer):
   Analyze all unresolved review comments.
   Categorize by type and effort.
   Output to respond-analysis.md
-```text
+```
 
 **If CI failures exist AND --ci flag (OR both exist)**:
 
@@ -77,7 +77,7 @@ Task (gitx:ci-failure-analyzer):
   Analyze all CI check failures.
   Identify root causes and fixes.
   Output to respond-analysis.md
-```text
+```
 
 **If both exist, launch BOTH in parallel**.
 
@@ -105,7 +105,7 @@ Task (gitx:code-change-planner):
   - Change sequence
   - Dependencies
   - Quality gates
-```text
+```
 
 Mark "Plan changes" as completed.
 
@@ -121,7 +121,7 @@ Task (gitx:respond-synthesizer):
   Create tiered action plan.
   Detect conflicts.
   Present to user for approval.
-```text
+```
 
 The synthesizer will use AskUserQuestion to get user approval:
 - "How would you like to address PR feedback?"
@@ -177,7 +177,7 @@ AskUserQuestion:
   1. "Apply this change"
   2. "Skip this change"
   3. "Modify approach"
-```text
+```
 
 Mark "Execute approved changes" as completed.
 
@@ -204,7 +204,7 @@ EOF
 
 # Push changes
 git push
-```text
+```
 
 Mark "Commit and push" as completed.
 
@@ -231,7 +231,7 @@ After responding:
 - Wait for CI to complete
 - Wait for reviewer re-review
 - Use `/gitx:respond` again if new feedback
-```text
+```
 
 ## Error Handling
 

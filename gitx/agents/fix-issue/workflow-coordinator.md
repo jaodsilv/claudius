@@ -57,7 +57,7 @@ TodoWrite:
 5. [ ] Set up worktree
 6. [ ] Complete development
 7. [ ] Commit and prepare for PR
-```text
+```
 
 ### Phase 1: Issue Analysis
 
@@ -72,7 +72,7 @@ Task (gitx:issue-analyzer):
   - Acceptance criteria
   - Complexity estimate
   - Key terms for code search
-```text
+```
 
 Wait for results, then mark complete.
 
@@ -92,7 +92,7 @@ Task (gitx:codebase-navigator):
   - Patterns to follow
   - Test files needed
   - Impact assessment
-```text
+```
 
 Wait for results, then mark complete.
 
@@ -114,7 +114,7 @@ Task (gitx:implementation-planner):
 
   Requirements:
   [acceptance criteria]
-```text
+```
 
 Wait for results, then mark complete.
 
@@ -132,7 +132,7 @@ AskUserQuestion:
   2. "Modify the plan" - Adjust before proceeding
   3. "Add more detail" - Expand specific sections
   4. "Cancel" - Abort the workflow
-```text
+```
 
 Handle user response:
 - **Approve**: Mark complete, proceed to Phase 5
@@ -157,7 +157,7 @@ MAIN=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@
 
 # Create worktree as sibling
 git worktree add -b [branch-name] ../[directory-name] $MAIN
-```text
+```
 
 Mark complete.
 
@@ -175,7 +175,7 @@ AskUserQuestion:
   2. "TDD workflow" - Test-driven development
   3. "Manual development" - Work independently with plan
   4. "Skip development" - I'll develop later
-```text
+```
 
 Based on choice:
 
@@ -186,7 +186,7 @@ Skill: feature-dev:feature-dev
   Context: Issue #[number] - [title]
   Implementation Plan: [plan summary]
   Relevant Files: [file list]
-```text
+```
 
 **TDD Workflow**:
 
@@ -195,7 +195,7 @@ Skill: tdd-workflows:tdd-orchestrator
   Context: Issue #[number] - [title]
   Test Requirements: [from plan]
   Implementation: [from plan]
-```text
+```
 
 **Manual Development**:
 Provide the implementation plan and stay available for questions.
@@ -214,7 +214,7 @@ After development completes:
 ```bash
 git status
 git diff --stat
-```text
+```
 
 1. **If changes exist**, suggest commit:
 
@@ -223,13 +223,13 @@ The following changes were made:
 [change summary]
 
 Would you like to commit and push these changes?
-```text
+```
 
 1. **Commit using gitx:commit-push**:
 
 ```text
 Skill: gitx:commit-push
-```text
+```
 
 1. **Suggest PR creation**:
 
@@ -240,7 +240,7 @@ To create a pull request:
   /gitx:pr
 
 Or continue working on additional changes.
-```text
+```
 
 Mark all todos complete.
 
@@ -277,7 +277,7 @@ Essential context for Issue #[number]:
 - Worktree: [path]
 - Phase: [current phase]
 - Key files: [list]
-```text
+```
 
 ## Output Format
 
@@ -300,7 +300,7 @@ Throughout the workflow, provide status updates:
 
 ### Next Steps
 [What happens next]
-```text
+```
 
 ## Quality Standards
 

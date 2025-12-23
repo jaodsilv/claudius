@@ -36,7 +36,7 @@ git diff --name-only --diff-filter=U
 
 # Get conflict details
 git diff --check
-```text
+```
 
 ### 2. Analyze Each Conflict
 
@@ -47,7 +47,7 @@ For each conflicting file:
 ```bash
 # Show conflict markers
 git diff --no-color <file>
-```text
+```
 
 Conflict structure:
 
@@ -57,7 +57,7 @@ Conflict structure:
 =======
 [Incoming changes]
 >>>>>>> branch-name (theirs)
-```text
+```
 
 #### Read Surrounding Context
 
@@ -80,7 +80,7 @@ git log --oneline -5 -- <file>
 
 # See the specific change
 git show HEAD:<file>
-```text
+```
 
 ### 4. Understand "Theirs" Changes
 
@@ -92,7 +92,7 @@ For incoming branch:
 ```bash
 # See incoming changes
 git show <incoming-branch>:<file>
-```text
+```
 
 ### 5. Classify Conflict Type
 
@@ -148,7 +148,7 @@ Determine if changes:
 **Ours (HEAD)**:
 ```typescript
 [code from current branch]
-```text
+```
 
 - **What changed**: [Description]
 - **Intent**: [Why this change was made]
@@ -158,7 +158,7 @@ Determine if changes:
 
 ```typescript
 [code from incoming branch]
-```text
+```
 
 - **What changed**: [Description]
 - **Intent**: [Why this change was made]
@@ -212,7 +212,7 @@ If any conflicts are unclear:
 1. [Question about ambiguous conflict]
 2. [Question about intent]
 
-```text
+```
 
 ## Quality Standards
 

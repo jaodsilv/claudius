@@ -38,14 +38,14 @@ grep -r "exactTerm" --include="*.ts" --include="*.tsx"
 
 # Search for related patterns
 grep -r "relatedPattern" --include="*.ts"
-```text
+```
 
 Use Glob to find files:
 
 ```text
 **/[keyword]*.ts
 **/*[Feature]*.tsx
-```text
+```
 
 ### 2. Identify Entry Points
 
@@ -86,7 +86,7 @@ grep -r "SimilarFeature" --include="*.ts"
 
 # Find similar patterns
 grep -r "pattern we should follow" --include="*.ts"
-```text
+```
 
 Read examples to understand:
 - Code conventions
@@ -104,7 +104,7 @@ git log --oneline -10 -- path/to/file.ts
 
 # Who knows this code
 git shortlog -sn -- path/to/directory/
-```text
+```
 
 ### 6. Identify Test Files
 
@@ -166,7 +166,7 @@ Areas that might be affected:
 
 ```typescript
 // Example code snippet showing the pattern
-```text
+```
 
 #### Pattern 2: [Pattern Name]
 
@@ -218,7 +218,7 @@ Areas that seem related but don't need changes:
 3. **Watch out for**: [Potential gotcha]
 4. **Ask about**: [Uncertainty needing clarification]
 
-```text
+```
 
 ## Quality Standards
 

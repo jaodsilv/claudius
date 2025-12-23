@@ -32,7 +32,7 @@ claude --plugin-dir /path/to/gitx
 
 # Or install from marketplace (when published)
 claude plugin install gitx
-```text
+```
 
 ## Commands
 
@@ -81,7 +81,7 @@ gitx/agents/
 ├── fix-issue/            # Issue fix orchestration
 ├── pr-create/            # PR creation orchestration
 └── conflict-resolver/    # Shared conflict resolution
-```text
+```
 
 ### Agent Workflows
 
@@ -107,7 +107,7 @@ Handles PR review comments and CI failures:
             ┌──────────────────────┐
             │  result-synthesizer  │ → User Approval
             └──────────────────────┘
-```text
+```
 
 #### Fix-Issue Workflow (4 agents)
 
@@ -131,7 +131,7 @@ Complete issue-to-PR workflow:
 ┌────────────────────────┐
 │  workflow-coordinator  │ → Orchestrate development
 └────────────────────────┘
-```text
+```
 
 #### PR Creation (3 agents)
 
@@ -149,7 +149,7 @@ Complete issue-to-PR workflow:
 └─────────────────────────────────────┘
           ▼
     [USER APPROVAL]
-```text
+```
 
 #### Conflict Resolution (3 agents, shared)
 
@@ -169,7 +169,7 @@ Used by both rebase and merge:
 ┌──────────────────┐
 │  merge-validator │ → Verify resolution
 └──────────────────┘
-```text
+```
 
 ### Quality Features
 
@@ -197,7 +197,7 @@ Creates isolated worktrees for feature development as sibling directories.
 
 # Create worktree with specific branch name
 /gitx:worktree feature/my-feature
-```text
+```
 
 ### `/gitx:remove-worktree`
 
@@ -212,7 +212,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 
 # Force remove and delete remote branch
 /gitx:remove-worktree feature-issue-123 -f -r
-```text
+```
 
 **Flags:**
 - `-f, --force`: Force removal even with uncommitted changes
@@ -229,7 +229,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 
 # Remove only remote branch
 /gitx:remove-branch feature/remote-only -ro
-```text
+```
 
 **Flags:**
 - `-f, --force`: Force delete unmerged branch
@@ -250,7 +250,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 
 # Merge specific branch
 /gitx:merge --base release/v2.0
-```text
+```
 
 **Orchestrated conflict resolution** provides:
 - Analysis of what both sides changed
@@ -267,7 +267,7 @@ Finds the next issue to work on based on priority labels.
 
 # Get issue with full details
 /gitx:next-issue -d
-```text
+```
 
 **Priority order:**
 1. `priority:critical`
@@ -281,7 +281,7 @@ Complete orchestrated workflow for fixing an issue:
 
 ```bash
 /gitx:fix-issue 123
-```text
+```
 
 This command:
 1. **Analyzes** the issue to extract requirements and complexity
@@ -298,7 +298,7 @@ Creates a pull request with orchestrated analysis:
 
 ```bash
 /gitx:pr
-```text
+```
 
 Features:
 - Comprehensive change analysis
@@ -320,7 +320,7 @@ Orchestrated response to PR feedback:
 
 # Provide context for response
 /gitx:respond --ci "The test was flaky, added retry logic"
-```text
+```
 
 Features:
 - Parallel analysis of review comments and CI failures
@@ -338,7 +338,7 @@ Merges a PR and handles cleanup.
 
 # Merge specific PR
 /gitx:merge-pr 123
-```text
+```
 
 Features:
 - Checks mergeable status and CI
@@ -412,7 +412,7 @@ gitx/
 └── skills/
     ├── conventional-commits/
     └── conventional-branch/
-```text
+```
 
 ## Related Plugins
 

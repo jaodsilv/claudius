@@ -109,7 +109,7 @@ Things the author should verify before requesting review:
 - [ ] No obvious N+1 issues
 - [ ] Appropriate caching considered
 - [ ] Large data sets handled
-```text
+```
 
 ### 3. Suggest Reviewers
 
@@ -124,7 +124,7 @@ git shortlog -sn -- path/to/affected/
 
 # Recent contributors to area
 git log --oneline -10 -- path/to/affected/ | cut -d' ' -f1 | xargs git show --format='%an' --no-patch
-```text
+```
 
 ### 4. Highlight Review Focus Areas
 
@@ -287,7 +287,7 @@ Context: [Brief background]
 
 ```
 
-```text
+```
 
 ## Quality Standards
 

@@ -37,7 +37,7 @@ This template defines the structure for output from the fix-issue workflow agent
 ### Key Terms for Code Search
 - `term1`
 - `term2`
-```text
+```
 
 ## Codebase Navigation Output
 
@@ -62,7 +62,7 @@ This template defines the structure for output from the fix-issue workflow agent
 ### Impact Assessment
 - **Direct Impact**: [files]
 - **Potential Impact**: [files]
-```text
+```
 
 ## Implementation Plan Output
 
@@ -92,4 +92,4 @@ This template defines the structure for output from the fix-issue workflow agent
 - [ ] All criteria met
 - [ ] Tests passing
 - [ ] No errors
-```text
+```

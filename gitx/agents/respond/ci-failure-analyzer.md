@@ -35,7 +35,7 @@ gh pr checks <PR> --json name,status,conclusion,detailsUrl
 
 # Filter for failures
 gh pr checks <PR> --json name,status,conclusion,detailsUrl | jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled")]'
-```text
+```
 
 ### 2. Categorize Failures
 
@@ -58,7 +58,7 @@ For each failure:
 ```bash
 # Try to get run logs via GitHub API
 gh run view <run-id> --log-failed
-```text
+```
 
 If logs not accessible via CLI, note the detailsUrl for manual review.
 

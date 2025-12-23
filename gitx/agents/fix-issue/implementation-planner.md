@@ -142,7 +142,7 @@ Before starting:
 interface FeatureConfig {
   // ...
 }
-```text
+```
 
 **Verification**: `npm run typecheck` passes
 
@@ -157,7 +157,7 @@ interface FeatureConfig {
 export const featureConfig = {
   // ...
 };
-```text
+```
 
 **Verification**: Import works in other files
 
@@ -181,7 +181,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
   // 2. Process data
   // 3. Return result
 }
-```text
+```
 
 **Verification**: Unit tests pass
 
@@ -205,7 +205,7 @@ export async function handleFeature(input: FeatureInput): Promise<FeatureOutput>
 ```typescript
 // Add route:
 router.post('/feature', featureHandler);
-```text
+```
 
 **Verification**: API responds correctly
 
@@ -287,9 +287,9 @@ npm run test -- path/to/test.ts  # Single file
 # Quality
 npm run lint          # Check lint
 npm run lint:fix      # Fix lint issues
-```text
+```
 
-```text
+```
 
 ## Quality Standards
 

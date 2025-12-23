@@ -67,7 +67,7 @@ Template:
 
 ### Blockers
 - None
-```text
+```
 
 ## Post Comment
 

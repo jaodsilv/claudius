@@ -22,7 +22,7 @@ enables automated tooling, and integrates with Semantic Versioning.
 [optional body]
 
 [optional footer(s)]
-```text
+```
 
 ## Core Commit Types
 
@@ -42,7 +42,7 @@ enables automated tooling, and integrates with Semantic Versioning.
    fix(api): correct validation error messages
    ```
 
-2. **BREAKING CHANGE** - Breaking API change (correlates with MAJOR in SemVer)
+1. **BREAKING CHANGE** - Breaking API change (correlates with MAJOR in SemVer)
    - Use `!` after type/scope OR footer `BREAKING CHANGE:`
 
    ```text
@@ -123,7 +123,7 @@ Optional component identifier in parentheses:
 feat(parser): add array parsing support
 fix(api): handle null responses
 docs(contributing): update pr guidelines
-```text
+```
 
 ## Description
 
@@ -137,14 +137,14 @@ docs(contributing): update pr guidelines
 ```text
 fix: prevent memory leak in event listeners
 feat: add dark mode toggle
-```text
+```
 
 **Avoid:**
 
 ```text
 fix: Fixed the bug.
 feat: Added new feature.
-```text
+```
 
 ## Body
 
@@ -161,7 +161,7 @@ incoming responses other than from latest request.
 
 Remove timeouts which were used to mitigate the racing issue but are
 obsolete now.
-```text
+```
 
 ## Footers
 
@@ -183,7 +183,7 @@ comprehensive test coverage.
 Refs: #123, #456
 Reviewed-by: Jane Smith
 Closes: #789
-```text
+```
 
 ## Complete Examples
 
@@ -191,7 +191,7 @@ Closes: #789
 
 ```text
 feat: add user profile page
-```text
+```
 
 ### Feature with Scope and Body
 
@@ -201,7 +201,7 @@ feat(dashboard): implement real-time data updates
 Add WebSocket connection for live data streaming.
 Implement automatic reconnection on connection loss.
 Add loading states and error handling.
-```text
+```
 
 ### Bug Fix with Footer
 
@@ -212,7 +212,7 @@ Previously, event listeners were not being properly removed
 when components unmounted, causing memory accumulation.
 
 Closes: #234
-```text
+```
 
 ### Breaking Change (Method 1: Using !)
 
@@ -221,7 +221,7 @@ feat!: redesign configuration API
 
 Replace JSON config with YAML format for better readability
 and comment support.
-```text
+```
 
 ### Breaking Change (Method 2: Using Footer)
 
@@ -230,7 +230,7 @@ chore: update minimum Node version
 
 BREAKING CHANGE: Node 16+ is now required due to use of
 native ES modules and crypto APIs.
-```text
+```
 
 ### Multiple Footers
 
@@ -244,7 +244,7 @@ Refs: #123, #456
 Reviewed-by: Alice Johnson
 Tested-by: Bob Williams
 Closes: #123
-```text
+```
 
 ## Best Practices
 
@@ -285,7 +285,7 @@ If a change touches multiple concerns:
 feat(auth): implement OAuth2 login
 test(auth): add OAuth2 integration tests
 docs(auth): document OAuth2 configuration
-```text
+```
 
 ### Reverting Commits
 
@@ -293,7 +293,7 @@ docs(auth): document OAuth2 configuration
 revert: let us never speak of the noodle incident
 
 Refs: 676104e, a215868
-```text
+```
 
 ### Work in Progress
 
@@ -301,7 +301,7 @@ Use `wip:` type for incomplete work (if needed):
 
 ```text
 wip(feature-x): initial implementation
-```text
+```
 
 Then squash before merging to main.
 

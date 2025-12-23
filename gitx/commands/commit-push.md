@@ -71,7 +71,7 @@ git commit -m "$(cat <<'EOF'
 <footer if needed>
 EOF
 )"
-```text
+```
 
 ## Push to Remote
 

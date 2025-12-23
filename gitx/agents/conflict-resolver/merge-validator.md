@@ -34,7 +34,7 @@ You will receive:
 grep -rn "^<<<<<<< " --include="*.ts" --include="*.tsx" --include="*.js" --include="*.json"
 grep -rn "^=======" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.json"
 grep -rn "^>>>>>>> " --include="*.ts" --include="*.tsx" --include="*.js" --include="*.json"
-```text
+```
 
 Any remaining markers = incomplete resolution.
 
@@ -48,7 +48,7 @@ npx tsc --noEmit <file>
 
 # JSON validation
 cat <file.json> | jq . > /dev/null
-```text
+```
 
 ### 3. Check for Common Issues
 
@@ -63,7 +63,7 @@ Look for:
 # Find duplicate function definitions
 grep -n "function functionName" <file>
 grep -n "const functionName" <file>
-```text
+```
 
 #### Missing Imports
 
@@ -86,7 +86,7 @@ npm run typecheck 2>&1 | head -50
 
 # Linting
 npm run lint -- <resolved-files> 2>&1 | head -50
-```text
+```
 
 ### 5. Quick Smoke Test
 
@@ -95,7 +95,7 @@ If possible, run targeted tests:
 ```bash
 # Run tests for affected files
 npm run test -- --testPathPattern="pattern" --passWithNoTests
-```text
+```
 
 ### 6. Check Git Status
 
@@ -105,7 +105,7 @@ git status
 
 # Check diff looks reasonable
 git diff --stat
-```text
+```
 
 ### 7. Output Format
 
@@ -149,7 +149,7 @@ Syntax errors (if any):
 
 path/to/file.ts:42:15 - error: Unexpected token
 
-```text
+```
 
 **Action Required**: Fix syntax at indicated locations
 
@@ -160,11 +160,12 @@ path/to/file.ts:42:15 - error: Unexpected token
 **Status**: ✅ Pass / ❌ Errors
 
 Type errors (if any):
+
 ```text
 
 path/to/file.ts:42:10 - error TS2322: Type 'string' is not assignable to type 'number'
 
-```text
+```
 
 **Action Required**: Fix type mismatches
 
@@ -175,11 +176,12 @@ path/to/file.ts:42:10 - error TS2322: Type 'string' is not assignable to type 'n
 **Status**: ✅ Pass / ⚠️ Warnings
 
 Lint issues (if any):
+
 ```text
 
 path/to/file.ts:42:1 - warning: Unexpected console statement
 
-```text
+```
 
 **Action Required**: Fix or acknowledge warnings
 
@@ -190,12 +192,13 @@ path/to/file.ts:42:1 - warning: Unexpected console statement
 **Status**: ✅ Pass / ❌ Fail / ⏭️ Skipped
 
 Test failures (if any):
+
 ```text
 
 FAIL tests/feature.test.ts
   ✕ should handle the merged case (15ms)
 
-```text
+```
 
 **Action Required**: Fix failing tests before proceeding
 
@@ -218,13 +221,14 @@ Issues that passed validation but warrant attention:
 ### Recommended Next Steps
 
 **If all checks pass**:
+
 ```bash
 # Mark resolution complete
 git add <resolved-files>
 
 # Continue the operation
 git rebase --continue  # or git merge --continue
-```text
+```
 
 **If checks fail**:
 1. [First thing to fix]
@@ -252,7 +256,7 @@ Before running `git rebase/merge --continue`:
 - [ ] Tests passing (or failures understood)
 - [ ] Manual review complete (for low-confidence resolutions)
 
-```text
+```
 
 ## Quality Standards
 

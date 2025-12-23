@@ -41,7 +41,7 @@ gh issue list --label "priority:low" --state open --limit 1 --json number,title,
 
 # If none found, get any open issue without priority
 gh issue list --state open --limit 5 --json number,title,labels,assignees
-```text
+```
 
 ## Handle Multiple Same-Priority Issues
 
@@ -60,7 +60,7 @@ Just output the issue number:
 
 ```text
 #123
-```text
+```
 
 ### Detailed mode (-d flag)
 
@@ -78,7 +78,7 @@ Labels: <other labels>
 
 Description:
 <first 500 chars of body>
-```text
+```
 
 ## Suggest Next Steps
 
@@ -90,7 +90,7 @@ To start working on this issue:
 
 Or create a worktree manually:
   /gitx:worktree 123
-```text
+```
 
 ## Error Handling
 

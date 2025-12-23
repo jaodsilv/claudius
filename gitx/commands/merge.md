@@ -71,7 +71,7 @@ Get conflict status:
 ```bash
 git status --porcelain | grep "^UU\|^AA\|^DD"
 git diff --name-only --diff-filter=U
-```text
+```
 
 Launch conflict analyzer for comprehensive analysis:
 
@@ -87,7 +87,7 @@ Task (gitx:conflict-analyzer):
   - Why they conflict
   - Semantic vs syntactic conflict
   - Recommended resolution strategy
-```text
+```
 
 ### Phase 2: Resolution Suggestions
 
@@ -101,7 +101,7 @@ Task (gitx:resolution-suggester):
   - Generate specific resolution code
   - Provide confidence level
   - Note verification steps
-```text
+```
 
 ### Phase 3: User-Guided Resolution
 
@@ -116,7 +116,7 @@ AskUserQuestion:
   3. "Keep theirs" - Keep incoming branch version
   4. "Resolve manually" - Open for manual editing
   5. "Abort merge" - Cancel entire merge
-```text
+```
 
 Apply chosen resolution:
 - **Suggested**: Apply the resolution code from suggester
@@ -128,7 +128,7 @@ After resolving each file:
 
 ```bash
 git add <file>
-```text
+```
 
 ### Phase 4: Validation
 
@@ -143,7 +143,7 @@ Task (gitx:merge-validator):
   - No remaining conflict markers
   - Syntax is valid
   - Types check (if applicable)
-```text
+```
 
 If validation fails:
 - Report issues
@@ -163,7 +163,7 @@ Resolved conflicts:
 - [file2.ts]: [resolution summary]
 EOF
 )"
-```text
+```
 
 ## Pop Stash
 
@@ -194,7 +194,7 @@ Show merge outcome:
 ### Next Steps
 - Run tests to verify: `npm run test`
 - Push with: `git push`
-```text
+```
 
 ## Fallback Mode
 
@@ -207,7 +207,7 @@ AskUserQuestion:
   1. "Yes, resolve manually" - Show standard conflict view
   2. "Retry analysis" - Try orchestration again
   3. "Abort merge" - Cancel merge
-```text
+```
 
 For manual mode, show:
 - Conflicting files with markers

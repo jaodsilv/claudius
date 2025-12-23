@@ -22,7 +22,7 @@ This template defines the structure for output from the respond workflow agents.
 - **Context**: Brief description of the code being reviewed
 - **Resolution Approach**: Suggested way to address this
 - **Dependencies**: None | Depends on Comment X
-```text
+```
 
 ## CI Failure Analysis Output
 
@@ -42,7 +42,7 @@ This template defines the structure for output from the respond workflow agents.
 - **Affected Files**: [list]
 - **Suggested Fix**: Steps
 - **Complexity**: trivial | minor | moderate | significant
-```text
+```
 
 ## Execution Plan Output
 
@@ -65,7 +65,7 @@ This template defines the structure for output from the respond workflow agents.
 
 #### Phase 2: Core Changes
 ...
-```text
+```
 
 ## Synthesized Action Plan Output
 
@@ -91,4 +91,4 @@ This template defines the structure for output from the respond workflow agents.
 
 ### Conflicting Recommendations
 [Any conflicts between analyses]
-```text
+```

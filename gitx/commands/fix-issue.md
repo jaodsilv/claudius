@@ -25,7 +25,7 @@ TodoWrite:
 5. [ ] Set up worktree
 6. [ ] Complete development
 7. [ ] Commit and prepare for PR
-```text
+```
 
 ## Phase 1: Issue Analysis
 
@@ -44,7 +44,7 @@ Task (gitx:issue-analyzer):
   - Issue type (bug/feature/enhancement/refactor)
   - Key terms for code search
   - Related issues and dependencies
-```text
+```
 
 Wait for analysis to complete.
 
@@ -73,7 +73,7 @@ Task (gitx:codebase-navigator):
   - Test files needed
   - Impact assessment
   - Similar implementations to reference
-```text
+```
 
 Wait for exploration to complete.
 
@@ -104,7 +104,7 @@ Task (gitx:implementation-planner):
   - Test strategy
   - Commit boundaries
   - Verification steps
-```text
+```
 
 Wait for plan to complete.
 
@@ -136,7 +136,7 @@ Present the implementation plan summary:
 
 ### Estimated Effort
 [complexity and time description]
-```text
+```
 
 Use AskUserQuestion:
 
@@ -147,7 +147,7 @@ Options:
 2. "Modify the plan" - Adjust approach before proceeding
 3. "Add more detail" - Expand specific sections
 4. "Cancel" - Abort the workflow
-```text
+```
 
 Handle user response:
 - **Approve**: Mark complete, proceed to Phase 5
@@ -181,7 +181,7 @@ MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remo
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH" "$MAIN"
-```text
+```
 
 Report worktree location:
 
@@ -191,7 +191,7 @@ Worktree created:
   Branch: [branch-name]
 
 Note: Development will continue in the worktree context.
-```text
+```
 
 Mark "Set up worktree" as completed.
 
@@ -210,7 +210,7 @@ Options:
 2. "TDD workflow" - Test-driven development with red-green-refactor
 3. "Manual development" - Work independently with implementation plan
 4. "Skip development" - I'll develop later, just set up the worktree
-```text
+```
 
 ### Delegate Based on Choice
 
@@ -228,7 +228,7 @@ Skill (feature-dev:feature-dev):
 
   Relevant Files:
   [Files to modify from codebase navigation]
-```text
+```
 
 **TDD Workflow**:
 
@@ -241,7 +241,7 @@ Skill (tdd-workflows:tdd-orchestrator):
 
   Implementation:
   [Implementation phases from plan]
-```text
+```
 
 **Manual Development**:
 Provide the full implementation plan:
@@ -262,7 +262,7 @@ Provide the full implementation plan:
 [How to verify changes]
 
 I'm available to help with any questions as you implement.
-```text
+```
 
 **Skip Development**:
 
@@ -272,7 +272,7 @@ Worktree is ready at [path] on branch [branch-name].
 When you're ready to continue:
 - Use `/gitx:commit-push` to commit changes
 - Use `/gitx:pr` to create a pull request
-```text
+```
 
 Skip to Phase 7 reporting.
 
@@ -288,7 +288,7 @@ Available options:
 2. Basic guided development
 
 Would you like to proceed with an alternative?
-```text
+```
 
 Mark "Complete development" as completed.
 
@@ -303,7 +303,7 @@ Once development is complete:
 ```bash
 git status
 git diff --stat
-```text
+```
 
 If no changes:
 - Report: "No changes detected in worktree"
@@ -323,7 +323,7 @@ The commit message should reference the issue:
 Fixes #[number]
 
 [Details from implementation]"
-```text
+```
 
 ### Suggest PR Creation
 
@@ -339,20 +339,20 @@ Fixes #[number]
 ### Next Steps
 
 To create a pull request:
-```text
+```
 
 /gitx:pr
 
-```text
+```
 
 Or to comment on the issue with progress:
-```text
+```
 
 /gitx:comment-to-issue [number] "Implementation complete, PR forthcoming"
 
 ```
 
-```text
+```
 
 Mark "Commit and prepare for PR" as completed.
 
@@ -382,6 +382,6 @@ Essential context for Issue #[number]:
 - Phase: [current phase]
 - Key files: [list]
 - Acceptance criteria: [summary]
-```text
+```
 
 Use /compact if needed, ensuring this context is maintained.

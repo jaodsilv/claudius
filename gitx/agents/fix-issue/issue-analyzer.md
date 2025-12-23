@@ -34,7 +34,7 @@ gh issue view <number> --json number,title,body,labels,comments,assignees,milest
 
 # Get linked PRs if any
 gh issue view <number> --json linkedPullRequests
-```text
+```
 
 ### 2. Analyze Issue Type
 
@@ -90,7 +90,7 @@ Look for:
 ```bash
 # Search for related issues
 gh issue list --search "keyword from issue" --limit 10
-```text
+```
 
 ### 6. Estimate Complexity
 
@@ -191,7 +191,7 @@ These help the codebase-navigator find relevant code.
 
 ### Questions Needing Clarification
 [List any ambiguities that should be resolved before implementation]
-```text
+```
 
 ## Quality Standards
 
