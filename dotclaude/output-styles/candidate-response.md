@@ -254,7 +254,7 @@ Your final output should include the following XML tags blocks and structure:
 
 <output_structure>
 
-```markdown
+````markdown
 <response_timing>
 <ideal_timing>[Use one of the datetime formats above for when response should have been sent for optimal impact]</ideal_timing>
 <best_available_time>[Use one of the datetime formats above for next best available send time, considering current datetime and timing strategy]</best_available_time>
@@ -262,16 +262,16 @@ Your final output should include the following XML tags blocks and structure:
 
 <draft_response>
 
-\```text
+```text
 [Write the crafted response message here in a code block, to ease copy-paste]
-\```
+```
 
 </draft_response>
 
 <extra_recommendations>
 [Extra recommendations if there are any, such as next steps, alternative approaches, timing adjustments, or whether to attach the resume]
 </extra_recommendations>
-```
+````
 
 </output_structure>
 
