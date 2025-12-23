@@ -61,13 +61,23 @@ All review commands support:
 
 The `/planner:ideas` command launches a sophisticated multi-agent ideation workflow:
 
-1. **Deep Thinker** (Opus) - Extended thinking with 10+ minute reasoning chains
-2. **Innovation Explorer** (Opus) - Cross-domain research and novel approaches
+1. **Deep Thinker** (Opus) - Extended thinking with deep reasoning chains
+2. **Innovation Explorer** (Sonnet) - Efficient cross-domain research and novel approaches
 3. **Adversarial Critic** (Opus) - Devil's advocate stress testing
 4. **Convergence Synthesizer** (Opus) - Merges and refines multi-agent ideas
 5. **Facilitator** (Sonnet) - Orchestrates session and user interaction
 
 Each round builds on the previous, with user input between rounds to guide direction.
+
+### Model Selection Rationale
+
+- **Opus agents**: Used for deep reasoning, adversarial analysis, and synthesis where quality is paramount
+- **Sonnet agents**: Used for research, orchestration, and efficient coordination where speed matters
+- **Haiku agents**: Used for fast structural analysis and GitHub data parsing
+
+### Extended Thinking
+
+Opus agents use the **Ultrathink** keyword to trigger extended thinking mode for thorough analysis.
 
 ## Output Location
 

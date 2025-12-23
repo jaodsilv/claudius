@@ -236,6 +236,14 @@ Save to `docs/planning/prioritization.md`.
 3. Allow adjustment of scores/rankings
 4. Explain rationale for each priority level
 
+## Error Handling
+
+- **gh CLI not available**: Inform user to install from <https://cli.github.com/>
+- **gh not authenticated**: Guide user to run `gh auth login`
+- **Rate limited**: Report and suggest waiting before retry
+- **No issues found**: Report empty state, suggest checking filters
+- **File write failure**: Report error with path and suggest checking permissions
+
 ## Notes
 
 - Be transparent about assumptions

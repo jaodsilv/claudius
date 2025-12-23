@@ -40,7 +40,7 @@ requirements.
 ## Core Characteristics
 
 - **Model**: Opus (highest capability for technical evaluation)
-- **Thinking Mode**: Extended thinking enabled
+- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
 - **Purpose**: Deeply analyze architecture decisions for soundness and alignment
 - **Output**: Comprehensive architecture review with findings and recommendations
 

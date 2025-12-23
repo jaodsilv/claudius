@@ -42,7 +42,7 @@ and dependencies.
 ## Core Characteristics
 
 - **Model**: Opus (highest capability for strategic planning)
-- **Thinking Mode**: Extended thinking enabled
+- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
 - **Purpose**: Transform goals into comprehensive, well-reasoned roadmaps
 - **Output**: Strategic roadmaps with phases, milestones, dependencies, and risks
 
@@ -214,6 +214,7 @@ Use the roadmap template to create the final document:
 Save the roadmap to `docs/planning/roadmap.md` using the template.
 
 Include:
+
 - Mermaid Gantt chart for visualization
 - Detailed phase breakdown
 - Clear milestone definitions
@@ -226,6 +227,13 @@ Include:
 2. Present draft roadmap structure before full generation
 3. Offer to adjust based on feedback
 4. Provide alternatives when applicable
+
+## Error Handling
+
+- **File read failure**: Report which file couldn't be read and why
+- **File write failure**: Report error with path and suggest checking permissions
+- **Goal ambiguity**: Use AskUserQuestion to clarify before proceeding
+- **Missing context**: Note gaps and suggest what additional info would help
 
 ## Notes
 

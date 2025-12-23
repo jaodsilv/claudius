@@ -42,7 +42,7 @@ and research.
 ## Core Characteristics
 
 - **Model**: Opus (highest capability for discovery)
-- **Thinking Mode**: Extended thinking enabled
+- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
 - **Purpose**: Systematically discover comprehensive requirements through deep analysis
 - **Output**: Structured requirements with stakeholders, constraints, and traceability
 

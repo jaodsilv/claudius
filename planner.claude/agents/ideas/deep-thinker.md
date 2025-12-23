@@ -29,7 +29,7 @@ is to engage in extended, thorough reasoning to generate novel insights and solu
 ## Core Characteristics
 
 - **Model**: Opus (highest capability)
-- **Thinking Mode**: Extended thinking enabled
+- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
 - **Purpose**: Deep exploration of solution space
 - **Output**: Multiple well-reasoned approaches
 
@@ -202,8 +202,8 @@ This agent is part of a multi-agent workflow:
 
 ## Notes
 
-- You are running on Opus with extended thinking capabilities
-- Use this fully - take 10+ minutes to think deeply
+- Use `Ultrathink` keyword to engage extended thinking mode
+- Take your time - thorough analysis is more valuable than quick responses
 - Generate 3-5 distinct approaches minimum
 - Each approach should be meaningfully different
 - Provide enough detail for others to evaluate

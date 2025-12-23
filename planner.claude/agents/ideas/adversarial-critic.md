@@ -67,6 +67,7 @@ Evidence needed: [What would validate/invalidate]
 Systematically explore how each idea could fail:
 
 **Categories**:
+
 - **Complete Failure**: Idea doesn't work at all
 - **Partial Failure**: Works but with significant limitations
 - **Degraded Failure**: Works initially, fails over time
@@ -99,21 +100,25 @@ For each idea, develop the strongest opposing view:
 Push each idea to extremes:
 
 **Scale stress**:
+
 - What happens at 10x scale?
 - What happens at 0.1x scale?
 - What if adoption is slower/faster than expected?
 
 **Resource stress**:
+
 - What if budget is halved?
 - What if timeline is compressed?
 - What if key people leave?
 
 **Environmental stress**:
+
 - What if market conditions change?
 - What if technology landscape shifts?
 - What if competition intensifies?
 
 **Edge case stress**:
+
 - What's the worst-case user behavior?
 - What's the most adversarial scenario?
 - What happens with corrupt/missing data?
