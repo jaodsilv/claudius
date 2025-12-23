@@ -13,6 +13,7 @@ Review requirements document with multi-agent orchestration for quality, complet
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$context`: Goal string or roadmap file path (required)
 2. `$requirements_path`: Path to requirements file (default: "docs/planning/requirements.md")
 3. `$mode`: Review mode - "quick" (single agent) or "thorough" (orchestrated) (default: "thorough")
@@ -41,7 +42,7 @@ review-requirements-arguments:
 
 ## Orchestration Pattern
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -78,6 +79,7 @@ Quick Mode:
 
 2. Load requirements:
 
+   ```text
    Read: {{requirements_path}}
    ```
 
@@ -104,7 +106,8 @@ Quick Mode:
 2. Launch agents in parallel:
 
    **Domain Reviewer** (planner-requirements-reviewer):
-   ```
+
+   ```text
    Use Task tool with planner-requirements-reviewer agent:
 
    Review these requirements:
@@ -136,6 +139,7 @@ Quick Mode:
 
    **Structural Analyzer** (planner-review-analyzer):
 
+   ```text
    Use Task tool with planner-review-analyzer agent:
 
    Analyze the structure of these requirements:
@@ -161,7 +165,8 @@ Quick Mode:
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-   ```
+
+   ```text
    Use Task tool with planner-review-challenger agent:
 
    Challenge these requirements and the review findings:
@@ -202,6 +207,7 @@ Quick Mode:
 
 2. Launch synthesizer agent:
 
+   ```text
    Use Task tool with planner-review-synthesizer agent:
 
    Synthesize these requirements review findings:
@@ -232,7 +238,8 @@ If mode == "quick", use single agent:
 1. Mark Analysis as in_progress
 
 2. Launch `planner-requirements-reviewer` agent only:
-   ```
+
+   ```text
    Use Task tool with planner-requirements-reviewer agent:
 
    Review these requirements:
@@ -265,18 +272,20 @@ If mode == "quick", use single agent:
    **Review Sources**: Requirements Reviewer, Structural Analyzer, Adversarial Challenger
 
    ### Executive Summary
+
    {{synthesized_summary}}
 
    ### Quality Summary
 
-   | Dimension | Score | Notes |
-   |-----------|-------|-------|
-   | Clarity | X/5 | {{notes}} |
-   | Completeness | X% | {{notes}} |
-   | Testability | X/5 | {{notes}} |
-   | Consistency | X/5 | {{notes}} |
+   | Dimension    | Score | Notes     |
+   | ------------ | ----- | --------- |
+   | Clarity      | X/5   | {{notes}} |
+   | Completeness | X%    | {{notes}} |
+   | Testability  | X/5   | {{notes}} |
+   | Consistency  | X/5   | {{notes}} |
 
    ### Top Priority Issues
+
    1. {{p0_issue_1}}
    2. {{p0_issue_2}}
 
@@ -300,11 +309,9 @@ If mode == "quick", use single agent:
       - Suggestion: Add FR for auth method
       - Draft: "System shall authenticate users via..."
 
-
    2. **Performance: No scalability target**
       - Suggestion: Add NFR for concurrent users
       - Draft: "System shall support 10,000 concurrent users"
-   ```
 
    **For Quick Mode**:
 
@@ -361,18 +368,18 @@ If mode == "quick", use single agent:
 
    ### Quality Summary
 
-   | Dimension | Before | After |
-   |-----------|--------|-------|
-   | Clarity | X/5 | Y/5 |
-   | Completeness | X% | Y% |
-   | Testability | X/5 | Y/5 |
+   | Dimension    | Before | After |
+   | ------------ | ------ | ----- |
+   | Clarity      | X/5    | Y/5   |
+   | Completeness | X%     | Y%    |
+   | Testability  | X/5    | Y/5   |
 
    ### Changes Made
 
    #### Rewrites
 
-   | ID | Original | Updated |
-   |----|----------|---------|
+   | ID     | Original                | Updated                                       |
+   | ------ | ----------------------- | --------------------------------------------- |
    | FR-003 | "System should be fast" | "API endpoints shall respond within 200ms..." |
 
    #### Added
@@ -435,30 +442,30 @@ See `{{requirements_path}}` for updated requirements.
 
 ### Basic Review (Thorough Mode)
 
-```
+```text
 /planner:review-requirements "Launch MVP by Q2"
 ```
 
 ### Quick Review
 
-```
+```text
 /planner:review-requirements "API v2" --mode quick
 ```
 
 ### Against Roadmap
 
-```
+```text
 /planner:review-requirements docs/planning/roadmap.md
 ```
 
 ### Custom Requirements Path
 
-```
+```text
 /planner:review-requirements "API v2" --requirements-path docs/api-v2/requirements.md
 ```
 
 ### Full Options
 
-```
+```text
 /planner:review-requirements docs/roadmap.md --requirements-path docs/reqs.md --mode thorough
 ```

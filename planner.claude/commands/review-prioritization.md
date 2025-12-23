@@ -13,6 +13,7 @@ Review issue prioritization with multi-agent orchestration for alignment with a 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$context`: Goal string or roadmap file path (required)
 2. `$prioritization_path`: Path to prioritization file (default: "docs/planning/prioritization.md")
 3. `$mode`: Review mode - "quick" (single agent) or "thorough" (orchestrated) (default: "thorough")
@@ -41,7 +42,7 @@ review-prioritization-arguments:
 
 ## Orchestration Pattern
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -78,6 +79,7 @@ Quick Mode:
 
 2. Load prioritization matrix:
 
+   ```text
    Read: {{prioritization_path}}
    ```
 
@@ -86,7 +88,8 @@ Quick Mode:
    - Otherwise: Treat as goal string
 
 4. Load context:
-   ```
+
+   ```text
    If roadmap: Read: {{context}}
    If goal: Use as string
    ```
@@ -122,6 +125,7 @@ Quick Mode:
 
    **Domain Reviewer** (planner-plan-reviewer - prioritization mode):
 
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this prioritization:
@@ -138,12 +142,11 @@ Quick Mode:
    5. Mismatches - High priority items that don't contribute?
 
    For each priority level, list issues and assess alignment.
-
    ```
 
    **Structural Analyzer** (planner-review-analyzer):
 
-   ```
+   ```text
    Use Task tool with planner-review-analyzer agent:
 
    Analyze the structure of this prioritization matrix:
@@ -167,7 +170,8 @@ Quick Mode:
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-   ```
+
+   ```text
    Use Task tool with planner-review-challenger agent:
 
    Challenge this prioritization and the review findings:
@@ -201,8 +205,7 @@ Quick Mode:
 
 1. Mark Synthesis as in_progress
 
-
-   ```
+   ```text
    Use Task tool with planner-review-synthesizer agent:
 
    Synthesize these prioritization review findings:
@@ -224,7 +227,7 @@ Quick Mode:
    5. Quick wins
    ```
 
-3. Receive synthesized report
+2. Receive synthesized report
 
 ### Quick Mode Analysis
 
@@ -233,7 +236,8 @@ If mode == "quick", use single agent:
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only:
-   ```
+
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this prioritization:
@@ -263,7 +267,6 @@ If mode == "quick", use single agent:
 
 2. Present findings:
 
-
    ```markdown
    ## Prioritization Alignment Review (Multi-Agent Analysis)
 
@@ -273,36 +276,42 @@ If mode == "quick", use single agent:
    **Review Sources**: Domain Reviewer, Structural Analyzer, Adversarial Challenger
 
    ### Executive Summary
+
    {{synthesized_summary}}
 
    ### Alignment by Priority Level
 
    #### P0 - Critical
-   | Issue | Title | Alignment | Notes |
-   |-------|-------|-----------|-------|
-   | #123 | Auth API | Strong | Core Phase 1 |
-   | #124 | UI Polish | Weak | Not goal-critical |
+
+   | Issue | Title     | Alignment | Notes             |
+   | ----- | --------- | --------- | ----------------- |
+   | #123  | Auth API  | Strong    | Core Phase 1      |
+   | #124  | UI Polish | Weak      | Not goal-critical |
 
    #### P1 - High
+
    ...
 
    ### Top Priority Issues
+
    1. {{p0_issue_1}}
    2. {{p0_issue_2}}
 
    ### Key Challenges (from Adversarial Analysis)
+
    - {{over_prioritized}}
    - {{under_prioritized}}
 
    ### Coverage Analysis
 
    | Goal Aspect | Covered By | Priority |
-   |-------------|------------|----------|
+   | ----------- | ---------- | -------- |
 
    | Authentication | #123 | P0 |
    | User Profile | - | Not covered |
 
    ### Quick Wins
+
    1. {{quick_win}}
    ```
 
@@ -318,15 +327,16 @@ If mode == "quick", use single agent:
    ### Alignment by Priority Level
 
    #### P0 - Critical
-   | Issue | Title | Alignment | Notes |
-   |-------|-------|-----------|-------|
-   | #123 | Auth API | Strong | Core Phase 1 |
+
+   | Issue | Title    | Alignment | Notes        |
+   | ----- | -------- | --------- | ------------ |
+   | #123  | Auth API | Strong    | Core Phase 1 |
 
    ### Coverage Analysis
 
-   | Goal Aspect | Covered By | Priority |
-   |-------------|------------|----------|
-   | Authentication | #123 | P0 |
+   | Goal Aspect    | Covered By | Priority |
+   | -------------- | ---------- | -------- |
+   | Authentication | #123       | P0       |
 
    ### Concerns
 
@@ -349,7 +359,7 @@ If mode == "quick", use single agent:
 
 2. Present suggestions:
 
-   ```markdown
+   ````markdown
    ## Priority Adjustment Recommendations
 
    ### Raise Priority
@@ -374,7 +384,6 @@ If mode == "quick", use single agent:
    ### Close/Defer
 
    1. **#130 - Defer to post-MVP**
-
       - Reason: Nice-to-have, not goal-aligned
 
    ### Suggested Label Commands
@@ -385,8 +394,7 @@ If mode == "quick", use single agent:
    gh issue edit 127 --add-label "P0" --remove-label "P1"
    gh issue edit 124 --add-label "P2" --remove-label "P0"
    ```
-
-   ```
+   ````
 
 3. Ask user:
    - Which changes should we apply?
@@ -399,7 +407,7 @@ If mode == "quick", use single agent:
 
 ### Completion
 
-```markdown
+````markdown
 ## Prioritization Review Complete
 
 **Alignment Score**: {{score}}/5
@@ -415,12 +423,12 @@ If mode == "quick", use single agent:
 
 ### Suggested Commands
 
-
 Run these commands to apply label changes:
 
 ```bash
 gh issue edit ... --add-label "P0"
 ```
+````
 
 ### Next Steps
 
@@ -428,48 +436,34 @@ gh issue edit ... --add-label "P0"
 2. Create missing issues manually
 3. Re-run prioritization: `/planner:prioritize ALL`
 
-```
-
-
+## Usage Examples
 
 ### Against Goal (Thorough Mode)
 
-```
-
+```text
 /planner:review-prioritization "Ship MVP authentication by end of month"
-
 ```
 
 ### Quick Review
 
-
-
+```text
+/planner:review-prioritization "API v2" --mode quick
 ```
-
-```
-
-
 
 ### Against Roadmap
 
-```
-
+```text
 /planner:review-prioritization docs/planning/roadmap.md
-
 ```
 
 ### Custom Prioritization Path
 
-```
-
+```text
 /planner:review-prioritization "API v2" --prioritization-path docs/api-v2/priorities.md
-
 ```
 
 ### Full Options
 
-```
-
+```text
 /planner:review-prioritization docs/roadmap.md --prioritization-path docs/priorities.md --mode thorough
-
 ```

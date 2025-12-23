@@ -12,19 +12,19 @@ Apply systematic prioritization frameworks to rank issues, features, tasks, or a
 
 Choose the appropriate framework based on context:
 
-| Framework | Best For | Key Inputs |
-|-----------|----------|------------|
-| RICE | Data-driven product decisions | Reach, impact estimates |
-| MoSCoW | Stakeholder-driven prioritization | Business criticality |
-| Weighted Scoring | Custom criteria evaluation | Defined criteria weights |
-| Kano Model | User satisfaction analysis | User research data |
-| Value vs Effort | Quick visual prioritization | Rough estimates |
+| Framework        | Best For                          | Key Inputs               |
+| ---------------- | --------------------------------- | ------------------------ |
+| RICE             | Data-driven product decisions     | Reach, impact estimates  |
+| MoSCoW           | Stakeholder-driven prioritization | Business criticality     |
+| Weighted Scoring | Custom criteria evaluation        | Defined criteria weights |
+| Kano Model       | User satisfaction analysis        | User research data       |
+| Value vs Effort  | Quick visual prioritization       | Rough estimates          |
 
 ## RICE Framework
 
 ### Formula
 
-```
+```text
 RICE Score = (Reach × Impact × Confidence) / Effort
 ```
 
@@ -64,10 +64,10 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 ### RICE Output Template
 
 ```markdown
-| Rank | Item | Reach | Impact | Confidence | Effort | Score |
-|------|------|-------|--------|------------|--------|-------|
-| 1 | Feature A | 10000 | 2 | 80% | 4 | 4000 |
-| 2 | Feature B | 5000 | 3 | 100% | 6 | 2500 |
+| Rank | Item      | Reach | Impact | Confidence | Effort | Score |
+| ---- | --------- | ----- | ------ | ---------- | ------ | ----- |
+| 1    | Feature A | 10000 | 2      | 80%        | 4      | 4000  |
+| 2    | Feature B | 5000  | 3      | 100%       | 6      | 2500  |
 ```
 
 ## MoSCoW Framework
@@ -105,15 +105,19 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 
 ```markdown
 ## Must Have (Critical)
+
 1. [Item] - [Rationale]
 
 ## Should Have (Important)
+
 1. [Item] - [Rationale]
 
 ## Could Have (Desirable)
+
 1. [Item] - [Rationale]
 
 ## Won't Have (This Release)
+
 1. [Item] - [Reason for exclusion]
 ```
 
@@ -128,26 +132,26 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 
 ### Common Criteria
 
-| Criterion | Description | Typical Weight |
-|-----------|-------------|----------------|
-| Business Value | Revenue/strategic impact | 25-35% |
-| User Value | User satisfaction impact | 20-30% |
-| Technical Feasibility | Implementation complexity | 15-25% |
-| Strategic Alignment | Fits company goals | 10-20% |
-| Risk | Implementation risk | 10-15% |
+| Criterion             | Description               | Typical Weight |
+| --------------------- | ------------------------- | -------------- |
+| Business Value        | Revenue/strategic impact  | 25-35%         |
+| User Value            | User satisfaction impact  | 20-30%         |
+| Technical Feasibility | Implementation complexity | 15-25%         |
+| Strategic Alignment   | Fits company goals        | 10-20%         |
+| Risk                  | Implementation risk       | 10-15%         |
 
 ### Weighted Scoring Template
 
 ```markdown
 | Item | Value (30%) | Feasibility (25%) | Alignment (25%) | Risk (20%) | Total |
-|------|-------------|-------------------|-----------------|------------|-------|
-| A | 8 (2.4) | 6 (1.5) | 9 (2.25) | 7 (1.4) | 7.55 |
-| B | 7 (2.1) | 8 (2.0) | 7 (1.75) | 8 (1.6) | 7.45 |
+| ---- | ----------- | ----------------- | --------------- | ---------- | ----- |
+| A    | 8 (2.4)     | 6 (1.5)           | 9 (2.25)        | 7 (1.4)    | 7.55  |
+| B    | 7 (2.1)     | 8 (2.0)           | 7 (1.75)        | 8 (1.6)    | 7.45  |
 ```
 
 ## Kano Model
 
-### Categories
+### Kano Categories
 
 1. **Basic Needs** (Must-Be)
    - Expected, taken for granted
@@ -173,6 +177,7 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 ### Kano Classification Questions
 
 For each feature, ask users:
+
 1. "How would you feel if this feature IS present?" (Functional)
 2. "How would you feel if this feature IS NOT present?" (Dysfunctional)
 
@@ -182,7 +187,7 @@ Answer options: Like, Expect, Neutral, Tolerate, Dislike
 
 ### Quadrants
 
-```
+```text
 High Value │  Quick Wins  │  Major Projects
            │  (Do First)  │  (Plan Carefully)
            │──────────────┼──────────────────
@@ -210,6 +215,7 @@ When prioritizing GitHub issues, interpret common labels:
 - `P3`, `low` → Lower priority
 
 ### Effort Labels
+
 - `XS`, `trivial` → 0.5 person-days
 - `S`, `small` → 1-2 person-days
 - `M`, `medium` → 3-5 person-days
@@ -236,6 +242,7 @@ gh issue view <number> --json number,title,body,labels,state
 ```
 
 Parse labels to inform prioritization:
+
 1. Extract priority labels for initial ranking
 2. Extract effort labels for RICE effort estimate
 3. Use milestone for timeline constraints

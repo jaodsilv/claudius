@@ -13,6 +13,7 @@ Review a roadmap with multi-agent orchestration for alignment with a goal and ov
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$goal`: Goal to evaluate roadmap against (required)
 2. `$roadmap_path`: Path to roadmap (default: "docs/planning/roadmap.md")
 3. `$mode`: Review mode - "quick" (single agent) or "thorough" (orchestrated) (default: "thorough")
@@ -41,7 +42,7 @@ review-roadmap-arguments:
 
 ## Orchestration Pattern
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -78,11 +79,13 @@ Quick Mode:
 
 2. Load roadmap:
 
+   ```text
    Read: {{roadmap_path}}
    ```
 
 3. If not found, search for roadmaps:
-   ```
+
+   ```text
    Glob: **/roadmap*.md
    ```
 
@@ -121,6 +124,7 @@ Quick Mode:
 
    **Domain Reviewer** (planner-plan-reviewer - roadmap mode):
 
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this roadmap:
@@ -137,12 +141,11 @@ Quick Mode:
    6. Resource considerations - addressed?
 
    Identify alignment issues, structural problems, missing elements.
-
    ```
 
    **Structural Analyzer** (planner-review-analyzer):
 
-   ```
+   ```text
    Use Task tool with planner-review-analyzer agent:
 
    Analyze the structure of this roadmap:
@@ -168,7 +171,8 @@ Quick Mode:
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-   ```
+
+   ```text
    Use Task tool with planner-review-challenger agent:
 
    Challenge this roadmap and the review findings:
@@ -201,8 +205,7 @@ Quick Mode:
 
 1. Mark Synthesis as in_progress
 
-
-   ```
+   ```text
    Use Task tool with planner-review-synthesizer agent:
 
    Synthesize these roadmap review findings:
@@ -224,7 +227,7 @@ Quick Mode:
    5. Timeline adjustments
    ```
 
-3. Receive synthesized report
+2. Receive synthesized report
 
 ### Quick Mode Analysis
 
@@ -233,7 +236,8 @@ If mode == "quick", use single agent:
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only (roadmap mode):
-   ```
+
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this roadmap:
@@ -264,7 +268,6 @@ If mode == "quick", use single agent:
 
 2. Present findings:
 
-
    ```markdown
    ## Roadmap Review: {{goal}} (Multi-Agent Analysis)
 
@@ -273,19 +276,22 @@ If mode == "quick", use single agent:
    **Review Sources**: Domain Reviewer, Structural Analyzer, Adversarial Challenger
 
    ### Executive Summary
+
    {{synthesized_summary}}
 
    ### Goal Alignment Analysis
 
-   | Phase | Alignment | Contribution | Issue |
-   |-------|-----------|--------------|-------|
+   | Phase   | Alignment        | Contribution     | Issue     |
+   | ------- | ---------------- | ---------------- | --------- |
    | Phase 1 | Strong/Weak/None | {{contribution}} | {{issue}} |
 
    ### Top Priority Issues
+
    1. {{p0_issue_1}}
    2. {{p0_issue_2}}
 
    ### Key Challenges (from Adversarial Analysis)
+
    - {{timeline_risk}}
    - {{dependency_risk}}
 
@@ -297,6 +303,7 @@ If mode == "quick", use single agent:
    | M1 | 4/5 | Not time-bound |
 
    ### Quick Wins
+
    1. {{quick_win}}
    ```
 
@@ -310,23 +317,25 @@ If mode == "quick", use single agent:
 
    ### Goal Alignment Analysis
 
-   | Phase | Alignment | Contribution |
-   |-------|-----------|--------------|
+   | Phase   | Alignment        | Contribution     |
+   | ------- | ---------------- | ---------------- |
    | Phase 1 | Strong/Weak/None | {{contribution}} |
 
    ### Key Findings
 
    **Strengths**:
+
    1. {{strength}}
 
    **Concerns**:
+
    1. {{concern}}
 
    ### Milestone Quality
 
-   | Milestone | SMART Score | Issue |
-   |-----------|-------------|-------|
-   | M1 | 4/5 | Not time-bound |
+   | Milestone | SMART Score | Issue          |
+   | --------- | ----------- | -------------- |
+   | M1        | 4/5         | Not time-bound |
    ```
 
 3. Use AskUserQuestion to discuss:
@@ -409,24 +418,24 @@ Present as code blocks for user to apply manually.
 
 ### Basic Review (Thorough Mode)
 
-```
+```text
 /planner:review-roadmap Implement user authentication by Q2
 ```
 
 ### Quick Review
 
-```
+```text
 /planner:review-roadmap Launch mobile app --mode quick
 ```
 
 ### Custom Roadmap Path
 
-```
+```text
 /planner:review-roadmap Launch mobile app --roadmap-path docs/mobile/roadmap.md
 ```
 
 ### Full Options
 
-```
+```text
 /planner:review-roadmap "Scale to 1M users" --roadmap-path docs/scaling-roadmap.md --mode thorough
 ```

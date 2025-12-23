@@ -13,6 +13,7 @@ Launch a multi-agent Ultrathink deep ideation session using Opus extended thinki
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$input`: Goal description or path to roadmap file (required)
 2. `$mode`: Session mode - "full" (all agents) or "focused" (subset) (default: "full")
 3. `$rounds`: Number of ideation rounds (default: 3)
@@ -48,7 +49,7 @@ ideas-arguments:
 
 ## Ultrathink Workflow
 
-```
+```text
 Round N (repeat for --rounds):
     ┌─────────────────────────────────────────────────┐
     │  1. Parallel Ideation (Opus agents)             │
@@ -80,6 +81,7 @@ Round N (repeat for --rounds):
 
 2. Load ultrathink skill:
 
+   ```text
    Use Skill tool to load: planner:ultrathink
    ```
 
@@ -90,12 +92,14 @@ Round N (repeat for --rounds):
    - If string: Use as goal directly
 
 5. Ensure output directory:
+
    ```bash
    mkdir -p {{output}}
    ```
 
 6. Set session context:
 
+   ```text
    Goal: {{goal}}
    Mode: {{mode}}
    Max Rounds: {{rounds}}
@@ -112,7 +116,8 @@ For each round (1 to {{rounds}}):
 2. Launch ideation agents in parallel:
 
    **Deep Thinker (Opus with extended thinking)**:
-   ```
+
+   ```text
    Use Task tool with planner-ideas-deep-thinker agent:
 
    Topic: {{goal}}
@@ -132,13 +137,12 @@ For each round (1 to {{rounds}}):
    4. Challenge assumptions
    5. Make cross-domain connections
 
-
    Take your time - extended thinking is valuable here.
    ```
 
    **Innovation Explorer (Opus with web research)**:
 
-   ```
+   ```text
    Use Task tool with planner-ideas-innovation-explorer agent:
 
    Topic: {{goal}}
@@ -163,34 +167,34 @@ For each round (1 to {{rounds}}):
 
 #### Step 2: Adversarial Analysis
 
+```text
+Use Task tool with planner-ideas-adversarial-critic agent:
 
-   ```
-   Use Task tool with planner-ideas-adversarial-critic agent:
+Ideas to challenge:
 
-   Ideas to challenge:
+From Deep Thinker:
+{{deep_thinker_output}}
 
-   From Deep Thinker:
-   {{deep_thinker_output}}
+From Innovation Explorer:
+{{innovation_output}}
 
-   From Innovation Explorer:
-   {{innovation_output}}
+For each idea:
+1. Challenge underlying assumptions
+2. Identify failure modes
+3. Generate counter-arguments
+4. Stress test under extremes
+5. Find logical inconsistencies
 
-   For each idea:
-   1. Challenge underlying assumptions
-   2. Identify failure modes
-   3. Generate counter-arguments
-   4. Stress test under extremes
-   5. Find logical inconsistencies
+Be rigorous but constructive.
+```
 
-   Be rigorous but constructive.
-   ```
-
-2. Receive critique and challenges
+1. Receive critique and challenges
 
 #### Step 3: Synthesis
 
 1. Launch Convergence Synthesizer:
-   ```
+
+   ```text
    Use Task tool with planner-ideas-convergence-synthesizer agent:
 
    Deep Thinker Output:
@@ -208,7 +212,6 @@ For each round (1 to {{rounds}}):
    3. Create hybrid proposals
    4. Rank by viability and impact
    5. Identify remaining gaps
-
    ```
 
 2. Receive synthesized proposals
@@ -217,7 +220,7 @@ For each round (1 to {{rounds}}):
 
 1. Launch Facilitator for presentation:
 
-   ```
+   ```text
    Use Task tool with planner-ideas-facilitator agent:
 
    Round: {{current_round}} of {{max_rounds}}
@@ -292,7 +295,6 @@ For each round (1 to {{rounds}}):
 
    ### Recommended Next Steps
 
-
    1. {{next_step1}}
    2. {{next_step2}}
    ```
@@ -304,6 +306,7 @@ For each round (1 to {{rounds}}):
 ### Full Mode (default)
 
 All agents engaged:
+
 - Deep Thinker
 - Innovation Explorer
 - Adversarial Critic
@@ -312,6 +315,7 @@ All agents engaged:
 ### Focused Mode
 
 Subset of agents:
+
 - Deep Thinker
 - Adversarial Critic
 - Facilitator
@@ -329,24 +333,24 @@ Faster but less diverse ideation.
 
 ### Basic Ideation
 
-```
+```text
 /planner:ideas How can we improve developer onboarding experience?
 ```
 
 ### From Roadmap
 
-```
+```text
 /planner:ideas docs/planning/roadmap.md
 ```
 
 ### Multiple Rounds
 
-```
+```text
 /planner:ideas Build a better CLI tool --rounds 5
 ```
 
 ### Focused Session
 
-```
+```text
 /planner:ideas Quick authentication approach --mode focused --rounds 2
 ```

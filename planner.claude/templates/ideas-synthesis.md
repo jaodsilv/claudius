@@ -19,11 +19,11 @@
 
 **Overall Score**: {{proposal1_overall}}/10
 
-| Criterion | Score | Notes |
-|-----------|-------|-------|
-| Viability | {{proposal1_viability}}/10 | {{proposal1_viability_notes}} |
-| Novelty | {{proposal1_novelty}}/10 | {{proposal1_novelty_notes}} |
-| Impact | {{proposal1_impact}}/10 | {{proposal1_impact_notes}} |
+| Criterion  | Score                       | Notes                          |
+| ---------- | --------------------------- | ------------------------------ |
+| Viability  | {{proposal1_viability}}/10  | {{proposal1_viability_notes}}  |
+| Novelty    | {{proposal1_novelty}}/10    | {{proposal1_novelty_notes}}    |
+| Impact     | {{proposal1_impact}}/10     | {{proposal1_impact_notes}}     |
 | Robustness | {{proposal1_robustness}}/10 | {{proposal1_robustness_notes}} |
 
 #### Summary
@@ -52,10 +52,12 @@
 #### Adversarial Analysis
 
 **Weaknesses Found**:
+
 1. {{proposal1_weakness1}}
 2. {{proposal1_weakness2}}
 
 **Counterarguments Considered**:
+
 1. {{proposal1_counter1}}
 
 **Stress Test Results**:
@@ -67,32 +69,33 @@
 
 **Overall Score**: {{proposal2_overall}}/10
 
-| Criterion | Score | Notes |
-|-----------|-------|-------|
-| Viability | {{proposal2_viability}}/10 | {{proposal2_viability_notes}} |
-| Novelty | {{proposal2_novelty}}/10 | {{proposal2_novelty_notes}} |
-| Impact | {{proposal2_impact}}/10 | {{proposal2_impact_notes}} |
+| Criterion  | Score                       | Notes                          |
+| ---------- | --------------------------- | ------------------------------ |
+| Viability  | {{proposal2_viability}}/10  | {{proposal2_viability_notes}}  |
+| Novelty    | {{proposal2_novelty}}/10    | {{proposal2_novelty_notes}}    |
+| Impact     | {{proposal2_impact}}/10     | {{proposal2_impact_notes}}     |
 | Robustness | {{proposal2_robustness}}/10 | {{proposal2_robustness_notes}} |
 
-#### Summary
+#### Proposal 2 Summary
 
 {{proposal2_summary}}
 
-#### Key Innovation
+#### Proposal 2 Key Innovation
 
 {{proposal2_innovation}}
 
-#### Implementation Approach
+#### Proposal 2 Implementation Approach
 
 {{proposal2_approach}}
 
-#### Challenges Identified
+#### Proposal 2 Challenges Identified
 
 1. {{proposal2_challenge1}}
 
-#### Adversarial Analysis
+#### Proposal 2 Adversarial Analysis
 
 **Weaknesses Found**:
+
 1. {{proposal2_weakness1}}
 
 ---
@@ -107,12 +110,12 @@
 
 ## Proposal Comparison
 
-| Aspect | Proposal 1 | Proposal 2 | Proposal 3 |
-|--------|------------|------------|------------|
-| Overall Score | {{p1_score}} | {{p2_score}} | {{p3_score}} |
-| Time to Implement | {{p1_time}} | {{p2_time}} | {{p3_time}} |
-| Risk Level | {{p1_risk}} | {{p2_risk}} | {{p3_risk}} |
-| Resource Needs | {{p1_resources}} | {{p2_resources}} | {{p3_resources}} |
+| Aspect            | Proposal 1       | Proposal 2       | Proposal 3       |
+| ----------------- | ---------------- | ---------------- | ---------------- |
+| Overall Score     | {{p1_score}}     | {{p2_score}}     | {{p3_score}}     |
+| Time to Implement | {{p1_time}}      | {{p2_time}}      | {{p3_time}}      |
+| Risk Level        | {{p1_risk}}      | {{p2_risk}}      | {{p3_risk}}      |
+| Resource Needs    | {{p1_resources}} | {{p2_resources}} | {{p3_resources}} |
 
 ---
 
@@ -153,8 +156,8 @@
 
 ## Discarded Ideas
 
-| Idea | Initial Promise | Reason Discarded |
-|------|-----------------|------------------|
+| Idea                | Initial Promise        | Reason Discarded      |
+| ------------------- | ---------------------- | --------------------- |
 | {{discarded1_idea}} | {{discarded1_promise}} | {{discarded1_reason}} |
 | {{discarded2_idea}} | {{discarded2_promise}} | {{discarded2_reason}} |
 
@@ -232,20 +235,20 @@
 
 ### Deep Thinker Raw Output
 
-
 ### Innovation Explorer Raw Output
+
 {{innovation_raw}}
 
 ### Adversarial Critic Raw Output
 
-
 ### Convergence Synthesizer Raw Output
+
 {{synthesizer_raw}}
 
 ---
 
 ## Revision History
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| {{date}} | 1.0 | Initial synthesis | {{author}} |
+| Date     | Version | Changes           | Author     |
+| -------- | ------- | ----------------- | ---------- |
+| {{date}} | 1.0     | Initial synthesis | {{author}} |

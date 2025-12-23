@@ -13,6 +13,7 @@ Prioritize GitHub issues using configurable prioritization frameworks.
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$issues`: Issue numbers (comma-separated) or "ALL" (required)
 2. `$framework`: Prioritization framework (default: "RICE")
 3. `$output`: Output path (default: "docs/planning/")
@@ -52,10 +53,12 @@ prioritize-arguments:
 
 2. Load prioritization skill:
 
+   ```text
    Use Skill tool to load: planner:prioritization
    ```
 
 3. Verify gh CLI:
+
    ```bash
    gh auth status
    ```
@@ -66,6 +69,7 @@ prioritize-arguments:
 
 1. Launch `planner-github-issue-analyzer` agent:
 
+   ```text
    Use Task tool with planner-github-issue-analyzer agent:
 
    Fetch and analyze issues: {{issues}}
@@ -88,7 +92,8 @@ prioritize-arguments:
 1. Mark Phase 3 as in_progress
 
 2. Launch `planner-github-issue-relationship-mapper` agent:
-   ```
+
+   ```text
    Use Task tool with planner-github-issue-relationship-mapper agent:
 
    Map dependencies for issues: {{issue_list}}
@@ -108,6 +113,7 @@ prioritize-arguments:
 
 2. Launch `planner-prioritization-engine` agent:
 
+   ```text
    Use Task tool with planner-prioritization-engine agent:
 
    Apply {{framework}} framework to prioritize:
@@ -138,14 +144,17 @@ prioritize-arguments:
 1. Mark Phase 5 as in_progress
 
 2. Present draft rankings to user:
+
    ```markdown
    ## Draft Prioritization
 
    ### P0 - Critical
-   | # | Title | Score | Effort |
-   |---|-------|-------|--------|
+
+   | #   | Title | Score | Effort |
+   | --- | ----- | ----- | ------ |
 
    ### P1 - High Priority
+
    ...
 
    ### Dependency Considerations
@@ -166,6 +175,7 @@ prioritize-arguments:
 
 2. Ensure output directory:
 
+   ```bash
    mkdir -p {{output}}
    ```
 
@@ -183,7 +193,7 @@ prioritize-arguments:
 
 Present summary:
 
-```markdown
+````markdown
 ## Prioritization Complete
 
 **Framework**: {{framework}}
@@ -197,51 +207,41 @@ Present summary:
 ### Suggested Actions
 
 1. Apply priority labels:
+
    ```bash
 
    gh issue edit {{issue}} --add-label "P0"
    ```
+````
 
-2. Focus next sprint on: #{{top_issues}}
+1. Focus next sprint on: #{{top_issues}}
 
 ### Output
 
 See `{{output}}/prioritization.md` for full analysis.
 
-```
-
 ## Error Handling
 
-
 1. **gh not authenticated**: Prompt to run `gh auth login`
-
 2. **No issues found**: Report and suggest checking filters
 3. **Missing label data**: Note assumptions made
 
 ## Usage Examples
 
-
 ### Prioritize All Issues
 
-
-```
-
+```text
 /planner:prioritize ALL
-
 ```
-
 
 ### Specific Issues with MoSCoW
 
-```
-
-
+```text
+/planner:prioritize 1,2,3 --framework MoSCoW
 ```
 
 ### Custom Output
 
-```
-
+```text
 /planner:prioritize ALL --framework RICE --output docs/sprint-planning/
-
 ```

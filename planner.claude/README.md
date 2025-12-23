@@ -14,7 +14,7 @@ Strategic planning plugin for Claude Code with project roadmapping, issue priori
 
 All review commands use the **Diverge-Challenge-Synthesize** pattern for higher quality output:
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -36,23 +36,23 @@ Use `--mode quick` to skip orchestration and use a single agent (faster, lower c
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `/planner:roadmap <goal>` | Create a project roadmap for achieving a goal |
-| `/planner:prioritize <issues\|ALL>` | Prioritize GitHub issues using configurable frameworks |
-| `/planner:gather-requirements <goal>` | Gather requirements, optionally leveraging brainstorm-pro |
-| `/planner:review-plan <path>` | Review a plan file with multi-agent analysis |
-| `/planner:review-roadmap <goal>` | Review a roadmap against a goal with orchestrated analysis |
-| `/planner:review-prioritization <goal>` | Review prioritization alignment with adversarial challenge |
-| `/planner:review-architecture <goal>` | Review architecture decisions with multi-perspective analysis |
-| `/planner:review-requirements <goal>` | Review requirements quality with gap analysis |
-| `/planner:ideas <goal>` | Multi-agent Ultrathink ideation session |
+| Command                                 | Description                                                   |
+| --------------------------------------- | ------------------------------------------------------------- |
+| `/planner:roadmap <goal>`               | Create a project roadmap for achieving a goal                 |
+| `/planner:prioritize <issues\|ALL>`     | Prioritize GitHub issues using configurable frameworks        |
+| `/planner:gather-requirements <goal>`   | Gather requirements, optionally leveraging brainstorm-pro     |
+| `/planner:review-plan <path>`           | Review a plan file with multi-agent analysis                  |
+| `/planner:review-roadmap <goal>`        | Review a roadmap against a goal with orchestrated analysis    |
+| `/planner:review-prioritization <goal>` | Review prioritization alignment with adversarial challenge    |
+| `/planner:review-architecture <goal>`   | Review architecture decisions with multi-perspective analysis |
+| `/planner:review-requirements <goal>`   | Review requirements quality with gap analysis                 |
+| `/planner:ideas <goal>`                 | Multi-agent Ultrathink ideation session                       |
 
 ### Review Command Options
 
 All review commands support:
 
-```
+```text
 --mode quick      # Single agent (faster, lower cost)
 --mode thorough   # Multi-agent orchestration (default)
 ```
@@ -73,7 +73,7 @@ Each round builds on the previous, with user input between rounds to guide direc
 
 All artifacts are written to `docs/planning/`:
 
-```
+```text
 docs/planning/
 ├── roadmap.md           # From /planner:roadmap
 ├── prioritization.md    # From /planner:prioritize
@@ -97,6 +97,7 @@ gh auth login
 ```
 
 The plugin reads:
+
 - Issue details, labels, comments
 - Linked pull requests
 - Milestone information
@@ -116,6 +117,7 @@ The plugin reads:
 - Score = (Reach × Impact × Confidence) / Effort
 
 ### MoSCoW
+
 - **Must Have** - Critical for delivery
 - **Should Have** - Important but not critical
 - **Could Have** - Desirable if resources permit
@@ -130,25 +132,25 @@ The plugin reads:
 
 ### Create a Roadmap
 
-```
+```text
 /planner:roadmap Implement user authentication with OAuth2 and SSO support
 ```
 
 ### Prioritize All Issues
 
-```
+```text
 /planner:prioritize ALL --framework RICE
 ```
 
 ### Deep Ideation Session
 
-```
+```text
 /planner:ideas How can we improve developer experience in our CLI tool? --rounds 3
 ```
 
 ### Review Architecture
 
-```
+```text
 /planner:review-architecture Build a scalable notification system --architecture-path docs/architecture.md
 ```
 

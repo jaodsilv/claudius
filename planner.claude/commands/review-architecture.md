@@ -13,6 +13,7 @@ Review architecture decisions with multi-agent orchestration for alignment with 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$context`: Goal string or path to requirements file (required)
 2. `$architecture_path`: Path to architecture documentation (optional, will search if not provided)
 3. `$mode`: Review mode - "quick" (single agent) or "thorough" (orchestrated) (default: "thorough")
@@ -40,7 +41,7 @@ review-architecture-arguments:
 
 ## Orchestration Pattern
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -82,6 +83,7 @@ Quick Mode:
 
 3. Load context:
 
+   ```text
    If requirements: Read: {{context}}
    If goal: Use as string
    ```
@@ -91,12 +93,14 @@ Quick Mode:
 1. Mark Find Architecture as in_progress
 
 2. If architecture_path provided:
-   ```
+
+   ```text
    Read: {{architecture_path}}
    ```
 
 3. If not provided, search:
 
+   ```text
    Glob: **/architecture*.md, **/design*.md, **/adr/*.md
    ```
 
@@ -125,7 +129,8 @@ Quick Mode:
 2. Launch agents in parallel:
 
    **Domain Reviewer** (planner-architecture-reviewer):
-   ```
+
+   ```text
    Use Task tool with planner-architecture-reviewer agent:
 
    Review this architecture:
@@ -153,7 +158,7 @@ Quick Mode:
 
    **Structural Analyzer** (planner-review-analyzer):
 
-   ```
+   ```text
    Use Task tool with planner-review-analyzer agent:
 
    Analyze the structure of this architecture document:
@@ -178,8 +183,7 @@ Quick Mode:
 
 1. Mark Adversarial Challenge as in_progress
 
-
-   ```
+   ```text
    Use Task tool with planner-review-challenger agent:
 
    Challenge this architecture and the review findings:
@@ -208,14 +212,15 @@ Quick Mode:
    Be rigorous but constructive.
    ```
 
-3. Receive adversarial analysis
+2. Receive adversarial analysis
 
 #### Step 3C: Synthesis
 
 1. Mark Synthesis as in_progress
 
 2. Launch synthesizer agent:
-   ```
+
+   ```text
    Use Task tool with planner-review-synthesizer agent:
 
    Synthesize these architecture review findings:
@@ -245,8 +250,7 @@ If mode == "quick", use single agent:
 
 1. Mark Analysis as in_progress
 
-
-   ```
+   ```text
    Use Task tool with planner-architecture-reviewer agent:
 
    Review this architecture:
@@ -267,7 +271,7 @@ If mode == "quick", use single agent:
    Research best practices where helpful.
    ```
 
-3. Proceed directly to Phase 4
+2. Proceed directly to Phase 4
 
 ### Phase 4: Interactive Review
 
@@ -276,6 +280,7 @@ If mode == "quick", use single agent:
 2. Present findings:
 
    **For Thorough Mode**:
+
    ```markdown
    ## Architecture Review (Multi-Agent Analysis)
 
@@ -285,51 +290,58 @@ If mode == "quick", use single agent:
    **Review Sources**: Architecture Reviewer, Structural Analyzer, Adversarial Challenger
 
    ### Executive Summary
+
    {{synthesized_summary}}
 
    ### Goal Alignment
 
-   | Goal Aspect | Architectural Support | Gap? |
-   |-------------|----------------------|------|
-   | {{aspect}} | {{support}} | {{gap}} |
+   | Goal Aspect | Architectural Support | Gap?    |
+   | ----------- | --------------------- | ------- |
+   | {{aspect}}  | {{support}}           | {{gap}} |
 
    ### Requirements Coverage
 
    #### Performance Requirements
+
    | Requirement | Addressed? | How | Concern |
-   |-------------|------------|-----|---------|
+   | ----------- | ---------- | --- | ------- |
 
    #### Security Requirements
+
    ...
 
    #### Scalability Requirements
+
    ...
 
    ### Top Priority Issues
+
    1. {{p0_issue_1}}
    2. {{p0_issue_2}}
 
    ### Key Challenges (from Adversarial Analysis)
+
    - {{scale_risk}}
    - {{security_risk}}
 
    ### Dimension Scores
 
-   | Dimension | Score | Key Finding |
-   |-----------|-------|-------------|
-   | Goal Alignment | X/5 | {{finding}} |
-   | Technical Soundness | X/5 | {{finding}} |
-   | Maintainability | X/5 | {{finding}} |
-   | Scalability | X/5 | {{finding}} |
-   | Security | X/5 | {{finding}} |
+   | Dimension           | Score | Key Finding |
+   | ------------------- | ----- | ----------- |
+   | Goal Alignment      | X/5   | {{finding}} |
+   | Technical Soundness | X/5   | {{finding}} |
+   | Maintainability     | X/5   | {{finding}} |
+   | Scalability         | X/5   | {{finding}} |
+   | Security            | X/5   | {{finding}} |
 
    ### Patterns Identified
 
-
    **Good Practices**:
+
    1. {{pattern}}: {{why_good}}
 
    **Concerns**:
+
    1. {{anti_pattern}}: {{issue}}
    ```
 
@@ -344,26 +356,28 @@ If mode == "quick", use single agent:
 
    ### Goal Alignment
 
-   | Goal Aspect | Architectural Support | Gap? |
-   |-------------|----------------------|------|
-   | {{aspect}} | {{support}} | {{gap}} |
+   | Goal Aspect | Architectural Support | Gap?    |
+   | ----------- | --------------------- | ------- |
+   | {{aspect}}  | {{support}}           | {{gap}} |
 
    ### Dimension Scores
 
-   | Dimension | Score | Key Finding |
-   |-----------|-------|-------------|
-   | Goal Alignment | X/5 | {{finding}} |
-   | Technical Soundness | X/5 | {{finding}} |
-   | Maintainability | X/5 | {{finding}} |
-   | Scalability | X/5 | {{finding}} |
-   | Security | X/5 | {{finding}} |
+   | Dimension           | Score | Key Finding |
+   | ------------------- | ----- | ----------- |
+   | Goal Alignment      | X/5   | {{finding}} |
+   | Technical Soundness | X/5   | {{finding}} |
+   | Maintainability     | X/5   | {{finding}} |
+   | Scalability         | X/5   | {{finding}} |
+   | Security            | X/5   | {{finding}} |
 
    ### Patterns Identified
 
    **Good Practices**:
+
    1. {{pattern}}: {{why_good}}
 
    **Concerns**:
+
    1. {{anti_pattern}}: {{issue}}
    ```
 
@@ -407,6 +421,7 @@ If mode == "quick", use single agent:
    ### Alternative Approaches
 
    For {{aspect}}, consider:
+
    1. {{alternative1}}: {{pros_cons}}
    2. {{alternative2}}: {{pros_cons}}
    ```
@@ -456,30 +471,30 @@ Present as code blocks for user to apply manually.
 
 ### Against Goal (Thorough Mode)
 
-```
+```text
 /planner:review-architecture "Build scalable notification system"
 ```
 
 ### Quick Review
 
-```
+```text
 /planner:review-architecture "API v2" --mode quick
 ```
 
 ### Against Requirements
 
-```
+```text
 /planner:review-architecture docs/planning/requirements.md
 ```
 
 ### With Architecture Path
 
-```
+```text
 /planner:review-architecture "API v2" --architecture-path docs/architecture/api-v2-design.md
 ```
 
 ### Full Options
 
-```
+```text
 /planner:review-architecture docs/requirements.md --architecture-path docs/arch.md --mode thorough
 ```

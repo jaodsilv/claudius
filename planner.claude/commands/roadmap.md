@@ -13,6 +13,7 @@ Create a structured project roadmap for achieving a goal.
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$goal`: The project goal to roadmap (required)
 2. `$phases`: Number of phases (default: 4)
 3. `$horizon`: Planning horizon (default: "12 weeks")
@@ -72,6 +73,7 @@ roadmap-arguments:
 
 3. Load the roadmapping skill for patterns:
 
+   ```text
    Use Skill tool to load: planner:roadmapping
    ```
 
@@ -80,12 +82,14 @@ roadmap-arguments:
 1. Mark Phase 3 as in_progress
 
 2. Check if gh CLI is available:
+
    ```bash
    gh --version
    ```
 
 3. If available, launch `planner-github-issue-analyzer` agent:
 
+   ```text
    Use Task tool with planner-github-issue-analyzer agent:
 
    Analyze open issues relevant to: {{goal}}
@@ -104,7 +108,8 @@ roadmap-arguments:
 1. Mark Phase 4 as in_progress
 
 2. Launch `planner-roadmap-architect` agent:
-   ```
+
+   ```text
    Use Task tool with planner-roadmap-architect agent:
 
    Create a roadmap for:
@@ -134,6 +139,7 @@ roadmap-arguments:
 
 2. Ensure output directory exists:
 
+   ```bash
    mkdir -p {{output}}
    ```
 
@@ -150,6 +156,7 @@ roadmap-arguments:
 1. Mark all todos as completed
 
 2. Present summary:
+
    ```markdown
    ## Roadmap Created
 
@@ -165,7 +172,7 @@ roadmap-arguments:
 
    1. {{phase1_name}}: {{phase1_summary}}
    2. {{phase2_name}}: {{phase2_summary}}
-   ...
+      ...
 
    ### Critical Milestones
 
@@ -190,18 +197,18 @@ roadmap-arguments:
 
 ### Basic Usage
 
-```
+```text
 /planner:roadmap Implement user authentication with OAuth2
 ```
 
 ### With Options
 
-```
+```text
 /planner:roadmap Build a notification system --phases 5 --horizon "6 months"
 ```
 
 ### Custom Output
 
-```
+```text
 /planner:roadmap API v2 redesign --output docs/api-v2/
 ```

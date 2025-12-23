@@ -31,60 +31,60 @@ gh issue view <number> --json number,title,body,labels,comments,state,assignees,
 
 ### Issue JSON Fields
 
-| Field | Description | Planning Use |
-|-------|-------------|--------------|
-| `number` | Issue number | Reference ID |
-| `title` | Issue title | Description |
-| `body` | Issue description | Details, dependencies |
-| `labels` | Applied labels | Priority, type, effort |
-| `milestone` | Assigned milestone | Timeline grouping |
-| `assignees` | Assigned users | Resource planning |
-| `comments` | Discussion thread | Context, estimates |
-| `linkedPullRequests` | Related PRs | Implementation status |
-| `createdAt` | Creation date | Age analysis |
-| `updatedAt` | Last update | Activity analysis |
+| Field                | Description        | Planning Use           |
+| -------------------- | ------------------ | ---------------------- |
+| `number`             | Issue number       | Reference ID           |
+| `title`              | Issue title        | Description            |
+| `body`               | Issue description  | Details, dependencies  |
+| `labels`             | Applied labels     | Priority, type, effort |
+| `milestone`          | Assigned milestone | Timeline grouping      |
+| `assignees`          | Assigned users     | Resource planning      |
+| `comments`           | Discussion thread  | Context, estimates     |
+| `linkedPullRequests` | Related PRs        | Implementation status  |
+| `createdAt`          | Creation date      | Age analysis           |
+| `updatedAt`          | Last update        | Activity analysis      |
 
 ## Label Interpretation
 
 ### Priority Labels
 
-| Label Pattern | Priority | RICE Boost | MoSCoW |
-|--------------|----------|------------|--------|
-| `P0`, `critical`, `blocker` | Highest | +50% | Must Have |
-| `P1`, `high-priority`, `important` | High | +25% | Should Have |
-| `P2`, `medium`, `normal` | Medium | 0 | Could Have |
-| `P3`, `low`, `nice-to-have` | Low | -25% | Could Have |
+| Label Pattern                      | Priority | RICE Boost | MoSCoW      |
+| ---------------------------------- | -------- | ---------- | ----------- |
+| `P0`, `critical`, `blocker`        | Highest  | +50%       | Must Have   |
+| `P1`, `high-priority`, `important` | High     | +25%       | Should Have |
+| `P2`, `medium`, `normal`           | Medium   | 0          | Could Have  |
+| `P3`, `low`, `nice-to-have`        | Low      | -25%       | Could Have  |
 
 ### Type Labels
 
-| Label Pattern | Type | Considerations |
-|--------------|------|----------------|
-| `bug`, `defect` | Bug | Affects existing users, often higher priority |
-| `feature`, `enhancement` | Feature | New functionality |
-| `tech-debt`, `refactor` | Technical | Long-term maintenance |
-| `docs`, `documentation` | Documentation | Support and onboarding |
-| `security` | Security | Usually critical priority |
-| `performance` | Performance | User experience impact |
+| Label Pattern            | Type          | Considerations                                |
+| ------------------------ | ------------- | --------------------------------------------- |
+| `bug`, `defect`          | Bug           | Affects existing users, often higher priority |
+| `feature`, `enhancement` | Feature       | New functionality                             |
+| `tech-debt`, `refactor`  | Technical     | Long-term maintenance                         |
+| `docs`, `documentation`  | Documentation | Support and onboarding                        |
+| `security`               | Security      | Usually critical priority                     |
+| `performance`            | Performance   | User experience impact                        |
 
 ### Effort Labels
 
-| Label Pattern | Effort | Person-Days | RICE Effort |
-|--------------|--------|-------------|-------------|
-| `XS`, `trivial`, `< 1 hour` | Extra Small | 0.25 | 0.5 |
-| `S`, `small`, `1-4 hours` | Small | 0.5-1 | 1 |
-| `M`, `medium`, `1-2 days` | Medium | 1-2 | 2 |
-| `L`, `large`, `3-5 days` | Large | 3-5 | 5 |
-| `XL`, `epic`, `1+ week` | Extra Large | 5-10 | 10 |
+| Label Pattern               | Effort      | Person-Days | RICE Effort |
+| --------------------------- | ----------- | ----------- | ----------- |
+| `XS`, `trivial`, `< 1 hour` | Extra Small | 0.25        | 0.5         |
+| `S`, `small`, `1-4 hours`   | Small       | 0.5-1       | 1           |
+| `M`, `medium`, `1-2 days`   | Medium      | 1-2         | 2           |
+| `L`, `large`, `3-5 days`    | Large       | 3-5         | 5           |
+| `XL`, `epic`, `1+ week`     | Extra Large | 5-10        | 10          |
 
 ### Status Labels
 
-| Label Pattern | Status | Action |
-|--------------|--------|--------|
-| `blocked`, `waiting` | Blocked | Check blocker |
-| `ready`, `groomed` | Ready | Can be scheduled |
-| `in-progress`, `wip` | In Progress | Already being worked |
-| `needs-triage` | Needs Triage | Requires prioritization |
-| `stale` | Stale | Consider closing |
+| Label Pattern        | Status       | Action                  |
+| -------------------- | ------------ | ----------------------- |
+| `blocked`, `waiting` | Blocked      | Check blocker           |
+| `ready`, `groomed`   | Ready        | Can be scheduled        |
+| `in-progress`, `wip` | In Progress  | Already being worked    |
+| `needs-triage`       | Needs Triage | Requires prioritization |
+| `stale`              | Stale        | Consider closing        |
 
 ## Dependency Extraction
 
@@ -124,11 +124,11 @@ github\.com/[\w-]+/[\w-]+/issues/(\d+)
 2. Extract dependency patterns from body/comments
 3. Build adjacency list:
 
+   ```json
    {
-     123: { blocks: [456, 789], blockedBy: [111] },
-     456: { blocks: [], blockedBy: [123] }
+     "123": { "blocks": [456, 789], "blockedBy": [111] },
+     "456": { "blocks": [], "blockedBy": [123] }
    }
-
    ```
 
 4. Identify:
@@ -186,11 +186,12 @@ gh issue list --json number,title,updatedAt | \
 
 Calculate issue activity score:
 
-```
+```text
 Activity = (comments × 2) + (reactions × 1) + (updates × 0.5)
 ```
 
 Higher activity may indicate:
+
 - User demand
 - Complexity (lots of discussion)
 - Ambiguity (need for clarification)
@@ -215,7 +216,7 @@ gh api repos/{owner}/{repo}/milestones --jq '.[] | {number, title, due_on, open_
 
 Map milestones to roadmap phases:
 
-```
+```text
 Milestone "v1.0 MVP" → Phase 1: Core Features
 Milestone "v1.1 Polish" → Phase 2: Stabilization
 Milestone "v2.0 Major" → Phase 3: Major Features
@@ -232,40 +233,44 @@ gh issue view <number> --json linkedPullRequests
 
 ### PR Status Interpretation
 
-| Status | Meaning | Issue Impact |
-|--------|---------|--------------|
-| No PR | Not started | Need to schedule |
-| Draft PR | In progress | Actively worked |
-| Review PR | Almost done | Near completion |
-| Merged PR | Complete | Can close issue |
-| Closed PR | Abandoned | Need reassessment |
+| Status    | Meaning     | Issue Impact      |
+| --------- | ----------- | ----------------- |
+| No PR     | Not started | Need to schedule  |
+| Draft PR  | In progress | Actively worked   |
+| Review PR | Almost done | Near completion   |
+| Merged PR | Complete    | Can close issue   |
+| Closed PR | Abandoned   | Need reassessment |
 
 ## Output Formats
 
 ### Issue Summary Table
 
 ```markdown
-| # | Title | Priority | Effort | Status | Blocks | Blocked By |
-|---|-------|----------|--------|--------|--------|------------|
-| 123 | Auth API | P1 | M | Ready | 125 | - |
-| 124 | User Model | P1 | S | Ready | 125 | - |
-| 125 | Login UI | P0 | L | Blocked | 126 | 123, 124 |
+| #   | Title      | Priority | Effort | Status  | Blocks | Blocked By |
+| --- | ---------- | -------- | ------ | ------- | ------ | ---------- |
+| 123 | Auth API   | P1       | M      | Ready   | 125    | -          |
+| 124 | User Model | P1       | S      | Ready   | 125    | -          |
+| 125 | Login UI   | P0       | L      | Blocked | 126    | 123, 124   |
 ```
 
 ### Priority Matrix
 
 ```markdown
 ## P0 - Critical (Do Now)
+
 - #125 Login UI [L] - Blocked by #123, #124
 
 ## P1 - High (Do Next)
+
 - #123 Auth API [M] - Ready
 - #124 User Model [S] - Ready
 
 ## P2 - Medium (Plan)
+
 - #127 Profile Page [M] - Ready
 
 ## P3 - Low (Backlog)
+
 - #128 Dark Mode [S] - Nice to have
 ```
 
@@ -275,17 +280,21 @@ gh issue view <number> --json linkedPullRequests
 ## Dependency Analysis
 
 ### Critical Path
+
 #123 → #125 → #126 (3 issues, ~2 weeks)
 
 ### Ready Issues (No Blockers)
+
 - #123 Auth API
 - #124 User Model
 
 ### Blocked Issues
+
 - #125 Login UI - Waiting on: #123, #124
 - #126 Session Management - Waiting on: #125
 
 ### Circular Dependencies
+
 None detected
 ```
 

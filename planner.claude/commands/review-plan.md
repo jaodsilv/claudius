@@ -13,6 +13,7 @@ Review a plan file with multi-agent orchestration for comprehensive, multi-persp
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$plan_path`: Path to the plan file (required)
 2. `$goal`: Goal context for evaluation (optional)
 3. `$mode`: Review mode - "quick" (single agent) or "thorough" (orchestrated) (default: "thorough")
@@ -40,7 +41,7 @@ review-plan-arguments:
 
 ## Orchestration Pattern
 
-```
+```text
 Thorough Mode (default):
 ┌─────────────────────────────────────────────────────┐
 │  Phase 1: Parallel Analysis                         │
@@ -76,6 +77,7 @@ Quick Mode:
 
 2. Read the plan file:
 
+   ```text
    Read: {{plan_path}}
    ```
 
@@ -92,7 +94,8 @@ Quick Mode:
 1. If goal not provided, attempt to extract from plan
 
 2. If still unclear, ask user:
-   ```
+
+   ```text
    What is the primary goal this plan should achieve?
    ```
 
@@ -115,6 +118,7 @@ Quick Mode:
 
    **Domain Reviewer** (planner-plan-reviewer):
 
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this plan:
@@ -136,7 +140,7 @@ Quick Mode:
 
    **Structural Analyzer** (planner-review-analyzer):
 
-   ```
+   ```text
    Use Task tool with planner-review-analyzer agent:
 
    Analyze the structure of this plan:
@@ -158,7 +162,8 @@ Quick Mode:
 1. Mark Adversarial Challenge as in_progress
 
 2. Launch challenger agent:
-   ```
+
+   ```text
    Use Task tool with planner-review-challenger agent:
 
    Challenge this plan and the review findings:
@@ -188,8 +193,7 @@ Quick Mode:
 
 1. Mark Synthesis as in_progress
 
-
-   ```
+   ```text
    Use Task tool with planner-review-synthesizer agent:
 
    Synthesize these review findings:
@@ -211,7 +215,7 @@ Quick Mode:
    5. Create executive summary
    ```
 
-3. Receive synthesized report
+2. Receive synthesized report
 
 ### Quick Mode Analysis
 
@@ -220,7 +224,8 @@ If mode == "quick", use single agent:
 1. Mark Analysis as in_progress
 
 2. Launch `planner-plan-reviewer` agent only:
-   ```
+
+   ```text
    Use Task tool with planner-plan-reviewer agent:
 
    Review this plan:
@@ -251,7 +256,6 @@ If mode == "quick", use single agent:
 
 2. Present findings to user:
 
-
    ```markdown
    ## Plan Review Findings (Multi-Agent Analysis)
 
@@ -259,20 +263,23 @@ If mode == "quick", use single agent:
    **Review Sources**: Domain Reviewer, Structural Analyzer, Adversarial Challenger
 
    ### Executive Summary
+
    {{synthesized_summary}}
 
    ### Top Priority Issues
+
    1. {{p0_issue_1}}
    2. {{p0_issue_2}}
 
    ### Quality Metrics
-   | Dimension | Score | Notes |
-   |-----------|-------|-------|
-   | Goal Alignment | X/5 | {{notes}} |
-   | Completeness | X% | {{notes}} |
-   | Feasibility | X/5 | {{notes}} |
-   | Clarity | X/5 | {{notes}} |
-   | Risk Coverage | X/5 | {{notes}} |
+
+   | Dimension      | Score | Notes     |
+   | -------------- | ----- | --------- |
+   | Goal Alignment | X/5   | {{notes}} |
+   | Completeness   | X%    | {{notes}} |
+   | Feasibility    | X/5   | {{notes}} |
+   | Clarity        | X/5   | {{notes}} |
+   | Risk Coverage  | X/5   | {{notes}} |
 
    ### Key Challenges (from Adversarial Analysis)
 
@@ -280,6 +287,7 @@ If mode == "quick", use single agent:
    2. {{challenge2}}
 
    ### Quick Wins
+
    1. {{quick_win1}}
    ```
 
@@ -291,18 +299,21 @@ If mode == "quick", use single agent:
    **Overall Assessment**: {{score}}/5
 
    ### Summary
+
    {{executive_summary}}
 
    ### Dimension Scores
-   | Dimension | Score | Notes |
-   |-----------|-------|-------|
-   | Goal Alignment | X/5 | {{notes}} |
-   | Completeness | X% | {{notes}} |
-   | Feasibility | X/5 | {{notes}} |
-   | Clarity | X/5 | {{notes}} |
-   | Risk Coverage | X/5 | {{notes}} |
+
+   | Dimension      | Score | Notes     |
+   | -------------- | ----- | --------- |
+   | Goal Alignment | X/5   | {{notes}} |
+   | Completeness   | X%    | {{notes}} |
+   | Feasibility    | X/5   | {{notes}} |
+   | Clarity        | X/5   | {{notes}} |
+   | Risk Coverage  | X/5   | {{notes}} |
 
    ### Key Findings
+
    1. {{finding1}}
    2. {{finding2}}
    ```
@@ -313,7 +324,6 @@ If mode == "quick", use single agent:
    - Are there concerns I should investigate more?
 
 4. Iterate based on user input:
-
    - Dive deeper into specific areas
    - Clarify findings
    - Provide more detail where requested
@@ -390,24 +400,24 @@ Present summary:
 
 ### Basic Review (Thorough Mode)
 
-```
+```text
 /planner:review-plan docs/planning/roadmap.md
 ```
 
 ### Quick Review
 
-```
+```text
 /planner:review-plan project-plan.md --mode quick
 ```
 
 ### With Goal Context
 
-```
+```text
 /planner:review-plan project-plan.md --goal "Launch MVP by Q2"
 ```
 
 ### Full Options
 
-```
+```text
 /planner:review-plan docs/plan.md --goal "Scale to 1M users" --mode thorough
 ```

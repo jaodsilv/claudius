@@ -42,13 +42,14 @@
 ### Critical Issues
 
 {{#if has_critical_issues}}
+
 1. **{{critical1_title}}**
    - Issue: {{critical1_issue}}
    - Why Critical: {{critical1_reason}}
    - Recommended Action: {{critical1_action}}
-{{else}}
-No critical issues identified.
-{{/if}}
+     {{else}}
+     No critical issues identified.
+     {{/if}}
 
 ---
 
@@ -56,12 +57,12 @@ No critical issues identified.
 
 ### Goal Alignment
 
-| Aspect | Alignment Score | Notes |
-|--------|-----------------|-------|
-| Primary Goal | {{goal_alignment}}/5 | {{goal_notes}} |
-| User Needs | {{user_alignment}}/5 | {{user_notes}} |
-| Technical Feasibility | {{tech_alignment}}/5 | {{tech_notes}} |
-| Resource Constraints | {{resource_alignment}}/5 | {{resource_notes}} |
+| Aspect                | Alignment Score          | Notes              |
+| --------------------- | ------------------------ | ------------------ |
+| Primary Goal          | {{goal_alignment}}/5     | {{goal_notes}}     |
+| User Needs            | {{user_alignment}}/5     | {{user_notes}}     |
+| Technical Feasibility | {{tech_alignment}}/5     | {{tech_notes}}     |
+| Resource Constraints  | {{resource_alignment}}/5 | {{resource_notes}} |
 
 ### Gap Analysis
 
@@ -78,8 +79,8 @@ No significant gaps identified.
 
 ## Completeness Check
 
-| Element | Present | Quality | Notes |
-|---------|---------|---------|-------|
+| Element      | Present              | Quality              | Notes              |
+| ------------ | -------------------- | -------------------- | ------------------ |
 | {{element1}} | {{element1_present}} | {{element1_quality}} | {{element1_notes}} |
 | {{element2}} | {{element2_present}} | {{element2_quality}} | {{element2_notes}} |
 | {{element3}} | {{element3_present}} | {{element3_quality}} | {{element3_notes}} |
@@ -92,8 +93,8 @@ No significant gaps identified.
 
 ### Identified Risks
 
-| Risk | Probability | Impact | Current Mitigation | Adequate? |
-|------|-------------|--------|-------------------|-----------|
+| Risk      | Probability    | Impact           | Current Mitigation   | Adequate?          |
+| --------- | -------------- | ---------------- | -------------------- | ------------------ |
 | {{risk1}} | {{risk1_prob}} | {{risk1_impact}} | {{risk1_mitigation}} | {{risk1_adequate}} |
 | {{risk2}} | {{risk2_prob}} | {{risk2_impact}} | {{risk2_mitigation}} | {{risk2_adequate}} |
 
@@ -192,6 +193,6 @@ This review was conducted using the following approach:
 
 ## Revision History
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| {{date}} | 1.0 | Initial review | Planner Plugin |
+| Date     | Version | Changes        | Author         |
+| -------- | ------- | -------------- | -------------- |
+| {{date}} | 1.0     | Initial review | Planner Plugin |

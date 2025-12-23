@@ -70,12 +70,14 @@ gh issue view <number> --json number,title,body,labels,comments,state,assignees
 Interpret labels according to common patterns:
 
 **Priority**:
+
 - `P0`, `critical`, `blocker` → Critical priority
 - `P1`, `high-priority` → High priority
 - `P2`, `medium` → Medium priority
 - `P3`, `low` → Low priority
 
 **Type**:
+
 - `bug`, `defect` → Bug fix needed
 - `feature`, `enhancement` → New functionality
 - `tech-debt`, `refactor` → Technical improvement
@@ -83,6 +85,7 @@ Interpret labels according to common patterns:
 - `security` → Security issue
 
 **Effort**:
+
 - `XS`, `trivial` → < 0.5 days
 - `S`, `small` → 0.5-1 day
 - `M`, `medium` → 1-3 days
@@ -90,6 +93,7 @@ Interpret labels according to common patterns:
 - `XL`, `epic` → 1+ week
 
 **Status**:
+
 - `blocked`, `waiting` → Cannot proceed
 - `ready`, `groomed` → Ready for work
 - `in-progress`, `wip` → Being worked on
@@ -141,21 +145,22 @@ Produce a structured analysis including:
 
 ### Distribution
 
-| Metric | Count |
-|--------|-------|
-| Bugs | X |
-| Features | X |
-| Blocked | X |
-| Ready | X |
+| Metric   | Count |
+| -------- | ----- |
+| Bugs     | X     |
+| Features | X     |
+| Blocked  | X     |
+| Ready    | X     |
 
 ### Issue Details
 
-| # | Title | Type | Priority | Effort | Status | Blocked By |
-|---|-------|------|----------|--------|--------|------------|
+| #   | Title | Type | Priority | Effort | Status | Blocked By |
+| --- | ----- | ---- | -------- | ------ | ------ | ---------- |
 
 ### Labeling Gaps
 
 Issues needing attention:
+
 - Missing priority: #X, #Y
 - Missing effort: #A, #B
 

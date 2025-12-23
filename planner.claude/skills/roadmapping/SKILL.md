@@ -31,18 +31,22 @@ Each phase should include:
 **Prerequisites**: [What must be complete first]
 
 #### Milestones
+
 1. [Milestone] - [Success criteria]
 
 #### Deliverables
+
 1. [Deliverable] - [Description]
 
 #### Dependencies
+
 - Depends on: [Phase/external dependency]
 - Blocks: [What this phase blocks]
 
 #### Risks
+
 | Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
+| ---- | ----------- | ------ | ---------- |
 ```
 
 ## Phase Planning Patterns
@@ -87,12 +91,12 @@ Each phase should include:
 
 ### Phase Sizing
 
-| Duration | Recommended Phases |
-|----------|-------------------|
-| < 1 month | 2-3 phases |
-| 1-3 months | 3-4 phases |
-| 3-6 months | 4-5 phases |
-| 6-12 months | 5-6 phases |
+| Duration    | Recommended Phases      |
+| ----------- | ----------------------- |
+| < 1 month   | 2-3 phases              |
+| 1-3 months  | 3-4 phases              |
+| 3-6 months  | 4-5 phases              |
+| 6-12 months | 5-6 phases              |
 | > 12 months | Consider epic breakdown |
 
 ## Milestone Definition
@@ -129,10 +133,11 @@ Each phase should include:
 **Milestone**: [Name]
 **Target Date**: [Date]
 **Success Criteria**:
+
 1. [Criterion 1]
 2. [Criterion 2]
-**Verification Method**: [How to verify]
-**Owner**: [Responsible person/team]
+   **Verification Method**: [How to verify]
+   **Owner**: [Responsible person/team]
 ```
 
 ## Dependency Management
@@ -202,7 +207,7 @@ graph LR
 
 ### Risk Matrix
 
-```
+```text
            │ Low Impact │ Med Impact │ High Impact
 ───────────┼────────────┼────────────┼────────────
 High Prob  │   Medium   │    High    │  Critical
@@ -229,6 +234,7 @@ Each phase should align with Objectives and Key Results:
 **Aligned Objective**: Improve user security and experience
 
 **Key Results Impacted**:
+
 1. KR1: Reduce account compromise rate by 50%
 2. KR2: Decrease login time by 30%
 3. KR3: Achieve 95% user satisfaction with login flow
@@ -236,10 +242,10 @@ Each phase should align with Objectives and Key Results:
 
 ### Phase-to-OKR Mapping
 
-| Phase | Primary OKR | Secondary OKR |
-|-------|-------------|---------------|
-| Phase 1 | O1: Security | O3: UX |
-| Phase 2 | O2: Performance | O1: Security |
+| Phase   | Primary OKR     | Secondary OKR |
+| ------- | --------------- | ------------- |
+| Phase 1 | O1: Security    | O3: UX        |
+| Phase 2 | O2: Performance | O1: Security  |
 
 ## Visual Roadmap Formats
 
@@ -265,7 +271,7 @@ gantt
 
 ### Timeline Format
 
-```
+```text
 Q1 2024          Q2 2024          Q3 2024
 |───────────────|───────────────|───────────────|
 [  Discovery   ][    Design    ][  Development ]
@@ -274,7 +280,7 @@ Q1 2024          Q2 2024          Q3 2024
 
 ### Milestone Timeline
 
-```
+```text
 Jan        Feb        Mar        Apr        May
  |          |          |          |          |
  ●──────────●──────────●──────────●──────────●

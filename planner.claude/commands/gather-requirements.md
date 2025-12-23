@@ -13,6 +13,7 @@ Gather requirements for a goal through structured discovery, optionally leveragi
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Parse the arguments:
+
 1. `$goal`: Goal to gather requirements for (required)
 2. `$use_brainstorm`: Use brainstorm-pro if available (default: auto-detect)
 3. `$depth`: Exploration depth (default: "normal")
@@ -71,6 +72,7 @@ If using brainstorm-pro:
 
 1. Delegate to brainstorm:
 
+   ```text
    /brainstorm:start topic: "{{goal}}" --depth: {{depth}} --output-path: {{output}}
    ```
 
@@ -95,14 +97,14 @@ If not using brainstorm:
 1. Mark Phase 2 as in_progress
 
 2. Launch `planner-requirements-gatherer` agent:
-   ```
+
+   ```text
    Use Task tool with planner-requirements-gatherer agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}
 
    Conduct structured requirements discovery:
-
    1. Understand the problem space
    2. Identify stakeholders and users
    3. Discover functional requirements
@@ -130,6 +132,7 @@ If not using brainstorm:
 
 3. Load prioritization skill for framework guidance:
 
+   ```text
    Use Skill tool to load: planner:prioritization
    ```
 
@@ -140,6 +143,7 @@ If not using brainstorm:
 1. Mark Phase 4 as in_progress
 
 2. Ensure output directory:
+
    ```bash
    mkdir -p {{output}}
    ```
@@ -197,7 +201,6 @@ See `{{output}}/requirements.md` for full documentation.
 1. Review requirements with stakeholders
 2. Validate with technical team
 3. Create roadmap: `/planner:roadmap {{goal}}`
-```
 
 ## Error Handling
 
@@ -209,18 +212,18 @@ See `{{output}}/requirements.md` for full documentation.
 
 ### Basic Usage
 
-```
+```text
 /planner:gather-requirements Build a user notification system
 ```
 
 ### Force Brainstorm
 
-```
+```text
 /planner:gather-requirements API authentication redesign --use-brainstorm
 ```
 
 ### Deep Exploration
 
-```
+```text
 /planner:gather-requirements Mobile app launch --depth deep
 ```

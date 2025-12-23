@@ -20,26 +20,26 @@
 
 ### P0 - Critical (Do Immediately)
 
-| # | Title | Score | Effort | Status | Rationale |
-|---|-------|-------|--------|--------|-----------|
+| #                 | Title           | Score     | Effort     | Status     | Rationale     |
+| ----------------- | --------------- | --------- | ---------- | ---------- | ------------- |
 | #{{issue_number}} | {{issue_title}} | {{score}} | {{effort}} | {{status}} | {{rationale}} |
 
 ### P1 - High Priority (Do This Sprint)
 
-| # | Title | Score | Effort | Status | Rationale |
-|---|-------|-------|--------|--------|-----------|
+| #                 | Title           | Score     | Effort     | Status     | Rationale     |
+| ----------------- | --------------- | --------- | ---------- | ---------- | ------------- |
 | #{{issue_number}} | {{issue_title}} | {{score}} | {{effort}} | {{status}} | {{rationale}} |
 
 ### P2 - Medium Priority (Plan for Next Sprint)
 
-| # | Title | Score | Effort | Status | Rationale |
-|---|-------|-------|--------|--------|-----------|
+| #                 | Title           | Score     | Effort     | Status     | Rationale     |
+| ----------------- | --------------- | --------- | ---------- | ---------- | ------------- |
 | #{{issue_number}} | {{issue_title}} | {{score}} | {{effort}} | {{status}} | {{rationale}} |
 
 ### P3 - Low Priority (Backlog)
 
-| # | Title | Score | Effort | Status | Rationale |
-|---|-------|-------|--------|--------|-----------|
+| #                 | Title           | Score     | Effort     | Status     | Rationale     |
+| ----------------- | --------------- | --------- | ---------- | ---------- | ------------- |
 | #{{issue_number}} | {{issue_title}} | {{score}} | {{effort}} | {{status}} | {{rationale}} |
 
 ---
@@ -72,48 +72,51 @@ graph TD
 {{/if}}
 
 {{#if MoSCoW}}
+
 #### Must Have
 
-
 #### Should Have
+
 {{should_have_list}}
 
 #### Could Have
 
-
 #### Won't Have (This Release)
+
 {{wont_have_list}}
 {{/if}}
 
 {{#if WeightedScoring}}
-| # | Title | Value ({{value_weight}}%) | Feasibility ({{feasibility_weight}}%) | Alignment ({{alignment_weight}}%) | Risk ({{risk_weight}}%) | Total |
-|---|-------|--------------------------|-------------------------------------|-----------------------------------|------------------------|-------|
-| #{{issue_number}} | {{issue_title}} | {{value_score}} | {{feasibility_score}} | {{alignment_score}} | {{risk_score}} | {{total_score}} |
+
+| #                 | Title           | Value ({{value_weight}}%) | Feasibility ({{feasibility_weight}}%) | Alignment ({{alignment_weight}}%) | Risk ({{risk_weight}}%) | Total           |
+| ----------------- | --------------- | ------------------------- | ------------------------------------- | --------------------------------- | ----------------------- | --------------- |
+| #{{issue_number}} | {{issue_title}} | {{value_score}}           | {{feasibility_score}}                 | {{alignment_score}}               | {{risk_score}}          | {{total_score}} |
+
 {{/if}}
 
 ---
 
 ## Issue Type Distribution
 
-| Type | Count | % of Total |
-|------|-------|------------|
-| Bug | {{bug_count}} | {{bug_pct}}% |
-| Feature | {{feature_count}} | {{feature_pct}}% |
+| Type        | Count                 | % of Total           |
+| ----------- | --------------------- | -------------------- |
+| Bug         | {{bug_count}}         | {{bug_pct}}%         |
+| Feature     | {{feature_count}}     | {{feature_pct}}%     |
 | Enhancement | {{enhancement_count}} | {{enhancement_pct}}% |
-| Tech Debt | {{tech_debt_count}} | {{tech_debt_pct}}% |
-| Other | {{other_count}} | {{other_pct}}% |
+| Tech Debt   | {{tech_debt_count}}   | {{tech_debt_pct}}%   |
+| Other       | {{other_count}}       | {{other_pct}}%       |
 
 ---
 
 ## Effort Distribution
 
-| Effort | Count | Total Person-Days |
-|--------|-------|-------------------|
-| XS | {{xs_count}} | {{xs_days}} |
-| S | {{s_count}} | {{s_days}} |
-| M | {{m_count}} | {{m_days}} |
-| L | {{l_count}} | {{l_days}} |
-| XL | {{xl_count}} | {{xl_days}} |
+| Effort | Count        | Total Person-Days |
+| ------ | ------------ | ----------------- |
+| XS     | {{xs_count}} | {{xs_days}}       |
+| S      | {{s_count}}  | {{s_days}}        |
+| M      | {{m_count}}  | {{m_days}}        |
+| L      | {{l_count}}  | {{l_days}}        |
+| XL     | {{xl_count}} | {{xl_days}}       |
 
 **Total Estimated Effort**: {{total_effort}} person-days
 
@@ -133,9 +136,9 @@ The following issues are on the critical path and should be prioritized:
 
 ## Blocked Issues Analysis
 
-| Issue | Blocked By | Estimated Unblock Date |
-|-------|------------|------------------------|
-| #{{blocked_issue}} | #{{blocker_issues}} | {{unblock_date}} |
+| Issue              | Blocked By          | Estimated Unblock Date |
+| ------------------ | ------------------- | ---------------------- |
+| #{{blocked_issue}} | #{{blocker_issues}} | {{unblock_date}}       |
 
 ---
 
@@ -169,6 +172,6 @@ gh issue edit {{issue_number}} --add-label "{{priority_label}}"
 
 ## Revision History
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| {{date}} | 1.0 | Initial prioritization | {{author}} |
+| Date     | Version | Changes                | Author     |
+| -------- | ------- | ---------------------- | ---------- |
+| {{date}} | 1.0     | Initial prioritization | {{author}} |

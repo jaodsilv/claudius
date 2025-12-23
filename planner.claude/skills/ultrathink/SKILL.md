@@ -62,7 +62,7 @@ Before ideation, gather:
 
 Launch parallel ideation agents:
 
-```
+```text
 ┌─────────────────┐  ┌─────────────────┐
 │  Deep Thinker   │  │   Innovation    │
 │    (Opus)       │  │    Explorer     │
@@ -80,7 +80,7 @@ Launch parallel ideation agents:
 
 #### Deep Thinker Prompt Pattern
 
-```
+```text
 You are engaging in deep, extended thinking about: [TOPIC]
 
 Context:
@@ -103,7 +103,7 @@ For each approach, explore implications deeply.
 
 #### Innovation Explorer Prompt Pattern
 
-```
+```text
 You are exploring innovative approaches to: [TOPIC]
 
 Research and explore:
@@ -125,7 +125,7 @@ Seek inspiration from:
 
 Challenge each idea with the Adversarial Critic:
 
-```
+```text
 ┌─────────────────┐
 │   Adversarial   │
 │     Critic      │
@@ -138,7 +138,7 @@ Challenge each idea with the Adversarial Critic:
 
 #### Critic Prompt Pattern
 
-```
+```text
 You are a rigorous critic analyzing proposed solutions.
 
 Ideas to challenge:
@@ -174,7 +174,7 @@ not just theoretical concerns.
 
 Merge insights into coherent proposals:
 
-```
+```text
 ┌─────────────────┐
 │   Convergence   │
 │   Synthesizer   │
@@ -187,7 +187,7 @@ Merge insights into coherent proposals:
 
 #### Synthesis Prompt Pattern
 
-```
+```text
 You are synthesizing multi-agent ideation outputs.
 
 Deep Thinker Output:
@@ -226,7 +226,7 @@ Create coherent proposals by:
 
 Present to user for feedback:
 
-```
+```text
 ┌─────────────────┐
 │   Facilitator   │
 │   (Sonnet)      │
@@ -245,6 +245,7 @@ Present to user for feedback:
 ### Top Proposals
 
 #### Proposal 1: [Name]
+
 **Viability**: [Score]/10 | **Novelty**: [Score]/10
 
 **Summary**: [2-3 sentences]
@@ -252,10 +253,12 @@ Present to user for feedback:
 **Key Innovation**: [What makes this unique]
 
 **Challenges Identified**:
+
 1. [Challenge from critic]
 2. [Challenge from critic]
 
 **Open Questions**:
+
 1. [Question requiring input]
 
 ---
@@ -273,6 +276,7 @@ Present to user for feedback:
 ### When to Continue
 
 Continue to another round when:
+
 - User requests deeper exploration
 - Major new directions identified
 - Proposals still lack clarity
@@ -281,6 +285,7 @@ Continue to another round when:
 ### When to Conclude
 
 Stop ideation when:
+
 - User is satisfied with proposals
 - Diminishing returns observed
 - Time/round limit reached
@@ -289,6 +294,7 @@ Stop ideation when:
 ### Between-Round Synthesis
 
 Between rounds, preserve:
+
 - Top proposals
 - Key insights
 - User feedback
@@ -300,16 +306,16 @@ Between rounds, preserve:
 
 Score each proposal on:
 
-| Criterion | Description | Weight |
-|-----------|-------------|--------|
-| Novelty | How new/different is this? | 20% |
-| Feasibility | Can this be implemented? | 25% |
-| Impact | Will this solve the problem well? | 30% |
-| Robustness | Did it survive criticism? | 25% |
+| Criterion   | Description                       | Weight |
+| ----------- | --------------------------------- | ------ |
+| Novelty     | How new/different is this?        | 20%    |
+| Feasibility | Can this be implemented?          | 25%    |
+| Impact      | Will this solve the problem well? | 30%    |
+| Robustness  | Did it survive criticism?         | 25%    |
 
 ### Novelty Assessment
 
-```
+```text
 10 = Revolutionary, paradigm-shifting
 8 = Highly innovative, new approach
 6 = Creative combination of existing ideas
@@ -319,7 +325,7 @@ Score each proposal on:
 
 ### Feasibility Assessment
 
-```
+```text
 10 = Straightforward, clear path
 8 = Achievable with known methods
 6 = Challenging but doable
@@ -329,7 +335,7 @@ Score each proposal on:
 
 ### Impact Assessment
 
-```
+```text
 10 = Completely solves problem, exceeds goals
 8 = Significantly addresses problem
 6 = Partially addresses problem
@@ -339,7 +345,7 @@ Score each proposal on:
 
 ### Robustness Assessment
 
-```
+```text
 10 = Survived all challenges intact
 8 = Minor adjustments needed
 6 = Moderate concerns addressed
@@ -365,11 +371,13 @@ Score each proposal on:
 ## Top Proposals
 
 ### 1. [Proposal Name]
+
 **Scores**: Viability [X] | Novelty [X] | Impact [X] | Robustness [X]
 
 [Detailed description]
 
 ### 2. [Proposal Name]
+
 ...
 
 ## Key Insights
@@ -380,9 +388,9 @@ Score each proposal on:
 
 ## Discarded Ideas
 
-| Idea | Reason Discarded |
-|------|------------------|
-| [Idea] | [Reason] |
+| Idea   | Reason Discarded |
+| ------ | ---------------- |
+| [Idea] | [Reason]         |
 
 ## Open Questions
 
