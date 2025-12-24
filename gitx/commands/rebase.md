@@ -1,36 +1,57 @@
 ---
 description: Rebase current branch onto base branch (default: main)
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Task, Read, AskUserQuestion, TodoWrite
+allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git stash:*), Bash(git pull:*), Bash(pwd:*), Bash(cd:*), Bash(test:*), Task, Read, AskUserQuestion, TodoWrite
 ---
 
 # Rebase Branch (Orchestrated)
 
-Rebase the current branch onto a base branch to incorporate upstream changes and maintain a linear
-history. Uses multi-agent orchestration for conflict resolution.
+Rebase the current branch onto the base branch to incorporate upstream changes.
+Use multi-agent orchestration when conflicts occur.
+
+## Worktree Strategy
+
+This command syncs the main branch worktree before rebasing to ensure:
+
+1. Main worktree has latest upstream changes
+2. Feature branch rebase uses most recent base
+3. Avoids redundant conflict resolution from stale main
+
+Navigate to main worktree (`../main/`), pull latest, then rebase feature branch.
 
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
-- `--base <branch>`: Base branch to rebase onto (default: main)
+
+- `--base <branch>`: Base branch to rebase onto (default: main, stored as `$base_branch`)
 
 ## Gather Context
 
 Get repository state:
-- Current branch: !`git branch --show-current`
-- Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
+
+- Current branch: !`git branch --show-current` → Store as `$current_branch`
+- Default base: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null |
+  sed 's@^refs/remotes/origin/@@' || echo "main"`
 - Working tree status: !`git status --porcelain`
-- Commits to rebase: !`git log --oneline <base>..HEAD 2>/dev/null | head -20`
+- Current directory: !`pwd` → Store as `$original_dir`
 
 Determine base branch:
-- If --base provided: Use that branch
-- Otherwise: Use main branch (detected above)
+
+- If --base provided: Use that branch as `$base_branch`
+- Otherwise: Use detected default as `$base_branch`
+
+Show commits to rebase:
+
+```bash
+git log --oneline $base_branch..HEAD 2>/dev/null | head -20
+```
 
 ## Pre-flight Checks
 
 ### Check for clean working tree
 
 If there are uncommitted changes:
+
 - Use AskUserQuestion: "You have uncommitted changes. Stash them before rebasing?"
 - Options: "Stash and continue", "Cancel"
 - If stash: `git stash push -m "gitx: pre-rebase stash"`
@@ -38,28 +59,121 @@ If there are uncommitted changes:
 ### Check commits to rebase
 
 Show commits that will be rebased:
+
 - Count: number of commits
 - List: abbreviated commit messages
+
+## Sync Main Worktree
+
+Before fetching, ensure the main worktree has latest changes:
+
+### Validate Worktree Exists
+
+Check if main worktree exists:
+
+```bash
+test -d ../main && echo "exists" || echo "missing"
+```
+
+If missing:
+
+- Use AskUserQuestion: "Main worktree not found at ../main/.
+  Proceed with standard rebase?"
+- Options: "Yes (skip worktree sync)", "No (cancel)"
+- If No: Exit with message "Set up main worktree: `git worktree add ../main $base_branch`"
+- If Yes: Skip to "Fetch Latest" section
+
+### Navigate and Sync
+
+If main worktree exists:
+
+1. **Navigate to main worktree**:
+
+   ```bash
+   echo "📂 Navigating to main worktree..."
+   cd ../main/
+   ```
+
+2. **Check working directory status**:
+
+   ```bash
+   echo "🔍 Checking main worktree status..."
+   git status --porcelain
+   ```
+
+3. **Stash uncommitted changes** (if working directory not clean):
+
+   ```bash
+   echo "💾 Stashing uncommitted changes in main worktree..."
+   git stash push -m "gitx: rebase auto-stash $(date +%Y%m%d-%H%M%S)"
+   ```
+
+   Set flag: `$main_stash_created = true`
+
+4. **Pull latest base branch**:
+
+   ```bash
+   echo "⬇️  Pulling latest $base_branch..."
+   git pull --ff-only origin $base_branch
+   ```
+
+   If pull fails (non-fast-forward):
+
+   - Use AskUserQuestion: "Main worktree cannot fast-forward. How to proceed?"
+   - Options: "Reset to origin/$base_branch", "Skip sync", "Cancel rebase"
+   - If Reset: `git reset --hard origin/$base_branch`
+   - If Skip: Continue without sync
+   - If Cancel: Return to feature worktree and exit
+
+5. **Return to feature worktree**:
+
+   ```bash
+   echo "🔙 Returning to feature worktree..."
+   cd $original_dir
+   ```
+
+### Verify Sync
+
+Verify main worktree is up to date:
+
+```bash
+echo "✅ Verifying main worktree sync..."
+MAIN_HEAD=$(git -C ../main/ rev-parse HEAD)
+ORIGIN_HEAD=$(git rev-parse origin/$base_branch)
+if [ "$MAIN_HEAD" = "$ORIGIN_HEAD" ]; then
+  echo "✓ Main worktree synchronized with origin/$base_branch"
+else
+  echo "⚠️  Warning: Main worktree HEAD differs from origin/$base_branch"
+fi
+```
 
 ## Fetch Latest
 
 Update remote tracking:
-- `git fetch origin <base-branch>`
+
+```bash
+git fetch origin $base_branch
+```
 
 Show what's new on base:
-- `git log --oneline HEAD..origin/<base-branch> | head -10`
+
+```bash
+git log --oneline HEAD..origin/$base_branch | head -10
+```
 
 ## Confirmation
 
 Use AskUserQuestion to confirm rebase:
 
 Show:
-- Current branch: <name>
-- Base branch: origin/<base>
-- Commits to rebase: <count>
-- New commits from base: <count>
+
+- Current branch: `$current_branch`
+- Base branch: `origin/$base_branch`
+- Commits to rebase: count
+- New commits from base: count
 
 Options:
+
 1. "Proceed with rebase" - continue
 2. "View commits in detail" - show more info
 3. "Cancel" - abort
@@ -67,7 +181,10 @@ Options:
 ## Execute Rebase
 
 Run the rebase:
-- `git rebase origin/<base-branch>`
+
+```bash
+git rebase origin/$base_branch
+```
 
 ## Handle Conflicts (Orchestrated)
 
@@ -87,7 +204,7 @@ Launch conflict analyzer for comprehensive analysis:
 ```text
 Task (gitx:conflict-analyzer):
   Operation: rebase
-  Base Branch: [base-branch]
+  Base Branch: $base_branch
   Conflicting Files: [list from git status]
 
   Analyze each conflict:
@@ -127,6 +244,7 @@ AskUserQuestion:
 ```
 
 Apply chosen resolution:
+
 - **Suggested**: Apply the resolution code from suggester
 - **Keep ours**: `git checkout --ours <file>`
 - **Keep theirs**: `git checkout --theirs <file>`
@@ -154,6 +272,7 @@ Task (gitx:merge-validator):
 ```
 
 If validation fails:
+
 - Report issues
 - Allow fixing before continuing
 
@@ -166,11 +285,13 @@ git rebase --continue
 ```
 
 If more conflicts occur (during subsequent commits):
+
 - Repeat Phases 1-5
 
 ## Pop Stash
 
 If changes were stashed:
+
 - `git stash pop`
 - Report if conflicts with stash
 
@@ -182,7 +303,7 @@ Show rebase outcome:
 ## Rebase Complete
 
 ### Summary
-- Rebased: [count] commits onto [base]
+- Rebased: [count] commits onto $base_branch
 - Conflicts resolved: [count]
 - New HEAD: [commit hash]
 
@@ -191,9 +312,30 @@ Show rebase outcome:
 - [file2.ts]: [resolution applied]
 
 ### Next Steps
-- Run tests to verify: `npm run test`
+
+- Run tests to verify (detect project's test command)
 - Push with: `git push --force-with-lease` (if previously pushed)
 ```
+
+## Cleanup Main Worktree
+
+After successful rebase, restore any stashed changes in the main worktree:
+
+```bash
+if [ "$main_stash_created" = true ]; then
+  echo "🔄 Restoring stashed changes in main worktree..."
+  STASH_COUNT=$(git -C ../main/ stash list | grep "gitx: rebase" | wc -l)
+  if [ "$STASH_COUNT" -gt 0 ]; then
+    git -C ../main/ stash pop
+    echo "✓ Stashed changes restored in main worktree"
+  fi
+else
+  echo "✓ No stashed changes to restore in main worktree"
+fi
+```
+
+**Note**: This cleanup only runs after a successful rebase. If the rebase fails
+or is aborted, manually check `../main/` for stashed changes.
 
 ## Fallback Mode
 
@@ -209,14 +351,18 @@ AskUserQuestion:
 ```
 
 For manual mode, show:
+
 - Conflicting files
 - Standard instructions for manual resolution
 - Commands to continue: `git add <file>`, `git rebase --continue`
 
 ## Error Handling
 
-- Already up to date: Report "Already up to date with <base>"
-- Unrelated histories: Suggest `--allow-unrelated-histories` only with explicit confirmation
+- Already up to date: Report "Already up to date with $base_branch"
+- Unrelated histories: Suggest `--allow-unrelated-histories` only with
+  explicit confirmation
 - Merge conflicts: Guide through orchestrated resolution (see above)
 - Rebase in progress: Offer to continue, skip, or abort existing rebase
+- Main worktree not found: Offer fallback to standard fetch-based rebase
+- Main worktree pull failure: Offer reset, skip sync, or cancel options
 - Agent failure: Fall back to manual resolution with guidance
