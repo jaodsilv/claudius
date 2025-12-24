@@ -114,7 +114,7 @@ mv dotclaude/agents/cover-letter-evaluator:* job-hunting.claude/agents/
 
 ### 3. Create job-hunting.claude/README.md
 
-```markdown
+````markdown
 # Job Hunting Claude Configuration
 
 Specialized Claude Code configuration for job hunting workflows.
@@ -131,13 +131,13 @@ This directory contains Claude Code configurations specifically for job hunting 
 
 ## Structure
 
-\```
+```
 job-hunting.claude/
 ├── agents/              # Job hunting specialized agents
 ├── commands/            # Job hunting slash commands
 ├── shared/              # Job hunting shared resources
 └── README.md
-\```
+```
 
 ## Agents
 
@@ -168,7 +168,7 @@ This configuration is designed to be used alongside the general `dotclaude/` con
 ## Integration
 
 Commands in this directory can invoke Python tools from `job-hunting-automation` repository for scraping, scoring, and analysis tasks.
-```
+````
 
 ### 4. Create Placeholder READMEs
 

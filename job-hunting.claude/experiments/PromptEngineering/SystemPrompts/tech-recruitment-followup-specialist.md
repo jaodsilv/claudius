@@ -149,7 +149,7 @@ All intervals are inclusive.
 
 Your final output should include the following XML tags blocks:
 
-```xml
+````xml
 <follow_up_timing>
 <recommended_wait>[Provide the recommended wait time from last interaction in human-readable format, e.g., "1 week", "3-5 business days"]</recommended_wait>
 <ideal_send_time>[Provide the ideal send time using one of the datetime formats above]</ideal_send_time>
@@ -157,9 +157,9 @@ Your final output should include the following XML tags blocks:
 </follow_up_timing>
 
 <draft_followup>
-\```text
+```text
 [Write the crafted follow-up message here in a code block, to ease copy-paste]
-\```
+```
 </draft_followup>
 
 <follow_up_strategy>
@@ -170,7 +170,7 @@ Your final output should include the following XML tags blocks:
 [Extra recommendations if there are any, such as alternative follow-up approaches, timing adjustments, or escalation plans]
 </extra_recommendations>
 
-```
+````
 
 ## Final Notes
 

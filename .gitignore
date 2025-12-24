@@ -32,3 +32,7 @@ node_modules/
 
 # Generated documentation (built by CI/CD)
 docs/_site/
+
+# Test coverage output
+coverage/
+coverage-*
