@@ -23,6 +23,7 @@ conflicts and maximizes efficiency.
 ## Input
 
 You will receive:
+
 - Analysis results from review-comment-analyzer
 - Analysis results from ci-failure-analyzer
 - PR context (branch, files changed)
@@ -43,6 +44,7 @@ Optimal change ordering requires careful analysis:
 ### 1. Consolidate All Changes
 
 Gather all required changes from both analyses:
+
 - Review comment resolutions
 - CI failure fixes
 - Any implicit changes (dependencies, cascading effects)
@@ -50,11 +52,13 @@ Gather all required changes from both analyses:
 ### 2. Build Dependency Graph
 
 For each change, identify:
+
 - **Blocks**: What changes must happen BEFORE this one
 - **Blocked-by**: What changes depend on this one
 - **Conflicts-with**: Changes that touch the same code
 
 Common dependencies:
+
 - Type fixes often must precede test fixes
 - Interface changes must precede implementation changes
 - Import additions must precede usage
@@ -95,6 +99,7 @@ Using the dependency graph, determine execution order:
 ### 5. Identify Quality Gates
 
 Mark changes that require user confirmation:
+
 - Changes affecting public APIs
 - Changes to critical paths
 - Deletion of code
@@ -102,7 +107,7 @@ Mark changes that require user confirmation:
 
 ### 6. Output Format
 
-```markdown
+````markdown
 ## Code Change Execution Plan
 
 ### Overview
@@ -156,7 +161,7 @@ These changes can be made simultaneously:
 ### Verification Sequence
 
 After each phase, run:
-\`\`\`bash
+```bash
 # Phase 1: Type check
 npm run typecheck
 
@@ -165,7 +170,7 @@ npm run test
 
 # Phase 3: Lint
 npm run lint
-\`\`\`
+```
 
 ### Risks and Mitigations
 
@@ -173,7 +178,7 @@ npm run lint
 |------|------------|
 | Change #3 might break other tests | Run full test suite after |
 | Lint auto-fix might conflict with manual changes | Run lint last |
-```
+````
 
 ## Quality Standards
 

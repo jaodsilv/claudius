@@ -23,8 +23,18 @@ if ($null -eq $item) {
 $isReparsePoint = ($item.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -eq [System.IO.FileAttributes]::ReparsePoint
 
 if ($isReparsePoint) {
+    # Verify fsutil is available
+    if (-not (Get-Command fsutil -ErrorAction SilentlyContinue)) {
+        Write-Output '{"error": "fsutil not available"}'
+        exit 1
+    }
+
     # Try to get the target using fsutil
     $fsutilOutput = & fsutil reparsepoint query $Path 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Output '{"error": "Failed to query reparse point"}'
+        exit 1
+    }
     $target = ""
 
     foreach ($line in $fsutilOutput) {
@@ -41,8 +51,14 @@ if ($isReparsePoint) {
     # Clean up the target path (remove \??\ prefix if present)
     $target = $target -replace '^\\\?\?\\', ''
 
+    # Validate target was resolved
+    if ([string]::IsNullOrWhiteSpace($target)) {
+        Write-Output '{"error": "Could not resolve junction target"}'
+        exit 1
+    }
+
     # Escape backslashes and quotes for JSON
-    $target = $target -replace '\\', '\\' -replace '"', '\"'
+    $target = $target -replace '\\', '\\\\' -replace '"', '\"'
 
     Write-Output "{`"isLink`": true, `"target`": `"$target`"}"
 } else {

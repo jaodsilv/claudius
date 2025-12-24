@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 # Check for git and gh CLI dependencies
 # Returns JSON with systemMessage for warnings
 
@@ -19,9 +20,10 @@ if ! command -v gh &> /dev/null; then
     fi
 fi
 
-# Check gh authentication status
+# Check gh authentication status (capture output for debugging)
 if command -v gh &> /dev/null; then
-    if ! gh auth status &> /dev/null; then
+    auth_output=$(gh auth status 2>&1)
+    if [ $? -ne 0 ]; then
         warnings="gh CLI is installed but not authenticated. Run 'gh auth login' to enable GitHub features."
     fi
 fi
@@ -33,5 +35,8 @@ elif [ -n "$warnings" ]; then
     echo "{\"systemMessage\": \"[gitx plugin] Warning: $warnings\"}"
 fi
 
-# Always exit 0 to not block session
+# Exit 1 if critical dependency (git) is missing, exit 0 for optional deps
+if echo "$missing_deps" | grep -q "git"; then
+    exit 1
+fi
 exit 0

@@ -29,5 +29,8 @@ if ($missingDeps.Count -gt 0) {
     Write-Output "{`"systemMessage`": `"[gitx plugin] Warning: $warn`"}"
 }
 
-# Always exit 0 to not block session
+# Exit 1 if critical dependency (git) is missing, exit 0 for optional deps
+if ($missingDeps -contains "git") {
+    exit 1
+}
 exit 0

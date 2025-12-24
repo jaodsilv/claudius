@@ -22,6 +22,7 @@ identify root causes, and suggest specific remediation strategies.
 ## Input
 
 You will receive:
+
 - PR number
 - Failed check names and details URLs
 
@@ -67,21 +68,25 @@ If logs not accessible via CLI, note the detailsUrl for manual review.
 Based on failure type:
 
 **Test Failures:**
+
 - Parse test output for failing test names
 - Extract assertion errors or exception messages
 - Identify affected test files
 
 **Lint Errors:**
+
 - Extract file:line:column information
 - Identify the lint rule violated
 - Note if auto-fixable
 
 **Type Errors:**
+
 - Extract TypeScript error codes (TS####)
 - Identify the type mismatch
 - Trace to source of incorrect type
 
 **Build Failures:**
+
 - Identify the build step that failed
 - Extract compiler/bundler error messages
 - Check for missing dependencies
@@ -89,6 +94,7 @@ Based on failure type:
 ### 4. Read Affected Files
 
 For each identified failure point:
+
 - Use Read tool to examine the problematic code
 - Check recent changes with `git diff main..HEAD -- <file>`
 - Look for patterns across multiple failures
@@ -130,14 +136,14 @@ Produce a structured analysis:
 
 ### Local Verification Commands
 
-\`\`\`bash
-
+```bash
 # Run these commands locally to verify fixes
+# (Detect project's actual commands from package.json, Makefile, etc.)
 
-npm run test -- --testNamePattern="failing test name"
-npm run lint -- --fix
-npm run typecheck
-\`\`\`
+<test-command> -- --testNamePattern="failing test name"
+<lint-command> -- --fix
+<typecheck-command>
+```
 
 <!-- markdownlint-disable MD001 -->
 ### Inaccessible Logs
@@ -151,6 +157,7 @@ If any logs could not be fetched:
 ### 6. Priority Ordering
 
 Order failures by:
+
 1. Build failures (nothing else matters if it won't build)
 2. Type errors (often block tests)
 3. Test failures (verify functionality)

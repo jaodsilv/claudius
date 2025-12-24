@@ -162,17 +162,17 @@ For each approved change in planned order:
 **Test failures:**
 
 - Apply fix from analysis
-- Run tests locally to verify: `npm run test -- --testPathPattern="affected"`
+- Run tests locally to verify (detect project's test command from package.json, Makefile, etc.)
 
 **Lint/Format failures:**
 
-- Apply auto-fix: `npm run lint -- --fix`
+- Apply auto-fix using project's lint command with fix flag
 - Verify locally
 
 **Build failures:**
 
 - Apply fix from analysis
-- Verify build: `npm run build`
+- Verify build using project's build command
 
 ### Quality Gates
 

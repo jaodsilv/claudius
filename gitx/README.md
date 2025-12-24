@@ -45,6 +45,7 @@ claude plugin install gitx
 | `/gitx:remove-branch [-f] [-r] [-ro]` | Remove branch (local and/or remote) |
 | `/gitx:rebase [--base BRANCH]` | Rebase current branch onto base (orchestrated conflict resolution) |
 | `/gitx:merge [--base BRANCH]` | Merge base branch into current (orchestrated conflict resolution) |
+| `/gitx:ignore [PATTERN]` | Add files or patterns to .gitignore |
 
 ### Commit/Push
 
@@ -66,6 +67,7 @@ claude plugin install gitx
 |---------|-------------|
 | `/gitx:pr` | Create PR with orchestrated change analysis and description generation |
 | `/gitx:respond [--ci] [text]` | Orchestrated response to PR reviews or CI failures |
+| `/gitx:update-pr` | Update PR title and description based on commits |
 | `/gitx:comment-to-pr [PR] [comment]` | Comment on a pull request |
 | `/gitx:merge-pr [PR]` | Merge PR and close related issues |
 
@@ -105,7 +107,7 @@ Handles PR review comments and CI failures:
             └──────────┬───────────┘
                        ▼
             ┌──────────────────────┐
-            │  result-synthesizer  │ → User Approval
+            │  respond-synthesizer │ → User Approval
             └──────────────────────┘
 ```
 
@@ -173,7 +175,7 @@ Used by both rebase and merge:
 
 ### Quality Features
 
-1. **Tiered Prioritization**: Issues categorized as Critical/Important/Enhancement
+1. **Tiered Prioritization**: Issues categorized as Critical/High/Medium/Low
 2. **Quality Gates**: User approval required before destructive operations
 3. **Conflict Detection**: Conflicting recommendations highlighted for user decision
 4. **Graceful Fallback**: Manual mode available if orchestration fails
@@ -325,7 +327,7 @@ Orchestrated response to PR feedback:
 Features:
 - Parallel analysis of review comments and CI failures
 - Categorized by type (code-style, logic, security, etc.)
-- Prioritized action plan (Critical → Important → Enhancement)
+- Prioritized action plan (Critical → High → Medium → Low)
 - Quality gates for significant changes
 
 ### `/gitx:merge-pr`

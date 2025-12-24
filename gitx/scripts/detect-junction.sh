@@ -1,4 +1,5 @@
 #!/bin/bash
+set -uo pipefail
 # Detect if a path is a symlink and return its target
 # Usage: detect-junction.sh <path>
 # Output: JSON { "isLink": true/false, "target": "path" }
@@ -17,6 +18,11 @@ fi
 
 if [ -L "$path" ]; then
     target=$(readlink -f "$path" 2>/dev/null || readlink "$path")
+    # Validate target was resolved
+    if [ -z "$target" ]; then
+        echo '{"error": "Could not resolve symlink target"}'
+        exit 1
+    fi
     # Escape quotes in target path
     target=$(echo "$target" | sed 's/"/\\"/g')
     echo "{\"isLink\": true, \"target\": \"$target\"}"
