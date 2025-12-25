@@ -261,15 +261,15 @@ If rollback needed:
 2. Verify restoration
 3. Report rollback status
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-executed application should:
+Validate the application execution against these requirements:
 
-1. **Apply in order**: Respect the change plan sequence
-2. **Validate each step**: Don't proceed on invalid state
-3. **Report clearly**: Success and failure for each change
-4. **Support recovery**: Provide rollback information
-5. **Preserve formatting**: Maintain indentation and style
+1. **Apply in order**: Respect the change plan sequence. Out-of-order changes cause content mismatches that break subsequent edits.
+2. **Validate each step**: Don't proceed on invalid state. Cascading invalid state corrupts the entire file.
+3. **Report clearly**: Success and failure for each change.
+4. **Support recovery**: Provide rollback information.
+5. **Preserve formatting**: Maintain indentation and style.
 
 ## Component Type Guidelines
 
