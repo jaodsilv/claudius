@@ -8,6 +8,7 @@ description: Check for optional dependencies and inform user of available capabi
 ## Purpose
 
 Check for optional plugin dependencies and available tools at session start.
+Early detection prevents cryptic failures mid-workflow.
 
 ## Checks
 
@@ -45,7 +46,8 @@ Check for: `docs/planning/`
 
 ## Output Format
 
-Present findings as a brief status summary:
+Present findings as a brief status summary. Concise output avoids cluttering
+session start while still surfacing actionable information:
 
 ```text
 Planner Plugin Ready
