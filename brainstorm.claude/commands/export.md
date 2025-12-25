@@ -49,23 +49,29 @@ arguments-defaults:
 
 ### Step 1: Validate Session
 
-1. Check that `{{session_path}}` exists
-2. Check that `{{session_path}}/session-log.md` exists
-3. If not found, inform user and exit
+Verify session exists and is exportable:
+
+1. Check that `{{session_path}}` exists. Missing directory indicates invalid path.
+2. Check that `{{session_path}}/session-log.md` exists. Missing log indicates no session data.
+3. If not found, inform user and exit. Early exit prevents confusing errors.
 
 ### Step 2: Read Session Data
 
+Gather all session artifacts for regeneration:
+
 1. Read all session files:
-   1. `{{session_path}}/session-log.md`
-   2. `{{session_path}}/requirements.md` (if exists)
-   3. `{{session_path}}/specification.md` (if exists)
+   1. `{{session_path}}/session-log.md`. Log contains dialogue insights.
+   2. `{{session_path}}/requirements.md` (if exists). Requirements inform specification.
+   3. `{{session_path}}/specification.md` (if exists). Existing spec provides baseline.
 
 2. Extract session metadata:
-   1. Topic
-   2. Depth
-   3. Completion status
+   1. Topic. Topic identifies the session.
+   2. Depth. Depth indicates exploration thoroughness.
+   3. Completion status. Status determines available content.
 
 ### Step 3: Regenerate Documents
+
+Produce fresh specification from session data:
 
 1. Launch `brainstorm-specification-writer` agent using the Task tool with:
 
@@ -78,30 +84,36 @@ arguments-defaults:
    Read all session outputs and generate a fresh specification document.
    ```
 
-2. Save regenerated document to:
+2. Save regenerated document to appropriate format. Format determines file extension and processing.
    1. Markdown: `{{session_path}}/specification.md`
    2. PDF: `{{session_path}}/specification.pdf` (if supported)
    3. HTML: `{{session_path}}/specification.html` (if supported)
 
 ### Step 4: Generate Additional Exports
 
-Based on format:
+Produce format-specific outputs:
 
 #### Markdown (default)
 
-1. Regenerate `specification.md`
-2. Regenerate `requirements.md`
-3. Create `summary.md` (executive summary only)
+Default format provides maximum compatibility:
+
+1. Regenerate `specification.md`. Full specification for detailed review.
+2. Regenerate `requirements.md`. Requirements-only view for implementation.
+3. Create `summary.md` (executive summary only). Summary enables quick stakeholder orientation.
 
 #### PDF (if requested)
 
-1. Convert markdown to PDF using available tools
-2. Note: May require external tool (pandoc, etc.)
+PDF provides print-ready output:
+
+1. Convert markdown to PDF using available tools. PDF preserves formatting.
+2. Note: May require external tool (pandoc, etc.). External tools extend capabilities.
 
 #### HTML (if requested)
 
-1. Convert markdown to HTML
-2. Apply basic styling for readability
+HTML provides browser-viewable output:
+
+1. Convert markdown to HTML. HTML enables web sharing.
+2. Apply basic styling for readability. Styling improves reading experience.
 
 ### Step 5: Report Results
 
@@ -138,7 +150,7 @@ Based on format:
 
 ## Notes
 
-1. This command can be run multiple times to regenerate documents
-2. Regeneration uses the session log as the source of truth
-3. PDF export requires external tools and may not be available in all environments
-4. HTML export creates a standalone file with embedded styles
+1. This command can be run multiple times to regenerate documents. Idempotent export enables iterative refinement.
+2. Regeneration uses the session log as the source of truth. Log-based regeneration ensures consistency.
+3. PDF export requires external tools and may not be available in all environments. Tool availability varies by system.
+4. HTML export creates a standalone file with embedded styles. Embedded styles enable offline viewing.
