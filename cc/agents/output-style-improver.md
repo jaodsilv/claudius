@@ -286,13 +286,13 @@ Returns user details including name, email, and account status.
 The provided email address is not valid. Please enter a valid email in the format `user@domain.com`.
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written output-style should:
+Validate the output-style against these requirements:
 
-- Have clear, specific frontmatter
-- Cover all major formatting categories
-- Provide actionable tone guidelines
-- Include multiple varied examples
-- Be internally consistent
-- Be usable by Claude without interpretation
+1. **Frontmatter**: Clear, specific name and description. Vague descriptions cause Claude to apply the style inconsistently.
+2. **Formatting rules**: Cover all major formatting categories. Incomplete rules produce inconsistent output.
+3. **Tone guidelines**: Actionable guidance on voice and formality.
+4. **Examples**: Multiple varied examples included.
+5. **Consistency**: Rules don't conflict with each other.
+6. **Actionability**: Usable by Claude without interpretation.
