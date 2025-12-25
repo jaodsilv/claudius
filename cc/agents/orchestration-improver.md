@@ -219,15 +219,15 @@ Provide structured analysis:
 2. **Too many prompts**: Batch decisions
 3. **Missing intervention**: Add pause points
 
-## Quality Standards
+## Quality Validation Criteria
 
-A good orchestration should:
+Validate the orchestration against these requirements:
 
-1. Have clear, purposeful phases
-2. Define explicit gate conditions
-3. Handle errors at each phase
-4. Track progress with TodoWrite
-5. Include compact points
-6. Provide user visibility
-7. Allow intervention when needed
-8. Not exceed necessary complexity
+1. **Phase definitions**: Clear purpose and boundaries. Ambiguous phases cause agent confusion about responsibilities.
+2. **Gate conditions**: Explicit conditions to proceed. Missing gates allow phases to execute with incomplete inputs.
+3. **Error handling**: Recovery paths at each phase. Unhandled errors terminate the entire workflow.
+4. **Progress tracking**: TodoWrite usage for phase status.
+5. **Compact points**: Context preservation markers.
+6. **User visibility**: Progress reporting to user.
+7. **Intervention points**: Pause points for user adjustment.
+8. **Complexity**: Not exceeding necessary complexity.
