@@ -189,9 +189,10 @@ roadmap-arguments:
 ## Error Handling
 
 1. **Goal not provided**: Prompt user for goal
-2. **gh CLI not available**: Continue without GitHub integration
-3. **No relevant issues**: Note and continue
-4. **Output directory issues**: Report and suggest fix
+2. **gh CLI not available**: Continue without GitHub integration. Roadmap generation
+   still works; GitHub issue mapping is skipped.
+3. **No relevant issues**: Note in output and continue
+4. **Output directory issues**: Report error and suggest fix
 
 ## Usage Examples
 
