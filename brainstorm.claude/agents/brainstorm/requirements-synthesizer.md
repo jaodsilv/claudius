@@ -101,7 +101,7 @@ Extract and synthesize:
 
 ## Output Format
 
-```markdown
+````markdown
 # Requirements Specification
 
 ## Executive Summary
@@ -207,12 +207,12 @@ The following items are explicitly excluded from this iteration:
 
 ## Dependency Map
 
-\`\`\`text
+```text
 FR-001 (Core Feature)
   └── FR-002 (Depends on FR-001)
       └── FR-004 (Depends on FR-002)
   └── FR-003 (Depends on FR-001)
-\`\`\`
+```
 
 ## Gaps and Open Questions
 
@@ -235,7 +235,7 @@ The following items need further clarification:
 | FR-003      | [Need]    | [High/Med/Low]       | P2       |
 
 
-```
+````
 
 ## Quality Standards
 

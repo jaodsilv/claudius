@@ -222,7 +222,7 @@ Provide findings in both JSON (for automation) and Markdown (for humans):
 
 ### Markdown Output
 
-```markdown
+````markdown
 # Security Review Report
 
 ## Summary
@@ -240,17 +240,17 @@ None found.
 ### 1. SQL Injection - src/api/users.js:42
 **OWASP**: A03:2021 - Injection
 **Evidence**:
-\`\`\`javascript
-db.query(\`SELECT * FROM users WHERE id = ${userId}\`)
-\`\`\`
+```javascript
+db.query(`SELECT * FROM users WHERE id = ${userId}`)
+```
 
 **Risk**: Attackers can execute arbitrary SQL commands, potentially accessing or modifying database contents.
 
 **Recommendation**: Use parameterized queries:
-\`\`\`javascript
+```javascript
 db.query('SELECT * FROM users WHERE id = ?', [userId])
-\`\`\`
 ```
+````
 
 ## Integration with Orchestrator
 
