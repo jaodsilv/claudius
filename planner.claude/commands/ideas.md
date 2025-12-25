@@ -243,14 +243,15 @@ Be rigorous but constructive.
    - Continue to Round N+1? (if not last round)
 
 3. Decision:
-   - If user wants to continue AND rounds remaining → Next round
-   - If user satisfied OR last round → Finalization
+   1. If user wants to continue AND rounds remaining: Proceed to next round
+   2. If user satisfied: Proceed to Finalization
+   3. If last round reached: Proceed to Finalization
 
 4. Between rounds, preserve:
-   - Top proposals
-   - Key insights
-   - User feedback
-   - New directions
+   1. Top proposals
+   2. Key insights
+   3. User feedback
+   4. New directions
 
 ### Finalization
 
@@ -307,20 +308,21 @@ Be rigorous but constructive.
 
 All agents engaged:
 
-- Deep Thinker
-- Innovation Explorer
-- Adversarial Critic
-- Facilitator
+1. Deep Thinker
+2. Innovation Explorer
+3. Adversarial Critic
+4. Facilitator
 
 ### Focused Mode
 
-Subset of agents:
+Use subset of agents for faster iteration:
 
-- Deep Thinker
-- Adversarial Critic
-- Facilitator
+1. Deep Thinker
+2. Adversarial Critic
+3. Facilitator
 
-Faster but less diverse ideation.
+Faster execution but less diverse ideation. Use when time-constrained or exploring
+a narrow problem space.
 
 ## Error Handling
 
