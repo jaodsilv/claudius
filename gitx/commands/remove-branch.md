@@ -89,7 +89,7 @@ Provide cleanup suggestion:
 
 ## Error Handling
 
-- Branch not found: List available branches
-- Permission denied on remote: Check authentication
-- Branch not fully merged: Explain and suggest -f flag
-- Cannot delete current branch: Auto-switch first
+1. Branch not found: List available branches.
+2. Permission denied on remote: Check authentication.
+3. Branch not fully merged: Explain and suggest -f flag.
+4. Cannot delete current branch: Auto-switch first.

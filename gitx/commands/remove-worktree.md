@@ -111,7 +111,7 @@ Summarize what was removed:
 
 ## Error Handling
 
-- If worktree not found: List available worktrees
-- If branch has unmerged changes: Warn and require -f flag
-- If remote branch doesn't exist: Note but continue
-- If permission denied on junction: Report and suggest manual removal
+1. Worktree not found: List available worktrees.
+2. Branch has unmerged changes: Warn and require -f flag.
+3. Remote branch doesn't exist: Note but continue.
+4. Permission denied on junction: Report and suggest manual removal.
