@@ -222,9 +222,9 @@ See `{{output}}/prioritization.md` for full analysis.
 
 ## Error Handling
 
-1. **gh not authenticated**: Prompt to run `gh auth login`
+1. **gh not authenticated**: Prompt user to run `gh auth login`
 2. **No issues found**: Report and suggest checking filters
-3. **Missing label data**: Note assumptions made
+3. **Missing label data**: Note assumptions made in scoring
 
 ## Usage Examples
 
