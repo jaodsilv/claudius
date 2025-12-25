@@ -230,14 +230,14 @@ Provide structured analysis:
 - Automation tools
 - Parsing scripts
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written skill should:
+Validate the skill against these requirements:
 
-- Have third-person description with trigger phrases
-- Use imperative form throughout body
-- Keep SKILL.md lean (1500-2000 words)
-- Move detailed content to references/
-- Include working examples
-- Reference all supporting files
-- Follow progressive disclosure pattern
+1. **Description**: Third-person with specific trigger phrases. Second-person descriptions prevent Claude from recognizing when to load the skill.
+2. **Body style**: Imperative form throughout. Second-person creates ambiguity between instructions for Claude vs. content for users.
+3. **SKILL.md length**: 1500-2000 words. Longer skills consume excessive context and reduce response quality.
+4. **Progressive disclosure**: Detailed content in references/, not SKILL.md.
+5. **Examples**: Working examples included.
+6. **Resource references**: All supporting files mentioned in SKILL.md.
+7. **Structure**: Progressive disclosure pattern followed.
