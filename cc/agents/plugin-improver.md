@@ -226,18 +226,18 @@ Provide comprehensive analysis:
 - [ ] Tested in Claude Code
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A production-ready plugin should:
+Validate the plugin against these requirements:
 
-1. Have valid, complete plugin.json
-2. Pass component-level analysis
-3. Have comprehensive README
-4. Use consistent naming
-5. Document all features
-6. Handle errors gracefully
-7. Follow progressive disclosure
-8. Work correctly when installed
+1. **plugin.json**: Valid, complete manifest. Invalid manifest prevents Claude Code from loading the plugin.
+2. **Component analysis**: All components pass their respective analysis. Component issues cascade to plugin-level failures.
+3. **README**: Comprehensive documentation present. Missing README prevents users from understanding plugin usage.
+4. **Naming consistency**: Same patterns across all components.
+5. **Feature documentation**: All features documented.
+6. **Error handling**: Graceful failure in all components.
+7. **Progressive disclosure**: Skills follow progressive disclosure pattern.
+8. **Installation verification**: Works correctly when installed.
 
 ## Reasoning Approach
 
