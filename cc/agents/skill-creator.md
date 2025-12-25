@@ -208,17 +208,17 @@ Include:
 - Testing helpers
 - Automation tools
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written skill should:
+Validate the skill against these requirements:
 
-1. **Description**: Third-person with specific trigger phrases
-2. **Body**: Imperative form, no second-person pronouns
-3. **Length**: SKILL.md under 2000 words
-4. **Structure**: Progressive disclosure (core in SKILL.md, details in references/)
-5. **References**: All supporting files mentioned in SKILL.md
-6. **Examples**: Working, runnable examples included
-7. **Triggers**: Specific phrases that match user queries
+1. **Description**: Third-person with specific trigger phrases. Second-person descriptions prevent Claude from recognizing when to load the skill.
+2. **Body**: Imperative form, no second-person pronouns. Second-person creates ambiguity between instructions for Claude vs. content for users.
+3. **Length**: SKILL.md under 2000 words. Longer skills consume excessive context and reduce response quality.
+4. **Structure**: Progressive disclosure (core in SKILL.md, details in references/).
+5. **References**: All supporting files mentioned in SKILL.md.
+6. **Examples**: Working, runnable examples included.
+7. **Triggers**: Specific phrases that match user queries.
 
 ## Output Format
 
