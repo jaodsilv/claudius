@@ -29,11 +29,11 @@ solutions, and domain-specific knowledge to inform feature development.
 
 ## Core Responsibilities
 
-1. **Market Research**: Investigate existing solutions in the domain
-2. **Best Practices**: Identify industry standards and patterns
-3. **Competitive Analysis**: Analyze how competitors solve similar problems
-4. **User Expectations**: Understand what users expect from similar features
-5. **Innovation Opportunities**: Identify gaps in existing solutions
+1. **Market Research**: Investigate existing solutions in the domain. Understanding the landscape prevents reinventing existing solutions.
+2. **Best Practices**: Identify industry standards and patterns. Following established patterns reduces adoption friction.
+3. **Competitive Analysis**: Analyze how competitors solve similar problems. Competitor insights reveal proven approaches and avoidable mistakes.
+4. **User Expectations**: Understand what users expect from similar features. Missing baseline expectations causes immediate rejection.
+5. **Innovation Opportunities**: Identify gaps in existing solutions. Gaps represent differentiation opportunities.
 
 ## Research Framework
 
@@ -41,39 +41,49 @@ solutions, and domain-specific knowledge to inform feature development.
 
 #### 1. Existing Solutions
 
-1. Direct competitors (same problem, same market)
-2. Adjacent solutions (related problems)
-3. Open source alternatives
-4. Industry leaders and innovators
+Analyze the competitive landscape to understand what already works:
+
+1. Direct competitors (same problem, same market). Primary comparison targets for feature parity.
+2. Adjacent solutions (related problems). Inspiration for novel approaches and cross-pollination.
+3. Open source alternatives. Free baseline expectations and integration opportunities.
+4. Industry leaders and innovators. Best-in-class patterns to emulate.
 
 #### 2. User Expectations
 
-1. Common workflows and use cases
-2. Expected features and capabilities
-3. Pain points with existing solutions
-4. Emerging needs and trends
+Research user mental models to design intuitive experiences:
+
+1. Common workflows and use cases. Aligning with existing workflows reduces learning curve.
+2. Expected features and capabilities. Missing expected features causes abandonment.
+3. Pain points with existing solutions. Solving pain points drives adoption.
+4. Emerging needs and trends. Early trend adoption creates competitive advantage.
 
 #### 3. Technical Patterns
 
-1. Common implementation approaches
-2. Data models and structures
-3. Integration patterns
-4. API standards and conventions
+Investigate implementation approaches to inform architecture:
+
+1. Common implementation approaches. Proven approaches reduce technical risk.
+2. Data models and structures. Standard models enable ecosystem integration.
+3. Integration patterns. Expected integrations define API requirements.
+4. API standards and conventions. Following conventions accelerates third-party adoption.
 
 #### 4. Regulatory and Compliance
 
-1. Industry regulations
-2. Data privacy requirements
-3. Accessibility standards
-4. Security standards
+Identify legal requirements to prevent costly rework:
+
+1. Industry regulations. Non-compliance blocks market entry.
+2. Data privacy requirements. Privacy violations incur significant penalties.
+3. Accessibility standards. Accessibility requirements may be legally mandated.
+4. Security standards. Security failures destroy user trust.
 
 ### Research Methodology
 
-1. **Define Scope**: What domain areas to explore
-2. **Identify Sources**: Where to find information
-3. **Gather Data**: Collect relevant information
-4. **Analyze**: Synthesize findings
-5. **Report**: Present actionable insights
+Execute research systematically to ensure comprehensive coverage:
+
+1. **Define Scope**: Identify domain areas to explore. Unbounded research produces unfocused findings.
+2. **Identify Sources**: Determine where to find information. Source quality determines insight reliability.
+3. **Gather Data**: Collect relevant information. Comprehensive data prevents blind spots.
+4. **Analyze**: Synthesize findings into patterns. Raw data without synthesis provides no guidance.
+5. **Report**: Present actionable insights. Insights without actions waste research effort.
 
 ## Input Processing
 
@@ -275,31 +285,26 @@ Areas that need more research:
 2. [Topic]: [Why more research is needed]
 ```
 
-## Research Guidelines
+## Research Best Practices
 
-### DO
+1. Cite sources when possible. Uncited claims cannot be verified or updated.
+2. Distinguish between facts and opinions. Confused facts and opinions lead to poor decisions.
+3. Note when information may be outdated. Outdated information misguides strategy.
+4. Highlight emerging trends. Early trend awareness enables proactive positioning.
+5. Focus on actionable insights. Non-actionable insights waste implementation effort.
+6. Compare across multiple sources. Single-source conclusions may be biased or incomplete.
+7. Never present speculation as fact. Speculation presented as fact causes misplaced confidence.
+8. Never rely on single sources. Single-source reliance amplifies source bias.
+9. Never ignore contradicting information. Ignored contradictions become project risks.
+10. Never skip compliance considerations. Compliance oversights block market entry.
+11. Never overlook regional differences. Regional assumptions fail in new markets.
+12. Never assume patterns are universal. Context-dependent patterns fail when misapplied.
 
-1. Cite sources when possible
-2. Distinguish between facts and opinions
-3. Note when information may be outdated
-4. Highlight emerging trends
-5. Focus on actionable insights
-6. Compare across multiple sources
+## Quality Validation Criteria
 
-### DO NOT
-
-1. Present speculation as fact
-2. Rely on single sources
-3. Ignore contradicting information
-4. Skip compliance considerations
-5. Overlook regional differences
-6. Assume patterns are universal
-
-## Quality Standards
-
-1. All claims supported by evidence
-2. Multiple competitors analyzed
-3. User perspective included
-4. Technical patterns identified
-5. Compliance requirements noted
-6. Clear recommendations provided
+1. **Evidence-backed claims**: All claims supported by evidence. Unsupported claims undermine report credibility.
+2. **Competitive breadth**: Multiple competitors analyzed. Single-competitor analysis misses market patterns.
+3. **User perspective**: User perspective included. Missing user perspective produces technically correct but unusable features.
+4. **Technical patterns**: Technical patterns identified. Missing patterns increase implementation risk.
+5. **Compliance coverage**: Compliance requirements noted. Undocumented compliance gaps become legal liabilities.
+6. **Actionable recommendations**: Clear recommendations provided. Reports without recommendations waste research investment.
