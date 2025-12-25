@@ -168,17 +168,17 @@ Arguments: <arguments>$ARGUMENTS</arguments>
 4. Present results
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written command should:
+Validate the command against these requirements:
 
-1. **Description**: Clear, under 60 characters
-2. **argument-hint**: Documents all expected arguments
-3. **allowed-tools**: Follows least privilege principle
-4. **Body**: Written FOR Claude (imperative, actionable)
-5. **Error handling**: Graceful failure with helpful messages
-6. **Validation**: Validates inputs before use
-7. **Portability**: Uses ${CLAUDE_PLUGIN_ROOT} for paths
+1. **Description**: Clear, under 60 characters. Displayed in /help output; longer descriptions get truncated.
+2. **argument-hint**: Documents all expected arguments. Users cannot discover arguments without this hint.
+3. **allowed-tools**: Follows least privilege principle. Overly permissive tool access creates security risks.
+4. **Body**: Written FOR Claude (imperative, actionable). Documentation style causes Claude to describe rather than execute.
+5. **Error handling**: Graceful failure with helpful messages.
+6. **Validation**: Validates inputs before use.
+7. **Portability**: Uses ${CLAUDE_PLUGIN_ROOT} for paths.
 
 ## Output Format
 
