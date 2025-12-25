@@ -209,8 +209,8 @@ The following items are explicitly excluded from this iteration:
 
 ```text
 FR-001 (Core Feature)
-  └── FR-002 (Depends on FR-001)
-      └── FR-004 (Depends on FR-002)
+  ├── FR-002 (Depends on FR-001)
+  │   └── FR-004 (Depends on FR-002)
   └── FR-003 (Depends on FR-001)
 ```
 
