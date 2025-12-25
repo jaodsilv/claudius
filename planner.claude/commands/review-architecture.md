@@ -118,9 +118,10 @@ Quick Mode:
 
 ### Phase 3: Analysis (Mode-Dependent)
 
-**If mode == "quick"**: Skip to Quick Mode Analysis below
+Select analysis path based on mode:
 
-**If mode == "thorough"** (default):
+1. If mode == "quick": Skip to Quick Mode Analysis below
+2. If mode == "thorough" (default): Continue with parallel analysis
 
 #### Step 3A: Parallel Analysis
 
