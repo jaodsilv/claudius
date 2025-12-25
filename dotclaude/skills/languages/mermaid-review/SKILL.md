@@ -130,7 +130,7 @@ A:::errorClass
 
 ## Review Output Format
 
-```markdown
+````markdown
 ### Mermaid Diagram Review: [filename]
 
 #### Syntax Issues
@@ -143,10 +143,10 @@ A:::errorClass
 1. [Inconsistency found]
 
 #### Recommended Changes
-\`\`\`mermaid
+```mermaid
 [corrected diagram]
-\`\`\`
 ```
+````
 
 ## Context Variables
 

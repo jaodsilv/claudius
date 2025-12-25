@@ -87,7 +87,7 @@ You will receive:
 
 ## Output Format
 
-```markdown
+````markdown
 # Technical Analysis Report
 
 ## Executive Summary
@@ -127,9 +127,9 @@ You will receive:
 **Approach**: [Description of the architecture]
 
 **Diagram**:
-\`\`\`text
+```text
 [ASCII architecture diagram]
-\`\`\`
+```
 
 **Pros**:
 
@@ -251,7 +251,7 @@ You will receive:
 | [Question] | [High/Med/Low] | [1/2/3] |
 
 
-```
+````
 
 ## Analysis Guidelines
 
