@@ -99,6 +99,6 @@ Or create a worktree manually:
 
 ## Error Handling
 
-- No open issues found: Report "No open issues found in this repository"
-- gh CLI not authenticated: Report authentication needed
-- No priority labels in repo: Suggest creating priority labels or show all open issues
+1. No open issues found: Report "No open issues found in this repository".
+2. gh CLI not authenticated: Report authentication needed.
+3. No priority labels in repo: Suggest creating priority labels or show all open issues.

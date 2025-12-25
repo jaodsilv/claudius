@@ -227,7 +227,7 @@ For manual mode, show:
 
 ## Error Handling
 
-- Already up to date: Report "Already up to date with <base>"
-- Merge conflicts: Guide through orchestrated resolution (see above)
-- Merge in progress: Offer to continue or abort existing merge
-- Agent failure: Fall back to manual resolution with guidance
+1. Already up to date: Report "Already up to date with <base>".
+2. Merge conflicts: Guide through orchestrated resolution (see above).
+3. Merge in progress: Offer to continue or abort existing merge.
+4. Agent failure: Fall back to manual resolution with guidance.

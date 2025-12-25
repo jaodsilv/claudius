@@ -94,7 +94,7 @@ Show summary:
 
 ## Error Handling
 
-- No patterns provided: Prompt for input
-- Invalid pattern syntax: Report and skip
-- Permission denied: Check file permissions
-- Not a git repository: Report error
+1. No patterns provided: Prompt for input.
+2. Invalid pattern syntax: Report and skip.
+3. Permission denied: Check file permissions.
+4. Not a git repository: Report error.

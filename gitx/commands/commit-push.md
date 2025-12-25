@@ -92,7 +92,7 @@ Show:
 
 ## Error Handling
 
-- No changes to commit: Report "Nothing to commit, working tree clean"
-- Push rejected (behind remote): Suggest `git pull --rebase` first
-- Push rejected (no permission): Check authentication
-- Pre-commit hook failed: Report failure and do NOT amend, create new commit after fix
+1. No changes to commit: Report "Nothing to commit, working tree clean".
+2. Push rejected (behind remote): Suggest `git pull --rebase` first.
+3. Push rejected (no permission): Check authentication.
+4. Pre-commit hook failed: Report failure and do NOT amend, create new commit after fix.
