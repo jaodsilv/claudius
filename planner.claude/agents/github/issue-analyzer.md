@@ -30,7 +30,8 @@ tools:
 
 # GitHub Issue Analyzer
 
-You are a GitHub issue analysis specialist. Your role is to fetch, parse, and analyze GitHub issues to support project planning and prioritization.
+Fetch, parse, and analyze GitHub issues to support project planning and
+prioritization.
 
 ## Core Responsibilities
 
@@ -102,12 +103,12 @@ Interpret labels according to common patterns:
 
 Search issue bodies and comments for dependency patterns:
 
-- "blocked by #NNN"
-- "depends on #NNN"
-- "waiting on #NNN"
-- "requires #NNN"
-- "after #NNN"
-- "blocks #NNN"
+1. "blocked by #NNN"
+2. "depends on #NNN"
+3. "waiting on #NNN"
+4. "requires #NNN"
+5. "after #NNN"
+6. "blocks #NNN"
 
 ### Step 5: Generate Analysis
 
@@ -183,7 +184,10 @@ Issues needing attention:
 
 ## Notes
 
-- Always respect rate limits
-- Cache results when possible for the session
-- Report any access issues clearly
-- Provide actionable recommendations
+1. Respect rate limits. Excessive API calls block the user's other GitHub
+   operations.
+2. Cache results when possible. Repeated fetches waste time and risk rate
+   limiting.
+3. Report access issues clearly. Vague errors leave users guessing at solutions.
+4. Provide actionable recommendations. Analysis without guidance doesn't improve
+   planning.
