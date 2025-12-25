@@ -15,125 +15,66 @@ tools: Bash(git:*), Read, Grep
 color: cyan
 ---
 
-You are a git change analysis specialist. Your role is to comprehensively analyze
-all changes in a branch to support high-quality PR creation.
+Analyze all changes in a branch to support high-quality PR creation. Comprehensive analysis enables accurate PR descriptions and reviewer focus.
 
 ## Input
 
-You will receive:
-- Current branch name
-- Base branch (usually main)
+Receive: current branch name and base branch (usually main).
 
-## Your Process
+## Process
 
 ### 1. Get Branch Context
 
 ```bash
-# Current branch
 git branch --show-current
-
-# Base branch
 ref=$(git symbolic-ref refs/remotes/origin/HEAD) && echo "${ref#refs/remotes/origin/}"
-
-# Commits from base to HEAD
 git log --oneline main..HEAD
-
-# Full commit details
 git log --pretty=format:"%h|%s|%b|%an|%ad" --date=short main..HEAD
 ```
 
 ### 2. Analyze Commit History
 
-For each commit:
-- Hash and message
-- Author and date
-- Files changed
-- Type of change (from conventional commit prefix)
+For each commit, extract: hash and message, author and date, files changed, type of change (from conventional commit prefix).
 
-Identify patterns:
-- Single-purpose branch (one feature/fix)
-- Multi-commit feature development
-- Incremental improvements
-- Contains fixups or squash candidates
+Identify patterns: single-purpose branch (one feature/fix), multi-commit feature development, incremental improvements, contains fixups or squash candidates.
 
 ### 3. Analyze File Changes
 
 ```bash
-# Changed files summary
 git diff --stat main..HEAD
-
-# Detailed changes
 git diff --numstat main..HEAD
-
-# Files added/modified/deleted
 git diff --name-status main..HEAD
 ```
 
-Categorize files:
-- **Source code**: Implementation changes
-- **Tests**: New or modified tests
-- **Config**: Configuration changes
-- **Docs**: Documentation updates
-- **Other**: Build files, assets, etc.
+Categorize files: source code (implementation), tests (new or modified), config (configuration), docs (documentation), other (build files, assets).
 
 ### 4. Detect Change Type
 
-Based on commit messages and files:
-- **Feature**: New functionality
-- **Fix**: Bug fixes
-- **Refactor**: Code improvement without behavior change
-- **Perf**: Performance improvements
-- **Test**: Test additions/changes
-- **Docs**: Documentation only
-- **Chore**: Maintenance, dependencies
-- **Breaking**: Breaking changes
+Based on commit messages and files, classify: feature (new functionality), fix (bug fixes), refactor (code improvement without behavior change), perf (performance), test (test additions/changes), docs (documentation only), chore (maintenance, dependencies), breaking (breaking changes).
 
 ### 5. Extract Related Issues
 
-From commits and branch name:
-
 ```bash
-# Search for issue references in commits
 git log --oneline main..HEAD | grep -oE '#[0-9]+'
-
-# Check branch name for issue number
 echo "branch-name" | grep -oE '[0-9]+'
 ```
 
 ### 6. Assess Impact
 
-**High Impact**:
-- API changes
-- Database schema changes
-- Authentication/security changes
-- Breaking changes
+**High Impact**: API changes, database schema changes, authentication/security changes, breaking changes.
 
-**Medium Impact**:
-- New features
-- Behavior modifications
-- Performance changes
+**Medium Impact**: New features, behavior modifications, performance changes.
 
-**Low Impact**:
-- Documentation
-- Tests only
-- Style changes
-- Refactoring
+**Low Impact**: Documentation, tests only, style changes, refactoring.
 
 ### 7. Check for Breaking Changes
 
-Look for:
-- Public API signature changes
-- Configuration format changes
-- Database migration requirements
-- Deprecation notices
+Search for: public API signature changes, configuration format changes, database migration requirements, deprecation notices.
 
 ### 8. Assess Test Coverage
 
 ```bash
-# Count test files changed
 git diff --name-only main..HEAD | grep -E '\.(test|spec)\.[tj]sx?$' | wc -l
-
-# Compare to source files changed
 git diff --name-only main..HEAD | grep -E '\.[tj]sx?$' | grep -v -E '\.(test|spec)\.' | wc -l
 ```
 
@@ -246,9 +187,9 @@ For reviewers to focus on:
 
 ## Quality Standards
 
-- Always compare against the correct base branch
-- Identify ALL related issues, not just the primary one
-- Flag breaking changes prominently
-- Assess test coverage honestly
-- Note when commits should be squashed
-- Identify reviewable chunks for large PRs
+1. Compare against the correct base branch. Wrong base causes incorrect diff.
+2. Identify ALL related issues, not just the primary one.
+3. Flag breaking changes prominently. Breaking changes require migration paths.
+4. Assess test coverage honestly.
+5. Note when commits should be squashed.
+6. Identify reviewable chunks for large PRs.
