@@ -12,10 +12,11 @@ if (-not (Test-Path $Path)) {
     exit 1
 }
 
-$item = Get-Item $Path -Force -ErrorAction SilentlyContinue
-
-if ($null -eq $item) {
-    Write-Output '{"error": "Cannot access path"}'
+try {
+    $item = Get-Item $Path -Force -ErrorAction Stop
+} catch {
+    $errorMsg = $_.Exception.Message -replace '"', '\"'
+    Write-Output "{`"error`": `"Cannot access path: $errorMsg`"}"
     exit 1
 }
 
@@ -25,7 +26,7 @@ $isReparsePoint = ($item.Attributes -band [System.IO.FileAttributes]::ReparsePoi
 if ($isReparsePoint) {
     # Verify fsutil is available
     if (-not (Get-Command fsutil -ErrorAction SilentlyContinue)) {
-        Write-Output '{"error": "fsutil not available"}'
+        Write-Output '{"error": "fsutil not available (may require administrator privileges)"}'
         exit 1
     }
 

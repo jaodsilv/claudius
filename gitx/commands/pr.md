@@ -13,7 +13,7 @@ Create a GitHub pull request for the current branch using multi-agent orchestrat
 Get repository and branch state:
 
 - Current branch: !`git branch --show-current`
-- Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
+- Main branch: !`ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && echo "${ref#refs/remotes/origin/}" || echo "main"`
 - Remote status: !`git status -sb`
 
 Check for existing PR:

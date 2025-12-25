@@ -153,7 +153,7 @@ Create worktree:
 
 ```bash
 # Get main branch
-MAIN=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+ref=$(git symbolic-ref refs/remotes/origin/HEAD) && MAIN="${ref#refs/remotes/origin/}" || MAIN="main"
 
 # Create worktree as sibling
 git worktree add -b [branch-name] ../[directory-name] $MAIN

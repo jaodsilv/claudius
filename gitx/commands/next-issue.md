@@ -16,11 +16,16 @@ From $ARGUMENTS, extract:
 ## Priority Order
 
 Search for open issues in this priority order:
+
 1. `priority:critical`
 2. `priority:high`
 3. `priority:medium`
 4. `priority:low`
 5. No priority label (lowest)
+
+**Note**: These label names follow a common GitHub convention. If your repository
+uses different labels (e.g., `P0`, `P1`, `critical`, `high`), modify the search
+queries below accordingly.
 
 ## Search for Issues
 

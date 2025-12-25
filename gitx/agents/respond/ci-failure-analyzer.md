@@ -145,13 +145,11 @@ Produce a structured analysis:
 <typecheck-command>
 ```
 
-<!-- markdownlint-disable MD001 -->
 ### Inaccessible Logs
-<!-- markdownlint-enable MD001 -->
 
 If any logs could not be fetched:
+
 - [Check Name]: Manual review required at [URL]
-<!-- markdownlint-disable-next-line MD040 -->
 ````
 
 ### 6. Priority Ordering

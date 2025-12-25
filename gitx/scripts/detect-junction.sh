@@ -1,5 +1,5 @@
 #!/bin/bash
-set -uo pipefail
+set -euo pipefail
 # Detect if a path is a symlink and return its target
 # Usage: detect-junction.sh <path>
 # Output: JSON { "isLink": true/false, "target": "path" }
@@ -17,10 +17,19 @@ if [ ! -e "$path" ] && [ ! -L "$path" ]; then
 fi
 
 if [ -L "$path" ]; then
-    target=$(readlink -f "$path" 2>/dev/null || readlink "$path")
+    # Capture errors from readlink commands for diagnostics
+    if ! target=$(readlink -f "$path" 2>&1); then
+        first_error="$target"
+        if ! target=$(readlink "$path" 2>&1); then
+            # Both commands failed - include error details
+            escaped_error=$(echo "$first_error" | sed 's/"/\\"/g')
+            echo "{\"error\": \"Could not resolve symlink target: $escaped_error\"}"
+            exit 1
+        fi
+    fi
     # Validate target was resolved
     if [ -z "$target" ]; then
-        echo '{"error": "Could not resolve symlink target"}'
+        echo '{"error": "Could not resolve symlink target: empty result"}'
         exit 1
     fi
     # Escape quotes in target path

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -uo pipefail
+set -euo pipefail
 # Check for git and gh CLI dependencies
 # Returns JSON with systemMessage for warnings
 
@@ -20,11 +20,13 @@ if ! command -v gh &> /dev/null; then
     fi
 fi
 
-# Check gh authentication status (capture output for debugging)
+# Check gh authentication status and include error details
 if command -v gh &> /dev/null; then
     auth_output=$(gh auth status 2>&1)
     if [ $? -ne 0 ]; then
-        warnings="gh CLI is installed but not authenticated. Run 'gh auth login' to enable GitHub features."
+        # Escape special characters for JSON
+        escaped_auth=$(echo "$auth_output" | tr '\n' ' ' | sed 's/"/\\"/g')
+        warnings="gh CLI not authenticated: $escaped_auth. Run 'gh auth login' to enable GitHub features."
     fi
 fi
 
@@ -33,6 +35,8 @@ if [ -n "$missing_deps" ]; then
     echo "{\"systemMessage\": \"[gitx plugin] Missing dependencies: $missing_deps. Some commands may not work. Install git from https://git-scm.com/ and gh from https://cli.github.com/\"}"
 elif [ -n "$warnings" ]; then
     echo "{\"systemMessage\": \"[gitx plugin] Warning: $warnings\"}"
+else
+    echo '{"status": "ok"}'
 fi
 
 # Exit 1 if critical dependency (git) is missing, exit 0 for optional deps

@@ -15,7 +15,7 @@ Get current repository state:
 - Repository root: !`git rev-parse --show-toplevel`
 - Current branch: !`git branch --show-current`
 - Existing worktrees: !`git worktree list`
-- Main branch name: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
+- Main branch name: !`ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && echo "${ref#refs/remotes/origin/}" || echo "main"`
 
 ## Execution Logic
 

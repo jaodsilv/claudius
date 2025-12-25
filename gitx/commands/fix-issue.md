@@ -181,7 +181,7 @@ Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
 ```bash
 # Get main branch
-MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main")
+ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && MAIN="${ref#refs/remotes/origin/}" || MAIN="main"
 
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"

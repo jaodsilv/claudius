@@ -13,10 +13,11 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     $missingDeps += "gh CLI"
 } else {
-    # Check gh authentication status
+    # Check gh authentication status and include error details
     $authStatus = gh auth status 2>&1
     if ($LASTEXITCODE -ne 0) {
-        $warnings += "gh CLI is installed but not authenticated. Run 'gh auth login' to enable GitHub features."
+        $authMsg = ($authStatus -join ' ') -replace '"', '\"'
+        $warnings += "gh CLI not authenticated: $authMsg. Run 'gh auth login' to enable GitHub features."
     }
 }
 

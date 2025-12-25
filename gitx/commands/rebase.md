@@ -30,8 +30,7 @@ From $ARGUMENTS, extract:
 Get repository state:
 
 - Current branch: !`git branch --show-current` → Store as `$current_branch`
-- Default base: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null |
-  sed 's@^refs/remotes/origin/@@' || echo "main"`
+- Default base: !`ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && echo "${ref#refs/remotes/origin/}" || echo "main"`
 - Working tree status: !`git status --porcelain`
 - Current directory: !`pwd` → Store as `$original_dir`
 

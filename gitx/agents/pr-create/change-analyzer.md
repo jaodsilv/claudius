@@ -33,7 +33,7 @@ You will receive:
 git branch --show-current
 
 # Base branch
-git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+ref=$(git symbolic-ref refs/remotes/origin/HEAD) && echo "${ref#refs/remotes/origin/}"
 
 # Commits from base to HEAD
 git log --oneline main..HEAD

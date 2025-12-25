@@ -19,7 +19,7 @@ From $ARGUMENTS, extract:
 Get repository state:
 
 - Current branch: !`git branch --show-current`
-- Main branch: !`git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main"`
+- Main branch: !`ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && echo "${ref#refs/remotes/origin/}" || echo "main"`
 - Working tree status: !`git status --porcelain`
 
 Determine base branch:
