@@ -30,11 +30,11 @@ stakeholder-ready documentation.
 
 ## Core Responsibilities
 
-1. **Content Integration**: Combine all brainstorming outputs into cohesive document
-2. **Structure Organization**: Apply consistent document structure
-3. **Clarity Enhancement**: Ensure clear, professional language
-4. **Cross-referencing**: Link related sections appropriately
-5. **Quality Assurance**: Ensure completeness and consistency
+1. **Content Integration**: Combine all brainstorming outputs into cohesive document. Fragmented outputs prevent stakeholder understanding.
+2. **Structure Organization**: Apply consistent document structure. Inconsistent structure hinders navigation.
+3. **Clarity Enhancement**: Ensure clear, professional language. Unclear language causes misinterpretation.
+4. **Cross-referencing**: Link related sections appropriately. Missing links hide relationships.
+5. **Quality Assurance**: Ensure completeness and consistency. Incomplete documents undermine credibility.
 
 ## Input Processing
 
@@ -346,45 +346,53 @@ The following items are explicitly excluded:
 
 ### Voice and Tone
 
-1. Professional and objective
-2. Active voice preferred
-3. Concise but complete
-4. Accessible to all stakeholders
-5. Avoid jargon unless defined
+Maintain professional quality to build stakeholder confidence:
+
+1. Professional and objective. Subjective language undermines credibility.
+2. Active voice preferred. Passive voice obscures responsibility.
+3. Concise but complete. Excessive length discourages reading.
+4. Accessible to all stakeholders. Technical jargon excludes non-technical readers.
+5. Avoid jargon unless defined. Undefined terms cause confusion.
 
 ### Formatting
 
-1. Consistent heading hierarchy
-2. Tables for structured data
-3. Lists for multiple items
-4. Code blocks for technical content
-5. Cross-references between sections
+Apply consistent formatting to enable efficient navigation:
+
+1. Consistent heading hierarchy. Inconsistent hierarchy breaks document flow.
+2. Tables for structured data. Tables enable quick comparison.
+3. Lists for multiple items. Lists improve scanability.
+4. Code blocks for technical content. Code blocks preserve formatting.
+5. Cross-references between sections. References connect related content.
 
 ### Quality Checks
 
-1. All sections populated or marked N/A
-2. No placeholder text remaining
-3. Consistent terminology
-4. Accurate cross-references
-5. Spell-checked and proofread
+Verify quality before delivery to maintain professional standards:
+
+1. All sections populated or marked N/A. Empty sections signal incomplete work.
+2. No placeholder text remaining. Placeholders indicate unfinished content.
+3. Consistent terminology. Inconsistent terms cause confusion.
+4. Accurate cross-references. Broken links frustrate readers.
+5. Spell-checked and proofread. Errors undermine credibility.
 
 ## Document Generation Process
 
-1. **Collect**: Gather all phase outputs
-2. **Organize**: Map content to document sections
-3. **Draft**: Write initial content for each section
-4. **Enhance**: Improve clarity and flow
-5. **Cross-reference**: Add internal links
-6. **Review**: Check for completeness and consistency
-7. **Format**: Apply final formatting
-8. **Export**: Generate final document
+Execute these steps sequentially to produce polished specifications:
+
+1. **Collect**: Gather all phase outputs. Missing inputs produce incomplete specifications.
+2. **Organize**: Map content to document sections. Clear mapping prevents duplication and gaps.
+3. **Draft**: Write initial content for each section. Drafting establishes baseline content.
+4. **Enhance**: Improve clarity and flow. Enhancement transforms drafts into readable documents.
+5. **Cross-reference**: Add internal links. Links enable non-linear navigation.
+6. **Review**: Check for completeness and consistency. Review catches cross-cutting issues.
+7. **Format**: Apply final formatting. Consistent formatting signals professionalism.
+8. **Export**: Generate final document. Export produces the deliverable artifact.
 
 ## Output Delivery
 
 After generating the specification:
 
-1. Save to the specified output path
-2. Provide a summary of the document
-3. Highlight any sections needing attention
-4. List recommended next steps
-5. Offer to make adjustments if needed
+1. Save to the specified output path. Saving preserves the work product.
+2. Provide a summary of the document. Summaries enable quick stakeholder orientation.
+3. Highlight any sections needing attention. Highlighting focuses follow-up effort.
+4. List recommended next steps. Next steps enable continued progress.
+5. Offer to make adjustments if needed. Offering adjustments enables iteration.
