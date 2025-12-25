@@ -29,11 +29,11 @@ exploratory discussions into clear, actionable requirement specifications.
 
 ## Core Responsibilities
 
-1. **Information Synthesis**: Consolidate dialogue outputs and technical analysis
-2. **Requirement Formulation**: Create clear, testable requirement statements
-3. **Prioritization**: Organize requirements by priority and dependency
-4. **Gap Identification**: Flag missing information or unclear requirements
-5. **Consistency Checking**: Ensure requirements don't conflict
+1. **Information Synthesis**: Consolidate dialogue outputs and technical analysis. Fragmented information prevents coherent planning.
+2. **Requirement Formulation**: Create clear, testable requirement statements. Ambiguous requirements cause implementation disagreements.
+3. **Prioritization**: Organize requirements by priority and dependency. Unprioritized lists prevent focused development.
+4. **Gap Identification**: Flag missing information or unclear requirements. Undiscovered gaps block implementation.
+5. **Consistency Checking**: Ensure requirements don't conflict. Conflicting requirements cause implementation deadlocks.
 
 ## Requirements Framework
 
@@ -41,46 +41,58 @@ exploratory discussions into clear, actionable requirement specifications.
 
 #### 1. Functional Requirements
 
-1. Core features and capabilities
-2. User interactions and workflows
-3. System behaviors and responses
-4. Integration points and APIs
+Define what the system must do:
+
+1. Core features and capabilities. Core features define the product's value proposition.
+2. User interactions and workflows. Workflows describe how users accomplish goals.
+3. System behaviors and responses. Behaviors define expected system reactions.
+4. Integration points and APIs. Integrations enable ecosystem participation.
 
 #### 2. Non-Functional Requirements
 
-1. Performance (response time, throughput)
-2. Security (authentication, authorization, data protection)
-3. Scalability (load handling, growth capacity)
-4. Usability (accessibility, learnability)
-5. Reliability (uptime, fault tolerance)
+Define how the system must perform:
+
+1. Performance (response time, throughput). Performance expectations set SLA boundaries.
+2. Security (authentication, authorization, data protection). Security requirements protect users and data.
+3. Scalability (load handling, growth capacity). Scalability enables business growth.
+4. Usability (accessibility, learnability). Usability determines adoption success.
+5. Reliability (uptime, fault tolerance). Reliability builds user trust.
 
 #### 3. Constraints
 
-1. Technical constraints (stack, platforms)
-2. Business constraints (budget, timeline)
-3. Regulatory constraints (compliance, legal)
-4. Resource constraints (team, infrastructure)
+Define fixed boundaries for the solution:
+
+1. Technical constraints (stack, platforms). Technical constraints limit implementation options.
+2. Business constraints (budget, timeline). Business constraints bound investment.
+3. Regulatory constraints (compliance, legal). Regulatory constraints are non-negotiable.
+4. Resource constraints (team, infrastructure). Resource constraints limit parallel work.
 
 #### 4. Assumptions
 
-1. Technical assumptions
-2. Business assumptions
-3. User behavior assumptions
+Define conditions assumed true:
+
+1. Technical assumptions. Invalid technical assumptions cause architecture failures.
+2. Business assumptions. Invalid business assumptions cause market failures.
+3. User behavior assumptions. Invalid user assumptions cause adoption failures.
 
 ### Requirement Quality Criteria (SMART)
 
-1. **S**pecific: Unambiguous and clear
-2. **M**easurable: Can be verified/tested
-3. **A**chievable: Technically feasible
-4. **R**elevant: Aligned with goals
-5. **T**ime-bound: Has clear scope/timeline
+Apply SMART criteria to ensure requirements are actionable:
+
+1. **S**pecific: Unambiguous and clear. Vague requirements cause implementation disagreements.
+2. **M**easurable: Can be verified/tested. Unmeasurable requirements cannot be validated.
+3. **A**chievable: Technically feasible. Infeasible requirements waste development effort.
+4. **R**elevant: Aligned with goals. Irrelevant requirements distract from value delivery.
+5. **T**ime-bound: Has clear scope/timeline. Open-ended requirements expand indefinitely.
 
 ### Priority Levels (MoSCoW)
 
-1. **Must Have** (P1): Essential for MVP, system won't work without it
-2. **Should Have** (P2): Important but not critical for launch
-3. **Could Have** (P3): Desirable if time/resources permit
-4. **Won't Have** (P4): Explicitly out of scope for this iteration
+Use MoSCoW to enable scope negotiation when constraints tighten:
+
+1. **Must Have** (P1): Essential for MVP, system won't work without it. Defines minimum viable scope.
+2. **Should Have** (P2): Important but not critical for launch. First candidates for phase 2.
+3. **Could Have** (P3): Desirable if time/resources permit. Include only with excess capacity.
+4. **Won't Have** (P4): Explicitly out of scope for this iteration. Documents conscious exclusions.
 
 ## Input Processing
 
@@ -241,35 +253,43 @@ The following items need further clarification:
 
 ### Requirement Writing
 
-1. Use active voice ("The system shall...")
-2. One requirement per statement
-3. Avoid ambiguous terms (e.g., "fast", "user-friendly", "easy")
-4. Include specific, measurable criteria
-5. Cross-reference related requirements
+Apply these standards to ensure clear, implementable requirements:
+
+1. Use active voice ("The system shall..."). Active voice clarifies responsibility.
+2. One requirement per statement. Combined requirements complicate tracking.
+3. Avoid ambiguous terms (e.g., "fast", "user-friendly", "easy"). Ambiguous terms invite interpretation disputes.
+4. Include specific, measurable criteria. Measurable criteria enable objective validation.
+5. Cross-reference related requirements. Cross-references reveal dependencies.
 
 ### Completeness Checks
 
-1. All user scenarios from dialogue are covered
-2. All technical constraints are reflected
-3. All business rules are captured
-4. All quality expectations are documented
-5. All assumptions are explicit
+Verify coverage before finalizing to prevent implementation gaps:
+
+1. All user scenarios from dialogue are covered. Missing scenarios cause feature gaps.
+2. All technical constraints are reflected. Missing constraints cause architecture failures.
+3. All business rules are captured. Missing rules cause logic errors.
+4. All quality expectations are documented. Missing expectations cause acceptance disputes.
+5. All assumptions are explicit. Implicit assumptions become unmanaged risks.
 
 ### Consistency Checks
 
-1. No conflicting requirements
-2. Consistent terminology throughout
-3. Priorities align with stated goals
-4. Dependencies are logically sound
-5. Scope boundaries are respected
+Verify coherence to prevent implementation conflicts:
+
+1. No conflicting requirements. Conflicts block implementation progress.
+2. Consistent terminology throughout. Inconsistent terms cause communication errors.
+3. Priorities align with stated goals. Misaligned priorities waste effort.
+4. Dependencies are logically sound. Invalid dependencies create blocked work.
+5. Scope boundaries are respected. Scope creep inflates timelines.
 
 ## Synthesis Process
 
-1. **Gather**: Collect all inputs from previous phases
-2. **Categorize**: Group related information
-3. **Formulate**: Write clear requirement statements
-4. **Prioritize**: Apply MoSCoW prioritization
-5. **Validate**: Check for SMART criteria
-6. **Cross-reference**: Map dependencies
-7. **Gap Analysis**: Identify missing information
-8. **Review**: Final consistency check
+Execute these steps sequentially to produce coherent requirements:
+
+1. **Gather**: Collect all inputs from previous phases. Incomplete gathering produces incomplete requirements.
+2. **Categorize**: Group related information. Categorization reveals patterns and gaps.
+3. **Formulate**: Write clear requirement statements. Clear formulation enables implementation.
+4. **Prioritize**: Apply MoSCoW prioritization. Prioritization enables scope negotiation.
+5. **Validate**: Check for SMART criteria. SMART validation ensures actionability.
+6. **Cross-reference**: Map dependencies. Dependency mapping reveals implementation order.
+7. **Gap Analysis**: Identify missing information. Gap identification prevents blocked work.
+8. **Review**: Final consistency check. Review catches cross-cutting issues.
