@@ -59,12 +59,13 @@ gather-requirements-arguments:
    - Look for `brainstorm.claude/.claude-plugin/plugin.json`
    - Or check installed plugins
 
-3. If brainstorm-pro available AND (use_brainstorm == true OR null):
-   - Inform user: "Brainstorm Pro detected - using enhanced discovery"
-   - Go to Phase 2A (Brainstorm Integration)
+3. Check brainstorm-pro availability:
+   1. If available AND user requested (--use-brainstorm): Go to Phase 2A
+   2. If available AND not specified: Go to Phase 2A (default behavior)
+   3. If unavailable: Go to Phase 2B (Standalone Gathering)
 
-4. Otherwise:
-   - Go to Phase 2B (Standalone Gathering)
+4. If using brainstorm-pro: Inform user "Brainstorm Pro detected - using
+   enhanced discovery"
 
 ### Phase 2A: Brainstorm Integration
 
