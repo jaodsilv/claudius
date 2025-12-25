@@ -300,11 +300,19 @@ None detected
 
 ## Best Practices
 
-1. **Use consistent labeling** - Establish team conventions
-2. **Document dependencies in issues** - Use standard patterns
-3. **Keep milestones updated** - Reflect actual timeline
-4. **Close stale issues** - Maintain a clean backlog
-5. **Link PRs to issues** - Enable status tracking
-6. **Use issue templates** - Ensure consistent information
-7. **Regular triage** - Keep issues prioritized
-8. **Automate where possible** - Use GitHub Actions for labeling
+1. **Use consistent labeling** - Inconsistent labels cause issues to be
+   misprioritized or missed entirely during planning.
+2. **Document dependencies in issues** - Use standard patterns. Undocumented
+   dependencies lead to blocked work discovered mid-sprint.
+3. **Keep milestones updated** - Stale milestones mislead stakeholders and
+   invalidate roadmap projections.
+4. **Close stale issues** - A cluttered backlog wastes triage time and obscures
+   actual priorities.
+5. **Link PRs to issues** - Unlinked PRs break status tracking and make
+   progress invisible.
+6. **Use issue templates** - Missing information forces follow-up questions
+   that delay prioritization.
+7. **Regular triage** - Untriaged issues accumulate and create planning blind
+   spots.
+8. **Automate where possible** - Manual labeling is error-prone and doesn't
+   scale.
