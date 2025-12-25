@@ -180,15 +180,15 @@ Provide structured analysis:
 2. [Prioritized action item]
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written command should:
+Validate the command against these requirements:
 
-- Have a clear, concise description
-- Document all arguments
-- Use minimal tool permissions
-- Be written as instructions FOR Claude
-- Handle errors gracefully
-- Validate inputs before use
-- Use proper file/tool references
-- Be portable across environments
+1. **Description**: Clear, under 60 characters. Displayed in /help output; longer descriptions get truncated.
+2. **argument-hint**: Documents all expected arguments. Users cannot discover arguments without this hint.
+3. **allowed-tools**: Minimal necessary set. Overly permissive tool access creates security risks.
+4. **Body style**: Written FOR Claude (imperative, actionable). Documentation style causes Claude to describe rather than execute.
+5. **Error handling**: Graceful failure with helpful messages.
+6. **Input validation**: Validates arguments before use.
+7. **References**: Proper file/tool reference syntax.
+8. **Portability**: Uses ${CLAUDE_PLUGIN_ROOT} for paths.
