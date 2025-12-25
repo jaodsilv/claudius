@@ -222,15 +222,15 @@ Order:
 
 Rationale: Section must exist before content can be added.
 
-## Quality Standards
+## Quality Validation Criteria
 
-A good change plan should:
+Validate the change plan against these requirements:
 
-1. **Be executable**: Each step is clear and actionable
-2. **Be safe**: No conflicting changes in same step
-3. **Be ordered**: Dependencies respected
-4. **Be reversible**: Original content documented for rollback
-5. **Include validation**: Each step has verification criteria
+1. **Executable**: Each step is clear and actionable. Ambiguous steps cause component-writer to fail.
+2. **Safe**: No conflicting changes in same step. Overlapping edits corrupt file content.
+3. **Ordered**: Dependencies respected. Out-of-order changes break subsequent edits.
+4. **Reversible**: Original content documented for rollback.
+5. **Validated**: Each step has verification criteria.
 
 ## Error Handling
 
