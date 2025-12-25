@@ -1,0 +1,37 @@
+# Check for git and gh CLI dependencies
+# Returns JSON with systemMessage for warnings
+
+$missingDeps = @()
+$warnings = @()
+
+# Check git
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    $missingDeps += "git"
+}
+
+# Check gh CLI
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    $missingDeps += "gh CLI"
+} else {
+    # Check gh authentication status and include error details
+    $authStatus = gh auth status 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        $authMsg = ($authStatus -join ' ') -replace '"', '\"'
+        $warnings += "gh CLI not authenticated: $authMsg. Run 'gh auth login' to enable GitHub features."
+    }
+}
+
+# Output result
+if ($missingDeps.Count -gt 0) {
+    $deps = $missingDeps -join ", "
+    Write-Output "{`"systemMessage`": `"[gitx plugin] Missing dependencies: $deps. Some commands may not work. Install git from https://git-scm.com/ and gh from https://cli.github.com/`"}"
+} elseif ($warnings.Count -gt 0) {
+    $warn = $warnings -join " "
+    Write-Output "{`"systemMessage`": `"[gitx plugin] Warning: $warn`"}"
+}
+
+# Exit 1 if critical dependency (git) is missing, exit 0 for optional deps
+if ($missingDeps -contains "git") {
+    exit 1
+}
+exit 0

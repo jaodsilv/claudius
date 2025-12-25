@@ -22,6 +22,8 @@ config:
   # MD003 - heading-style
   MD003:
     style: atx
+  # MD060 - table-column-style: disabled (newer rule not in CI version)
+  MD060: false
 
 frontMatter: ^(---\r?\n(((?!---).)*\r?\n)*---\r?\n|(\[!\[[-\w\. ]+\]\([^\)]+\)\]\([^\)]+\)\r?\n)+|\[[^\]]\]\([^\)]*\)|)
 
