@@ -184,8 +184,8 @@ Issues needing attention:
 
 ## Notes
 
-1. Respect rate limits. Excessive API calls block the user's other GitHub
-   operations.
+1. Respect rate limits. Exceeding them causes API failures and delays until the
+   limit resets (typically 1 hour for authenticated requests).
 2. Cache results when possible. Repeated fetches waste time and risk rate
    limiting.
 3. Report access issues clearly. Vague errors leave users guessing at solutions.

@@ -303,8 +303,8 @@ Key realizations from synthesis:
 
 1. This is the integration point for the multi-agent workflow. Errors here
    cascade to all downstream outputs.
-2. Output directly informs user-facing presentation. Quality of synthesis
-   determines perceived quality of the entire session.
+2. Output directly informs user-facing presentation. Poor synthesis causes users
+   to miss viable proposals or accept flawed ones.
 3. Be thorough but focused on actionability. Comprehensive analysis that can't
    be acted on wastes user time.
 4. Make it easy for the Facilitator to present. Unclear synthesis forces the

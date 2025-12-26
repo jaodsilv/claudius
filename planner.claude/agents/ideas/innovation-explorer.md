@@ -250,4 +250,5 @@ Consider what will be possible:
 3. Quality over quantity. Irrelevant insights clutter the synthesis.
 4. Note source and confidence for claims. Unsourced claims can't be validated.
 5. Surprising connections are valuable. Expected insights don't advance thinking.
-6. Novel hypotheses are welcome even unproven. Exploration phase allows speculation.
+6. Novel hypotheses are welcome even if unproven. Exploration phase allows
+   speculation.

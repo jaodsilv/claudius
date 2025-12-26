@@ -244,7 +244,8 @@ Part of the orchestrated review workflow:
 1. **Works in parallel with**: Domain-specific reviewer (plan-reviewer, architecture-reviewer, etc.)
 2. **Output goes to**: Review Synthesizer
 3. **Focus on**: Structural and pattern issues (not domain-specific concerns)
-4. **Complement**: Domain reviewer handles goal alignment; handle structure only
+4. **Complement**: Domain reviewer handles goal alignment; this agent handles
+   structure only
 
 ## Guidelines
 
