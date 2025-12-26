@@ -208,9 +208,9 @@ Validate the agent against these requirements:
 
 1. **Identifier**: Valid, descriptive, 3-50 chars, kebab-case. Invalid names prevent Claude Code from loading the agent.
 2. **Examples**: 2-4 triggering example blocks. Fewer examples reduce Claude's ability to recognize when to trigger the agent.
-3. **Triggering scenarios**: Cover both proactive and reactive use cases.
-4. **Role definition**: Clear expert persona in system prompt.
-5. **Process steps**: Step-by-step workflow defined.
-6. **Output format**: Structured output format specified.
+3. **Triggering scenarios**: Cover both proactive and reactive use cases. Missing scenarios leave agents unused when needed.
+4. **Role definition**: Clear expert persona in system prompt. Vague roles produce inconsistent agent behavior.
+5. **Process steps**: Step-by-step workflow defined. Missing process causes agents to skip critical steps.
+6. **Output format**: Structured output format specified. Unspecified formats produce inconsistent, hard-to-parse results.
 7. **Tool restrictions**: Minimal necessary tools. Overly permissive access creates security risks.
 8. **Prompt length**: 500-3000 words. Shorter prompts lack guidance; longer ones consume excessive context.
