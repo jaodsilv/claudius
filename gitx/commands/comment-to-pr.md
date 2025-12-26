@@ -92,7 +92,7 @@ Show the posted comment:
 
 ## Error Handling
 
-- PR not found: Report error, suggest checking PR number
-- Empty comment: Request comment text
-- Permission denied: Check repository access
-- gh not authenticated: Guide to `gh auth login`
+1. PR not found: Report error, suggest checking PR number.
+2. Empty comment: Request comment text.
+3. Permission denied: Check repository access.
+4. gh not authenticated: Guide to `gh auth login`.

@@ -357,11 +357,10 @@ For manual mode, show:
 
 ## Error Handling
 
-- Already up to date: Report "Already up to date with $base_branch"
-- Unrelated histories: Suggest `--allow-unrelated-histories` only with
-  explicit confirmation
-- Merge conflicts: Guide through orchestrated resolution (see above)
-- Rebase in progress: Offer to continue, skip, or abort existing rebase
-- Main worktree not found: Offer fallback to standard fetch-based rebase
-- Main worktree pull failure: Offer reset, skip sync, or cancel options
-- Agent failure: Fall back to manual resolution with guidance
+1. Already up to date: Report "Already up to date with $base_branch".
+2. Unrelated histories: Suggest `--allow-unrelated-histories` only with explicit confirmation.
+3. Merge conflicts: Guide through orchestrated resolution (see above).
+4. Rebase in progress: Offer to continue, skip, or abort existing rebase.
+5. Main worktree not found: Offer fallback to standard fetch-based rebase.
+6. Main worktree pull failure: Offer reset, skip sync, or cancel options.
+7. Agent failure: Fall back to manual resolution with guidance.

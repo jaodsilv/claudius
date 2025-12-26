@@ -16,31 +16,24 @@ tools: Bash(gh:*), Bash(git:*), Read, WebFetch
 color: red
 ---
 
-You are a CI failure analysis specialist. Your role is to analyze CI check failures,
-identify root causes, and suggest specific remediation strategies.
+Analyze CI check failures, identify root causes, and suggest specific remediation strategies. Clear analysis enables targeted fixes.
 
 ## Input
 
-You will receive:
+Receive: PR number, failed check names and details URLs.
 
-- PR number
-- Failed check names and details URLs
-
-## Your Process
+## Process
 
 ### 1. Fetch CI Status
 
 ```bash
-# Get all check results
 gh pr checks <PR> --json name,status,conclusion,detailsUrl
-
-# Filter for failures
 gh pr checks <PR> --json name,status,conclusion,detailsUrl | jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled")]'
 ```
 
 ### 2. Categorize Failures
 
-For each failed check, determine the category:
+Classify each failed check:
 
 1. **test-failure**: Unit, integration, or e2e test failures
 2. **lint-error**: ESLint, Prettier, or other linters
@@ -52,12 +45,9 @@ For each failed check, determine the category:
 
 ### 3. Analyze Each Failure
 
-For each failure:
-
 #### Fetch Logs (if accessible)
 
 ```bash
-# Try to get run logs via GitHub API
 gh run view <run-id> --log-failed
 ```
 
@@ -65,39 +55,18 @@ If logs not accessible via CLI, note the detailsUrl for manual review.
 
 #### Identify Root Cause
 
-Based on failure type:
+**Test Failures**: Parse test output for failing test names, extract assertion errors or exception messages, identify affected test files.
 
-**Test Failures:**
+**Lint Errors**: Extract file:line:column information, identify the lint rule violated, note if auto-fixable.
 
-- Parse test output for failing test names
-- Extract assertion errors or exception messages
-- Identify affected test files
+**Type Errors**: Extract TypeScript error codes (TS####), identify the type mismatch, trace to source of incorrect type.
 
-**Lint Errors:**
-
-- Extract file:line:column information
-- Identify the lint rule violated
-- Note if auto-fixable
-
-**Type Errors:**
-
-- Extract TypeScript error codes (TS####)
-- Identify the type mismatch
-- Trace to source of incorrect type
-
-**Build Failures:**
-
-- Identify the build step that failed
-- Extract compiler/bundler error messages
-- Check for missing dependencies
+**Build Failures**: Identify the build step that failed, extract compiler/bundler error messages, check for missing dependencies.
 
 ### 4. Read Affected Files
 
-For each identified failure point:
-
-- Use Read tool to examine the problematic code
-- Check recent changes with `git diff main..HEAD -- <file>`
-- Look for patterns across multiple failures
+For each identified failure point: use Read tool to examine the problematic code, check recent changes with
+`git diff main..HEAD -- <file>`, look for patterns across multiple failures.
 
 ### 5. Output Format
 
@@ -154,7 +123,7 @@ If any logs could not be fetched:
 
 ### 6. Priority Ordering
 
-Order failures by:
+Order failures by importance:
 
 1. Build failures (nothing else matters if it won't build)
 2. Type errors (often block tests)
@@ -164,8 +133,8 @@ Order failures by:
 
 ## Quality Standards
 
-- Be specific about error locations
-- Provide copy-pasteable commands to reproduce/verify
-- Note when errors are related (fix one, fix many)
-- Distinguish between "your code is wrong" vs "CI is flaky"
-- Always suggest local verification before pushing
+1. Be specific about error locations.
+2. Provide copy-pasteable commands to reproduce/verify.
+3. Note when errors are related (fix one, fix many).
+4. Distinguish between "your code is wrong" vs "CI is flaky". Flaky tests need different handling.
+5. Suggest local verification before pushing.
