@@ -126,12 +126,6 @@ Report success with:
 2. Branch name
 3. Next steps: "cd <path> to start working"
 
-### Design Notes
-
-**Why no explicit start-point?** When `git worktree add -b` is used without a start-point, git uses HEAD.
-This is intentional: the sync workflow (fetch/pull) ensures HEAD is up-to-date, and omitting the start-point
-avoids the branch incorrectly tracking `origin/main` as its upstream.
-
 ## Error Handling
 
 1. Branch already exists: Suggest using existing branch or different name.

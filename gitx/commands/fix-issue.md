@@ -220,10 +220,6 @@ WORKTREE_PATH="../[branch-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH"
 ```
 
-**Design Note:** No explicit start-point is used with `git worktree add -b`. This is intentional:
-the sync workflow ensures HEAD is up-to-date, and omitting the start-point avoids the branch
-incorrectly tracking `origin/main` as its upstream.
-
 Report worktree location:
 
 ```text

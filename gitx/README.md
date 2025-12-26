@@ -395,6 +395,28 @@ All commands include:
 - Graceful degradation when optional features unavailable
 - **Fallback to manual mode** if orchestration fails
 
+## Design Notes
+
+### Worktree Creation Without Start-Point
+
+The worktree commands (`/gitx:worktree`, `/gitx:fix-issue`) intentionally omit the start-point argument
+when creating worktrees:
+
+```bash
+# We use this (no start-point):
+git worktree add -b <branch-name> <path>
+
+# NOT this (with start-point):
+git worktree add -b <branch-name> <path> origin/main
+```
+
+**Why?** When a start-point like `origin/main` is specified, git automatically sets the new branch to
+track that remote branch. This causes issues when you later push and create a PR - the branch appears
+to track `origin/main` instead of its own remote branch.
+
+By omitting the start-point, git uses HEAD, and the sync workflow (fetch → stash → pull → stash pop)
+ensures HEAD is up-to-date before worktree creation. This gives the same result without the tracking issue.
+
 ## Plugin Structure
 
 ```text

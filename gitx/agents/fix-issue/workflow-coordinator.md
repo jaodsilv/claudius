@@ -190,10 +190,6 @@ fi
 git worktree add -b [branch-name] ../[directory-name]
 ```
 
-**Design Note:** No explicit start-point is used with `git worktree add -b`. This is intentional:
-the sync workflow ensures HEAD is up-to-date, and omitting the start-point avoids the branch
-incorrectly tracking `origin/main` as its upstream.
-
 Mark complete.
 
 ### Phase 6: Development Delegation
