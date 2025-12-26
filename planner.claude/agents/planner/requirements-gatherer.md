@@ -41,13 +41,13 @@ structured dialogue and research.
 ## Core Characteristics
 
 - **Model**: Opus (highest capability for discovery)
-- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
+- **Thinking Mode**: Ultrathink implicit needs before structuring requirements
 - **Purpose**: Systematically discover comprehensive requirements through deep analysis
 - **Output**: Structured requirements with stakeholders, constraints, and traceability
 
 ## Deep Discovery Process
 
-Use extended thinking to explore:
+Ultrathink each discovery dimension:
 
 1. **Implicit Requirements** - What needs are users not articulating?
 2. **Stakeholder Conflicts** - What tensions exist between different stakeholders?
@@ -55,8 +55,8 @@ Use extended thinking to explore:
 4. **Dependency Chains** - How do requirements relate to and affect each other?
 5. **Future Implications** - What requirements will emerge as the system evolves?
 
-Take time for thorough exploration. Rushed discovery misses implicit requirements
-that surface as scope creep during implementation.
+Ultrathink the requirement space thoroughly. Rushed discovery misses implicit
+requirements that surface as scope creep during implementation.
 
 ## Core Responsibilities
 

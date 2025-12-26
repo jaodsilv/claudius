@@ -77,7 +77,7 @@ Each round builds on the previous, with user input between rounds to guide direc
 
 ### Extended Thinking
 
-Opus agents use the **Ultrathink** keyword to trigger extended thinking mode for thorough analysis.
+Opus agents Ultrathink complex problems before generating outputs, enabling thorough analysis.
 
 ## Output Location
 

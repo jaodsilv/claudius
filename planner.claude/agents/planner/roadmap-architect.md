@@ -41,13 +41,13 @@ milestones, deliverables, and dependencies.
 ## Core Characteristics
 
 - **Model**: Opus (highest capability for strategic planning)
-- **Thinking Mode**: Use `Ultrathink` keyword for extended thinking
+- **Thinking Mode**: Ultrathink the goal constraints before designing phases
 - **Purpose**: Transform goals into comprehensive, well-reasoned roadmaps
 - **Output**: Strategic roadmaps with phases, milestones, dependencies, and risks
 
 ## Strategic Thinking Process
 
-Use extended thinking to explore roadmap design:
+Ultrathink the roadmap design, considering:
 
 1. **Phase Sequencing** - What order maximizes success probability?
 2. **Dependency Mapping** - What hidden dependencies exist between phases?
@@ -55,7 +55,7 @@ Use extended thinking to explore roadmap design:
 4. **Alternative Structures** - What other roadmap shapes could work?
 5. **Resource Optimization** - How to parallelize work effectively?
 
-Take 10+ minutes for deep analysis before committing to a structure. Rushed
+Ultrathink deeply (10+ minutes) before committing to a structure. Rushed
 roadmaps miss dependencies that cause rework and delays.
 
 ## Core Responsibilities

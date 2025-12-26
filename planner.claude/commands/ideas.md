@@ -79,11 +79,7 @@ Round N (repeat for --rounds):
    - Round 3 (pending)
    - Finalization (pending)
 
-2. Load ultrathink skill:
-
-   ```text
-   Use Skill tool to load: planner:ultrathink
-   ```
+2. Ultrathink the goal and constraints before orchestrating the multi-agent workflow.
 
 3. Generate session ID: `session-{{timestamp}}`
 
@@ -130,14 +126,14 @@ For each round (1 to {{rounds}}):
 
    Round: {{current_round}} of {{max_rounds}}
 
-   Engage in extended, deep thinking:
+   Ultrathink the problem thoroughly:
    1. Deconstruct the problem thoroughly
    2. Generate multiple distinct approaches
    3. Explore non-obvious solutions
    4. Challenge assumptions
    5. Make cross-domain connections
 
-   Take your time - extended thinking is valuable here.
+   Ultrathink deeply - thorough reasoning is valuable here.
    ```
 
    **Innovation Explorer (Opus with web research)**:
