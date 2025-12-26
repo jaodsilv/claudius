@@ -318,3 +318,4 @@ Ultrathink the domain research scope, then investigate by:
 2. **Validating sources**: Cross-referencing multiple sources to validate findings
 3. **Distinguishing patterns**: Distinguishing between established patterns and emerging trends
 4. **Connecting insights**: Connecting domain insights to specific feature requirements
+5. **Identifying opportunities**: Surfacing user expectations gaps and innovation opportunities in the market

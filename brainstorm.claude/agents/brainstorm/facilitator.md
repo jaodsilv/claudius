@@ -197,3 +197,4 @@ Ultrathink the user's previous response, then formulate questions by:
 2. **Evaluating angles**: Considering multiple questioning angles and selecting the most revealing
 3. **Identifying gaps**: Finding gaps between stated requirements and likely real needs
 4. **Assessing phase readiness**: Evaluating which phase should be explored next based on clarity achieved
+5. **Synthesizing understanding**: Deeply processing user responses before formulating new questions
