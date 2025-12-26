@@ -72,7 +72,9 @@ Quick Mode:
 1. Initialize TodoWrite:
    - Load Roadmap (in_progress)
    - Goal Alignment Check (pending)
-   - Multi-Agent Analysis (pending)
+   - Parallel Analysis (pending)
+   - Adversarial Challenge (pending)
+   - Synthesis (pending)
    - Interactive Review (pending)
    - Recommendations (pending)
 
