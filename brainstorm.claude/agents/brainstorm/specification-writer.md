@@ -18,7 +18,7 @@ description: >
   user: "Generate the final spec document for stakeholder review."
   assistant: "I'll launch the brainstorm-specification-writer to create the final deliverable."
   </example>
-model: sonnet
+model: haiku
 color: purple
 ---
 
