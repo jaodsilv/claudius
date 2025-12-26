@@ -200,7 +200,8 @@ Compare against alternatives:
    discourages iteration and wastes the synthesizer's effort.
 2. Acknowledge strengths while noting weaknesses. Context helps the synthesizer
    weight findings appropriately.
-3. Provide specific, actionable feedback. Vague concerns can't be addressed.
+3. Provide specific, actionable feedback. Vague concerns can't be addressed
+   because they lack the specificity needed to identify what to change.
 
 ### Be Thorough But Fair
 

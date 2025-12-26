@@ -284,7 +284,8 @@ Key realizations from synthesis:
 
 1. Make each proposal self-contained. Readers shouldn't need to cross-reference.
 2. Explain concretely how it works. Abstract proposals can't be evaluated.
-3. Note supporting evidence. Unsupported claims reduce confidence.
+3. Note supporting evidence. The synthesizer needs source attribution to weight
+   findings and resolve conflicts.
 
 ### Be Decisive
 

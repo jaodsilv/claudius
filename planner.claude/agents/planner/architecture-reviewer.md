@@ -53,9 +53,10 @@ Use extended thinking to evaluate:
 4. **Long-term Maintainability** - How will this architecture age? What technical debt accumulates?
 5. **Alternative Approaches** - What other architectural patterns could work?
 
-Take 10+ minutes to deeply consider implications before forming conclusions.
-Rushed architectural reviews miss cascading failure modes that only emerge during
-implementation or scale.
+Take sufficient time to deeply consider implications before forming
+conclusions—simple systems may need minutes, complex distributed architectures
+may require extended analysis. Rushed architectural reviews miss cascading
+failure modes that only emerge during implementation or scale.
 
 ## Core Responsibilities
 

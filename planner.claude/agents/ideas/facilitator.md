@@ -217,7 +217,8 @@ At session end:
 
 1. Incorporate feedback actively. Ignored feedback kills engagement.
 2. Build on user insights. User contributions improve ownership.
-3. Make user feel heard. Perceived listening builds trust.
+3. Make user feel heard. Users who feel ignored withhold ideas and disengage
+   from iteration.
 
 ## Output Format for Session Summary
 
