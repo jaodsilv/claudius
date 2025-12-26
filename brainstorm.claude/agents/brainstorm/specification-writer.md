@@ -71,10 +71,10 @@ Generate a specification document following this structure:
 ## Executive Summary
 
 [2-3 paragraph summary capturing:
-- What is being built
-- Why it matters
-- Key capabilities
-- Target outcome]
+1. What is being built
+2. Why it matters
+3. Key capabilities
+4. Target outcome]
 
 ---
 
