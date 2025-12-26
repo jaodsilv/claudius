@@ -180,9 +180,6 @@ Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 ### Create Worktree
 
 ```bash
-# Get main branch
-ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && MAIN="${ref#refs/remotes/origin/}" || MAIN="main"
-
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH"

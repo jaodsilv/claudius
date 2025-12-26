@@ -151,9 +151,6 @@ Determine branch name from issue analysis:
 Create worktree:
 
 ```bash
-# Get main branch
-ref=$(git symbolic-ref refs/remotes/origin/HEAD) && MAIN="${ref#refs/remotes/origin/}" || MAIN="main"
-
 # Create worktree as sibling
 git worktree add -b [branch-name] ../[directory-name]
 ```
