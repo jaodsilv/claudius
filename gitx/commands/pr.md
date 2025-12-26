@@ -256,9 +256,9 @@ Based on:
 
 ## Error Handling
 
-- Not a git repository: Report error
-- No commits to create PR: Suggest making changes first
-- PR already exists: Show existing PR URL
-- No permission: Check repository access
-- CI required: Note that CI checks will run
-- Agent failure: Fall back to basic mode
+1. Not a git repository: Report error.
+2. No commits to create PR: Suggest making changes first.
+3. PR already exists: Show existing PR URL.
+4. No permission: Check repository access.
+5. CI required: Note that CI checks will run.
+6. Agent failure: Fall back to basic mode.

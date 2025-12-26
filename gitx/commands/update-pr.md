@@ -165,7 +165,7 @@ gh pr edit <PR_NUMBER> --body "[body]"
 
 ## Error Handling
 
-- No PR found: Suggest `/gitx:pr`
-- Permission denied: Check repository access
-- Rate limit: Suggest waiting
-- Agent failure: Fall back to manual edit suggestion
+1. No PR found: Suggest `/gitx:pr`.
+2. Permission denied: Check repository access.
+3. Rate limit: Suggest waiting.
+4. Agent failure: Fall back to manual edit suggestion.

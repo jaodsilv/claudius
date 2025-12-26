@@ -143,9 +143,9 @@ View: https://github.com/owner/repo/pull/123
 
 ## Error Handling
 
-- PR not found: Show list of open PRs
-- Not mergeable: Explain why and suggest fix
-- Merge conflicts: Suggest resolving first
-- Failed checks: Warn but allow override with confirmation
-- Permission denied: Check write access
-- Issues not found: Note but continue with merge
+1. PR not found: Show list of open PRs.
+2. Not mergeable: Explain why and suggest fix.
+3. Merge conflicts: Suggest resolving first.
+4. Failed checks: Warn but allow override with confirmation.
+5. Permission denied: Check write access.
+6. Issues not found: Note but continue with merge.

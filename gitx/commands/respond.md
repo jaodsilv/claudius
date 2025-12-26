@@ -240,12 +240,12 @@ After responding:
 
 ## Error Handling
 
-- No PR for branch: Suggest creating PR first
-- No review comments: Report "No unresolved comments found"
-- No CI failures: Report "All CI checks passing"
-- Cannot fetch CI logs: Provide link to details URL for manual review
-- Permission to resolve comments: Note if user lacks permission
-- Agent failure: Log error, offer retry or fallback to manual mode
+1. No PR for branch: Suggest creating PR first.
+2. No review comments: Report "No unresolved comments found".
+3. No CI failures: Report "All CI checks passing".
+4. Cannot fetch CI logs: Provide link to details URL for manual review.
+5. Permission to resolve comments: Note if user lacks permission.
+6. Agent failure: Log error, offer retry or fallback to manual mode.
 
 ## Fallback Mode
 

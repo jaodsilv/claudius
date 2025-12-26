@@ -90,7 +90,7 @@ After confirmation:
 
 ## Error Handling
 
-- If branch already exists: Suggest using existing branch or different name
-- If worktree path exists: Suggest different path
-- If issue not found: Report error and suggest checking issue number
-- If gh CLI not authenticated: Provide guidance to run `gh auth login`
+1. Branch already exists: Suggest using existing branch or different name.
+2. Worktree path exists: Suggest different path.
+3. Issue not found: Report error and suggest checking issue number.
+4. gh CLI not authenticated: Provide guidance to run `gh auth login`.
