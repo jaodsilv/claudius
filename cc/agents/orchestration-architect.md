@@ -216,7 +216,7 @@ Validate the architecture against these requirements:
 
 ## Reasoning Approach
 
-Before producing output, engage in extended thinking:
+Ultrathink the orchestration design requirements, then produce output:
 
 1. **Enumerate patterns**: Consider all coordination patterns (Sequential, Parallel, Iterative,
    Hierarchical, State Machine) and their trade-offs for this specific workflow
