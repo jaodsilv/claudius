@@ -303,3 +303,4 @@ Ultrathink all phase inputs, then synthesize requirements by:
 2. **Validating quality**: Evaluating each requirement against SMART criteria explicitly
 3. **Tracing dependencies**: Ensuring logical ordering and dependency relationships
 4. **Considering edge cases**: Identifying edge cases that might invalidate stated requirements
+5. **Assessing priority**: Evaluating requirement importance using MoSCoW criteria against stated goals

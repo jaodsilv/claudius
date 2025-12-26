@@ -337,3 +337,4 @@ Ultrathink the constraint landscape, then analyze by:
 2. **Considering effects**: Considering second-order effects of constraint combinations
 3. **Questioning fixedness**: Questioning whether stated constraints are truly fixed or negotiable
 4. **Surfacing trade-offs**: Evaluating conflicting constraints to surface trade-offs requiring stakeholder decisions
+5. **Structuring implications**: Organizing constraints with their sources and impacts for clear stakeholder communication
