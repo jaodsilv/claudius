@@ -179,6 +179,27 @@
         "orchestration",
         "conflict-resolution"
       ]
+    },
+    {
+      "name": "planner",
+      "description": "Strategic planning plugin: multi-agent orchestrated roadmapping, issue prioritization, requirements discovery, and comprehensive planning reviews",
+      "source": "./planner.claude",
+      "category": "productivity",
+      "version": "1.1.0",
+      "keywords": [
+        "planning",
+        "roadmap",
+        "prioritization",
+        "RICE",
+        "MoSCoW",
+        "requirements",
+        "github-integration",
+        "multi-agent",
+        "orchestration",
+        "ideation",
+        "review",
+        "extended-thinking"
+      ]
     }
   ]
 }

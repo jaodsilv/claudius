@@ -15,6 +15,8 @@ model: sonnet
 color: teal
 tools:
   - Read
+  - Glob
+  - Grep
   - WebSearch
   - Task
 ---

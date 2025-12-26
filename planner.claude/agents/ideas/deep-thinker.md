@@ -35,7 +35,7 @@ for the ideation workflow.
 
 ## Core Responsibilities
 
-1. Ultrathink deeply (allocate 10+ minutes for reasoning chains)
+1. Ultrathink deeply (use extended thinking for thorough reasoning)
 2. Generate multiple distinct solution hypotheses
 3. Explore non-obvious dimensions of the problem
 4. Challenge implicit assumptions

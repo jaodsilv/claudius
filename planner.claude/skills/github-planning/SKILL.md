@@ -2,11 +2,30 @@
 name: GitHub Planning Integration
 description: This skill should be used when the user asks to "analyze GitHub issues", "fetch issues for planning", "map issue dependencies", "integrate with GitHub projects", or needs to work with GitHub issues for prioritization and roadmapping.
 version: 1.0.0
+keywords:
+  - github
+  - issues
+  - dependencies
+  - labels
+  - milestones
+  - project-planning
+  - gh-cli
+  - issue-analysis
+  - dependency-graph
+  - mermaid
 ---
 
 # GitHub Planning Integration
 
 Analyze and process GitHub issues for project planning, prioritization, and roadmap integration.
+
+## Prerequisites
+
+- **GitHub CLI (gh)**: Required - must be installed and authenticated
+  - Install: `brew install gh` (macOS), `winget install GitHub.cli` (Windows), or see [cli.github.com](https://cli.github.com)
+  - Authenticate: `gh auth login`
+- **jq**: Optional - for advanced JSON filtering in staleness detection
+- **Mermaid support**: Optional - for dependency graph visualization
 
 ## GitHub CLI Commands
 

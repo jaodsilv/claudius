@@ -2,11 +2,27 @@
 name: Prioritization Frameworks
 description: This skill should be used when the user asks to "prioritize issues", "rank features", "apply RICE scoring", "use MoSCoW prioritization", "create a priority matrix", or needs to systematically compare and rank items.
 version: 1.0.0
+keywords:
+  - prioritization
+  - RICE
+  - MoSCoW
+  - weighted-scoring
+  - Kano
+  - ranking
+  - feature-priority
+  - value-effort
+  - product-management
+  - backlog-grooming
 ---
 
 # Prioritization Frameworks
 
 Apply systematic prioritization frameworks to rank issues, features, tasks, or any items requiring comparative evaluation.
+
+## Prerequisites
+
+- **GitHub CLI (gh)**: Required for GitHub issue integration features
+- No external tools required for standalone prioritization
 
 ## Framework Selection
 

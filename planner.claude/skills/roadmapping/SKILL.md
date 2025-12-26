@@ -2,11 +2,28 @@
 name: Roadmapping Patterns
 description: This skill should be used when the user asks to "create a roadmap", "plan project phases", "define milestones", "map out a project", or needs to structure a project into phases with deliverables.
 version: 1.0.0
+keywords:
+  - roadmap
+  - planning
+  - phases
+  - milestones
+  - deliverables
+  - dependencies
+  - timeline
+  - project-planning
+  - OKR
+  - risk-assessment
+  - gantt
 ---
 
 # Roadmapping Patterns
 
 Create structured project roadmaps with phases, milestones, deliverables, and dependencies.
+
+## Prerequisites
+
+- **Mermaid support**: For Gantt chart visualization (optional but recommended)
+- No external tools required for core functionality
 
 ## Roadmap Components
 

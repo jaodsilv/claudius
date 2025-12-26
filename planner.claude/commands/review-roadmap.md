@@ -71,6 +71,7 @@ Quick Mode:
 
 1. Initialize TodoWrite:
    - Load Roadmap (in_progress)
+   - Goal Alignment Check (pending)
    - Parallel Analysis (pending)
    - Adversarial Challenge (pending)
    - Synthesis (pending)
@@ -440,3 +441,10 @@ Present as code blocks for user to apply manually.
 ```text
 /planner:review-roadmap "Scale to 1M users" --roadmap-path docs/scaling-roadmap.md --mode thorough
 ```
+
+## Error Handling
+
+1. **Goal not provided**: Prompt user for the goal to evaluate against
+2. **Roadmap file not found**: Search for roadmap files using Glob and present options
+3. **Empty roadmap**: Report that the roadmap has no content to review
+4. **Agent timeout**: Report partial results and continue with available findings
