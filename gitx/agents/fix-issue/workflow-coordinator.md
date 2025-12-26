@@ -148,14 +148,46 @@ Determine branch name from issue analysis:
 - Feature → `feature/issue-[number]-[slug]`
 - Default → `feature/issue-[number]-[slug]`
 
-Create worktree:
+Sync repository and create worktree:
 
 ```bash
-# Get main branch
-ref=$(git symbolic-ref refs/remotes/origin/HEAD) && MAIN="${ref#refs/remotes/origin/}" || MAIN="main"
+# Verify not in detached HEAD state
+CURRENT_BRANCH=$(git branch --show-current)
+if [ -z "$CURRENT_BRANCH" ]; then
+  echo "Error: Cannot create worktree from detached HEAD state."
+  echo "Please checkout a branch first: git checkout <branch-name>"
+  exit 1
+fi
+
+# Fetch latest from origin
+git fetch origin
+
+# Stash local changes if working directory is dirty
+STASHED=false
+if [ -n "$(git status --porcelain)" ]; then
+  git stash --include-untracked
+  STASHED=true
+fi
+
+# Pull latest on current branch
+if ! git pull --rebase origin "$CURRENT_BRANCH"; then
+  echo "Error: Pull failed. Please resolve conflicts manually."
+  if [ "$STASHED" = true ]; then
+    echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
+  fi
+  exit 1
+fi
+
+# Pop stash if we stashed earlier (conflicts are non-fatal, just warn user)
+if [ "$STASHED" = true ]; then
+  if ! git stash pop; then
+    echo "Warning: Stash pop had conflicts. Your changes are still in stash."
+    echo "Continuing with worktree creation. Run 'git stash pop' manually later."
+  fi
+fi
 
 # Create worktree as sibling
-git worktree add -b [branch-name] ../[directory-name] $MAIN
+git worktree add -b [branch-name] ../[directory-name]
 ```
 
 Mark complete.

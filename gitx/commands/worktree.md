@@ -15,7 +15,6 @@ Get current repository state:
 - Repository root: !`git rev-parse --show-toplevel`
 - Current branch: !`git branch --show-current`
 - Existing worktrees: !`git worktree list`
-- Main branch name: !`ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && echo "${ref#refs/remotes/origin/}" || echo "main"`
 
 ## Execution Logic
 
@@ -71,7 +70,6 @@ Create worktree as sibling directory:
 Before creating, use AskUserQuestion to confirm:
 - Proposed branch name
 - Worktree path
-- Base branch (default: main)
 
 Options:
 1. "Create as proposed" - proceed with suggested names
@@ -81,12 +79,52 @@ Options:
 ## Create Worktree
 
 After confirmation:
-1. Fetch latest from origin: `git fetch origin`
-2. Create worktree with new branch: `git worktree add -b <branch-name> <worktree-path> origin/<main-branch>`
-3. Report success with:
-   - Worktree path
-   - Branch name
-   - Next steps: "cd <path> to start working"
+
+```bash
+# Verify not in detached HEAD state
+CURRENT_BRANCH=$(git branch --show-current)
+if [ -z "$CURRENT_BRANCH" ]; then
+  echo "Error: Cannot create worktree from detached HEAD state."
+  echo "Please checkout a branch first: git checkout <branch-name>"
+  exit 1
+fi
+
+# Fetch latest from origin
+git fetch origin
+
+# Stash local changes if working directory is dirty
+STASHED=false
+if [ -n "$(git status --porcelain)" ]; then
+  git stash --include-untracked
+  STASHED=true
+fi
+
+# Pull latest on current branch
+if ! git pull --rebase origin "$CURRENT_BRANCH"; then
+  echo "Error: Pull failed. Please resolve conflicts manually."
+  if [ "$STASHED" = true ]; then
+    echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
+  fi
+  exit 1
+fi
+
+# Pop stash if we stashed earlier (conflicts are non-fatal, just warn user)
+if [ "$STASHED" = true ]; then
+  if ! git stash pop; then
+    echo "Warning: Stash pop had conflicts. Your changes are still in stash."
+    echo "Continuing with worktree creation. Run 'git stash pop' manually later."
+  fi
+fi
+
+# Create worktree with new branch
+git worktree add -b <branch-name> <worktree-path>
+```
+
+Report success with:
+
+1. Worktree path
+2. Branch name
+3. Next steps: "cd <path> to start working"
 
 ## Error Handling
 
