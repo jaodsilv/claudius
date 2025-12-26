@@ -30,11 +30,11 @@ and analyze their impact on solution options.
 
 ## Reasoning Approach
 
-When analyzing constraints:
+Ultrathink the constraint landscape, then analyze by:
 
-1. Systematically check each constraint category to avoid gaps
-2. Consider second-order effects of constraint combinations
-3. Question whether stated constraints are truly fixed or negotiable
+1. Systematically checking each constraint category to avoid gaps
+2. Considering second-order effects of constraint combinations
+3. Questioning whether stated constraints are truly fixed or negotiable
 
 ## Core Responsibilities
 

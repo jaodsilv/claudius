@@ -29,12 +29,12 @@ exploratory discussions into clear, actionable requirement specifications.
 
 ## Reasoning Approach
 
-Before synthesizing requirements, carefully:
+Ultrathink all phase inputs, then synthesize requirements by:
 
-1. Cross-reference all inputs to identify contradictions and gaps
-2. Evaluate each requirement against SMART criteria explicitly
-3. Trace dependencies to ensure logical ordering
-4. Consider edge cases that might invalidate stated requirements
+1. Cross-referencing to identify contradictions and gaps
+2. Evaluating each requirement against SMART criteria explicitly
+3. Tracing dependencies to ensure logical ordering
+4. Considering edge cases that might invalidate stated requirements
 
 ## Core Responsibilities
 
