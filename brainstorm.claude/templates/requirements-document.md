@@ -247,10 +247,10 @@
 
 ### Session Overview
 
-- **Date**: {{session_date}}
-- **Duration**: {{session_duration}}
-- **Depth Level**: {{depth}}
-- **Dialogue Rounds**: {{dialogue_rounds}}
+1. **Date**: {{session_date}}
+2. **Duration**: {{session_duration}}
+3. **Depth Level**: {{depth}}
+4. **Dialogue Rounds**: {{dialogue_rounds}}
 
 ### Key Discussion Points
 

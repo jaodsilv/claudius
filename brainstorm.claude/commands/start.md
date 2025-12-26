@@ -55,15 +55,17 @@ arguments-defaults:
 
 ### Initialization
 
-1. Validate that `$topic` is provided
-2. Set defaults for `$depth` (normal) and `$output_path` (./brainstorm-output/)
-3. Create output directory if it doesn't exist:
+Execute initialization steps to establish session context:
+
+1. Validate that `$topic` is provided. Missing topic prevents meaningful exploration.
+2. Set defaults for `$depth` (normal) and `$output_path` (./brainstorm-output/). Defaults enable quick starts.
+3. Create output directory if it doesn't exist. Directory creation prevents write failures.
 
    ```bash
    mkdir -p {{output_path}}
    ```
 
-4. Initialize session tracking with TodoWrite:
+4. Initialize session tracking with TodoWrite. Progress tracking enables user visibility and session recovery.
    1. Phase 1: Socratic Dialogue (in_progress)
    2. Phase 2: Domain Exploration (pending)
    3. Phase 3: Technical Analysis (pending)
@@ -71,7 +73,7 @@ arguments-defaults:
    5. Phase 5: Requirements Synthesis (pending)
    6. Phase 6: Document Generation (pending)
 
-5. Create session log file: `{{output_path}}/session-log.md`
+5. Create session log file: `{{output_path}}/session-log.md`. Log file enables session recovery and audit trail.
 
 6. Write session header to log:
 
@@ -88,11 +90,13 @@ arguments-defaults:
 
 ### Phase 1: Socratic Dialogue (Interactive)
 
+Conduct iterative dialogue to explore the concept. Depth setting controls thoroughness vs. speed trade-off.
+
 **Rounds based on depth**:
 
-1. shallow: 3 rounds
-2. normal: 5 rounds
-3. deep: 8 rounds
+1. shallow: 3 rounds. Use for time-constrained exploration.
+2. normal: 5 rounds. Balanced coverage for most topics.
+3. deep: 8 rounds. Comprehensive exploration for complex domains.
 
 **For each round**:
 
@@ -115,11 +119,12 @@ arguments-defaults:
 
 2. The facilitator will interact with the user through questions
 
-3. After each round, append dialogue summary to session log
+3. After each round, append dialogue summary to session log. Logging preserves insights for later synthesis.
 
 4. Check facilitator's readiness assessment:
-   1. If clarity is sufficient AND at least 2 rounds completed, may proceed early
-   2. Otherwise continue to next round
+   1. If clarity="High" AND rounds >= 2: Proceed to Phase 2 early.
+      Extended dialogue after clarity provides diminishing returns.
+   2. Otherwise: Continue to next round. Premature advancement produces incomplete requirements.
 
 5. After all rounds, run `/compact` remembering:
    1. Topic
@@ -129,7 +134,9 @@ arguments-defaults:
 
 ### Phase 2: Domain Exploration
 
-1. Update todo: Phase 2 in_progress
+Research market context and best practices to inform requirements.
+
+1. Update todo: Phase 2 in_progress. Status updates provide user visibility.
 
 2. Launch `brainstorm-domain-explorer` agent using the Task tool with:
 
@@ -146,7 +153,7 @@ arguments-defaults:
    expectations for this domain. Provide actionable insights.
    ```
 
-3. Append domain exploration report to session log
+3. Append domain exploration report to session log. Domain insights inform technical decisions.
 
 4. Run `/compact` remembering:
    1. Topic
@@ -156,7 +163,9 @@ arguments-defaults:
 
 ### Phase 3: Technical Analysis
 
-1. Update todo: Phase 3 in_progress
+Evaluate technical feasibility and architecture options to ground requirements in reality.
+
+1. Update todo: Phase 3 in_progress. Status updates provide user visibility.
 
 2. Launch `brainstorm-technical-analyst` agent using the Task tool with:
 
@@ -176,7 +185,7 @@ arguments-defaults:
    complexity, and identify technical risks.
    ```
 
-3. Append technical analysis report to session log
+3. Append technical analysis report to session log. Technical insights inform constraint analysis.
 
 4. Run `/compact` remembering:
    1. Topic
@@ -186,7 +195,9 @@ arguments-defaults:
 
 ### Phase 4: Constraint Analysis
 
-1. Update todo: Phase 4 in_progress
+Systematically identify constraints to bound the solution space.
+
+1. Update todo: Phase 4 in_progress. Status updates provide user visibility.
 
 2. Launch `brainstorm-constraint-analyst` agent using the Task tool with:
 
@@ -202,7 +213,7 @@ arguments-defaults:
    resource, environmental). Evaluate trade-offs where constraints conflict.
    ```
 
-3. Append constraint analysis report to session log
+3. Append constraint analysis report to session log. Constraints inform requirements prioritization.
 
 4. Run `/compact` remembering:
    1. Topic
@@ -212,7 +223,9 @@ arguments-defaults:
 
 ### Phase 5: Requirements Synthesis
 
-1. Update todo: Phase 5 in_progress
+Consolidate all insights into structured, actionable requirements.
+
+1. Update todo: Phase 5 in_progress. Status updates provide user visibility.
 
 2. Launch `brainstorm-requirements-synthesizer` agent using the Task tool with:
 
@@ -229,9 +242,9 @@ arguments-defaults:
    priority (MoSCoW), identify dependencies, and flag gaps.
    ```
 
-3. Save synthesized requirements to: `{{output_path}}/requirements.md`
+3. Save synthesized requirements to: `{{output_path}}/requirements.md`. Persistent storage enables future reference.
 
-4. Append requirements summary to session log
+4. Append requirements summary to session log. Summary completes the session record.
 
 5. Run `/compact` remembering:
    1. Topic
@@ -240,7 +253,9 @@ arguments-defaults:
 
 ### Phase 6: Document Generation
 
-1. Update todo: Phase 6 in_progress
+Produce polished specification document for stakeholder consumption.
+
+1. Update todo: Phase 6 in_progress. Status updates provide user visibility.
 
 2. Launch `brainstorm-specification-writer` agent using the Task tool with:
 
@@ -259,9 +274,9 @@ arguments-defaults:
    Save to: {{output_path}}/specification.md
    ```
 
-3. Update session log with completion status
+3. Update session log with completion status. Completion status enables session audit.
 
-4. Mark all todos as completed
+4. Mark all todos as completed. Completed status signals session end.
 
 ### Completion
 
@@ -301,19 +316,21 @@ Present to the user:
 
 ## Error Handling
 
-1. **Agent Failure**: Log error, inform user, offer to retry or skip phase
-2. **User Cancellation**: Save progress to session log, allow resumption
-3. **Context Overflow**: Run `/compact` proactively, preserve essential context
+Handle failures gracefully to prevent data loss:
+
+1. **Agent Failure**: Log error, inform user, offer to retry or skip phase. Recovery options prevent complete session failure.
+2. **User Cancellation**: Save progress to session log, allow resumption. Progress preservation enables session recovery.
+3. **Context Overflow**: Run `/compact` proactively, preserve essential context. Proactive compaction prevents mid-phase memory exhaustion.
 
 ## Session State Tracking
 
-Throughout the session, maintain awareness of:
+Maintain session state to enable recovery and consistent behavior:
 
-1. Current phase and round
-2. Key insights discovered
-3. Output path
-4. Depth setting
-5. Any errors or skipped phases
+1. Current phase and round. Position tracking enables resumption.
+2. Key insights discovered. Insight tracking enables synthesis.
+3. Output path. Path tracking ensures consistent file locations.
+4. Depth setting. Depth tracking maintains round count.
+5. Any errors or skipped phases. Error tracking enables troubleshooting.
 
 ## Usage Examples
 
