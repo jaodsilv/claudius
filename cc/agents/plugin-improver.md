@@ -241,7 +241,7 @@ Validate the plugin against these requirements:
 
 ## Reasoning Approach
 
-Before producing output, engage in extended thinking:
+Ultrathink the plugin analysis requirements, then produce output:
 
 1. **Synthesize cross-component findings**: Look for patterns that span multiple components
    (naming inconsistencies, repeated issues, integration gaps)
