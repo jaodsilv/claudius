@@ -26,9 +26,9 @@ Receive:
 1. Issue analysis (requirements, acceptance criteria, complexity)
 2. Codebase navigation (files to modify, patterns to follow)
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Apply deep analysis before creating the plan:
+Ultrathink the implementation plan, then create the output:
 
 1. **Dependency Graph**: Map all dependencies between steps
 2. **Risk Assessment**: Identify hidden risks in each phase

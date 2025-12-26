@@ -23,9 +23,9 @@ Proper ordering prevents cascading failures and rework.
 
 Receive: analysis results from review-comment-analyzer, analysis results from ci-failure-analyzer, PR context (branch, files changed).
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Apply careful analysis before creating the plan:
+Ultrathink the execution plan, then create the output:
 
 1. **Dependency Graph Construction**: Build complete dependency map
 2. **Cycle Detection**: Identify and resolve circular dependencies

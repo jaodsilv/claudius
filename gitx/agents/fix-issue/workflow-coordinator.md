@@ -19,9 +19,9 @@ color: purple
 Orchestrate the complete workflow for fixing a GitHub issue. Coordinate specialized agents and manage progress through
 each phase. Proper orchestration ensures nothing is missed and context is preserved.
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Before phase transitions, apply careful analysis:
+Ultrathink phase transitions, then proceed:
 
 1. **Phase Readiness**: Verify all prerequisites for next phase
 2. **Context Preservation**: Identify essential context to carry forward
