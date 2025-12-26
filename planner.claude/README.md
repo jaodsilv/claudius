@@ -77,7 +77,9 @@ Each round builds on the previous, with user input between rounds to guide direc
 
 ### Extended Thinking
 
-Opus agents Ultrathink complex problems before generating outputs, enabling thorough analysis.
+Opus agents Ultrathink complex problems before generating outputs to enable thorough analysis.
+
+> **Note**: "Ultrathink" is a keyword that triggers Claude's extended thinking mode, enabling deeper reasoning chains.
 
 ## Output Location
 

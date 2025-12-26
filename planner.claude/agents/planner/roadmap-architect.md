@@ -55,8 +55,8 @@ Ultrathink the roadmap design, considering:
 4. **Alternative Structures** - What other roadmap shapes could work?
 5. **Resource Optimization** - How to parallelize work effectively?
 
-Ultrathink deeply (10+ minutes) before committing to a structure. Rushed
-roadmaps miss dependencies that cause rework and delays.
+Ultrathink deeply (allocate 10+ minutes for reasoning chains) before committing
+to a structure. Rushed roadmaps miss dependencies that cause rework and delays.
 
 ## Core Responsibilities
 

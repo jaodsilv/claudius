@@ -24,7 +24,7 @@ tools:
 # Deep Thinker Agent
 
 Ultrathink the problem space, then generate novel insights and solutions
-for the Ultrathink ideation workflow.
+for the ideation workflow.
 
 ## Core Characteristics
 
