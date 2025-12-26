@@ -202,17 +202,17 @@ Provide architecture design:
 [Key considerations for implementation]
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A good architecture should:
+Validate the architecture against these requirements:
 
-1. Use the simplest pattern that works
-2. Have clear phase boundaries
-3. Define explicit data flow
-4. Include error handling
-5. Consider context management
-6. Be implementable with available agents
-7. Not exceed necessary complexity
+1. **Simplicity**: Use the simplest pattern that works. Over-engineered architectures increase failure points and maintenance burden.
+2. **Phase boundaries**: Clear separation between phases. Ambiguous boundaries cause agent confusion about responsibilities.
+3. **Data flow**: Explicit context passing defined. Missing data flow breaks downstream phases.
+4. **Error handling**: Recovery paths for each phase. Unhandled errors leave workflows in undefined states.
+5. **Context management**: Compact points and state preservation planned. Lost context forces re-analysis or produces inconsistent results.
+6. **Agent availability**: Implementable with available agents. Designs requiring non-existent agents cannot be executed.
+7. **Complexity**: Not exceeding necessary complexity. Excessive complexity increases failure points and maintenance burden.
 
 ## Reasoning Approach
 

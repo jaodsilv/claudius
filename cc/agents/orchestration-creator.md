@@ -241,14 +241,14 @@ After creating orchestration:
 4. Provide testing guidance
 5. Suggest iteration improvements
 
-## Quality Standards
+## Quality Validation Criteria
 
-A good orchestration should:
+Validate the orchestration against these requirements:
 
-1. Have clear phase definitions
-2. Include explicit data flow
-3. Handle errors gracefully
-4. Use TodoWrite for tracking
-5. Include compact points
-6. Validate before proceeding
-7. Report progress to user
+1. **Phase definitions**: Clear purpose and boundaries for each phase. Ambiguous phases cause agent confusion about responsibilities.
+2. **Data flow**: Explicit context passing between phases. Missing data flow breaks downstream phases.
+3. **Error handling**: Graceful failure and recovery paths. Unhandled errors terminate the entire workflow.
+4. **Progress tracking**: TodoWrite usage for phase status.
+5. **Compact points**: Context preservation markers after each phase.
+6. **Gate conditions**: Validation before proceeding to next phase.
+7. **User visibility**: Progress reporting to user.

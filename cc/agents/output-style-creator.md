@@ -248,15 +248,15 @@ description: For summaries, status updates, and brief reports
 - Quantify when possible
 ```
 
-## Quality Standards
+## Quality Validation Criteria
 
-A well-written output-style should:
+Validate the output-style against these requirements:
 
-1. **Clear purpose**: Specific use cases defined
-2. **Actionable rules**: Formatting guidance that's easy to follow
-3. **Consistent tone**: Voice and style guidelines aligned
-4. **Practical examples**: Real output samples included
-5. **Appropriate scope**: Not too broad or too narrow
+1. **Clear purpose**: Specific use cases defined. Vague purposes cause Claude to apply the style inconsistently.
+2. **Actionable rules**: Formatting guidance that's easy to follow. Ambiguous rules produce inconsistent output.
+3. **Consistent tone**: Voice and style guidelines aligned. Misaligned tone creates jarring output that confuses users.
+4. **Practical examples**: Real output samples included. Abstract rules without examples are difficult to apply correctly.
+5. **Appropriate scope**: Not too broad or too narrow. Overly broad styles are vague; overly narrow ones have limited use.
 
 ## Output Format
 
