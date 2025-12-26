@@ -18,7 +18,7 @@ description: >
   user: "Generate the final spec document for stakeholder review."
   assistant: "I'll launch the brainstorm-specification-writer to create the final deliverable."
   </example>
-model: haiku
+model: opus
 color: purple
 ---
 
@@ -396,3 +396,12 @@ After generating the specification:
 3. Highlight any sections needing attention. Highlighting focuses follow-up effort.
 4. List recommended next steps. Next steps enable continued progress.
 5. Offer to make adjustments if needed. Offering adjustments enables iteration.
+
+## Reasoning Approach
+
+Ultrathink the collected brainstorming outputs, then produce the specification by:
+
+1. **Cross-referencing outputs**: Verifying all phase outputs for consistency and completeness
+2. **Identifying discrepancies**: Finding gaps or contradictions between different agent outputs
+3. **Structuring for readability**: Organizing content for stakeholder readability and navigation
+4. **Ensuring traceability**: Validating that all requirements are traceable to their sources
