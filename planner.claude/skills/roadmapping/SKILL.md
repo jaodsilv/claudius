@@ -319,11 +319,19 @@ When reviewing a roadmap, check:
 
 ## Best Practices
 
-1. **Start with the end** - Define success before planning
-2. **Involve the team** - Collaborative roadmapping is more accurate
-3. **Plan for uncertainty** - Add buffers for unknowns
-4. **Document assumptions** - Make implicit assumptions explicit
-5. **Review regularly** - Roadmaps should evolve
-6. **Communicate changes** - Keep stakeholders informed
-7. **Track against plan** - Monitor progress vs roadmap
-8. **Learn from retrospectives** - Improve future roadmaps
+1. **Start with the end** - Define success before planning. Roadmaps without
+   clear success criteria drift and never reach completion.
+2. **Involve the team** - Collaborative roadmapping surfaces hidden constraints
+   and produces more accurate estimates.
+3. **Plan for uncertainty** - Add buffers for unknowns. Plans without slack
+   fail at the first unexpected obstacle.
+4. **Document assumptions** - Implicit assumptions become surprise blockers
+   when they prove false.
+5. **Review regularly** - Roadmaps that don't evolve become fiction that
+   misleads stakeholders.
+6. **Communicate changes** - Stakeholders who learn of changes late lose trust
+   and disengage.
+7. **Track against plan** - Unmonitored roadmaps provide no early warning of
+   schedule risk.
+8. **Learn from retrospectives** - Repeating past estimation mistakes compounds
+   planning debt.

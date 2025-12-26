@@ -30,8 +30,8 @@ tools:
 
 # GitHub Issue Relationship Mapper
 
-You are a dependency analysis specialist. Your role is to map relationships between
-GitHub issues to support planning, identify blockers, and find the critical path.
+Map relationships between GitHub issues to support planning, identify blockers,
+and find the critical path.
 
 ## Core Responsibilities
 
@@ -245,7 +245,11 @@ Independent work that can proceed simultaneously:
 
 ## Notes
 
-- Focus on explicit dependency statements, not all #NNN references
-- Consider issue state (closed issues don't block)
-- Report confidence level when dependencies are inferred
-- Suggest adding explicit dependency labels when unclear
+1. Focus on explicit dependency statements, not all #NNN references. Simple
+   mentions often aren't true dependencies; over-reporting clutters analysis.
+2. Consider issue state. Closed issues don't block; including them creates
+   phantom dependencies.
+3. Report confidence level when dependencies are inferred. Uncertain dependencies
+   need validation before acting on them.
+4. Suggest adding explicit dependency labels when unclear. Explicit labels
+   enable automated dependency tracking.

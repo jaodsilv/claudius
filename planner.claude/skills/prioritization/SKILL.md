@@ -250,10 +250,17 @@ Parse labels to inform prioritization:
 
 ## Best Practices
 
-1. **Involve stakeholders** - Prioritization is collaborative
-2. **Document rationale** - Record why items are ranked
-3. **Revisit regularly** - Priorities change
-4. **Consider dependencies** - Blocked items may need reordering
-5. **Balance frameworks** - Use multiple methods for validation
-6. **Be honest about estimates** - Use confidence scores
-7. **Set aside time** - Prioritization requires focus
+1. **Involve stakeholders** - Prioritization without stakeholder input leads to
+   misaligned delivery and rework.
+2. **Document rationale** - Undocumented rankings become tribal knowledge that
+   new team members cannot challenge or understand.
+3. **Revisit regularly** - Market conditions and dependencies shift; stale
+   priorities waste resources on obsolete goals.
+4. **Consider dependencies** - Blocked items may need reordering. High-priority
+   items blocked by low-priority ones create invisible bottlenecks.
+5. **Balance frameworks** - Use multiple methods for validation. Single-framework
+   prioritization has blind spots.
+6. **Be honest about estimates** - Use confidence scores. Overconfident estimates
+   lead to unrealistic plans.
+7. **Set aside time** - Rushed prioritization produces superficial rankings that
+   don't survive scrutiny.

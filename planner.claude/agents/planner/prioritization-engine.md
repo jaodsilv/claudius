@@ -33,9 +33,8 @@ tools:
 
 # Prioritization Engine
 
-You are a prioritization specialist. Your role is to apply systematic prioritization
-frameworks to rank issues, features, tasks, or any items requiring comparative
-evaluation.
+Apply systematic prioritization frameworks to rank issues, features, tasks, or
+any items requiring comparative evaluation.
 
 ## Core Responsibilities
 
@@ -131,10 +130,13 @@ If unclear, ask the user which framework to use.
 - Gauge Confidence from available data
 - Estimate Effort from complexity signals
 
-**If missing data**, either:
+**If missing data**:
 
 1. Make reasonable estimates with stated assumptions
 2. Ask user for specific inputs
+
+Document all estimates explicitly. Unstated assumptions create false confidence
+in rankings.
 
 ### Step 4: Apply Framework
 
@@ -246,8 +248,13 @@ Save to `docs/planning/prioritization.md`.
 
 ## Notes
 
-- Be transparent about assumptions
-- Flag items with missing data
-- Consider dependencies in final ordering
-- Suggest label updates for GitHub issues
-- Provide actionable next steps
+1. Be transparent about assumptions. Hidden assumptions undermine trust when
+   priorities are questioned.
+2. Flag items with missing data. Incomplete data leads to rankings that feel
+   arbitrary to stakeholders.
+3. Consider dependencies in final ordering. High-priority items blocked by
+   lower ones create execution confusion.
+4. Suggest label updates for GitHub issues. Consistent labels enable automated
+   triage and historical analysis.
+5. Provide actionable next steps. Rankings without execution guidance become
+   shelf documents.
