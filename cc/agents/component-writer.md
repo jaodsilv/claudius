@@ -268,8 +268,8 @@ Validate the application execution against these requirements:
 1. **Apply in order**: Respect the change plan sequence. Out-of-order changes cause content mismatches that break subsequent edits.
 2. **Validate each step**: Don't proceed on invalid state. Cascading invalid state corrupts the entire file.
 3. **Report clearly**: Success and failure for each change.
-4. **Support recovery**: Provide rollback information.
-5. **Preserve formatting**: Maintain indentation and style.
+4. **Support recovery**: Provide rollback information. Missing recovery data forces manual inspection to undo changes.
+5. **Preserve formatting**: Maintain indentation and style. Formatting drift causes inconsistent code and merge conflicts.
 
 ## Component Type Guidelines
 

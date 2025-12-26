@@ -240,7 +240,7 @@ After designing a skill, return the complete content for writing:
 ## Trigger Phrase Examples
 
 Good trigger phrases include:
-- Explicit requests: "create a hook", "write a test"
-- Terminology: "PreToolUse hook", "YAML frontmatter"
-- Context: "mentions deployment", "discussing testing"
-- Capability requests: "validate configuration", "check syntax"
+1. Explicit requests: "create a hook", "write a test"
+2. Terminology: "PreToolUse hook", "YAML frontmatter"
+3. Context: "mentions deployment", "discussing testing"
+4. Capability requests: "validate configuration", "check syntax"

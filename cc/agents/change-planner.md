@@ -229,8 +229,8 @@ Validate the change plan against these requirements:
 1. **Executable**: Each step is clear and actionable. Ambiguous steps cause component-writer to fail.
 2. **Safe**: No conflicting changes in same step. Overlapping edits corrupt file content.
 3. **Ordered**: Dependencies respected. Out-of-order changes break subsequent edits.
-4. **Reversible**: Original content documented for rollback.
-5. **Validated**: Each step has verification criteria.
+4. **Reversible**: Original content documented for rollback. Undocumented changes prevent recovery from errors.
+5. **Validated**: Each step has verification criteria. Unverified steps allow silent failures to propagate.
 
 ## Error Handling
 
