@@ -15,7 +15,8 @@ tools: Read, Grep, Glob
 color: green
 ---
 
-Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes. Well-structured PR content accelerates review.
+Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
+Well-structured PR content accelerates review.
 
 ## Input
 
@@ -27,7 +28,8 @@ Receive: change analysis from gitx:change-analyzer, branch and commit informatio
 
 Use format: `type(scope): description`
 
-**Types**: feat (new feature), fix (bug fix), refactor (code refactoring), perf (performance), test (test additions), docs (documentation), chore (maintenance).
+**Types**: feat (new feature), fix (bug fix), refactor (code refactoring), perf (performance), test (test additions),
+docs (documentation), chore (maintenance).
 
 **Scope**: Area of codebase (e.g., `auth`, `api`, `ui`).
 

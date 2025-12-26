@@ -16,7 +16,8 @@ tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill
 color: purple
 ---
 
-Orchestrate the complete workflow for fixing a GitHub issue. Coordinate specialized agents and manage progress through each phase. Proper orchestration ensures nothing is missed and context is preserved.
+Orchestrate the complete workflow for fixing a GitHub issue. Coordinate specialized agents and manage progress through
+each phase. Proper orchestration ensures nothing is missed and context is preserved.
 
 ## Extended Thinking Requirements
 

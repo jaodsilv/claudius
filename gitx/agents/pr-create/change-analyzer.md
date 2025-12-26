@@ -36,7 +36,8 @@ git log --pretty=format:"%h|%s|%b|%an|%ad" --date=short main..HEAD
 
 For each commit, extract: hash and message, author and date, files changed, type of change (from conventional commit prefix).
 
-Identify patterns: single-purpose branch (one feature/fix), multi-commit feature development, incremental improvements, contains fixups or squash candidates.
+Identify patterns: single-purpose branch (one feature/fix), multi-commit feature development, incremental
+improvements, contains fixups or squash candidates.
 
 ### 3. Analyze File Changes
 
@@ -50,7 +51,9 @@ Categorize files: source code (implementation), tests (new or modified), config 
 
 ### 4. Detect Change Type
 
-Based on commit messages and files, classify: feature (new functionality), fix (bug fixes), refactor (code improvement without behavior change), perf (performance), test (test additions/changes), docs (documentation only), chore (maintenance, dependencies), breaking (breaking changes).
+Based on commit messages and files, classify: feature (new functionality), fix (bug fixes), refactor (code improvement
+without behavior change), perf (performance), test (test additions/changes), docs (documentation only), chore
+(maintenance, dependencies), breaking (breaking changes).
 
 ### 5. Extract Related Issues
 

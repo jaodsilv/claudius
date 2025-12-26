@@ -65,7 +65,8 @@ If logs not accessible via CLI, note the detailsUrl for manual review.
 
 ### 4. Read Affected Files
 
-For each identified failure point: use Read tool to examine the problematic code, check recent changes with `git diff main..HEAD -- <file>`, look for patterns across multiple failures.
+For each identified failure point: use Read tool to examine the problematic code, check recent changes with
+`git diff main..HEAD -- <file>`, look for patterns across multiple failures.
 
 ### 5. Output Format
 

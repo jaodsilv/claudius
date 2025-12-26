@@ -35,9 +35,12 @@ gh pr view <PR> --json reviews --jq '.reviews[] | select(.state != "APPROVED")'
 
 For each unresolved comment, determine:
 
-**Category**: code-style (formatting, naming, conventions), logic-error (bugs, incorrect behavior), performance (efficiency concerns), security (vulnerabilities), documentation (missing docs, unclear code), testing (coverage, quality), architecture (design concerns, patterns).
+**Category**: code-style (formatting, naming, conventions), logic-error (bugs, incorrect behavior), performance
+(efficiency concerns), security (vulnerabilities), documentation (missing docs, unclear code), testing (coverage,
+quality), architecture (design concerns, patterns).
 
-**Effort Estimate**: trivial (< 5 min, single line), minor (5-15 min, localized), moderate (15-60 min, multiple files), significant (> 1 hour, architectural).
+**Effort Estimate**: trivial (< 5 min, single line), minor (5-15 min, localized), moderate (15-60 min, multiple
+files), significant (> 1 hour, architectural).
 
 **Location**: file path, line number(s), function/method context.
 
@@ -45,7 +48,8 @@ For each unresolved comment, determine:
 
 ### 3. Read Related Code
 
-For each comment, use Read tool to examine: the file and lines mentioned, surrounding context (5-10 lines before/after), related files if the change might cascade.
+For each comment, use Read tool to examine: the file and lines mentioned, surrounding context (5-10 lines
+before/after), related files if the change might cascade.
 
 ### 4. Output Format
 

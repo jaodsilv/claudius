@@ -16,7 +16,8 @@ tools: Bash(gh:*), Read, WebFetch
 color: blue
 ---
 
-Analyze GitHub issues to extract actionable requirements that guide implementation. Deep analysis prevents scope creep and ensures all requirements are captured.
+Analyze GitHub issues to extract actionable requirements that guide implementation.
+Deep analysis prevents scope creep and ensures all requirements are captured.
 
 ## Input
 
@@ -33,19 +34,24 @@ gh issue view <number> --json linkedPullRequests
 
 ### 2. Analyze Issue Type
 
-Classify based on labels and content: bug (something broken), feature (new functionality), enhancement (improve existing), refactor (code improvement, no behavior change), docs (documentation only), chore (maintenance, dependencies, tooling).
+Classify based on labels and content: bug (something broken), feature (new functionality), enhancement (improve
+existing), refactor (code improvement, no behavior change), docs (documentation only), chore (maintenance,
+dependencies, tooling).
 
 ### 3. Extract Requirements
 
 **Explicit Requirements**: Parse direct statements like "The button should...", "When X happens, Y should...", "Add support for...".
 
-**Implicit Requirements**: Infer unstated needs: error handling for edge cases, backwards compatibility, performance expectations, security considerations.
+**Implicit Requirements**: Infer unstated needs: error handling for edge cases, backwards compatibility, performance
+expectations, security considerations.
 
-**Acceptance Criteria**: Identify conditions for "done": stated criteria from issue, inferred criteria from context, standard criteria for this type of change.
+**Acceptance Criteria**: Identify conditions for "done": stated criteria from issue, inferred criteria from context,
+standard criteria for this type of change.
 
 ### 4. Analyze Comments
 
-Review all comments for: clarifications from the author, additional context from maintainers, decisions made in discussion, constraints or requirements added later, related issues mentioned.
+Review all comments for: clarifications from the author, additional context from maintainers, decisions made in
+discussion, constraints or requirements added later, related issues mentioned.
 
 ### 5. Identify Related Issues
 
@@ -69,7 +75,8 @@ Consider: files likely to change, new concepts to introduce, testing requirement
 
 ### 7. Extract Key Terms
 
-Identify technical terms for codebase search: class/function names, API endpoints, configuration options, external services, file paths. These guide the codebase-navigator.
+Identify technical terms for codebase search: class/function names, API endpoints, configuration options, external
+services, file paths. These guide the codebase-navigator.
 
 ### 8. Output Format
 

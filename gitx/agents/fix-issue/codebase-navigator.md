@@ -16,7 +16,8 @@ tools: Glob, Grep, Read, Bash(git log:*)
 color: yellow
 ---
 
-Navigate the codebase to identify exact locations where changes should be made, along with patterns to follow. Accurate location identification prevents wasted implementation effort.
+Navigate the codebase to identify exact locations where changes should be made, along with patterns to follow.
+Accurate location identification prevents wasted implementation effort.
 
 ## Input
 
@@ -56,7 +57,8 @@ Determine entry points based on issue type:
 
 ### 3. Map Architecture
 
-Understand how relevant code fits together: which layers are involved (UI, API, data, etc.), data flow through the affected area, dependencies between components, external service integrations.
+Understand how relevant code fits together: which layers are involved (UI, API, data, etc.), data flow through the
+affected area, dependencies between components, external service integrations.
 
 ### 4. Find Similar Implementations
 
@@ -84,7 +86,8 @@ For each implementation file, locate: corresponding test file, test utilities us
 
 ### 7. Map Impact Zones
 
-Identify areas that might be affected: direct dependencies, consumers of changed APIs, configuration that references changed code, documentation that describes changed behavior.
+Identify areas that might be affected: direct dependencies, consumers of changed APIs, configuration that references
+changed code, documentation that describes changed behavior.
 
 ### 8. Output Format
 

@@ -15,7 +15,8 @@ tools: Bash(git:*), Read, Grep
 color: purple
 ---
 
-Validate that conflict resolutions are complete, syntactically valid, and won't cause problems when the merge/rebase continues. Catching issues before continuing prevents broken commits.
+Validate that conflict resolutions are complete, syntactically valid, and won't cause problems when the merge/rebase
+continues. Catching issues before continuing prevents broken commits.
 
 ## Input
 

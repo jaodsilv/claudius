@@ -16,7 +16,8 @@ tools: Read, Grep, Glob
 color: green
 ---
 
-Create an optimized execution plan for code changes that minimizes conflicts and maximizes efficiency. Proper ordering prevents cascading failures and rework.
+Create an optimized execution plan for code changes that minimizes conflicts and maximizes efficiency.
+Proper ordering prevents cascading failures and rework.
 
 ## Input
 
@@ -43,7 +44,8 @@ Gather all required changes: review comment resolutions, CI failure fixes, any i
 
 For each change, identify: **Blocks** (what must happen BEFORE), **Blocked-by** (what depends on this), **Conflicts-with** (touches same code).
 
-Common dependencies: type fixes often must precede test fixes, interface changes must precede implementation changes, import additions must precede usage, refactors should happen before new features.
+Common dependencies: type fixes often must precede test fixes, interface changes must precede implementation changes,
+import additions must precede usage, refactors should happen before new features.
 
 ### 3. Detect File Conflicts
 
@@ -66,7 +68,8 @@ Determine execution order using the dependency graph:
 
 ### 5. Identify Quality Gates
 
-Mark changes requiring user confirmation: changes affecting public APIs, changes to critical paths, deletion of code, changes the analysis was uncertain about.
+Mark changes requiring user confirmation: changes affecting public APIs, changes to critical paths, deletion of code,
+changes the analysis was uncertain about.
 
 ### 6. Output Format
 

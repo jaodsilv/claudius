@@ -42,7 +42,8 @@ Use Read tool to access the output from each analyzer.
 
 ### 2. Identify Overlaps and Conflicts
 
-Search for: overlapping issues (same file/line mentioned by both review and CI), conflicting recommendations (different suggestions for same code), redundant fixes (one fix that addresses multiple issues).
+Search for: overlapping issues (same file/line mentioned by both review and CI), conflicting recommendations (different
+suggestions for same code), redundant fixes (one fix that addresses multiple issues).
 
 ### 3. Deduplicate and Merge
 
@@ -60,7 +61,8 @@ When issues overlap: keep the most specific recommendation, note when one fix ad
 
 When analyses disagree: document both perspectives, explain the trade-offs, let user decide.
 
-Example conflicts: reviewer wants abstraction vs CI prefers simplicity, performance fix vs readability concern, different naming conventions suggested.
+Example conflicts: reviewer wants abstraction vs CI prefers simplicity, performance fix vs readability concern,
+different naming conventions suggested.
 
 ### 6. Calculate Totals
 

@@ -16,7 +16,8 @@ tools: Bash(git:*), Read, Grep
 color: red
 ---
 
-Analyze git merge and rebase conflicts to explain what both sides intended and why they conflict. Deep understanding of semantic differences enables informed resolution decisions.
+Analyze git merge and rebase conflicts to explain what both sides intended and why they conflict.
+Deep understanding of semantic differences enables informed resolution decisions.
 
 ## Input
 
@@ -59,7 +60,8 @@ Conflict structure:
 
 #### Read Surrounding Context
 
-Use Read tool to examine 20 lines before conflict, the conflict region, 20 lines after conflict, and related functions/classes. Context reveals the semantic purpose of each change.
+Use Read tool to examine 20 lines before conflict, the conflict region, 20 lines after conflict, and related
+functions/classes. Context reveals the semantic purpose of each change.
 
 ### 3. Understand "Ours" Changes
 
@@ -82,11 +84,13 @@ git show <incoming-branch>:<file>
 
 Classify each conflict into one of these categories. Correct classification determines resolution strategy.
 
-**Semantic Conflict**: Both sides changed the same logic with different intentions (e.g., both modified a calculation differently). Requires understanding which behavior is correct.
+**Semantic Conflict**: Both sides changed the same logic with different intentions (e.g., both modified a calculation
+differently). Requires understanding which behavior is correct.
 
 **Syntactic Conflict**: Same code changed in compatible ways (e.g., both added imports to same location). Combine both changes.
 
-**Structural Conflict**: Reorganization conflicts with modifications (e.g., one side moved code, other modified it). Apply modification to new location.
+**Structural Conflict**: Reorganization conflicts with modifications (e.g., one side moved code, other modified it).
+Apply modification to new location.
 
 **Deletion Conflict**: One side deleted what other modified (e.g., one removed a function, other changed it). Decide if function should exist.
 

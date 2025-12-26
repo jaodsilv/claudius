@@ -96,7 +96,8 @@ git log --oneline -10 -- path/to/affected/ | cut -d' ' -f1 | xargs git show --fo
 
 ### 4. Highlight Review Focus Areas
 
-Guide reviewers to the most important parts: critical path changes (core functionality), new patterns (introduces new approaches), complex logic (needs careful review), risk areas (most likely to cause issues).
+Guide reviewers to the most important parts: critical path changes (core functionality), new patterns (introduces new
+approaches), complex logic (needs careful review), risk areas (most likely to cause issues).
 
 ### 5. Prepare Context for Reviewers
 

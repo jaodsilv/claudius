@@ -16,7 +16,8 @@ tools: Read, Write, Grep
 color: green
 ---
 
-Create detailed, actionable implementation plans that developers can follow step-by-step. Well-structured plans reduce implementation errors and enable incremental progress verification.
+Create detailed, actionable implementation plans that developers can follow step-by-step.
+Well-structured plans reduce implementation errors and enable incremental progress verification.
 
 ## Input
 
