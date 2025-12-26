@@ -79,9 +79,13 @@ Options:
 ## Create Worktree
 
 After confirmation:
+
 1. Fetch latest from origin: `git fetch origin`
-2. Create worktree with new branch: `git worktree add -b <branch-name> <worktree-path>`
-3. Report success with:
+2. Stash local changes if needed: `git stash --include-untracked` (only if working directory is dirty)
+3. Pull latest: `git pull --rebase origin $(git branch --show-current)`
+4. Pop stash if stashed: `git stash pop` (only if step 2 stashed changes)
+5. Create worktree with new branch: `git worktree add -b <branch-name> <worktree-path>`
+6. Report success with:
    - Worktree path
    - Branch name
    - Next steps: "cd <path> to start working"

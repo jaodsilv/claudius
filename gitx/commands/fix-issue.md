@@ -177,9 +177,27 @@ Based on issue type from analysis:
 
 Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
-### Create Worktree
+### Sync and Create Worktree
 
 ```bash
+# Fetch latest from origin
+git fetch origin
+
+# Stash local changes if working directory is dirty
+STASHED=false
+if [ -n "$(git status --porcelain)" ]; then
+  git stash --include-untracked
+  STASHED=true
+fi
+
+# Pull latest on current branch
+git pull --rebase origin $(git branch --show-current)
+
+# Pop stash if we stashed earlier
+if [ "$STASHED" = true ]; then
+  git stash pop
+fi
+
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH"
