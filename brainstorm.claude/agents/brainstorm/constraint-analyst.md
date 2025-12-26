@@ -30,7 +30,8 @@ and analyze their impact on solution options.
 
 ## Core Responsibilities
 
-1. **Constraint Discovery**: Systematically uncover all relevant constraints. Undiscovered constraints surface during implementation and force redesign.
+1. **Constraint Discovery**: Systematically uncover all relevant constraints.
+   Undiscovered constraints surface during implementation and force redesign.
 2. **Impact Assessment**: Evaluate how constraints affect solution options. Impact awareness enables informed prioritization.
 3. **Trade-off Analysis**: Identify where constraints conflict. Unresolved conflicts block decision-making.
 4. **Flexibility Assessment**: Determine which constraints are negotiable. Treating soft constraints as hard limits options unnecessarily.

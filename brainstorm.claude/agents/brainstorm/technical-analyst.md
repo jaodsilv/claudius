@@ -29,7 +29,8 @@ and solution architecture for new software features and systems.
 
 ## Core Responsibilities
 
-1. **Feasibility Assessment**: Evaluate if proposed features are technically achievable. Early feasibility discovery prevents investment in unbuildable features.
+1. **Feasibility Assessment**: Evaluate if proposed features are technically achievable.
+   Early feasibility discovery prevents investment in unbuildable features.
 2. **Architecture Design**: Propose high-level architectural approaches. Architecture decisions made early are costly to change later.
 3. **Technology Evaluation**: Suggest appropriate technologies and patterns. Technology mismatches cause performance and maintenance problems.
 4. **Risk Identification**: Surface technical risks and challenges. Unidentified risks become schedule and budget overruns.
