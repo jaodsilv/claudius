@@ -21,7 +21,7 @@ each phase. Proper orchestration ensures nothing is missed and context is preser
 
 ## Extended Thinking
 
-Ultrathink phase transitions before proceeding:
+Ultrathink phase transitions, then proceed:
 
 1. **Phase Readiness**: Verify all prerequisites for next phase
 2. **Context Preservation**: Identify essential context to carry forward
