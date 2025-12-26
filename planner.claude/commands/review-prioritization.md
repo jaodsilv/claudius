@@ -468,3 +468,11 @@ gh issue edit ... --add-label "P0"
 ```text
 /planner:review-prioritization docs/roadmap.md --prioritization-path docs/priorities.md --mode thorough
 ```
+
+## Error Handling
+
+1. **Context not provided**: Prompt user for goal or roadmap path
+2. **Prioritization file not found**: Search for prioritization documents using Glob and present options
+3. **Roadmap file not found**: Search for roadmap documents and present options
+4. **Empty prioritization**: Report that the prioritization has no content to review
+5. **Agent timeout**: Report partial results and continue with available findings

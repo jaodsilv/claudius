@@ -499,3 +499,11 @@ Present as code blocks for user to apply manually.
 ```text
 /planner:review-architecture docs/requirements.md --architecture-path docs/arch.md --mode thorough
 ```
+
+## Error Handling
+
+1. **Context not provided**: Prompt user for goal or requirements path
+2. **Architecture file not found**: Search for architecture documents using Glob and present options
+3. **Requirements file not found**: Search for requirements documents and present options
+4. **Empty architecture**: Report that the architecture has no content to review
+5. **Agent timeout**: Report partial results and continue with available findings

@@ -45,11 +45,12 @@ prioritize-arguments:
 ### Phase 1: Initialization
 
 1. Initialize TodoWrite:
-   - Phase 1: Issue Fetching (in_progress)
-   - Phase 2: Relationship Mapping (pending)
-   - Phase 3: Framework Application (pending)
-   - Phase 4: Interactive Review (pending)
-   - Phase 5: Output Generation (pending)
+   - Phase 1: Initialization (in_progress)
+   - Phase 2: Issue Fetching (pending)
+   - Phase 3: Relationship Mapping (pending)
+   - Phase 4: Framework Application (pending)
+   - Phase 5: Interactive Review (pending)
+   - Phase 6: Output Generation (pending)
 
 2. Load prioritization skill:
 
