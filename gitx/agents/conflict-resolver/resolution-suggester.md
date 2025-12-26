@@ -25,9 +25,9 @@ Receive:
 2. File contents with conflicts
 3. Context about the merge/rebase operation
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Apply careful analysis before generating resolutions:
+Ultrathink conflict resolution strategies, then generate the code:
 
 1. **Semantic Intent Analysis**: Understand what each side was trying to achieve
 2. **Syntax Validation**: Verify proposed resolution is syntactically correct

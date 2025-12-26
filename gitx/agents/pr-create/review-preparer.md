@@ -22,9 +22,9 @@ Prepare PRs for effective review by anticipating concerns and ensuring completen
 
 Receive: change analysis from gitx:change-analyzer, PR description from gitx:description-generator.
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Apply broad analysis before creating review preparation:
+Ultrathink PR review preparation, then create the output:
 
 1. **Security Surface Scan**: Consider all security implications
 2. **Performance Pattern Check**: Identify potential performance issues

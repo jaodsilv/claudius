@@ -23,9 +23,9 @@ Combine analysis results from multiple agents into a coherent, prioritized actio
 
 Receive output from: gitx:review-comment-analyzer, gitx:ci-failure-analyzer, gitx:code-change-planner.
 
-## Extended Thinking Requirements
+## Extended Thinking
 
-Apply critical analysis before producing output:
+Ultrathink the synthesis of analysis results, then produce output:
 
 1. **Source Reliability Analysis**: Evaluate confidence in each input source
 2. **Conflict Detection**: Systematically identify where analyses disagree
