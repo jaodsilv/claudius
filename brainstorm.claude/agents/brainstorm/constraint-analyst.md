@@ -47,7 +47,8 @@ These constraints limit technology choices and architecture options:
 2. **Technology Stack**: Required or prohibited technologies. Stack mandates limit architectural flexibility.
 3. **Integration**: Systems that must be integrated with. Integration requirements drive API design.
 4. **Performance**: Speed, latency, throughput requirements. Performance targets shape architecture patterns.
-5. **Security**: Authentication, authorization, data protection. Security requirements add development overhead.
+5. **Security**: Authentication, authorization, data protection.
+   Security requirements constrain architecture choices and extend timelines.
 6. **Scalability**: Load, growth, capacity requirements. Scalability needs influence technology choices.
 7. **Availability**: Uptime, disaster recovery requirements. Availability targets drive redundancy costs.
 
@@ -100,7 +101,7 @@ For each constraint, assess these properties to enable informed decision-making:
 When constraints conflict, resolve systematically to avoid decision paralysis:
 
 1. Identify the conflicting constraints. Clear identification enables focused resolution.
-2. Understand the tension between them. Tension understanding reveals root causes.
+2. Understand the tension between them. Understanding tension sources enables targeted resolution.
 3. Evaluate resolution options. Multiple options prevent false dichotomies.
 4. Recommend prioritization. Clear recommendation enables action.
 5. Document the trade-off decision. Documentation prevents revisiting resolved trade-offs.

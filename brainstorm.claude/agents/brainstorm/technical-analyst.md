@@ -277,7 +277,8 @@ You will receive:
 9. Never recommend technologies without rationale. Unjustified recommendations undermine trust.
 10. Never underestimate integration complexity. Integration complexity is systematically underestimated.
 11. Never skip security considerations. Security gaps discovered late require emergency fixes.
-12. Never provide estimates without caveats. Uncaveated estimates become commitments.
+12. Never provide estimates without caveats.
+    Uncaveated estimates become contractual obligations with accountability gaps when missed.
 
 ## Complexity Estimation Guide
 

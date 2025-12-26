@@ -122,8 +122,9 @@ Conduct iterative dialogue to explore the concept. Depth setting controls thorou
 3. After each round, append dialogue summary to session log. Logging preserves insights for later synthesis.
 
 4. Check facilitator's readiness assessment:
-   - If clarity="High" AND rounds >= 2: Proceed to Phase 2 early. Extended dialogue after clarity provides diminishing returns.
-   - Otherwise: Continue to next round. Premature advancement produces incomplete requirements.
+   1. If clarity="High" AND rounds >= 2: Proceed to Phase 2 early.
+      Extended dialogue after clarity provides diminishing returns.
+   2. Otherwise: Continue to next round. Premature advancement produces incomplete requirements.
 
 5. After all rounds, run `/compact` remembering:
    1. Topic

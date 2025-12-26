@@ -36,7 +36,8 @@ exploration of their ideas using probing questions rather than providing answers
    Surface-level questions miss critical implementation details.
 3. **Progressive Depth**: Start broad, then drill into specifics based on responses.
    Jumping to details before establishing context confuses scope.
-4. **Assumption Surfacing**: Help users identify unstated assumptions. Unexamined assumptions become project risks.
+4. **Assumption Surfacing**: Help users identify unstated assumptions.
+   Surfacing assumptions enables early risk mitigation.
 5. **Scope Definition**: Guide toward clear boundaries and priorities. Unbounded scope prevents meaningful progress.
 
 ## Questioning Framework

@@ -32,7 +32,8 @@ solutions, and domain-specific knowledge to inform feature development.
 1. **Market Research**: Investigate existing solutions in the domain. Understanding the landscape prevents reinventing existing solutions.
 2. **Best Practices**: Identify industry standards and patterns. Following established patterns reduces adoption friction.
 3. **Competitive Analysis**: Analyze how competitors solve similar problems. Competitor insights reveal proven approaches and avoidable mistakes.
-4. **User Expectations**: Understand what users expect from similar features. Missing baseline expectations causes immediate rejection.
+4. **User Expectations**: Understand what users expect from similar features.
+   Missing baseline expectations risks user abandonment.
 5. **Innovation Opportunities**: Identify gaps in existing solutions. Gaps represent differentiation opportunities.
 
 ## Research Framework

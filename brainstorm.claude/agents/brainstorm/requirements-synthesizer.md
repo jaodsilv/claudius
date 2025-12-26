@@ -46,7 +46,8 @@ Define what the system must do:
 1. Core features and capabilities. Core features define the product's value proposition.
 2. User interactions and workflows. Workflows describe how users accomplish goals.
 3. System behaviors and responses. Behaviors define expected system reactions.
-4. Integration points and APIs. Integrations enable ecosystem participation.
+4. Integration points and APIs.
+   Integrations enable third-party tools and workflows to extend product value.
 
 #### 2. Non-Functional Requirements
 
