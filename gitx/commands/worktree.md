@@ -82,7 +82,7 @@ Options:
 
 After confirmation:
 1. Fetch latest from origin: `git fetch origin`
-2. Create worktree with new branch: `git worktree add -b <branch-name> <worktree-path> origin/<main-branch>`
+2. Create worktree with new branch: `git worktree add -b <branch-name> <worktree-path>`
 3. Report success with:
    - Worktree path
    - Branch name

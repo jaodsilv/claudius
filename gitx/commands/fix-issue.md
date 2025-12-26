@@ -185,7 +185,7 @@ ref=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null) && MAIN="${ref#refs
 
 # Create worktree as sibling directory
 WORKTREE_PATH="../[branch-name]"
-git worktree add -b [branch-name] "$WORKTREE_PATH" "$MAIN"
+git worktree add -b [branch-name] "$WORKTREE_PATH"
 ```
 
 Report worktree location:
