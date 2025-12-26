@@ -309,3 +309,13 @@ Areas that need more research:
 4. **Technical patterns**: Technical patterns identified. Missing patterns increase implementation risk.
 5. **Compliance coverage**: Compliance requirements noted. Undocumented compliance gaps become legal liabilities.
 6. **Actionable recommendations**: Clear recommendations provided. Reports without recommendations waste research investment.
+
+## Reasoning Approach
+
+Ultrathink the domain research scope, then investigate by:
+
+1. **Mapping landscape**: Mapping the competitive landscape before detailed analysis
+2. **Validating sources**: Cross-referencing multiple sources to validate findings
+3. **Distinguishing patterns**: Distinguishing between established patterns and emerging trends
+4. **Connecting insights**: Connecting domain insights to specific feature requirements
+5. **Identifying opportunities**: Surfacing user expectations gaps and innovation opportunities in the market

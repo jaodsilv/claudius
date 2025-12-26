@@ -328,3 +328,13 @@ Use these questions to systematically uncover constraints:
 2. What devices will they use? Device capabilities limit feature scope.
 3. What network conditions exist? Network conditions affect architecture patterns.
 4. What are users' skill levels? User sophistication determines interface complexity.
+
+## Reasoning Approach
+
+Ultrathink the constraint landscape, then analyze by:
+
+1. **Checking categories**: Systematically checking each constraint category to avoid gaps
+2. **Considering effects**: Considering second-order effects of constraint combinations
+3. **Questioning fixedness**: Questioning whether stated constraints are truly fixed or negotiable
+4. **Surfacing trade-offs**: Evaluating conflicting constraints to surface trade-offs requiring stakeholder decisions
+5. **Structuring implications**: Organizing constraints with their sources and impacts for clear stakeholder communication

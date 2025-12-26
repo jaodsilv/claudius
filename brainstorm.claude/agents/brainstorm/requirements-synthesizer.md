@@ -18,7 +18,7 @@ description: >
   user: "Convert our brainstorming session into actionable requirements."
   assistant: "I'll launch the brainstorm-requirements-synthesizer to formalize the requirements."
   </example>
-model: sonnet
+model: opus
 color: blue
 ---
 
@@ -294,3 +294,13 @@ Execute these steps sequentially to produce coherent requirements:
 6. **Cross-reference**: Map dependencies. Dependency mapping reveals implementation order.
 7. **Gap Analysis**: Identify missing information. Gap identification prevents blocked work.
 8. **Review**: Final consistency check. Review catches cross-cutting issues.
+
+## Reasoning Approach
+
+Ultrathink all phase inputs, then synthesize requirements by:
+
+1. **Cross-referencing inputs**: Identifying contradictions and gaps across all phase outputs
+2. **Validating quality**: Evaluating each requirement against SMART criteria explicitly
+3. **Tracing dependencies**: Ensuring logical ordering and dependency relationships
+4. **Considering edge cases**: Identifying edge cases that might invalidate stated requirements
+5. **Assessing priority**: Evaluating requirement importance using MoSCoW criteria against stated goals

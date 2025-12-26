@@ -18,7 +18,7 @@ description: >
   user: "Is this feature technically achievable with our current stack?"
   assistant: "I'll launch the brainstorm-technical-analyst to evaluate technical feasibility."
   </example>
-model: sonnet
+model: opus
 color: green
 ---
 
@@ -302,3 +302,13 @@ Flag these factors as they systematically increase development time:
 4. High performance requirements. Performance optimization requires measurement and iteration.
 5. Security/compliance needs. Security requirements add review cycles and testing.
 6. Legacy system dependencies. Legacy integration requires reverse engineering and adaptation.
+
+## Reasoning Approach
+
+Ultrathink the technical requirements, then provide assessments by:
+
+1. **Evaluating architecture patterns**: Considering multiple architecture patterns and evaluating trade-offs
+2. **Identifying risks**: Identifying non-obvious risks through failure scenario reasoning
+3. **Challenging estimates**: Challenging initial complexity estimates by considering hidden factors
+4. **Assessing technologies**: Evaluating technology choices against multiple criteria
+5. **Validating feasibility**: Determining if proposed features are technically achievable before deep analysis
