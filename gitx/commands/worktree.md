@@ -16,6 +16,18 @@ Get current repository state:
 - Current branch: !`git branch --show-current`
 - Existing worktrees: !`git worktree list`
 
+## CRITICAL: Command Boundaries
+
+This command MUST stop after reporting success. Do NOT:
+
+1. Navigate to the new worktree
+2. Perform any development work
+3. Run any commands in the worktree
+4. Start implementing any features or fixes
+
+The user will manually navigate to the worktree and decide what to do next.
+If the user wants an orchestrated workflow that includes development, they should use `/gitx:fix-issue` instead.
+
 ## Execution Logic
 
 ### If no argument provided ($ARGUMENTS is empty)
@@ -117,6 +129,8 @@ if [ "$STASHED" = true ]; then
 fi
 
 # Create worktree with new branch
+# CRITICAL: Do NOT add any start-point (like origin/main or main) after the path
+# The command MUST be exactly as shown below - no additional arguments
 git worktree add -b <branch-name> <worktree-path>
 ```
 
