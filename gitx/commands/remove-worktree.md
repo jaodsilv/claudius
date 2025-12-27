@@ -42,7 +42,7 @@ For each item in the worktree directory that might be a junction/symlink:
 1. Check common junction locations (e.g., `data/`, `node_modules/`, `.env` folders)
 2. Use appropriate detection script:
    - Unix: `bash "${CLAUDE_PLUGIN_ROOT}/scripts/detect-junction.sh" <path>`
-   - Windows: `powershell -File "${CLAUDE_PLUGIN_ROOT}/scripts/detect-junction.ps1" <path>`
+   - Windows: `powershell -ExecutionPolicy Bypass -File "${CLAUDE_PLUGIN_ROOT}/scripts/detect-junction.ps1" <path>`
 
 If junctions found pointing outside the worktree:
 1. List them to the user
