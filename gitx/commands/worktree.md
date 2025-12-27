@@ -16,6 +16,18 @@ Get current repository state:
 - Current branch: !`git branch --show-current`
 - Existing worktrees: !`git worktree list`
 
+## CRITICAL: Command Boundaries
+
+This command MUST stop after reporting success. Do NOT:
+
+1. Navigate to the new worktree
+2. Perform any development work
+3. Run any commands in the worktree
+4. Start implementing any features or fixes
+
+The user will manually navigate to the worktree and decide what to do next.
+If the user wants an orchestrated workflow that includes development, they should use `/gitx:fix-issue` instead.
+
 ## Execution Logic
 
 ### If no argument provided ($ARGUMENTS is empty)
@@ -127,18 +139,6 @@ Report success with:
 1. Worktree path
 2. Branch name
 3. Next steps: "cd <path> to start working"
-
-## CRITICAL: Command Boundaries
-
-This command MUST stop after reporting success. Do NOT:
-
-1. Navigate to the new worktree
-2. Perform any development work
-3. Run any commands in the worktree
-4. Start implementing any features or fixes
-
-The user will manually navigate to the worktree and decide what to do next.
-If the user wants an orchestrated workflow that includes development, they should use `/gitx:fix-issue` instead.
 
 ## Error Handling
 
