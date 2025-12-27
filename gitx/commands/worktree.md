@@ -14,12 +14,10 @@ With an argument, creates a new worktree with appropriate branch naming.
 
 Get current repository state:
 
-- Repository root: !`git rev-parse --show-toplevel`
+- Repository root: `../main`
 - Current branch: !`git branch --show-current`
 - Existing worktrees: !`git worktree list`
-- Main branch name (run command):
-  `git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null`
-  `| sed 's@^refs/remotes/origin/@@' || echo "main"`
+- Main branch name: `main`
 
 ## CRITICAL: Command Boundaries
 
@@ -53,14 +51,18 @@ FORBIDDEN actions:
 
 If information is unclear or missing, use AskUserQuestion - do not explore.
 
-## Validation Checkpoint
+## Enforcement Check
 
-Before proceeding to worktree creation, verify:
+**SELF-CHECK REQUIREMENT**: Before proceeding to worktree creation:
 
-1. No Read/Glob/Grep tools used during this execution
-2. No filesystem navigation beyond git commands
-3. All context came from: gh issue view, user arguments, or AskUserQuestion
-4. If any doubt about intent, used AskUserQuestion to clarify
+If during this execution you used ANY of: Read, Glob, Grep, or Task tools:
+
+1. STOP immediately
+2. Report: "ERROR: Command violated no-exploration constraint"
+3. Do NOT proceed with worktree creation
+4. Apologize and restart execution using only allowed-tools
+
+This is a hard requirement. The worktree command MUST NOT explore the codebase.
 
 ## Pre-flight Checks
 
@@ -86,7 +88,7 @@ Display the existing worktrees in a formatted table:
 Parse the argument to determine its type by checking in order:
 
 1. If matches `^\d+$` or `^#\d+$` or `^issue-\d+$`: Extract number, treat as issue
-2. If matches `^https://github.com/.*/issues/\d+$`:
+2. If matches `^https?://github\.com/[^/]+/[^/]+/issues/(\d+)`:
    Extract number from URL, treat as issue
 3. If contains `/`: Treat as branch name (validate format)
 4. Otherwise: Treat as task description
@@ -95,16 +97,14 @@ Based on argument type, create appropriate worktree:
 
 **1. Issue number (e.g., "123", "#123", "issue-123"):**
 
+- Run pre-flight checks (see Pre-flight Checks section)
 - Extract the number
 - Fetch issue details: `gh issue view <number> --json number,title,labels`
-- Generate branch name using conventional-branch skill:
-  - If issue has "bug" or "bugfix" label: `bugfix/issue-<number>-<short-title>`
-  - If issue has "feature" or "enhancement" label: `feature/issue-<number>-<short-title>`
-  - Default: `feature/issue-<number>-<short-title>`
-- Short title: lowercase, hyphens, max 30 chars, no special characters
+- Use Skill tool with conventional-branch (see Branch Name Generation section)
 
 **2. GitHub issue URL (e.g., `https://github.com/owner/repo/issues/123`):**
 
+- Run pre-flight checks (see Pre-flight Checks section)
 - Extract issue number from URL
 - Proceed as with issue number above
 
@@ -128,16 +128,36 @@ Generate branch name using ONLY the information already gathered:
 3. Do NOT read project files to determine branch type
 4. Do NOT explore codebase to improve naming
 
-Use Skill tool with conventional-branch:
+Use Skill tool with conventional-branch skill. Exact invocation format:
 
-1. For issue-based: `conventional-branch <type> issue <number> <title>`
-2. For task description: `conventional-branch feature <description>`
+```text
+Skill(conventional-branch) with args:
+- For issue-based: "issue <number> <title> --labels <label1,label2>"
+- For task description: "feature <description>"
+```
+
+Example tool calls:
+
+1. Issue with bug label:
+   - Skill: `conventional-branch`
+   - Args: `issue 123 fix login error --labels bug,auth`
+   - Expected output: `bugfix/issue-123-fix-login-error`
+
+2. Issue with feature label:
+   - Skill: `conventional-branch`
+   - Args: `issue 456 add dark mode --labels enhancement`
+   - Expected output: `feature/issue-456-add-dark-mode`
+
+3. Task description:
+   - Skill: `conventional-branch`
+   - Args: `feature add user authentication`
+   - Expected output: `feature/add-user-authentication`
 
 Skill output rules:
 
 1. Types: feature/, bugfix/, hotfix/, release/, chore/
 2. Format: `<type>/<description>` or `<type>/issue-<number>-<description>`
-3. Rules: lowercase, hyphens only, no consecutive hyphens
+3. Rules: lowercase, hyphens only, no consecutive hyphens, max 50 chars total
 
 ## Worktree Path
 
@@ -214,6 +234,16 @@ fi
 git worktree add -b <branch-name> <worktree-path>
 ```
 
+FORBIDDEN command variations (NEVER use these):
+
+1. `git worktree add -b <branch> <path> origin/main` - NO start-point
+2. `git worktree add -b <branch> <path> main` - NO start-point
+3. `git worktree add -b <branch> <path> <any-commit>` - NO start-point
+4. `git worktree add <path> origin/main` - NO tracking existing branches
+5. Any variation with additional arguments after `<worktree-path>`
+
+The ONLY valid format is: `git worktree add -b <branch-name> <worktree-path>`
+
 Report success with:
 
 1. Worktree path: `<path>`
@@ -243,8 +273,10 @@ Execution (no codebase exploration):
 3. Parse response (do NOT read any project files)
 4. Use Skill conventional-branch to generate branch name
 5. Calculate worktree path
-6. Confirm with AskUserQuestion
-7. Create worktree with git commands
+6. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree with branch: `bugfix/issue-123-fix-login` at path: `../bugfix-issue-123-fix-login`?"
+   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
+7. If confirmed, create worktree: `git worktree add -b bugfix/issue-123-fix-login ../bugfix-issue-123-fix-login`
 8. Report success and STOP
 
 ### Example 2: Task description (no exploration)
@@ -256,8 +288,10 @@ Execution (no codebase exploration):
 1. Parse argument directly as task description
 2. Use Skill conventional-branch: `feature add-user-authentication`
 3. Calculate worktree path
-4. Confirm with AskUserQuestion
-5. Create worktree with git commands
+4. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree with branch: `feature/add-user-authentication` at path: `../feature-add-user-authentication`?"
+   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
+5. If confirmed, create worktree: `git worktree add -b feature/add-user-authentication ../feature-add-user-authentication`
 6. Report success and STOP
 
 ### Example 3: Branch name (no exploration)
@@ -269,6 +303,8 @@ Execution (no codebase exploration):
 1. Detect `/` in argument - treat as branch name
 2. Validate format (lowercase, hyphens only)
 3. Calculate worktree path
-4. Confirm with AskUserQuestion
-5. Create worktree with git commands
+4. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree with branch: `feature/my-new-feature` at path: `../feature-my-new-feature`?"
+   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
+5. If confirmed, create worktree: `git worktree add -b feature/my-new-feature ../feature-my-new-feature`
 6. Report success and STOP
