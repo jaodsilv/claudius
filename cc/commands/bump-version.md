@@ -6,7 +6,8 @@ allowed-tools: Bash(gh:*), Bash(git:*), Read, Edit, AskUserQuestion, TodoWrite
 
 # Bump Plugin Versions
 
-Bump versions for plugins affected by changes in a PR or worktree. Updates package.json (root), marketplace.json (root and plugin entries), and individual plugin.json files.
+Bump versions for plugins affected by changes in a PR or worktree.
+Updates package.json (root), marketplace.json (root and plugin entries), and individual plugin.json files.
 
 ## Parse Arguments
 
@@ -38,7 +39,7 @@ Parse the comma-separated list into `$affected_plugins` array. Skip to Phase 2.
 
 ### If --plugins NOT provided
 
-**Step 1: Determine source of changed files**
+#### Step 1: Determine source of changed files
 
 If `--pr` provided:
 
@@ -61,7 +62,7 @@ If `--pr` NOT provided:
    git diff main...HEAD --name-only
    ```
 
-**Step 2: Build plugin-to-directory mapping**
+#### Step 2: Build plugin-to-directory mapping
 
 Read `.claude-plugin/marketplace.json` and extract each plugin's `source` field to build a mapping:
 
@@ -73,7 +74,7 @@ For each plugin in $.plugins:
   - Store mapping: directory_prefix -> plugin_name
 ```
 
-**Step 3: Map changed files to plugins**
+#### Step 3: Map changed files to plugins
 
 For each changed file path:
 
