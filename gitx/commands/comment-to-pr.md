@@ -82,14 +82,34 @@ Template:
 
 If "Post last response" (or `--last` flag used):
 
-Use AskUserQuestion to get the last response:
-- "Paste Claude's last response to post as a comment:"
-- Accept the provided text and post it as-is
+Retrieve Claude's last response from the current session context and use it as the comment text.
+
+## Validate Comment
+
+Before posting, validate the comment:
+
+1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
+   - Report error: "Cannot post empty comment"
+   - Fall back to Error Handling #2
+
+2. **Size check**: Check comment length:
+   - If > 60,000 characters:
+     - Use AskUserQuestion: "Comment exceeds GitHub's 60K character limit. How would you like to proceed?"
+     - Options:
+       1. "Shorten text" - Let Claude summarize/condense the content
+       2. "Truncate as-is" - Cut off at 60K characters
+       3. "Split into multiple comments" - Post as sequential comments
+       4. "Abort" - Cancel posting
+   - If > 20,000 characters (but ≤ 60,000):
+     - Use AskUserQuestion: "Comment is very long (>20K characters). How would you like to proceed?"
+     - Options:
+       1. "Shorten text" - Let Claude summarize/condense the content
+       2. "Abort" - Cancel posting
 
 ## Post Comment
 
 Post the comment:
-- `gh pr comment <number> --body "<comment>"`
+- `gh pr comment <number> --body "$comment"`
 
 ## Confirmation
 

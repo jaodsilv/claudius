@@ -1,6 +1,6 @@
 ---
 description: Comment on a GitHub issue
-argument-hint: "[ISSUE] [comment]"
+argument-hint: "[ISSUE] [comment | --last]"
 allowed-tools: Bash(gh issue:*), Bash(git branch:*), AskUserQuestion
 ---
 
@@ -13,6 +13,7 @@ Add a comment to a GitHub issue. If issue number is not provided, attempts to in
 From $ARGUMENTS, extract:
 - Issue number (optional): First numeric argument, or "#123" format
 - Comment text (optional): Remaining text after issue number
+- `--last` or `-l` flag: If present, triggers last response flow
 
 ## Infer Issue Number
 
@@ -44,7 +45,8 @@ Use AskUserQuestion:
   1. "Summarize recent work" - Generate summary from git log
   2. "Report progress" - Template for progress update
   3. "Ask a question" - Template for clarification
-  4. "Custom comment" - Let user provide text
+  4. "Post last response" - Share Claude's latest response from this session
+  5. "Custom comment" - Let user provide text
 
 ### Auto-generated summaries
 
@@ -69,10 +71,36 @@ Template:
 - None
 ```
 
+If "Post last response" (or `--last` flag used):
+
+Retrieve Claude's last response from the current session context and use it as the comment text.
+
+## Validate Comment
+
+Before posting, validate the comment:
+
+1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
+   - Report error: "Cannot post empty comment"
+   - Fall back to Error Handling #2
+
+2. **Size check**: Check comment length:
+   - If > 60,000 characters:
+     - Use AskUserQuestion: "Comment exceeds GitHub's 60K character limit. How would you like to proceed?"
+     - Options:
+       1. "Shorten text" - Let Claude summarize/condense the content
+       2. "Truncate as-is" - Cut off at 60K characters
+       3. "Split into multiple comments" - Post as sequential comments
+       4. "Abort" - Cancel posting
+   - If > 20,000 characters (but ≤ 60,000):
+     - Use AskUserQuestion: "Comment is very long (>20K characters). How would you like to proceed?"
+     - Options:
+       1. "Shorten text" - Let Claude summarize/condense the content
+       2. "Abort" - Cancel posting
+
 ## Post Comment
 
 Post the comment:
-- `gh issue comment <number> --body "<comment>"`
+- `gh issue comment <number> --body "$comment"`
 
 ## Confirmation
 
