@@ -45,7 +45,7 @@
       "description": "Extended git/GitHub workflow commands with multi-agent orchestration for worktrees, issues, PRs, conflict resolution, and branch operations",
       "source": "./gitx",
       "category": "git-version-control",
-      "version": "1.0.3",
+      "version": "1.1.0",
       "keywords": [
         "git",
         "github",
