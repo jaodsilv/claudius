@@ -1,6 +1,6 @@
 ---
 description: Comment on a pull request
-argument-hint: "[PR] [comment]"
+argument-hint: "[PR] [comment | --last]"
 allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion
 ---
 
@@ -13,6 +13,7 @@ Add a comment to a GitHub pull request. If PR number is not provided, uses the P
 From $ARGUMENTS, extract:
 - PR number (optional): First numeric argument
 - Comment text (optional): Remaining text after PR number
+- `--last` or `-l` flag: If present, triggers last response flow
 
 ## Infer PR Number
 
@@ -40,7 +41,8 @@ Use AskUserQuestion:
   1. "Summarize recent changes" - Generate summary from commits since PR creation
   2. "Request review" - Template for requesting review
   3. "Status update" - Template for progress update
-  4. "Custom comment" - Let user provide text
+  4. "Post last response" - Share Claude's latest response from this session
+  5. "Custom comment" - Let user provide text
 
 ### Auto-generated summaries
 
@@ -77,6 +79,12 @@ Template:
 ### ETA
 <estimated completion>
 ```
+
+If "Post last response" (or `--last` flag used):
+
+Use AskUserQuestion to get the last response:
+- "Paste Claude's last response to post as a comment:"
+- Accept the provided text and post it as-is
 
 ## Post Comment
 
