@@ -286,7 +286,7 @@ User: `/gitx:worktree add user authentication`
 Execution (no codebase exploration):
 
 1. Parse argument directly as task description
-2. Use Skill conventional-branch: `feature add-user-authentication`
+2. Use Skill conventional-branch: `feature add user authentication`
 3. Calculate worktree path
 4. **Confirm with AskUserQuestion**:
    - Question: "Create worktree with branch: `feature/add-user-authentication` at path: `../feature-add-user-authentication`?"
