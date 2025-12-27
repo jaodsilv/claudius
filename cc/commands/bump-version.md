@@ -1,7 +1,7 @@
 ---
 description: Bump plugin versions based on PR changes or explicit list
 argument-hint: "[--pr <number>] [--plugins <list>]"
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Edit, AskUserQuestion, TodoWrite
+allowed-tools: ["Bash(gh:*)", "Bash(git:*)", "Read", "Edit", "AskUserQuestion", "TodoWrite"]
 ---
 
 # Bump Plugin Versions
@@ -64,6 +64,10 @@ If `--pr` provided:
 gh pr view <pr-number> --json files --jq '.files[].path'
 ```
 
+Handle command result:
+
+- If command fails (any error): Exit immediately (gh command will display the error)
+
 Set `$detection_method` = "PR #<pr-number> files"
 
 If `--pr` NOT provided:
@@ -83,21 +87,50 @@ If `--pr` NOT provided:
 
 3. If no PR: Get all changes (committed, staged, and unstaged):
 
+   First, validate git diff is possible:
+
    ```bash
-   # Committed changes from main
-   git diff main...HEAD --name-only
+   # Determine base branch (main or master)
+   git rev-parse --verify main 2>&1 || git rev-parse --verify master 2>&1
+   ```
+
+   - If both fail: Report "Neither 'main' nor 'master' branch exists" and exit
+   - Set `$base_branch` to whichever exists (prefer `main`)
+
+   ```bash
+   # Check if on base branch
+   git branch --show-current
+   ```
+
+   - If current branch equals `$base_branch`:
+     Report "Cannot diff: currently on $base_branch branch. Use --plugins to specify manually."
+     and exit
+
+   Then get changes:
+
+   ```bash
+   # Committed changes from base branch
+   git diff $base_branch...HEAD --name-only
    # Staged changes
    git diff --staged --name-only
    # Unstaged changes
    git diff --name-only
    ```
 
+   - If any git command fails: Exit immediately (git will display the error)
+
    Combine and deduplicate results into changed files list.
-   Set `$detection_method` = "git diff from main"
+   Set `$detection_method` = "git diff from $base_branch"
 
 #### Step 2: Build plugin-to-directory mapping
 
-Read `.claude-plugin/marketplace.json` and extract each plugin's `source` field to build a mapping:
+Read `./.claude-plugin/marketplace.json`:
+
+- If file not found: Report "marketplace.json not found at ./.claude-plugin/marketplace.json" and exit
+- If invalid JSON: Report "Invalid JSON in marketplace.json" and exit
+- If `$.plugins` array missing: Report "Missing 'plugins' array in marketplace.json" and exit
+
+Extract each plugin's `source` field to build a mapping:
 
 ```text
 For each plugin in $.plugins:
@@ -190,28 +223,40 @@ Read and store current versions from:
 
 1. **Root package.json**:
    - Read: `./package.json`
+   - If file not found or invalid JSON: Report error and exit
    - Extract: `$.version` -> `$root_package_version`
+   - If `$.version` missing: Create field with value `"0.0.0"` and set `$root_package_version` = `"0.0.0"`
 
 2. **Root marketplace.json**:
    - Read: `./.claude-plugin/marketplace.json`
+   - If file not found or invalid JSON: Report error and exit
    - Extract: `$.version` -> `$marketplace_version`
+   - If `$.version` missing: Create field with value `"0.0.0"` and set `$marketplace_version` = `"0.0.0"`
 
 3. **Each affected plugin entry in marketplace.json**:
    - Find plugin in `$.plugins` array by name
+   - If plugin not found: Report error and exit
    - Extract: `$.version` -> `$marketplace_plugin_versions[<plugin>]`
+   - If `$.version` missing: Create field with value `"0.0.0"` and set `$marketplace_plugin_versions[<plugin>]` = `"0.0.0"`
 
 4. **Each plugin's individual plugin.json**:
    - Read: `./<source>/.claude-plugin/plugin.json`
+   - If file not found or invalid JSON: Report error and exit
    - Extract: `$.version` -> `$plugin_versions[<plugin>]`
+   - If `$.version` missing: Create field with value `"0.0.0"` and set `$plugin_versions[<plugin>]` = `"0.0.0"`
 
 ### Validate Version Format
 
 For each version read (`$root_package_version`, `$marketplace_version`, `$marketplace_plugin_versions[*]`, `$plugin_versions[*]`):
 
-- Validate matches semver pattern: `^[0-9]+\.[0-9]+\.[0-9]+$`
+- Validate matches semver pattern: `^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?$`
+  - This accepts: `1.0.0`, `1.0.0-alpha`, `1.0.0-beta.1`, `1.0.0-rc.1`
 - If invalid:
-  - Report: "Invalid version format '<version>' in <file>. Expected X.Y.Z (semver)"
+  - Report: "Invalid version format '<version>' in <file>. Expected X.Y.Z or X.Y.Z-prerelease (semver)"
   - Exit with error
+
+**Note**: Pre-release suffixes (e.g., `-beta.1`) are stripped before version comparison and bump
+calculation. The new version will not include the pre-release suffix.
 
 ### Version Sync Validation
 
@@ -359,7 +404,9 @@ Display comprehensive summary:
 
 ## Error Handling
 
-1. **No plugins detected**: Report "No plugins detected. Use --plugins to specify manually."
+All errors result in immediate exit unless otherwise specified.
+
+1. **No plugins detected**: Report "No plugins detected. Use --plugins to specify manually." and exit.
 
 2. **Plugin not in marketplace**: Warn and allow user to skip or cancel.
 
@@ -367,16 +414,25 @@ Display comprehensive summary:
    - Report: "Missing plugin.json for '<plugin>' at <expected-path>"
    - Ask: Continue without this plugin or cancel?
 
-4. **File read error**: Report file path and suggest checking permissions.
+4. **File read error**: Report file path and error message, then exit.
 
-5. **Invalid version format**:
-   - Report: "Invalid version format '<version>' in <file>. Expected X.Y.Z (semver)"
+5. **Invalid JSON**: Report file path and parsing error, then exit.
+
+6. **Invalid version format**:
+   - Report: "Invalid version format '<version>' in <file>. Expected X.Y.Z or X.Y.Z-prerelease (semver)"
    - Exit
 
-6. **PR not found** (when --pr specified):
-   - Report: "PR #<number> not found"
-   - Suggest: Check PR number or omit --pr flag
+7. **PR not found** (when --pr specified): Exit (gh command will display the error).
 
-7. **No changes detected** (no --pr, no --plugins, empty git diff):
-   - Report: "No changed files detected"
-   - Suggest: Use --plugins to specify plugins manually
+8. **GitHub API error** (auth, network, rate limit): Exit (gh command will display the error).
+
+9. **Git command error**: Exit (git command will display the error).
+
+10. **No changes detected** (no --pr, no --plugins, empty git diff):
+    - Report: "No changed files detected"
+    - Suggest: Use --plugins to specify plugins manually
+    - Exit
+
+11. **Base branch not found**: Report "Neither 'main' nor 'master' branch exists" and exit.
+
+12. **On base branch**: Report "Cannot diff: currently on <branch> branch. Use --plugins to specify plugins manually." and exit.
