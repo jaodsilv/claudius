@@ -9,11 +9,11 @@
   },
   "plugins": [
     {
-      "name": "brainstorm-pro",
+      "name": "brainstorm",
       "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation",
       "source": "./brainstorm.claude",
       "category": "productivity",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "keywords": [
         "brainstorming",
         "requirements",
@@ -22,127 +22,6 @@
         "ideation",
         "multi-agent",
         "orchestration"
-      ]
-    },
-    {
-      "name": "job-hunting-pro",
-      "description": "Comprehensive job hunting automation: cover letter evaluation, improvement, interview prep, and company research",
-      "source": "./job-hunting.claude",
-      "category": "productivity",
-      "version": "1.0.0",
-      "keywords": [
-        "job-hunting",
-        "career",
-        "cover-letter",
-        "interview",
-        "ats"
-      ]
-    },
-    {
-      "name": "docs-automation",
-      "description": "Automated documentation download, conversion, and verification with multi-agent coordination",
-      "source": "./doc-understanding.claude",
-      "category": "productivity",
-      "version": "1.0.0",
-      "keywords": [
-        "documentation",
-        "download",
-        "conversion",
-        "automation"
-      ]
-    },
-    {
-      "name": "tdd-pro",
-      "description": "Professional TDD workflow with multi-agent coordination, conventional commits, and branch management",
-      "source": "./tdd-pro",
-      "category": "development-workflow",
-      "version": "1.0.0",
-      "keywords": [
-        "tdd",
-        "testing",
-        "workflow",
-        "conventional-commits"
-      ]
-    },
-    {
-      "name": "marketplace-curator",
-      "description": "Tools for curating your own marketplace: discovery, analysis, and collection creation",
-      "source": "./marketplace-curator",
-      "category": "productivity",
-      "version": "1.0.0",
-      "keywords": [
-        "curation",
-        "marketplace",
-        "discovery",
-        "meta"
-      ]
-    },
-    {
-      "name": "jaodsilv-career",
-      "description": "jaodsilv's comprehensive career skill - ONLY career tool in Claude Code ecosystem",
-      "source": "./jaodsilv-career",
-      "category": "job-hunting-career",
-      "version": "1.0.0",
-      "keywords": [
-        "career",
-        "job-hunting",
-        "unique",
-        "jaodsilv"
-      ]
-    },
-    {
-      "name": "community-git-tools",
-      "description": "Curated Git tools: conventional commits/branches, PR workflows, and automation",
-      "source": "./community-git-tools",
-      "category": "git-version-control",
-      "version": "1.0.0",
-      "keywords": [
-        "git",
-        "version-control",
-        "commits",
-        "pr",
-        "community"
-      ]
-    },
-    {
-      "name": "community-testing",
-      "description": "Curated testing and QA tools: TDD workflows, code quality, test automation, and QA agents",
-      "source": "./community-testing",
-      "category": "testing-qa",
-      "version": "1.0.0",
-      "keywords": [
-        "testing",
-        "qa",
-        "tdd",
-        "automation",
-        "community"
-      ]
-    },
-    {
-      "name": "community-devops",
-      "description": "Curated DevOps tools: CI/CD, Kubernetes, cloud architecture, and SRE",
-      "source": "./community-devops",
-      "category": "devops-infrastructure",
-      "version": "1.0.0",
-      "keywords": [
-        "devops",
-        "ci-cd",
-        "kubernetes",
-        "cloud",
-        "community"
-      ]
-    },
-    {
-      "name": "community-bundle",
-      "description": "Meta-plugin bundling all 6 community collections for easy installation",
-      "source": "./community-bundle",
-      "category": "productivity",
-      "version": "1.0.0",
-      "keywords": [
-        "bundle",
-        "community",
-        "meta",
-        "collection"
       ]
     },
     {
