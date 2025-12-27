@@ -20,13 +20,28 @@ From $ARGUMENTS, extract:
 
 ```text
 TodoWrite:
-1. [ ] Detect affected plugins
-2. [ ] Validate plugin existence
-3. [ ] Get bump type from user
-4. [ ] Read current versions
-5. [ ] Calculate new versions
-6. [ ] Update version files
-7. [ ] Present summary
+  todos:
+    - content: "Detect affected plugins"
+      status: "pending"
+      activeForm: "Detecting affected plugins"
+    - content: "Validate plugin existence"
+      status: "pending"
+      activeForm: "Validating plugin existence"
+    - content: "Get bump type from user"
+      status: "pending"
+      activeForm: "Getting bump type from user"
+    - content: "Read current versions"
+      status: "pending"
+      activeForm: "Reading current versions"
+    - content: "Calculate new versions"
+      status: "pending"
+      activeForm: "Calculating new versions"
+    - content: "Update version files"
+      status: "pending"
+      activeForm: "Updating version files"
+    - content: "Present summary"
+      status: "pending"
+      activeForm: "Presenting summary"
 ```
 
 ## Phase 1: Detect Affected Plugins
@@ -35,7 +50,9 @@ Mark "Detect affected plugins" as in_progress.
 
 ### If --plugins provided
 
-Parse the comma-separated list into `$affected_plugins` array. Skip to Phase 2.
+Parse the comma-separated list into `$affected_plugins` array.
+Set `$detection_method` = "explicit --plugins flag"
+Skip to Phase 2.
 
 ### If --plugins NOT provided
 
@@ -47,20 +64,36 @@ If `--pr` provided:
 gh pr view <pr-number> --json files --jq '.files[].path'
 ```
 
+Set `$detection_method` = "PR #<pr-number> files"
+
 If `--pr` NOT provided:
 
 1. Check if current worktree has associated PR:
 
    ```bash
-   gh pr view --json number 2>/dev/null
+   gh pr view --json number
    ```
+
+   Handle command result:
+   - If command succeeds: Extract PR number and set `$detection_method` = "PR #X files"
+   - If "no pull requests found" error: Fall back to git diff (step 3)
+   - If other error (auth, network, rate limit): Report error to user and exit
 
 2. If PR exists: Get its number and fetch files as above
-3. If no PR: Get uncommitted/unpushed changes:
+
+3. If no PR: Get all changes (committed, staged, and unstaged):
 
    ```bash
+   # Committed changes from main
    git diff main...HEAD --name-only
+   # Staged changes
+   git diff --staged --name-only
+   # Unstaged changes
+   git diff --name-only
    ```
+
+   Combine and deduplicate results into changed files list.
+   Set `$detection_method` = "git diff from main"
 
 #### Step 2: Build plugin-to-directory mapping
 
@@ -81,6 +114,14 @@ For each changed file path:
 1. Check if path starts with any known plugin directory prefix
 2. If match found, add that plugin to `$affected_plugins` (deduplicated)
 
+### Report Detection Results
+
+Report to user:
+
+- Detection method: `$detection_method`
+- Number of changed files analyzed: (count if applicable, N/A for --plugins)
+- Affected plugins: `$affected_plugins`
+
 Mark "Detect affected plugins" as completed.
 
 ## Phase 2: Validate Plugin Existence
@@ -91,7 +132,7 @@ For each plugin in `$affected_plugins`:
 
 1. Verify plugin exists in marketplace.json (has entry in `$.plugins` array)
 2. Get the source path from marketplace.json
-3. Verify plugin.json exists at: `<source>/.claude-plugin/plugin.json`
+3. Verify plugin.json exists at: `./<source>/.claude-plugin/plugin.json`
 
 If any plugin not found:
 
@@ -160,8 +201,41 @@ Read and store current versions from:
    - Extract: `$.version` -> `$marketplace_plugin_versions[<plugin>]`
 
 4. **Each plugin's individual plugin.json**:
-   - Read: `<source>/.claude-plugin/plugin.json`
+   - Read: `./<source>/.claude-plugin/plugin.json`
    - Extract: `$.version` -> `$plugin_versions[<plugin>]`
+
+### Validate Version Format
+
+For each version read (`$root_package_version`, `$marketplace_version`, `$marketplace_plugin_versions[*]`, `$plugin_versions[*]`):
+
+- Validate matches semver pattern: `^[0-9]+\.[0-9]+\.[0-9]+$`
+- If invalid:
+  - Report: "Invalid version format '<version>' in <file>. Expected X.Y.Z (semver)"
+  - Exit with error
+
+### Version Sync Validation
+
+For each affected plugin, compare:
+
+- `$marketplace_plugin_versions[<plugin>]` vs `$plugin_versions[<plugin>]`
+
+If versions differ:
+
+```text
+AskUserQuestion:
+  Question: "Version mismatch for '<plugin>': marketplace.json has X.Y.Z, plugin.json has A.B.C. Which to use as base?"
+  Header: "Mismatch"
+  Options:
+  1. "Use marketplace.json version (X.Y.Z)"
+  2. "Use plugin.json version (A.B.C)"
+  3. "Use higher version"
+  4. "Cancel and fix manually"
+```
+
+Apply selected resolution:
+
+- Options 1-3: Use selected version as base for both files
+- Option 4: Exit with error
 
 Mark "Read current versions" as completed.
 
@@ -191,17 +265,25 @@ Mark "Calculate new versions" as completed.
 
 Mark "Update version files" as in_progress.
 
+### 6.0: Initialize Edit Tracking
+
+Create `$successful_edits` list to track completed updates.
+
 ### 6.1: Update Root package.json
 
 Edit `./package.json`:
 
 - Change `"version": "$root_package_version"` to `"version": "$new_root_package_version"`
+- On success: Add `./package.json` to `$successful_edits`
+- On failure: Go to Error Recovery
 
 ### 6.2: Update Root marketplace.json Version
 
 Edit `./.claude-plugin/marketplace.json`:
 
 - Change root `"version": "$marketplace_version"` to `"version": "$new_marketplace_version"`
+- On success: Add `./.claude-plugin/marketplace.json (root version)` to `$successful_edits`
+- On failure: Go to Error Recovery
 
 ### 6.3: Update Plugin Entries in marketplace.json
 
@@ -210,14 +292,32 @@ For each affected plugin in `$affected_plugins`:
 - Edit `./.claude-plugin/marketplace.json`
 - Locate plugin entry in `plugins` array by matching `"name": "<plugin>"`
 - Change that entry's `"version": "$old"` to `"version": "$new"`
+- On success: Add `./.claude-plugin/marketplace.json (plugin: <plugin>)` to `$successful_edits`
+- On failure: Go to Error Recovery
 
 ### 6.4: Update Individual plugin.json Files
 
 For each affected plugin in `$affected_plugins`:
 
 - Get source path from marketplace.json
-- Edit `<source>/.claude-plugin/plugin.json`
+- Edit `./<source>/.claude-plugin/plugin.json`
 - Change `"version": "$old"` to `"version": "$new"`
+- On success: Add `./<source>/.claude-plugin/plugin.json` to `$successful_edits`
+- On failure: Go to Error Recovery
+
+### Error Recovery
+
+If any edit fails:
+
+1. Report which file failed and the error message
+2. List files already modified: `$successful_edits`
+3. Provide recovery command:
+
+   ```bash
+   git checkout -- ./package.json ./.claude-plugin/marketplace.json ./<source1>/.claude-plugin/plugin.json ...
+   ```
+
+4. Exit with error
 
 Mark "Update version files" as completed.
 
