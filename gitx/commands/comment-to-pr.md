@@ -1,6 +1,6 @@
 ---
 description: Comment on a pull request
-argument-hint: "[PR] [comment | --last]"
+argument-hint: "[PR] [comment | -l | --last]"
 allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion
 ---
 
@@ -82,7 +82,38 @@ Template:
 
 If "Post last response" (or `--last` flag used):
 
-Retrieve Claude's last response from the current session context and use it as the comment text.
+1. **Retrieve recent responses**: Get the last 4 valid responses from the current conversation thread
+   - **Valid response criteria**: Must have at least 4 lines of text
+   - Extract title from first line of each response (before first newline)
+   - Title truncation rules:
+     - If title ≤ 80 chars: Use full text
+     - If title > 80 chars: Use first 77 chars + "..."
+
+2. **Handle edge cases**:
+   - **Fewer than 4 valid responses**: Show only available valid responses
+   - **No valid responses found**: Error: "No valid Claude responses found in current conversation (responses must have at least 4 lines). Cannot use --last flag."
+   - **First message in thread**: Error: "This is the first message in the conversation. No previous responses to post."
+
+3. **Present selection**: Use AskUserQuestion:
+   - Question: "Which response would you like to post to PR #<number>?"
+   - Header: "Response"
+   - Options (newest to oldest, max 4):
+     1. "🟢 <Response title>" - Most recent
+     2. "🔵 <Response title>"
+     3. "🔵 <Response title>"
+     4. "🔵 <Response title>" - Oldest shown
+   - Note: 🟢 = most recent, 🔵 = older responses
+
+4. **Preview confirmation**: After selection, use AskUserQuestion:
+   - Show preview: First 200 characters of selected response
+   - Question: "Post this response to PR #<number>?"
+   - Header: "Confirm"
+   - Options:
+     1. "✅ Post this response" - Proceed to validation
+     2. "🔄 Select different response" - Return to step 3
+     3. "❌ Cancel" - Abort posting
+
+5. **Store selected response**: Save full content of selected response to `$comment` variable and proceed to validation.
 
 ## Validate Comment
 
