@@ -1,5 +1,5 @@
 ---
-name: Improvement Workflow
+name: cc:improvement-workflow
 description: >-
   This skill should be used when implementing "interactive improvements",
   "analyze-suggest-approve-apply patterns", "component improvement workflows",
