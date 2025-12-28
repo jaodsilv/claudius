@@ -132,8 +132,8 @@ Before posting, validate the comment:
 
 ## Post Comment
 
-Post the comment using stdin to avoid shell escaping issues:
-- `echo "$comment" | gh issue comment <number> --body-file -`
+Post the comment:
+- `gh issue comment <number> --body "$comment"`
 
 If the command fails, report the error and stop execution.
 
