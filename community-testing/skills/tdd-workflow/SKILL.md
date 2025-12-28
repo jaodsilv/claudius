@@ -1,3 +1,10 @@
+---
+name: community-testing:tdd-workflow
+description: >-
+  Provides a comprehensive test-driven development workflow with red-green-refactor
+  cycle, test isolation, and continuous integration practices.
+---
+
 # TDD Workflow
 
 ## When to Use This Skill
@@ -63,7 +70,7 @@ git worktree add -b <branch-type>/<task-name> ../task-name-worktree
 cd ../task-name-worktree
 ```
 
-**Remember**: Worktree name for entire workflow. Follow `@conventional-branch` skill.
+**Remember**: Worktree name for entire workflow. Follow `community-git-tools:conventional-branch` skill.
 
 ### Phase 1: Test Requirement Evaluation
 
@@ -80,7 +87,7 @@ cd ../task-name-worktree
 
 ### Phase 2: Testing Phase
 
-Only if tests are required from Phase 1. Use `@tdd-approach-selection` skill to choose between
+Only if tests are required from Phase 1. Use `community-testing:tdd-approach-selection` skill to choose between
 full cycle or individual phases approach.
 
 #### Phase 2.1: Unit Tests Design
@@ -189,7 +196,7 @@ full cycle or individual phases approach.
 
 **Agent Pattern**: Write → Review → Loop (max 3-5 iterations)
 
-1. **Write Agent**: Create commit message following `@conventional-commits` skill
+1. **Write Agent**: Create commit message following `community-git-tools:conventional-commits` skill
 2. **Review Agent**: Validate format, check clarity, ensure accuracy
 3. Loop if needed
 4. **Main Agent**: Execute commit:
@@ -329,12 +336,12 @@ git worktree remove ../task-name-worktree
 
 ## Integration with Other Skills
 
-| Skill                    | Phase | Purpose           |
-|--------------------------|-------|-------------------|
-| `tdd-approach-selection` | 2     | Choose approach   |
-| `conventional-commits`   | 4     | Commit messages   |
-| `conventional-branch`    | 0     | Branch naming     |
-| `code-quality`           | 2-3   | Review checkpoints|
+| Skill                                    | Phase | Purpose           |
+|------------------------------------------|-------|-------------------|
+| `community-testing:tdd-approach-selection` | 2     | Choose approach   |
+| `community-git-tools:conventional-commits` | 4     | Commit messages   |
+| `community-git-tools:conventional-branch`  | 0     | Branch naming     |
+| `community-testing:code-quality`           | 2-3   | Review checkpoints|
 
 ## Related Commands
 
