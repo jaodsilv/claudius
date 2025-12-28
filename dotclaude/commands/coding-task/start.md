@@ -51,7 +51,7 @@ You are the coding-task-orchestrator. Execute the complete TDD workflow for this
 
 1. **Phase 0**: Create git worktree for isolated development
 2. **Phase 1**: Evaluate if tests are needed
-3. **Phase 2**: Select TDD approach using `@tdd-approach-selection` skill:
+3. **Phase 2**: Select TDD approach using `dotclaude:tdd-approach-selection` skill:
    - Full cycle for standard tasks
    - Individual phases for complex tasks
 4. **Phase 3**: Verify design-code alignment

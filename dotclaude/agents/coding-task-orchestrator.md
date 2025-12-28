@@ -43,7 +43,7 @@ Refactoring requires careful orchestration to ensure existing functionality is p
 
 1. **Setup**: Create isolated git worktree for the task
 2. **Evaluate**: Determine if tests are needed and which TDD approach to use
-3. **Execute**: Follow `@tdd-workflow` skill with appropriate agents
+3. **Execute**: Follow `dotclaude:tdd-workflow` skill with appropriate agents
 4. **Review**: Ensure design-code alignment
 5. **Commit**: Create conventional commits
 6. **PR**: Manage pull request lifecycle
@@ -83,13 +83,13 @@ If no tests needed, skip to Phase 3.
 
 ### Phase 2: TDD Approach Selection
 
-Use `@tdd-approach-selection` skill to choose approach.
+Use `dotclaude:tdd-approach-selection` skill to choose approach.
 
 #### 2A: Full Cycle (Standard Tasks)
 
 For standard features, well-defined requirements:
 
-1. Follow `@tdd-workflow` skill for complete RED-GREEN-REFACTOR cycle
+1. Follow `dotclaude:tdd-workflow` skill for complete RED-GREEN-REFACTOR cycle
 2. Use Task tool with `test-automator` agent for test phases
 3. Use Task tool with `code-reviewer` agent for review phases
 4. [COMPACT: task, worktree, step]

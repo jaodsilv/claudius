@@ -87,7 +87,7 @@ cd ../task-name-worktree
 
 ### Phase 2: Testing Phase
 
-Only if tests are required from Phase 1. Use `@tdd-approach-selection` skill to choose between
+Only if tests are required from Phase 1. Use `dotclaude:tdd-approach-selection` skill to choose between
 full cycle or individual phases approach.
 
 #### Phase 2.1: Unit Tests Design
