@@ -1,7 +1,7 @@
 ---
 description: List or create git worktrees for isolated feature development
 argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
-allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(conventional-branch)
+allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:conventional-branch)
 ---
 
 # Worktree Management
@@ -40,7 +40,7 @@ This command gathers ALL information from these sources ONLY:
 2. **Issue data**: Use `gh issue view` for title and labels
 3. **User input**: Parse $ARGUMENTS directly
 4. **User clarification**: Use AskUserQuestion for ambiguity
-5. **Branch naming**: Use Skill tool with conventional-branch
+5. **Branch naming**: Use Skill tool with gitx:conventional-branch
 
 FORBIDDEN actions:
 
@@ -100,7 +100,7 @@ Based on argument type, create appropriate worktree:
 - Run pre-flight checks (see Pre-flight Checks section)
 - Extract the number
 - Fetch issue details: `gh issue view <number> --json number,title,labels`
-- Use Skill tool with conventional-branch (see Branch Name Generation section)
+- Use Skill tool with gitx:conventional-branch (see Branch Name Generation section)
 
 **2. GitHub issue URL (e.g., `https://github.com/owner/repo/issues/123`):**
 
@@ -111,11 +111,11 @@ Based on argument type, create appropriate worktree:
 **3. Branch name (contains "/" like "feature/my-feature"):**
 
 - Use the branch name directly
-- Validate it follows conventional-branch format
+- Validate it follows gitx:conventional-branch format
 
 **4. Task description (plain text like "add user authentication"):**
 
-- Generate branch name using conventional-branch skill:
+- Generate branch name using gitx:conventional-branch skill:
   - Default to `feature/<slugified-description>`
   - Slugify: lowercase, replace spaces with hyphens, remove special chars
 
@@ -128,10 +128,10 @@ Generate branch name using ONLY the information already gathered:
 3. Do NOT read project files to determine branch type
 4. Do NOT explore codebase to improve naming
 
-Use Skill tool with conventional-branch skill. Exact invocation format:
+Use Skill tool with gitx:conventional-branch skill. Exact invocation format:
 
 ```text
-Skill(conventional-branch) with args:
+Skill(gitx:conventional-branch) with args:
 - For issue-based: "issue <number> <title> --labels <label1,label2>"
 - For task description: "feature <description>"
 ```
@@ -139,17 +139,17 @@ Skill(conventional-branch) with args:
 Example tool calls:
 
 1. Issue with bug label:
-   - Skill: `conventional-branch`
+   - Skill: `gitx:conventional-branch`
    - Args: `issue 123 fix login error --labels bug,auth`
    - Expected output: `bugfix/issue-123-fix-login-error`
 
 2. Issue with feature label:
-   - Skill: `conventional-branch`
+   - Skill: `gitx:conventional-branch`
    - Args: `issue 456 add dark mode --labels enhancement`
    - Expected output: `feature/issue-456-add-dark-mode`
 
 3. Task description:
-   - Skill: `conventional-branch`
+   - Skill: `gitx:conventional-branch`
    - Args: `feature add user authentication`
    - Expected output: `feature/add-user-authentication`
 
@@ -271,7 +271,7 @@ Execution (no codebase exploration):
 1. Check gh auth: `gh auth status`
 2. Fetch issue: `gh issue view 123 --json number,title,labels`
 3. Parse response (do NOT read any project files)
-4. Use Skill conventional-branch to generate branch name
+4. Use Skill gitx:conventional-branch to generate branch name
 5. Calculate worktree path
 6. **Confirm with AskUserQuestion**:
    - Question: "Create worktree with branch: `bugfix/issue-123-fix-login` at path: `../bugfix-issue-123-fix-login`?"
@@ -286,7 +286,7 @@ User: `/gitx:worktree add user authentication`
 Execution (no codebase exploration):
 
 1. Parse argument directly as task description
-2. Use Skill conventional-branch: `feature add user authentication`
+2. Use Skill gitx:conventional-branch: `feature add user authentication`
 3. Calculate worktree path
 4. **Confirm with AskUserQuestion**:
    - Question: "Create worktree with branch: `feature/add-user-authentication` at path: `../feature-add-user-authentication`?"
