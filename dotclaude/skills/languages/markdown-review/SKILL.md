@@ -1,3 +1,10 @@
+---
+name: dotclaude:markdown-review
+description: >-
+  Provides Markdown-specific review guidelines covering formatting,
+  accessibility, and documentation best practices.
+---
+
 # Markdown Review Skill
 
 This skill provides comprehensive markdown document review capabilities for Claude Code.

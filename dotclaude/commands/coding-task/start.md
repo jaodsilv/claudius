@@ -114,12 +114,12 @@ Will prompt for task description.
 
 ## Related Skills
 
-| Skill                    | Purpose                  |
-|--------------------------|--------------------------|
-| `tdd-approach-selection` | Choose TDD approach      |
-| `tdd-workflow`           | TDD principles & phases  |
-| `conventional-commits`   | Commit message format    |
-| `conventional-branch`    | Branch naming conventions|
+| Skill                             | Purpose                  |
+|-----------------------------------|--------------------------|
+| `dotclaude:tdd-approach-selection`| Choose TDD approach      |
+| `dotclaude:tdd-workflow`          | TDD principles & phases  |
+| `dotclaude:conventional-commits`  | Commit message format    |
+| `dotclaude:conventional-branch`   | Branch naming conventions|
 
 ## Related Commands
 

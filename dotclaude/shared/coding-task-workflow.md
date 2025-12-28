@@ -183,7 +183,7 @@ Follow `@tdd-workflow` skill for the complete TDD cycle:
 
 **Agent Pattern**: Write → Review → Loop (max 3-5 iterations)
 
-1. **Commit Message Agent**: Write commit message following `@conventional-commits`
+1. **Commit Message Agent**: Write commit message following `dotclaude:conventional-commits`
 2. **Review Agent**: Validate format and clarity
 3. Loop if needed
 4. **Main Agent**: Execute commit:

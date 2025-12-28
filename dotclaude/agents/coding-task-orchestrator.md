@@ -148,7 +148,7 @@ Use Task tool to launch review agent:
 
 Use Task tool for commit message agent:
 
-1. Write commit message (follow `@conventional-commits` skill)
+1. Write commit message (follow `dotclaude:conventional-commits` skill)
 2. Review commit message
 3. Execute commit:
 
@@ -210,12 +210,12 @@ git push
 
 ## Skills Used
 
-| Skill                    | Phase | Purpose                 |
-|--------------------------|-------|-------------------------|
-| `tdd-approach-selection` | 2     | Choose TDD approach     |
-| `tdd-workflow`           | 2-3   | TDD principles          |
-| `conventional-commits`   | 4     | Commit messages         |
-| `conventional-branch`    | 0     | Branch naming           |
+| Skill                             | Phase | Purpose                 |
+|-----------------------------------|-------|-------------------------|
+| `dotclaude:tdd-approach-selection`| 2     | Choose TDD approach     |
+| `dotclaude:tdd-workflow`          | 2-3   | TDD principles          |
+| `dotclaude:conventional-commits`  | 4     | Commit messages         |
+| `dotclaude:conventional-branch`   | 0     | Branch naming           |
 
 ## State Management
 

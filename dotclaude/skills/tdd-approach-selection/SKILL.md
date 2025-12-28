@@ -1,3 +1,10 @@
+---
+name: dotclaude:tdd-approach-selection
+description: >-
+  Helps select the optimal TDD approach based on context, complexity,
+  and project requirements.
+---
+
 # TDD Approach Selection
 
 ## When to Use This Skill

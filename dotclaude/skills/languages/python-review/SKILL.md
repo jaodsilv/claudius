@@ -1,3 +1,10 @@
+---
+name: dotclaude:python-review
+description: >-
+  Provides Python-specific code review guidelines covering PEP compliance,
+  type hints, testing, and Pythonic best practices.
+---
+
 # Python Code Review Skill
 
 ## Overview
