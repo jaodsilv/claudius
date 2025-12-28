@@ -1,5 +1,5 @@
 ---
-name: Roadmapping Patterns
+name: planner:roadmapping
 description: This skill should be used when the user asks to "create a roadmap", "plan project phases", "define milestones", "map out a project", or needs to structure a project into phases with deliverables.
 version: 1.0.0
 keywords:

@@ -1,5 +1,5 @@
 ---
-name: Prioritization Frameworks
+name: planner:prioritization
 description: This skill should be used when the user asks to "prioritize issues", "rank features", "apply RICE scoring", "use MoSCoW prioritization", "create a priority matrix", or needs to systematically compare and rank items.
 version: 1.0.0
 keywords:
