@@ -62,7 +62,7 @@ If `-c <commit>` or `--commit <commit>` flag used:
    - Narrative summary: A cohesive paragraph summarizing all changes holistically
    - Followed by: Commit list for reference (bullet points of each commit)
 5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: First 200 characters of generated summary
+   - Show preview: Full generated summary
    - Question: "Post this commit summary to PR #<number>?"
    - Header: "Confirm"
    - Options:
@@ -76,7 +76,7 @@ If `-sc <commit>` or `--single-commit <commit>` flag used:
 3. Get the actual diff for the commit: `git show --no-stat <commit>`
 4. Generate summary focusing on that specific commit's changes
 5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: First 200 characters of generated summary
+   - Show preview: Full generated summary
    - Question: "Post this commit summary to PR #<number>?"
    - Header: "Confirm"
    - Options:
@@ -140,7 +140,7 @@ If "Post last response" (or `--last` flag used):
    - Note: 🟢 = most recent, 🔵 = older responses
 
 4. **Preview confirmation**: After selection, use AskUserQuestion:
-   - Show preview: First 200 characters of selected response
+   - Show preview: Full selected response
    - Question: "Post this response to PR #<number>?"
    - Header: "Confirm"
    - Options:
