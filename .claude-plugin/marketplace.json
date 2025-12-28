@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jaodsilv-claudius-marketplace",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Personal productivity marketplace: TDD workflows, job hunting automation, and curated community development tools",
   "owner": {
     "name": "João da Silva",
@@ -29,7 +29,7 @@
       "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components. Requires plugin-dev@claude-plugins-official",
       "source": "./cc",
       "category": "development-workflow",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "keywords": [
         "meta-tools",
         "plugin-development",
