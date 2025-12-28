@@ -258,6 +258,19 @@ For each version read (`$root_package_version`, `$marketplace_version`, `$market
 **Note**: Pre-release suffixes (e.g., `-beta.1`) are stripped before version comparison and bump
 calculation. The new version will not include the pre-release suffix.
 
+If any version contains a pre-release suffix:
+
+```text
+AskUserQuestion:
+  Question: "Version '<version>' has pre-release suffix '<suffix>'. The bump will produce a release version (e.g., 1.0.0-beta.1 → 1.0.1). Continue?"
+  Header: "Pre-release"
+  Options:
+  1. "Yes, proceed with release version"
+  2. "Cancel and handle manually"
+```
+
+If "Cancel" selected: Exit with message "Version bump cancelled due to pre-release version."
+
 ### Version Sync Validation
 
 For each affected plugin, compare:
@@ -356,10 +369,16 @@ If any edit fails:
 
 1. Report which file failed and the error message
 2. List files already modified: `$successful_edits`
-3. Provide recovery command:
+3. Provide recovery command using all paths from `$successful_edits`:
 
    ```bash
-   git checkout -- ./package.json ./.claude-plugin/marketplace.json ./<source1>/.claude-plugin/plugin.json ...
+   git checkout -- $successful_edits
+   ```
+
+   Example output (with actual paths from tracking list):
+
+   ```bash
+   git checkout -- ./package.json ./.claude-plugin/marketplace.json ./cc/.claude-plugin/plugin.json
    ```
 
 4. Exit with error
@@ -391,10 +410,7 @@ Display comprehensive summary:
 | <plugin2> | X.Y.Z | X.Y.Z' |
 
 ### Files Modified
-1. ./package.json
-2. ./.claude-plugin/marketplace.json
-3. ./<source1>/.claude-plugin/plugin.json
-4. ./<source2>/.claude-plugin/plugin.json
+[List all paths from $successful_edits]
 
 ### Next Steps
 1. Review changes: `git diff`
