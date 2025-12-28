@@ -1,7 +1,7 @@
 ---
 description: Comment on a pull request
-argument-hint: "[PR] [comment | -l | --last]"
-allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion
+argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit>]"
+allowed-tools: Bash(gh pr:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
 ---
 
 # Comment on Pull Request
@@ -14,13 +14,15 @@ From $ARGUMENTS, extract:
 - PR number (optional): First numeric argument
 - Comment text (optional): Remaining text after PR number
 - `--last` or `-l` flag: If present, triggers last response flow
+- `-c` or `--commit` flag with value: If present, triggers commit-since summary flow
+- `-sc` or `--single-commit` flag with value: If present, triggers single-commit summary flow
 
 ## Infer PR Number
 
 If no PR number provided:
 
 1. Get current branch: !`git branch --show-current`
-2. Find PR for branch: `gh pr view --json number,title 2>/dev/null`
+2. Find PR for branch: `gh pr view --json number,title`
 
 If PR found:
 - Use that PR number
@@ -49,6 +51,38 @@ If "Summarize recent changes":
 - Get commits since PR creation
 - Get changed files summary
 - Generate summary of recent work
+
+### Commit-based summaries
+
+If `-c <commit>` or `--commit <commit>` flag used:
+1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
+2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
+3. Get changed files summary: `git diff --stat <commit>..HEAD`
+4. Generate summary in "Both combined" format:
+   - Narrative summary: A cohesive paragraph summarizing all changes holistically
+   - Followed by: Commit list for reference (bullet points of each commit)
+5. **Preview confirmation**: Use AskUserQuestion:
+   - Show preview: First 200 characters of generated summary
+   - Question: "Post this commit summary to PR #<number>?"
+   - Header: "Confirm"
+   - Options:
+     1. "✅ Post this summary" - Proceed to validation
+     2. "❌ Cancel" - Abort posting
+6. Store generated summary in `$comment` variable and proceed to validation
+
+If `-sc <commit>` or `--single-commit <commit>` flag used:
+1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
+2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
+3. Get the actual diff for the commit: `git show --no-stat <commit>`
+4. Generate summary focusing on that specific commit's changes
+5. **Preview confirmation**: Use AskUserQuestion:
+   - Show preview: First 200 characters of generated summary
+   - Question: "Post this commit summary to PR #<number>?"
+   - Header: "Confirm"
+   - Options:
+     1. "✅ Post this summary" - Proceed to validation
+     2. "❌ Cancel" - Abort posting
+6. Store generated summary in `$comment` variable and proceed to validation
 
 If "Request review":
 Template:
@@ -161,3 +195,5 @@ Show the posted comment:
 5. gh command failure: Report the error message and stop execution.
 6. No valid responses (--last flag): Report error and suggest using a different comment option.
 7. First message in conversation (--last flag): Report error and suggest using a different comment option.
+8. Invalid commit hash: Report "Commit '<hash>' not found in repository. Please verify the commit hash."
+9. Commit not in history: Report "Commit '<hash>' exists but is not in current branch's history."
