@@ -90,10 +90,11 @@ If "Post last response" (or `--last` flag used):
      - If title > 80 chars: Use first 77 chars + "..."
 
 2. **Handle edge cases**:
-   - **Fewer than 4 valid responses**: Show only available valid responses
+   - **1-3 valid responses**: Show all available valid responses (adjust options list dynamically)
    - **No valid responses found**: Error: "No valid Claude responses found in current conversation
      (responses must have at least 4 lines). Cannot use --last flag."
-   - **First message in thread**: Error: "This is the first message in the conversation. No previous responses to post."
+   - **First message in thread**: Error: "This is the first message in the conversation.
+     No previous responses to post."
 
 3. **Present selection**: Use AskUserQuestion:
    - Question: "Which response would you like to post to PR #<number>?"
@@ -122,7 +123,7 @@ Before posting, validate the comment:
 
 1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
    - Report error: "Cannot post empty comment"
-   - Fall back to Error Handling #2
+   - Return to "Get Comment Text" section to request comment text
 
 2. **Size check**: Check comment length:
    - If > 60,000 characters:
@@ -140,8 +141,10 @@ Before posting, validate the comment:
 
 ## Post Comment
 
-Post the comment:
-- `gh pr comment <number> --body "$comment"`
+Post the comment using stdin to avoid shell escaping issues:
+- `echo "$comment" | gh pr comment <number> --body-file -`
+
+If the command fails, report the error and stop execution.
 
 ## Confirmation
 
@@ -153,6 +156,9 @@ Show the posted comment:
 ## Error Handling
 
 1. PR not found: Report error, suggest checking PR number.
-2. Empty comment: Request comment text.
+2. Empty comment: Request comment text via "Get Comment Text" section.
 3. Permission denied: Check repository access.
 4. gh not authenticated: Guide to `gh auth login`.
+5. gh command failure: Report the error message and stop execution.
+6. No valid responses (--last flag): Report error and suggest using a different comment option.
+7. First message in conversation (--last flag): Report error and suggest using a different comment option.
