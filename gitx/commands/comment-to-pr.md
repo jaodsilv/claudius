@@ -91,7 +91,8 @@ If "Post last response" (or `--last` flag used):
 
 2. **Handle edge cases**:
    - **Fewer than 4 valid responses**: Show only available valid responses
-   - **No valid responses found**: Error: "No valid Claude responses found in current conversation (responses must have at least 4 lines). Cannot use --last flag."
+   - **No valid responses found**: Error: "No valid Claude responses found in current conversation
+     (responses must have at least 4 lines). Cannot use --last flag."
    - **First message in thread**: Error: "This is the first message in the conversation. No previous responses to post."
 
 3. **Present selection**: Use AskUserQuestion:
