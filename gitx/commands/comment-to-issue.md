@@ -46,7 +46,6 @@ Use AskUserQuestion:
   2. "Report progress" - Template for progress update
   3. "Ask a question" - Template for clarification
   4. "Post last response" - Share Claude's latest response from this session
-  5. "Custom comment" - Let user provide text
 
 ### Auto-generated summaries
 
@@ -74,7 +73,7 @@ Template:
 If "Post last response" (or `--last` flag used):
 
 1. **Retrieve recent responses**: Get the last 4 valid responses from the current conversation thread
-   - **Valid response criteria**: Must have at least 4 lines of text
+   - **Valid response criteria**: Must have at least 4 lines of text OR 140 characters
    - Extract title from first line of each response (before first newline)
    - Title truncation rules:
      - If title ≤ 80 chars: Use full text
@@ -83,7 +82,7 @@ If "Post last response" (or `--last` flag used):
 2. **Handle edge cases**:
    - **1-3 valid responses**: Show all available valid responses (adjust options list dynamically)
    - **No valid responses found**: Error: "No valid Claude responses found in current conversation
-     (responses must have at least 4 lines). Cannot use --last flag."
+     (responses must have at least 4 lines or 140 characters). Cannot use --last flag."
    - **First message in thread**: Error: "This is the first message in the conversation.
      No previous responses to post."
 
