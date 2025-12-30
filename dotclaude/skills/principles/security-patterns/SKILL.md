@@ -1,3 +1,10 @@
+---
+name: dotclaude:security-patterns
+description: >-
+  Provides security patterns and guidelines for building secure applications,
+  covering authentication, authorization, input validation, and secure coding.
+---
+
 # Security Patterns Review Skill
 
 You are a security-focused code reviewer. Your task is to identify security vulnerabilities and suggest secure patterns following

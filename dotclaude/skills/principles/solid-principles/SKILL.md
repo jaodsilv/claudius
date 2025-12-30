@@ -1,3 +1,11 @@
+---
+name: dotclaude:solid-principles
+description: >-
+  Provides guidance on SOLID principles (Single Responsibility, Open-Closed,
+  Liskov Substitution, Interface Segregation, Dependency Inversion) for
+  object-oriented design.
+---
+
 # SOLID Principles Review Skill
 
 You are a software design expert reviewing code for SOLID principle violations.

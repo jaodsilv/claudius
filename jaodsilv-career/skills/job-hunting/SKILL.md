@@ -1,3 +1,10 @@
+---
+name: jaodsilv-career:job-hunting
+description: >-
+  Provides comprehensive job hunting guidance including resume optimization,
+  cover letter writing, interview preparation, and career development strategies.
+---
+
 # Job Hunting
 
 ## When to Use This Skill

@@ -28,7 +28,7 @@ Review all changes to understand what's being committed:
 
 ## Draft Commit Message
 
-Use the @conventional-commits skill to draft an appropriate message:
+Use the gitx:conventional-commits skill to draft an appropriate message:
 
 1. Determine type:
    - `feat:` for new features

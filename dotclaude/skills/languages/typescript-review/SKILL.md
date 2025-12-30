@@ -1,3 +1,10 @@
+---
+name: dotclaude:typescript-review
+description: >-
+  Provides TypeScript-specific code review guidelines covering type safety,
+  generics, strict mode, and modern TypeScript best practices.
+---
+
 # TypeScript/JavaScript Code Review Skill
 
 ## Overview

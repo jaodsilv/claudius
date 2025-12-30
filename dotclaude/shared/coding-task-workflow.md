@@ -62,7 +62,7 @@ Create a new agent for the task using the Task tool to evaluate the need for tes
 
 ### Phase 2: TDD Approach Selection
 
-Based on task complexity, choose the appropriate TDD approach using `@tdd-approach-selection` skill.
+Based on task complexity, choose the appropriate TDD approach using `dotclaude:tdd-approach-selection` skill.
 
 #### When to use Full Cycle (Phase 2A)
 
@@ -87,7 +87,7 @@ Use for:
 
 ### Phase 2A: Full Cycle Approach (Recommended for most tasks)
 
-Follow `@tdd-workflow` skill for the complete TDD cycle:
+Follow `dotclaude:tdd-workflow` skill for the complete TDD cycle:
 
 1. Execute complete RED-GREEN-REFACTOR cycle:
    - Test specification and design
@@ -183,7 +183,7 @@ Follow `@tdd-workflow` skill for the complete TDD cycle:
 
 **Agent Pattern**: Write → Review → Loop (max 3-5 iterations)
 
-1. **Commit Message Agent**: Write commit message following `@conventional-commits`
+1. **Commit Message Agent**: Write commit message following `dotclaude:conventional-commits`
 2. **Review Agent**: Validate format and clarity
 3. Loop if needed
 4. **Main Agent**: Execute commit:

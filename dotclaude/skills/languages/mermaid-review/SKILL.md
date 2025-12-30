@@ -1,3 +1,10 @@
+---
+name: dotclaude:mermaid-review
+description: >-
+  Provides Mermaid diagram review guidelines covering syntax, clarity,
+  and diagram best practices for technical documentation.
+---
+
 # Mermaid Diagram Review Skill
 
 Review Mermaid diagrams for syntax validity, clarity, consistency, and common issues.

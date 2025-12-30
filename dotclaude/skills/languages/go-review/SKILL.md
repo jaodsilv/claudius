@@ -1,3 +1,10 @@
+---
+name: dotclaude:go-review
+description: >-
+  Provides Go-specific code review guidelines covering idiomatic patterns,
+  error handling, concurrency, and standard library best practices.
+---
+
 # Go Code Review Skill
 
 ## Overview

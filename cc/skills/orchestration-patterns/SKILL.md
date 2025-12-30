@@ -1,5 +1,5 @@
 ---
-name: Orchestration Patterns
+name: cc:orchestration-patterns
 description: >-
   This skill should be used when designing "orchestration architectures",
   "multi-agent workflows", "agent coordination", "workflow patterns",

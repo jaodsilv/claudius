@@ -1,3 +1,10 @@
+---
+name: dotclaude:tdd-approach-selection
+description: >-
+  Helps select the optimal TDD approach based on context, complexity,
+  and project requirements.
+---
+
 # TDD Approach Selection
 
 ## When to Use This Skill
@@ -117,7 +124,7 @@ When using full cycle, the workflow simplifies to:
 ```text
 Phase 0: Initial Setup (git worktree)
 Phase 1: Test Requirement Evaluation
-Phase 2A: Full TDD Cycle (follow @tdd-workflow skill)
+Phase 2A: Full TDD Cycle (follow `dotclaude:tdd-workflow` skill)
 Phase 3: Design Alignment Check
 Phase 4-7: Commit, PR, Close
 ```

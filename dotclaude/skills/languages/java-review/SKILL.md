@@ -1,3 +1,10 @@
+---
+name: dotclaude:java-review
+description: >-
+  Provides Java-specific code review guidelines covering design patterns,
+  exception handling, streams, and enterprise best practices.
+---
+
 # Java Code Review Skill
 
 ## Overview

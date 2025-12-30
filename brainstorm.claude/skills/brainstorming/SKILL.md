@@ -1,3 +1,10 @@
+---
+name: brainstorm:brainstorming
+description: >-
+  Provides a systematic approach to requirements discovery through Socratic dialogue
+  and multi-agent analysis, transforming ambiguous ideas into actionable specifications.
+---
+
 # Brainstorming Skill
 
 ## When to Use This Skill

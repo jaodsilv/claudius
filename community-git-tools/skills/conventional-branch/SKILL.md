@@ -1,3 +1,10 @@
+---
+name: community-git-tools:conventional-branch
+description: >-
+  Provides structured branch naming conventions for Git that makes branch purposes
+  immediately clear, enables CI/CD automation, and improves team collaboration.
+---
+
 # Conventional Branch
 
 ## When to Use This Skill

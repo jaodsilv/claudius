@@ -1,3 +1,10 @@
+---
+name: tdd-pro:code-quality
+description: >-
+  Provides code quality guidelines and best practices for maintaining
+  high-quality, maintainable code in test-driven development workflows.
+---
+
 # Code Quality
 
 ## When to Use This Skill

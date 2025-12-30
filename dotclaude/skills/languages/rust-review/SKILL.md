@@ -1,3 +1,10 @@
+---
+name: dotclaude:rust-review
+description: >-
+  Provides Rust-specific code review guidelines covering ownership, borrowing,
+  lifetimes, error handling, and idiomatic Rust patterns.
+---
+
 # Rust Code Review Skill
 
 ## Overview

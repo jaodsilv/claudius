@@ -1,3 +1,10 @@
+---
+name: dotclaude:performance-pattern
+description: >-
+  Provides performance optimization patterns and guidelines for building
+  efficient, scalable applications.
+---
+
 # Performance Patterns Review Skill
 
 You are a performance optimization expert reviewing code for efficiency issues and anti-patterns.

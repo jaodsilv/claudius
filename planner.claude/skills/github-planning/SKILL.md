@@ -1,18 +1,6 @@
 ---
-name: GitHub Planning Integration
+name: planner:github-planning
 description: This skill should be used when the user asks to "analyze GitHub issues", "fetch issues for planning", "map issue dependencies", "integrate with GitHub projects", or needs to work with GitHub issues for prioritization and roadmapping.
-version: 1.0.0
-keywords:
-  - github
-  - issues
-  - dependencies
-  - labels
-  - milestones
-  - project-planning
-  - gh-cli
-  - issue-analysis
-  - dependency-graph
-  - mermaid
 ---
 
 # GitHub Planning Integration
