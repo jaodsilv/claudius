@@ -4,37 +4,92 @@
 [![Conventional Branch](https://img.shields.io/badge/Conventional%20Branch-1.0.0-blue)](https://github.com/conventional-branch/conventional-branch)
 [![Code License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jaodsilv/claudius?tab=MIT-1-ov-file)
 
-# claudius 🤖
+# claudius
 
-My custom base config for my personal projects, including a very basic `CLAUDE.md` (named `CLAUDE.base.md`, the `CLAUDE.md` here is
-actually the `CLAUDE.md` of this repo), sub agents, custom slash commands and workflows
+Personal Claude Code configuration repository with a comprehensive plugin ecosystem containing 60+ agents, 40+ commands, and 30+ skills.
 
 ## Repository Structure
 
-This repository is organized into specialized Claude Code configuration directories:
+### Core Plugins
 
-### dotclaude/
+#### dotclaude/
 
 General-purpose Claude Code configurations mounted as `~/.claude`.
 
-### job-hunting.claude/
+1. 5 agents (coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-reviewer, walkthrough-generator)
+2. 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
+3. 19 skills (code quality, conventional standards, language reviews, principles, TDD)
+4. 7 shared reference documents
 
-Job hunting specific configurations including:
+#### gitx/
 
-1. Cover letter evaluation agents
-2. Resume tailoring tools
-3. Job search automation commands
-4. Interview preparation workflows
+Extended Git/GitHub workflow plugin with multi-agent orchestration.
 
-### personal-projects.claude/
+1. 14 agents in 4 groups (conflict-resolver, fix-issue, pr-create, respond)
+2. 14 commands (worktree, fix-issue, pr, respond, merge, rebase, etc.)
+3. 2 skills (conventional-commits, conventional-branch)
 
-Placeholder for personal project configurations.
+#### cc/
 
-### learning.claude/
+Meta-toolkit for creating and improving Claude Code plugin components.
 
-Placeholder for learning project configurations.
+1. 13 agents (creators, improvers, architect, workflow)
+2. 11 commands (create-*, improve-*, bump-version)
+3. 2 skills (improvement-workflow, orchestration-patterns)
 
-### external-resources/ (via data repository)
+#### planner.claude/
+
+Strategic planning with roadmapping, prioritization, and deep ideation.
+
+1. 9 agents for planning workflows
+2. 9 commands (roadmap, prioritize, review-*, ideas)
+3. Multi-agent "Ultrathink" ideation with Opus extended thinking
+
+#### brainstorm.claude/
+
+Multi-agent requirements discovery through Socratic dialogue.
+
+1. 6 agents (facilitator, domain-explorer, technical-analyst, constraint-analyst, requirements-synthesizer, specification-writer)
+2. 3 commands (start, continue, export)
+
+### Specialized Plugins
+
+#### doc-understanding.claude/
+
+Documentation downloading, conversion, and processing.
+
+1. 4 agents (downloader, batch-downloader, converter, conversion-verifier)
+2. 1 command (/docs:download)
+
+#### job-hunting.claude/
+
+Job hunting workflow configurations.
+
+1. 18 agents (14 cover letter evaluators + 4 workflow agents)
+2. 4 commands (overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2)
+3. 1 skill (job-hunting)
+
+### Placeholder Plugins
+
+1. **personal-projects.claude/** - Personal project configurations (placeholder)
+2. **learning.claude/** - Learning project configurations (placeholder)
+
+### Marketplace Plugins
+
+1. **jaodsilv-career/** - Career development skill (593 lines)
+2. **marketplace-curator/** - Marketplace curation tools
+3. **tdd-pro/** - Professional TDD workflow
+
+### Community Plugins (Deprecated)
+
+These directories are scheduled for removal or consolidation:
+
+1. **community-bundle/** - Meta plugin for all community collections
+2. **community-devops/** - CI/CD & Infrastructure
+3. **community-git-tools/** - Git workflow skills
+4. **community-testing/** - Testing & QA skills
+
+### External Resources (via data repository)
 
 Git submodules containing community resources are stored in the private `claudius-data` repository
 and accessible via the `data/external-resources/` junction link:
@@ -48,16 +103,17 @@ and accessible via the `data/external-resources/` junction link:
 
 **Note**: Submodules are automatically updated weekly via GitHub Actions.
 
-### .claude-plugin/
+### Supporting Directories
 
-Claude Code marketplace with 14 curated plugin collections.
-
-See [Marketplace Documentation](#claude-code-marketplace) below for details.
+1. **.claude/** - Project-specific PR reviewers (8 agents)
+2. **curation/** - Marketplace curation analysis and reports
+3. **config/** - Markdownlint configurations
+4. **scripts/** - Generate docs and validate plugins
+5. **docs/** - Documentation
 
 ## Claude Code Marketplace
 
-This repository provides a comprehensive curated marketplace of Claude Code plugins,
-combining original tools with best-of-breed selections from across the community ecosystem.
+This repository provides a curated marketplace of Claude Code plugins.
 
 ### Installation
 
@@ -75,8 +131,6 @@ Then install any plugin:
 
 ### Plugin Catalog
 
-### 14 plugins | 100+ tools | 7 sources curated
-
 #### Original Plugins (3)
 
 1. **tdd-pro** - Professional TDD workflow
@@ -85,194 +139,108 @@ Then install any plugin:
    - Code quality and testing automation
    - Keywords: `tdd`, `testing`, `workflow`, `automation`
 
-2. **docs-automation** - Documentation automation pipeline
+2. **doc-understanding** - Documentation automation pipeline
    - Batch documentation download and conversion
    - Multi-agent coordination (4 agents)
    - Format verification and quality checks
    - Keywords: `documentation`, `download`, `conversion`, `automation`
 
-3. **job-hunting-pro** - Career development automation
+3. **job-hunting** - Career development automation
    - Cover letter evaluation and improvement (14 agents)
    - Interview preparation and company research
    - Resume tailoring and ATS optimization
    - Keywords: `job-hunting`, `career`, `cover-letter`, `interview`
 
-#### Community Collections (6) - 86+ tools
+#### Featured Plugins (4)
 
-1. **community-testing** (12 items)
-   - TDD workflow and code quality skills
-   - Test automation and QA agents
-   - SuperClaude test and analyze commands
-   - Keywords: `testing`, `qa`, `tdd`, `automation`
+1. **gitx** - Extended Git/GitHub workflows
+   - Multi-agent orchestration for PR creation and response
+   - Issue-driven development with worktree management
+   - Conflict resolution with AI suggestions
+   - Keywords: `git`, `github`, `pr`, `workflow`
 
-2. **community-documentation** (13 items)
-   - Batch docs pipeline (unique)
-   - PRD, Roadmap, JTBD frameworks
-   - API documentation and changelog tools
-   - Keywords: `documentation`, `docs`, `prd`, `api-docs`
+2. **cc** - Plugin development meta-toolkit
+   - Create commands, skills, orchestrations
+   - Interactive improvement workflows
+   - Multi-agent orchestration architecture
+   - Keywords: `plugin`, `development`, `meta`, `toolkit`
 
-3. **community-devops** (10 items)
-   - CI/CD automation (release, husky, act)
-   - Kubernetes and cloud architecture agents
-   - Build and deployment tools
-   - Keywords: `devops`, `ci-cd`, `kubernetes`, `cloud`
+3. **planner** - Strategic planning
+   - Project roadmapping with phases and milestones
+   - Issue prioritization (RICE, MoSCoW frameworks)
+   - Deep ideation with Opus extended thinking
+   - Keywords: `planning`, `roadmap`, `prioritization`, `ideation`
 
-4. **community-prompts** (8 items)
-   - Prompt-to-pipeline architect (unique)
-   - Agent orchestration and evolution
-   - 100+ prompt examples from community
-   - Keywords: `prompts`, `ai`, `llm`, `agents`
+4. **brainstorm** - Requirements discovery
+   - Multi-agent Socratic dialogue
+   - Domain exploration and constraint analysis
+   - Professional specification generation
+   - Keywords: `requirements`, `brainstorm`, `specification`, `discovery`
 
-5. **community-git-tools** (9 items)
-   - Conventional commits and branch skills
-   - PR workflows and automation
-   - Git worktree and branch management
-   - Keywords: `git`, `version-control`, `commits`, `pr`
+#### Community Collections (Deprecated)
 
-6. **community-best-of** (25 items)
-   - Top-rated tools across all categories
-   - Unique innovations highlighted
-   - Cross-category best practices
-   - Keywords: `best-practices`, `curated`, `top-rated`
+These collections are scheduled for removal or consolidation:
 
-#### jaodsilv Featured Collections (3)
-
-1. **jaodsilv-workflow** (8 items)
-    - Complete development workflow system
-    - TDD, conventional standards, multi-agent
-    - Agent evolution and curation tools
-    - Keywords: `tdd`, `workflow`, `conventional`, `multi-agent`
-
-2. **jaodsilv-docs** (5 items)
-    - **UNIQUE** batch documentation pipeline
-    - Download, convert, verify automation
-    - Multi-agent coordination
-    - Keywords: `documentation`, `batch`, `automation`, `pipeline`
-
-3. **jaodsilv-career** (1 skill - 593 lines)
-    - **UNIQUE** - Only career tool in ecosystem
-    - Cover letters, resumes, interviews
-    - Negotiation and offer evaluation
-    - Keywords: `career`, `job-hunting`, `unique`
+1. **community-testing** - TDD workflow and code quality skills
+2. **community-documentation** - PRD, Roadmap, JTBD frameworks
+3. **community-devops** - CI/CD automation, Kubernetes agents
+4. **community-prompts** - Agent orchestration tools
+5. **community-git-tools** - Conventional commits and PR workflows
+6. **community-best-of** - Top-rated tools across categories
 
 #### Meta-Plugins (2)
 
 1. **marketplace-curator**
-    - Tools for curating your own marketplace
-    - Discovery agent for 13+ sources
-    - Analysis and categorization tools
-    - Templates and documentation
-    - Keywords: `curation`, `marketplace`, `discovery`, `meta`
+   - Tools for curating your own marketplace
+   - Discovery agent for 13+ sources
+   - Analysis and categorization tools
 
-2. **community-bundle**
-    - Single-command install of all 6 community collections
-    - 86+ tools across all categories
-    - Easy ecosystem access
-    - Keywords: `bundle`, `community`, `meta`, `collection`
+2. **community-bundle** (Deprecated)
+   - Single-command install of all community collections
 
 ### Quick Start
 
-**Install Everything**:
+**Install Featured Plugins**:
 
 ```bash
 /plugin marketplace add jaodsilv/claudius
-/plugin install community-bundle  # All 6 community collections
+/plugin install gitx          # Git/GitHub workflows
+/plugin install cc            # Plugin development toolkit
+/plugin install planner       # Strategic planning
+/plugin install brainstorm    # Requirements discovery
 ```
 
-**Install by Category**:
+**Install Original Plugins**:
 
 ```bash
-/plugin install community-testing      # Testing & QA tools
-/plugin install community-git-tools    # Git workflows
-/plugin install community-devops       # CI/CD & infrastructure
-```
-
-**Install Featured Collections**:
-
-```bash
-/plugin install jaodsilv-workflow  # Complete TDD workflow
-/plugin install jaodsilv-career    # Career development (UNIQUE)
+/plugin install tdd-pro           # TDD workflow
+/plugin install job-hunting       # Career development
+/plugin install doc-understanding # Documentation automation
 ```
 
 ### Unique Differentiators
 
-1. **TDD Workflow** (jaodsilv-workflow)
-   - 7-phase process with multi-agent coordination
-   - Design → Review loops at each step
-   - Context compaction strategy
-   - Quality gates throughout
+1. **Multi-Agent Orchestration** (gitx, planner, brainstorm)
+   - Parallel analysis with specialized agents
+   - Diverge-Challenge-Synthesize patterns
+   - Quality gates and user approval workflows
 
-2. **Batch Docs Pipeline** (jaodsilv-docs)
-   - Only batch documentation automation in ecosystem
-   - Download → Convert → Verify pipeline
-   - Multi-format support
-   - 4 specialized agents
+2. **Extended Thinking** (planner)
+   - Opus "Ultrathink" for deep ideation
+   - Multi-round refinement sessions
+   - Cross-domain innovation exploration
 
-3. **Career Development** (jaodsilv-career)
-   - **ONLY career/job-hunting tool** across 205+ items discovered
+3. **Career Development** (job-hunting)
+   - **ONLY career/job-hunting tool** in the ecosystem
    - 593 lines of comprehensive guidance
    - Cover letters, resumes, interviews, negotiation
-   - Auto-invoked for career tasks
 
-4. **Marketplace Curation** (marketplace-curator)
-   - Create your own curated marketplace
-   - Automated discovery and analysis
-   - Templates and methodology included
+4. **Plugin Development** (cc)
+   - Meta-toolkit for creating plugins
+   - Interactive improvement workflows
+   - Orchestration architecture design
 
-### Curation Methodology
-
-This marketplace was built through systematic discovery and curation:
-
-1. **Discovery**: Analyzed 205+ items from 7 sources (1 local + 6 submodules)
-2. **Categorization**: 10 standard categories with quality scoring (1-5 stars)
-3. **Deduplication**: Identified overlaps and selected best-of-breed
-4. **Collection Assembly**: Curated 6 community + 3 featured collections
-
-**Quality Distribution**:
-
-- 88% production-ready (5 stars)
-- 10% adequate (3 stars)
-- 2% high quality (4 stars)
-
-**Documentation**:
-
-- `curation/analysis/discovery-summary.md` - Discovery statistics and findings
-- `curation/analysis/deduplication-analysis.md` - Overlap analysis and selections
-- `curation/inventory/` - Structured JSON inventories for all sources
-
-**Future Work**:
-
-- 6 external marketplaces identified for future curation
-- Ongoing community contributions welcome
-- Quarterly maintenance and updates planned
-
-### Contributing to Marketplace
-
-Want to add your tools to this marketplace?
-
-1. Create a plugin manifest (`plugin.json`) following our templates
-2. Submit PR with your plugin in `.claude-plugin/plugins/[your-plugin]/`
-3. Include quality documentation and examples
-4. Follow conventional standards for commits/branches
-
-See `marketplace-curator` plugin for complete curation toolkit.
-
-## Motivation for Restructuring
-
-The monolithic `dotclaude/` directory was causing:
-
-1. Slow Claude Code startup
-2. Missing slash commands in some sessions
-3. Missing agents in some sessions
-
-Splitting into specialized directories:
-
-1. Improves startup performance
-2. Reduces context loading
-3. Makes configurations more maintainable
-4. Allows for workflow-specific customization
-
-## How I suggest you to use this
+## How to Use This Repository
 
 ### Option 1: Marketplace Installation (Recommended)
 
@@ -293,12 +261,10 @@ The easiest way to use this repository is through the Claude Code marketplace:
 3. **Install plugins**:
 
    ```bash
-   /plugin install community-bundle     # All community collections
-   /plugin install jaodsilv-workflow    # TDD workflow
-   /plugin install jaodsilv-career      # Job hunting tools
+   /plugin install gitx              # Git workflows
+   /plugin install planner           # Strategic planning
+   /plugin install job-hunting       # Career tools
    ```
-
-See the [Quick Start](#quick-start) section above for more installation options.
 
 ### Option 2: Direct Repository Usage
 
@@ -335,6 +301,21 @@ If you prefer to fork and customize:
         1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
         2. Create symlink: `ln -s /path/to/your/src/folder/claudius/dotclaude ~/.claude`
 
+## Motivation for Plugin Architecture
+
+The monolithic `dotclaude/` directory was causing:
+
+1. Slow Claude Code startup
+2. Missing slash commands in some sessions
+3. Missing agents in some sessions
+
+Splitting into specialized directories:
+
+1. Improves startup performance
+2. Reduces context loading
+3. Makes configurations more maintainable
+4. Allows for workflow-specific customization
+
 ## Contributing
 
-If you feel you have anything relevant to share, commit and create a PR, I'll be happy to include anything I find useful ❤
+If you feel you have anything relevant to share, commit and create a PR, I'll be happy to include anything I find useful.
