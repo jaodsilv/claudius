@@ -112,18 +112,26 @@ If `-r` or `--review` flag used:
 
 **If no review text provided (flag used alone):**
 1. Fetch latest review from PR:
+
+
    ```bash
    gh pr view <number> --json latestReviews --jq '.latestReviews | map(select(.state != "APPROVED" and .state != "DISMISSED")) | sort_by(.submittedAt) | last'
+
    ```
+
 2. If review found:
    - Extract review body and author
    - Show: "Found latest review from @<author>"
    - Set `$review_text` to review body
+
 3. If no pending reviews found:
    - Check for unresolved review comments (inline comments):
+
+
      ```bash
      gh pr view <number> --json reviewThreads --jq '[.reviewThreads[] | select(.isResolved == false)] | last'
      ```
+
    - If found, use the last unresolved thread's comments
    - If no reviews or threads found:
      - Use AskUserQuestion: "No pending reviews found. What would you like to do?"
@@ -144,21 +152,27 @@ If `-r` or `--review` flag used:
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
 3. Get the actual diff for the commit: `git show --no-stat <commit>`
+
 4. Store in `$work_evidence` variable
 
 **If neither `-c` nor `-sc` provided:**
 1. Get recent commits on this branch (last 10):
+
+
    ```bash
    git log --oneline -10
    git diff --stat HEAD~5..HEAD
    ```
+
 2. Store in `$work_evidence` variable (may be empty if no recent work)
+
 
 #### Step 3: Generate Response
 
 Generate a structured response addressing the review points:
 
 **Output format:**
+
 ```markdown
 ## Response to Review
 
@@ -169,6 +183,7 @@ Generate a structured response addressing the review points:
 ## Work Done
 
 ### Summary
+
 [Narrative paragraph summarizing what was done to address the review]
 
 ### Changes
@@ -176,6 +191,7 @@ Generate a structured response addressing the review points:
 ```
 
 **If no `$work_evidence` available:**
+
 ```markdown
 ## Response to Review
 
