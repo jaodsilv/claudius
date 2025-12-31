@@ -1,7 +1,7 @@
 ---
 description: Full workflow: worktree + development + push for an issue
 argument-hint: "[ISSUE]"
-allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, Skill(gitx:worktree-name), TodoWrite, Write, AskUserQuestion
 ---
 
 # Fix Issue (Orchestrated)
@@ -177,6 +177,21 @@ Based on issue type from analysis:
 
 Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
+### Generate Directory Name Options
+
+Use Skill tool with gitx:worktree-name:
+
+- Input: [branch-name] (e.g., `feature/issue-123-add-user-auth`)
+- Output: List of abbreviated directory options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
+
+Use AskUserQuestion to let user select:
+
+- Question: "Select worktree directory name for branch `[branch-name]`:"
+- Header: "Directory"
+- Options: [skill output options]
+
+Store selected name for WORKTREE_PATH.
+
 ### Sync and Create Worktree
 
 ```bash
@@ -216,7 +231,8 @@ if [ "$STASHED" = true ]; then
 fi
 
 # Create worktree as sibling directory
-WORKTREE_PATH="../[branch-name]"
+# Use the abbreviated directory name selected by user (not the full branch name)
+WORKTREE_PATH="../[selected-directory-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH"
 ```
 

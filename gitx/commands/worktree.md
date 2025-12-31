@@ -1,7 +1,7 @@
 ---
 description: List or create git worktrees for isolated feature development
 argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
-allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:conventional-branch)
+allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:conventional-branch), Skill(gitx:worktree-name)
 ---
 
 # Worktree Management
@@ -41,6 +41,7 @@ This command gathers ALL information from these sources ONLY:
 3. **User input**: Parse $ARGUMENTS directly
 4. **User clarification**: Use AskUserQuestion for ambiguity
 5. **Branch naming**: Use Skill tool with gitx:conventional-branch
+6. **Directory naming**: Use Skill tool with gitx:worktree-name
 
 FORBIDDEN actions:
 
@@ -161,31 +162,50 @@ Skill output rules:
 
 ## Worktree Path
 
-Calculate worktree path as sibling directory:
+Calculate worktree path using abbreviated directory naming:
 
 1. Get repository root: `git rev-parse --show-toplevel`
 2. Get parent directory: `dirname` of root
-3. Sanitize branch name: Replace `/` with `-` for filesystem safety
-4. Final path: `<parent>/<sanitized-branch-name>`
+3. Use Skill tool with gitx:worktree-name to generate directory name options:
+   - Input: branch name (e.g., `feature/issue-123-add-user-auth`)
+   - Output: list of options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
+4. Present options to user via AskUserQuestion (see Directory Name Selection)
+5. Final path: `<parent>/<selected-directory-name>`
 
 Example:
 
 1. Repo root: `/code/myproject`
-2. Branch: `feature/issue-123-auth`
-3. Sanitized: `feature-issue-123-auth`
-4. Worktree: `/code/feature-issue-123-auth`
+2. Branch: `feature/issue-123-add-user-auth`
+3. Skill output: `['auth', 'user-auth', 'add-user-auth']`
+4. User selects: `user-auth`
+5. Worktree: `/code/user-auth`
+
+## Directory Name Selection
+
+Use AskUserQuestion to let user choose directory name:
+
+1. Question: "Select worktree directory name for branch `<branch-name>`:"
+2. Header: "Directory"
+3. Options: [Generated options from gitx:worktree-name skill]
+   - Each option shows the abbreviated name
+   - Include "Custom name" as the last option
+4. If user selects "Custom name" (via "Other"):
+   - Ask for custom name
+   - Validate: lowercase, hyphens only, no special characters
+   - Confirm the custom name
 
 ## Confirmation
 
 Use AskUserQuestion tool with:
 
-1. Question: "Create worktree with branch: `<branch-name>` at path: `<worktree-path>`?"
-2. Options: ["Create as proposed", "Modify branch name", "Cancel"]
+1. Question: "Create worktree?\n  Branch: `<branch-name>`\n  Directory: `<parent>/<selected-directory>`"
+2. Header: "Confirm"
+3. Options: ["Create as proposed", "Change directory name", "Cancel"]
 
 Handle response:
 
 1. "Create as proposed": Continue to worktree creation
-2. "Modify branch name": Ask for new name, validate, confirm again
+2. "Change directory name": Go back to Directory Name Selection
 3. "Cancel": Exit with message "Worktree creation cancelled"
 
 ## Create Worktree
@@ -231,6 +251,8 @@ fi
 # Create worktree with new branch
 # CRITICAL: Do NOT add any start-point (like origin/main or main) after the path
 # The command MUST be exactly as shown below - no additional arguments
+# NOTE: <worktree-path> uses the abbreviated directory name selected by user
+#       (e.g., ../user-auth) NOT the full branch name
 git worktree add -b <branch-name> <worktree-path>
 ```
 
@@ -271,13 +293,17 @@ Execution (no codebase exploration):
 1. Check gh auth: `gh auth status`
 2. Fetch issue: `gh issue view 123 --json number,title,labels`
 3. Parse response (do NOT read any project files)
-4. Use Skill gitx:conventional-branch to generate branch name
-5. Calculate worktree path
-6. **Confirm with AskUserQuestion**:
-   - Question: "Create worktree with branch: `bugfix/issue-123-fix-login` at path: `../bugfix-issue-123-fix-login`?"
-   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
-7. If confirmed, create worktree: `git worktree add -b bugfix/issue-123-fix-login ../bugfix-issue-123-fix-login`
-8. Report success and STOP
+4. Use Skill gitx:conventional-branch to generate branch name → `bugfix/issue-123-fix-login`
+5. Use Skill gitx:worktree-name to generate directory options → `['login', 'fix-login']`
+6. **Ask user to select directory name**:
+   - Question: "Select worktree directory name for branch `bugfix/issue-123-fix-login`:"
+   - Options: ["login", "fix-login"]
+   - User selects: `fix-login`
+7. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree?\n  Branch: `bugfix/issue-123-fix-login`\n  Directory: `../fix-login`"
+   - Options: ["Create as proposed", "Change directory name", "Cancel"]
+8. If confirmed, create worktree: `git worktree add -b bugfix/issue-123-fix-login ../fix-login`
+9. Report success and STOP
 
 ### Example 2: Task description (no exploration)
 
@@ -286,13 +312,17 @@ User: `/gitx:worktree add user authentication`
 Execution (no codebase exploration):
 
 1. Parse argument directly as task description
-2. Use Skill gitx:conventional-branch: `feature add user authentication`
-3. Calculate worktree path
-4. **Confirm with AskUserQuestion**:
-   - Question: "Create worktree with branch: `feature/add-user-authentication` at path: `../feature-add-user-authentication`?"
-   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
-5. If confirmed, create worktree: `git worktree add -b feature/add-user-authentication ../feature-add-user-authentication`
-6. Report success and STOP
+2. Use Skill gitx:conventional-branch: → `feature/add-user-authentication`
+3. Use Skill gitx:worktree-name to generate directory options → `['authentication', 'user-authentication', 'add-user-authentication']`
+4. **Ask user to select directory name**:
+   - Question: "Select worktree directory name for branch `feature/add-user-authentication`:"
+   - Options: ["authentication", "user-authentication", "add-user-authentication"]
+   - User selects: `user-authentication`
+5. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree?\n  Branch: `feature/add-user-authentication`\n  Directory: `../user-authentication`"
+   - Options: ["Create as proposed", "Change directory name", "Cancel"]
+6. If confirmed, create worktree: `git worktree add -b feature/add-user-authentication ../user-authentication`
+7. Report success and STOP
 
 ### Example 3: Branch name (no exploration)
 
@@ -302,9 +332,13 @@ Execution (no codebase exploration):
 
 1. Detect `/` in argument - treat as branch name
 2. Validate format (lowercase, hyphens only)
-3. Calculate worktree path
-4. **Confirm with AskUserQuestion**:
-   - Question: "Create worktree with branch: `feature/my-new-feature` at path: `../feature-my-new-feature`?"
-   - Options: ["Create as proposed", "Modify branch name", "Cancel"]
-5. If confirmed, create worktree: `git worktree add -b feature/my-new-feature ../feature-my-new-feature`
-6. Report success and STOP
+3. Use Skill gitx:worktree-name to generate directory options → `['feature', 'new-feature', 'my-new-feature']`
+4. **Ask user to select directory name**:
+   - Question: "Select worktree directory name for branch `feature/my-new-feature`:"
+   - Options: ["feature", "new-feature", "my-new-feature"]
+   - User selects: `new-feature`
+5. **Confirm with AskUserQuestion**:
+   - Question: "Create worktree?\n  Branch: `feature/my-new-feature`\n  Directory: `../new-feature`"
+   - Options: ["Create as proposed", "Change directory name", "Cancel"]
+6. If confirmed, create worktree: `git worktree add -b feature/my-new-feature ../new-feature`
+7. Report success and STOP
