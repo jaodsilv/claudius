@@ -8,7 +8,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal configuration repository for Claude Code containing a comprehensive plugin ecosystem with 60+ agents, 40+ commands, and 30+ skills organized into specialized plugin directories.
+This is a personal configuration repository for Claude Code containing a comprehensive
+plugin ecosystem with 60+ agents, 40+ commands, and 30+ skills organized into
+specialized plugin directories.
 
 ## Plugin Ecosystem
 
@@ -44,7 +46,9 @@ This is a personal configuration repository for Claude Code containing a compreh
    - `fix-issue/` - 4 agents for issue-to-PR workflow
    - `pr-create/` - 3 agents for PR creation
    - `respond/` - 4 agents for PR response handling
-2. 14 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore, commit-push, next-issue, fix-issue, comment-to-issue, pr, respond, update-pr, comment-to-pr, merge-pr
+2. 14 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
+   commit-push, next-issue, fix-issue, comment-to-issue, pr, respond, update-pr,
+   comment-to-pr, merge-pr
 3. 2 skills: conventional-commits, conventional-branch
 
 **See**: `gitx/README.md` for detailed documentation
@@ -59,7 +63,9 @@ This is a personal configuration repository for Claude Code containing a compreh
    - Improver agents (6): command, agent, skill, plugin, orchestration, output-style
    - Architect agent (1): orchestration
    - Workflow agents (2): change-planner, component-writer
-2. 11 commands: create-command, create-skill, create-orchestration, create-output-style, improve-command, improve-agent, improve-skill, improve-plugin, improve-orchestration, improve-output-style, bump-version
+2. 11 commands: create-command, create-skill, create-orchestration,
+   create-output-style, improve-command, improve-agent, improve-skill,
+   improve-plugin, improve-orchestration, improve-output-style, bump-version
 3. 2 skills: improvement-workflow, orchestration-patterns
 
 **See**: `cc/README.md` for detailed documentation
@@ -70,7 +76,9 @@ This is a personal configuration repository for Claude Code containing a compreh
 **Contents**:
 
 1. 9 agents for planning workflows
-2. 9 commands: roadmap, prioritize, gather-requirements, review-plan, review-roadmap, review-prioritization, review-architecture, review-requirements, ideas
+2. 9 commands: roadmap, prioritize, gather-requirements, review-plan,
+   review-roadmap, review-prioritization, review-architecture, review-requirements,
+   ideas
 3. Multi-agent "Ultrathink" ideation with Opus extended thinking
 
 **See**: `planner.claude/README.md` for detailed documentation
@@ -105,7 +113,9 @@ This is a personal configuration repository for Claude Code containing a compreh
 **Contents**:
 
 1. 18 agents:
-   - Cover letter evaluators (14): ATS, impact, keywords, gaps, overlap, relevance, skills, tech-positioning, terminology, personalization, communication, presentation, false-assertion-cleaner, result-combiner
+   - Cover letter evaluators (14): ATS, impact, keywords, gaps, overlap,
+     relevance, skills, tech-positioning, terminology, personalization,
+     communication, presentation, false-assertion-cleaner, result-combiner
    - Job hunting workflow (4): cover-letter-improver, improver-standalone, shortener, message-parser
 2. 4 commands: overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2
 3. 1 output style: tech-cover-letter-specialist
