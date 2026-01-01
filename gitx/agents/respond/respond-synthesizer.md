@@ -1,17 +1,7 @@
 ---
 name: gitx:respond-synthesizer
-description: >
-  Use this agent to synthesize results from all respond workflow agents, combining
-  review comment analysis, CI failure analysis, and the execution plan into a unified
-  action plan with tiered priorities. This agent should be invoked as the final step
-  before presenting options to the user.
-  Examples:
-  <example>
-  Context: All analysis agents have completed their work.
-  user: "Give me the final summary of what needs to be done"
-  assistant: "I'll launch the respond-synthesizer agent to combine all analyses
-  into a unified action plan."
-  </example>
+description: >-
+  Synthesizes analysis results into actionable response plan. Invoked to combine feedback analysis into execution steps.
 model: opus
 tools: Read, Write, AskUserQuestion
 color: purple

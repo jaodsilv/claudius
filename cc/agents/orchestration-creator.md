@@ -1,34 +1,6 @@
 ---
 name: orchestration-creator
-description: Use this agent when the user needs to "create an orchestration", "build a multi-agent workflow", "implement workflow coordination", or has an architecture design to implement. Examples:
-
-<example>
-Context: User wants to create a review workflow
-user: "Create an orchestration for comprehensive code review with multiple specialized reviewers"
-assistant: "I'll use the orchestration-creator agent to create this multi-agent review workflow."
-<commentary>
-User needs multi-agent coordination created, trigger orchestration-creator.
-</commentary>
-</example>
-
-<example>
-Context: User has architecture to implement
-user: "Implement the workflow architecture we designed"
-assistant: "I'll use the orchestration-creator agent to implement the architecture."
-<commentary>
-User has design to implement, trigger orchestration-creator.
-</commentary>
-</example>
-
-<example>
-Context: User describes phased workflow
-user: "I need a workflow that does discovery, design, implementation, and review"
-assistant: "I'll use the orchestration-creator agent to create this phased workflow."
-<commentary>
-User describes multi-phase workflow, trigger orchestration-creator.
-</commentary>
-</example>
-
+description: Creates orchestration commands with phase coordination. Invoked when implementing multi-agent workflows.
 model: opus
 color: green
 tools: ["Read", "Write", "Glob", "Grep", "Skill", "Task"]
@@ -51,7 +23,7 @@ You are an expert orchestration developer specializing in multi-agent workflow i
 Load orchestration patterns skill:
 
 ```text
-Use Skill tool to load cc:orchestration-patterns
+Use Skill tool to load cc:orchestrating-agents
 ```
 
 ### Step 2: Understand Requirements

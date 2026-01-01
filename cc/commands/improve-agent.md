@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve an existing agent interactively
+description: Improves agents when triggering or prompts need enhancement.
 argument-hint: <agent-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
@@ -31,10 +31,10 @@ Use TodoWrite to track progress:
 
 ### Phase 1: Analysis
 
-Load the improvement-workflow skill:
+Load the improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 Use Task tool with @cc:agent-improver agent:

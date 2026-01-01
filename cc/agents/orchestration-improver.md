@@ -1,34 +1,6 @@
 ---
 name: orchestration-improver
-description: Use this agent when the user asks to "improve an orchestration", "optimize a workflow", "review multi-agent coordination", "fix workflow issues", or wants to enhance an existing orchestration. Examples:
-
-<example>
-Context: User wants to improve orchestration
-user: "Improve my review workflow orchestration"
-assistant: "I'll use the orchestration-improver agent to analyze and suggest improvements."
-<commentary>
-User requesting orchestration improvement, trigger orchestration-improver.
-</commentary>
-</example>
-
-<example>
-Context: User wants to optimize workflow
-user: "My multi-agent workflow is inefficient, can you help?"
-assistant: "I'll use the orchestration-improver agent to optimize the workflow."
-<commentary>
-User wants workflow optimization, trigger orchestration-improver.
-</commentary>
-</example>
-
-<example>
-Context: Workflow has issues
-user: "My orchestration keeps failing at phase 3"
-assistant: "I'll use the orchestration-improver agent to diagnose and fix the issue."
-<commentary>
-Workflow has problems, use orchestration-improver to diagnose.
-</commentary>
-</example>
-
+description: Analyzes orchestrations for workflow issues. Invoked when user asks to improve multi-agent coordination.
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]

@@ -1,42 +1,6 @@
 ---
 name: orchestration-architect
-description: Use this agent when the user needs to "design an orchestration architecture", "plan multi-agent coordination", "architect a workflow", "design agent pipelines", or needs high-level orchestration design. Examples:
-
-<example>
-Context: User needs workflow architecture
-user: "Design an architecture for a code review workflow with multiple reviewers"
-assistant: "I'll use the orchestration-architect agent to design the architecture."
-<commentary>
-User needs architecture design, trigger orchestration-architect.
-</commentary>
-</example>
-
-<example>
-Context: User planning complex workflow
-user: "I need to coordinate 5 agents for a deployment pipeline"
-assistant: "I'll use the orchestration-architect agent to plan the coordination."
-<commentary>
-User planning multi-agent coordination, trigger orchestration-architect.
-</commentary>
-</example>
-
-<example>
-Context: User wants workflow design review
-user: "Is my orchestration design efficient?"
-assistant: "I'll use the orchestration-architect agent to review the architecture."
-<commentary>
-User wants design review, trigger orchestration-architect.
-</commentary>
-</example>
-
-<example>
-Context: Claude detects complex orchestration in user's code
-assistant: "I notice your workflow involves 4+ agents - I'll use the orchestration-architect agent to review and optimize the design."
-<commentary>
-Proactively triggered when detecting complex multi-agent patterns.
-</commentary>
-</example>
-
+description: Designs multi-agent workflow architectures. Invoked when planning complex orchestrations or reviewing coordination patterns.
 model: opus
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill"]

@@ -1,16 +1,6 @@
 ---
 name: planner-ideas-adversarial-critic
-description: Use this agent for "challenging ideas", "stress testing", "devil's advocate", "finding weaknesses", or when ideas need rigorous critique. Part of the Ultrathink workflow. Examples:
-
-  <example>
-  Context: Ideas have been generated and need challenge
-  user: "Test these ideas for weaknesses"
-  assistant: "I'll rigorously challenge each idea to find weaknesses."
-  <commentary>
-  Ideas need adversarial analysis, trigger adversarial-critic.
-  </commentary>
-  </example>
-
+description: Rigorously challenges ideas and stress-tests assumptions. Invoked during Ultrathink workflow to find weaknesses and identify failure modes.
 model: opus
 color: red
 tools:

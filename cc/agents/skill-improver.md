@@ -1,34 +1,6 @@
 ---
 name: skill-improver
-description: Use this agent when the user asks to "improve a skill", "review skill quality", "reorganize skill content", "check skill structure", or wants to enhance an existing skill. Examples:
-
-<example>
-Context: User wants to improve a skill
-user: "Improve my deployment skill documentation"
-assistant: "I'll use the skill-improver agent to analyze and suggest improvements."
-<commentary>
-User requesting skill improvement, trigger skill-improver.
-</commentary>
-</example>
-
-<example>
-Context: User wants to check skill organization
-user: "Is my skill following progressive disclosure?"
-assistant: "I'll use the skill-improver agent to review the skill's organization."
-<commentary>
-User wants progressive disclosure review, trigger skill-improver.
-</commentary>
-</example>
-
-<example>
-Context: Skill not loading when expected
-user: "My skill isn't being triggered when users ask about deployment"
-assistant: "I'll use the skill-improver agent to analyze the trigger description."
-<commentary>
-Triggering issue indicates skill description needs improvement.
-</commentary>
-</example>
-
+description: Analyzes skills for progressive disclosure and triggers. Invoked when user asks to improve skill organization.
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]

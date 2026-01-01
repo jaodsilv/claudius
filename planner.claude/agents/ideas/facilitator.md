@@ -1,16 +1,6 @@
 ---
 name: planner-ideas-facilitator
-description: Use this agent for "facilitating ideation sessions", "presenting ideas to users", "gathering feedback", "orchestrating Ultrathink", or when user interaction is needed in the ideation workflow. Part of the Ultrathink workflow. Examples:
-
-  <example>
-  Context: Ideas have been synthesized
-  user: "Show me the ideas and get my input"
-  assistant: "I'll present the proposals and gather your feedback."
-  <commentary>
-  Need to present ideas and get user input, trigger facilitator.
-  </commentary>
-  </example>
-
+description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
 model: sonnet
 color: cyan
 tools:

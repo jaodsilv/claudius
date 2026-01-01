@@ -1,5 +1,5 @@
 ---
-name: gitx:worktree-name
+name: gitx:naming-worktrees
 description: >-
   Generates abbreviated worktree directory name options from branch names.
   Extracts semantic parts, removes issue numbers, and provides short options.

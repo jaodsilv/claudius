@@ -1,42 +1,6 @@
 ---
 name: change-planner
-description: Use this agent when you need to plan a sequence of changes before applying them to a plugin component. This agent analyzes selected improvements, orders them by dependency, identifies conflicts, and produces a structured change plan. Examples:
-
-<example>
-Context: User has selected multiple improvements to apply
-user: "Apply these 5 improvements to my command"
-assistant: "I'll use the change-planner agent to create an ordered change plan."
-<commentary>
-Multiple changes need ordering before application, trigger change-planner.
-</commentary>
-</example>
-
-<example>
-Context: Improvements have dependencies
-user: "Fix the frontmatter and add a new section"
-assistant: "I'll use the change-planner agent to determine the correct order."
-<commentary>
-Changes may have dependencies (frontmatter before body), trigger change-planner.
-</commentary>
-</example>
-
-<example>
-Context: Complex refactoring with multiple edits
-user: "Restructure this agent's system prompt"
-assistant: "I'll use the change-planner agent to plan the restructuring steps."
-<commentary>
-Complex changes need planning to avoid conflicts, trigger change-planner.
-</commentary>
-</example>
-
-<example>
-Context: Improvement workflow selecting changes
-assistant: "I'll use the change-planner agent to ensure these changes are applied in the correct order."
-<commentary>
-Proactively triggered during improvement workflows with multiple changes.
-</commentary>
-</example>
-
+description: Plans change sequences with dependency ordering. Invoked when multiple edits need coordination before application.
 model: sonnet
 color: cyan
 tools: ["Read", "Glob", "Grep"]

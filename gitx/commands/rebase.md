@@ -1,5 +1,5 @@
 ---
-description: Rebase current branch onto base branch (default: main)
+description: Rebases current branch onto base branch when syncing with upstream. Use for maintaining linear history on feature branches.
 argument-hint: "[--base branch]"
 allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git stash:*), Bash(git pull:*), Bash(pwd:*), Bash(cd:*), Bash(test:*), Task, Read, AskUserQuestion, TodoWrite
 ---

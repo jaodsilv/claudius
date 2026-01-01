@@ -1,5 +1,5 @@
 ---
-description: Create pull request for current branch
+description: Creates a pull request when ready to merge changes. Use for feature completion, bug fixes, or any branch ready for review.
 argument-hint: ""
 allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TodoWrite
 ---

@@ -1,25 +1,6 @@
 ---
 name: planner-architecture-reviewer
-description: Use this agent when you need to "review architecture", "evaluate technical design", "check architecture alignment", "assess system design", or need to analyze architecture decisions against goals and requirements. Examples:
-
-  <example>
-  Context: User has architecture documentation
-  user: "Does this architecture make sense for our requirements?"
-  assistant: "I'll review the architecture against your requirements and provide feedback."
-  <commentary>
-  User needs architecture evaluation, trigger architecture-reviewer.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants design validation
-  user: "Is this the right approach for building our API?"
-  assistant: "I'll analyze the architectural approach and provide recommendations."
-  <commentary>
-  User needs architecture validation, use architecture-reviewer.
-  </commentary>
-  </example>
-
+description: Reviews architecture decisions and evaluates technical designs. Invoked when validating architecture against goals, assessing system design, or identifying architectural concerns.
 model: opus
 color: purple
 tools:

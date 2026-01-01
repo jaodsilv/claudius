@@ -1,34 +1,6 @@
 ---
 name: agent-improver
-description: Use this agent when the user asks to "improve an agent", "review agent quality", "enhance agent prompts", "fix agent triggering", or wants to optimize an existing agent. Examples:
-
-<example>
-Context: User wants to improve an agent
-user: "Improve my code-reviewer agent"
-assistant: "I'll use the agent-improver agent to analyze and suggest improvements."
-<commentary>
-User requesting agent improvement, trigger agent-improver.
-</commentary>
-</example>
-
-<example>
-Context: User asks for agent prompt review
-user: "Review the system prompt for my validator agent"
-assistant: "I'll use the agent-improver agent to review this agent's prompt."
-<commentary>
-User wants prompt review, trigger agent-improver.
-</commentary>
-</example>
-
-<example>
-Context: Agent not triggering correctly
-user: "My agent isn't being triggered when it should be"
-assistant: "I'll use the agent-improver agent to analyze the triggering conditions."
-<commentary>
-Triggering issue indicates agent needs improvement.
-</commentary>
-</example>
-
+description: Analyzes agents for improvement opportunities. Invoked when user asks to improve agents, review prompts, or fix triggering issues.
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]

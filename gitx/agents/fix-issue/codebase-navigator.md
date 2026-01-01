@@ -1,16 +1,7 @@
 ---
 name: gitx:codebase-navigator
-description: >
-  Use this agent to explore the codebase and identify relevant files, existing patterns,
-  and implementation points for an issue. This agent should be invoked after issue
-  analysis to understand where changes need to be made.
-  Examples:
-  <example>
-  Context: Issue has been analyzed, need to find relevant code.
-  user: "Where in the codebase should I make changes for this feature?"
-  assistant: "I'll launch the codebase-navigator agent to find relevant files
-  and existing patterns."
-  </example>
+description: >-
+  Explores codebase to find files relevant to an issue. Invoked after issue analysis to identify implementation targets.
 model: sonnet
 tools: Glob, Grep, Read, Bash(git log:*)
 color: yellow

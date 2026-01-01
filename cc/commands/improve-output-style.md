@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve an existing output-style interactively
+description: Improves output-styles when formatting rules need refinement.
 argument-hint: <output-style-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
@@ -33,10 +33,10 @@ Use TodoWrite to track progress:
 
 ### Phase 1: Analysis
 
-Load the improvement-workflow skill:
+Load the improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 Use Task tool with @cc:output-style-improver agent:

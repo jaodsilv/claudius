@@ -1,5 +1,5 @@
 ---
-description: Create a new skill with progressive disclosure structure
+description: Creates skills when packaging domain knowledge. Use for reusable guidance.
 argument-hint: <skill-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
 ---

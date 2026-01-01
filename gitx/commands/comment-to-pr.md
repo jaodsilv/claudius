@@ -1,5 +1,5 @@
 ---
-description: Comment on a pull request
+description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
 argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit> | -r [\"text\"] | --review [\"text\"]]"
 allowed-tools: Bash(gh pr:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
 ---
@@ -11,6 +11,7 @@ Add a comment to a GitHub pull request. If PR number is not provided, uses the P
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
+
 - PR number (optional): First numeric argument
 - Comment text (optional): Remaining text after PR number (unless flags are used)
 - `--last` or `-l` flag: If present, triggers last response flow
@@ -23,6 +24,7 @@ From $ARGUMENTS, extract:
   - **Parsing note**: Quoted string must immediately follow `-r`/`--review` flag
 
 **Flag combination rules:**
+
 - `-r` alone: Respond to latest review with general summary of work done
 - `-r "text"`: Respond to specified review text with general summary
 - `-r -c <commit>`: Respond to latest review with commits since `<commit>` as evidence
@@ -48,10 +50,12 @@ If no PR number provided:
 2. Find PR for branch: `gh pr view --json number,title`
 
 If PR found:
+
 - Use that PR number
 - Show: "Using PR #<number>: <title>"
 
 If no PR found:
+
 - Use AskUserQuestion: "No PR found for current branch. Enter PR number:"
 - Or list recent PRs: `gh pr list --state open --limit 5`
 - Options: List PRs, plus "Enter PR number manually"
@@ -61,6 +65,7 @@ If no PR found:
 If comment text not provided in arguments:
 
 Use AskUserQuestion:
+
 - "What would you like to comment on PR #<number>?"
 - Options:
   1. "Summarize recent changes" - Generate summary from commits since PR creation
@@ -71,6 +76,7 @@ Use AskUserQuestion:
 ### Auto-generated summaries
 
 If "Summarize recent changes":
+
 - Get commits since PR creation
 - Get changed files summary
 - Generate summary of recent work
@@ -78,6 +84,7 @@ If "Summarize recent changes":
 ### Commit-based summaries
 
 If `-c <commit>` or `--commit <commit>` flag used:
+
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
 3. Get changed files summary: `git diff --stat <commit>..HEAD`
@@ -94,6 +101,7 @@ If `-c <commit>` or `--commit <commit>` flag used:
 6. Store generated summary in `$comment` variable and proceed to validation
 
 If `-sc <commit>` or `--single-commit <commit>` flag used:
+
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
 3. Get the actual diff for the commit: `git show --no-stat <commit>`
@@ -114,9 +122,11 @@ If `-r` or `--review` flag used:
 #### Step 1: Get Review Text
 
 **If review text provided in arguments:**
+
 - Use the provided quoted string as `$review_text`
 
 **If no review text provided (flag used alone):**
+
 1. Fetch latest review from PR:
 
    ```bash
@@ -152,18 +162,21 @@ If `-r` or `--review` flag used:
 #### Step 2: Get Work Evidence
 
 **If `-c <commit>` also provided:**
+
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
 3. Get changed files summary: `git diff --stat <commit>..HEAD`
 4. Store in `$work_evidence` variable
 
 **If `-sc <commit>` also provided:**
+
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
 3. Get the actual diff for the commit: `git show --no-stat <commit>`
 4. Store in `$work_evidence` variable
 
 **If neither `-c` nor `-sc` provided:**
+
 1. Get recent commits on this branch (last 10):
 
    ```bash
@@ -208,6 +221,7 @@ Generate a structured response addressing the review points:
 ```
 
 **Response generation guidelines:**
+
 1. Analyze the review text to identify:
    - Specific concerns or questions
    - Requested changes
@@ -222,6 +236,7 @@ Generate a structured response addressing the review points:
 #### Step 4: Preview and Confirm
 
 Use AskUserQuestion:
+
 - Show preview: Full generated response
 - Question: "Post this response to PR #<number>?"
 - Header: "Confirm"
@@ -231,6 +246,7 @@ Use AskUserQuestion:
   3. "❌ Cancel" - Abort posting
 
 If "Edit response" selected:
+
 - Use AskUserQuestion: "What would you like to change about the response?"
 - Regenerate response based on user input
 - Return to Step 4 preview (loop continues until user selects "Post" or "Cancel")
@@ -330,6 +346,7 @@ Before posting, validate the comment:
 ## Post Comment
 
 Post the comment:
+
 - `gh pr comment <number> --body "$comment"`
 
 If the command fails, report the error and stop execution.
@@ -337,6 +354,7 @@ If the command fails, report the error and stop execution.
 ## Confirmation
 
 Show the posted comment:
+
 - PR number and title
 - Comment preview (first 200 chars)
 - Link to PR

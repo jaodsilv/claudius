@@ -134,7 +134,7 @@ If not using brainstorm:
 3. Load prioritization skill for framework guidance:
 
    ```text
-   Use Skill tool to load: planner:prioritization
+   Use Skill tool to load: planner:prioritizing-work
    ```
 
 4. Create traceability matrix (requirements → goals)
