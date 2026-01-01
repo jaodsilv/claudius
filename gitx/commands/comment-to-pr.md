@@ -113,10 +113,12 @@ If `-r` or `--review` flag used:
 **If no review text provided (flag used alone):**
 1. Fetch latest review from PR:
 
-
    ```bash
-   gh pr view <number> --json latestReviews --jq '.latestReviews | map(select(.state != "APPROVED" and .state != "DISMISSED")) | sort_by(.submittedAt) | last'
-
+   gh pr view <number> --json latestReviews \
+     --jq '.latestReviews
+       | map(select(.state != "APPROVED" and .state != "DISMISSED"))
+       | sort_by(.submittedAt)
+       | last'
    ```
 
 2. If review found:
@@ -127,9 +129,9 @@ If `-r` or `--review` flag used:
 3. If no pending reviews found:
    - Check for unresolved review comments (inline comments):
 
-
      ```bash
-     gh pr view <number> --json reviewThreads --jq '[.reviewThreads[] | select(.isResolved == false)] | last'
+     gh pr view <number> --json reviewThreads \
+       --jq '[.reviewThreads[] | select(.isResolved == false)] | last'
      ```
 
    - If found, use the last unresolved thread's comments
@@ -158,14 +160,12 @@ If `-r` or `--review` flag used:
 **If neither `-c` nor `-sc` provided:**
 1. Get recent commits on this branch (last 10):
 
-
    ```bash
    git log --oneline -10
    git diff --stat HEAD~5..HEAD
    ```
 
 2. Store in `$work_evidence` variable (may be empty if no recent work)
-
 
 #### Step 3: Generate Response
 
@@ -346,7 +346,10 @@ Show the posted comment:
 7. First message in conversation (--last flag): Report error and suggest using a different comment option.
 8. Invalid commit hash: Report "Commit '<hash>' not found in repository. Please verify the commit hash."
 9. Commit not in history: Report "Commit '<hash>' exists but is not in current branch's history."
-10. No reviews found (--review flag): Report "No pending reviews or unresolved review comments found for this PR." Suggest using --review with explicit text or a different comment option.
+10. No reviews found (--review flag): Report "No pending reviews or unresolved review comments found
+    for this PR." Suggest using --review with explicit text or a different comment option.
 11. Review fetch failed (--review flag): Report the gh error and suggest checking PR access permissions.
-12. Invalid flag combination: If `-r` is combined with `--last`, report "Cannot combine --review with --last flag. Use one or the other."
-13. Empty review text: If review text is explicitly provided but empty (e.g., `--review ""`), report "Review text cannot be empty when using --review with quoted text."
+12. Invalid flag combination: If `-r` is combined with `--last`, report "Cannot combine --review
+    with --last flag. Use one or the other."
+13. Empty review text: If review text is explicitly provided but empty (e.g., `--review ""`),
+    report "Review text cannot be empty when using --review with quoted text."
