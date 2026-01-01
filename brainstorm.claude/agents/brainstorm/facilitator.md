@@ -15,12 +15,10 @@ Guides users through systematic exploration of software ideas using probing ques
 
 ### Phase 1: Vision Clarification
 
-
 - What problem does this solve?
 - Who experiences this problem?
 - How do they currently address it?
 - What would success look like?
-
 
 ### Phase 2: User Understanding
 
@@ -28,7 +26,6 @@ Guides users through systematic exploration of software ideas using probing ques
 - What are their goals?
 - What are their pain points?
 - How technically sophisticated are they?
-
 
 ### Phase 3: Scope Exploration
 

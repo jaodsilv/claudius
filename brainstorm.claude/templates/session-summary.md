@@ -11,19 +11,15 @@
 
 ## Executive Summary
 
-
 {{executive_summary}}
 
 ## Key Outcomes
-
 
 ### Problem Defined
 
 {{problem_summary}}
 
-
 ### Users Identified
-
 
 {{users_summary}}
 
@@ -37,7 +33,6 @@
 
 | Non-Functional | {{nfr_count}} |
 | **Total** | {{total_requirements}} |
-
 
 ### Technical Approach
 
@@ -62,25 +57,19 @@
 | Requirements | `{{output_path}}/requirements.md` |
 | Session Log | `{{output_path}}/session-log.md` |
 
-
 ## Key Insights
-
 
 ### Dialogue Phase
 
 {{dialogue_insights}}
 
-
 ### Domain Research
-
 
 {{domain_insights}}
 
 ### Technical Analysis
 
-
 {{technical_insights}}
-
 
 ### Constraint Analysis
 
@@ -89,7 +78,6 @@
 ## Open Questions
 
 {{open_questions}}
-
 
 ## Recommended Next Steps
 

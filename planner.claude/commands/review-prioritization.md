@@ -121,11 +121,9 @@ Single `planner-plan-reviewer` pass only.
 1. **{{missing_area}}**: Suggested priority P1
 
 ### Label Commands
+
 ```bash
 gh issue edit 127 --add-label "P0" --remove-label "P1"
-```
-
-
 ```
 
 ## Usage Examples

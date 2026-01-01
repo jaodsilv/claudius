@@ -15,7 +15,6 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 ### 1. Technical
 
-
 | Type | Examples |
 |------|----------|
 | Platform | OS, browsers, devices |
@@ -25,7 +24,6 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 | Security | Auth, authorization, data protection |
 | Scalability | Load, growth, capacity |
 | Availability | Uptime, disaster recovery |
-
 
 ### 2. Business
 
@@ -37,7 +35,6 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 | Brand | Design guidelines, UX standards |
 | Legal | Licensing, IP, contracts |
 | Stakeholder | Executive requirements, approvals |
-
 
 ### 3. Resource
 
