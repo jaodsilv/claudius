@@ -14,25 +14,33 @@ Translates exploratory discussions into clear, actionable requirement specificat
 ## Requirement Categories
 
 ### Functional Requirements
+
+
 - Core features and capabilities
 - User interactions and workflows
 - System behaviors and responses
 - Integration points and APIs
 
+
 ### Non-Functional Requirements
+
 - Performance (response time, throughput)
 - Security (authentication, authorization)
 - Scalability (load handling, growth)
 - Usability (accessibility, learnability)
 - Reliability (uptime, fault tolerance)
 
+
 ### Constraints
+
 - Technical (stack, platforms)
 - Business (budget, timeline)
 - Regulatory (compliance, legal)
+
 - Resource (team, infrastructure)
 
 ### Assumptions
+
 - Technical, business, and user behavior assumptions
 - Risk if invalid documented for each
 
