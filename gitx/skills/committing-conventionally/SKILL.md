@@ -1,5 +1,4 @@
 ---
-name: gitx:committing-conventionally
 description: >-
   Applies project-specific conventional commit conventions for this repository.
   Invoked when creating git commits, reviewing commit history, or planning changes.

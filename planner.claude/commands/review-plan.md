@@ -9,24 +9,13 @@ model: opus
 
 Reviews a plan file with multi-agent orchestration for comprehensive, multi-perspective analysis.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-plan-arguments:
-  type: object
-  properties:
-    plan_path:
-      type: string
-      description: Path to the plan file to review
-    goal:
-      type: string
-      description: Optional goal for alignment checking
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [plan_path]
-```
+Extract from `$ARGUMENTS`:
+
+- `$plan_path`: Path to the plan file to review. First positional argument.
+- `$goal`: Optional goal for alignment checking
+- `$mode`: `thorough` (default) or `quick`
 
 ## Workflow
 

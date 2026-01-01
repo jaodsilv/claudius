@@ -1,5 +1,4 @@
 ---
-name: planner:orchestrating-reviews
 description: >-
   Provides multi-agent review orchestration pattern for planning artifacts.
   Use when implementing review commands that use domain reviewers, structural

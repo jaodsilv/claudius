@@ -1,5 +1,4 @@
 ---
-name: brainstorm:brainstorming
 description: >-
   Orchestrates requirements discovery through multi-agent analysis and Socratic dialogue.
   Invoked when exploring vague ideas, discovering requirements, or defining feature scope.

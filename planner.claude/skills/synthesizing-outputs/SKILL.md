@@ -1,5 +1,4 @@
 ---
-name: planner:synthesizing-outputs
 description: >-
   Provides multi-source synthesis methodology for merging findings from multiple
   agents. Use when combining review findings, ideation outputs, or other

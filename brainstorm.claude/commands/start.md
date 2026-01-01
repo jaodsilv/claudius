@@ -1,7 +1,7 @@
 ---
 description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
 allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep, Skill
-argument-hint: topic: <topic> --depth: <shallow|normal|deep> --output-path: <output_path>
+argument-hint: --topic <topic> --depth <shallow|normal|deep> --output-path <output_path>
 model: opus
 ---
 
@@ -11,22 +11,11 @@ Coordinates multi-agent workflow for software/feature requirements discovery thr
 
 ## Parameters
 
-```yaml
-properties:
-  topic:
-    type: string
-    description: The idea/feature/software concept to explore
-    required: true
-  depth:
-    type: string
-    enum: [shallow, normal, deep]
-    default: normal
-  output_path:
-    type: string
-    default: ./brainstorm-output/
-```
+From `$ARGUMENTS`, extract:
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+- topic: The idea/feature/software concept to explore
+- depth: The depth of the brainstorming. Possible values are: shallow, normal (default), deep
+- output_path: The output path. Defaults to $CWD/brainstorm-output/
 
 ## Skill Reference
 
@@ -39,7 +28,6 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 ## Initialization Checklist
 
 - [ ] Validate `$topic` provided
-- [ ] Set defaults: `$depth` (normal), `$output_path` (./brainstorm-output/)
 - [ ] Create output directory: `mkdir -p {{output_path}}`
 - [ ] Initialize TodoWrite with 7 phases (including Analysis Synthesis)
 - [ ] Create `{{output_path}}/session-log.md` with header:
@@ -113,7 +101,7 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 
 ### Gate 1: Post-Dialogue Validation
 
-Apply Gate 1 criteria from `workflow-validation` skill. If any check fails, run an additional facilitator batch.
+Apply Gate 1 criteria from `brainstorm:workflow-validation` skill. If any check fails, run an additional facilitator batch.
 
 ### Phases 2-4: Parallel Analysis
 
@@ -162,7 +150,7 @@ Use Task tool to invoke **IN PARALLEL** (all three agents simultaneously):
 
 ### Gate 2: Post-Analysis Validation
 
-Apply Gate 2 criteria from `workflow-validation` skill. If any check fails, identify incomplete analyses and rerun.
+Apply Gate 2 criteria from `brainstorm:workflow-validation` skill. If any check fails, identify incomplete analyses and rerun.
 
 ### Phase 4.5: Analysis Synthesis
 
@@ -185,7 +173,7 @@ Returns: Unified analysis context for requirements synthesis
 
 ### Gate 3: Post-Synthesis Validation
 
-Apply Gate 3 criteria from `workflow-validation` skill. If any check fails, re-run synthesis with clarifications.
+Apply Gate 3 criteria from `brainstorm:workflow-validation` skill. If any check fails, re-run synthesis with clarifications.
 
 ### Phase 5: Requirements Synthesis
 
@@ -205,7 +193,7 @@ Returns: Structured requirements document
 
 ### Gate 4: Post-Requirements Validation
 
-Apply Gate 4 criteria from `workflow-validation` skill. If any check fails, refine and consolidate requirements.
+Apply Gate 4 criteria from `brainstorm:workflow-validation` skill. If any check fails, refine and consolidate requirements.
 
 ### Phase 6: Specification Generation
 
@@ -227,7 +215,7 @@ Returns: Complete specification document
 
 ### Gate 5: Post-Specification Validation
 
-Apply Gate 5 criteria from `workflow-validation` skill. If any check fails, refine specification.
+Apply Gate 5 criteria from `brainstorm:workflow-validation` skill. If any check fails, refine specification.
 
 ## Completion Output
 
@@ -268,7 +256,7 @@ Apply Gate 5 criteria from `workflow-validation` skill. If any check fails, refi
 ## Usage Examples
 
 ```text
-/brainstorm:start topic: "Real-time collaboration feature"
-/brainstorm:start topic: "AI code review tool" --depth: deep
-/brainstorm:start topic: "Notification system" --depth: normal --output-path: ./specs/notifications/
+/brainstorm:start topic "Real-time collaboration feature"
+/brainstorm:start topic "AI code review tool" --depth deep
+/brainstorm:start topic "Notification system" --depth normal --output-path ./specs/notifications/
 ```

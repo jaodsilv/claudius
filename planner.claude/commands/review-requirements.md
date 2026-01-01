@@ -9,24 +9,13 @@ model: opus
 
 Reviews requirements document with multi-agent orchestration for quality, completeness, and testability.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-requirements-arguments:
-  type: object
-  properties:
-    context:
-      type: string
-      description: Goal or path to roadmap file
-    requirements_path:
-      type: string
-      default: "docs/planning/requirements.md"
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [context]
-```
+Extract from `$ARGUMENTS`:
+
+- `$context`: Goal or path to roadmap file (required). It's value it the substring of everything that comes before any flags.
+- `$requirements_path`: path to the requirements file (default: "docs/planning/requirements.md")
+- `$mode`: How to review the requirements: "quick" or "thorough"
 
 ## Workflow
 
@@ -37,7 +26,7 @@ Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestr
 ### 2. Domain Context
 
 **Artifact Type**: requirements
-**Primary Artifact Path**: `{{requirements_path}}` (default: `docs/planning/requirements.md`)
+**Primary Artifact Path**: `$requirements_path`
 **Domain Reviewer Agent**: `planner:reviewers:requirements-reviewer`
 **Evaluation Dimensions**:
 

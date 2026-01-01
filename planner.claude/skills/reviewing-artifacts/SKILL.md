@@ -1,5 +1,4 @@
 ---
-name: planner:reviewing-artifacts
 description: >-
   Provides standard review process for planning artifacts with dimension-based
   scoring. Use when evaluating plans, requirements, architecture, or other

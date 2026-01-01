@@ -9,42 +9,14 @@ model: opus
 
 Gather requirements for a goal through structured discovery, optionally leveraging the brainstorm plugin.
 
-## Input Processing
+## Arguments Parsing
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+Extract from `$ARGUMENTS`:
 
-Parse the arguments:
-
-1. `$goal`: Goal to gather requirements for (required)
-2. `$use_brainstorm`: Use brainstorm if available (default: auto-detect)
-3. `$depth`: Exploration depth (default: "normal")
-4. `$output`: Output path (default: "docs/planning/")
-
-## Parameters Schema
-
-```yaml
-gather-requirements-arguments:
-  type: object
-  properties:
-    goal:
-      type: string
-      description: The goal to gather requirements for
-    use_brainstorm:
-      type: boolean
-      default: null
-      description: Force use of brainstorm (null = auto-detect)
-    depth:
-      type: string
-      enum: [shallow, normal, deep]
-      default: normal
-      description: Exploration depth
-    output:
-      type: string
-      default: "docs/planning/"
-      description: Output directory
-  required:
-    - goal
-```
+- `$goal`: Goal to gather requirements for (required). It's value it the substring of everything that comes before any flags.
+- `$use_brainstorm`: Use brainstorm if available (default: auto-detect)
+- `$depth`: Exploration depth (default: "normal"). Values: `shallow`, `normal`, `deep`.
+- `$output`: Output directory (default: "docs/planning/")
 
 ## Execution Workflow
 
@@ -132,11 +104,7 @@ If not using brainstorm:
    - Identify gaps
    - Note open questions
 
-3. Load prioritization skill for framework guidance:
-
-   ```text
-   Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
-   ```
+3. Load prioritization skill `planner:prioritizing-work` for prioritization framework guidance.
 
 4. Create traceability matrix (requirements → goals)
 

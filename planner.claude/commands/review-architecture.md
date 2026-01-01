@@ -9,24 +9,13 @@ model: opus
 
 Reviews architecture decisions with multi-agent orchestration for alignment with goals and requirements.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-architecture-arguments:
-  type: object
-  properties:
-    context:
-      type: string
-      description: Goal or path to requirements file
-    architecture_path:
-      type: string
-      description: Path to architecture documentation
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [context]
-```
+Extract from `$ARGUMENTS`:
+
+- `$context`: Goal or path to requirements file (required). It's value it the substring of everything that comes before any flags.
+- `$architecture_path`: Path to architecture documentation
+- `$mode`: [quick, thorough]
 
 ## Workflow
 

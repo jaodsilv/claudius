@@ -10,21 +10,17 @@
 | **Status** | {{status}} |
 
 ## Executive Summary
-
 {{executive_summary}}
 
 ## Key Outcomes
 
 ### Problem Defined
-
 {{problem_summary}}
 
 ### Users Identified
-
 {{users_summary}}
 
 ### Requirements Captured
-
 | Category | Count |
 |----------|-------|
 | Functional (P1) | {{p1_count}} |
@@ -35,7 +31,6 @@
 | **Total** | {{total_requirements}} |
 
 ### Technical Approach
-
 {{technical_summary}}
 
 ### Constraints
@@ -76,15 +71,12 @@
 {{constraint_insights}}
 
 ## Open Questions
-
 {{open_questions}}
 
 ## Recommended Next Steps
-
 {{next_steps}}
 
 ## Session Metrics
-
 | Metric | Value |
 |--------|-------|
 | Questions Asked | {{questions_count}} |
@@ -93,5 +85,4 @@
 | Risks Identified | {{risks_count}} |
 
 ## Notes
-
 {{session_notes}}

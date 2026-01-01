@@ -1,5 +1,4 @@
 ---
-name: planner:analyzing-adversarially
 description: >-
   Provides adversarial analysis methodology for challenging ideas and artifacts.
   Use when stress-testing assumptions, identifying failure modes, generating

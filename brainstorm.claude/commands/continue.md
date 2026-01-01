@@ -1,7 +1,7 @@
 ---
 description: Continues interrupted brainstorming session from last checkpoint. Use when resuming after context overflow or interruption.
 allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, Glob, Skill
-argument-hint: --session-path: <session_path>
+argument-hint: --session-path <session_path>
 model: sonnet
 ---
 
@@ -11,21 +11,14 @@ Resumes an interrupted session by reading session log and continuing from last c
 
 ## Parameters
 
-```yaml
-properties:
-  session_path:
-    type: string
-    description: Path to session output directory containing session-log.md
-    required: true
-```
+From `$ARGUMENTS`, extract:
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+- session_path: Path to session output directory containing session-log.md
+
 
 ## Skill Reference
 
-Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation:
-
-- `SKILL.md` - Gate criteria and validation patterns between phases
+Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation
 
 ## Execution Checklist
 
@@ -97,6 +90,6 @@ Present final summary as defined in `/brainstorm:start` completion section.
 ## Usage Examples
 
 ```text
-/brainstorm:continue --session-path: ./brainstorm-output/
-/brainstorm:continue --session-path: ./specs/auth-feature/
+/brainstorm:continue --session-path ./brainstorm-output/
+/brainstorm:continue --session-path ./specs/auth-feature/
 ```

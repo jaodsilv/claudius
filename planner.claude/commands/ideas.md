@@ -9,44 +9,14 @@ model: opus
 
 Launch a multi-agent Ultrathink deep ideation session using Opus extended thinking, multi-pass iteration, and adversarial analysis.
 
-## Input Processing
+## Arguments Parsing
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+Extract from `$ARGUMENTS`:
 
-Parse the arguments:
-
-1. `$input`: Goal description or path to roadmap file (required)
-2. `$mode`: Session mode - "full" (all agents) or "focused" (subset) (default: "full")
-3. `$rounds`: Number of ideation rounds (default: 3)
-4. `$output`: Output path (default: "docs/planning/ideas/")
-
-## Parameters Schema
-
-```yaml
-ideas-arguments:
-  type: object
-  properties:
-    input:
-      type: string
-      description: Goal to ideate on, or path to roadmap file
-    mode:
-      type: string
-      enum: [full, focused]
-      default: full
-      description: Session mode (full=all agents, focused=subset)
-    rounds:
-      type: number
-      default: 3
-      minimum: 1
-      maximum: 5
-      description: Number of ideation rounds
-    output:
-      type: string
-      default: "docs/planning/ideas/"
-      description: Output directory
-  required:
-    - input
-```
+- `$input`: Goal to ideate on, or path to roadmap file (required). It's value it the substring of everything that comes before any flags.
+- `$mode`: Session mode - "full" (all agents) or "focused" (subset) (default: "full")
+- `$rounds`: Number of ideation rounds (default: 3, minimum: 1, maximum: 5)
+- `$output`: Output path (default: "docs/planning/ideas/")
 
 ## Ultrathink Workflow
 

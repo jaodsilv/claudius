@@ -9,24 +9,13 @@ model: opus
 
 Reviews issue prioritization with multi-agent orchestration for alignment with a goal or roadmap.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-prioritization-arguments:
-  type: object
-  properties:
-    context:
-      type: string
-      description: Goal or path to roadmap file
-    prioritization_path:
-      type: string
-      default: "docs/planning/prioritization.md"
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [context]
-```
+Extract from `$ARGUMENTS`:
+
+- `$context`: Goal or path to roadmap file (required). It's value it the substring of everything that comes before any flags.
+- `$prioritization_path`: path to the priorities file (default: "docs/planning/priorities.md")
+- `$mode`: How to review the requirements: "quick" or "thorough"
 
 ## Workflow
 

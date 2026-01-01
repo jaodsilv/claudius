@@ -1,5 +1,4 @@
 ---
-name: brainstorm:technical-patterns
 description: >-
   Evaluates technical feasibility and architecture options. Invoked during brainstorm Phase 3
   to assess implementation approaches, compare architectures, and estimate complexity.

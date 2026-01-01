@@ -1,5 +1,4 @@
 ---
-name: brainstorm:requirements-synthesis
 description: >-
   Consolidates brainstorming insights into structured requirements. Use when formulating requirements, prioritizing features, or validating requirement quality.
 allowed-tools:

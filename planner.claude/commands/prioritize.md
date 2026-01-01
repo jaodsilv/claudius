@@ -9,37 +9,13 @@ model: opus
 
 Prioritize GitHub issues using configurable prioritization frameworks.
 
-## Input Processing
+## Arguments Parsing
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+Extract from `$ARGUMENTS`:
 
-Parse the arguments:
-
-1. `$issues`: Issue numbers (comma-separated) or "ALL" (required)
-2. `$framework`: Prioritization framework (default: "RICE")
-3. `$output`: Output path (default: "docs/planning/")
-
-## Parameters Schema
-
-```yaml
-prioritize-arguments:
-  type: object
-  properties:
-    issues:
-      type: string
-      description: Issue numbers (comma-separated, e.g., "1,2,3") or "ALL"
-    framework:
-      type: string
-      enum: [RICE, MoSCoW, WeightedScoring]
-      default: RICE
-      description: Prioritization framework to apply
-    output:
-      type: string
-      default: "docs/planning/"
-      description: Output directory
-  required:
-    - issues
-```
+- `$issues`: Issue numbers (comma-separated) or "ALL". Required. First positional argument.
+- `$framework`: Prioritization framework (default: "RICE") [RICE, MoSCoW, WeightedScoring]
+- `$output`: Output directory (default: "docs/planning/")
 
 ## Execution Workflow
 
@@ -53,11 +29,7 @@ prioritize-arguments:
    - Phase 5: Interactive Review (pending)
    - Phase 6: Output Generation (pending)
 
-2. Load prioritization skill:
-
-   ```text
-   Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
-   ```
+2. Load prioritization skill `planner:prioritizing-work` for prioritization framework guidance.
 
 3. Verify gh CLI:
 

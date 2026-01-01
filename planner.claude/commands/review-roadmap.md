@@ -9,24 +9,13 @@ model: opus
 
 Reviews a roadmap with multi-agent orchestration for alignment with a goal and overall quality.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-roadmap-arguments:
-  type: object
-  properties:
-    goal:
-      type: string
-      description: Goal to evaluate roadmap against
-    roadmap_path:
-      type: string
-      default: "docs/planning/roadmap.md"
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [goal]
-```
+Extract from `$ARGUMENTS`:
+
+- `$goal`: required. Goal to evaluate roadmap against (required). It's value it the substring of everything that comes before any flags.
+- `$roadmap_path`: Path to the roadmap. (default: "docs/planning/roadmap.md")
+- `$mode`: How to review the roadmap: "thorough" (default) or "quick"
 
 ## Workflow
 
@@ -37,7 +26,7 @@ Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestr
 ### 2. Domain Context
 
 **Artifact Type**: roadmap
-**Primary Artifact Path**: `{{roadmap_path}}` (default: `docs/planning/roadmap.md`)
+**Primary Artifact Path**: `$roadmap_path`
 **Domain Reviewer Agent**: `planner:reviewers:plan-reviewer` (roadmap mode)
 **Evaluation Dimensions**:
 
