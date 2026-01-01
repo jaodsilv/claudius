@@ -6,7 +6,9 @@ allowed-tools: Bash(gh issue:*), Bash(gh api:*), Bash(ls:*), Task, AskUserQuesti
 
 # Create Issue
 
-Create a GitHub issue from an informal description. An agent analyzes your description to generate a structured title and detailed body, with optional template support and preview before creation.
+Create a GitHub issue from an informal description. An agent analyzes your
+description to generate a structured title and detailed body, with optional
+template support and preview before creation.
 
 ## Parse Arguments
 
@@ -42,7 +44,8 @@ For "Describe a bug", prompt:
 For "Request a feature", prompt:
 
 ```text
-"Describe the feature you'd like. Include the problem it solves and any ideas for implementation."
+"Describe the feature you'd like. Include the problem it solves and any
+ideas for implementation."
 ```
 
 For "Suggest an improvement", prompt:
@@ -69,7 +72,8 @@ Mark "Check for issue templates" as in_progress.
 
 ```bash
 # Check for issue templates in repository
-ls -la .github/ISSUE_TEMPLATE/ 2>$null || ls -la .github/ISSUE_TEMPLATE.md 2>$null || echo "NO_TEMPLATES"
+ls -la .github/ISSUE_TEMPLATE/ 2>$null || \
+  ls -la .github/ISSUE_TEMPLATE.md 2>$null || echo "NO_TEMPLATES"
 ```
 
 If templates exist and no `--template` flag provided:
@@ -187,7 +191,8 @@ Options:
 Use AskUserQuestion:
 
 ```text
-Question: "Current title: '[current title]'. Enter the new title or describe what to change:"
+Question: "Current title: '[current title]'. Enter the new title or describe
+what to change:"
 Header: "Title"
 Options:
 1. "Make it shorter" - Condense the title

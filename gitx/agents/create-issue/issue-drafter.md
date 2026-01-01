@@ -22,6 +22,8 @@ tools: Bash(gh:*), Read, Grep, Glob
 color: cyan
 ---
 
+# Issue Drafter Agent
+
 Transform informal issue descriptions into well-structured GitHub issues.
 Clear, actionable issues accelerate development and reduce clarification cycles.
 
@@ -310,7 +312,8 @@ The application crashes when attempting to upload large files.
 
 ## Expected Behavior
 
-Large files should upload successfully or provide a clear error message if they exceed size limits.
+Large files should upload successfully or provide a clear error message
+if they exceed size limits.
 
 ## Actual Behavior
 
@@ -363,7 +366,8 @@ Users currently cannot export their data, limiting their ability to:
 
 ## Proposed Solution
 
-Add a "Export to CSV" option that generates a downloadable CSV file containing user data.
+Add a "Export to CSV" option that generates a downloadable CSV file
+containing user data.
 
 ## Acceptance Criteria
 
