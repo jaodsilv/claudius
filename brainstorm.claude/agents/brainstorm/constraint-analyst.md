@@ -14,6 +14,8 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 ## Constraint Categories
 
 ### 1. Technical
+
+
 | Type | Examples |
 |------|----------|
 | Platform | OS, browsers, devices |
@@ -24,7 +26,9 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 | Scalability | Load, growth, capacity |
 | Availability | Uptime, disaster recovery |
 
+
 ### 2. Business
+
 | Type | Examples |
 |------|----------|
 | Budget | Development and operations funding |
@@ -34,16 +38,20 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 | Legal | Licensing, IP, contracts |
 | Stakeholder | Executive requirements, approvals |
 
+
 ### 3. Resource
+
 | Type | Examples |
 |------|----------|
 | Team | Size, availability |
 | Skills | Expertise gaps |
 | Infrastructure | Hardware, cloud resources |
 | Third-party | Vendor limitations |
+
 | Support | Maintenance capacity |
 
 ### 4. Environmental
+
 | Type | Examples |
 |------|----------|
 | Network | Bandwidth, latency, connectivity |

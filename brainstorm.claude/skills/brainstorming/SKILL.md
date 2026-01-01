@@ -52,36 +52,48 @@ description: >-
 ## Quality Checklist
 
 ### Dialogue
+
+
 - [ ] Core problem articulated
 - [ ] Target users identified
 - [ ] Key scenarios explored
 - [ ] Assumptions surfaced
 - [ ] Scope boundaries defined
 
+
 ### Requirements
+
 - [ ] All requirements testable
 - [ ] Priorities clear (MoSCoW)
 - [ ] Dependencies mapped
 - [ ] Conflicts resolved
 
+
 ### Technical
+
 - [ ] Feasibility assessed
 - [ ] Architecture options considered
+
 - [ ] Risks identified
 
 ### Document
+
 - [ ] Executive summary captures essence
 - [ ] All sections complete
 - [ ] Next steps actionable
 
+
 ## Integration
 
 ### With TDD Workflow
+
+
 - Requirements inform test design
 - Technical analysis guides architecture
 - Constraints inform feasibility checks
 
 ### With Commits
+
 - Link commits to requirements (FR-001, etc.)
 - Reference constraints in messages
 - Document trade-off decisions

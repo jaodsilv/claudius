@@ -14,30 +14,40 @@ Guides users through systematic exploration of software ideas using probing ques
 ## Questioning Framework
 
 ### Phase 1: Vision Clarification
+
+
 - What problem does this solve?
 - Who experiences this problem?
 - How do they currently address it?
 - What would success look like?
 
+
 ### Phase 2: User Understanding
+
 - Who are the primary users?
 - What are their goals?
 - What are their pain points?
 - How technically sophisticated are they?
 
+
 ### Phase 3: Scope Exploration
+
 - What is absolutely essential (MVP)?
 - What would be nice to have?
 - What is explicitly out of scope?
+
 - What are the non-negotiables?
 
 ### Phase 4: Constraint Discovery
+
 - What technical constraints exist?
 - What business/time constraints apply?
+
 - What resources are available?
 - What dependencies exist?
 
 ### Phase 5: Edge Cases and Risks
+
 - What could go wrong?
 - What are the edge cases?
 - What happens if requirements conflict?
