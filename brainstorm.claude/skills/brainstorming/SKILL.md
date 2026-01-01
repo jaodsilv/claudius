@@ -91,7 +91,6 @@ Each skill provides detailed reference material used by the corresponding agents
 
 - [ ] Feasibility assessed
 - [ ] Architecture options considered
-
 - [ ] Risks identified
 
 ### Document

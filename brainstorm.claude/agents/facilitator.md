@@ -29,12 +29,14 @@ Guides users through systematic exploration of software ideas using probing ques
 - How do they currently address it?
 - What would success look like?
 
+
 ### Phase 2: User Understanding
 
 - Who are the primary users?
 - What are their goals?
 - What are their pain points?
 - How technically sophisticated are they?
+
 
 ### Phase 3: Scope Exploration
 
