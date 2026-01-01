@@ -1,15 +1,7 @@
 ---
 name: gitx:change-analyzer
-description: >
-  Use this agent to analyze all commits and changes in a branch for PR creation.
-  This agent provides comprehensive understanding of what changed and why.
-  Examples:
-  <example>
-  Context: User wants to create a PR and needs change analysis.
-  user: "Analyze the changes in my branch for the PR"
-  assistant: "I'll launch the change-analyzer agent to examine all commits
-  and changes for the PR description."
-  </example>
+description: >-
+  Analyzes all commits and changes in a branch for PR creation. Invoked when preparing pull request content.
 model: sonnet
 tools: Bash(git:*), Read, Grep
 color: cyan

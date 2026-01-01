@@ -1,16 +1,6 @@
 ---
 name: planner-review-analyzer
-description: Use this agent for "structural analysis", "pattern detection", "completeness check", "quality assessment", or when reviewing planning artifacts for structural issues and best practices. Examples:
-
-  <example>
-  Context: Part of orchestrated review workflow
-  user: "Analyze the structure of this roadmap"
-  assistant: "I'll analyze the artifact for structural completeness and patterns."
-  <commentary>
-  Structural analysis of planning artifact, trigger review-analyzer.
-  </commentary>
-  </example>
-
+description: Analyzes planning artifacts for structural completeness and best practices. Invoked during orchestrated reviews for pattern detection and quality assessment.
 model: haiku
 color: cyan
 tools:

@@ -1,5 +1,5 @@
 ---
-description: Comprehensive plugin-wide improvement with multi-component analysis
+description: Improves plugins comprehensively when preparing for release or audit.
 argument-hint: <plugin-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
@@ -22,10 +22,10 @@ If focus provided, prioritize analysis of that aspect across all components.
 
 ### Phase 1: Discovery
 
-Load improvement-workflow skill:
+Load improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 1. Read plugin.json manifest

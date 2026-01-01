@@ -55,7 +55,7 @@ prioritize-arguments:
 2. Load prioritization skill:
 
    ```text
-   Use Skill tool to load: planner:prioritization
+   Use Skill tool to load: planner:prioritizing-work
    ```
 
 3. Verify gh CLI:

@@ -1,36 +1,26 @@
 # Brainstorm Session Summary
 
-## Session Information
-
 | Property | Value |
 |----------|-------|
 | **Topic** | {{topic}} |
 | **Date** | {{date}} |
 | **Duration** | {{duration}} |
 | **Depth** | {{depth}} |
-| **Rounds Completed** | {{rounds_completed}} |
+| **Rounds** | {{rounds_completed}} |
 | **Status** | {{status}} |
 
----
-
 ## Executive Summary
-
 {{executive_summary}}
-
----
 
 ## Key Outcomes
 
 ### Problem Defined
-
 {{problem_summary}}
 
 ### Users Identified
-
 {{users_summary}}
 
 ### Requirements Captured
-
 | Category | Count |
 |----------|-------|
 | Functional (P1) | {{p1_count}} |
@@ -40,11 +30,9 @@
 | **Total** | {{total_requirements}} |
 
 ### Technical Approach
-
 {{technical_summary}}
 
-### Constraints Documented
-
+### Constraints
 | Category | Count |
 |----------|-------|
 | Technical | {{tc_count}} |
@@ -52,52 +40,34 @@
 | Resource | {{rc_count}} |
 | **Total** | {{total_constraints}} |
 
----
-
 ## Generated Artifacts
-
-| Artifact | Path | Description |
-|----------|------|-------------|
-| Specification | `{{output_path}}/specification.md` | Full specification document |
-| Requirements | `{{output_path}}/requirements.md` | Structured requirements |
-| Session Log | `{{output_path}}/session-log.md` | Complete session log |
-
----
+| Artifact | Path |
+|----------|------|
+| Specification | `{{output_path}}/specification.md` |
+| Requirements | `{{output_path}}/requirements.md` |
+| Session Log | `{{output_path}}/session-log.md` |
 
 ## Key Insights
 
-### From Dialogue Phase
-
+### Dialogue Phase
 {{dialogue_insights}}
 
-### From Domain Research
-
+### Domain Research
 {{domain_insights}}
 
-### From Technical Analysis
-
+### Technical Analysis
 {{technical_insights}}
 
-### From Constraint Analysis
-
+### Constraint Analysis
 {{constraint_insights}}
 
----
-
 ## Open Questions
-
 {{open_questions}}
 
----
-
 ## Recommended Next Steps
-
 {{next_steps}}
 
----
-
 ## Session Metrics
-
 | Metric | Value |
 |--------|-------|
 | Questions Asked | {{questions_count}} |
@@ -105,8 +75,5 @@
 | Trade-offs Identified | {{tradeoffs_count}} |
 | Risks Identified | {{risks_count}} |
 
----
-
 ## Notes
-
 {{session_notes}}

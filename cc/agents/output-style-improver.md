@@ -1,34 +1,6 @@
 ---
 name: output-style-improver
-description: Use this agent when the user asks to "improve an output style", "review output formatting", "check output style quality", or wants to enhance an existing output-style. Examples:
-
-<example>
-Context: User wants to improve an output-style
-user: "Improve my documentation output style"
-assistant: "I'll use the output-style-improver agent to analyze and suggest improvements."
-<commentary>
-User requesting output-style improvement, trigger output-style-improver.
-</commentary>
-</example>
-
-<example>
-Context: User wants to check output-style quality
-user: "Is my report style complete?"
-assistant: "I'll use the output-style-improver agent to review the style's completeness."
-<commentary>
-User wants quality check, trigger output-style-improver.
-</commentary>
-</example>
-
-<example>
-Context: Output-style not producing expected results
-user: "My output style isn't working as expected"
-assistant: "I'll use the output-style-improver agent to analyze the style's rules."
-<commentary>
-Style issue indicates need for improvement analysis.
-</commentary>
-</example>
-
+description: Analyzes output-styles for completeness. Invoked when user asks to improve formatting rules.
 model: haiku
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]

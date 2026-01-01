@@ -1,16 +1,6 @@
 ---
 name: planner-ideas-deep-thinker
-description: Use this agent for "deep thinking", "extended reasoning", "thorough analysis", or when complex ideation requires extended thinking chains. This is an Opus agent with extended thinking for the Ultrathink workflow. Examples:
-
-  <example>
-  Context: Part of Ultrathink ideation session
-  user: "We need novel solutions for improving developer experience"
-  assistant: "I'll engage deep thinking to explore non-obvious solutions."
-  <commentary>
-  Complex ideation requiring extended thinking, trigger deep-thinker.
-  </commentary>
-  </example>
-
+description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
 model: opus
 color: magenta
 tools:

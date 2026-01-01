@@ -1,16 +1,7 @@
 ---
 name: gitx:workflow-coordinator
-description: >
-  Use this agent to orchestrate the entire fix-issue workflow, coordinating other
-  agents, tracking progress, and managing handoffs between phases. This is the main
-  controller for the fix-issue orchestration.
-  Examples:
-  <example>
-  Context: User wants to fix an issue with orchestrated workflow.
-  user: "Fix issue #123 using the full workflow"
-  assistant: "I'll launch the workflow-coordinator agent to orchestrate the
-  complete fix-issue workflow."
-  </example>
+description: >-
+  Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, and development phases.
 model: opus
 tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill
 color: purple

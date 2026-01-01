@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve an existing skill interactively
+description: Improves skills when progressive disclosure or triggers need work.
 argument-hint: <skill-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
 ---
@@ -32,10 +32,10 @@ Use TodoWrite to track progress:
 
 ### Phase 1: Analysis
 
-Load the improvement-workflow skill:
+Load the improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 Use Task tool with @cc:skill-improver agent:

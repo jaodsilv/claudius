@@ -1,5 +1,5 @@
 ---
-description: Comment on a GitHub issue
+description: Comments on a GitHub issue when sharing progress or updates. Use for team communication or documenting work.
 argument-hint: "[ISSUE] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit>]"
 allowed-tools: Bash(gh issue:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
 ---

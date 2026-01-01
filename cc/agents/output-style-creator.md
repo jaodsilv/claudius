@@ -1,34 +1,6 @@
 ---
 name: output-style-creator
-description: Use this agent when the user asks to "create an output style", "generate output formatting", "make a presentation style", or needs consistent output formatting. Examples:
-
-<example>
-Context: User wants to create a technical documentation style
-user: "Create an output style for API documentation"
-assistant: "I'll use the output-style-creator agent to generate this API documentation style."
-<commentary>
-User requesting new output-style creation, trigger output-style-creator.
-</commentary>
-</example>
-
-<example>
-Context: User describes formatting requirements
-user: "I need an output format that's concise and uses bullet points"
-assistant: "I'll use the output-style-creator agent to create a concise bullet-point style."
-<commentary>
-User describes output formatting need, trigger output-style-creator.
-</commentary>
-</example>
-
-<example>
-Context: User wants to add output-style to plugin
-user: "Add a report style to my plugin"
-assistant: "I'll use the output-style-creator agent to create the report style."
-<commentary>
-User wants output-style added to plugin, trigger output-style-creator.
-</commentary>
-</example>
-
+description: Creates output-styles with formatting rules. Invoked when user needs consistent output formatting.
 model: haiku
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]

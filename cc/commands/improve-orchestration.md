@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve an existing orchestration interactively
+description: Improves orchestrations when workflow coordination needs optimization.
 argument-hint: <orchestration-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
@@ -23,16 +23,16 @@ If focus provided, prioritize analysis of that aspect.
 
 ### Phase 1: Analysis
 
-Load the improvement-workflow skill:
+Load the improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 Load orchestration patterns:
 
 ```text
-Use Skill tool to load cc:orchestration-patterns
+Use Skill tool to load cc:orchestrating-agents
 ```
 
 Use TodoWrite to track:

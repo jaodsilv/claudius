@@ -1,25 +1,6 @@
 ---
 name: planner-plan-reviewer
-description: Use this agent when you need to "review a plan", "review a roadmap", "review prioritization", "check plan quality", "validate planning artifacts", or need to analyze and suggest improvements to planning documents. Examples:
-
-  <example>
-  Context: User has a plan document
-  user: "Can you review my project plan?"
-  assistant: "I'll review the plan and provide suggestions for improvement."
-  <commentary>
-  User wants plan review, trigger plan-reviewer.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants to validate roadmap alignment
-  user: "Does this roadmap make sense for our goal?"
-  assistant: "I'll analyze the roadmap against your goal and provide feedback."
-  <commentary>
-  User needs roadmap validation, use plan-reviewer.
-  </commentary>
-  </example>
-
+description: Reviews plans, roadmaps, and prioritization documents for quality and alignment. Invoked when validating planning artifacts or analyzing improvements.
 model: sonnet
 color: yellow
 tools:
