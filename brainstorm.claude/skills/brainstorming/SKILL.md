@@ -53,13 +53,11 @@ description: >-
 
 ### Dialogue
 
-
 - [ ] Core problem articulated
 - [ ] Target users identified
 - [ ] Key scenarios explored
 - [ ] Assumptions surfaced
 - [ ] Scope boundaries defined
-
 
 ### Requirements
 
@@ -67,7 +65,6 @@ description: >-
 - [ ] Priorities clear (MoSCoW)
 - [ ] Dependencies mapped
 - [ ] Conflicts resolved
-
 
 ### Technical
 
@@ -82,11 +79,9 @@ description: >-
 - [ ] All sections complete
 - [ ] Next steps actionable
 
-
 ## Integration
 
 ### With TDD Workflow
-
 
 - Requirements inform test design
 - Technical analysis guides architecture

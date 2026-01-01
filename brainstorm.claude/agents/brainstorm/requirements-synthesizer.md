@@ -15,12 +15,10 @@ Translates exploratory discussions into clear, actionable requirement specificat
 
 ### Functional Requirements
 
-
 - Core features and capabilities
 - User interactions and workflows
 - System behaviors and responses
 - Integration points and APIs
-
 
 ### Non-Functional Requirements
 
@@ -29,7 +27,6 @@ Translates exploratory discussions into clear, actionable requirement specificat
 - Scalability (load handling, growth)
 - Usability (accessibility, learnability)
 - Reliability (uptime, fault tolerance)
-
 
 ### Constraints
 

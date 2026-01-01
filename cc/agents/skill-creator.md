@@ -184,7 +184,8 @@ Include:
 
 Validate the skill against these requirements:
 
-1. **Description**: Third-person with specific trigger phrases. Second-person descriptions prevent Claude from recognizing when to load the skill.
+1. **Description**: Third-person with specific trigger phrases. Second-person descriptions
+   prevent Claude from recognizing when to load the skill.
 2. **Body**: Imperative form, no second-person pronouns. Second-person creates ambiguity between instructions for Claude vs. content for users.
 3. **Length**: SKILL.md under 2000 words. Longer skills consume excessive context and reduce response quality.
 4. **Structure**: Progressive disclosure (core in SKILL.md, details in references/).
