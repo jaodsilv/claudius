@@ -1,7 +1,7 @@
 ---
 description: Create a GitHub issue from informal description
 argument-hint: "<description> [-l labels] [-a assignee] [-t template] [-m milestone] [--no-preview]"
-allowed-tools: Bash(gh issue:*), Bash(gh api:*), Bash(ls:*), Task, AskUserQuestion, TodoWrite
+allowed-tools: Bash(gh:*), Bash(ls:*), Task, AskUserQuestion, TodoWrite
 ---
 
 # Create Issue
@@ -14,12 +14,12 @@ template support and preview before creation.
 
 From $ARGUMENTS, extract:
 
-- Description (required): The informal description text (can be quoted or unquoted)
-- `-l` or `--labels`: Comma-separated labels (e.g., `-l bug,enhancement`)
-- `-a` or `--assignee`: Assignee username (e.g., `-a @me` or `-a username`)
-- `-t` or `--template`: Issue template name (e.g., `-t "Bug Report"`)
-- `-m` or `--milestone`: Milestone name
-- `--no-preview`: Skip preview and create directly
+1. Description (required): The informal description text (can be quoted or unquoted)
+2. `-l` or `--labels`: Comma-separated labels (e.g., `-l bug,enhancement`)
+3. `-a` or `--assignee`: Assignee username (e.g., `-a @me` or `-a username`)
+4. `-t` or `--template`: Issue template name (e.g., `-t "Bug Report"`)
+5. `-m` or `--milestone`: Milestone name
+6. `--no-preview`: Skip preview and create directly
 
 If no description provided:
 
@@ -70,10 +70,13 @@ Mark "Check for issue templates" as in_progress.
 
 ### Check for Issue Templates
 
-```bash
+```powershell
 # Check for issue templates in repository
-ls -la .github/ISSUE_TEMPLATE/ 2>$null || \
-  ls -la .github/ISSUE_TEMPLATE.md 2>$null || echo "NO_TEMPLATES"
+$templates = Get-ChildItem -Path ".github/ISSUE_TEMPLATE/" -ErrorAction SilentlyContinue
+if (-not $templates) {
+  $templates = Get-ChildItem -Path ".github/ISSUE_TEMPLATE.md" -ErrorAction SilentlyContinue
+}
+if (-not $templates) { echo "NO_TEMPLATES" } else { $templates }
 ```
 
 If templates exist and no `--template` flag provided:
@@ -95,8 +98,8 @@ Store selected template in `$template` variable.
 
 If `--template` flag provided:
 
-- Validate template exists
-- If not found, warn and continue without template
+1. Validate template exists
+2. If not found, warn and continue without template
 
 Mark "Check for issue templates" as completed.
 
@@ -112,10 +115,10 @@ Task (gitx:issue-drafter):
   Template: [template name if selected, or "none"]
 
   Analyze the description and generate:
-  - Structured issue title (clear, concise, actionable)
-  - Detailed issue body with appropriate sections
-  - Suggested labels (if not provided via flag)
-  - Identified ambiguities requiring clarification
+  1. Structured issue title (clear, concise, actionable)
+  2. Detailed issue body with appropriate sections
+  3. Suggested labels (if not provided via flag)
+  4. Identified ambiguities requiring clarification
 ```
 
 Wait for agent to complete.
@@ -137,9 +140,9 @@ Update draft with clarifications.
 
 Store results:
 
-- `$title`: Generated issue title
-- `$body`: Generated issue body
-- `$suggested_labels`: Agent-suggested labels (if no `--labels` flag)
+1. `$title`: Generated issue title
+2. `$body`: Generated issue body
+3. `$suggested_labels`: Agent-suggested labels (if no `--labels` flag)
 
 Mark "Draft issue content" as completed.
 
@@ -147,9 +150,7 @@ Mark "Draft issue content" as completed.
 
 Mark "Preview and edit" as in_progress.
 
-If `--no-preview` flag is set:
-
-- Skip to Phase 4
+If `--no-preview` flag is set, skip to Phase 4.
 
 ### Present Preview
 
@@ -165,10 +166,10 @@ If `--no-preview` flag is set:
 ---
 
 ### Metadata
-- **Labels**: [labels from flag or suggestions]
-- **Assignee**: [assignee if provided]
-- **Template**: [template name or "none"]
-- **Milestone**: [milestone if provided]
+1. **Labels**: [labels from flag or suggestions]
+2. **Assignee**: [assignee if provided]
+3. **Template**: [template name or "none"]
+4. **Milestone**: [milestone if provided]
 ```
 
 Use AskUserQuestion:
@@ -253,10 +254,10 @@ gh issue create --title "[title]" --body "[body]"
 
 Add optional flags if values are set:
 
-- If `$labels` set: `--label "[labels]"`
-- If `$assignee` set: `--assignee "[assignee]"`
-- If `$template` set: `--template "[template]"`
-- If `$milestone` set: `--milestone "[milestone]"`
+1. If `$labels` set: `--label "[labels]"`
+2. If `$assignee` set: `--assignee "[assignee]"`
+3. If `$template` set: `--template "[template]"`
+4. If `$milestone` set: `--milestone "[milestone]"`
 
 ### Execute Creation
 
@@ -268,12 +269,12 @@ Capture output (issue URL and number).
 
 If command fails:
 
-- Report error message
-- Suggest common fixes:
-  - Authentication: `gh auth login`
-  - Label not found: Check label name with `gh label list`
-  - Milestone not found: Check milestone name
-- Exit
+1. Report error message
+2. Suggest common fixes:
+   1. Authentication: `gh auth login`
+   2. Label not found: Check label name with `gh label list`
+   3. Milestone not found: Check milestone name
+3. Exit
 
 Mark "Create issue" as completed.
 
@@ -285,11 +286,11 @@ Show creation confirmation:
 ## Issue Created
 
 ### Details
-- **Issue Number**: #[number]
-- **Title**: [title]
-- **URL**: [url]
-- **Labels**: [labels]
-- **Assignee**: [assignee]
+1. **Issue Number**: #[number]
+2. **Title**: [title]
+3. **URL**: [url]
+4. **Labels**: [labels]
+5. **Assignee**: [assignee]
 
 ### Next Steps
 

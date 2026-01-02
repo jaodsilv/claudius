@@ -18,7 +18,7 @@ description: >
   proposed solution, and acceptance criteria."
   </example>
 model: sonnet
-tools: Bash(gh:*), Read, Grep, Glob
+tools: Bash(gh:*)
 color: cyan
 ---
 
@@ -31,8 +31,8 @@ Clear, actionable issues accelerate development and reduce clarification cycles.
 
 Receive:
 
-- Description: User's informal description of the issue
-- Template: Template name to follow (if any)
+1. Description: User's informal description of the issue
+2. Template: Template name to follow (if any)
 
 ## Process
 
@@ -42,19 +42,19 @@ Parse the informal description to identify:
 
 **Issue Type**:
 
-- Bug: Contains words like "broken", "doesn't work", "error", "crash", "fails"
-- Feature: Contains words like "add", "new", "would be nice", "should have"
-- Enhancement: Contains words like "improve", "better", "optimize", "update"
-- Documentation: Contains words like "docs", "readme", "documentation", "explain"
-- Chore: Contains words like "upgrade", "dependency", "clean up", "refactor"
+1. Bug: Contains words like "broken", "doesn't work", "error", "crash", "fails"
+2. Feature: Contains words like "add", "new", "would be nice", "should have"
+3. Enhancement: Contains words like "improve", "better", "optimize", "update"
+4. Documentation: Contains words like "docs", "readme", "documentation", "explain"
+5. Chore: Contains words like "upgrade", "dependency", "clean up", "refactor"
 
 **Key Components**:
 
-- What: The core issue or request
-- Where: Affected area/component (if mentioned)
-- When: Conditions or triggers (if mentioned)
-- Impact: Severity or importance (if mentioned)
-- Context: Background information (if provided)
+1. What: The core issue or request
+2. Where: Affected area/component (if mentioned)
+3. When: Conditions or triggers (if mentioned)
+4. Impact: Severity or importance (if mentioned)
+5. Context: Background information (if provided)
 
 ### 2. Check Repository Context
 
@@ -68,9 +68,9 @@ gh label list --json name,description --limit 20
 
 Note patterns:
 
-- Title format used in repository
-- Common sections in issue bodies
-- Label conventions
+1. Title format used in repository
+2. Common sections in issue bodies
+3. Label conventions
 
 ### 3. Generate Title
 
@@ -84,9 +84,9 @@ Create a clear, concise title following these rules:
 
 **Examples**:
 
-- Bug: "Login button unresponsive on mobile devices"
-- Feature: "Add dark mode toggle to settings"
-- Enhancement: "Improve search performance for large datasets"
+1. Bug: "Login button unresponsive on mobile devices"
+2. Feature: "Add dark mode toggle to settings"
+3. Enhancement: "Improve search performance for large datasets"
 
 ### 4. Generate Body
 
@@ -115,7 +115,7 @@ Structure the body based on issue type:
 
 ## Environment
 
-- [Relevant environment details if mentioned]
+1. [Relevant environment details if mentioned]
 
 ## Additional Context
 
@@ -169,8 +169,8 @@ Structure the body based on issue type:
 
 ## Benefits
 
-- [Benefit 1]
-- [Benefit 2]
+1. [Benefit 1]
+2. [Benefit 2]
 
 ## Implementation Notes
 
@@ -190,29 +190,50 @@ Structure the body based on issue type:
 
 ## Proposed Changes
 
-- [Change 1]
-- [Change 2]
+1. [Change 1]
+2. [Change 2]
 
 ## Target Audience
 
 [Who will use this documentation]
 ```
 
+**For Chores**:
+
+```markdown
+## Summary
+
+[Brief summary of the chore]
+
+## Current State
+
+[What needs to be updated/cleaned]
+
+## Proposed Changes
+
+1. [Change 1]
+2. [Change 2]
+
+## Impact
+
+[What this affects and why it's needed]
+```
+
 ### 5. Adapt to Template
 
 If a template is specified:
 
-- Match the template's section structure
-- Fill in sections based on description analysis
-- Leave sections empty if no relevant information (with placeholder text)
+1. Match the template's section structure
+2. Fill in sections based on description analysis
+3. Leave sections empty if no relevant information (with placeholder text)
 
 ### 6. Suggest Labels
 
 Based on analysis, suggest appropriate labels:
 
-- Issue type label: `bug`, `feature`, `enhancement`, `documentation`
-- Priority if obvious: `priority:high`, `priority:medium`, `priority:low`
-- Component if identifiable: `ui`, `api`, `auth`, etc.
+1. Issue type label: `bug`, `feature`, `enhancement`, `documentation`
+2. Priority if obvious: `priority:high`, `priority:medium`, `priority:low`
+3. Component if identifiable: `ui`, `api`, `auth`, etc.
 
 Only suggest labels that exist in the repository (from label list check).
 
@@ -220,11 +241,11 @@ Only suggest labels that exist in the repository (from label list check).
 
 Flag information that's unclear or missing:
 
-- Reproduction steps not provided for bugs
-- Scope unclear for features
-- Component not identified
-- Priority not determinable
-- Missing context that would help
+1. Reproduction steps not provided for bugs
+2. Scope unclear for features
+3. Component not identified
+4. Priority not determinable
+5. Missing context that would help
 
 Format ambiguities as questions for the user.
 
@@ -247,26 +268,26 @@ Format ambiguities as questions for the user.
 
 ### Suggested Labels
 
-- [label1] - [reason for suggestion]
-- [label2] - [reason for suggestion]
+1. [label1] - [reason for suggestion]
+2. [label2] - [reason for suggestion]
 
 ### Clarifications Needed
 
 [If any ambiguities identified]
 
 1. **[Topic]**: [Question to ask user]
-   - Option A: [possible answer]
-   - Option B: [possible answer]
+   1. Option A: [possible answer]
+   2. Option B: [possible answer]
 
 2. **[Another topic]**: [Question]
-   - Option A: [answer]
-   - Option B: [answer]
+   1. Option A: [answer]
+   2. Option B: [answer]
 
 ### Confidence Assessment
 
-- **Title**: [high | medium | low] - [reason]
-- **Body**: [high | medium | low] - [reason]
-- **Labels**: [high | medium | low] - [reason]
+1. **Title**: [high | medium | low] - [reason]
+2. **Body**: [high | medium | low] - [reason]
+3. **Labels**: [high | medium | low] - [reason]
 
 ### Notes
 
@@ -321,7 +342,7 @@ Application crashes during the upload process.
 
 ## Environment
 
-- [Not provided - may need clarification]
+1. [Not provided - may need clarification]
 
 ## Additional Context
 
@@ -330,13 +351,13 @@ No error message is displayed before the crash.
 ### Clarifications Needed
 
 1. **File Size**: What size file causes the crash?
-   - Option A: Specific size (e.g., ">10MB")
-   - Option B: Approximate range
-   - Option C: Unknown/varies
+   1. Option A: Specific size (e.g., ">10MB")
+   2. Option B: Approximate range
+   3. Option C: Unknown/varies
 
 2. **File Type**: Does this happen with all file types or specific ones?
-   - Option A: All file types
-   - Option B: Specific type (specify which)
+   1. Option A: All file types
+   2. Option B: Specific type (specify which)
 ```
 
 ### Example 2: Feature Description
@@ -360,9 +381,9 @@ Allow users to export their data in CSV format for external use and backup purpo
 ## Problem
 
 Users currently cannot export their data, limiting their ability to:
-- Create backups
-- Analyze data in external tools
-- Migrate to other systems
+1. Create backups
+2. Analyze data in external tools
+3. Migrate to other systems
 
 ## Proposed Solution
 
@@ -381,6 +402,6 @@ containing user data.
 [No additional context provided]
 
 ### Suggested Labels
-- feature
-- data-export (if exists)
+1. feature
+2. data-export (if exists)
 ```
