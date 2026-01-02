@@ -54,15 +54,26 @@ bugfix/fix-login-error → fix-login-error
 
 Strip common issue reference patterns from the start:
 
-1. `issue-\d+-` → Remove (e.g., `issue-123-`)
-2. `#\d+-` → Remove (e.g., `#123-`)
+1. `^issue-\d+-` → Remove (e.g., `issue-123-`)
+2. `^#\d+-` → Remove (e.g., `#123-`)
 3. `^\d+-` → Remove leading numbers (e.g., `123-`)
-4. `JIRA-\d+-`, `BUG-\d+-`, etc. → Remove tracker prefixes
+4. Tracker prefixes (case-insensitive):
+   - `^JIRA-\d+-` → Remove (e.g., `JIRA-123-`)
+   - `^BUG-\d+-` → Remove (e.g., `BUG-456-`)
+   - `^TASK-\d+-` → Remove (e.g., `TASK-789-`)
+   - `^ISSUE-\d+-` → Remove (e.g., `ISSUE-101-`)
+   - `^FEAT-\d+-` → Remove (e.g., `FEAT-202-`)
+   - `^FIX-\d+-` → Remove (e.g., `FIX-303-`)
+
+**Fallback**: If description is empty after pattern removal (e.g., `feature/issue-123`),
+keep the original description before pattern removal.
 
 ```text
 issue-123-add-user-auth → add-user-auth
 #456-fix-button → fix-button
 789-update-config → update-config
+JIRA-123-auth-fix → auth-fix
+issue-123 → issue-123 (fallback: kept as-is)
 ```
 
 ### Step 3: Split Into Words
@@ -74,6 +85,19 @@ add-user-auth → ['add', 'user', 'auth']
 fix-login-error → ['fix', 'login', 'error']
 dark-mode → ['dark', 'mode']
 ```
+
+### Step 3.5: Handle Special Formats
+
+Before generating options, check for special formats that should be kept as-is:
+
+1. **Version strings**: Match `^v?\d+\.\d+(\.\d+)?(-[a-z0-9]+)?$`
+   - `v1.2.0` → Keep as `['v1.2.0']`
+   - `2.0.0-beta` → Keep as `['2.0.0-beta']`
+
+2. **Single semantic tokens**: If only one word remains after splitting, keep it.
+   - `auth` → `['auth']`
+
+If a special format is detected, skip to Step 5 (filtering) with the single-item list.
 
 ### Step 4: Generate Options
 
@@ -95,7 +119,15 @@ Create options from shortest to longest by taking words from the end:
 
 1. Remove duplicates (if description has fewer unique segments)
 2. Filter out single-character options
-3. Filter out common meaningless words when alone: `fix`, `add`, `update`, `the`, `a`
+3. Filter out common meaningless words when they are the **only option** (single-word result):
+   - Action words: `fix`, `add`, `update`, `remove`, `delete`, `change`
+   - Articles: `the`, `a`, `an`
+   - Branch type words: `feature`, `bugfix`, `hotfix`, `release`, `chore`, `refactor`, `docs`
+4. If filtering removes all options, fall back to the sanitized branch description
+
+### Step 6: Limit Options
+
+Truncate to maximum **5 options** for usability. Keep the shortest options when truncating.
 
 ## Examples
 
@@ -160,8 +192,9 @@ Create options from shortest to longest by taking words from the end:
 
 1. Parse: `v1.2.0`
 2. No issue pattern
-3. Split: `['v1', '2', '0']` (version parts)
-4. Special case: Keep version as-is
+3. Split: Would be `['v1', '2', '0']`
+4. Step 3.5: Detect version format `v1.2.0` → keep as-is
+5. Skip to Step 5 with `['v1.2.0']`
 
 **Output:** `['v1.2.0']`
 
@@ -177,15 +210,42 @@ Create options from shortest to longest by taking words from the end:
 
 **Input:** `feature/issue-99-implement-oauth2-provider-integration-with-google`
 
-**Output:** `['google', 'with-google', 'integration-with-google', 'provider-integration-with-google', 'oauth2-provider-integration']`
+**Processing:**
 
-Note: Limit to 5 options maximum for usability.
+1. Parse: `issue-99-implement-oauth2-provider-integration-with-google`
+2. Remove issue: `implement-oauth2-provider-integration-with-google`
+3. Split: `['implement', 'oauth2', 'provider', 'integration', 'with', 'google']`
+4. Generate (6 words → 6 options before limit):
+   - `google`
+   - `with-google`
+   - `integration-with-google`
+   - `provider-integration-with-google`
+   - `oauth2-provider-integration-with-google`
+   - `implement-oauth2-provider-integration-with-google`
+5. Step 6: Limit to 5 options (drop longest)
+
+**Output:** `['google', 'with-google', 'integration-with-google', 'provider-integration-with-google', 'oauth2-provider-integration-with-google']`
 
 ### Already Short
 
 **Input:** `bugfix/typo`
 
 **Output:** `['typo']`
+
+### Issue-only Branch (Fallback)
+
+**Input:** `feature/issue-123`
+
+**Processing:**
+
+1. Parse: `issue-123`
+2. Remove issue pattern: Would become empty
+3. Fallback: Keep original `issue-123`
+4. Split: `['issue', '123']`
+5. Generate: `['123', 'issue-123']`
+6. Filter: `123` is numeric-only, keep `issue-123`
+
+**Output:** `['issue-123']`
 
 ## Validation Rules
 

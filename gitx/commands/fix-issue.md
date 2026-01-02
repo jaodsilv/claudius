@@ -1,7 +1,7 @@
 ---
 description: Full workflow: worktree + development + push for an issue
 argument-hint: "[ISSUE]"
-allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, Skill(gitx:worktree-name), TodoWrite, Write, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion
 ---
 
 # Fix Issue (Orchestrated)
@@ -184,11 +184,33 @@ Use Skill tool with gitx:worktree-name:
 - Input: [branch-name] (e.g., `feature/issue-123-add-user-auth`)
 - Output: List of abbreviated directory options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
 
+**Fallback Behavior**:
+
+If skill is unavailable or fails:
+
+1. Sanitize branch name directly:
+   - Remove type prefix (e.g., `feature/` → ``)
+   - Remove issue patterns (e.g., `issue-123-` → ``)
+2. Use sanitized name as single option
+
+If skill returns empty list:
+
+1. Apply same fallback method
+2. If still empty, use branch name with `/` replaced by `-`
+
+**Collision Check**:
+
+Before presenting options:
+
+1. Run `git worktree list` to get existing directories
+2. Filter out colliding options
+3. If all collide, add numeric suffix (e.g., `auth-2`)
+
 Use AskUserQuestion to let user select:
 
 - Question: "Select worktree directory name for branch `[branch-name]`:"
 - Header: "Directory"
-- Options: [skill output options]
+- Options: [skill output options] (user can select "Other" for custom name)
 
 Store selected name for WORKTREE_PATH.
 

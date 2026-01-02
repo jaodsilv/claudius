@@ -169,16 +169,47 @@ Calculate worktree path using abbreviated directory naming:
 3. Use Skill tool with gitx:worktree-name to generate directory name options:
    - Input: branch name (e.g., `feature/issue-123-add-user-auth`)
    - Output: list of options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
-4. Present options to user via AskUserQuestion (see Directory Name Selection)
-5. Final path: `<parent>/<selected-directory-name>`
+4. Validate skill output (see Skill Fallback Behavior)
+5. Check for directory collisions (see Directory Collision Check)
+6. Present options to user via AskUserQuestion (see Directory Name Selection)
+7. Final path: `<parent>/<selected-directory-name>`
 
 Example:
 
 1. Repo root: `/code/myproject`
 2. Branch: `feature/issue-123-add-user-auth`
 3. Skill output: `['auth', 'user-auth', 'add-user-auth']`
-4. User selects: `user-auth`
-5. Worktree: `/code/user-auth`
+4. No collisions found
+5. User selects: `user-auth`
+6. Worktree: `/code/user-auth`
+
+## Skill Fallback Behavior
+
+If gitx:worktree-name skill is unavailable or fails:
+
+1. **Fallback method**: Sanitize branch name directly
+   - Remove type prefix (e.g., `feature/` → ``)
+   - Remove issue patterns (e.g., `issue-123-` → ``)
+   - Result is the directory name
+
+2. **Example**:
+   - Branch: `feature/issue-123-add-user-auth`
+   - Fallback: `add-user-auth`
+
+If skill returns empty list:
+
+1. Apply the same fallback method
+2. If still empty, use the full branch name with `/` replaced by `-`
+
+## Directory Collision Check
+
+Before presenting options to user, check for existing worktrees:
+
+1. Run `git worktree list` to get existing worktree paths
+2. Extract directory names from paths
+3. Filter out options that collide with existing directories
+4. If all options collide, add numeric suffix to options (e.g., `auth-2`)
+5. Report collisions to user: "Note: `auth` already exists, showing alternatives"
 
 ## Directory Name Selection
 
@@ -188,11 +219,40 @@ Use AskUserQuestion to let user choose directory name:
 2. Header: "Directory"
 3. Options: [Generated options from gitx:worktree-name skill]
    - Each option shows the abbreviated name
-   - Include "Custom name" as the last option
-4. If user selects "Custom name" (via "Other"):
+   - Filter out branch-type words when standalone: `feature`, `bugfix`, `hotfix`, `release`, `chore`
+   - User can select "Other" for custom name
+4. If user selects "Other" (custom name):
    - Ask for custom name
-   - Validate: lowercase, hyphens only, no special characters
+   - Validate against all rules (see Custom Name Validation)
+   - Maximum 3 retry attempts before suggesting an auto-generated name
    - Confirm the custom name
+
+## Custom Name Validation
+
+Custom directory names must pass all validations:
+
+1. **Format rules**:
+   - Lowercase only (a-z)
+   - Hyphens for word separation (no underscores)
+   - No consecutive hyphens
+   - No leading or trailing hyphens
+   - No special characters or spaces
+
+2. **Length rules**:
+   - Minimum: 2 characters
+   - Maximum: 30 characters
+
+3. **Reserved names** (reject these):
+   - Git: `main`, `master`, `develop`, `HEAD`, `origin`
+   - System: `tmp`, `temp`, `test`, `build`, `dist`, `node_modules`
+
+4. **Collision check**: Must not match existing worktree directory
+
+5. **Error messages**:
+   - "Name must be lowercase" → suggest lowercase version
+   - "Name too long (max 30 chars)" → suggest truncated version
+   - "Reserved name" → suggest alternative
+   - "Directory already exists" → suggest with numeric suffix
 
 ## Confirmation
 
@@ -295,15 +355,16 @@ Execution (no codebase exploration):
 3. Parse response (do NOT read any project files)
 4. Use Skill gitx:conventional-branch to generate branch name → `bugfix/issue-123-fix-login`
 5. Use Skill gitx:worktree-name to generate directory options → `['login', 'fix-login']`
-6. **Ask user to select directory name**:
+6. Check for directory collisions (none found)
+7. **Ask user to select directory name**:
    - Question: "Select worktree directory name for branch `bugfix/issue-123-fix-login`:"
-   - Options: ["login", "fix-login"]
+   - Options: ["login", "fix-login"] (user can select "Other" for custom name)
    - User selects: `fix-login`
-7. **Confirm with AskUserQuestion**:
+8. **Confirm with AskUserQuestion**:
    - Question: "Create worktree?\n  Branch: `bugfix/issue-123-fix-login`\n  Directory: `../fix-login`"
    - Options: ["Create as proposed", "Change directory name", "Cancel"]
-8. If confirmed, create worktree: `git worktree add -b bugfix/issue-123-fix-login ../fix-login`
-9. Report success and STOP
+9. If confirmed, create worktree: `git worktree add -b bugfix/issue-123-fix-login ../fix-login`
+10. Report success and STOP
 
 ### Example 2: Task description (no exploration)
 
@@ -314,15 +375,16 @@ Execution (no codebase exploration):
 1. Parse argument directly as task description
 2. Use Skill gitx:conventional-branch: → `feature/add-user-authentication`
 3. Use Skill gitx:worktree-name to generate directory options → `['authentication', 'user-authentication', 'add-user-authentication']`
-4. **Ask user to select directory name**:
+4. Check for directory collisions (none found)
+5. **Ask user to select directory name**:
    - Question: "Select worktree directory name for branch `feature/add-user-authentication`:"
-   - Options: ["authentication", "user-authentication", "add-user-authentication"]
+   - Options: ["authentication", "user-authentication", "add-user-authentication"] (user can select "Other" for custom name)
    - User selects: `user-authentication`
-5. **Confirm with AskUserQuestion**:
+6. **Confirm with AskUserQuestion**:
    - Question: "Create worktree?\n  Branch: `feature/add-user-authentication`\n  Directory: `../user-authentication`"
    - Options: ["Create as proposed", "Change directory name", "Cancel"]
-6. If confirmed, create worktree: `git worktree add -b feature/add-user-authentication ../user-authentication`
-7. Report success and STOP
+7. If confirmed, create worktree: `git worktree add -b feature/add-user-authentication ../user-authentication`
+8. Report success and STOP
 
 ### Example 3: Branch name (no exploration)
 
@@ -332,13 +394,15 @@ Execution (no codebase exploration):
 
 1. Detect `/` in argument - treat as branch name
 2. Validate format (lowercase, hyphens only)
-3. Use Skill gitx:worktree-name to generate directory options → `['feature', 'new-feature', 'my-new-feature']`
-4. **Ask user to select directory name**:
+3. Use Skill gitx:worktree-name to generate directory options → `['new-feature', 'my-new-feature']`
+   (Note: `feature` filtered out as branch-type word)
+4. Check for directory collisions (none found)
+5. **Ask user to select directory name**:
    - Question: "Select worktree directory name for branch `feature/my-new-feature`:"
-   - Options: ["feature", "new-feature", "my-new-feature"]
+   - Options: ["new-feature", "my-new-feature"] (user can select "Other" for custom name)
    - User selects: `new-feature`
-5. **Confirm with AskUserQuestion**:
+6. **Confirm with AskUserQuestion**:
    - Question: "Create worktree?\n  Branch: `feature/my-new-feature`\n  Directory: `../new-feature`"
    - Options: ["Create as proposed", "Change directory name", "Cancel"]
-6. If confirmed, create worktree: `git worktree add -b feature/my-new-feature ../new-feature`
-7. Report success and STOP
+7. If confirmed, create worktree: `git worktree add -b feature/my-new-feature ../new-feature`
+8. Report success and STOP
