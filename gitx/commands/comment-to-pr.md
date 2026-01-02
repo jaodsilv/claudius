@@ -18,9 +18,9 @@ From $ARGUMENTS, extract:
 - `-sc` or `--single-commit` flag with value: If present, triggers single-commit summary flow
 - `-r` or `--review` flag with optional value: If present, triggers review response flow
   - If followed by quoted string: Use as the review text to respond to
-  - If piped from stdin: Use stdin content as review text
   - If no value provided: Auto-fetch latest review from PR
   - Can be combined with `-c <commit>` or `-sc <commit>` to include commit evidence
+  - **Parsing note**: Quoted string must immediately follow `-r`/`--review` flag
 
 **Flag combination rules:**
 - `-r` alone: Respond to latest review with general summary of work done
@@ -30,6 +30,15 @@ From $ARGUMENTS, extract:
 - `-r -sc <commit>`: Respond to latest review with single commit as evidence
 - `-r "text" -sc <commit>`: Respond to specified review with single commit as evidence
 - `-r` cannot be combined with `--last` (exclusive flows)
+
+**Usage examples:**
+
+```bash
+/comment-to-pr -r                         # Auto-fetch latest review, respond with recent work
+/comment-to-pr -r "Please address concerns"  # Respond to specified review text
+/comment-to-pr -r -c abc1234              # Respond with commits since abc1234 as evidence
+/comment-to-pr 42 -r -sc def5678          # Respond to PR #42 with single commit evidence
+```
 
 ## Infer PR Number
 
@@ -107,15 +116,13 @@ If `-r` or `--review` flag used:
 **If review text provided in arguments:**
 - Use the provided quoted string as `$review_text`
 
-**If stdin has content (piped input):**
-- Use stdin content as `$review_text`
-
 **If no review text provided (flag used alone):**
 1. Fetch latest review from PR:
 
    ```bash
-   gh pr view <number> --json latestReviews \
-     --jq '.latestReviews
+   # Filters for actionable reviews: PENDING, CHANGES_REQUESTED, COMMENTED
+   gh pr view <number> --json reviews \
+     --jq '.reviews
        | map(select(.state != "APPROVED" and .state != "DISMISSED"))
        | sort_by(.submittedAt)
        | last'
@@ -154,7 +161,6 @@ If `-r` or `--review` flag used:
 1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
 2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
 3. Get the actual diff for the commit: `git show --no-stat <commit>`
-
 4. Store in `$work_evidence` variable
 
 **If neither `-c` nor `-sc` provided:**
@@ -162,7 +168,7 @@ If `-r` or `--review` flag used:
 
    ```bash
    git log --oneline -10
-   git diff --stat HEAD~5..HEAD
+   git diff --stat HEAD~10..HEAD
    ```
 
 2. Store in `$work_evidence` variable (may be empty if no recent work)
@@ -227,7 +233,7 @@ Use AskUserQuestion:
 If "Edit response" selected:
 - Use AskUserQuestion: "What would you like to change about the response?"
 - Regenerate response based on user input
-- Return to preview
+- Return to Step 4 preview (loop continues until user selects "Post" or "Cancel")
 
 #### Step 5: Store and Proceed
 
@@ -346,8 +352,9 @@ Show the posted comment:
 7. First message in conversation (--last flag): Report error and suggest using a different comment option.
 8. Invalid commit hash: Report "Commit '<hash>' not found in repository. Please verify the commit hash."
 9. Commit not in history: Report "Commit '<hash>' exists but is not in current branch's history."
-10. No reviews found (--review flag): Report "No pending reviews or unresolved review comments found
-    for this PR." Suggest using --review with explicit text or a different comment option.
+10. No reviews found (--review flag): Triggers when user selects "Cancel" in the AskUserQuestion after no
+    reviews are found. Report "No pending reviews or unresolved review comments found for this PR."
+    Suggest using --review with explicit text or a different comment option.
 11. Review fetch failed (--review flag): Report the gh error and suggest checking PR access permissions.
 12. Invalid flag combination: If `-r` is combined with `--last`, report "Cannot combine --review
     with --last flag. Use one or the other."
