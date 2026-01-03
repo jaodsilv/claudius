@@ -28,12 +28,13 @@ specialized plugin directories.
 3. `instructions/` - Agent creation guidelines
 4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
 5. `output-styles/` - 1 output style (candidate-response)
-6. `skills/` - 19 skills in categories:
-   - Code quality
-   - Conventional standards (branch, commits)
-   - Language-specific reviews (Go, Java, Markdown, Mermaid, Python, Rust, TypeScript)
-   - Principles (performance, security, SOLID)
-   - TDD workflow
+6. `skills/` - 16 skills in categories:
+   - Code quality (1)
+   - Conventional standards (2): branch, commits
+   - Language-specific reviews (7): Go, Java, Markdown, Mermaid, Python, Rust, TypeScript
+   - Principles (3): performance, security, SOLID
+   - TDD (2): approach-selection, workflow
+   - Job hunting (1)
 7. `plugins/` - Plugin configurations
 
 #### gitx/
@@ -46,9 +47,9 @@ specialized plugin directories.
    - `fix-issue/` - 4 agents for issue-to-PR workflow
    - `pr-create/` - 3 agents for PR creation
    - `respond/` - 4 agents for PR response handling
-2. 14 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
-   commit-push, next-issue, fix-issue, comment-to-issue, pr, respond, update-pr,
-   comment-to-pr, merge-pr
+2. 15 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
+   commit-push, next-issue, fix-issue, comment-to-issue, comment-to-pr, pr,
+   respond, update-pr, merge-pr
 3. 2 skills: conventional-commits, conventional-branch
 
 **See**: `gitx/README.md` for detailed documentation
@@ -75,7 +76,13 @@ specialized plugin directories.
 **Purpose**: Strategic planning with roadmapping, prioritization, and deep ideation
 **Contents**:
 
-1. 9 agents for planning workflows
+1. 16 agents in 3 groups:
+   - `github/` - 2 agents (issue-analyzer, issue-relationship-mapper)
+   - `ideas/` - 5 agents (adversarial-critic, convergence-synthesizer, deep-thinker,
+     facilitator, innovation-explorer)
+   - `planner/` - 9 agents (architecture-reviewer, plan-reviewer, prioritization-engine,
+     requirements-gatherer, requirements-reviewer, review-analyzer, review-challenger,
+     review-synthesizer, roadmap-architect)
 2. 9 commands: roadmap, prioritize, gather-requirements, review-plan,
    review-roadmap, review-prioritization, review-architecture, review-requirements,
    ideas
@@ -112,11 +119,13 @@ specialized plugin directories.
 **Purpose**: Job hunting workflow configurations
 **Contents**:
 
-1. 18 agents:
-   - Cover letter evaluators (14): ATS, impact, keywords, gaps, overlap,
-     relevance, skills, tech-positioning, terminology, personalization,
-     communication, presentation, false-assertion-cleaner, result-combiner
-   - Job hunting workflow (4): cover-letter-improver, improver-standalone, shortener, message-parser
+1. 19 agents:
+   - Cover letter evaluators (14): ATS, communication, false-assertion-cleaner,
+     impact, keywords, overlap, personalization, presentation, relevance,
+     result-combiner, skills, tech-positioning, terminology, true-gaps
+   - Interview preparation (1): interview-company-researcher
+   - Job hunting workflow (4): cover-letter-improver, improver-standalone,
+     shortener, message-parser
 2. 4 commands: overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2
 3. 1 output style: tech-cover-letter-specialist
 4. 1 skill: job-hunting
@@ -142,10 +151,11 @@ specialized plugin directories.
 **Purpose**: Project-specific Claude Code settings for this repository
 **Contents**:
 
-1. 8 agents:
+1. 7 agents:
    - `pr-quality-reviewer.md` - Comprehensive PR review
    - `pr-quick-reviewer.md` - Fast PR review
-   - `pr-focused-reviewers/` - 5 specialized reviewers (architecture, documentation, performance, security, test-coverage)
+   - `pr-focused-reviewers/` - 5 specialized reviewers (architecture, documentation,
+     performance, security, test-coverage)
 2. `settings.local.json` - Local Claude Code settings
 
 ### Marketplace Plugins

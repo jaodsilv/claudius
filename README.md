@@ -18,7 +18,7 @@ General-purpose Claude Code configurations mounted as `~/.claude`.
 
 1. 5 agents (coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-reviewer, walkthrough-generator)
 2. 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
-3. 19 skills (code quality, conventional standards, language reviews, principles, TDD)
+3. 16 skills (code quality, conventional standards, language reviews, principles, TDD, job-hunting)
 4. 7 shared reference documents
 
 #### gitx/
@@ -26,7 +26,7 @@ General-purpose Claude Code configurations mounted as `~/.claude`.
 Extended Git/GitHub workflow plugin with multi-agent orchestration.
 
 1. 14 agents in 4 groups (conflict-resolver, fix-issue, pr-create, respond)
-2. 14 commands (worktree, fix-issue, pr, respond, merge, rebase, etc.)
+2. 15 commands (worktree, fix-issue, pr, respond, merge, rebase, etc.)
 3. 2 skills (conventional-commits, conventional-branch)
 
 #### cc/
@@ -41,7 +41,7 @@ Meta-toolkit for creating and improving Claude Code plugin components.
 
 Strategic planning with roadmapping, prioritization, and deep ideation.
 
-1. 9 agents for planning workflows
+1. 16 agents in 3 groups (github, ideas, planner)
 2. 9 commands (roadmap, prioritize, review-*, ideas)
 3. Multi-agent "Ultrathink" ideation with Opus extended thinking
 
@@ -65,7 +65,7 @@ Documentation downloading, conversion, and processing.
 
 Job hunting workflow configurations.
 
-1. 18 agents (14 cover letter evaluators + 4 workflow agents)
+1. 19 agents (14 cover letter evaluators + 1 interview researcher + 4 workflow agents)
 2. 4 commands (overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2)
 3. 1 skill (job-hunting)
 
@@ -105,7 +105,7 @@ and accessible via the `data/external-resources/` junction link:
 
 ### Supporting Directories
 
-1. **.claude/** - Project-specific PR reviewers (8 agents)
+1. **.claude/** - Project-specific PR reviewers (7 agents)
 2. **curation/** - Marketplace curation analysis and reports
 3. **config/** - Markdownlint configurations
 4. **scripts/** - Generate docs and validate plugins
