@@ -38,7 +38,6 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 | Architectures | Common approaches |
 | Data models | Standard structures |
 | Integrations | Expected connections |
-
 | APIs | Conventions and standards |
 
 ### 4. Compliance
