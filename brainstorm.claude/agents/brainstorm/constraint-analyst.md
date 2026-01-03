@@ -44,7 +44,6 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 | Skills | Expertise gaps |
 | Infrastructure | Hardware, cloud resources |
 | Third-party | Vendor limitations |
-
 | Support | Maintenance capacity |
 
 ### 4. Environmental
