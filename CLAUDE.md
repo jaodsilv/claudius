@@ -2,9 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Base Instructions
+> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+> "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+> document are to be interpreted as described in
+> [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
 
-1. Read @CLAUDE.base.md as a base or as an extension for this CLAUDE.md file
+## Custom Slash Commands and Sub-Agents Instructions
+
+1. Follow the slash command/agent instructions thoroughly, do not skip any steps unless explicitly stated.
+2. Do not assume anything without reading the instructions.
+3. Do not add any additional steps unless explicitly stated.
 
 ## Repository Overview
 
