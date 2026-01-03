@@ -188,15 +188,17 @@ Use Skill tool with gitx:worktree-name:
 
 If skill is unavailable or fails:
 
-1. Sanitize branch name directly:
+1. **Notify user**: "Note: Using simplified directory name (skill unavailable)"
+2. Sanitize branch name directly:
    - Remove type prefix (e.g., `feature/` → ``)
    - Remove issue patterns (e.g., `issue-123-` → ``)
-2. Use sanitized name as single option
+3. Use sanitized name as single option
 
 If skill returns empty list:
 
-1. Apply same fallback method
-2. If still empty, use branch name with `/` replaced by `-`
+1. **Notify user**: "Note: Using simplified name (skill returned no options)"
+2. Apply same fallback method
+3. If still empty, use branch name with `/` replaced by `-`
 
 **Collision Check**:
 
@@ -204,7 +206,9 @@ Before presenting options:
 
 1. Run `git worktree list` to get existing directories
 2. Filter out colliding options
-3. If all collide, add numeric suffix (e.g., `auth-2`)
+3. If all collide, add numeric suffix (e.g., `auth-2`, `auth-3`, ...)
+   - Maximum 10 suffix attempts (`auth`, `auth-2`, ..., `auth-10`)
+   - If all 10 collide: "Error: Too many directories with similar names. Please choose a unique custom name."
 
 Use AskUserQuestion to let user select:
 
@@ -444,7 +448,10 @@ Maintain issue context throughout the workflow:
 - **Worktree creation failed**: Report error, suggest manual creation or cleanup
 - **Workflow not found**: Fall back to manual development with guidance
 - **Development interrupted**: Save state, allow resumption with context
-- **Agent failure**: Log error, offer retry or manual fallback
+- **Agent failure**:
+  1. Log error to console: "Agent [agent-name] failed: [error-message]"
+  2. Show user: "Agent [name] encountered an error. Offering fallback options."
+  3. Present alternatives: retry, manual fallback, or skip phase
 
 ## State Preservation
 

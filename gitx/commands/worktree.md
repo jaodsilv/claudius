@@ -69,7 +69,7 @@ This is a hard requirement. The worktree command MUST NOT explore the codebase.
 
 Before attempting issue lookup, if argument looks like issue number or URL:
 
-1. Check gh auth status: `gh auth status 2>&1`
+1. Check gh auth status: `gh auth status`
 2. If not authenticated, report error and provide guidance:
    "Run `gh auth login` to authenticate"
 3. Exit without proceeding if auth check fails
@@ -187,19 +187,21 @@ Example:
 
 If gitx:worktree-name skill is unavailable or fails:
 
-1. **Fallback method**: Sanitize branch name directly
+1. **Notify user**: "Note: Using simplified directory name (skill unavailable)"
+2. **Fallback method**: Sanitize branch name directly
    - Remove type prefix (e.g., `feature/` → ``)
    - Remove issue patterns (e.g., `issue-123-` → ``)
    - Result is the directory name
 
-2. **Example**:
+3. **Example**:
    - Branch: `feature/issue-123-add-user-auth`
    - Fallback: `add-user-auth`
 
 If skill returns empty list:
 
-1. Apply the same fallback method
-2. If still empty, use the full branch name with `/` replaced by `-`
+1. **Notify user**: "Note: Using simplified name (skill returned no options)"
+2. Apply the same fallback method
+3. If still empty, use the full branch name with `/` replaced by `-`
 
 ## Directory Collision Check
 
@@ -208,7 +210,9 @@ Before presenting options to user, check for existing worktrees:
 1. Run `git worktree list` to get existing worktree paths
 2. Extract directory names from paths
 3. Filter out options that collide with existing directories
-4. If all options collide, add numeric suffix to options (e.g., `auth-2`)
+4. If all options collide, add numeric suffix to options (e.g., `auth-2`, `auth-3`, ...)
+   - Maximum 10 suffix attempts (`auth`, `auth-2`, ..., `auth-10`)
+   - If all 10 collide: "Error: Too many directories with similar names. Please choose a unique custom name."
 5. Report collisions to user: "Note: `auth` already exists, showing alternatives"
 
 ## Directory Name Selection
@@ -219,12 +223,13 @@ Use AskUserQuestion to let user choose directory name:
 2. Header: "Directory"
 3. Options: [Generated options from gitx:worktree-name skill]
    - Each option shows the abbreviated name
-   - Filter out branch-type words when standalone: `feature`, `bugfix`, `hotfix`, `release`, `chore`
+   - Filter out branch-type words when standalone: `feature`, `bugfix`, `hotfix`, `release`, `chore`, `refactor`, `docs`
    - User can select "Other" for custom name
 4. If user selects "Other" (custom name):
    - Ask for custom name
    - Validate against all rules (see Custom Name Validation)
-   - Maximum 3 retry attempts before suggesting an auto-generated name
+   - Maximum 3 retry attempts
+   - After 3 failed attempts, suggest auto-generated fallback: `<sanitized-branch>-custom`
    - Confirm the custom name
 
 ## Custom Name Validation
@@ -293,7 +298,16 @@ fi
 
 # Pull latest on current branch
 if ! git pull --rebase origin "$CURRENT_BRANCH"; then
-  echo "Error: Pull failed. Please resolve conflicts manually."
+  # Provide specific guidance based on failure type
+  if git status | grep -q "rebase in progress"; then
+    echo "Error: Pull failed due to merge conflicts."
+    echo "Please resolve conflicts manually: git rebase --continue or git rebase --abort"
+  elif echo "$?" | grep -q "Could not resolve host"; then
+    echo "Error: Pull failed due to network issue."
+    echo "Please check your internet connection and try again."
+  else
+    echo "Error: Pull failed. Please check git status and resolve manually."
+  fi
   if [ "$STASHED" = true ]; then
     echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
   fi

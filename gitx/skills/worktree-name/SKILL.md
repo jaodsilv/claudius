@@ -86,7 +86,7 @@ fix-login-error → ['fix', 'login', 'error']
 dark-mode → ['dark', 'mode']
 ```
 
-### Step 3.5: Handle Special Formats
+### Step 4: Handle Special Formats
 
 Before generating options, check for special formats that should be kept as-is:
 
@@ -97,9 +97,9 @@ Before generating options, check for special formats that should be kept as-is:
 2. **Single semantic tokens**: If only one word remains after splitting, keep it.
    - `auth` → `['auth']`
 
-If a special format is detected, skip to Step 5 (filtering) with the single-item list.
+If a special format is detected, skip to Step 6 (filtering) with the single-item list.
 
-### Step 4: Generate Options
+### Step 5: Generate Options
 
 Create options from shortest to longest by taking words from the end:
 
@@ -115,17 +115,18 @@ Create options from shortest to longest by taking words from the end:
   - add-user-auth (3 words)
 ```
 
-### Step 5: Dedupe and Filter
+### Step 6: Dedupe and Filter
 
 1. Remove duplicates (if description has fewer unique segments)
 2. Filter out single-character options
-3. Filter out common meaningless words when they are the **only option** (single-word result):
+3. Filter out numeric-only options (e.g., `123`)
+4. Filter out common meaningless words when they are the **only option** (single-word result):
    - Action words: `fix`, `add`, `update`, `remove`, `delete`, `change`
    - Articles: `the`, `a`, `an`
    - Branch type words: `feature`, `bugfix`, `hotfix`, `release`, `chore`, `refactor`, `docs`
-4. If filtering removes all options, fall back to the sanitized branch description
+5. If filtering removes all options, fall back to the sanitized branch description
 
-### Step 6: Limit Options
+### Step 7: Limit Options
 
 Truncate to maximum **5 options** for usability. Keep the shortest options when truncating.
 
@@ -192,9 +193,9 @@ Truncate to maximum **5 options** for usability. Keep the shortest options when 
 
 1. Parse: `v1.2.0`
 2. No issue pattern
-3. Split: Would be `['v1', '2', '0']`
-4. Step 3.5: Detect version format `v1.2.0` → keep as-is
-5. Skip to Step 5 with `['v1.2.0']`
+3. Split: `['v1.2.0']` (split is on hyphens; no hyphens in `v1.2.0`)
+4. Step 4: Detect version format `v1.2.0` → keep as-is
+5. Skip to Step 6 with `['v1.2.0']`
 
 **Output:** `['v1.2.0']`
 
@@ -222,7 +223,7 @@ Truncate to maximum **5 options** for usability. Keep the shortest options when 
    - `provider-integration-with-google`
    - `oauth2-provider-integration-with-google`
    - `implement-oauth2-provider-integration-with-google`
-5. Step 6: Limit to 5 options (drop longest)
+5. Step 7: Limit to 5 options (drop longest)
 
 **Output:** `['google', 'with-google', 'integration-with-google', 'provider-integration-with-google', 'oauth2-provider-integration-with-google']`
 
@@ -243,7 +244,7 @@ Truncate to maximum **5 options** for usability. Keep the shortest options when 
 3. Fallback: Keep original `issue-123`
 4. Split: `['issue', '123']`
 5. Generate: `['123', 'issue-123']`
-6. Filter: `123` is numeric-only, keep `issue-123`
+6. Filter (Step 6): `123` is numeric-only, filtered out → keep `issue-123`
 
 **Output:** `['issue-123']`
 
