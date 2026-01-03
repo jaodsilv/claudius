@@ -1,16 +1,7 @@
 ---
 name: gitx:code-change-planner
-description: >
-  Use this agent to create an ordered execution plan for code changes based on review
-  comment and CI failure analysis. This agent should be invoked after the analysis
-  agents complete to plan the sequence of changes.
-  Examples:
-  <example>
-  Context: Analysis of review comments and CI failures is complete.
-  user: "I have the analysis, now plan the changes"
-  assistant: "I'll launch the code-change-planner agent to create an ordered
-  execution plan."
-  </example>
+description: >-
+  Plans code changes needed to address PR feedback. Invoked after feedback analysis to organize fixes.
 model: sonnet
 tools: Read, Grep, Glob
 color: green

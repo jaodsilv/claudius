@@ -1,5 +1,5 @@
 ---
-description: Respond to PR review comments; use --ci for CI failures
+description: Responds to PR review comments or CI failures when feedback needs addressing. Use for iterating on pull request feedback.
 argument-hint: "[--ci] [response-context]"
 allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TodoWrite, Write, AskUserQuestion
 ---

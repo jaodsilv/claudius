@@ -1,11 +1,6 @@
 # {{product_name}} Specification
 
-**Version**: {{version}}
-**Date**: {{date}}
-**Session ID**: {{session_id}}
-**Status**: {{status}}
-
----
+**Version**: {{version}} | **Date**: {{date}} | **Status**: {{status}}
 
 ## Document Control
 
@@ -13,13 +8,9 @@
 |---------|------|--------|---------|
 | {{version}} | {{date}} | Brainstorm Session | Initial draft |
 
----
-
 ## Executive Summary
 
 {{executive_summary}}
-
----
 
 ## 1. Introduction
 
@@ -31,17 +22,11 @@
 
 {{scope}}
 
-### 1.3 Definitions and Acronyms
+### 1.3 Definitions
 
 | Term | Definition |
 |------|------------|
 | {{term}} | {{definition}} |
-
-### 1.4 References
-
-{{references}}
-
----
 
 ## 2. Problem Statement
 
@@ -61,8 +46,6 @@
 
 {{problem_impact}}
 
----
-
 ## 3. Target Users
 
 ### 3.1 Primary Users
@@ -73,19 +56,17 @@
 
 {{secondary_users}}
 
-### 3.3 User Personas
+### 3.3 Personas
 
 {{user_personas}}
 
----
-
 ## 4. Solution Overview
 
-### 4.1 Vision Statement
+### 4.1 Vision
 
 {{vision_statement}}
 
-### 4.2 Solution Approach
+### 4.2 Approach
 
 {{solution_approach}}
 
@@ -95,27 +76,24 @@
 
 ### 4.4 Success Metrics
 
-| Metric | Current | Target | Measurement Method |
-|--------|---------|--------|-------------------|
-| {{metric}} | {{current}} | {{target}} | {{method}} |
+| Metric | Current | Target | Method |
+|--------|---------|--------|--------|
 
----
+| {{metric}} | {{current}} | {{target}} | {{method}} |
 
 ## 5. Functional Requirements
 
-### 5.1 Priority 1 - Must Have
+### 5.1 Must Have (P1)
 
 {{p1_requirements}}
 
-### 5.2 Priority 2 - Should Have
+### 5.2 Should Have (P2)
 
 {{p2_requirements}}
 
-### 5.3 Priority 3 - Could Have
+### 5.3 Could Have (P3)
 
 {{p3_requirements}}
-
----
 
 ## 6. Non-Functional Requirements
 
@@ -139,11 +117,9 @@
 
 {{reliability_requirements}}
 
----
-
 ## 7. Technical Considerations
 
-### 7.1 Architecture Overview
+### 7.1 Architecture
 
 {{architecture_overview}}
 
@@ -151,106 +127,84 @@
 
 {{technology_recommendations}}
 
-### 7.3 Integration Points
+### 7.3 Integrations
 
 {{integration_points}}
 
-### 7.4 Data Considerations
+### 7.4 Data
 
 {{data_considerations}}
 
-### 7.5 Complexity Assessment
+### 7.5 Complexity
 
 {{complexity_assessment}}
 
----
-
 ## 8. Constraints
 
-### 8.1 Technical Constraints
+### 8.1 Technical
 
 {{technical_constraints}}
 
-### 8.2 Business Constraints
+### 8.2 Business
 
 {{business_constraints}}
 
-### 8.3 Resource Constraints
+### 8.3 Resource
 
 {{resource_constraints}}
 
-### 8.4 Timeline Constraints
+### 8.4 Timeline
 
 {{timeline_constraints}}
 
----
-
 ## 9. Risks and Mitigations
 
-| ID | Risk | Probability | Impact | Mitigation | Owner |
-|----|------|-------------|--------|------------|-------|
-| {{risk_id}} | {{risk}} | {{probability}} | {{impact}} | {{mitigation}} | {{owner}} |
+| ID | Risk | Prob | Impact | Mitigation | Owner |
 
----
+|----|------|------|--------|------------|-------|
+| {{risk_id}} | {{risk}} | {{probability}} | {{impact}} | {{mitigation}} | {{owner}} |
 
 ## 10. Assumptions
 
-| ID | Assumption | Risk if Invalid | Validation Approach |
-|----|------------|-----------------|---------------------|
+| ID | Assumption | Risk if Invalid | Validation |
+|----|------------|-----------------|------------|
 | {{assumption_id}} | {{assumption}} | {{risk}} | {{validation}} |
-
----
 
 ## 11. Out of Scope
 
 {{out_of_scope}}
 
----
-
 ## 12. Open Questions
 
-| ID | Question | Impact | Owner | Due Date |
-|----|----------|--------|-------|----------|
+| ID | Question | Impact | Owner | Due |
+|----|----------|--------|-------|-----|
 | {{question_id}} | {{question}} | {{impact}} | {{owner}} | {{due_date}} |
-
----
 
 ## 13. Next Steps
 
-### 13.1 Immediate Actions
+### Immediate
 
 {{immediate_actions}}
 
-### 13.2 Planning Phase
+### Planning
 
 {{planning_phase}}
 
-### 13.3 Development Phase
+### Development
 
 {{development_phase}}
 
----
-
-## Appendix A: Domain Research Summary
+## Appendix A: Domain Research
 
 {{domain_research}}
 
----
-
-## Appendix B: Technical Analysis Details
+## Appendix B: Technical Analysis
 
 {{technical_analysis}}
 
----
-
 ## Appendix C: Session Log
 
-### Session Overview
-
-1. **Date**: {{session_date}}
-2. **Duration**: {{session_duration}}
-3. **Depth Level**: {{depth}}
-4. **Dialogue Rounds**: {{dialogue_rounds}}
+**Date**: {{session_date}} | **Duration**: {{session_duration}} | **Depth**: {{depth}} | **Rounds**: {{dialogue_rounds}}
 
 ### Key Discussion Points
 
@@ -259,8 +213,6 @@
 ### Insights Timeline
 
 {{insights_timeline}}
-
----
 
 ## Appendix D: Glossary
 

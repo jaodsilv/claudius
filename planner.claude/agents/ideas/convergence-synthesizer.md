@@ -1,16 +1,6 @@
 ---
 name: planner-ideas-convergence-synthesizer
-description: Use this agent for "synthesizing ideas", "merging proposals", "consolidating insights", "creating coherent proposals", or when multiple idea streams need to be combined. Part of the Ultrathink workflow. Examples:
-
-  <example>
-  Context: Multiple agents have generated ideas
-  user: "Combine these ideas into coherent proposals"
-  assistant: "I'll synthesize the outputs into actionable proposals."
-  <commentary>
-  Need to merge multi-agent outputs, trigger convergence-synthesizer.
-  </commentary>
-  </example>
-
+description: Merges multi-agent outputs into coherent proposals. Invoked during Ultrathink workflow to transform divergent ideas into ranked, actionable recommendations.
 model: opus
 color: gold
 tools:

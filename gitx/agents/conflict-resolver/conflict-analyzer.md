@@ -1,16 +1,7 @@
 ---
 name: gitx:conflict-analyzer
-description: >
-  Use this agent to analyze git merge or rebase conflicts, understanding the nature
-  of each conflict and the semantic meaning of changes from both sides. This agent
-  should be invoked when conflicts occur during merge or rebase operations.
-  Examples:
-  <example>
-  Context: Git merge resulted in conflicts.
-  user: "I have merge conflicts, help me understand them"
-  assistant: "I'll launch the conflict-analyzer agent to analyze each conflict
-  and understand what both sides are trying to do."
-  </example>
+description: >-
+  Analyzes git merge and rebase conflicts to understand semantic differences. Invoked when conflicts occur during merge or rebase operations.
 model: sonnet
 tools: Bash(git:*), Read, Grep
 color: red

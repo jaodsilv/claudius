@@ -1,25 +1,6 @@
 ---
 name: planner-requirements-gatherer
-description: Use this agent when you need to "gather requirements", "define requirements", "discover needs", "create a requirements document", or need to systematically collect and structure project requirements. Examples:
-
-  <example>
-  Context: User starting a new feature
-  user: "I need to document the requirements for user authentication"
-  assistant: "I'll gather and structure the requirements for the authentication feature."
-  <commentary>
-  User needs requirements gathering, trigger requirements-gatherer.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User has an idea but needs structure
-  user: "I want to build a notification system, what do I need to consider?"
-  assistant: "I'll help you discover and document the requirements for the notification system."
-  <commentary>
-  User needs requirements discovery, use requirements-gatherer.
-  </commentary>
-  </example>
-
+description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
 tools:

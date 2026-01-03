@@ -1,16 +1,6 @@
 ---
 name: planner-review-challenger
-description: Use this agent for "adversarial review", "challenge assumptions", "devil's advocate", "risk analysis", "blind spot detection", or when you need to stress-test a planning artifact or review findings. Examples:
-
-  <example>
-  Context: Part of orchestrated review workflow
-  user: "Challenge the assumptions in this roadmap"
-  assistant: "I'll engage in adversarial analysis to identify blind spots and risks."
-  <commentary>
-  Adversarial challenge of planning artifact, trigger review-challenger.
-  </commentary>
-  </example>
-
+description: Stress-tests planning artifacts as devil's advocate. Invoked during orchestrated reviews to challenge assumptions and identify blind spots and risks.
 model: opus
 color: red
 tools:

@@ -1,5 +1,5 @@
 ---
-description: Analyze and improve an existing command interactively
+description: Improves commands when workflow or structure needs enhancement.
 argument-hint: <command-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 ---
@@ -31,10 +31,10 @@ Use TodoWrite to track progress:
 
 ### Phase 1: Analysis
 
-Load the improvement-workflow skill:
+Load the improving-components skill:
 
 ```text
-Use Skill tool to load cc:improvement-workflow
+Use Skill tool to load cc:improving-components
 ```
 
 Use Task tool with @cc:command-improver agent:

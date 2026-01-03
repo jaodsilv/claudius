@@ -1,34 +1,6 @@
 ---
 name: command-improver
-description: Use this agent when the user asks to "improve a command", "review command quality", "optimize a command", "check command best practices", or wants to enhance an existing slash command. Examples:
-
-<example>
-Context: User wants to improve a command
-user: "Improve my deploy command"
-assistant: "I'll use the command-improver agent to analyze and suggest improvements."
-<commentary>
-User requesting command improvement, trigger command-improver.
-</commentary>
-</example>
-
-<example>
-Context: User asks for command review
-user: "Review my /review-pr command for best practices"
-assistant: "I'll use the command-improver agent to review this command."
-<commentary>
-User wants command review, trigger command-improver.
-</commentary>
-</example>
-
-<example>
-Context: User mentions command issues
-user: "My commit command isn't working as expected"
-assistant: "I'll use the command-improver agent to analyze the command and identify issues."
-<commentary>
-User has command issues, analyze with command-improver.
-</commentary>
-</example>
-
+description: Analyzes commands for quality issues. Invoked when user asks to improve or review existing commands.
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]

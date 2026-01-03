@@ -1,15 +1,7 @@
 ---
 name: gitx:merge-validator
-description: >
-  Use this agent to validate merge/rebase resolutions before continuing the operation.
-  This agent checks for incomplete merges, syntax errors, and potential issues.
-  Examples:
-  <example>
-  Context: Conflicts have been resolved, need validation.
-  user: "Validate that my conflict resolutions are correct"
-  assistant: "I'll launch the merge-validator agent to check the resolutions
-  before continuing the merge."
-  </example>
+description: >-
+  Validates merge and rebase resolutions before continuing operations. Invoked after conflicts are resolved to check for issues.
 model: haiku
 tools: Bash(git:*), Read, Grep
 color: purple

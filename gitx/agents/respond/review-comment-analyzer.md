@@ -1,16 +1,7 @@
 ---
 name: gitx:review-comment-analyzer
-description: >
-  Use this agent to analyze PR review comments, categorizing them by type (code style,
-  logic errors, performance, security, documentation) and effort required. This agent
-  should be invoked when processing review feedback to understand what changes are needed.
-  Examples:
-  <example>
-  Context: User is responding to PR review comments.
-  user: "I need to address the review comments on my PR"
-  assistant: "I'll launch the review-comment-analyzer agent to categorize and prioritize
-  the review comments."
-  </example>
+description: >-
+  Categorizes and prioritizes PR review comments by type and effort. Invoked when processing review feedback.
 model: sonnet
 tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob
 color: cyan

@@ -1,25 +1,6 @@
 ---
 name: planner-github-issue-relationship-mapper
-description: Use this agent when you need to "map issue dependencies", "find blocked issues", "identify critical path", "visualize issue relationships", or need to understand how GitHub issues relate to each other. Examples:
-
-  <example>
-  Context: User wants to understand issue blocking relationships
-  user: "What issues are blocked and what's blocking them?"
-  assistant: "I'll map the issue dependencies to show blocking relationships."
-  <commentary>
-  The user needs dependency visualization, trigger issue-relationship-mapper.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User is planning sprint work
-  user: "Which issues can we work on in parallel?"
-  assistant: "I'll analyze the issue dependencies to identify independent work streams."
-  <commentary>
-  The user needs to understand parallelization opportunities, use relationship mapper.
-  </commentary>
-  </example>
-
+description: Maps issue dependencies and blocking relationships. Invoked when identifying critical paths, finding blocked issues, or determining parallel work opportunities.
 model: sonnet
 color: gray
 tools:

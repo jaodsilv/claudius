@@ -1,286 +1,139 @@
 ---
-description: Start an interactive brainstorming session for software/feature requirements discovery
+description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
 allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep
 argument-hint: topic: <topic> --depth: <shallow|normal|deep> --output-path: <output_path>
 ---
 
 # Brainstorm Session Orchestrator
 
-You are the Brainstorm Session Orchestrator, coordinating a multi-agent workflow for
-software/feature requirements discovery through Socratic dialogue.
+Coordinates multi-agent workflow for software/feature requirements discovery through Socratic dialogue.
 
-## Input Processing
+## Parameters
+
+```yaml
+properties:
+  topic:
+    type: string
+    description: The idea/feature/software concept to explore
+    required: true
+  depth:
+    type: string
+    enum: [shallow, normal, deep]
+    default: normal
+  output_path:
+    type: string
+    default: ./brainstorm-output/
+```
 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
-Parse the arguments and extract:
+## Initialization Checklist
 
-1. `$topic`: The idea/feature/software concept to explore (required)
-2. `$depth`: Exploration depth - shallow (3 rounds), normal (5 rounds), deep (8 rounds)
-3. `$output_path`: Where to save the final specification
+- [ ] Validate `$topic` provided
+- [ ] Set defaults: `$depth` (normal), `$output_path` (./brainstorm-output/)
+- [ ] Create output directory: `mkdir -p {{output_path}}`
+- [ ] Initialize TodoWrite with 6 phases
+- [ ] Create `{{output_path}}/session-log.md` with header:
 
-## Parameters Schema
-
-```yaml
-brainstorm-start-arguments:
-  type: object
-  description: Arguments for /brainstorm:start command
-  properties:
-    topic:
-      type: string
-      description: The idea/feature/software concept to explore
-    depth:
-      type: string
-      enum:
-        - shallow
-        - normal
-        - deep
-      description: Exploration depth (shallow=3 rounds, normal=5 rounds, deep=8 rounds)
-    output_path:
-      type: string
-      description: Where to save outputs
-  required:
-    - topic
+```markdown
+# Brainstorm Session Log
+**Topic**: {{topic}}
+**Depth**: {{depth}}
+**Started**: [timestamp]
+**Status**: In Progress
 ```
 
-## Default Parameters Values
-
-```yaml
-arguments-defaults:
-  depth: normal
-  output_path: ./brainstorm-output/
-```
-
-## Execution Workflow
-
-### Initialization
-
-Execute initialization steps to establish session context:
-
-1. Validate that `$topic` is provided. Missing topic prevents meaningful exploration.
-2. Set defaults for `$depth` (normal) and `$output_path` (./brainstorm-output/). Defaults enable quick starts.
-3. Create output directory if it doesn't exist. Directory creation prevents write failures.
-
-   ```bash
-   mkdir -p {{output_path}}
-   ```
-
-4. Initialize session tracking with TodoWrite. Progress tracking enables user visibility and session recovery.
-   1. Phase 1: Socratic Dialogue (in_progress)
-   2. Phase 2: Domain Exploration (pending)
-   3. Phase 3: Technical Analysis (pending)
-   4. Phase 4: Constraint Analysis (pending)
-   5. Phase 5: Requirements Synthesis (pending)
-   6. Phase 6: Document Generation (pending)
-
-5. Create session log file: `{{output_path}}/session-log.md`. Log file enables session recovery and audit trail.
-
-6. Write session header to log:
-
-   ```markdown
-   # Brainstorm Session Log
-
-   **Topic**: {{topic}}
-   **Depth**: {{depth}}
-   **Started**: [timestamp]
-   **Status**: In Progress
-
-   ---
-   ```
+## Phase Execution
 
 ### Phase 1: Socratic Dialogue (Interactive)
 
-Conduct iterative dialogue to explore the concept. Depth setting controls thoroughness vs. speed trade-off.
+**Rounds**: shallow=3, normal=5, deep=8
 
-**Rounds based on depth**:
+For each round, launch `brainstorm-facilitator`:
 
-1. shallow: 3 rounds. Use for time-constrained exploration.
-2. normal: 5 rounds. Balanced coverage for most topics.
-3. deep: 8 rounds. Comprehensive exploration for complex domains.
+```text
+Topic: {{topic}}
+Previous insights: {{previous_insights}}
+Areas to explore: {{areas_to_explore}}
+Round: {{current_round}} of {{max_rounds}}
+```
 
-**For each round**:
-
-1. Launch `brainstorm-facilitator` agent using the Task tool with:
-
-   ```text
-   Topic: {{topic}}
-
-   Previous insights (if any):
-   {{previous_insights}}
-
-   Areas to explore:
-   {{areas_to_explore}}
-
-   Round: {{current_round}} of {{max_rounds}}
-
-   Conduct Socratic dialogue to explore this concept. Ask probing questions
-   to understand the problem, users, scope, constraints, and edge cases.
-   ```
-
-2. The facilitator will interact with the user through questions
-
-3. After each round, append dialogue summary to session log. Logging preserves insights for later synthesis.
-
-4. Check facilitator's readiness assessment:
-   1. If clarity="High" AND rounds >= 2: Proceed to Phase 2 early.
-      Extended dialogue after clarity provides diminishing returns.
-   2. Otherwise: Continue to next round. Premature advancement produces incomplete requirements.
-
-5. After all rounds, run `/compact` remembering:
-   1. Topic
-   2. Key insights from dialogue
-   3. Current phase (completing Phase 1)
-   4. Output path
+- [ ] Append dialogue summary to session log after each round
+- [ ] Early exit if clarity="High" AND rounds >= 2
+- [ ] Run `/compact` after all rounds
 
 ### Phase 2: Domain Exploration
 
-Research market context and best practices to inform requirements.
+Launch `brainstorm-domain-explorer`:
 
-1. Update todo: Phase 2 in_progress. Status updates provide user visibility.
+```text
+Topic: {{topic}}
+Key requirements areas: {{requirements_areas}}
+Specific domain questions: {{domain_questions}}
+```
 
-2. Launch `brainstorm-domain-explorer` agent using the Task tool with:
-
-   ```text
-   Topic: {{topic}}
-
-   Key requirements areas from dialogue:
-   {{requirements_areas}}
-
-   Specific domain questions:
-   {{domain_questions}}
-
-   Research the market landscape, competitors, best practices, and user
-   expectations for this domain. Provide actionable insights.
-   ```
-
-3. Append domain exploration report to session log. Domain insights inform technical decisions.
-
-4. Run `/compact` remembering:
-   1. Topic
-   2. Key dialogue insights
-   3. Domain exploration summary
-   4. Current phase (completing Phase 2)
+- [ ] Append domain report to session log
+- [ ] Run `/compact`
 
 ### Phase 3: Technical Analysis
 
-Evaluate technical feasibility and architecture options to ground requirements in reality.
+Launch `brainstorm-technical-analyst`:
 
-1. Update todo: Phase 3 in_progress. Status updates provide user visibility.
+```text
+Topic: {{topic}}
+Requirements summary: {{requirements_summary}}
+Domain insights: {{domain_insights}}
+Known constraints: {{technical_constraints}}
+```
 
-2. Launch `brainstorm-technical-analyst` agent using the Task tool with:
-
-   ```text
-   Topic: {{topic}}
-
-   Requirements summary from dialogue:
-   {{requirements_summary}}
-
-   Domain insights:
-   {{domain_insights}}
-
-   Known technical constraints:
-   {{technical_constraints}}
-
-   Evaluate technical feasibility, propose architecture options, assess
-   complexity, and identify technical risks.
-   ```
-
-3. Append technical analysis report to session log. Technical insights inform constraint analysis.
-
-4. Run `/compact` remembering:
-   1. Topic
-   2. Key insights
-   3. Technical analysis summary
-   4. Current phase (completing Phase 3)
+- [ ] Append technical report to session log
+- [ ] Run `/compact`
 
 ### Phase 4: Constraint Analysis
 
-Systematically identify constraints to bound the solution space.
+Launch `brainstorm-constraint-analyst`:
 
-1. Update todo: Phase 4 in_progress. Status updates provide user visibility.
+```text
+Topic: {{topic}}
+Dialogue insights: {{dialogue_insights}}
+Domain insights: {{domain_insights}}
+Technical analysis: {{technical_summary}}
+```
 
-2. Launch `brainstorm-constraint-analyst` agent using the Task tool with:
-
-   ```text
-   Topic: {{topic}}
-
-   All gathered information:
-   - Dialogue insights: {{dialogue_insights}}
-   - Domain insights: {{domain_insights}}
-   - Technical analysis: {{technical_summary}}
-
-   Systematically identify and analyze all constraints (technical, business,
-   resource, environmental). Evaluate trade-offs where constraints conflict.
-   ```
-
-3. Append constraint analysis report to session log. Constraints inform requirements prioritization.
-
-4. Run `/compact` remembering:
-   1. Topic
-   2. Key insights
-   3. Constraints summary
-   4. Current phase (completing Phase 4)
+- [ ] Append constraint report to session log
+- [ ] Run `/compact`
 
 ### Phase 5: Requirements Synthesis
 
-Consolidate all insights into structured, actionable requirements.
+Launch `brainstorm-requirements-synthesizer`:
 
-1. Update todo: Phase 5 in_progress. Status updates provide user visibility.
+```text
+Topic: {{topic}}
+Dialogue insights: {{dialogue_insights}}
+Domain research: {{domain_research}}
+Technical analysis: {{technical_analysis}}
+Constraints: {{constraints}}
+```
 
-2. Launch `brainstorm-requirements-synthesizer` agent using the Task tool with:
-
-   ```text
-   Topic: {{topic}}
-
-   Complete session information:
-   - Dialogue insights: {{dialogue_insights}}
-   - Domain research: {{domain_research}}
-   - Technical analysis: {{technical_analysis}}
-   - Constraints: {{constraints}}
-
-   Synthesize all information into structured requirements. Organize by
-   priority (MoSCoW), identify dependencies, and flag gaps.
-   ```
-
-3. Save synthesized requirements to: `{{output_path}}/requirements.md`. Persistent storage enables future reference.
-
-4. Append requirements summary to session log. Summary completes the session record.
-
-5. Run `/compact` remembering:
-   1. Topic
-   2. Requirements summary
-   3. Current phase (completing Phase 5)
+- [ ] Save to `{{output_path}}/requirements.md`
+- [ ] Append summary to session log
+- [ ] Run `/compact`
 
 ### Phase 6: Document Generation
 
-Produce polished specification document for stakeholder consumption.
+Launch `brainstorm-specification-writer`:
 
-1. Update todo: Phase 6 in_progress. Status updates provide user visibility.
+```text
+Topic: {{topic}}
+Output path: {{output_path}}
+Session outputs: [all phase outputs]
+Save to: {{output_path}}/specification.md
+```
 
-2. Launch `brainstorm-specification-writer` agent using the Task tool with:
+- [ ] Update session log with completion status
+- [ ] Mark all todos completed
 
-   ```text
-   Topic: {{topic}}
-   Output path: {{output_path}}
-
-   Session outputs to integrate:
-   - Dialogue insights from facilitator
-   - Domain research from domain-explorer
-   - Technical analysis from technical-analyst
-   - Constraints from constraint-analyst
-   - Requirements from requirements-synthesizer
-
-   Generate a comprehensive specification document combining all outputs.
-   Save to: {{output_path}}/specification.md
-   ```
-
-3. Update session log with completion status. Completion status enables session audit.
-
-4. Mark all todos as completed. Completed status signals session end.
-
-### Completion
-
-Present to the user:
+## Completion Output
 
 ```markdown
 ## Brainstorm Session Complete
@@ -290,7 +143,6 @@ Present to the user:
 **Duration**: [calculated]
 
 ### Key Outcomes
-
 1. **Problem Defined**: [summary]
 2. **Users Identified**: [summary]
 3. **Requirements Captured**: [count] functional, [count] non-functional
@@ -298,64 +150,29 @@ Present to the user:
 5. **Constraints Documented**: [count] identified
 
 ### Generated Artifacts
-
-1. `{{output_path}}/specification.md` - Full specification document
-2. `{{output_path}}/requirements.md` - Structured requirements
-3. `{{output_path}}/session-log.md` - Complete session log
+1. `{{output_path}}/specification.md`
+2. `{{output_path}}/requirements.md`
+3. `{{output_path}}/session-log.md`
 
 ### Recommended Next Steps
-
-1. [Next step based on session outcomes]
-2. [Next step based on session outcomes]
-3. [Next step based on session outcomes]
+1. [Based on session outcomes]
 
 ### Open Questions
-
-[List any unresolved questions from the session]
+[List unresolved questions]
 ```
 
 ## Error Handling
 
-Handle failures gracefully to prevent data loss:
-
-1. **Agent Failure**: Log error, inform user, offer to retry or skip phase. Recovery options prevent complete session failure.
-2. **User Cancellation**: Save progress to session log, allow resumption. Progress preservation enables session recovery.
-3. **Context Overflow**: Run `/compact` proactively, preserve essential context. Proactive compaction prevents mid-phase memory exhaustion.
-
-## Session State Tracking
-
-Maintain session state to enable recovery and consistent behavior:
-
-1. Current phase and round. Position tracking enables resumption.
-2. Key insights discovered. Insight tracking enables synthesis.
-3. Output path. Path tracking ensures consistent file locations.
-4. Depth setting. Depth tracking maintains round count.
-5. Any errors or skipped phases. Error tracking enables troubleshooting.
+| Error | Action |
+|-------|--------|
+| Agent failure | Log error, offer retry or skip |
+| User cancellation | Save progress, allow resumption |
+| Context overflow | Run `/compact` proactively |
 
 ## Usage Examples
 
-### Basic Usage
-
 ```text
-/brainstorm:start topic: "Real-time collaboration feature for document editing"
+/brainstorm:start topic: "Real-time collaboration feature"
+/brainstorm:start topic: "AI code review tool" --depth: deep
+/brainstorm:start topic: "Notification system" --depth: normal --output-path: ./specs/notifications/
 ```
-
-### With Custom Depth
-
-```text
-/brainstorm:start topic: "AI-powered code review tool" --depth: deep
-```
-
-### With Custom Output Path
-
-```text
-/brainstorm:start topic: "Mobile app notification system" --depth: normal --output-path: ./specs/notifications/
-```
-
-## Notes
-
-1. Each phase builds on the previous phase's outputs
-2. User interaction is primarily in Phase 1 (dialogue)
-3. Subsequent phases are more automated but may ask clarifying questions
-4. The session can be resumed using `/brainstorm:continue` if interrupted
-5. Documents can be regenerated using `/brainstorm:export`
