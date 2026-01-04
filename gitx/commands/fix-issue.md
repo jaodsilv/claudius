@@ -240,8 +240,20 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Pull latest on current branch
-if ! git pull --rebase origin "$CURRENT_BRANCH"; then
-  echo "Error: Pull failed. Please resolve conflicts manually."
+PULL_OUTPUT=$(git pull --rebase origin "$CURRENT_BRANCH" 2>&1)
+PULL_EXIT_CODE=$?
+if [ $PULL_EXIT_CODE -ne 0 ]; then
+  # Provide specific guidance based on failure type
+  if echo "$PULL_OUTPUT" | grep -q "Could not resolve host"; then
+    echo "Error: Pull failed due to network issue."
+    echo "Please check your internet connection and try again."
+  elif git status | grep -q "rebase in progress"; then
+    echo "Error: Pull failed due to merge conflicts."
+    echo "Please resolve conflicts manually: git rebase --continue or git rebase --abort"
+  else
+    echo "Error: Pull failed. Please check git status and resolve manually."
+    echo "Details: $PULL_OUTPUT"
+  fi
   if [ "$STASHED" = true ]; then
     echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
   fi
