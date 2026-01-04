@@ -177,6 +177,47 @@ Based on issue type from analysis:
 
 Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
+### Generate Directory Name Options
+
+Use Skill tool with gitx:worktree-name:
+
+- Input: [branch-name] (e.g., `feature/issue-123-add-user-auth`)
+- Output: List of abbreviated directory options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
+
+**Fallback Behavior**:
+
+If skill is unavailable or fails:
+
+1. **Notify user**: "Note: Using simplified directory name (skill unavailable)"
+2. Sanitize branch name directly:
+   - Remove type prefix (e.g., `feature/` → ``)
+   - Remove issue patterns (e.g., `issue-123-` → ``)
+3. Use sanitized name as single option
+
+If skill returns empty list:
+
+1. **Notify user**: "Note: Using simplified name (skill returned no options)"
+2. Apply same fallback method
+3. If still empty, use branch name with `/` replaced by `-`
+
+**Collision Check**:
+
+Before presenting options:
+
+1. Run `git worktree list` to get existing directories
+2. Filter out colliding options
+3. If all collide, add numeric suffix (e.g., `auth-2`, `auth-3`, ...)
+   - Maximum 10 suffix attempts (`auth`, `auth-2`, ..., `auth-10`)
+   - If all 10 collide: "Error: Too many directories with similar names. Please choose a unique custom name."
+
+Use AskUserQuestion to let user select:
+
+- Question: "Select worktree directory name for branch `[branch-name]`:"
+- Header: "Directory"
+- Options: [skill output options] (user can select "Other" for custom name)
+
+Store selected name for WORKTREE_PATH.
+
 ### Sync and Create Worktree
 
 ```bash
@@ -199,8 +240,20 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Pull latest on current branch
-if ! git pull --rebase origin "$CURRENT_BRANCH"; then
-  echo "Error: Pull failed. Please resolve conflicts manually."
+PULL_OUTPUT=$(git pull --rebase origin "$CURRENT_BRANCH" 2>&1)
+PULL_EXIT_CODE=$?
+if [ $PULL_EXIT_CODE -ne 0 ]; then
+  # Provide specific guidance based on failure type
+  if echo "$PULL_OUTPUT" | grep -q "Could not resolve host"; then
+    echo "Error: Pull failed due to network issue."
+    echo "Please check your internet connection and try again."
+  elif git status | grep -q "rebase in progress"; then
+    echo "Error: Pull failed due to merge conflicts."
+    echo "Please resolve conflicts manually: git rebase --continue or git rebase --abort"
+  else
+    echo "Error: Pull failed. Please check git status and resolve manually."
+    echo "Details: $PULL_OUTPUT"
+  fi
   if [ "$STASHED" = true ]; then
     echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
   fi
@@ -216,7 +269,8 @@ if [ "$STASHED" = true ]; then
 fi
 
 # Create worktree as sibling directory
-WORKTREE_PATH="../[branch-name]"
+# Use the abbreviated directory name selected by user (not the full branch name)
+WORKTREE_PATH="../[selected-directory-name]"
 git worktree add -b [branch-name] "$WORKTREE_PATH"
 ```
 
@@ -406,7 +460,10 @@ Maintain issue context throughout the workflow:
 - **Worktree creation failed**: Report error, suggest manual creation or cleanup
 - **Workflow not found**: Fall back to manual development with guidance
 - **Development interrupted**: Save state, allow resumption with context
-- **Agent failure**: Log error, offer retry or manual fallback
+- **Agent failure**:
+  1. Log error to console: "Agent [agent-name] failed: [error-message]"
+  2. Show user: "Agent [name] encountered an error. Offering fallback options."
+  3. Present alternatives: retry, manual fallback, or skip phase
 
 ## State Preservation
 
