@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. Follow the slash command/agent instructions thoroughly, do not skip any steps unless explicitly stated.
 2. Do not assume anything without reading the instructions.
-3. Do not add any additional steps unless explicitly stated.
+3. To add additional steps request explicit approval.
 
 ## Repository Overview
 
@@ -25,8 +25,7 @@ specialized plugin directories.
 
 #### dotclaude/
 
-**Mount Location**: `~/.claude`
-**Purpose**: General-purpose Claude Code configurations
+**Purpose**: General-purpose Claude Code configurations (legacy, no longer mounted as ~/.claude)
 
 **Contents**:
 
@@ -139,18 +138,6 @@ specialized plugin directories.
 
 **See**: `job-hunting.claude/README.md` for detailed documentation
 
-### Placeholder Plugins
-
-#### personal-projects.claude/
-
-**Purpose**: Personal project configurations (placeholder)
-**Status**: To be populated as needed
-
-#### learning.claude/
-
-**Purpose**: Learning and educational project configurations (placeholder)
-**Status**: To be populated as needed
-
 ### Project-Specific Configuration
 
 #### .claude/
@@ -213,36 +200,11 @@ These directories are scheduled for removal or consolidation:
 
 **Purpose**: Documentation directory
 
-### External Resources (via data repository)
-
-External resources are stored in the paired data repository (`claudius-data`) and accessed via the `data/` junction link:
-
-1. `data/external-resources/super-claude` - Super Claude, a collection of Claude Code agents and prompts
-2. `data/external-resources/awesome-claude-prompts` - Awesome Claude Prompts
-3. `data/external-resources/awesome-claude-code-agents` - Awesome Claude Code Agents
-4. `data/external-resources/awesome-claude-code-subagents` - Awesome Claude Code Subagents
-5. `data/external-resources/awesome-claude-code` - Awesome Claude Code resources
-6. `data/external-resources/dynamic-sub-agents` - Dynamic Sub-Agents
-
-**Note**: These submodules are automatically updated weekly via GitHub Actions in the data repository.
-
-**Development Setup**: To access external resources, create a junction link to the data repository:
-
-```cmd
-# Windows (run as Administrator or with Developer Mode enabled)
-mklink /J data D:\src\claudius\data
-```
-
-```bash
-# Linux/macOS
-ln -s /path/to/claudius-data data
-```
-
 ## Migration Notes
 
-Content previously in `dotclaude/` has been split:
+Content previously in `dotclaude/` is being split:
 
-1. General configs remain in `dotclaude/`
-2. Documentation-related configs moved to `doc-understanding.claude/`
-3. Job hunting specific configs moved to `job-hunting.claude/`
-4. Future specialized configs will use similar pattern
+1. General configs remaining in `dotclaude/`
+2. Documentation-related configs moving to `doc-understanding.claude/`
+3. Job hunting specific configs moving to `job-hunting.claude/`
+4. Future specialized configs using similar pattern

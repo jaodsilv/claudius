@@ -14,7 +14,7 @@ Personal Claude Code configuration repository with a comprehensive plugin ecosys
 
 #### dotclaude/
 
-General-purpose Claude Code configurations mounted as `~/.claude`.
+General-purpose Claude Code configurations (legacy, no longer mounted as ~/.claude).
 
 1. 5 agents (coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-reviewer, walkthrough-generator)
 2. 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
@@ -69,11 +69,6 @@ Job hunting workflow configurations.
 2. 4 commands (overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2)
 3. 1 skill (job-hunting)
 
-### Placeholder Plugins
-
-1. **personal-projects.claude/** - Personal project configurations (placeholder)
-2. **learning.claude/** - Learning project configurations (placeholder)
-
 ### Marketplace Plugins
 
 1. **jaodsilv-career/** - Career development skill (593 lines)
@@ -88,20 +83,6 @@ These directories are scheduled for removal or consolidation:
 2. **community-devops/** - CI/CD & Infrastructure
 3. **community-git-tools/** - Git workflow skills
 4. **community-testing/** - Testing & QA skills
-
-### External Resources (via data repository)
-
-Git submodules containing community resources are stored in the private `claudius-data` repository
-and accessible via the `data/external-resources/` junction link:
-
-1. super-claude
-2. awesome-claude-prompts
-3. awesome-claude-code-agents
-4. awesome-claude-code-subagents
-5. awesome-claude-code
-6. dynamic-sub-agents
-
-**Note**: Submodules are automatically updated weekly via GitHub Actions.
 
 ### Supporting Directories
 
@@ -274,32 +255,6 @@ If you prefer to fork and customize:
 2. Create a new branch for your own stuff, this will make it easier to merge with whatever I add later
 3. Copy everything from your own ~/.claude into the .claude here
 4. If needed add whatever file you have with secrets in the .gitignore, this .gitignore already includes .credentials.json
-5. **(Optional) Set up external resources**: Clone the data repository and create a junction link:
-
-   ```cmd
-   # Windows (run as Administrator or with Developer Mode enabled)
-   git clone https://github.com/jaodsilv/claudius-data ../data
-   mklink /J data ..\data
-
-   ```
-
-   ```bash
-   # Linux/macOS
-   git clone https://github.com/jaodsilv/claudius-data ../data
-
-   ln -s ../data data
-   ```
-
-6. Mount the repository's .claude directory:
-    1. **For Linux/WSL users**:
-        1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
-        2. Create symlink (recommended): `ln -s /path/to/your/src/folder/claudius/dotclaude ~/.claude`
-    2. **For Windows users**:
-        1. Backup your existing Claude config
-        2. Create junction point or symbolic link to the dotclaude directory
-    3. **For macOS users**:
-        1. Backup your *~/.claude*: `mv ~/.claude ~/.claude.bak`
-        2. Create symlink: `ln -s /path/to/your/src/folder/claudius/dotclaude ~/.claude`
 
 ## Motivation for Plugin Architecture
 
