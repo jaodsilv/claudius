@@ -21,27 +21,7 @@ specialized plugin directories.
 
 ## Plugin Ecosystem
 
-### Core Plugins
-
-#### dotclaude/
-
-**Purpose**: General-purpose Claude Code configurations (legacy, no longer mounted as ~/.claude)
-
-**Contents**:
-
-1. `agents/` - 5 agents (coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-reviewer-2, walkthrough-generator)
-2. `commands/` - 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
-3. `instructions/` - Agent creation guidelines
-4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
-5. `output-styles/` - 1 output style (candidate-response)
-6. `skills/` - 16 skills in categories:
-   - Code quality (1)
-   - Conventional standards (2): branch, commits
-   - Language-specific reviews (7): Go, Java, Markdown, Mermaid, Python, Rust, TypeScript
-   - Principles (3): performance, security, SOLID
-   - TDD (2): approach-selection, workflow
-   - Job hunting (1)
-7. `plugins/` - Plugin configurations
+### Plugins Ready to use and install
 
 #### gitx/
 
@@ -108,7 +88,7 @@ specialized plugin directories.
 
 **See**: `brainstorm.claude/README.md` for detailed documentation
 
-### Specialized Plugins
+### Plugins Under Development
 
 #### doc-understanding.claude/
 
@@ -138,28 +118,12 @@ specialized plugin directories.
 
 **See**: `job-hunting.claude/README.md` for detailed documentation
 
-### Project-Specific Configuration
-
-#### .claude/
-
-**Purpose**: Project-specific Claude Code settings for this repository
-**Contents**:
-
-1. 7 agents:
-   - `pr-quality-reviewer.md` - Comprehensive PR review
-   - `pr-quick-reviewer.md` - Fast PR review
-   - `pr-focused-reviewers/` - 5 specialized reviewers (architecture, documentation,
-     performance, security, test-coverage)
-2. `settings.local.json` - Local Claude Code settings
-
-### Marketplace Plugins
-
 #### jaodsilv-career/
 
 **Purpose**: Career development skill
 **Contents**: 1 skill (job-hunting) - 593 lines of career guidance
 
-#### marketplace-curator/
+#### marketplace-curator/ (Deprecated - Pending Cleanup)
 
 **Purpose**: Marketplace curation tools
 **Contents**: 1 agent (curator) for discovering and analyzing marketplace items
@@ -183,10 +147,10 @@ These directories are scheduled for removal or consolidation:
 
 ### Supporting Directories
 
-#### curation/
+#### curation/ (Deprecated - Pending Cleanup)
 
 **Purpose**: Marketplace curation analysis and reports
-**Contents**: Analysis, decisions, inventory, outputs, reports
+**Contents**: Analysis, decisions, inventory, outputs, reports, outputs of marketplace-curator plugin
 
 #### config/
 
@@ -199,6 +163,35 @@ These directories are scheduled for removal or consolidation:
 #### docs/
 
 **Purpose**: Documentation directory
+
+#### dotclaude/
+
+**Purpose**: General-purpose Claude Code configurations (legacy, no longer mounted as ~/.claude)
+
+**Contents**:
+
+1. `agents/` - 12 agents
+   1. `coding-task-orchestrator.md` - Orchestrates coding tasks
+   2. `curator.md` - Content curation agent
+   3. `prompt-to-pipeline-architect.md` - Pipeline architecture from prompts
+   4. `pr-quality-reviewer.md` - Comprehensive PR review orchestrator
+   5. `pr-quick-reviewer.md` - Fast PR review for small changes
+   6. `pr-reviewer-2.md` - Alternative PR reviewer
+   7. `walkthrough-generator.md` - Code walkthrough generation
+   8. `pr-focused-reviewers/` - 5 specialized PR reviewers (architecture, documentation, performance, security, test-coverage)
+2. `commands/` - 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
+3. `instructions/` - Agent creation guidelines
+4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
+5. `output-styles/` - 1 output style (candidate-response)
+6. `skills/` - 16 skills in categories:
+   - Code quality (1)
+   - Conventional standards (2): branch, commits
+   - Language-specific reviews (7): Go, Java, Markdown, Mermaid, Python, Rust, TypeScript
+   - Principles (3): performance, security, SOLID
+   - TDD (2): approach-selection, workflow
+   - Job hunting (1)
+7. `plugins/` - Plugin configurations
+8. `logs` - Logs for Claude Code Agents.
 
 ## Migration Notes
 
