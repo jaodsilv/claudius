@@ -191,7 +191,6 @@ These directories are scheduled for removal or consolidation:
    - TDD (2): approach-selection, workflow
    - Job hunting (1)
 7. `plugins/` - Plugin configurations
-8. `logs` - Logs for Claude Code Agents.
 
 ## Migration Notes
 
