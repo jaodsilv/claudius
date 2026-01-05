@@ -171,14 +171,8 @@ These directories are scheduled for removal or consolidation:
 **Contents**:
 
 1. `agents/` - 12 agents
-   1. `coding-task-orchestrator.md` - Orchestrates coding tasks
-   2. `curator.md` - Content curation agent
-   3. `prompt-to-pipeline-architect.md` - Pipeline architecture from prompts
-   4. `pr-quality-reviewer.md` - Comprehensive PR review orchestrator
-   5. `pr-quick-reviewer.md` - Fast PR review for small changes
-   6. `pr-reviewer-2.md` - Alternative PR reviewer
-   7. `walkthrough-generator.md` - Code walkthrough generation
-   8. `pr-focused-reviewers/` - 5 specialized PR reviewers (architecture, documentation, performance, security, test-coverage)
+   - Root level (7): coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-quality-reviewer, pr-quick-reviewer, pr-reviewer-2, walkthrough-generator
+   - `pr-focused-reviewers/` (5): architecture, documentation, performance, security, test-coverage
 2. `commands/` - 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
 3. `instructions/` - Agent creation guidelines
 4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
