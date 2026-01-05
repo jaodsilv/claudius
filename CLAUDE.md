@@ -171,8 +171,10 @@ These directories are scheduled for removal or consolidation:
 **Contents**:
 
 1. `agents/` - 12 agents
-   - Root level (7): coding-task-orchestrator, curator, prompt-to-pipeline-architect, pr-quality-reviewer, pr-quick-reviewer, pr-reviewer-2, walkthrough-generator
-   - `pr-focused-reviewers/` (5): architecture, documentation, performance, security, test-coverage
+   - Root level (7): coding-task-orchestrator, curator, prompt-to-pipeline-architect,
+     pr-quality-reviewer, pr-quick-reviewer, pr-reviewer-2, walkthrough-generator
+   - `pr-focused-reviewers/` (5): architecture, documentation, performance, security,
+     test-coverage
 2. `commands/` - 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
 3. `instructions/` - Agent creation guidelines
 4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
