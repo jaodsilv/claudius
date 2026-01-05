@@ -17,6 +17,7 @@
     "pull-request",
     "branch",
     "committing-conventionally",
-    "naming-branches"
+    "naming-branches",
+    "naming-worktrees"
   ]
 }
