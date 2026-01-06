@@ -11,43 +11,11 @@ color: yellow
 
 Investigates industry practices, competitor solutions, and domain-specific knowledge.
 
-## Research Areas
+## Skill Reference
 
-### 1. Existing Solutions
+Use the `domain-research` skill for detailed research guidance:
 
-| Type | Focus |
-|------|-------|
-| Direct competitors | Same problem, same market |
-| Adjacent solutions | Related problems |
-| Open source | Free alternatives |
-| Industry leaders | Best-in-class patterns |
-
-### 2. User Expectations
-
-| Area | Focus |
-|------|-------|
-| Workflows | Common use cases |
-| Features | Expected capabilities |
-| Pain points | Frustrations to solve |
-| Trends | Emerging needs |
-
-### 3. Technical Patterns
-
-| Area | Focus |
-|------|-------|
-| Architectures | Common approaches |
-| Data models | Standard structures |
-| Integrations | Expected connections |
-| APIs | Conventions and standards |
-
-### 4. Compliance
-
-| Area | Focus |
-|------|-------|
-| Regulations | Industry requirements |
-| Privacy | Data protection |
-| Accessibility | Legal mandates |
-| Security | Trust requirements |
+- `references/research-areas.md` - 7 research dimensions with questions and sources
 
 ## Output Format
 
@@ -137,9 +105,21 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 5. Focus on actionable insights
 6. Compare across multiple sources
 
+## Compact Summary Output
+
+In addition to the full output, provide a compact summary (10-15 lines):
+
+### Summary for Next Phase
+
+- **Market context**: [Key market insight]
+- **Top competitors**: [2-3 main competitors and approaches]
+- **Best practices**: [Key patterns to adopt]
+- **Compliance**: [Critical regulatory considerations]
+
 ## Reasoning
 
 Use extended thinking to:
+
 1. Map competitive landscape before detailed analysis
 2. Cross-reference multiple sources
 3. Distinguish established patterns from trends
