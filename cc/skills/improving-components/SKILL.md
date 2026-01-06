@@ -78,6 +78,11 @@ Options: [List of specific improvements]
 - [ ] Report success/failure per change
 - [ ] Present completion summary
 
+## Related Skills
+
+- **`cc:focus-driven-analysis`** - When user specifies a focus area
+- **`cc:component-validation`** - Detailed validation criteria by component type
+
 ## Additional Resources
 
 - **`references/interactive-patterns.md`** - AskUserQuestion patterns
