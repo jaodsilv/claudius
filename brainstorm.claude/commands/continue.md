@@ -31,6 +31,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 ### Step 2: Extract Session State
 
 From `{{session_path}}/session-log.md` extract:
+
 - Topic
 - Depth
 - Last completed phase
@@ -41,12 +42,18 @@ From `{{session_path}}/session-log.md` extract:
 
 | Last Completed | Resume From |
 |----------------|-------------|
-| None | Phase 1 (Dialogue) |
-| Phase 1 | Phase 2 (Domain) |
-| Phase 2 | Phase 3 (Technical) |
-| Phase 3 | Phase 4 (Constraints) |
-| Phase 4 | Phase 5 (Requirements) |
+| None | Phase 1 (Dialogue - batched) |
+| Phase 1 | Phases 2-4 (Parallel Analysis) |
+| Phases 2-4 | Phase 4.5 (Analysis Synthesis) |
+| Phase 4.5 | Phase 5 (Requirements) |
 | Phase 5 | Phase 6 (Document) |
+
+**Notes**:
+
+- Phase 1 uses batched dialogue (2-3 rounds per invocation)
+- Phases 2-4 execute in parallel (domain, technical, constraints)
+- Phase 4.5 synthesizes parallel outputs before requirements
+- If only some parallel phases completed, resume incomplete ones first
 
 ### Step 4: Display Recovery Summary
 

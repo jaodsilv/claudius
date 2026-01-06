@@ -27,7 +27,8 @@
     "./agents/brainstorm/requirements-synthesizer.md",
     "./agents/brainstorm/domain-explorer.md",
     "./agents/brainstorm/constraint-analyst.md",
-    "./agents/brainstorm/specification-writer.md"
+    "./agents/brainstorm/specification-writer.md",
+    "./agents/brainstorm/analysis-synthesizer.md"
   ],
   "commands": [
     "./commands/start.md",
@@ -35,6 +36,11 @@
     "./commands/export.md"
   ],
   "skills": [
-    "./skills/brainstorming/SKILL.md"
+    "./skills/brainstorming/SKILL.md",
+    "./skills/constraint-analysis/SKILL.md",
+    "./skills/technical-patterns/SKILL.md",
+    "./skills/requirements-synthesis/SKILL.md",
+    "./skills/domain-research/SKILL.md",
+    "./skills/workflow-validation/SKILL.md"
   ]
 }

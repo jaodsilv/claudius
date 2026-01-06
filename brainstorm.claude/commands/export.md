@@ -35,6 +35,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 ### Step 2: Read Session Data
 
 Read all session files:
+
 - `{{session_path}}/session-log.md`
 - `{{session_path}}/requirements.md` (if exists)
 - `{{session_path}}/specification.md` (if exists)
@@ -49,6 +50,10 @@ Launch `brainstorm-specification-writer`:
 Regenerate specification from session data.
 Session path: {{session_path}}
 Output format: {{format}}
+
+Use templates from: brainstorm:brainstorming skill references/
+- requirements-document.md
+- session-summary.md
 ```
 
 ### Step 4: Generate Format-Specific Outputs
