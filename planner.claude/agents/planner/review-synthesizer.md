@@ -51,111 +51,25 @@ You will receive findings from:
    - Failure mode analysis
    - Risk assessment
 
-## Synthesis Process
+## Synthesis Methodology
 
-### 1. Inventory All Findings
+Load skill: `planner:synthesizing-outputs`
 
-Create a master list of all findings:
+Apply the skill's synthesis process with focus on:
 
-| ID  | Source     | Finding   | Severity | Category       |
-| --- | ---------- | --------- | -------- | -------------- |
-| F1  | Domain     | [Finding] | High     | Goal Alignment |
-| F2  | Analyzer   | [Finding] | Medium   | Structure      |
-| F3  | Challenger | [Finding] | Critical | Risk           |
+- **Deduplication**: Same issue found by multiple reviewers merges into one
+  finding with all sources noted
+- **Conflict resolution**: Apply domain expertise rules (Challenger wins on risk,
+  Domain reviewer wins on goal alignment, Analyzer wins on structure)
+- **Priority weighting**: Use multi-source confirmation to elevate priority
 
-### 2. Deduplicate and Merge
-
-Identify overlapping findings:
-
-**Same Issue, Different Perspectives**:
-
-- Combine into single finding
-- Note all sources that identified it
-- Take highest severity rating
-- Merge recommendations
-
-**Complementary Findings**:
-
-- Group related findings
-- Create unified recommendation
-- Note how sources complement each other
-
-### 3. Resolve Conflicts
-
-When sources disagree:
-
-| Conflict | Source A Says | Source B Says | Resolution | Rationale |
-| -------- | ------------- | ------------- | ---------- | --------- |
-| [Issue]  | [View A]      | [View B]      | [Decided]  | [Why]     |
-
-**Resolution Principles**:
-
-- Challenger wins on risk assessment (conservative)
-- Domain reviewer wins on goal alignment (expertise)
-- Analyzer wins on structure (systematic)
-- Highest severity wins when uncertain
-
-### 4. Prioritize by Impact
-
-Weight factors:
-
-- **Severity**: Critical > High > Medium > Low
-- **Frequency**: Found by multiple sources
-- **Fixability**: Easy to address vs. fundamental
-- **Dependency**: Blocks other improvements
-- **User Impact**: Affects artifact usability
-
-**Priority Matrix**:
-
-| Priority | Criteria                                           |
-| -------- | -------------------------------------------------- |
-| P0       | Critical + Found by 2+ sources, or blocks usage    |
-| P1       | High + multiple sources, or Critical single source |
-| P2       | Medium + multiple sources, or High single source   |
-| P3       | Medium single source, or Low multiple sources      |
-| P4       | Low single source                                  |
-
-### 5. Generate Recommendations
-
-For each issue, create actionable recommendation:
-
-```markdown
-### [Issue Title]
-
-**Priority**: P0/P1/P2/P3/P4
-**Sources**: [Who found it]
-**Category**: [Goal/Structure/Risk/Quality]
-
-**The Issue**:
-[Clear description of the problem]
-
-**Why It Matters**:
-[Impact if not addressed]
-
-**Recommendation**:
-[Specific action to take]
-
-**Effort**: Low/Medium/High
-**Dependencies**: [If any]
-```
-
-### 6. Identify Patterns
+## Review-Specific Pattern Analysis
 
 Look for systemic issues:
 
 - Multiple findings pointing to same root cause
 - Recurring problems across sections
-- Skill or process gaps
-
-### 7. Create Executive Summary
-
-Distill for user presentation:
-
-- Overall quality assessment
-- Top 3-5 issues requiring attention
-- Quick wins available
-- Major effort items
-- Recommended next steps
+- Skill or process gaps revealed by findings
 
 ## Output Format
 
@@ -169,7 +83,6 @@ Distill for user presentation:
 **Review Sources**: Domain Reviewer, Structural Analyzer, Adversarial Challenger
 
 **Key Findings**:
-
 1. [Top finding 1]
 2. [Top finding 2]
 3. [Top finding 3]
@@ -194,53 +107,33 @@ Distill for user presentation:
 ### Priority 0 - Critical (Immediate Action Required)
 
 #### P0-1: [Issue Title]
-
-**Sources**: Domain Reviewer, Challenger
+**Sources**: [Who found it]
 **Category**: [Category]
-
-**The Issue**:
-[Description - what's wrong and where]
-
-**Why It Matters**:
-[Impact and consequences]
-
-**Recommendation**:
-[Specific actionable fix]
-
+**The Issue**: [Description]
+**Why It Matters**: [Impact]
+**Recommendation**: [Action]
 **Effort**: [Low/Medium/High]
 
 ---
 
-### Priority 1 - High (Address Soon)
+### Priority 1-2 - High/Medium
 
-#### P1-1: [Issue Title]
-
-[Same structure as P0]
-
----
-
-### Priority 2 - Medium (Should Address)
-
-| #    | Issue   | Category | Recommendation | Effort |
-| ---- | ------- | -------- | -------------- | ------ |
-| P2-1 | [Issue] | [Cat]    | [Action]       | Low    |
-| P2-2 | [Issue] | [Cat]    | [Action]       | Medium |
+[Use skill's recommendation format for each issue]
 
 ---
 
 ### Priority 3-4 - Lower Priority
 
-| #    | Issue   | Recommendation |
-| ---- | ------- | -------------- |
-| P3-1 | [Issue] | [Action]       |
-| P4-1 | [Issue] | [Action]       |
+| # | Issue | Recommendation |
+|---|-------|----------------|
+| P3-1 | [Issue] | [Action] |
 
 ---
 
 ### Conflicts Resolved
 
-| Issue   | Perspectives             | Resolution         |
-| ------- | ------------------------ | ------------------ |
+| Issue | Perspectives | Resolution |
+|-------|--------------|------------|
 | [Issue] | Domain: X, Challenger: Y | [Decision and why] |
 
 ---
@@ -250,68 +143,32 @@ Distill for user presentation:
 1. **[Pattern Name]**
    - Evidence: [Findings pointing to this]
    - Root Cause: [Underlying issue]
-   - Systemic Fix: [What to change at process level]
-
----
-
-### Quick Wins
-
-Easy improvements with high impact:
-
-1. [Quick win 1] - [Why easy, why impactful]
-2. [Quick win 2]
-3. [Quick win 3]
-
----
-
-### Major Effort Items
-
-Significant improvements requiring planning:
-
-1. [Item 1] - [Scope and dependencies]
-2. [Item 2]
+   - Systemic Fix: [Process-level change]
 
 ---
 
 ### Risk Summary
 
-From Adversarial Analysis:
-
-| Risk   | Severity | Mitigation Suggested |
-| ------ | -------- | -------------------- |
-| [Risk] | High     | [Mitigation]         |
+| Risk | Severity | Mitigation |
+|------|----------|------------|
+| [Risk] | High | [Mitigation] |
 
 ---
 
 ### Recommended Action Plan
 
-**Immediate (Before Using Artifact)**:
-
-1. [Action]
-
-**Short-term (Next Iteration)**:
-
-1. [Action]
-
-**Long-term (Future Consideration)**:
-
-1. [Action]
+**Immediate**: [P0 actions]
+**Short-term**: [P1-P2 actions]
+**Long-term**: [P3-P4 actions]
 
 ---
 
 ### Overall Assessment
 
-**Strengths**:
-
-1. [Strength noted by reviewers]
-
-**Areas for Improvement**:
-
-1. [Key improvement area]
-
-**Confidence in Artifact**: [High/Medium/Low]
-
-**Recommendation**: [Ready to use / Use with caution / Revise first]
+**Strengths**: [What reviewers noted positively]
+**Areas for Improvement**: [Key gaps]
+**Confidence in Artifact**: High/Medium/Low
+**Recommendation**: Ready to use / Use with caution / Revise first
 ```
 
 ## Interaction Pattern
@@ -325,32 +182,11 @@ This agent is part of the orchestrated review workflow:
 
 ## Guidelines
 
-1. **Be integrative** - Find connections between findings. Isolated observations
+1. **Be integrative**: Find connections between findings; isolated observations
    miss systemic issues.
-2. **Be decisive** - Resolve conflicts, don't just list them. Unresolved conflicts
-   create user confusion.
-3. **Be practical** - Prioritize by actionability. Perfect analysis with no path
+2. **Be decisive**: Resolve conflicts with rationale; unresolved conflicts
+   confuse users.
+3. **Be practical**: Prioritize by actionability; perfect analysis with no path
    forward is useless.
-4. **Be clear** - User needs to understand quickly. Dense reports don't get read.
-5. **Deduplicate carefully** - Same issue, different words = one finding. Duplicates
-   inflate perceived severity.
-6. **Preserve nuance** - Different perspectives add value. Don't flatten important
-   distinctions.
-7. **Focus on action** - Every finding should have a recommendation. Problems
-   without solutions frustrate users.
-8. **Create structure** - Organized output enables action. Unstructured reports
-   delay execution.
-9. **Highlight quick wins** - Low effort, high impact items build momentum.
-10. **Respect all sources** - Each perspective has value. Dismissing inputs creates
-    blind spots.
-
-## Notes
-
-1. This is the final step before user presentation. Errors here cascade to user
-   decisions.
-2. Output directly shapes user understanding. Framing affects which issues get
-   addressed.
-3. Quality of synthesis determines review value. Excellent inputs with poor
-   synthesis waste upstream effort.
-4. Be comprehensive but scannable. Thoroughness without clarity overwhelms users.
-5. Executive summary is critical. Users read it first and may not read further.
+4. **Deduplicate carefully**: Same issue in different words equals one finding.
+5. **Highlight quick wins**: Low effort, high impact items build momentum.

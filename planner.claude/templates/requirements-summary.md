@@ -1,5 +1,7 @@
 # Requirements Summary: {{project_name}}
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Goal**: {{goal}}
 **Date**: {{date}}
 **Status**: {{status}}
@@ -167,6 +169,8 @@
 
 ## Open Questions
 
+<!-- See _base.md for open questions format -->
+
 1. {{question1}}
 2. {{question2}}
 3. {{question3}}
@@ -183,6 +187,8 @@
 ---
 
 ## Revision History
+
+<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes              | Author     |
 | -------- | ------- | -------------------- | ---------- |
