@@ -1,7 +1,7 @@
 ---
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
 argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit> | -r [\"text\"] | --review [\"text\"]]"
-allowed-tools: Bash(gh pr:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
+allowed-tools: Bash(gh pr:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion, Skill(gitx:validating-comments), Skill(gitx:selecting-last-responses), Skill(gitx:generating-commit-summaries)
 ---
 
 # Comment on Pull Request
@@ -85,35 +85,13 @@ If "Summarize recent changes":
 
 If `-c <commit>` or `--commit <commit>` flag used:
 
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
-3. Get changed files summary: `git diff --stat <commit>..HEAD`
-4. Generate summary in "Both combined" format:
-   - Narrative summary: A cohesive paragraph summarizing all changes holistically
-   - Followed by: Commit list for reference (bullet points of each commit)
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
+- Use skill `gitx:generating-commit-summaries` with multi-commit mode
+- Target: PR #\<number\>
 
 If `-sc <commit>` or `--single-commit <commit>` flag used:
 
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
-3. Get the actual diff for the commit: `git show --no-stat <commit>`
-4. Generate summary focusing on that specific commit's changes
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
+- Use skill `gitx:generating-commit-summaries` with single-commit mode
+- Target: PR #\<number\>
 
 ### Review Response Flow
 
@@ -286,62 +264,14 @@ Template:
 
 If "Post last response" (or `--last` flag used):
 
-1. **Retrieve recent responses**: Get the last 4 valid responses from the current conversation thread
-   - **Valid response criteria**: Must have at least 4 lines of text OR 140 characters
-   - Extract title from first line of each response (before first newline)
-   - Title truncation rules:
-     - If title ≤ 80 chars: Use full text
-     - If title > 80 chars: Use first 77 chars + "..."
-
-2. **Handle edge cases**:
-   - **1-3 valid responses**: Show all available valid responses (adjust options list dynamically)
-   - **No valid responses found**: Error: "No valid Claude responses found in current conversation
-     (responses must have at least 4 lines or 140 characters). Cannot use --last flag."
-   - **First message in thread**: Error: "This is the first message in the conversation.
-     No previous responses to post."
-
-3. **Present selection**: Use AskUserQuestion:
-   - Question: "Which response would you like to post to PR #<number>?"
-   - Header: "Response"
-   - Options (newest to oldest, max 4):
-     1. "🟢 <Response title>" - Most recent
-     2. "🔵 <Response title>"
-     3. "🔵 <Response title>"
-     4. "🔵 <Response title>" - Oldest shown
-   - Note: 🟢 = most recent, 🔵 = older responses
-
-4. **Preview confirmation**: After selection, use AskUserQuestion:
-   - Show preview: Full selected response
-   - Question: "Post this response to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this response" - Proceed to validation
-     2. "🔄 Select different response" - Return to step 3
-     3. "❌ Cancel" - Abort posting
-
-5. **Store selected response**: Save full content of selected response to `$comment` variable and proceed to validation.
+- Use skill `gitx:selecting-last-responses`
+- Target: PR #\<number\>
 
 ## Validate Comment
 
-Before posting, validate the comment:
+Use skill `gitx:validating-comments` to validate `$comment` before posting.
 
-1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
-   - Report error: "Cannot post empty comment"
-   - Return to "Get Comment Text" section to request comment text
-
-2. **Size check**: Check comment length:
-   - If > 60,000 characters:
-     - Use AskUserQuestion: "Comment exceeds GitHub's 60K character limit. How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Truncate as-is" - Cut off at 60K characters
-       3. "Split into multiple comments" - Post as sequential comments
-       4. "Abort" - Cancel posting
-   - If > 20,000 characters (but ≤ 60,000):
-     - Use AskUserQuestion: "Comment is very long (>20K characters). How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Abort" - Cancel posting
+If validation fails with empty comment, return to "Get Comment Text" section.
 
 ## Post Comment
 
