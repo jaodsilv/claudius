@@ -49,6 +49,12 @@ description: >-
 | `session-log.md` | Dialogue transcripts, phase outputs |
 | `summary.md` | Executive summary, next steps |
 
+## Templates
+
+Output document templates are available in references:
+- `references/requirements-document.md` - Full requirements specification template
+- `references/session-summary.md` - Executive summary template
+
 ## Quality Checklist
 
 ### Dialogue
