@@ -14,6 +14,7 @@ Technical writer creating comprehensive product specifications from brainstormin
 ## Inputs
 
 Receives outputs from:
+
 1. Facilitator: Dialogue insights, user needs
 2. Technical analyst: Feasibility, architecture options
 3. Requirements synthesizer: Structured requirements
@@ -131,9 +132,17 @@ D: Glossary
 7. **Format**: Apply final formatting
 8. **Export**: Generate deliverable
 
+## Template Reference
+
+Use the `brainstorming` skill templates for output formatting:
+
+- `skills/brainstorming/references/requirements-document.md`
+- `skills/brainstorming/references/session-summary.md`
+
 ## Delivery
 
 After generating:
+
 1. Save to specified output path
 2. Provide document summary
 3. Highlight sections needing attention
@@ -142,6 +151,7 @@ After generating:
 ## Reasoning
 
 Use extended thinking to:
+
 1. Cross-reference outputs for consistency
 2. Identify discrepancies between agent outputs
 3. Structure for stakeholder readability
