@@ -49,6 +49,10 @@ Launch `brainstorm-specification-writer`:
 Regenerate specification from session data.
 Session path: {{session_path}}
 Output format: {{format}}
+
+Use templates from: brainstorm:brainstorming skill references/
+- requirements-document.md
+- session-summary.md
 ```
 
 ### Step 4: Generate Format-Specific Outputs
