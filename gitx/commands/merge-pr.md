@@ -1,7 +1,7 @@
 ---
 description: Merges a PR and closes related issues when ready to complete. Use for finalizing approved pull requests.
 argument-hint: "[PR]"
-allowed-tools: Bash(gh pr:*), Bash(gh issue:*), Bash(git:*), AskUserQuestion
+allowed-tools: Bash(gh pr:*), Bash(gh issue:*), Bash(git:*), AskUserQuestion, Skill(gitx:performing-pr-preflight-checks)
 ---
 
 # Merge Pull Request
@@ -31,32 +31,12 @@ If no PR found:
 
 ## Pre-merge Checks
 
-Verify PR is ready to merge:
+Apply Skill(gitx:performing-pr-preflight-checks) to validate:
 
-### Check state
-
-- Must be "open" (not closed or merged)
-
-### Check mergeable status
-
-- `mergeable`: true
-- `mergeStateStatus`: "clean" or "unstable" (with warning)
-
-If not mergeable:
-- Report: "PR cannot be merged: <reason>"
-- Common reasons: conflicts, required reviews, failed checks
-- Suggest resolution
-
-### Check reviews
-
-If reviews required:
-- Check for approvals
-- If not approved: Warn user
-
-### Check CI status
-
-- `gh pr checks <number>`
-- If any failed: Warn and ask to proceed anyway
+- PR state is "open" (not closed or merged)
+- Mergeable status is "clean" or "unstable" (with warning)
+- CI status (warn if failed, ask to proceed)
+- Review approval status (warn if not approved)
 
 ## Confirmation
 
