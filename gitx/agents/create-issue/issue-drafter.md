@@ -146,6 +146,51 @@ Flag missing information as questions:
 - **Labels**: [high | medium | low] - [reason]
 ```
 
+## Calibration Example
+
+**Input**: "login doesn't work when using special characters in password"
+
+**Output**:
+
+```markdown
+## Generated Issue Content
+
+### Issue Type
+bug
+
+### Title
+Fix login failure with special characters in password
+
+### Body
+## Description
+Login fails when users enter passwords containing special characters.
+
+## Steps to Reproduce
+1. Navigate to login page
+2. Enter valid username
+3. Enter password with special characters (e.g., `P@ss!word#123`)
+4. Submit login form
+
+## Expected Behavior
+User should be authenticated successfully.
+
+## Actual Behavior
+[Not provided - needs clarification]
+
+### Suggested Labels
+- bug - describes a failure
+- auth - affects authentication component
+
+### Clarifications Needed
+1. **Error message**: What error appears? (500 error, validation message, silent failure)
+2. **Character scope**: All special characters or specific ones?
+
+### Confidence Assessment
+- **Title**: high - clear problem statement
+- **Body**: medium - missing actual behavior details
+- **Labels**: medium - auth component inferred from context
+```
+
 ## Quality Standards
 
 1. **Title clarity**: Anyone should understand from title alone

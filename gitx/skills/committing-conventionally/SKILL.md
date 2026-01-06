@@ -49,6 +49,16 @@ Before committing, verify:
 - [ ] No unrelated changes included
 - [ ] Breaking changes marked with `!` or footer
 
+## Edge Cases
+
+| Change | Type | Reason |
+|--------|------|--------|
+| Update dependencies | `build` | Build tool/system change |
+| Config file cleanup | `chore` | Maintenance, no feature impact |
+| Fix typo in docs | `docs` | Documentation, not code |
+| Rename variable for clarity | `refactor` | Code change, same behavior |
+| Add missing type annotation | `style` | Formatting/style, no logic change |
+
 ## Reference
 
 Standard specification: <https://www.conventionalcommits.org/>

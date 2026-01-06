@@ -166,7 +166,7 @@ Calculate worktree path using abbreviated directory naming:
 
 1. Get repository root: `git rev-parse --show-toplevel`
 2. Get parent directory: `dirname` of root
-3. Use Skill tool with gitx:worktree-name to generate directory name options:
+3. Use Skill tool with gitx:naming-worktrees to generate directory name options:
    - Input: branch name (e.g., `feature/issue-123-add-user-auth`)
    - Output: list of options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
 4. Validate skill output (see Skill Fallback Behavior)
@@ -185,7 +185,7 @@ Example:
 
 ## Skill Fallback Behavior
 
-If gitx:worktree-name skill is unavailable or fails:
+If gitx:naming-worktrees skill is unavailable or fails:
 
 1. **Notify user**: "Note: Using simplified directory name (skill unavailable)"
 2. **Fallback method**: Sanitize branch name directly
@@ -221,7 +221,7 @@ Use AskUserQuestion to let user choose directory name:
 
 1. Question: "Select worktree directory name for branch `<branch-name>`:"
 2. Header: "Directory"
-3. Options: [Generated options from gitx:worktree-name skill]
+3. Options: [Generated options from gitx:naming-worktrees skill]
    - Each option shows the abbreviated name
    - Filter out branch-type words when standalone: `feature`, `bugfix`, `hotfix`, `release`, `chore`, `refactor`, `docs`
    - User can select "Other" for custom name
@@ -411,7 +411,7 @@ Execution (no codebase exploration):
 
 1. Detect `/` in argument - treat as branch name
 2. Validate format (lowercase, hyphens only)
-3. Use Skill gitx:worktree-name to generate directory options → `['new-feature', 'my-new-feature']`
+3. Use Skill gitx:naming-worktrees to generate directory options → `['new-feature', 'my-new-feature']`
    (Note: `feature` filtered out as branch-type word)
 4. Check for directory collisions (none found)
 5. **Ask user to select directory name**:

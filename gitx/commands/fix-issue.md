@@ -179,7 +179,7 @@ Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
 ### Generate Directory Name Options
 
-Use Skill tool with gitx:worktree-name:
+Use Skill tool with gitx:naming-worktrees:
 
 - Input: [branch-name] (e.g., `feature/issue-123-add-user-auth`)
 - Output: List of abbreviated directory options (e.g., `['auth', 'user-auth', 'add-user-auth']`)
