@@ -1,7 +1,7 @@
 ---
 description: Merges base branch into current branch when syncing with upstream. Use for incorporating main branch changes.
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git merge:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Task, Read, AskUserQuestion, TodoWrite
+allowed-tools: Bash(git merge:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Task, Read, AskUserQuestion, TodoWrite, Skill(gitx:orchestrating-conflict-resolution)
 ---
 
 # Merge Branch (Orchestrated)
@@ -73,106 +73,13 @@ Run the merge:
 
 If conflicts occur (`git merge` reports conflicts):
 
-### Phase 1: Conflict Analysis
+Use Skill tool with gitx:orchestrating-conflict-resolution. The skill handles:
 
-Get conflict status:
-
-```bash
-git status --porcelain | grep "^UU\|^AA\|^DD"
-git diff --name-only --diff-filter=U
-```
-
-Launch conflict analyzer for comprehensive analysis:
-
-```text
-Task (gitx:conflict-analyzer):
-  Operation: merge
-  Base Branch: [base-branch]
-  Current Branch: [current-branch]
-  Conflicting Files: [list from git status]
-
-  Analyze each conflict:
-  - What both sides changed
-  - Why they conflict
-  - Semantic vs syntactic conflict
-  - Recommended resolution strategy
-```
-
-### Phase 2: Resolution Suggestions
-
-Launch resolution suggester:
-
-```text
-Task (gitx:resolution-suggester):
-  Conflict Analysis: [output from Phase 1]
-
-  For each conflict:
-  - Generate specific resolution code
-  - Provide confidence level
-  - Note verification steps
-```
-
-### Phase 3: User-Guided Resolution
-
-For each conflict, present analysis and options:
-
-```text
-AskUserQuestion:
-  Question: "Conflict in [file] at lines [X-Y]. How would you like to resolve?"
-  Options:
-  1. "Apply suggested resolution (Recommended)" - Use AI-suggested resolution
-  2. "Keep ours" - Keep current branch version
-  3. "Keep theirs" - Keep incoming branch version
-  4. "Resolve manually" - Open for manual editing
-  5. "Abort merge" - Cancel entire merge
-```
-
-Apply chosen resolution:
-
-- **Suggested**: Apply the resolution code from suggester
-- **Keep ours**: `git checkout --ours <file>`
-- **Keep theirs**: `git checkout --theirs <file>`
-- **Manual**: Show conflict markers, wait for user
-
-After resolving each file:
-
-```bash
-git add <file>
-```
-
-### Phase 4: Validation
-
-After all conflicts resolved, launch validator:
-
-```text
-Task (gitx:merge-validator):
-  Resolved Files: [list]
-  Operation: merge
-
-  Validate:
-  - No remaining conflict markers
-  - Syntax is valid
-  - Types check (if applicable)
-```
-
-If validation fails:
-
-- Report issues
-- Allow fixing before continuing
-
-### Phase 5: Complete Merge
-
-When all conflicts resolved and validated:
-
-```bash
-# Create merge commit
-git commit -m "Merge [base-branch] into [current-branch]
-
-Resolved conflicts:
-- [file1.ts]: [resolution summary]
-- [file2.ts]: [resolution summary]
-"
-```
+1. **Phase 1**: Launch conflict-analyzer agent for comprehensive analysis
+2. **Phase 2**: Launch resolution-suggester agent for resolution code
+3. **Phase 3**: User-guided resolution with 5 options (see skill for details)
+4. **Phase 4**: Launch merge-validator agent for validation
+5. **Phase 5**: Create merge commit with resolution summary
 
 ## Pop Stash
 
