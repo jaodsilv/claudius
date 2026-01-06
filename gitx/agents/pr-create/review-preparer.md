@@ -3,7 +3,7 @@ name: gitx:review-preparer
 description: >-
   Prepares review guidance and identifies focus areas for reviewers. Invoked during PR creation to help reviews.
 model: sonnet
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Skill(gitx:categorizing-review-concerns)
 color: yellow
 ---
 
@@ -28,17 +28,7 @@ Ultrathink PR review preparation, then create the output:
 
 ### 1. Identify Potential Review Concerns
 
-Flag areas reviewers might question:
-
-**Code Quality Concerns**: Complex logic without comments, long functions/files, duplicate code, hard-coded values, missing error handling.
-
-**Architecture Concerns**: New patterns introduced, deviation from existing patterns, tight coupling, missing abstractions.
-
-**Security Concerns**: Input validation, authentication/authorization, sensitive data handling, SQL injection potential, XSS vulnerabilities.
-
-**Performance Concerns**: N+1 queries, missing indexes, large payloads, unnecessary computation, memory leaks potential.
-
-**Testing Concerns**: Missing test coverage, test quality, edge cases not covered, mocking appropriateness.
+Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might question across code quality, architecture, security, performance, and testing patterns.
 
 ### 2. Create Self-Review Checklist
 
