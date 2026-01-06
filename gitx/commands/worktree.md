@@ -1,7 +1,7 @@
 ---
 description: Manages git worktrees when needing isolated development environments. Use for parallel feature work or issue-based development.
 argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
-allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:naming-branches), Skill(gitx:naming-worktrees)
+allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:naming-branches), Skill(gitx:naming-worktrees), Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references)
 ---
 
 # Worktree Management
@@ -86,12 +86,11 @@ Display the existing worktrees in a formatted table:
 
 ### If argument provided
 
-Parse the argument to determine its type by checking in order:
+Use Skill tool with gitx:parsing-issue-references to parse the argument:
 
-1. If matches `^\d+$` or `^#\d+$` or `^issue-\d+$`: Extract number, treat as issue
-2. If matches `^https?://github\.com/[^/]+/[^/]+/issues/(\d+)`:
-   Extract number from URL, treat as issue
-3. If contains `/`: Treat as branch name (validate format)
+1. If skill returns `source_type` of "bare", "hash", "prefix", or "url": Treat as issue
+2. If skill returns `source_type` of "branch": Treat as branch name (validate format)
+3. If skill returns `source_type` of "unknown" AND argument contains `/`: Treat as branch name
 4. Otherwise: Treat as task description
 
 Based on argument type, create appropriate worktree:
@@ -277,54 +276,24 @@ Handle response:
 
 After confirmation:
 
+### Sync Repository
+
+Use Skill tool with gitx:syncing-worktrees to sync the current branch before creating the worktree.
+The skill handles:
+
+- Detached HEAD detection
+- Fetching latest from origin
+- Stashing local changes if dirty
+- Pulling with rebase
+- Restoring stashed changes
+
+If sync fails, follow the skill's error handling guidance.
+
+### Create Worktree
+
+After successful sync:
+
 ```bash
-# Verify not in detached HEAD state
-CURRENT_BRANCH=$(git branch --show-current)
-if [ -z "$CURRENT_BRANCH" ]; then
-  echo "Error: Cannot create worktree from detached HEAD state."
-  echo "Please checkout a branch first: git checkout <branch-name>"
-  exit 1
-fi
-
-# Fetch latest from origin
-git fetch origin
-
-# Stash local changes if working directory is dirty
-STASHED=false
-if [ -n "$(git status --porcelain)" ]; then
-  git stash --include-untracked
-  STASHED=true
-fi
-
-# Pull latest on current branch
-PULL_OUTPUT=$(git pull --rebase origin "$CURRENT_BRANCH" 2>&1)
-PULL_EXIT_CODE=$?
-if [ $PULL_EXIT_CODE -ne 0 ]; then
-  # Provide specific guidance based on failure type
-  if echo "$PULL_OUTPUT" | grep -q "Could not resolve host"; then
-    echo "Error: Pull failed due to network issue."
-    echo "Please check your internet connection and try again."
-  elif git status | grep -q "rebase in progress"; then
-    echo "Error: Pull failed due to merge conflicts."
-    echo "Please resolve conflicts manually: git rebase --continue or git rebase --abort"
-  else
-    echo "Error: Pull failed. Please check git status and resolve manually."
-    echo "Details: $PULL_OUTPUT"
-  fi
-  if [ "$STASHED" = true ]; then
-    echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
-  fi
-  exit 1
-fi
-
-# Pop stash if we stashed earlier (conflicts are non-fatal, just warn user)
-if [ "$STASHED" = true ]; then
-  if ! git stash pop; then
-    echo "Warning: Stash pop had conflicts. Your changes are still in stash."
-    echo "Continuing with worktree creation. Run 'git stash pop' manually later."
-  fi
-fi
-
 # Create worktree with new branch
 # CRITICAL: Do NOT add any start-point (like origin/main or main) after the path
 # The command MUST be exactly as shown below - no additional arguments

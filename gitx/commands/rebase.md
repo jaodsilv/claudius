@@ -1,7 +1,7 @@
 ---
 description: Rebases current branch onto base branch when syncing with upstream. Use for maintaining linear history on feature branches.
 argument-hint: "[--base branch]"
-allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git stash:*), Bash(git pull:*), Bash(pwd:*), Bash(cd:*), Bash(test:*), Task, Read, AskUserQuestion, TodoWrite
+allowed-tools: Bash(git rebase:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git stash:*), Bash(git pull:*), Bash(pwd:*), Bash(cd:*), Bash(test:*), Task, Read, AskUserQuestion, TodoWrite, Skill(gitx:syncing-worktrees)
 ---
 
 # Rebase Branch (Orchestrated)
@@ -64,7 +64,7 @@ Show commits that will be rebased:
 
 ## Sync Main Worktree
 
-Before fetching, ensure the main worktree has latest changes:
+Before fetching, ensure the main worktree has latest changes.
 
 ### Validate Worktree Exists
 
@@ -82,61 +82,25 @@ If missing:
 - If No: Exit with message "Set up main worktree: `git worktree add ../main $base_branch`"
 - If Yes: Skip to "Fetch Latest" section
 
-### Navigate and Sync
+### Sync Using Skill
 
-If main worktree exists:
+If main worktree exists, use Skill tool with gitx:syncing-worktrees following
+the "Main Worktree Sync" pattern. The skill handles:
 
-1. **Navigate to main worktree**:
+1. Navigate to main worktree (`../main/`)
+2. Stash uncommitted changes if dirty (sets `$main_stash_created` flag)
+3. Pull latest with fast-forward only
+4. Return to original directory
 
-   ```bash
-   echo "📂 Navigating to main worktree..."
-   cd ../main/
-   ```
+If pull fails (non-fast-forward):
 
-2. **Check working directory status**:
-
-   ```bash
-   echo "🔍 Checking main worktree status..."
-   git status --porcelain
-   ```
-
-3. **Stash uncommitted changes** (if working directory not clean):
-
-   ```bash
-   echo "💾 Stashing uncommitted changes in main worktree..."
-   git stash push -m "gitx: rebase auto-stash $(date +%Y%m%d-%H%M%S)"
-   ```
-
-   Set flag: `$main_stash_created = true`
-
-4. **Pull latest base branch**:
-
-   ```bash
-   echo "⬇️  Pulling latest $base_branch..."
-   git pull --ff-only origin $base_branch
-   ```
-
-   If pull fails (non-fast-forward):
-
-   - Use AskUserQuestion: "Main worktree cannot fast-forward. How to proceed?"
-   - Options: "Reset to origin/$base_branch", "Skip sync", "Cancel rebase"
-   - If Reset: `git reset --hard origin/$base_branch`
-   - If Skip: Continue without sync
-   - If Cancel: Return to feature worktree and exit
-
-5. **Return to feature worktree**:
-
-   ```bash
-   echo "🔙 Returning to feature worktree..."
-   cd $original_dir
-   ```
+- Use AskUserQuestion: "Main worktree cannot fast-forward. How to proceed?"
+- Options: "Reset to origin/$base_branch", "Skip sync", "Cancel rebase"
+- Handle response per skill guidance
 
 ### Verify Sync
 
-Verify main worktree is up to date:
-
 ```bash
-echo "✅ Verifying main worktree sync..."
 MAIN_HEAD=$(git -C ../main/ rev-parse HEAD)
 ORIGIN_HEAD=$(git rev-parse origin/$base_branch)
 if [ "$MAIN_HEAD" = "$ORIGIN_HEAD" ]; then
@@ -318,20 +282,10 @@ Show rebase outcome:
 
 ## Cleanup Main Worktree
 
-After successful rebase, restore any stashed changes in the main worktree:
+After successful rebase, restore any stashed changes in the main worktree
+using the "Cleanup After Operation" pattern from gitx:syncing-worktrees skill.
 
-```bash
-if [ "$main_stash_created" = true ]; then
-  echo "🔄 Restoring stashed changes in main worktree..."
-  STASH_COUNT=$(git -C ../main/ stash list | grep "gitx: rebase" | wc -l)
-  if [ "$STASH_COUNT" -gt 0 ]; then
-    git -C ../main/ stash pop
-    echo "✓ Stashed changes restored in main worktree"
-  fi
-else
-  echo "✓ No stashed changes to restore in main worktree"
-fi
-```
+If `$main_stash_created` is true, pop the stash in `../main/`.
 
 **Note**: This cleanup only runs after a successful rebase. If the rebase fails
 or is aborted, manually check `../main/` for stashed changes.
