@@ -27,6 +27,10 @@ properties:
 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
+## Skills Used
+
+- `workflow-validation` - Gate check criteria and validation patterns between workflow phases
+
 ## Initialization Checklist
 
 - [ ] Validate `$topic` provided
@@ -102,6 +106,18 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 - [ ] Run `/compact` after all batches complete
 
+### Gate 1: Post-Dialogue Validation
+
+**Check the following before proceeding to analysis**:
+
+- [ ] Clarity level from facilitator is Medium or High
+- [ ] At least 3 key insights captured in batch summary
+- [ ] Problem statement is clearly articulated
+- [ ] Target users/personas are identified
+
+**If any check fails**: Run an additional facilitator batch to clarify
+**If all checks pass**: Proceed to Phases 2-4 (Parallel Analysis)
+
 ### Phases 2-4: Parallel Analysis
 
 **Execute domain, technical, and constraint analysis in parallel using the Task tool.**
@@ -147,6 +163,19 @@ Use Task tool to invoke **IN PARALLEL**:
 - [ ] Capture constraint analyst output
 - [ ] Append all three reports to session log
 
+### Gate 2: Post-Analysis Validation
+
+**Check the following before proceeding to synthesis**:
+
+- [ ] Domain analysis contains at least 2 actionable findings
+- [ ] Technical analysis contains at least 2 actionable findings
+- [ ] Constraint analysis contains at least 2 actionable findings
+- [ ] No critical gaps or errors in any analysis
+- [ ] Risks and constraints are documented
+
+**If any check fails**: Identify which analysis needs attention and rerun as needed
+**If all checks pass**: Proceed to Phase 4.5 (Analysis Synthesis)
+
 ### Phase 4.5: Analysis Synthesis
 
 **Merge parallel analysis outputs into unified context.**
@@ -166,6 +195,18 @@ Returns: Unified analysis context for requirements synthesis
 - [ ] Append synthesis summary to session log
 - [ ] Run `/compact`
 
+### Gate 3: Post-Synthesis Validation
+
+**Check the following before proceeding to requirements**:
+
+- [ ] Unified context is coherent and well-integrated
+- [ ] Conflicts between analyses are documented
+- [ ] Recommendations align across analyses
+- [ ] Clear direction is identified for requirements synthesis
+
+**If any check fails**: Re-run synthesis with clarifications from user
+**If all checks pass**: Proceed to Phase 5 (Requirements Synthesis)
+
 ### Phase 5: Requirements Synthesis
 
 Launch `brainstorm-requirements-synthesizer`:
@@ -181,6 +222,18 @@ Returns: Structured requirements document
 - [ ] Save to `{{output_path}}/requirements.md`
 - [ ] Append summary to session log
 - [ ] Run `/compact`
+
+### Gate 4: Post-Requirements Validation
+
+**Check the following before proceeding to specification**:
+
+- [ ] At least 5 requirements documented
+- [ ] All requirements have SMART validation criteria
+- [ ] MoSCoW prioritization applied
+- [ ] Dependencies mapped between requirements
+
+**If any check fails**: Refine and consolidate requirements, then recheck
+**If all checks pass**: Proceed to Phase 6 (Specification Generation)
 
 ### Phase 6: Specification Generation
 
@@ -199,6 +252,18 @@ Returns: Complete specification document
 - [ ] Save to `{{output_path}}/specification.md`
 - [ ] Update session log with completion status
 - [ ] Mark all todos completed
+
+### Gate 5: Post-Specification Validation
+
+**Check the following before marking session complete**:
+
+- [ ] Document is complete (all required sections present)
+- [ ] No placeholder content remaining
+- [ ] Cross-references are valid
+- [ ] Executive summary is present and captures essence
+
+**If any check fails**: Refine specification to address gaps
+**If all checks pass**: Session complete and ready for use
 
 ## Completion Output
 
