@@ -1,7 +1,7 @@
 ---
 description: Manages git worktrees when needing isolated development environments. Use for parallel feature work or issue-based development.
 argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
-allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:naming-branches), Skill(gitx:naming-worktrees), Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references)
+allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:naming-branches), Skill(gitx:naming-worktrees), Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references), Skill(gitx:validating-directory-names)
 ---
 
 # Worktree Management
@@ -233,30 +233,16 @@ Use AskUserQuestion to let user choose directory name:
 
 ## Custom Name Validation
 
-Custom directory names must pass all validations:
+Use Skill tool with gitx:validating-directory-names to validate custom names.
 
-1. **Format rules**:
-   - Lowercase only (a-z)
-   - Hyphens for word separation (no underscores)
-   - No consecutive hyphens
-   - No leading or trailing hyphens
-   - No special characters or spaces
+The skill validates:
 
-2. **Length rules**:
-   - Minimum: 2 characters
-   - Maximum: 30 characters
+- Format rules (lowercase, hyphens, no special chars)
+- Length rules (2-30 characters)
+- Reserved names (git and system names)
+- Collision with existing worktrees
 
-3. **Reserved names** (reject these):
-   - Git: `main`, `master`, `develop`, `HEAD`, `origin`
-   - System: `tmp`, `temp`, `test`, `build`, `dist`, `node_modules`
-
-4. **Collision check**: Must not match existing worktree directory
-
-5. **Error messages**:
-   - "Name must be lowercase" → suggest lowercase version
-   - "Name too long (max 30 chars)" → suggest truncated version
-   - "Reserved name" → suggest alternative
-   - "Directory already exists" → suggest with numeric suffix
+On validation failure, the skill returns an error message with a suggested fix.
 
 ## Confirmation
 
