@@ -1,5 +1,7 @@
 # Issue Prioritization
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Framework**: {{framework}}
 **Issues Analyzed**: {{issue_count}}
 **Date**: {{date}}
@@ -171,6 +173,8 @@ gh issue edit {{issue_number}} --add-label "{{priority_label}}"
 ---
 
 ## Revision History
+
+<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes                | Author     |
 | -------- | ------- | ---------------------- | ---------- |
