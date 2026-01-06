@@ -32,7 +32,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 - [ ] Validate `$topic` provided
 - [ ] Set defaults: `$depth` (normal), `$output_path` (./brainstorm-output/)
 - [ ] Create output directory: `mkdir -p {{output_path}}`
-- [ ] Initialize TodoWrite with 6 phases
+- [ ] Initialize TodoWrite with 7 phases (including Analysis Synthesis)
 - [ ] Create `{{output_path}}/session-log.md` with header:
 
 ```markdown
@@ -45,62 +45,125 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ## Phase Execution
 
-### Phase 1: Socratic Dialogue (Interactive)
+### Phase 1: Socratic Dialogue (Batched)
 
-**Rounds**: shallow=3, normal=5, deep=8
+**Batched Execution**: Invoke facilitator in batches of 2-3 rounds instead of individual rounds.
 
-For each round, launch `brainstorm-facilitator`:
+**Depth Mappings**:
+
+- `shallow`: 1 batch (3 rounds max)
+- `normal`: 2 batches (5 rounds max)
+- `deep`: 3 batches (8 rounds max)
+
+**Batch Invocation**:
+
+1. **Batch 1** (rounds 1-3):
+   - Invoke `brainstorm-facilitator` with:
+
+     ```text
+     Topic: {{topic}}
+     Batch number: 1
+     Rounds in batch: 3
+     Previous context: [none for first batch]
+     ```
+
+   - Facilitator conducts 2-3 rounds internally
+   - Receives: Cumulative insights summary + clarity assessment
+   - [ ] If clarity="High", proceed to Phase 2
+   - [ ] Append batch summary to session log
+
+2. **Batch 2** (rounds 4-5, if needed):
+   - Skip if depth="shallow" OR clarity="High" from Batch 1
+   - Invoke `brainstorm-facilitator` with:
+
+     ```text
+     Topic: {{topic}}
+     Batch number: 2
+     Rounds in batch: 2
+     Previous context: {{batch_1_insights}}
+     ```
+
+   - [ ] If depth="normal" AND clarity="Medium+" after this batch, proceed to Phase 2
+   - [ ] Append batch summary to session log
+
+3. **Batch 3** (rounds 6-8, if depth=deep):
+   - Skip if depth!="deep"
+   - Invoke `brainstorm-facilitator` with:
+
+     ```text
+     Topic: {{topic}}
+     Batch number: 3
+     Rounds in batch: 3
+     Previous context: {{batch_1_2_insights}}
+     ```
+
+   - [ ] Proceed to Phase 2 after completion
+   - [ ] Append batch summary to session log
+
+- [ ] Run `/compact` after all batches complete
+
+### Phases 2-4: Parallel Analysis
+
+**Execute domain, technical, and constraint analysis in parallel using the Task tool.**
+
+Use Task tool to invoke **IN PARALLEL**:
+
+1. **Domain Exploration** - `brainstorm-domain-explorer`:
+
+   ```text
+   Topic: {{topic}}
+   Dialogue summary: {{phase_1_dialogue_summary}}
+   Key requirements areas: {{requirements_areas}}
+   Specific domain questions: {{domain_questions}}
+   ```
+
+   Returns: Domain analysis compact summary
+
+2. **Technical Analysis** - `brainstorm-technical-analyst`:
+
+   ```text
+   Topic: {{topic}}
+   Dialogue summary: {{phase_1_dialogue_summary}}
+   Initial requirements: {{initial_requirements}}
+   Known constraints: {{technical_constraints}}
+   ```
+
+   Returns: Technical analysis compact summary
+
+3. **Constraint Analysis** - `brainstorm-constraint-analyst`:
+
+   ```text
+   Topic: {{topic}}
+   Dialogue insights: {{phase_1_dialogue_summary}}
+   Initial scope: {{initial_scope}}
+   ```
+
+   Returns: Constraint analysis compact summary
+
+**Wait for all three parallel tasks to complete before proceeding.**
+
+- [ ] Capture domain explorer output
+- [ ] Capture technical analyst output
+- [ ] Capture constraint analyst output
+- [ ] Append all three reports to session log
+
+### Phase 4.5: Analysis Synthesis
+
+**Merge parallel analysis outputs into unified context.**
+
+Launch `brainstorm-analysis-synthesizer`:
 
 ```text
 Topic: {{topic}}
-Previous insights: {{previous_insights}}
-Areas to explore: {{areas_to_explore}}
-Round: {{current_round}} of {{max_rounds}}
+Domain analysis: {{domain_compact_summary}}
+Technical analysis: {{technical_compact_summary}}
+Constraint analysis: {{constraint_compact_summary}}
+Dialogue insights: {{phase_1_dialogue_summary}}
 ```
 
-- [ ] Append dialogue summary to session log after each round
-- [ ] Early exit if clarity="High" AND rounds >= 2
-- [ ] Run `/compact` after all rounds
+Returns: Unified analysis context for requirements synthesis
 
-### Phase 2: Domain Exploration
-
-Launch `brainstorm-domain-explorer`:
-
-```text
-Topic: {{topic}}
-Key requirements areas: {{requirements_areas}}
-Specific domain questions: {{domain_questions}}
-```
-
-- [ ] Append domain report to session log
-- [ ] Run `/compact`
-
-### Phase 3: Technical Analysis
-
-Launch `brainstorm-technical-analyst`:
-
-```text
-Topic: {{topic}}
-Requirements summary: {{requirements_summary}}
-Domain insights: {{domain_insights}}
-Known constraints: {{technical_constraints}}
-```
-
-- [ ] Append technical report to session log
-- [ ] Run `/compact`
-
-### Phase 4: Constraint Analysis
-
-Launch `brainstorm-constraint-analyst`:
-
-```text
-Topic: {{topic}}
-Dialogue insights: {{dialogue_insights}}
-Domain insights: {{domain_insights}}
-Technical analysis: {{technical_summary}}
-```
-
-- [ ] Append constraint report to session log
+- [ ] Append synthesis summary to session log
 - [ ] Run `/compact`
 
 ### Phase 5: Requirements Synthesis
@@ -109,27 +172,31 @@ Launch `brainstorm-requirements-synthesizer`:
 
 ```text
 Topic: {{topic}}
-Dialogue insights: {{dialogue_insights}}
-Domain research: {{domain_research}}
-Technical analysis: {{technical_analysis}}
-Constraints: {{constraints}}
+Unified analysis context: {{analysis_synthesizer_output}}
+Original dialogue insights: {{phase_1_dialogue_summary}}
 ```
+
+Returns: Structured requirements document
 
 - [ ] Save to `{{output_path}}/requirements.md`
 - [ ] Append summary to session log
 - [ ] Run `/compact`
 
-### Phase 6: Document Generation
+### Phase 6: Specification Generation
 
 Launch `brainstorm-specification-writer`:
 
 ```text
 Topic: {{topic}}
 Output path: {{output_path}}
-Session outputs: [all phase outputs]
+Requirements synthesis: {{requirements_output}}
+All phase summaries: {{all_phase_summaries}}
 Save to: {{output_path}}/specification.md
 ```
 
+Returns: Complete specification document
+
+- [ ] Save to `{{output_path}}/specification.md`
 - [ ] Update session log with completion status
 - [ ] Mark all todos completed
 
