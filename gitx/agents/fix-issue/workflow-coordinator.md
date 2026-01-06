@@ -258,6 +258,8 @@ Essential context for Issue #[number]:
 
 ## Output Format
 
+For agent outputs, use templates from `shared/output-templates/fix-issue-output.md`.
+
 Throughout the workflow, provide status updates:
 
 ```text
