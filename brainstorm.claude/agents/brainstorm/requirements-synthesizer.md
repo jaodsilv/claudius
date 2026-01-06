@@ -111,6 +111,8 @@ GAP-001: [Missing info] - Impact: [Effect] - Needed by: [Date]
 In addition to the full output, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase
+
+
 - **Requirements count**: [X functional, Y non-functional, Z constraints]
 - **Priority breakdown**: [P1: X, P2: Y, P3: Z]
 - **Key dependencies**: [Top 3 critical dependencies]

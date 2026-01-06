@@ -63,6 +63,8 @@ Detailed validation rules for Claude Code output-styles.
 ### Example Tone Specifications
 
 Good:
+
+
 ```markdown
 ## Tone
 
@@ -72,7 +74,9 @@ Good:
 - Direct and concise, avoid hedging
 ```
 
+
 Bad:
+
 ```markdown
 ## Tone
 
@@ -92,7 +96,9 @@ Be nice and professional.  # Too vague
 
 ### Example Formats
 
+
 Template example:
+
 ```markdown
 ## Example: API Documentation
 
@@ -101,9 +107,11 @@ Template example:
 
 ### Output
 [Formatted documentation following this style]
+
 ```
 
 Before/After example:
+
 ```markdown
 ## Example: Commit Message
 
@@ -184,10 +192,12 @@ Nice to have polish:
 ### Loading Output-Styles
 
 ```text
+
 Use Skill tool to load output-style: [style-name]
 ```
 
 Or in agent frontmatter:
+
 ```yaml
 output-style: style-name
 ```

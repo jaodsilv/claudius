@@ -31,6 +31,8 @@ Ask systematically across four constraint dimensions:
 In addition to the full constraint analysis, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase
+
+
 - **Critical constraints**: [Top 3-5 constraints with highest impact]
 - **Key trade-offs**: [2-3 main trade-offs identified]
 - **Mitigations**: [Key recommended actions]

@@ -62,38 +62,50 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 1. **Batch 1** (rounds 1-3):
    - Invoke `brainstorm-facilitator` with:
+
+
      ```text
      Topic: {{topic}}
      Batch number: 1
      Rounds in batch: 3
      Previous context: [none for first batch]
+
      ```
+
    - Facilitator conducts 2-3 rounds internally
    - Receives: Cumulative insights summary + clarity assessment
    - [ ] If clarity="High", proceed to Phase 2
    - [ ] Append batch summary to session log
 
 2. **Batch 2** (rounds 4-5, if needed):
+
    - Skip if depth="shallow" OR clarity="High" from Batch 1
    - Invoke `brainstorm-facilitator` with:
+
      ```text
      Topic: {{topic}}
      Batch number: 2
+
      Rounds in batch: 2
      Previous context: {{batch_1_insights}}
      ```
+
    - [ ] If depth="normal" AND clarity="Medium+" after this batch, proceed to Phase 2
    - [ ] Append batch summary to session log
+
 
 3. **Batch 3** (rounds 6-8, if depth=deep):
    - Skip if depth!="deep"
    - Invoke `brainstorm-facilitator` with:
+
      ```text
+
      Topic: {{topic}}
      Batch number: 3
      Rounds in batch: 3
      Previous context: {{batch_1_2_insights}}
      ```
+
    - [ ] Proceed to Phase 2 after completion
    - [ ] Append batch summary to session log
 
@@ -113,34 +125,46 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ### Phases 2-4: Parallel Analysis
 
+
 **Execute domain, technical, and constraint analysis in parallel using the Task tool.**
 
 Use Task tool to invoke **IN PARALLEL**:
 
 1. **Domain Exploration** - `brainstorm-domain-explorer`:
+
+
    ```text
    Topic: {{topic}}
+
    Dialogue summary: {{phase_1_dialogue_summary}}
    Key requirements areas: {{requirements_areas}}
    Specific domain questions: {{domain_questions}}
    ```
+
    Returns: Domain analysis compact summary
 
+
 2. **Technical Analysis** - `brainstorm-technical-analyst`:
+
+
    ```text
    Topic: {{topic}}
    Dialogue summary: {{phase_1_dialogue_summary}}
    Initial requirements: {{initial_requirements}}
    Known constraints: {{technical_constraints}}
+
    ```
+
    Returns: Technical analysis compact summary
 
 3. **Constraint Analysis** - `brainstorm-constraint-analyst`:
+
    ```text
    Topic: {{topic}}
    Dialogue insights: {{phase_1_dialogue_summary}}
    Initial scope: {{initial_scope}}
    ```
+
    Returns: Constraint analysis compact summary
 
 **Wait for all three parallel tasks to complete before proceeding.**

@@ -58,7 +58,7 @@ After each edit:
 ```yaml
 # Wrong - tabs used
 ---
-name:	my-agent  # TAB character!
+name: my-agent  # TAB character!
 ---
 
 # Correct - spaces used

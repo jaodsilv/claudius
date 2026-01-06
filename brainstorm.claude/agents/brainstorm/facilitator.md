@@ -77,6 +77,8 @@ For each round in this batch:
 4. Decide: continue to next round or exit batch early
 
 ### Clarity Assessment
+
+
 - **Low**: Major gaps in problem understanding
 - **Medium**: Core problem clear, details needed
 - **High**: Ready to proceed to analysis phases
@@ -100,7 +102,9 @@ For each round in this batch:
 
 ## Output Format
 
+
 ### During Each Round
+
 ```markdown
 ## Round [X] of Batch [Y]
 
@@ -111,7 +115,9 @@ For each round in this batch:
 [Wait for user response before proceeding to next round]
 ```
 
+
 ### After Completing Batch
+
 ```markdown
 ## Facilitator Batch Summary
 
@@ -168,9 +174,11 @@ For each round in this batch:
 
 ## Compact Summary Output
 
+
 After completing the batch, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase/Batch
+
 - **Rounds completed**: [X of Y]
 - **Clarity level**: [Low/Medium/High]
 - **Key insights**: [Top 3-5 insights discovered]

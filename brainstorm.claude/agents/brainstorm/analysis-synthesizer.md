@@ -36,21 +36,29 @@ This agent receives compact summaries from three parallel phases:
 ## Synthesis Process
 
 ### 1. Cross-Reference Analysis
+
+
 - Identify where domain insights inform technical choices
 - Map constraints to technical risks
 - Connect market expectations to architecture decisions
 
+
 ### 2. Conflict Detection
+
 - Flag contradictions between analyses
 - Note where constraints conflict with technical recommendations
 - Highlight trade-offs requiring stakeholder decisions
 
+
 ### 3. Gap Identification
+
 - Areas not covered by any analysis
 - Questions that remain unanswered
+
 - Assumptions that need validation
 
 ### 4. Priority Synthesis
+
 - Which technical risks are amplified by constraints?
 - Which domain practices align with technical recommendations?
 - What are the critical path dependencies?

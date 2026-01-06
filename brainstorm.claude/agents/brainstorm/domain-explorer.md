@@ -109,6 +109,8 @@ Use the `domain-research` skill for detailed research guidance:
 In addition to the full output, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase
+
+
 - **Market context**: [Key market insight]
 - **Top competitors**: [2-3 main competitors and approaches]
 - **Best practices**: [Key patterns to adopt]
