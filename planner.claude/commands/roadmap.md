@@ -87,10 +87,10 @@ roadmap-arguments:
    gh --version
    ```
 
-3. If available, launch `planner-github-issue-analyzer` agent:
+3. If available, launch `issue-analyzer` agent:
 
    ```text
-   Use Task tool with planner-github-issue-analyzer agent:
+   Use Task tool with planner:github:issue-analyzer agent:
 
    Analyze open issues relevant to: {{goal}}
 
@@ -107,10 +107,10 @@ roadmap-arguments:
 
 1. Mark Phase 4 as in_progress
 
-2. Launch `planner-roadmap-architect` agent:
+2. Launch `roadmap-architect` agent:
 
    ```text
-   Use Task tool with planner-roadmap-architect agent:
+   Use Task tool with planner:planner:roadmap-architect agent:
 
    Create a roadmap for:
    Goal: {{goal}}

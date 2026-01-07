@@ -37,7 +37,7 @@ Use Skill tool: `planner:orchestrating-reviews`
 
 **Artifact Type**: plan
 **Primary Artifact Path**: `{{plan_path}}`
-**Domain Reviewer Agent**: `planner-plan-reviewer`
+**Domain Reviewer Agent**: `planner:planner:plan-reviewer`
 **Evaluation Dimensions**:
 
 - Goal Alignment - Does plan support stated objectives?
