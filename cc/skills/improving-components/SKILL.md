@@ -5,6 +5,8 @@ description: >-
   and enhancing commands, agents, skills, or orchestrations. Use when implementing
   analyze-suggest-approve-apply patterns or severity-based improvement workflows.
 version: 1.0.0
+allowed-tools: Read, Edit, AskUserQuestion
+model: sonnet
 ---
 
 # Improving Components

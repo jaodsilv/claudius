@@ -6,6 +6,7 @@ description: >-
   while still covering others, such as "focus on error handling" or "prioritize
   triggering issues".
 version: 1.0.0
+model: haiku
 ---
 
 # Focus-Driven Analysis
