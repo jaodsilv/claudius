@@ -1,5 +1,5 @@
 ---
-name: planner-review-challenger
+name: review-challenger
 description: Stress-tests planning artifacts as devil's advocate. Invoked during orchestrated reviews to challenge assumptions and identify blind spots and risks.
 model: opus
 color: red

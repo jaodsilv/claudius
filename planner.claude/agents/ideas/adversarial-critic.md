@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-adversarial-critic
+name: adversarial-critic
 description: Rigorously challenges ideas and stress-tests assumptions. Invoked during Ultrathink workflow to find weaknesses and identify failure modes.
 model: opus
 color: red

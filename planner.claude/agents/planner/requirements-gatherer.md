@@ -1,5 +1,5 @@
 ---
-name: planner-requirements-gatherer
+name: requirements-gatherer
 description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
