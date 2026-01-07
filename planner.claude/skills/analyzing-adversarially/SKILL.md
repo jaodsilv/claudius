@@ -4,6 +4,7 @@ description: >-
   Provides adversarial analysis methodology for challenging ideas and artifacts.
   Use when stress-testing assumptions, identifying failure modes, generating
   counter-arguments, or finding blind spots in plans and proposals.
+model: sonnet
 ---
 
 # Analyzing Adversarially
