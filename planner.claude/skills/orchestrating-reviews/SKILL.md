@@ -4,6 +4,8 @@ description: >-
   Provides multi-agent review orchestration pattern for planning artifacts.
   Use when implementing review commands that use domain reviewers, structural
   analysis, adversarial challenge, and synthesis phases.
+allowed-tools: Task
+model: opus
 ---
 
 # Orchestrating Reviews Skill

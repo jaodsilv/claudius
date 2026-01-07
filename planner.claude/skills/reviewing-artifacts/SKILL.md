@@ -4,6 +4,7 @@ description: >-
   Provides standard review process for planning artifacts with dimension-based
   scoring. Use when evaluating plans, requirements, architecture, or other
   planning documents against goals and quality criteria.
+model: sonnet
 ---
 
 # Reviewing Artifacts
