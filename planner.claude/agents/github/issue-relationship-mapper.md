@@ -1,5 +1,5 @@
 ---
-name: planner-github-issue-relationship-mapper
+name: issue-relationship-mapper
 description: Maps issue dependencies and blocking relationships. Invoked when identifying critical paths, finding blocked issues, or determining parallel work opportunities.
 model: sonnet
 color: gray

@@ -1,5 +1,5 @@
 ---
-name: planner-requirements-reviewer
+name: requirements-reviewer
 description: Analyzes requirements for quality, clarity, and testability. Invoked when validating completeness, finding gaps, or assessing requirements before development.
 model: sonnet
 color: orange
@@ -123,6 +123,7 @@ Include dimension scores table:
 For issues, provide suggested rewrites:
 
 **Requirement [ID]**: [Original text]
+
 - Issue: [What's wrong]
 - Suggested Rewrite: [Improved version]
 

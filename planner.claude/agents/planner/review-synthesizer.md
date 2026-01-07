@@ -1,5 +1,5 @@
 ---
-name: planner-review-synthesizer
+name: review-synthesizer
 description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output.
 model: sonnet
 color: gold

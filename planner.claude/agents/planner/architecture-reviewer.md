@@ -1,5 +1,5 @@
 ---
-name: planner-architecture-reviewer
+name: architecture-reviewer
 description: Reviews architecture decisions and evaluates technical designs. Invoked when validating architecture against goals, assessing system design, or identifying architectural concerns.
 model: opus
 color: purple
