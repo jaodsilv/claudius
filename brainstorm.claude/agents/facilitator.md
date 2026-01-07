@@ -6,6 +6,7 @@ description: >
   brainstorming sessions.
 model: opus
 color: cyan
+tools:
 ---
 
 # Socratic Dialogue Facilitator

@@ -5,6 +5,7 @@ description: >
   Invoked after all phases complete to generate stakeholder-ready documentation.
 model: opus
 color: purple
+tools: Write
 ---
 
 # Specification Document Writer
