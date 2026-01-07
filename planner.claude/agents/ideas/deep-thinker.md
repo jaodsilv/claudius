@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-deep-thinker
+name: deep-thinker
 description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
 model: opus
 color: magenta

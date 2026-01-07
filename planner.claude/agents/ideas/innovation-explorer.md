@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-innovation-explorer
+name: innovation-explorer
 description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery.
 model: sonnet
 color: teal

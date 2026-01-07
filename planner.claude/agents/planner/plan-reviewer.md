@@ -1,5 +1,5 @@
 ---
-name: planner-plan-reviewer
+name: plan-reviewer
 description: Reviews plans, roadmaps, and prioritization documents for quality and alignment. Invoked when validating planning artifacts or analyzing improvements.
 model: sonnet
 color: yellow

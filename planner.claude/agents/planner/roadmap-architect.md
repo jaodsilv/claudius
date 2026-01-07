@@ -1,5 +1,5 @@
 ---
-name: planner-roadmap-architect
+name: roadmap-architect
 description: Transforms goals into structured project plans with phases, milestones, and dependencies. Invoked when creating roadmaps or structuring large initiatives.
 model: opus
 color: blue

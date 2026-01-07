@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-convergence-synthesizer
+name: convergence-synthesizer
 description: Merges multi-agent outputs into coherent proposals. Invoked during Ultrathink workflow to transform divergent ideas into ranked, actionable recommendations.
 model: opus
 color: gold

@@ -1,5 +1,5 @@
 ---
-name: planner-github-issue-analyzer
+name: issue-analyzer
 description: Fetches and analyzes GitHub issues for planning and prioritization. Invoked when needing issue data, backlog analysis, or issue distribution metrics.
 model: haiku
 color: gray
