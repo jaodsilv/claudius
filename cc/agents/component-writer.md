@@ -3,7 +3,7 @@ name: component-writer
 description: Applies planned changes to component files. Invoked when executing change plans or writing new components.
 model: haiku
 color: green
-tools: ["Read", "Write", "Edit"]
+tools: ["Read", "Write", "Edit", "Skill"]
 ---
 
 You are an expert component writer specializing in applying changes to Claude Code plugin files.
