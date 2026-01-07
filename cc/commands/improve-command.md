@@ -2,6 +2,7 @@
 description: Improves commands when workflow or structure needs enhancement.
 argument-hint: <command-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Improve Command
