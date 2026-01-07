@@ -56,7 +56,7 @@ Save for comparison:
 Launch change analyzer to understand all commits:
 
 ```text
-Task (gitx:change-analyzer):
+Task (gitx:pr-create:change-analyzer):
   Branch: [head branch from PR]
   Base: [base branch from PR]
 
@@ -75,7 +75,7 @@ Wait for analysis to complete.
 Launch description generator:
 
 ```text
-Task (gitx:description-generator):
+Task (gitx:pr-create:description-generator):
   Change Analysis: [output from Phase 1]
 
   Generate:

@@ -65,7 +65,7 @@ CI_FAILURES=$(gh pr checks --json conclusion --jq '[.[] | select(.conclusion == 
 **If review comments exist AND (no --ci flag OR both exist)**:
 
 ```text
-Task (gitx:review-comment-analyzer):
+Task (gitx:respond:review-comment-analyzer):
   PR Number: [number]
   Analyze all unresolved review comments.
   Categorize by type and effort.
@@ -75,7 +75,7 @@ Task (gitx:review-comment-analyzer):
 **If CI failures exist AND --ci flag (OR both exist)**:
 
 ```text
-Task (gitx:ci-failure-analyzer):
+Task (gitx:respond:ci-failure-analyzer):
   PR Number: [number]
   Analyze all CI check failures.
   Identify root causes and fixes.
@@ -95,7 +95,7 @@ Mark "Plan changes" as in_progress.
 Launch planner with combined analysis:
 
 ```text
-Task (gitx:code-change-planner):
+Task (gitx:respond:code-change-planner):
   PR Number: [number]
 
   Review Comment Analysis:
@@ -119,7 +119,7 @@ Mark "Synthesize and present plan" as in_progress.
 Launch synthesizer:
 
 ```text
-Task (gitx:respond-synthesizer):
+Task (gitx:respond:respond-synthesizer):
   Combine all analysis results.
   Create tiered action plan.
   Detect conflicts.

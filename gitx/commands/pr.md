@@ -33,7 +33,7 @@ Apply Skill(gitx:performing-pr-preflight-checks) to validate:
 Launch change analyzer:
 
 ```text
-Task (gitx:change-analyzer):
+Task (gitx:pr-create:change-analyzer):
   Branch: [current-branch]
   Base: [main-branch]
 
@@ -60,7 +60,7 @@ Store key results:
 Launch description generator and review preparer in parallel:
 
 ```text
-Task (gitx:description-generator):
+Task (gitx:pr-create:description-generator):
   Change Analysis: [output from Phase 1]
 
   Generate:
@@ -70,7 +70,7 @@ Task (gitx:description-generator):
 ```
 
 ```text
-Task (gitx:review-preparer):
+Task (gitx:pr-create:review-preparer):
   Change Analysis: [output from Phase 1]
 
   Identify:
