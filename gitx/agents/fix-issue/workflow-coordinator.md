@@ -3,7 +3,7 @@ name: workflow-coordinator
 description: >-
   Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, and development phases.
 model: opus
-tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill, Skill(gitx:syncing-worktrees)
+tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill, Skill(gitx:syncing-worktrees), Skill(gitx:naming-branches), Skill(gitx:naming-worktrees)
 color: purple
 ---
 

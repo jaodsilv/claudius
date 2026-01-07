@@ -10,6 +10,14 @@ color: green
 Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
 Well-structured PR content accelerates review.
 
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use Skill tool to load gitx:committing-conventionally
+```
+
 ## Input
 
 Receive: change analysis from gitx:pr-create:change-analyzer, branch and commit information.
