@@ -2,6 +2,7 @@
 description: Removes a worktree and associated branch when cleaning up. Use for post-merge cleanup or abandoned work.
 argument-hint: "[NAME] [-f force] [-r remove-remote]"
 allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git push:*), Bash(git switch:*), Bash(bash:*), Bash(powershell:*), AskUserQuestion
+model: sonnet
 ---
 
 # Remove Worktree
