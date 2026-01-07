@@ -2,6 +2,7 @@
 description: Improves output-styles when formatting rules need refinement.
 argument-hint: <output-style-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Improve Output-Style

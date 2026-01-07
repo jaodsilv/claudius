@@ -2,6 +2,7 @@
 description: Improves agents when triggering or prompts need enhancement.
 argument-hint: <agent-path> [--focus "<aspect>"]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Improve Agent
