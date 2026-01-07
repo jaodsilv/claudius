@@ -54,6 +54,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 **Batched Execution**: Invoke facilitator in batches of 2-3 rounds instead of individual rounds.
 
 **Depth Mappings**:
+
 - `shallow`: 1 batch (3 rounds max)
 - `normal`: 2 batches (5 rounds max)
 - `deep`: 3 batches (8 rounds max)
@@ -61,15 +62,13 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 **Batch Invocation**:
 
 1. **Batch 1** (rounds 1-3):
-   - Invoke `brainstorm-facilitator` with:
-
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
      Topic: {{topic}}
      Batch number: 1
      Rounds in batch: 3
      Previous context: [none for first batch]
-
      ```
 
    - Facilitator conducts 2-3 rounds internally
@@ -78,14 +77,12 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
    - [ ] Append batch summary to session log
 
 2. **Batch 2** (rounds 4-5, if needed):
-
    - Skip if depth="shallow" OR clarity="High" from Batch 1
-   - Invoke `brainstorm-facilitator` with:
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
      Topic: {{topic}}
      Batch number: 2
-
      Rounds in batch: 2
      Previous context: {{batch_1_insights}}
      ```
@@ -93,13 +90,11 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
    - [ ] If depth="normal" AND clarity="Medium+" after this batch, proceed to Phase 2
    - [ ] Append batch summary to session log
 
-
 3. **Batch 3** (rounds 6-8, if depth=deep):
    - Skip if depth!="deep"
-   - Invoke `brainstorm-facilitator` with:
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
-
      Topic: {{topic}}
      Batch number: 3
      Rounds in batch: 3
@@ -125,17 +120,14 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ### Phases 2-4: Parallel Analysis
 
-
 **Execute domain, technical, and constraint analysis in parallel using the Task tool.**
 
 Use Task tool to invoke **IN PARALLEL**:
 
-1. **Domain Exploration** - `brainstorm-domain-explorer`:
-
+1. **Domain Exploration** - `brainstorm:domain-explorer`:
 
    ```text
    Topic: {{topic}}
-
    Dialogue summary: {{phase_1_dialogue_summary}}
    Key requirements areas: {{requirements_areas}}
    Specific domain questions: {{domain_questions}}
@@ -143,21 +135,18 @@ Use Task tool to invoke **IN PARALLEL**:
 
    Returns: Domain analysis compact summary
 
-
-2. **Technical Analysis** - `brainstorm-technical-analyst`:
-
+2. **Technical Analysis** - `brainstorm:technical-analyst`:
 
    ```text
    Topic: {{topic}}
    Dialogue summary: {{phase_1_dialogue_summary}}
    Initial requirements: {{initial_requirements}}
    Known constraints: {{technical_constraints}}
-
    ```
 
    Returns: Technical analysis compact summary
 
-3. **Constraint Analysis** - `brainstorm-constraint-analyst`:
+3. **Constraint Analysis** - `brainstorm:constraint-analyst`:
 
    ```text
    Topic: {{topic}}
@@ -191,7 +180,7 @@ Use Task tool to invoke **IN PARALLEL**:
 
 **Merge parallel analysis outputs into unified context.**
 
-Launch `brainstorm-analysis-synthesizer`:
+Launch `brainstorm:analysis-synthesizer`:
 
 ```text
 Topic: {{topic}}
@@ -220,7 +209,7 @@ Returns: Unified analysis context for requirements synthesis
 
 ### Phase 5: Requirements Synthesis
 
-Launch `brainstorm-requirements-synthesizer`:
+Launch `brainstorm:requirements-synthesizer`:
 
 ```text
 Topic: {{topic}}
@@ -248,7 +237,7 @@ Returns: Structured requirements document
 
 ### Phase 6: Specification Generation
 
-Launch `brainstorm-specification-writer`:
+Launch `brainstorm:specification-writer`:
 
 ```text
 Topic: {{topic}}

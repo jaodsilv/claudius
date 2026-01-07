@@ -35,6 +35,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 ### Step 2: Read Session Data
 
 Read all session files:
+
 - `{{session_path}}/session-log.md`
 - `{{session_path}}/requirements.md` (if exists)
 - `{{session_path}}/specification.md` (if exists)
@@ -43,7 +44,7 @@ Extract: Topic, Depth, Completion status
 
 ### Step 3: Regenerate Documents
 
-Launch `brainstorm-specification-writer`:
+Launch `brainstorm:specification-writer`:
 
 ```text
 Regenerate specification from session data.
