@@ -9,6 +9,14 @@ color: red
 
 Analyze CI check failures, identify root causes, and suggest specific remediation strategies. Clear analysis enables targeted fixes.
 
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use Skill tool to load gitx:classifying-issues-and-failures
+```
+
 ## Input
 
 Receive: PR number, failed check names and details URLs.
