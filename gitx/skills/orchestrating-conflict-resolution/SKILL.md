@@ -24,7 +24,7 @@ git diff --name-only --diff-filter=U
 Launch conflict-analyzer agent:
 
 ```text
-Task (gitx:conflict-analyzer):
+Task (gitx:conflict-resolver:conflict-analyzer):
   Operation: [merge|rebase]
   Base Branch: $base_branch
   Conflicting Files: [list from git status]
@@ -41,7 +41,7 @@ Task (gitx:conflict-analyzer):
 Launch resolution-suggester agent:
 
 ```text
-Task (gitx:resolution-suggester):
+Task (gitx:conflict-resolver:resolution-suggester):
   Conflict Analysis: [output from Phase 1]
 
   For each conflict:
@@ -62,7 +62,7 @@ After each resolution: `git add <file>`
 Launch merge-validator agent:
 
 ```text
-Task (gitx:merge-validator):
+Task (gitx:conflict-resolver:merge-validator):
   Resolved Files: [list]
   Operation: [merge|rebase]
 

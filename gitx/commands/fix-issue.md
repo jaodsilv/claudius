@@ -36,7 +36,7 @@ Mark "Analyze issue requirements" as in_progress.
 Launch issue analyzer:
 
 ```text
-Task (gitx:issue-analyzer):
+Task (gitx:fix-issue:issue-analyzer):
   Issue Number: [number]
 
   Analyze the issue to extract:
@@ -66,7 +66,7 @@ Mark "Explore codebase for relevant files" as in_progress.
 Launch codebase navigator:
 
 ```text
-Task (gitx:codebase-navigator):
+Task (gitx:fix-issue:codebase-navigator):
   Issue Analysis: [summary from Phase 1]
   Key Terms: [terms from Phase 1]
 
@@ -95,7 +95,7 @@ Mark "Create implementation plan" as in_progress.
 Launch implementation planner:
 
 ```text
-Task (gitx:implementation-planner):
+Task (gitx:fix-issue:implementation-planner):
   Issue Analysis:
   [Full output from Phase 1]
 
