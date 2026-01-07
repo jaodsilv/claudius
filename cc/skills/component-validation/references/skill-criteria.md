@@ -26,17 +26,13 @@ Detailed validation rules for Claude Code skills.
 
 Good:
 
-
-```yaml
 description: >-
   Provides progressive disclosure patterns for organizing skill content.
   Use when creating new skills, reorganizing existing skills, or reviewing
   skill structure for best practices.
 ```
 
-
 Bad:
-
 ```yaml
 description: "Helps you organize skill content"  # Second-person, no triggers
 ```

@@ -64,8 +64,6 @@ Detailed validation rules for Claude Code output-styles.
 
 Good:
 
-
-```markdown
 ## Tone
 
 - Use active voice ("The function returns..." not "The value is returned...")
@@ -74,9 +72,7 @@ Good:
 - Direct and concise, avoid hedging
 ```
 
-
 Bad:
-
 ```markdown
 ## Tone
 
@@ -96,10 +92,8 @@ Be nice and professional.  # Too vague
 
 ### Example Formats
 
-
 Template example:
 
-```markdown
 ## Example: API Documentation
 
 ### Input

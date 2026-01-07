@@ -130,11 +130,7 @@ For each requirement, verify:
 ### ❌ Poor Requirement
 
 
-"The system should have good performance"
-
-
 ### ✅ Well-Formed Requirement
-
 **FR-005: User Authentication Response Time**
 - **Description**: The authentication endpoint shall process login requests and return responses
 - **Acceptance Criteria**:

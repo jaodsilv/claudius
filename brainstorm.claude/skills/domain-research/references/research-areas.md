@@ -7,11 +7,7 @@ This document defines the 7 research dimensions used in domain research analysis
 ### Definition
 
 
-Understanding the overall industry context, maturity level, market size, trends, and key players.
-
-
 ### What to Look For
-
 - Industry maturity level (emerging, growing, mature, declining)
 - Market size and growth rates
 - Major trends and shifts
@@ -19,10 +15,8 @@ Understanding the overall industry context, maturity level, market size, trends,
 - Market segments and opportunities
 - Geographic variations
 
-
 ### Questions to Answer
 
-- Is this a new or established domain?
 - How large is the market and how fast is it growing?
 - What are the dominant trends shaping the industry?
 - Who are the market leaders and what positions do they hold?
@@ -41,15 +35,11 @@ Understanding the overall industry context, maturity level, market size, trends,
 
 ---
 
-
 ## 2. Competitive Analysis
 
-
 ### Definition
-
 Detailed examination of direct competitors, adjacent solutions, and industry leaders to identify positioning opportunities and learn from their approaches.
 
-### What to Look For
 
 - Direct competitors (solving same problem, same market)
 - Adjacent solutions (related problems or markets)
@@ -85,17 +75,14 @@ Detailed examination of direct competitors, adjacent solutions, and industry lea
 - Sales conversations and customer interviews
 - GitHub and open source repositories
 
-
 ---
 
 ## 3. Best Practices and Patterns
 
 ### Definition
-
 Industry standards, proven patterns, common approaches, and anti-patterns to avoid when implementing solutions.
 
 ### What to Look For
-
 
 - Industry standards and specifications
 - Established design patterns
@@ -103,11 +90,9 @@ Industry standards, proven patterns, common approaches, and anti-patterns to avo
 - Best-in-class implementations
 - Known anti-patterns and pitfalls
 - Common workflow conventions
-- Industry-standard terminology
 - Emerging best practices
 
 ### Questions to Answer
-
 
 - What are the established standards in this domain?
 - What design patterns are commonly used?
@@ -116,7 +101,6 @@ Industry standards, proven patterns, common approaches, and anti-patterns to avo
 - What do industry leaders do differently?
 - Are there emerging or evolving best practices?
 - What conventions do users expect?
-- What integrations are considered standard?
 
 ### Sources to Consult
 
@@ -137,7 +121,6 @@ Industry standards, proven patterns, common approaches, and anti-patterns to avo
 
 ### Definition
 
-
 Understanding what users expect from solutions in this domain, including expected features, common pain points, and unmet needs.
 
 ### What to Look For
@@ -146,7 +129,6 @@ Understanding what users expect from solutions in this domain, including expecte
 - Common workflows and use cases
 - User pain points and frustrations
 - Unmet needs and opportunity gaps
-- Emerging user expectations
 - Expected levels of support and service
 
 - Integration expectations
@@ -163,7 +145,6 @@ Understanding what users expect from solutions in this domain, including expecte
 - What level of support do users expect?
 - How much customization do users need?
 
-
 ### Sources to Consult
 
 - Customer interviews and user research
@@ -173,11 +154,9 @@ Understanding what users expect from solutions in this domain, including expecte
 - User reviews and ratings (G2, Capterra)
 - User surveys and questionnaires
 - Job forums and professional networks
-- Social media discussions
 - User testing and observational research
 
 ---
-
 
 ## 5. Technical Insights and Patterns
 
@@ -189,7 +168,6 @@ Understanding common technical architectures, data structures, integration patte
 
 - Common system architectures and designs
 - Standard data models and structures
-
 - Typical integration patterns and protocols
 - API conventions and standards
 - Technology stack choices
@@ -209,7 +187,6 @@ Understanding common technical architectures, data structures, integration patte
 - What security measures are critical?
 - What data formats are standard?
 
-
 ### Sources to Consult
 
 - Technical documentation and APIs
@@ -221,7 +198,6 @@ Understanding common technical architectures, data structures, integration patte
 - Conference talks and technical presentations
 
 - Industry technical specifications
-
 ---
 
 ## 6. Regulatory and Compliance Requirements
@@ -229,7 +205,6 @@ Understanding common technical architectures, data structures, integration patte
 ### Definition
 
 Understanding legal requirements, regulatory frameworks, privacy obligations, accessibility standards, and security requirements that apply to solutions in this domain.
-
 
 ### What to Look For
 
@@ -243,7 +218,6 @@ Understanding legal requirements, regulatory frameworks, privacy obligations, ac
 - Geographic variations in requirements
 
 ### Questions to Answer
-
 - What regulations apply to this domain?
 
 - What privacy standards must be met?
@@ -271,7 +245,6 @@ Understanding legal requirements, regulatory frameworks, privacy obligations, ac
 
 ## 7. Domain Terminology and Conventions
 
-
 ### Definition
 
 Industry-specific vocabulary, terminology conventions, and expected concepts that users in the domain understand and expect.
@@ -285,7 +258,6 @@ Industry-specific vocabulary, terminology conventions, and expected concepts tha
 - Naming conventions and standards
 - Taxonomies and categorization schemes
 - Acronyms and abbreviations
-- Regional or cultural variations in terminology
 
 ### Questions to Answer
 

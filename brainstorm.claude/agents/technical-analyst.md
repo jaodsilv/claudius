@@ -136,13 +136,9 @@ Use the `technical-patterns` skill for detailed patterns and sizing:
 ````
 
 
-In addition to the full output, provide a compact summary (10-15 lines):
-
 ### Summary for Next Phase
 
-
 - **Recommended architecture**: [Pattern name] - [One-line rationale]
-- **Complexity**: [T-shirt size] - [Key factors]
 - **Top risks**: [3 main technical risks]
 - **Unknowns**: [Major technical unknowns to resolve]
 
