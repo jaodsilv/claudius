@@ -2,6 +2,7 @@
 description: Create a project roadmap with phases, milestones, and deliverables
 allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TodoWrite, AskUserQuestion, Skill
 argument-hint: <goal> [--phases <number>] [--horizon <weeks|months>] [--output <path>]
+model: opus
 ---
 
 # /planner:roadmap

@@ -2,6 +2,7 @@
 description: Reviews prioritization alignment with multi-agent orchestration. Use for validating issue rankings against goals.
 allowed-tools: Task, Read, Glob, Grep, Bash, Skill, AskUserQuestion, TodoWrite
 argument-hint: <goal|roadmap-path> [--prioritization-path <path>] [--mode <quick|thorough>]
+model: opus
 ---
 
 # /planner:review-prioritization
