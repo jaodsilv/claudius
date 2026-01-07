@@ -23,6 +23,8 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ## Execution Checklist
 
+Apply Skill(brainstorm:workflow-validation) for session state validation.
+
 ### Step 1: Validate Session
 
 - [ ] Check `{{session_path}}` exists
