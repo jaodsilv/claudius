@@ -2,6 +2,7 @@
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
 argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit> | -r [\"text\"] | --review [\"text\"]]"
 allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler:comment-handler), Skill(gitx:validating-comments)
+model: sonnet
 ---
 
 # Comment on Pull Request

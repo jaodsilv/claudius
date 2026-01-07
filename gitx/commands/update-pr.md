@@ -2,6 +2,7 @@
 description: Updates PR title and description when changes have evolved. Use for refreshing outdated PR content.
 argument-hint: "[PR_NUMBER]"
 allowed-tools: Bash(git:*), Bash(gh:*), Task, Read, AskUserQuestion
+model: sonnet
 ---
 
 # Update Pull Request
