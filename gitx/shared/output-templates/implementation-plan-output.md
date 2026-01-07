@@ -1,6 +1,6 @@
 # Implementation Plan Output Template
 
-Standard format for implementation plans produced by gitx:implementation-planner.
+Standard format for implementation plans produced by gitx:fix-issue:implementation-planner.
 
 ## Full Template
 

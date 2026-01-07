@@ -40,7 +40,7 @@ with available templates plus "No template" option.
 Launch issue drafter agent:
 
 ```text
-Task (gitx:issue-drafter):
+Task (gitx:create-issue:issue-drafter):
   Description: [user's informal description]
   Template: [template name or "none"]
 ```

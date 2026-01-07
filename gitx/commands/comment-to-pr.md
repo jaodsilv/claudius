@@ -1,12 +1,12 @@
 ---
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
 argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit> | -r [\"text\"] | --review [\"text\"]]"
-allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler), Skill(gitx:validating-comments)
+allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler:comment-handler), Skill(gitx:validating-comments)
 ---
 
 # Comment on Pull Request
 
-Add a comment to a GitHub pull request. Delegates complex flows to gitx:comment-handler.
+Add a comment to a GitHub pull request. Delegates complex flows to gitx:comment-handler:comment-handler.
 
 ## Parse Arguments
 
@@ -48,12 +48,12 @@ If comment text provided directly in arguments:
 
 ### Complex: Delegate to Agent
 
-For flag-based flows, delegate to gitx:comment-handler:
+For flag-based flows, delegate to gitx:comment-handler:comment-handler:
 
 **Last Response** (`--last`):
 
 ```text
-Task (gitx:comment-handler):
+Task (gitx:comment-handler:comment-handler):
   target: <PR number>
   target_type: pr
   flow_type: last_response
@@ -62,7 +62,7 @@ Task (gitx:comment-handler):
 **Commit Summary** (`-c` or `-sc`):
 
 ```text
-Task (gitx:comment-handler):
+Task (gitx:comment-handler:comment-handler):
   target: <PR number>
   target_type: pr
   flow_type: commit_summary
@@ -74,7 +74,7 @@ Task (gitx:comment-handler):
 **Review Response** (`-r`):
 
 ```text
-Task (gitx:comment-handler):
+Task (gitx:comment-handler:comment-handler):
   target: <PR number>
   target_type: pr
   flow_type: review_response
