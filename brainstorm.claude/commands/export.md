@@ -44,7 +44,7 @@ Extract: Topic, Depth, Completion status
 
 ### Step 3: Regenerate Documents
 
-Launch `brainstorm-specification-writer`:
+Launch `brainstorm:specification-writer`:
 
 ```text
 Regenerate specification from session data.

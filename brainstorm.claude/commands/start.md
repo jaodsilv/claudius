@@ -62,7 +62,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 **Batch Invocation**:
 
 1. **Batch 1** (rounds 1-3):
-   - Invoke `brainstorm-facilitator` with:
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
      Topic: {{topic}}
@@ -78,7 +78,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 2. **Batch 2** (rounds 4-5, if needed):
    - Skip if depth="shallow" OR clarity="High" from Batch 1
-   - Invoke `brainstorm-facilitator` with:
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
      Topic: {{topic}}
@@ -92,7 +92,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 3. **Batch 3** (rounds 6-8, if depth=deep):
    - Skip if depth!="deep"
-   - Invoke `brainstorm-facilitator` with:
+   - Invoke `brainstorm:facilitator` with:
 
      ```text
      Topic: {{topic}}
@@ -124,7 +124,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 Use Task tool to invoke **IN PARALLEL**:
 
-1. **Domain Exploration** - `brainstorm-domain-explorer`:
+1. **Domain Exploration** - `brainstorm:domain-explorer`:
 
    ```text
    Topic: {{topic}}
@@ -135,7 +135,7 @@ Use Task tool to invoke **IN PARALLEL**:
 
    Returns: Domain analysis compact summary
 
-2. **Technical Analysis** - `brainstorm-technical-analyst`:
+2. **Technical Analysis** - `brainstorm:technical-analyst`:
 
    ```text
    Topic: {{topic}}
@@ -146,7 +146,7 @@ Use Task tool to invoke **IN PARALLEL**:
 
    Returns: Technical analysis compact summary
 
-3. **Constraint Analysis** - `brainstorm-constraint-analyst`:
+3. **Constraint Analysis** - `brainstorm:constraint-analyst`:
 
    ```text
    Topic: {{topic}}
@@ -180,7 +180,7 @@ Use Task tool to invoke **IN PARALLEL**:
 
 **Merge parallel analysis outputs into unified context.**
 
-Launch `brainstorm-analysis-synthesizer`:
+Launch `brainstorm:analysis-synthesizer`:
 
 ```text
 Topic: {{topic}}
@@ -209,7 +209,7 @@ Returns: Unified analysis context for requirements synthesis
 
 ### Phase 5: Requirements Synthesis
 
-Launch `brainstorm-requirements-synthesizer`:
+Launch `brainstorm:requirements-synthesizer`:
 
 ```text
 Topic: {{topic}}
@@ -237,7 +237,7 @@ Returns: Structured requirements document
 
 ### Phase 6: Specification Generation
 
-Launch `brainstorm-specification-writer`:
+Launch `brainstorm:specification-writer`:
 
 ```text
 Topic: {{topic}}
