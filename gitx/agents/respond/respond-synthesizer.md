@@ -1,5 +1,5 @@
 ---
-name: gitx:respond-synthesizer
+name: respond-synthesizer
 description: >-
   Synthesizes analysis results into actionable response plan. Invoked to combine feedback analysis into execution steps.
 model: opus
@@ -11,7 +11,7 @@ Combine analysis results from multiple agents into a coherent, prioritized actio
 
 ## Input
 
-Receive output from: gitx:review-comment-analyzer, gitx:ci-failure-analyzer, gitx:code-change-planner.
+Receive output from: gitx:respond:review-comment-analyzer, gitx:respond:ci-failure-analyzer, gitx:respond:code-change-planner.
 
 ## Extended Thinking
 

@@ -1,5 +1,5 @@
 ---
-name: gitx:codebase-navigator
+name: codebase-navigator
 description: >-
   Explores codebase to find files relevant to an issue. Invoked after issue analysis to identify implementation targets.
 model: sonnet

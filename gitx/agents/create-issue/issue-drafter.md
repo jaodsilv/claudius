@@ -1,5 +1,5 @@
 ---
-name: gitx:issue-drafter
+name: issue-drafter
 description: >-
   Transforms informal issue descriptions into structured GitHub issues. Invoked
   by create-issue command to generate titles, bodies, and labels.
@@ -44,6 +44,7 @@ Note title format, common sections, label conventions.
 ### 3. Generate Title
 
 Rules:
+
 - Features: Start with action verb ("Add", "Implement", "Create")
 - Bugs: Describe problem ("Fix...", "[Component] fails when...")
 - Keep under 72 characters
@@ -104,6 +105,7 @@ If template specified, adapt to its structure.
 ### 5. Suggest Labels
 
 Based on analysis:
+
 1. Type label: `bug`, `feature`, `enhancement`, `documentation`
 2. Priority if obvious: `priority:high`, `priority:medium`, `priority:low`
 3. Component if identifiable
@@ -113,6 +115,7 @@ Only suggest labels that exist in the repository.
 ### 6. Identify Ambiguities
 
 Flag missing information as questions:
+
 - Reproduction steps for bugs
 - Scope for features
 - Component identification
