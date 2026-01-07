@@ -1,5 +1,5 @@
 ---
-name: gitx:ci-failure-analyzer
+name: ci-failure-analyzer
 description: >-
   Analyzes CI check failures to identify root causes and fixes. Invoked when addressing CI failures on a PR.
 model: haiku

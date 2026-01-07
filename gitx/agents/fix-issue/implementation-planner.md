@@ -1,5 +1,5 @@
 ---
-name: gitx:implementation-planner
+name: implementation-planner
 description: >-
   Creates detailed implementation plans for issue fixes. Invoked after codebase exploration to plan changes.
 model: sonnet

@@ -1,5 +1,5 @@
 ---
-name: gitx:issue-drafter
+name: issue-drafter
 description: >-
   Transforms informal issue descriptions into structured GitHub issues. Invoked
   by create-issue command to generate titles, bodies, and labels.
