@@ -70,6 +70,7 @@ Good:
 - Professional but approachable
 - Avoid jargon unless technical audience confirmed
 - Direct and concise, avoid hedging
+
 ```
 
 Bad:
@@ -97,9 +98,11 @@ Template example:
 ## Example: API Documentation
 
 ### Input
+
 [Raw API spec]
 
 ### Output
+
 [Formatted documentation following this style]
 
 ```

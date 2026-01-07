@@ -30,6 +30,7 @@ description: >-
   Provides progressive disclosure patterns for organizing skill content.
   Use when creating new skills, reorganizing existing skills, or reviewing
   skill structure for best practices.
+
 ```
 
 Bad:

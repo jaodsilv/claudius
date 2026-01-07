@@ -68,6 +68,7 @@ For each constraint identified, evaluate these properties:
 - **Mitigation**: Caching, CDN, database optimization, asynchronous processing
 
 ### Example 2: Resource Team Constraint
+
 - **Type**: Resource (Team)
 - **Source**: Budget allocation decision
 - **Impact**: Medium (affects delivery timeline)

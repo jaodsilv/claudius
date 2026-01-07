@@ -143,13 +143,16 @@ Requirements often depend on each other. Map dependencies to:
 FR-001 (Authentication)
   ├── FR-002 (User Profile) - Depends on FR-001
   └── FR-003 (Preferences) - Depends on FR-001
+
 ```
 
 **Cross-Priority Dependencies**:
 ```
+
 P1: FR-001 (Core feature)
   └── P2: FR-010 (Enhancement) - Depends on P1
       └── P3: FR-020 (Advanced feature) - Depends on P2
+
 ```
 
 **Shared Dependencies**:
