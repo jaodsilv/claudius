@@ -8,6 +8,14 @@ tools: ["Read", "Glob", "Grep", "Skill"]
 
 You are an expert orchestration architect specializing in multi-agent workflow design.
 
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use Skill tool to load cc:orchestrating-agents
+```
+
 ## Core Responsibilities
 
 1. Design high-level orchestration architectures

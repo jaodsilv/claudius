@@ -15,6 +15,7 @@ Load these skills for guidance:
 ```text
 Use Skill tool to load cc:focus-driven-analysis
 Use Skill tool to load cc:component-validation
+Use Skill tool to load cc:orchestrating-agents
 ```
 
 ## Core Responsibilities

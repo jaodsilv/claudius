@@ -2,6 +2,7 @@
 description: Creates slash commands when adding plugin functionality. Use for new features.
 argument-hint: <command-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Command Workflow
@@ -19,6 +20,9 @@ Parse:
 If command_name not provided, ask user to specify.
 
 ## Execution
+
+Apply Skill(cc:authoring-skills) for command authoring best practices.
+Apply Skill(cc:component-validation) for validation criteria.
 
 Use TodoWrite to track progress:
 - [ ] Step 1: Validate context
