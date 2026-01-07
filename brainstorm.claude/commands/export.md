@@ -2,6 +2,7 @@
 description: Exports or regenerates brainstorming session documents. Use for generating fresh specification from session data.
 allowed-tools: Task, Read, Write, Edit, Glob
 argument-hint: --session-path: <session_path> --format: <markdown|pdf|html>
+model: sonnet
 ---
 
 # Brainstorm Export
