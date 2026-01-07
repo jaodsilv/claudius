@@ -2,6 +2,7 @@
 description: Manages git worktrees when needing isolated development environments. Use for parallel feature work or issue-based development.
 argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
 allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:naming-branches), Skill(gitx:naming-worktrees), Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references), Skill(gitx:validating-directory-names)
+model: sonnet
 ---
 
 # Worktree Management
