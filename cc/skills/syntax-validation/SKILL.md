@@ -5,6 +5,8 @@ description: >-
   when validating YAML frontmatter, markdown structure, or component-specific
   syntax after writing or editing files.
 version: 1.0.0
+allowed-tools: Read, Skill
+model: haiku
 ---
 
 # Syntax Validation
@@ -21,6 +23,7 @@ Patterns for validating plugin component syntax after modifications.
 4. **No syntax errors**: Keys and values properly formatted
 
 Common issues:
+
 - Tab characters instead of spaces
 - Missing quotes around values with special characters
 - Improper list formatting
@@ -58,7 +61,7 @@ After each edit:
 ```yaml
 # Wrong - tabs used
 ---
-name:	my-agent  # TAB character!
+name:\tmy-agent  # TAB character!
 ---
 
 # Correct - spaces used
