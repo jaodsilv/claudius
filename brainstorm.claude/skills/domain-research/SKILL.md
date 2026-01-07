@@ -1,3 +1,9 @@
+---
+name: brainstorm:domain-research
+description: >-
+  Explores industry practices, competitors, and domain knowledge to inform solution design with market context.
+---
+
 # Domain Research
 
 Explores industry practices, competitors, and domain knowledge to inform solution design with market context.

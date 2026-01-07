@@ -17,11 +17,11 @@ description: >-
 
 | Phase | Agent | Output |
 |-------|-------|--------|
-| 1. Dialogue | `brainstorm-facilitator` | Key insights, user needs (batched 2-3 rounds) |
-| 2-4. Analysis | `domain-explorer`, `technical-analyst`, `constraint-analyst` | Parallel analysis reports |
-| 4.5. Synthesis | `brainstorm-analysis-synthesizer` | Unified analysis context |
-| 5. Requirements | `brainstorm-requirements-synthesizer` | Structured requirements |
-| 6. Document | `brainstorm-specification-writer` | Final specification |
+| 1. Dialogue | `brainstorm:facilitator` | Key insights, user needs (batched 2-3 rounds) |
+| 2-4. Analysis | `brainstorm:domain-explorer`, `brainstorm:technical-analyst`, `brainstorm:constraint-analyst` | Parallel analysis reports |
+| 4.5. Synthesis | `brainstorm:analysis-synthesizer` | Unified analysis context |
+| 5. Requirements | `brainstorm:requirements-synthesizer` | Structured requirements |
+| 6. Document | `brainstorm:specification-writer` | Final specification |
 
 **Note**: Phases 2-4 execute in parallel for efficiency. Phase 4.5 merges their outputs before requirements synthesis.
 
