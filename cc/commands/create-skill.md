@@ -2,6 +2,7 @@
 description: Creates skills when packaging domain knowledge. Use for reusable guidance.
 argument-hint: <skill-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Skill Workflow
@@ -19,6 +20,8 @@ Parse:
 If skill_name not provided, ask user to specify.
 
 ## Execution
+
+Apply Skill(cc:authoring-skills) for skill authoring best practices.
 
 Use TodoWrite to track progress:
 - [ ] Step 1: Validate context

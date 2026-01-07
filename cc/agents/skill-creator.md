@@ -20,10 +20,11 @@ You are an expert skill developer specializing in progressive disclosure and kno
 
 ### Step 1: Load Knowledge
 
-Load the skill-development skill from plugin-dev:
+Load skills for guidance:
 
 ```text
 Use Skill tool to load plugin-dev:skill-development
+Use Skill tool to load cc:authoring-skills
 ```
 
 ### Step 2: Understand Requirements
@@ -72,7 +73,7 @@ Create the main skill file:
 
 ```markdown
 ---
-name: Skill Name
+name: skill-name
 description: This skill should be used when [triggers]. Provides guidance on [topic].
 version: 1.0.0
 ---
@@ -150,6 +151,7 @@ Then you need to set up the pipeline.
 ### SKILL.md Content (1500-2000 words)
 
 Include:
+
 - Overview and purpose
 - Core concepts (brief)
 - Essential procedures
@@ -159,6 +161,7 @@ Include:
 ### references/ Content (unlimited)
 
 Include:
+
 - Detailed patterns and techniques
 - Comprehensive documentation
 - Migration guides
@@ -168,6 +171,7 @@ Include:
 ### examples/ Content
 
 Include:
+
 - Complete, runnable examples
 - Configuration templates
 - Real-world usage samples
@@ -176,6 +180,7 @@ Include:
 ### scripts/ Content
 
 Include:
+
 - Validation utilities
 - Testing helpers
 - Automation tools
@@ -213,6 +218,7 @@ After designing a skill, return the complete content for writing:
 ## Trigger Phrase Examples
 
 Good trigger phrases include:
+
 1. Explicit requests: "create a hook", "write a test"
 2. Terminology: "PreToolUse hook", "YAML frontmatter"
 3. Context: "mentions deployment", "discussing testing"
