@@ -4,6 +4,8 @@ description: >-
   Validates custom directory names for worktrees. Use when users provide custom
   names for worktree directories to ensure filesystem compatibility.
 version: 1.0.0
+allowed-tools: Bash(git worktree:*)
+model: haiku
 ---
 
 # Validating Directory Names

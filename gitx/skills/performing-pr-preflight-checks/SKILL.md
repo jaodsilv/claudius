@@ -3,6 +3,8 @@ name: gitx:performing-pr-preflight-checks
 description: >-
   Performs pre-flight checks before PR operations. Use when creating PRs,
   merging, or modifying PR state to ensure operation will succeed.
+allowed-tools: Bash(gh:*), Bash(git:*)
+model: haiku
 ---
 
 # Performing PR Preflight Checks

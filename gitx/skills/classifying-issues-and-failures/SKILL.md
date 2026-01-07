@@ -4,6 +4,8 @@ description: >-
   Provides classification frameworks for issues, CI failures, and review comments.
   Use when categorizing items by type, effort, or priority in analysis agents.
 version: 1.0.0
+allowed-tools: []
+model: haiku
 ---
 
 # Classifying Issues and Failures

@@ -3,6 +3,8 @@ name: gitx:naming-worktrees
 description: >-
   Generates abbreviated worktree directory names from branch names.
   Invoked when creating worktrees to offer short, meaningful options.
+allowed-tools: []
+model: haiku
 ---
 
 # Naming Worktrees

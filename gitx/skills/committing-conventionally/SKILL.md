@@ -4,6 +4,8 @@ description: >-
   Applies project-specific conventional commit conventions for this repository.
   Invoked when creating git commits, reviewing commit history, or planning changes.
   Use when needing project-specific scopes, custom types, or non-standard rules.
+allowed-tools: []
+model: haiku
 ---
 
 # Committing Conventionally
