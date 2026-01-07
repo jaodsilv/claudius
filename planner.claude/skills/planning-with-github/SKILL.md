@@ -1,6 +1,8 @@
 ---
 name: planner:planning-with-github
 description: Integrates GitHub issues with project planning. Invoked when user asks to analyze issues, fetch issues for planning, map dependencies, or work with GitHub projects.
+allowed-tools: Bash
+model: sonnet
 ---
 
 # Planning with GitHub

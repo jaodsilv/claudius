@@ -1,6 +1,8 @@
 ---
 name: planner:prioritizing-work
 description: Applies prioritization frameworks to rank items. Invoked when user asks to prioritize issues, rank features, apply RICE/MoSCoW scoring, or create priority matrices.
+allowed-tools: Bash
+model: sonnet
 ---
 
 # Prioritizing Work
