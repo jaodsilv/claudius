@@ -37,7 +37,7 @@ Use Skill tool: `planner:orchestrating-reviews`
 
 **Artifact Type**: architecture
 **Primary Artifact Path**: `{{architecture_path}}` (discover via Glob if not provided)
-**Domain Reviewer Agent**: `planner-architecture-reviewer`
+**Domain Reviewer Agent**: `planner:planner:architecture-reviewer`
 **Evaluation Dimensions**:
 
 - Technical Soundness - Are design decisions well-justified?
