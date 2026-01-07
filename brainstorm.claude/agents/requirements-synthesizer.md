@@ -1,5 +1,5 @@
 ---
-name: brainstorm-requirements-synthesizer
+name: requirements-synthesizer
 description: >
   Consolidates brainstorming outputs into structured requirements.
   Invoked during Phase 5 to formalize dialogue insights into actionable specifications.

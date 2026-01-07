@@ -1,5 +1,5 @@
 ---
-name: brainstorm-facilitator
+name: facilitator
 description: >
   Drives Socratic dialogue for requirements discovery. Runs 2-3 questioning rounds
   per invocation for efficient context usage. Use when conducting structured

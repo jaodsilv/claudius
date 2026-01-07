@@ -1,5 +1,5 @@
 ---
-name: brainstorm-constraint-analyst
+name: constraint-analyst
 description: >
   Identifies and analyzes constraints shaping the solution space.
   Invoked during Phase 4 to surface technical, business, and resource limitations.

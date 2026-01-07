@@ -1,5 +1,5 @@
 ---
-name: brainstorm-domain-explorer
+name: domain-explorer
 description: >
   Researches industry practices, competitors, and domain knowledge.
   Invoked during Phase 2 to inform feature development with market context.

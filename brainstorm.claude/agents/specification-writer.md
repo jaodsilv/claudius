@@ -1,5 +1,5 @@
 ---
-name: brainstorm-specification-writer
+name: specification-writer
 description: >
   Produces consolidated specification document from brainstorming outputs.
   Invoked after all phases complete to generate stakeholder-ready documentation.

@@ -108,12 +108,13 @@ The specification writer creates:
 
 | Agent | Purpose |
 |-------|---------|
-| `brainstorm-facilitator` | Drives Socratic dialogue |
-| `brainstorm-domain-explorer` | Researches market and domain |
-| `brainstorm-technical-analyst` | Evaluates technical feasibility |
-| `brainstorm-constraint-analyst` | Identifies constraints |
-| `brainstorm-requirements-synthesizer` | Consolidates requirements |
-| `brainstorm-specification-writer` | Generates final documents |
+| `brainstorm:facilitator` | Drives Socratic dialogue |
+| `brainstorm:domain-explorer` | Researches market and domain |
+| `brainstorm:technical-analyst` | Evaluates technical feasibility |
+| `brainstorm:constraint-analyst` | Identifies constraints |
+| `brainstorm:analysis-synthesizer` | Merges and synthesizes parallel analysis outputs |
+| `brainstorm:requirements-synthesizer` | Consolidates requirements |
+| `brainstorm:specification-writer` | Generates final documents |
 
 ## Output Artifacts
 
