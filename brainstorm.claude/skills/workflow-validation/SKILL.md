@@ -2,6 +2,8 @@
 name: brainstorm:workflow-validation
 description: >-
   Validates brainstorming phase outputs before proceeding to next phase. Use when assessing quality gates between workflow phases.
+allowed-tools:
+model: haiku
 ---
 
 # Workflow Validation

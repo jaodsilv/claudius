@@ -2,6 +2,8 @@
 name: brainstorm:constraint-analysis
 description: >-
   Identifies and categorizes constraints that shape solution design. Use when analyzing project constraints, identifying trade-offs, or documenting boundaries.
+allowed-tools:
+model: sonnet
 ---
 
 # Constraint Analysis
