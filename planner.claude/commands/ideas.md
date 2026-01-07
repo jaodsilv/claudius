@@ -2,6 +2,7 @@
 description: Multi-agent Ultrathink deep ideation session with Opus extended thinking
 allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite, Skill
 argument-hint: <goal|roadmap-path> [--mode <full|focused>] [--rounds <number>] [--output <path>]
+model: opus
 ---
 
 # /planner:ideas
