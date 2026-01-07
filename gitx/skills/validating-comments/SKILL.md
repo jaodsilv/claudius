@@ -4,6 +4,8 @@ description: >-
   Validates comment content before posting to GitHub. Use when posting comments
   to issues or PRs to ensure compliance with size limits and content requirements.
 version: 1.0.0
+allowed-tools: AskUserQuestion
+model: haiku
 ---
 
 # Validating Comments

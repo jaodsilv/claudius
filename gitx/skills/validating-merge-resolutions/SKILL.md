@@ -4,6 +4,8 @@ description: >-
   Provides validation checklist and patterns for merge/rebase conflict
   resolutions. Use when checking resolved files before continuing git operations.
 version: 1.0.0
+allowed-tools: Bash(grep:*), Bash(npx:*), Bash(npm:*)
+model: haiku
 ---
 
 # Validating Merge Resolutions
