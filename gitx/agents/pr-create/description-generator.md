@@ -1,5 +1,5 @@
 ---
-name: gitx:description-generator
+name: description-generator
 description: >-
   Generates PR title and description from change analysis. Invoked during PR creation workflow.
 model: sonnet
@@ -12,7 +12,7 @@ Well-structured PR content accelerates review.
 
 ## Input
 
-Receive: change analysis from gitx:change-analyzer, branch and commit information.
+Receive: change analysis from gitx:pr-create:change-analyzer, branch and commit information.
 
 ## Process
 

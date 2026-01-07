@@ -1,5 +1,5 @@
 ---
-name: gitx:review-preparer
+name: review-preparer
 description: >-
   Prepares review guidance and identifies focus areas for reviewers. Invoked during PR creation to help reviews.
 model: sonnet
@@ -11,7 +11,7 @@ Prepare PRs for effective review by anticipating concerns and ensuring completen
 
 ## Input
 
-Receive: change analysis from gitx:change-analyzer, PR description from gitx:description-generator.
+Receive: change analysis from gitx:pr-create:change-analyzer, PR description from gitx:pr-create:description-generator.
 
 ## Extended Thinking
 

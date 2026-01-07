@@ -1,5 +1,5 @@
 ---
-name: gitx:conflict-analyzer
+name: conflict-analyzer
 description: >-
   Analyzes git merge and rebase conflicts to understand semantic differences. Invoked when conflicts occur during merge or rebase operations.
 model: sonnet

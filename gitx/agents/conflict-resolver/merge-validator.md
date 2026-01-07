@@ -1,5 +1,5 @@
 ---
-name: gitx:merge-validator
+name: merge-validator
 description: >-
   Validates merge and rebase resolutions before continuing operations. Invoked after conflicts are resolved to check for issues.
 model: haiku
