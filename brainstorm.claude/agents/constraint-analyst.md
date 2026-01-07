@@ -5,6 +5,7 @@ description: >
   Invoked during Phase 4 to surface technical, business, and resource limitations.
 model: sonnet
 color: orange
+tools:
 ---
 
 # Constraint Analyst
