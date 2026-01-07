@@ -97,10 +97,10 @@ If not using brainstorm:
 
 1. Mark Phase 2 as in_progress
 
-2. Launch `planner-requirements-gatherer` agent:
+2. Launch `requirements-gatherer` agent:
 
    ```text
-   Use Task tool with planner-requirements-gatherer agent:
+   Use Task tool with planner:planner:requirements-gatherer agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}
