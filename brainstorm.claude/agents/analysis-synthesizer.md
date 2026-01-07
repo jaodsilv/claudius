@@ -1,5 +1,5 @@
 ---
-name: brainstorm-analysis-synthesizer
+name: analysis-synthesizer
 description: >
   Merges and synthesizes outputs from parallel analysis phases (domain, technical, constraints).
   Use after phases 2-4 complete to create unified context for requirements synthesis.
@@ -37,11 +37,9 @@ This agent receives compact summaries from three parallel phases:
 
 ### 1. Cross-Reference Analysis
 
-
 - Identify where domain insights inform technical choices
 - Map constraints to technical risks
 - Connect market expectations to architecture decisions
-
 
 ### 2. Conflict Detection
 
@@ -49,12 +47,10 @@ This agent receives compact summaries from three parallel phases:
 - Note where constraints conflict with technical recommendations
 - Highlight trade-offs requiring stakeholder decisions
 
-
 ### 3. Gap Identification
 
 - Areas not covered by any analysis
 - Questions that remain unanswered
-
 - Assumptions that need validation
 
 ### 4. Priority Synthesis
@@ -203,6 +199,7 @@ Provide a compact summary (15-20 lines) for the requirements synthesizer:
 ## Reasoning
 
 Use extended thinking to:
+
 1. What are the key connections between the three analyses?
 2. Are there any contradictions that need to be surfaced?
 3. What integrated picture emerges for the requirements phase?

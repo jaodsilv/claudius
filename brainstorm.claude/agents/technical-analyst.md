@@ -1,5 +1,5 @@
 ---
-name: brainstorm-technical-analyst
+name: technical-analyst
 description: >
   Evaluates technical feasibility and architecture options.
   Invoked during Phase 3 to assess implementation approaches and identify risks.

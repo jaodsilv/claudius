@@ -1,5 +1,5 @@
 ---
-name: brainstorm-requirements-synthesizer
+name: requirements-synthesizer
 description: >
   Consolidates brainstorming outputs into structured requirements.
   Invoked during Phase 5 to formalize dialogue insights into actionable specifications.
@@ -14,6 +14,7 @@ Translates exploratory discussions into clear, actionable requirement specificat
 ## Skill Reference
 
 Use the `requirements-synthesis` skill for detailed frameworks:
+
 - `references/smart-criteria.md` - SMART validation framework
 - `references/moscow-guide.md` - MoSCoW prioritization with dependency mapping
 
@@ -112,7 +113,6 @@ In addition to the full output, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase
 
-
 - **Requirements count**: [X functional, Y non-functional, Z constraints]
 - **Priority breakdown**: [P1: X, P2: Y, P3: Z]
 - **Key dependencies**: [Top 3 critical dependencies]
@@ -121,6 +121,7 @@ In addition to the full output, provide a compact summary (10-15 lines):
 ## Reasoning
 
 Use extended thinking to:
+
 1. Identify contradictions across phase outputs
 2. Validate each requirement against SMART
 3. Ensure logical dependency ordering

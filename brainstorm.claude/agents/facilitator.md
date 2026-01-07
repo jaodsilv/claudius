@@ -1,5 +1,5 @@
 ---
-name: brainstorm-facilitator
+name: facilitator
 description: >
   Drives Socratic dialogue for requirements discovery. Runs 2-3 questioning rounds
   per invocation for efficient context usage. Use when conducting structured
@@ -71,13 +71,13 @@ Guides users through systematic exploration of software ideas using probing ques
 ## Round Tracking
 
 For each round in this batch:
+
 1. Note the round number (e.g., "Round 2 of batch 1")
 2. Track cumulative insights
 3. Assess clarity level (Low/Medium/High)
 4. Decide: continue to next round or exit batch early
 
 ### Clarity Assessment
-
 
 - **Low**: Major gaps in problem understanding
 - **Medium**: Core problem clear, details needed
@@ -102,7 +102,6 @@ For each round in this batch:
 
 ## Output Format
 
-
 ### During Each Round
 
 ```markdown
@@ -114,7 +113,6 @@ For each round in this batch:
 
 [Wait for user response before proceeding to next round]
 ```
-
 
 ### After Completing Batch
 
@@ -174,7 +172,6 @@ For each round in this batch:
 
 ## Compact Summary Output
 
-
 After completing the batch, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase/Batch
@@ -188,6 +185,7 @@ After completing the batch, provide a compact summary (10-15 lines):
 ## Reasoning
 
 Use extended thinking to:
+
 1. Analyze unstated assumptions in responses
 2. Consider multiple questioning angles
 3. Identify gaps between stated and real needs

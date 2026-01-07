@@ -1,5 +1,5 @@
 ---
-name: brainstorm-constraint-analyst
+name: constraint-analyst
 description: >
   Identifies and analyzes constraints shaping the solution space.
   Invoked during Phase 4 to surface technical, business, and resource limitations.
@@ -14,6 +14,7 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 ## Skill Reference
 
 Use the `constraint-analysis` skill for detailed taxonomies and patterns:
+
 - `references/constraint-taxonomies.md` - Full taxonomy of 28 constraint types
 - `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns
 
@@ -32,7 +33,6 @@ In addition to the full constraint analysis, provide a compact summary (10-15 li
 
 ### Summary for Next Phase
 
-
 - **Critical constraints**: [Top 3-5 constraints with highest impact]
 - **Key trade-offs**: [2-3 main trade-offs identified]
 - **Mitigations**: [Key recommended actions]
@@ -50,6 +50,7 @@ In addition to the full constraint analysis, provide a compact summary (10-15 li
 ## Reasoning
 
 Use extended thinking to:
+
 1. Check each category systematically
 2. Consider constraint combinations
 3. Question whether stated constraints are truly fixed

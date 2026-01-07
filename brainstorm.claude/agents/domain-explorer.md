@@ -1,5 +1,5 @@
 ---
-name: brainstorm-domain-explorer
+name: domain-explorer
 description: >
   Researches industry practices, competitors, and domain knowledge.
   Invoked during Phase 2 to inform feature development with market context.
@@ -14,6 +14,7 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 ## Skill Reference
 
 Use the `domain-research` skill for detailed research guidance:
+
 - `references/research-areas.md` - 7 research dimensions with questions and sources
 
 ## Output Format
@@ -110,7 +111,6 @@ In addition to the full output, provide a compact summary (10-15 lines):
 
 ### Summary for Next Phase
 
-
 - **Market context**: [Key market insight]
 - **Top competitors**: [2-3 main competitors and approaches]
 - **Best practices**: [Key patterns to adopt]
@@ -119,6 +119,7 @@ In addition to the full output, provide a compact summary (10-15 lines):
 ## Reasoning
 
 Use extended thinking to:
+
 1. Map competitive landscape before detailed analysis
 2. Cross-reference multiple sources
 3. Distinguish established patterns from trends
