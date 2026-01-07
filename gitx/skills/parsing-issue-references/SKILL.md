@@ -4,6 +4,8 @@ description: >-
   Parses issue references from various formats into normalized issue numbers.
   Use when processing issue arguments, branch names, or PR bodies for issue linkage.
 version: 1.0.0
+allowed-tools: []
+model: haiku
 ---
 
 # Parsing Issue References

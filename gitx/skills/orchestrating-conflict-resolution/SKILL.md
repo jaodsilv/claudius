@@ -4,6 +4,8 @@ description: >-
   Orchestrates multi-agent conflict resolution workflow for merge and rebase
   operations. Use when git conflicts occur during branch integration.
 version: 1.0.0
+allowed-tools: Bash(git:*), Task, AskUserQuestion
+model: opus
 ---
 
 # Orchestrating Conflict Resolution

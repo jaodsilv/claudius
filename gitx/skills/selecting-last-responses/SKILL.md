@@ -4,6 +4,8 @@ description: >-
   Retrieves and presents recent Claude responses for selection. Use when users
   want to post previous responses to issues or PRs via --last flag.
 version: 1.0.0
+allowed-tools: AskUserQuestion
+model: haiku
 ---
 
 # Selecting Last Responses

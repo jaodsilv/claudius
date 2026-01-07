@@ -4,6 +4,8 @@ description: >-
   Synchronizes git worktrees with remote before operations. Use when creating
   worktrees, before rebases, or when needing fresh main branch state.
 version: 1.0.0
+allowed-tools: Bash(git:*)
+model: haiku
 ---
 
 # Syncing Worktrees

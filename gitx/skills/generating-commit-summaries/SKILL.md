@@ -5,6 +5,8 @@ description: >-
   creating PR descriptions, issue comments, or review responses that need
   commit context.
 version: 1.0.0
+allowed-tools: Bash(git:*), AskUserQuestion
+model: sonnet
 ---
 
 # Generating Commit Summaries
