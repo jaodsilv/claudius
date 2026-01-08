@@ -44,8 +44,10 @@ Detailed validation rules for Claude Code slash commands.
 | File references | `@path/to/file.md` | HIGH |
 | Bash execution | `` !`command` `` | HIGH |
 | Agent delegation | `Task @agent-name` | HIGH |
-| Skill integration | `Use Skill tool to load skill-name` | MEDIUM |
+| Skill integration | `Use Skill tool to load skill-name`\* | MEDIUM |
 | Plugin paths | `${CLAUDE_PLUGIN_ROOT}/path` | MEDIUM |
+
+\* Skill integration in agents is also possible by adding the skills field to the frontmatter: `skills: skill-name` or, if  multiple skills are used: `skills: skill-name1, skill-name2`
 
 ## Quality Criteria
 

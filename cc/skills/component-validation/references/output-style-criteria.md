@@ -191,12 +191,5 @@ Nice to have polish:
 Run
 
 ```text
-
-Use Skill tool to load output-style: [style-name]
-```
-
-Or in agent frontmatter:
-
-```yaml
-output-style: style-name
+/output-style [style-name]
 ```
