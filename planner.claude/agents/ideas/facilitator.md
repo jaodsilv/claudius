@@ -10,7 +10,6 @@ tools:
   - AskUserQuestion
   - TodoWrite
 skills:
-  - brainstorm:brainstorming
   - cc:orchestrating-agents
 ---
 

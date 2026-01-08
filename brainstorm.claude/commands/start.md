@@ -31,7 +31,6 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 ## Skills Used
 
 - `brainstorm:workflow-validation` - Gate check criteria and validation patterns between workflow phases
-- Apply Skill(cc:orchestrating-agents) for multi-agent coordination patterns when designing phase execution.
 
 ## Initialization Checklist
 
