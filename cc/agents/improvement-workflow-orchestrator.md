@@ -43,17 +43,17 @@ Mark todo: Phase 1 in progress.
 2. Determine improver agent from component_type
 3. Use Task tool with the appropriate improver agent:
 
-```text
-Task @cc:[component-type]-improver:
-  Analyze [component_type]: [component_path]
-  Focus area: [focus if provided, otherwise "general analysis"]
+   ```text
+   Task @cc:[component-type]-improver:
+     Analyze [component_type]: [component_path]
+     Focus area: [focus if provided, otherwise "general analysis"]
 
-  Provide improvement suggestions categorized by severity:
-  - CRITICAL: Must fix (broken functionality, security issues)
-  - HIGH: Should fix (best practice violations)
-  - MEDIUM: Consider fixing (enhancement opportunities)
-  - LOW: Nice to have (polish items)
-```
+     Provide improvement suggestions categorized by severity:
+     - CRITICAL: Must fix (broken functionality, security issues)
+     - HIGH: Should fix (best practice violations)
+     - MEDIUM: Consider fixing (enhancement opportunities)
+     - LOW: Nice to have (polish items)
+   ```
 
 4. Store analysis results for next phase
 5. Mark todo: Phase 1 complete
