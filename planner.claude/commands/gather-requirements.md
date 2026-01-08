@@ -1,12 +1,12 @@
 ---
-description: Gather and structure project requirements, optionally using brainstorm-pro
+description: Gather and structure project requirements, optionally using brainstorm plugin
 allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TodoWrite
 argument-hint: <goal> [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]
 ---
 
 # /planner:gather-requirements
 
-Gather requirements for a goal through structured discovery, optionally leveraging the brainstorm-pro plugin.
+Gather requirements for a goal through structured discovery, optionally leveraging the brainstorm plugin.
 
 ## Input Processing
 
@@ -15,7 +15,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 Parse the arguments:
 
 1. `$goal`: Goal to gather requirements for (required)
-2. `$use_brainstorm`: Use brainstorm-pro if available (default: auto-detect)
+2. `$use_brainstorm`: Use brainstorm plugin if available (default: auto-detect)
 3. `$depth`: Exploration depth (default: "normal")
 4. `$output`: Output path (default: "docs/planning/")
 
@@ -31,7 +31,7 @@ gather-requirements-arguments:
     use_brainstorm:
       type: boolean
       default: null
-      description: Force use of brainstorm-pro (null = auto-detect)
+      description: Force use of brainstorm plugin (null = auto-detect)
     depth:
       type: string
       enum: [shallow, normal, deep]
@@ -55,21 +55,21 @@ gather-requirements-arguments:
    - Phase 3: Synthesis (pending)
    - Phase 4: Documentation (pending)
 
-2. Check for brainstorm-pro plugin:
+2. Check for brainstorm plugin:
    - Look for `brainstorm.claude/.claude-plugin/plugin.json`
    - Or check installed plugins
 
-3. Check brainstorm-pro availability:
+3. Check brainstorm availability:
    1. If available AND user requested (--use-brainstorm): Go to Phase 2A
    2. If available AND not specified: Go to Phase 2A (default behavior)
    3. If unavailable: Go to Phase 2B (Standalone Gathering)
 
-4. If using brainstorm-pro: Inform user "Brainstorm Pro detected - using
+4. If using brainstorm: Inform user "Brainstorm plugin detected - using
    enhanced discovery"
 
 ### Phase 2A: Brainstorm Integration
 
-If using brainstorm-pro:
+If using brainstorm plugin:
 
 1. Delegate to brainstorm:
 
