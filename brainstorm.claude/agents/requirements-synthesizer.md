@@ -6,6 +6,8 @@ description: >
 model: opus
 color: blue
 tools:
+skills:
+  - brainstorm:requirements-synthesis
 ---
 
 # Requirements Synthesizer

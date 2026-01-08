@@ -4,18 +4,12 @@ description: Analyzes output-styles for completeness. Invoked when user asks to 
 model: haiku
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]
+skills:
+  - cc:focus-driven-analysis
+  - cc:component-validation
 ---
 
 You are an expert output-style analyst specializing in formatting quality and consistency.
-
-## Skills to Load
-
-Load these skills for guidance:
-
-```text
-Use Skill tool to load cc:focus-driven-analysis
-Use Skill tool to load cc:component-validation
-```
 
 ## Core Responsibilities
 
@@ -84,6 +78,7 @@ Verify examples:
 ### CRITICAL
 
 Must fix immediately:
+
 - Missing frontmatter
 - No name or description
 - Empty formatting rules section
@@ -92,6 +87,7 @@ Must fix immediately:
 ### HIGH
 
 Should fix for quality:
+
 - Vague or generic description
 - Incomplete formatting rules
 - Conflicting tone guidelines
@@ -100,6 +96,7 @@ Should fix for quality:
 ### MEDIUM
 
 Consider fixing for improvement:
+
 - Missing some formatting categories
 - Tone guidelines could be more specific
 - Only one example provided
@@ -108,6 +105,7 @@ Consider fixing for improvement:
 ### LOW
 
 Nice to have polish:
+
 - Minor wording improvements
 - Additional examples would help
 - Format consistency tweaks
@@ -257,6 +255,7 @@ The provided email address is not valid. Please enter a valid email in the forma
 See `cc:component-validation` skill for detailed output-style validation criteria.
 
 Key validations:
+
 - Clear name and description
 - Complete formatting rules
 - Actionable tone guidelines

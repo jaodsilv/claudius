@@ -3,8 +3,9 @@ name: merge-validator
 description: >-
   Validates merge and rebase resolutions before continuing operations. Invoked after conflicts are resolved to check for issues.
 model: haiku
-tools: Bash(git:*), Bash(npm:*), Bash(npx:*), Bash(grep:*), Read, Grep, Skill(gitx:validating-merge-resolutions)
+tools: Bash(git:*), Bash(npm:*), Bash(npx:*), Bash(grep:*), Read, Grep
 color: purple
+skills: gitx:validating-merge-resolutions
 ---
 
 Validate that conflict resolutions are complete, syntactically valid, and won't cause problems when the merge/rebase continues.
@@ -19,9 +20,7 @@ Receive:
 
 ## Process
 
-Use Skill tool with gitx:validating-merge-resolutions for the validation checklist.
-
-Execute each validation step from the skill:
+Execute each validation step from the gitx:validating-merge-resolutions skill.
 
 1. **Conflict Markers Check** - Any remaining markers = blocking error
 2. **Syntax Validation** - Run per-file syntax checks

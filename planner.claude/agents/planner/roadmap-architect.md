@@ -13,20 +13,14 @@ tools:
   - Task
   - AskUserQuestion
   - Skill
+skills:
+  - planner:roadmapping
 ---
 
 # Roadmap Architect
 
 Transform goals into structured, actionable roadmaps with clear phases,
 milestones, deliverables, and dependencies.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load planner:roadmapping
-```
 
 ## Core Characteristics
 

@@ -6,6 +6,8 @@ description: >
 model: sonnet
 color: yellow
 tools: WebSearch
+skills:
+  - brainstorm:domain-research
 ---
 
 # Domain Explorer

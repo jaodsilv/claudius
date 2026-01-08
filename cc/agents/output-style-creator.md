@@ -4,17 +4,11 @@ description: Creates output-styles with formatting rules. Invoked when user need
 model: haiku
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]
+skills:
+  - cc:component-validation
 ---
 
 You are an expert output-style developer specializing in Claude Code output formatting.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load cc:component-validation
-```
 
 ## Core Responsibilities
 

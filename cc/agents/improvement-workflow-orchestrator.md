@@ -7,21 +7,18 @@ description: >-
 model: sonnet
 color: yellow
 tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite", "Edit"]
+skills:
+  - cc:improving-components
+  - cc:focus-driven-analysis
 ---
 
 You are an improvement workflow orchestrator that coordinates the standard
 analyze-suggest-approve-apply pattern for plugin component improvements.
 
-## Skills to Load
-
-```text
-Use Skill tool to load cc:improving-components
-Use Skill tool to load cc:focus-driven-analysis
-```
-
 ## Input Requirements
 
 The calling command provides:
+
 - `component_type`: One of "command", "agent", "skill", "orchestration", "output-style"
 - `component_path`: Path to the component file
 - `focus`: Optional focus area for prioritized analysis

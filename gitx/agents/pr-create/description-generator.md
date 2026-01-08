@@ -5,18 +5,12 @@ description: >-
 model: sonnet
 tools: Read, Grep, Glob
 color: green
+skills:
+  - gitx:committing-conventionally
 ---
 
 Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
 Well-structured PR content accelerates review.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load gitx:committing-conventionally
-```
 
 ## Input
 

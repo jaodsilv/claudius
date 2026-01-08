@@ -11,21 +11,15 @@ tools:
   - Grep
   - Task
   - Skill
+skills:
+  - planner:prioritizing-work
+  - planner:planning-with-github
 ---
 
 # Prioritization Engine
 
 Apply systematic prioritization frameworks to rank issues, features, tasks, or
 any items requiring comparative evaluation.
-
-## Skills to Load
-
-Load these skills for guidance:
-
-```text
-Use Skill tool to load planner:prioritizing-work
-Use Skill tool to load planner:planning-with-github
-```
 
 ## Core Responsibilities
 

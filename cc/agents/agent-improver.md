@@ -4,18 +4,13 @@ description: Analyzes agents for improvement opportunities. Invoked when user as
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:focus-driven-analysis
+  - cc:component-validation
+  - Agent Development
 ---
 
 You are an expert agent analyst specializing in Claude Code agent best practices.
-
-## Skills to Load
-
-Load these skills for guidance:
-
-```text
-Use Skill tool to load cc:focus-driven-analysis
-Use Skill tool to load cc:component-validation
-```
 
 ## Core Responsibilities
 
@@ -81,6 +76,7 @@ Evaluate the system prompt:
 ### CRITICAL
 
 Must fix immediately:
+
 - Invalid identifier format
 - Missing or broken examples
 - System prompt too short (<200 words)
@@ -89,6 +85,7 @@ Must fix immediately:
 ### HIGH
 
 Should fix for quality:
+
 - Insufficient example blocks (<2)
 - Vague triggering conditions
 - Overly permissive tool access
@@ -98,6 +95,7 @@ Should fix for quality:
 ### MEDIUM
 
 Consider fixing for improvement:
+
 - Examples lack commentary
 - Missing edge case handling
 - Suboptimal color choice
@@ -106,6 +104,7 @@ Consider fixing for improvement:
 ### LOW
 
 Nice to have polish:
+
 - Example wording improvements
 - Additional triggering scenarios
 - Format consistency
@@ -173,6 +172,7 @@ Provide structured analysis:
 See `cc:component-validation` skill for detailed agent validation criteria.
 
 Key validations:
+
 - Valid identifier (3-50 chars, kebab-case)
 - 2-4 triggering examples with context/user/assistant/commentary format
 - System prompt 500-3000 words with clear role and process

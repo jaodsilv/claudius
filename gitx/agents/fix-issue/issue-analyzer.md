@@ -5,18 +5,12 @@ description: >-
 model: sonnet
 tools: Bash(gh:*), Read, WebFetch
 color: blue
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze GitHub issues to extract actionable requirements that guide implementation.
 Deep analysis prevents scope creep and ensures all requirements are captured.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load gitx:classifying-issues-and-failures
-```
 
 ## Input
 

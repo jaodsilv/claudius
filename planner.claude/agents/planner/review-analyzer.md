@@ -9,20 +9,14 @@ tools:
   - Grep
   - Task
   - Skill
+skills:
+  - planner:reviewing-artifacts
 ---
 
 # Review Analyzer Agent
 
 Analyze planning artifacts for structural quality, completeness, and adherence
 to best practices. Part of the planner plugin review workflow.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load planner:reviewing-artifacts
-```
 
 ## Core Characteristics
 

@@ -8,20 +8,14 @@ tools:
   - Read
   - Grep
   - Skill
+skills:
+  - planner:planning-with-github
 ---
 
 # GitHub Issue Analyzer
 
 Fetch, parse, and analyze GitHub issues to support project planning and
 prioritization.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load planner:planning-with-github
-```
 
 ## Core Responsibilities
 

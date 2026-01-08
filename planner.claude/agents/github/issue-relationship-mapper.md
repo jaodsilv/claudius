@@ -8,20 +8,14 @@ tools:
   - Read
   - Task
   - Skill
+skills:
+  - planner:planning-with-github
 ---
 
 # GitHub Issue Relationship Mapper
 
 Map relationships between GitHub issues to support planning, identify blockers,
 and find the critical path.
-
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use Skill tool to load planner:planning-with-github
-```
 
 ## Core Responsibilities
 
