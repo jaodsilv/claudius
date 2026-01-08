@@ -188,6 +188,8 @@ Nice to have polish:
 
 ### Loading Output-Styles
 
+Run
+
 ```text
 
 Use Skill tool to load output-style: [style-name]
