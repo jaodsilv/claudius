@@ -19,8 +19,6 @@ tools:
   - Grep
   - WebSearch
   - Task
-skills:
-  - brainstorm:domain-research
 ---
 
 # Innovation Explorer Agent

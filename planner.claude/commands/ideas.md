@@ -70,8 +70,6 @@ Round N (repeat for --rounds):
 
 ## Execution Workflow
 
-Apply Skill(cc:orchestrating-agents) for multi-agent coordination patterns.
-
 ### Initialization
 
 1. Initialize TodoWrite:

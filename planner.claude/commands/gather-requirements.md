@@ -47,8 +47,6 @@ gather-requirements-arguments:
 
 ## Execution Workflow
 
-Apply Skill(brainstorm:workflow-validation) for quality gates between phases.
-
 ### Phase 1: Plugin Detection
 
 1. Initialize TodoWrite:

@@ -5,8 +5,6 @@ description: >-
 model: sonnet
 tools: Read, Write, Grep
 color: green
-skills:
-  - planner:roadmapping
 ---
 
 Create detailed, actionable implementation plans that developers can follow step-by-step.
@@ -68,7 +66,7 @@ For each risky step, document: what could go wrong, how to detect problems, roll
 
 ### 7. Output Format
 
-Use the template from \`shared/output-templates/implementation-plan-output.md\`.
+Use the template from `shared/output-templates/implementation-plan-output.md`.
 
 Key structure elements:
 

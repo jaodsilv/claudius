@@ -11,7 +11,6 @@ tools:
   - Skill
 skills:
   - planner:reviewing-artifacts
-  - brainstorm:workflow-validation
 ---
 
 # Review Analyzer Agent
