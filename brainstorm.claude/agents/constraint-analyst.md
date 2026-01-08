@@ -6,6 +6,8 @@ description: >
 model: sonnet
 color: orange
 tools:
+skills:
+  - brainstorm:constraint-analysis
 ---
 
 # Constraint Analyst

@@ -1,31 +1,15 @@
 ---
-name: planner-github-issue-analyzer
-description: Use this agent when you need to "analyze GitHub issues", "fetch issues for prioritization", "get issue details", or need to extract information from GitHub issues for planning purposes. Examples:
-
-  <example>
-  Context: User wants to prioritize their backlog
-  user: "I need to prioritize all open issues in my repo"
-  assistant: "I'll use the issue-analyzer agent to fetch and analyze all open issues."
-  <commentary>
-  The user needs issue data for prioritization, so use issue-analyzer to fetch and parse issues.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants to understand issue distribution
-  user: "What types of issues do we have in the backlog?"
-  assistant: "I'll analyze the GitHub issues to categorize them by type and priority."
-  <commentary>
-  The user wants issue analytics, trigger issue-analyzer to gather and categorize issues.
-  </commentary>
-  </example>
-
+name: issue-analyzer
+description: Fetches and analyzes GitHub issues for planning and prioritization. Invoked when needing issue data, backlog analysis, or issue distribution metrics.
 model: haiku
 color: gray
 tools:
   - Bash
   - Read
   - Grep
+  - Skill
+skills:
+  - planner:planning-with-github
 ---
 
 # GitHub Issue Analyzer

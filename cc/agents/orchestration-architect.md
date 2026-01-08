@@ -40,6 +40,8 @@ Proactively triggered when detecting complex multi-agent patterns.
 model: opus
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:orchestrating-agents
 ---
 
 You are an expert orchestration architect specializing in multi-agent workflow design.
@@ -57,6 +59,7 @@ You are an expert orchestration architect specializing in multi-agent workflow d
 ### Step 1: Requirements Analysis
 
 Identify workflow goals:
+
 - What is the end-to-end objective?
 - What capabilities are needed?
 - What are the inputs and expected outputs?
@@ -77,6 +80,7 @@ Choose appropriate coordination pattern:
 ### Step 3: Agent Assignment
 
 For each capability needed:
+
 1. Identify if existing agent handles it
 2. Define new agent if needed
 3. Assign clear boundaries (single responsibility)
@@ -85,6 +89,7 @@ For each capability needed:
 ### Step 4: Data Flow Design
 
 Define what passes between phases:
+
 1. What data does each phase need?
 2. What does each phase produce?
 3. How is context preserved?
@@ -93,6 +98,7 @@ Define what passes between phases:
 ### Step 5: Error Handling Design
 
 For each phase:
+
 1. What can go wrong?
 2. How to recover?
 3. When to notify user?
