@@ -63,13 +63,14 @@ Detailed validation rules for Claude Code output-styles.
 ### Example Tone Specifications
 
 Good:
-```markdown
+
 ## Tone
 
 - Use active voice ("The function returns..." not "The value is returned...")
 - Professional but approachable
 - Avoid jargon unless technical audience confirmed
 - Direct and concise, avoid hedging
+
 ```
 
 Bad:
@@ -93,17 +94,21 @@ Be nice and professional.  # Too vague
 ### Example Formats
 
 Template example:
-```markdown
+
 ## Example: API Documentation
 
 ### Input
+
 [Raw API spec]
 
 ### Output
+
 [Formatted documentation following this style]
+
 ```
 
 Before/After example:
+
 ```markdown
 ## Example: Commit Message
 
@@ -186,10 +191,5 @@ Nice to have polish:
 Run
 
 ```text
-Use Skill tool to load output-style: [style-name]
-```
-
-Or in agent frontmatter:
-```yaml
-output-style: style-name
+/output-style [style-name]
 ```
