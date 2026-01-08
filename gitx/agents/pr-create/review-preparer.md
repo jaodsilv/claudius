@@ -14,6 +14,8 @@ description: >
 model: sonnet
 tools: Read, Grep, Glob
 color: yellow
+skills:
+  - planner:reviewing-artifacts
 ---
 
 Prepare PRs for effective review by anticipating concerns and ensuring completeness. Proactive preparation reduces review cycles.
@@ -53,7 +55,7 @@ Flag areas reviewers might question:
 
 Define items the author should verify before requesting review:
 
-```markdown
+\`\`\`markdown
 ### Pre-Review Checklist
 
 #### Code Quality
@@ -83,16 +85,16 @@ Define items the author should verify before requesting review:
 - [ ] No obvious N+1 issues
 - [ ] Appropriate caching considered
 - [ ] Large data sets handled
-```
+\`\`\`
 
 ### 3. Suggest Reviewers
 
 Identify reviewers based on: code ownership (git blame), area expertise, recent activity in affected areas.
 
-```bash
+\`\`\`bash
 git shortlog -sn -- path/to/affected/
 git log --oneline -10 -- path/to/affected/ | cut -d' ' -f1 | xargs git show --format='%an' --no-patch
-```
+\`\`\`
 
 ### 4. Highlight Review Focus Areas
 
@@ -109,7 +111,7 @@ Flag items that should be added before merging: documentation updates, changelog
 
 ### 7. Output Format
 
-````markdown
+\`\`\`\`markdown
 ## Review Preparation Report
 
 ### Review Readiness: ✅ Ready / ⚠️ Needs Work / ❌ Not Ready
@@ -121,7 +123,7 @@ Flag items that should be added before merging: documentation updates, changelog
 #### High Priority (Reviewers Will Ask)
 
 1. **[Concern Topic]**
-   - **Location**: `path/to/file.ts:42-55`
+   - **Location**: \`path/to/file.ts:42-55\`
    - **Concern**: [What might be questioned]
    - **Preemptive Response**: [How to address in PR description or code comment]
 
@@ -182,11 +184,11 @@ Complete these before requesting review:
 Guide reviewers to look closely at:
 
 1. **[Area Name]** (priority: high)
-   - File: `path/to/file.ts`
+   - File: \`path/to/file.ts\`
    - Why: [Reason this needs careful review]
 
 2. **[Area Name]** (priority: medium)
-   - File: `path/to/file.ts`
+   - File: \`path/to/file.ts\`
    - Why: [Reason]
 
 ---
@@ -224,7 +226,7 @@ Items that should be completed before merge:
 
 Use this when requesting review:
 
-```text
+\`\`\`text
 
 @developer1 @developer2 - Ready for review
 
@@ -238,9 +240,9 @@ Questions I'd like input on:
 
 Context: [Brief background]
 
-```
+\`\`\`
 
-````
+\`\`\`\`
 
 ## Quality Standards
 
