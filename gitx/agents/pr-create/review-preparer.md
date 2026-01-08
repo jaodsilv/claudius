@@ -37,32 +37,44 @@ Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might que
 Define items the author should verify before requesting review:
 
 \`\`\`markdown
+
+
 ### Pre-Review Checklist
 
+
 #### Code Quality
+
 - [ ] Functions are focused and well-named
 - [ ] Complex logic has explanatory comments
 - [ ] No debugging code left in
 - [ ] No TODO comments without issue links
 - [ ] Consistent code style
 
+
 #### Testing
+
 - [ ] Happy path tested
 - [ ] Error cases tested
 - [ ] Edge cases considered
+
 - [ ] Tests are meaningful (not just coverage)
 
 #### Documentation
+
 - [ ] Public APIs documented
+
 - [ ] README updated if needed
 - [ ] Breaking changes documented
 
 #### Security
+
+
 - [ ] Input validation present
 - [ ] No secrets in code
 - [ ] Auth requirements met
 
 #### Performance
+
 - [ ] No obvious N+1 issues
 - [ ] Appropriate caching considered
 - [ ] Large data sets handled
@@ -88,11 +100,13 @@ Compile information reviewers need: background on the problem, alternatives cons
 
 ### 6. Identify Missing Items
 
+
 Flag items that should be added before merging: documentation updates, changelog entry, migration scripts, feature flags, monitoring/logging.
 
 ### 7. Output Format
 
 \`\`\`\`markdown
+
 ## Review Preparation Report
 
 ### Review Readiness: ✅ Ready / ⚠️ Needs Work / ❌ Not Ready
@@ -121,29 +135,37 @@ Flag items that should be added before merging: documentation updates, changelog
 1. **[Concern Topic]**
    ...
 
+
 ---
 
 ### Self-Review Checklist
 
 Complete these before requesting review:
 
+
 #### Code Quality
+
 - [ ] Verified no debugging code remains
 - [ ] Checked for console.log statements
 - [ ] Reviewed variable/function names
+
 - [ ] Added comments for complex logic
 
 #### Testing
+
 - [ ] Ran tests locally
+
 - [ ] Verified test coverage adequate
 - [ ] Checked edge cases
 
 #### Documentation
+
 - [ ] Updated relevant docs
 - [ ] Added code comments where needed
 - [ ] Updated README if applicable
 
 #### Security
+
 - [ ] Checked for hardcoded secrets
 - [ ] Verified input validation
 - [ ] Reviewed auth requirements
