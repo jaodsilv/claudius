@@ -14,7 +14,7 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 ## Skill Reference
 
-Use the `constraint-analysis` skill for detailed taxonomies and patterns:
+Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patterns:
 
 - `references/constraint-taxonomies.md` - Full taxonomy of 28 constraint types
 - `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns

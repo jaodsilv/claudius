@@ -14,7 +14,7 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 
 ## Skill Reference
 
-Use the `domain-research` skill for detailed research guidance:
+Use the `brainstorm:domain-research` skill for detailed research guidance:
 
 - `references/research-areas.md` - 7 research dimensions with questions and sources
 

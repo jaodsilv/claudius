@@ -30,7 +30,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ## Skills Used
 
-- `workflow-validation` - Gate check criteria and validation patterns between workflow phases
+- `brainstorm:workflow-validation` - Gate check criteria and validation patterns between workflow phases
 
 ## Initialization Checklist
 

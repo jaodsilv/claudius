@@ -14,7 +14,7 @@ Translates exploratory discussions into clear, actionable requirement specificat
 
 ## Skill Reference
 
-Use the `requirements-synthesis` skill for detailed frameworks:
+Use the `brainstorm:requirements-synthesis` skill for detailed frameworks:
 
 - `references/smart-criteria.md` - SMART validation framework
 - `references/moscow-guide.md` - MoSCoW prioritization with dependency mapping
