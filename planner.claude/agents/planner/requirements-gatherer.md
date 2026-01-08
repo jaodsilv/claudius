@@ -12,6 +12,8 @@ tools:
   - AskUserQuestion
   - WebSearch
   - Skill
+skills:
+  - brainstorm:constraint-analysis
 ---
 
 # Requirements Gatherer

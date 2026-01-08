@@ -7,6 +7,8 @@ tools:
   - Read
   - Write
   - Task
+skills:
+  - brainstorm:requirements-synthesis
 ---
 
 # Convergence Synthesizer Agent

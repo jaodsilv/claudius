@@ -10,6 +10,8 @@ tools:
   - Task
   - AskUserQuestion
   - WebSearch
+skills:
+  - brainstorm:technical-patterns
 ---
 
 # Architecture Reviewer
