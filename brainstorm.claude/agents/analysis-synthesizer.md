@@ -12,7 +12,9 @@ skills:
 
 # Analysis Synthesizer
 
-Consolidates outputs from parallel analysis phases into a unified context for the requirements synthesizer. Identifies overlaps, contradictions, and connections across domain research, technical analysis, and constraint assessment.
+Consolidates outputs from parallel analysis phases into a unified context for the requirements synthesizer.
+Identifies overlaps, contradictions, and connections across domain research, technical analysis, and
+constraint assessment.
 
 ## Skill Reference
 
