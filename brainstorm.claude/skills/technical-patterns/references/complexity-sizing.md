@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD036 -->
 # Complexity Sizing Methodology
 
 T-shirt sizing framework for estimating implementation effort and identifying complexity drivers.
@@ -109,7 +110,7 @@ T-shirt sizing framework for estimating implementation effort and identifying co
 
 Score each dimension on 1-5 scale:
 
-```
+```text
 Algorithm Complexity:  [ ] Low (1) [ ] Medium (2-3) [ ] High (4-5)
 Data Model Complexity: [ ] Low (1) [ ] Medium (2-3) [ ] High (4-5)
 Integration Complexity: [ ] Low (1) [ ] Medium (2-3) [ ] High (4-5)
@@ -122,7 +123,7 @@ Implementation Score = Sum / 4
 
 For each factor, assess feasibility:
 
-```
+```text
 Stack Compatibility:   [ ] Good  [ ] Acceptable  [ ] Poor
 Available Frameworks:  [ ] Rich  [ ] Basic       [ ] Sparse
 Performance Fit:       [ ] Lenient [ ] Moderate  [ ] Strict
@@ -133,7 +134,7 @@ Tech Fit Score = (# "Poor" x 2) + (# "Sparse" x 2) + (# "Strict" x 1)
 
 ### Step 3: Evaluate Resource Requirements
 
-```
+```text
 Team Skill Fit:           [ ] Excellent [ ] Good  [ ] Poor
 Infrastructure Needs:     [ ] Existing  [ ] New   [ ] Complex
 Third-party Dependencies: [ ] Few       [ ] Moderate [ ] Many
@@ -144,7 +145,7 @@ Resource Score = (# "Poor/Complex/Many/Heavy" x 2)
 
 ### Step 4: Evaluate Risk Factors
 
-```
+```text
 Technical Unknowns:    [ ] None  [ ] Minor  [ ] Significant [ ] Fundamental
 Performance Risk:      [ ] Low   [ ] Medium [ ] High
 Security/Compliance:   [ ] Low   [ ] Medium [ ] High
@@ -155,7 +156,7 @@ Risk Score = (# "High" x 3) + (# "Medium" x 1) + (# "Significant/Fundamental" x 
 
 ### Step 5: Calculate T-shirt Size
 
-```
+```text
 Total Score = Implementation (1-5) + Tech Fit (0-8) + Resources (0-8) + Risk (0-15)
 
 Score Range → Size Mapping:

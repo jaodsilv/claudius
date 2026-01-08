@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD024 -->
 # Research Areas Taxonomy
 
 This document defines the 7 research dimensions used in domain research analysis.
@@ -39,7 +40,8 @@ This document defines the 7 research dimensions used in domain research analysis
 
 ### Definition
 
-Detailed examination of direct competitors, adjacent solutions, and industry leaders to identify positioning opportunities and learn from their approaches.
+Detailed examination of direct competitors, adjacent solutions, and industry leaders to identify
+positioning opportunities and learn from their approaches.
 
 - Direct competitors (solving same problem, same market)
 - Adjacent solutions (related problems or markets)
@@ -205,7 +207,8 @@ Understanding common technical architectures, data structures, integration patte
 
 ### Definition
 
-Understanding legal requirements, regulatory frameworks, privacy obligations, accessibility standards, and security requirements that apply to solutions in this domain.
+Understanding legal requirements, regulatory frameworks, privacy obligations, accessibility standards,
+and security requirements that apply to solutions in this domain.
 
 ### What to Look For
 

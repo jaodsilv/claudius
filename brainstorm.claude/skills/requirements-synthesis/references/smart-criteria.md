@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD036 -->
 # SMART Criteria Framework
 
 The SMART framework ensures that requirements are well-formed, testable, and actionable.

@@ -5,6 +5,7 @@ allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bas
 model: sonnet
 ---
 
+<!-- markdownlint-disable MD024 -->
 # Worktree Management
 
 Manage git worktrees for isolated feature development.

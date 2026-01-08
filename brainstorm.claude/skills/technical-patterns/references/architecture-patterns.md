@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD024 -->
 # Architecture Patterns
 
 Comprehensive reference for evaluating and comparing architectural approaches.

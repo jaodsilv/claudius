@@ -28,7 +28,8 @@ Ultrathink PR review preparation, then create the output:
 
 ### 1. Identify Potential Review Concerns
 
-Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might question across code quality, architecture, security, performance, and testing patterns.
+Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might question across code quality,
+architecture, security, performance, and testing patterns.
 
 ### 2. Create Self-Review Checklist
 

@@ -86,7 +86,7 @@ Task @planner/review-analyzer:
   Mode: thorough
   Phase: 1
 
-```
+```text
 
 ## Output Format
 

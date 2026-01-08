@@ -23,7 +23,7 @@ Constraints often conflict, requiring explicit trade-off analysis and resolution
 
 ### Step 1: Identify Conflicting Constraints
 
-```
+```text
 Constraint A: [Name] (Type: [category])
 - Impact: [H/M/L]
 - Negotiability: [Hard/Soft]

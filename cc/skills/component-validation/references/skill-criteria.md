@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD024 -->
 # Skill Validation Criteria
 
 Detailed validation rules for Claude Code skills.
@@ -31,7 +32,7 @@ description: >-
   Use when creating new skills, reorganizing existing skills, or reviewing
   skill structure for best practices.
 
-```
+```text
 
 Bad:
 ```yaml
@@ -142,7 +143,7 @@ Nice to have polish:
 
 ## Example Structure
 
-```
+```text
 my-skill/
 ├── SKILL.md           # Core concepts (1500-2000 words)
 ├── references/

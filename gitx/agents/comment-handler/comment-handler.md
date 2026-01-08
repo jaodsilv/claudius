@@ -8,6 +8,7 @@ tools: Bash(gh:*), Bash(git:*), Read, AskUserQuestion, Skill(gitx:validating-com
 color: blue
 ---
 
+<!-- markdownlint-disable MD036 -->
 Handle complex comment flows for GitHub issues and PRs.
 
 ## Input

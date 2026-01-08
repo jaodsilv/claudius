@@ -144,16 +144,16 @@ FR-001 (Authentication)
   ├── FR-002 (User Profile) - Depends on FR-001
   └── FR-003 (Preferences) - Depends on FR-001
 
-```
+```text
 
 **Cross-Priority Dependencies**:
-```
+```text
 
 P1: FR-001 (Core feature)
   └── P2: FR-010 (Enhancement) - Depends on P1
       └── P3: FR-020 (Advanced feature) - Depends on P2
 
-```
+```text
 
 **Shared Dependencies**:
 
@@ -161,7 +161,8 @@ P1: FR-001 (Database setup)
   ├── P1: FR-002 (User auth)
   ├── P2: FR-003 (Reporting)
   └── P3: FR-004 (Analytics)
-```
+
+```text
 
 ### Dependency Assessment
 
@@ -205,7 +206,7 @@ Gap analysis identifies missing information or requirements that should be addre
 
 For each gap, record:
 
-```
+```text
 GAP-001: [Missing Information]
 - Impact: [How it affects progress]
 - Owner: [Who should resolve]

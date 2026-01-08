@@ -100,7 +100,7 @@ The `start` command invokes this skill at phase transitions to:
 
 ## Phase Dependencies
 
-```
+```text
 Phase 1 (Dialogue)
     ↓ [Gate 1]
 Phases 2-4 (Parallel Analysis)
