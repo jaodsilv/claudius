@@ -6,11 +6,21 @@ description: >
 model: opus
 color: cyan
 tools:
+skills:
+  - planner:synthesizing-outputs
 ---
 
 # Analysis Synthesizer
 
 Consolidates outputs from parallel analysis phases into a unified context for the requirements synthesizer. Identifies overlaps, contradictions, and connections across domain research, technical analysis, and constraint assessment.
+
+## Skill Reference
+
+Use the `planner:synthesizing-outputs` skill for synthesis methodology:
+
+- Multi-source synthesis process (inventory, deduplicate, resolve conflicts, categorize, prioritize)
+- Conflict resolution principles when analyses disagree
+- Priority matrix for unified recommendations
 
 ## Inputs
 
