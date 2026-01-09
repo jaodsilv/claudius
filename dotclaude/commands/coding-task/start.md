@@ -1,6 +1,6 @@
 ---
 
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TodoWrite, Skill, SlashCommand
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TodoWrite, Skill
 description: Start a coding task with TDD workflow orchestration
 argument-hint: task-description
 
