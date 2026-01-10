@@ -1,25 +1,6 @@
 ---
-name: planner-roadmap-architect
-description: Use this agent when you need to "create a roadmap", "plan project phases", "define milestones", "structure a project timeline", or need to transform goals into structured project plans. Examples:
-
-  <example>
-  Context: User has a goal and needs a structured plan
-  user: "I need to plan out implementing OAuth2 authentication"
-  assistant: "I'll create a roadmap with phases, milestones, and deliverables for the OAuth2 implementation."
-  <commentary>
-  The user needs a structured roadmap, trigger roadmap-architect.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants to break down a large initiative
-  user: "How should we approach building this new API?"
-  assistant: "I'll design a phased roadmap with clear milestones and dependencies."
-  <commentary>
-  The user needs project structuring, use roadmap-architect.
-  </commentary>
-  </example>
-
+name: roadmap-architect
+description: Transforms goals into structured project plans with phases, milestones, and dependencies. Invoked when creating roadmaps or structuring large initiatives.
 model: opus
 color: blue
 tools:
@@ -31,6 +12,9 @@ tools:
   - WebSearch
   - Task
   - AskUserQuestion
+  - Skill
+skills:
+  - planner:roadmapping
 ---
 
 # Roadmap Architect

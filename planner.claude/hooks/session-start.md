@@ -24,17 +24,17 @@ Run: `gh --version`
 
 - Warn: "GitHub CLI (gh) not found - /planner:prioritize requires gh for issue fetching. Install from <https://cli.github.com/>/>"
 
-### 2. Brainstorm Pro Plugin
+### 2. Brainstorm Plugin
 
-Check for: `brainstorm.claude/.claude-plugin/plugin.json` or installed brainstorm-pro plugin
+Check for: `brainstorm.claude/.claude-plugin/plugin.json` or installed brainstorm plugin
 
 **If available**:
 
-- Log: "Brainstorm Pro detected - /planner:gather-requirements can use enhanced brainstorming"
+- Log: "Brainstorm plugin detected - /planner:gather-requirements can use enhanced brainstorming"
 
 **If not available**:
 
-- Info: "Tip: Install brainstorm-pro for deeper requirements discovery with Socratic dialogue"
+- Info: "Tip: Install brainstorm plugin for deeper requirements discovery with Socratic dialogue"
 
 ### 3. Output Directory
 
@@ -52,6 +52,6 @@ session start while still surfacing actionable information:
 ```text
 Planner Plugin Ready
 ├── GitHub CLI: [Available|Not found]
-├── Brainstorm Pro: [Available|Not installed]
+├── Brainstorm Plugin: [Available|Not installed]
 └── Output: docs/planning/
 ```

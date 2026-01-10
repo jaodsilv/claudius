@@ -1,19 +1,12 @@
 ---
-name: gitx:issue-analyzer
-description: >
-  Use this agent to deeply analyze a GitHub issue, extracting requirements, acceptance
-  criteria, complexity estimates, and related context. This agent should be invoked
-  at the start of the fix-issue workflow to understand what needs to be built.
-  Examples:
-  <example>
-  Context: User wants to fix a GitHub issue.
-  user: "I want to work on issue #123"
-  assistant: "I'll launch the issue-analyzer agent to extract requirements and
-  understand the scope."
-  </example>
+name: issue-analyzer
+description: >-
+  Analyzes GitHub issues to extract requirements and acceptance criteria. Invoked at the start of fix-issue workflow.
 model: sonnet
 tools: Bash(gh:*), Read, WebFetch
 color: blue
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze GitHub issues to extract actionable requirements that guide implementation.

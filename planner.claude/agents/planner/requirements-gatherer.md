@@ -1,25 +1,6 @@
 ---
-name: planner-requirements-gatherer
-description: Use this agent when you need to "gather requirements", "define requirements", "discover needs", "create a requirements document", or need to systematically collect and structure project requirements. Examples:
-
-  <example>
-  Context: User starting a new feature
-  user: "I need to document the requirements for user authentication"
-  assistant: "I'll gather and structure the requirements for the authentication feature."
-  <commentary>
-  User needs requirements gathering, trigger requirements-gatherer.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User has an idea but needs structure
-  user: "I want to build a notification system, what do I need to consider?"
-  assistant: "I'll help you discover and document the requirements for the notification system."
-  <commentary>
-  User needs requirements discovery, use requirements-gatherer.
-  </commentary>
-  </example>
-
+name: requirements-gatherer
+description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
 tools:
@@ -31,6 +12,8 @@ tools:
   - AskUserQuestion
   - WebSearch
   - Skill
+skills:
+  - brainstorm:constraint-analysis
 ---
 
 # Requirements Gatherer
@@ -69,13 +52,13 @@ requirements that surface as scope creep during implementation.
 
 ## Brainstorm Integration
 
-Check for brainstorm-pro plugin availability:
+Check for brainstorm plugin availability:
 
-1. If brainstorm-pro available AND user wants deep discovery:
+1. If brainstorm available AND user wants deep discovery:
    1. Suggest using `/brainstorm:start` for comprehensive exploration
    2. Import brainstorm outputs if available
    3. Transform into planner requirements format
-2. If brainstorm-pro unavailable: Use the built-in gathering process below
+2. If brainstorm unavailable: Use the built-in gathering process below
 
 ## Process
 

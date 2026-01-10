@@ -1,25 +1,6 @@
 ---
-name: planner-prioritization-engine
-description: Use this agent when you need to "prioritize issues", "rank features", "apply RICE scoring", "use MoSCoW", "create a priority matrix", or need to systematically rank items using prioritization frameworks. Examples:
-
-  <example>
-  Context: User wants to prioritize their backlog
-  user: "Help me prioritize these issues using RICE"
-  assistant: "I'll apply RICE scoring to rank the issues by priority."
-  <commentary>
-  User wants RICE prioritization, trigger prioritization-engine.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User needs to decide what to build next
-  user: "What should we work on first from the backlog?"
-  assistant: "I'll analyze the backlog and create a prioritization matrix."
-  <commentary>
-  User needs prioritization help, use prioritization-engine.
-  </commentary>
-  </example>
-
+name: prioritization-engine
+description: Applies prioritization frameworks (RICE, MoSCoW, weighted scoring) to rank issues and features. Invoked when creating priority matrices or deciding work order.
 model: sonnet
 color: green
 tools:
@@ -29,6 +10,10 @@ tools:
   - Glob
   - Grep
   - Task
+  - Skill
+skills:
+  - planner:prioritizing-work
+  - planner:planning-with-github
 ---
 
 # Prioritization Engine

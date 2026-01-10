@@ -1,19 +1,12 @@
 ---
-name: gitx:ci-failure-analyzer
-description: >
-  Use this agent to analyze CI check failures, identifying root causes and suggesting
-  remediation strategies. This agent should be invoked when a PR has failing CI checks
-  and the user wants to understand and fix them.
-  Examples:
-  <example>
-  Context: User's PR has failing CI checks.
-  user: "My CI is failing, help me fix it"
-  assistant: "I'll launch the ci-failure-analyzer agent to identify the root causes
-  of the CI failures."
-  </example>
+name: ci-failure-analyzer
+description: >-
+  Analyzes CI check failures to identify root causes and fixes. Invoked when addressing CI failures on a PR.
 model: haiku
 tools: Bash(gh:*), Bash(git:*), Read, WebFetch
 color: red
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze CI check failures, identify root causes, and suggest specific remediation strategies. Clear analysis enables targeted fixes.

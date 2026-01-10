@@ -1,10 +1,10 @@
-# Brainstorm Pro Plugin
+# Brainstorm Plugin
 
 Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation.
 
 ## Overview
 
-Brainstorm Pro transforms ambiguous software ideas into actionable specifications through a structured,
+Brainstorm Plugin transforms ambiguous software ideas into actionable specifications through a structured,
 multi-phase workflow. It combines interactive Socratic dialogue with automated analysis to produce
 comprehensive requirements documentation.
 
@@ -108,12 +108,13 @@ The specification writer creates:
 
 | Agent | Purpose |
 |-------|---------|
-| `brainstorm-facilitator` | Drives Socratic dialogue |
-| `brainstorm-domain-explorer` | Researches market and domain |
-| `brainstorm-technical-analyst` | Evaluates technical feasibility |
-| `brainstorm-constraint-analyst` | Identifies constraints |
-| `brainstorm-requirements-synthesizer` | Consolidates requirements |
-| `brainstorm-specification-writer` | Generates final documents |
+| `brainstorm:facilitator` | Drives Socratic dialogue |
+| `brainstorm:domain-explorer` | Researches market and domain |
+| `brainstorm:technical-analyst` | Evaluates technical feasibility |
+| `brainstorm:constraint-analyst` | Identifies constraints |
+| `brainstorm:analysis-synthesizer` | Merges and synthesizes parallel analysis outputs |
+| `brainstorm:requirements-synthesizer` | Consolidates requirements |
+| `brainstorm:specification-writer` | Generates final documents |
 
 ## Output Artifacts
 

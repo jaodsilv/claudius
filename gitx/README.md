@@ -350,29 +350,17 @@ Features:
 
 ## Bundled Skills
 
-### conventional-commits
+### committing-conventionally
 
-Provides guidance for writing commit messages following the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+Guidance for [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`.
 
-**Commit types:**
-- `feat:` - New features
-- `fix:` - Bug fixes
-- `docs:` - Documentation
-- `style:` - Formatting
-- `refactor:` - Code restructuring
-- `test:` - Tests
-- `chore:` - Maintenance
+### naming-branches
 
-### conventional-branch
+Guidance for [Conventional Branch](https://conventional-branch.github.io/): `feature/`, `bugfix/`, `hotfix/`, `release/`, `chore/`.
 
-Provides guidance for branch naming following the [Conventional Branch](https://conventional-branch.github.io/) specification.
+### naming-worktrees
 
-**Branch types:**
-- `feature/` - New features
-- `bugfix/` - Bug fixes
-- `hotfix/` - Urgent fixes
-- `release/` - Release prep
-- `chore/` - Maintenance
+Generates abbreviated directory names from branch names for worktree creation.
 
 ## Configuration
 
@@ -434,8 +422,9 @@ gitx/
 ├── shared/
 │   └── output-templates/    # Structured output formats
 └── skills/
-    ├── conventional-commits/
-    └── conventional-branch/
+    ├── committing-conventionally/
+    ├── naming-branches/
+    └── naming-worktrees/
 ```
 
 ## Related Plugins

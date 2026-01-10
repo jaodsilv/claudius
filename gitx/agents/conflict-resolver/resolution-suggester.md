@@ -1,15 +1,7 @@
 ---
-name: gitx:resolution-suggester
-description: >
-  Use this agent to generate conflict resolution suggestions based on conflict analysis.
-  This agent provides specific code solutions for each conflict with confidence levels.
-  Examples:
-  <example>
-  Context: Conflicts have been analyzed, need resolution suggestions.
-  user: "Suggest how to resolve these conflicts"
-  assistant: "I'll launch the resolution-suggester agent to generate specific
-  resolution code for each conflict."
-  </example>
+name: resolution-suggester
+description: >-
+  Generates specific code resolutions for git conflicts with confidence levels. Invoked after conflict analysis to suggest solutions.
 model: sonnet
 tools: Read, Grep, Glob, Edit
 color: green
@@ -21,7 +13,7 @@ Generate specific code resolutions for git conflicts based on analysis of both s
 
 Receive:
 
-1. Conflict analysis from gitx:conflict-analyzer
+1. Conflict analysis from gitx:conflict-resolver:conflict-analyzer
 2. File contents with conflicts
 3. Context about the merge/rebase operation
 
