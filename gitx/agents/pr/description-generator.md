@@ -1,18 +1,12 @@
 ---
-name: gitx:description-generator
-description: >
-  Use this agent to generate well-structured PR titles and descriptions based on
-  change analysis. This agent creates professional, informative PR content.
-  Examples:
-  <example>
-  Context: Changes have been analyzed, need PR description.
-  user: "Generate the PR title and description"
-  assistant: "I'll launch the description-generator agent to create a professional
-  PR description based on the changes."
-  </example>
+name: description-generator
+description: >-
+  Generates PR title and description from change analysis. Invoked during PR creation workflow.
 model: sonnet
 tools: Read, Grep, Glob
 color: green
+skills:
+  - gitx:committing-conventionally
 ---
 
 Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
@@ -20,7 +14,7 @@ Well-structured PR content accelerates review.
 
 ## Input
 
-Receive: change analysis from gitx:change-analyzer, branch and commit information.
+Receive: change analysis from gitx:pr:change-analyzer, branch and commit information.
 
 ## Process
 
