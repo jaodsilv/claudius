@@ -100,5 +100,5 @@ This template defines the structure for output from the PR creation workflow age
 ### Next Steps
 1. Wait for CI checks
 2. Request reviews from suggested reviewers
-3. Address any feedback with `/gitx:respond`
+3. Address any feedback with `/gitx:address-review` (for comments) or `/gitx:address-ci` (for failures)
 ```
