@@ -1,0 +1,20 @@
+{
+  "name": "review-loop",
+  "version": "1.0.0",
+  "description": "Generic Review-Task loop orchestrator",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "review",
+    "workflow",
+    "automation",
+    "development-workflow",
+    "multi-agent",
+    "orchestration"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}
