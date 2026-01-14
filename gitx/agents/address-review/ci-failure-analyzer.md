@@ -1,57 +1,51 @@
 ---
-name: gitx:ci-failure-analyzer
-description: >
-  Use this agent to analyze CI check failures, identifying root causes and suggesting
-  remediation strategies. This agent should be invoked when a PR has failing CI checks
-  and the user wants to understand and fix them.
-  Examples:
-  <example>
-  Context: User's PR has failing CI checks.
-  user: "My CI is failing, help me fix it"
-  assistant: "I'll launch the ci-failure-analyzer agent to identify the root causes
-  of the CI failures."
-  </example>
-model: haiku
+name: ci-failure-analyzer
+description: Analyzes CI check failures to identify root causes and fixes. Invoked when addressing CI failures on a PR.
+model: opus
 tools: Bash(gh:*), Bash(git:*), Read, WebFetch
 color: red
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze CI check failures, identify root causes, and suggest specific remediation strategies. Clear analysis enables targeted fixes.
 
 ## Input
 
-Receive: PR number, failed check names and details URLs.
+### Required
+
+- PR number
+- Worktree
+- Branch
+
+### Optional
+
+- Checks metadata, such as failed check names, details URLs, ids, etc..
+- Attempt Number
 
 ## Process
 
 ### 1. Fetch CI Status
 
+If CI failures were not provided as input, run the following commands using the Bash tool:
+
 ```bash
-gh pr checks <PR> --json name,status,conclusion,detailsUrl
-gh pr checks <PR> --json name,status,conclusion,detailsUrl | jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled")]'
+gh run list -b $branch --json headSha,conclusion,databaseId,name,url,workflowName --jq '.[] | select(.headSha == "$latestCommit" and .conclusion == "failure")'
 ```
 
 ### 2. Categorize Failures
 
-Classify each failed check:
-
-1. **test-failure**: Unit, integration, or e2e test failures
-2. **lint-error**: ESLint, Prettier, or other linters
-3. **type-error**: TypeScript, Flow, or type checking
-4. **build-failure**: Compilation or bundling errors
-5. **security-scan**: Vulnerability detections
-6. **coverage-drop**: Test coverage below threshold
-7. **other**: Unrecognized failure type
+Use the Skill `gitx:classifying-issues-and-failures` to learn how to classify each failed check.
 
 ### 3. Analyze Each Failure
 
 #### Fetch Logs (if accessible)
 
 ```bash
-gh run view <run-id> --log-failed
+gh run view <databaseId> --log-failed
 ```
 
-If logs not accessible via CLI, note the detailsUrl for manual review.
+If logs are not accessible via CLI, note the `url` for manual review.
 
 #### Identify Root Cause
 
@@ -59,7 +53,7 @@ If logs not accessible via CLI, note the detailsUrl for manual review.
 
 **Lint Errors**: Extract file:line:column information, identify the lint rule violated, note if auto-fixable.
 
-**Type Errors**: Extract TypeScript error codes (TS####), identify the type mismatch, trace to source of incorrect type.
+**Type Errors**: Extract error codes, identify the type mismatch, trace to source of incorrect type.
 
 **Build Failures**: Identify the build step that failed, extract compiler/bundler error messages, check for missing dependencies.
 
@@ -73,7 +67,7 @@ For each identified failure point: use Read tool to examine the problematic code
 Produce a structured analysis:
 
 ````markdown
-## CI Failure Analysis
+## CI Failure Analysis Attempt $attemptNumber
 
 ### Summary
 - Total failed checks: X
