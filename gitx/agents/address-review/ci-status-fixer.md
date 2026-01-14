@@ -29,7 +29,7 @@ worktree: $worktree
 branch: $branch
 address_level: $address_level
 
-Failures Analysis: 
+Failures Analysis:
 
 <failures_analysis>
 $failures_analysis

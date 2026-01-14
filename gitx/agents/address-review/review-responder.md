@@ -309,7 +309,7 @@ Mark "Post comment to PR" as completed.
 Output a report as a response to the reviewer, guiding them on next iteration.
 
 ```markdown
-## PR #$pr Feedback Review Round $review_count Response Complete 
+## PR #$pr Feedback Review Round $review_count Response Complete
 
 ### Summary
 - Review comments addressed: X of Y
