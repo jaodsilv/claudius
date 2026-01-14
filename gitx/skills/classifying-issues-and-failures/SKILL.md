@@ -14,46 +14,46 @@ Standard classification frameworks for consistent categorization.
 
 ## Issue Types
 
-| Type | Description |
-|------|-------------|
-| bug | Defects, incorrect behavior |
-| feature | New functionality |
-| enhancement | Improvements to existing features |
-| refactor | Code restructuring without behavior change |
-| docs | Documentation updates |
-| chore | Maintenance, dependencies, tooling |
+| Type        | Description                                |
+| ----------- | ------------------------------------------ |
+| bug         | Defects, incorrect behavior                |
+| feature     | New functionality                          |
+| enhancement | Improvements to existing features          |
+| refactor    | Code restructuring without behavior change |
+| docs        | Documentation updates                      |
+| chore       | Maintenance, dependencies, tooling         |
 
 ## CI Failure Types
 
-| Type | Description | Priority |
-|------|-------------|----------|
-| build-failure | Compilation/bundling errors | 1 (highest) |
-| type-error | TypeScript/Flow type checking | 2 |
-| test-failure | Unit/integration/e2e tests | 3 |
-| lint-error | ESLint, Prettier, formatters | 4 |
-| security-scan | Vulnerability detections | 5 |
-| coverage-drop | Test coverage below threshold | 6 |
+| Type          | Description                    | Priority    |
+| ------------- | ------------------------------ | ----------- |
+| build-failure | Compilation/bundling errors    | 1 (highest) |
+| type-error    | TypeScript/Flow type checking  | 2           |
+| test-failure  | Unit/integration/e2e tests     | 3           |
+| lint-error    | ESLint, Prettier, formatters   | 4           |
+| security-scan | Vulnerability detections       | 5           |
+| coverage-drop | Test coverage below threshold  | 6           |
 
 ## Review Comment Types
 
-| Type | Description |
-|------|-------------|
-| code-style | Formatting, naming, conventions |
-| logic-error | Bugs, incorrect behavior |
-| performance | Efficiency concerns |
-| security | Vulnerabilities, auth issues |
-| documentation | Missing docs, unclear code |
-| testing | Coverage, test quality |
-| architecture | Design concerns, patterns |
+| Type          | Description                     |
+| ------------- | ------------------------------- |
+| code-style    | Formatting, naming, conventions |
+| logic-error   | Bugs, incorrect behavior        |
+| performance   | Efficiency concerns             |
+| security      | Vulnerabilities, auth issues    |
+| documentation | Missing docs, unclear code      |
+| testing       | Coverage, test quality          |
+| architecture  | Design concerns, patterns       |
 
 ## Effort Levels
 
-| Level | Time Estimate | Scope |
-|-------|---------------|-------|
-| trivial | < 5 min | Single line change |
-| minor | 5-15 min | Localized changes |
-| moderate | 15-60 min | Multiple files |
-| significant | > 1 hour | Architectural changes |
+| Level       | Time Estimate | Scope                 |
+| ----------- | ------------- | --------------------- |
+| trivial     | < 5 min       | Single line change    |
+| minor       | 5-15 min      | Localized changes     |
+| moderate    | 15-60 min     | Multiple files        |
+| significant | > 1 hour      | Architectural changes |
 
 ## Priority Ordering
 
