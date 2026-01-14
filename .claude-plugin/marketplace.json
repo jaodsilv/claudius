@@ -79,6 +79,35 @@
         "review",
         "extended-thinking"
       ]
+    },
+    {
+      "name": "review-loop",
+      "description": "Generic Review-Task loop orchestrator",
+      "source": "./review-loop",
+      "category": "development-workflow",
+      "version": "1.0.0",
+      "keywords": [
+        "review",
+        "workflow",
+        "automation",
+        "development-workflow",
+        "multi-agent",
+        "orchestration"
+      ]
+    },
+    {
+      "name": "walkthrough",
+      "description": "Walkthrough generation skill to help users review and understand the code that was just reviewed, manually testing it and explaining the code",
+      "source": "./walkthrough",
+      "category": "productivity",
+      "version": "1.0.0",
+      "keywords": [
+        "walkthrough",
+        "walkthrough-generation",
+        "user-review",
+        "manual-testing",
+        "code-explanation"
+      ]
     }
   ]
 }
