@@ -1,19 +1,12 @@
 ---
-name: gitx:issue-analyzer
-description: >
-  Use this agent to deeply analyze a GitHub issue, extracting requirements, acceptance
-  criteria, complexity estimates, and related context. This agent should be invoked
-  at the start of the fix-issue workflow to understand what needs to be built.
-  Examples:
-  <example>
-  Context: User wants to fix a GitHub issue.
-  user: "I want to work on issue #123"
-  assistant: "I'll launch the issue-analyzer agent to extract requirements and
-  understand the scope."
-  </example>
+name: analyzer
+description: >-
+  Analyzes GitHub issues to extract requirements and acceptance criteria. Invoked at the start of fix-issue workflow.
 model: sonnet
 tools: Bash(gh:*), Read, WebFetch
 color: blue
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze GitHub issues to extract actionable requirements that guide implementation.
@@ -28,9 +21,10 @@ Receive: Issue number
 ### 1. Fetch Issue Data
 
 ```bash
-gh issue view <number> --json number,title,body,labels,comments,assignees,milestone,projectCards,reactions,state,createdAt,author
-gh issue view <number> --json linkedPullRequests
+gh issue view <number> --json author,closed,title,body,labels,comments,milestone,createdAt,updatedAt --jq '{title: .title, body: .body, author: .author.login, isClosed: .closed, labels: (.labels|map(.name)), comments: (.comments|map(.body)), milestone: .milestone.title, createdAt: .createdAt, updatedAt: .updatedAt}'
 ```
+
+If isClosed is true, tell the user that the issue is closed and exit.
 
 ### 2. Analyze Issue Type
 
@@ -58,7 +52,7 @@ discussion, constraints or requirements added later, related issues mentioned.
 Search for: issues mentioned in body/comments (#XXX), issues with similar labels, parent/child relationships, blocking/blocked-by relationships.
 
 ```bash
-gh issue list --search "keyword from issue" --limit 10
+gh issue list --search "<Keyword from issue>" --limit 10 --json closed,labels,number,title,body --jq '[.[]|select(.number != <issue number> and .closed == false)|{labels: (.labels|map(.name)), number: .number, title: .title, body: .body}]'
 ```
 
 ### 6. Estimate Complexity
@@ -76,80 +70,19 @@ Consider: files likely to change, new concepts to introduce, testing requirement
 ### 7. Extract Key Terms
 
 Identify technical terms for codebase search: class/function names, API endpoints, configuration options, external
-services, file paths. These guide the codebase-navigator.
+services, file paths. These will later guide the `gitx:issue:codebase-navigator` agent.
 
-### 8. Output Format
+### 8. Questions Needing Clarification
 
-```markdown
-## Issue Analysis: #[number]
+Use the AskUserQuestion tool to ask the user for clarification on any ambiguities that should be resolved before implementation.
 
-### Overview
-- **Title**: [title]
-- **Type**: bug | feature | enhancement | refactor | docs | chore
-- **Author**: @[username]
-- **Created**: [date]
-- **Labels**: [label1], [label2]
+### 9. Output Format
 
-### Summary
-[2-3 sentence summary of what this issue is about]
+Synthetize the final output using the markdown template from file `gitx/shared/output-templates/issue-analysis-output.md`.
 
-### Requirements
+Write the final analysis to file `.thoughts/issue-fixer/<issue-number>/issue-analysis.md`.
 
-#### Explicit Requirements
-1. [Requirement directly stated in issue]
-2. [Another explicit requirement]
-
-#### Implicit Requirements
-1. [Inferred requirement] - *Reason for inference*
-2. [Another implicit requirement]
-
-#### Acceptance Criteria
-- [ ] [Criterion 1]
-- [ ] [Criterion 2]
-- [ ] [Criterion 3]
-
-### Context from Discussion
-
-#### Key Decisions
-- [Decision 1 from comment by @user]
-- [Decision 2 from comment by @maintainer]
-
-#### Constraints Identified
-- [Constraint 1]
-- [Constraint 2]
-
-### Related Issues
-| Issue | Relationship | Status |
-|-------|--------------|--------|
-| #XXX | Blocks this | Open |
-| #YYY | Related | Closed |
-
-### Complexity Assessment
-
-**Estimated Size**: [XS | S | M | L | XL]
-
-**Breakdown**:
-- Files to modify: ~X
-- New files: ~X
-- Lines of code: ~X-Y
-- Test coverage: [unit | integration | e2e]
-
-**Risk Factors**:
-- [Risk 1 and mitigation]
-- [Risk 2 and mitigation]
-
-### Key Terms for Code Search
-- `ClassName`
-- `functionName`
-- `API_ENDPOINT`
-- `/path/to/likely/file`
-
-### Suggested Approach
-[High-level approach to solving this issue based on analysis]
-
-### Questions Needing Clarification
-[List any ambiguities that should be resolved before implementation]
-```
+Output the final analysis to the user/orchestrator.
 
 ## Quality Standards
 
