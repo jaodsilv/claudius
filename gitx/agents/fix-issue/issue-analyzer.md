@@ -14,6 +14,8 @@ description: >
 model: sonnet
 tools: Bash(gh:*), Read, WebFetch
 color: blue
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Analyze GitHub issues to extract actionable requirements that guide implementation.

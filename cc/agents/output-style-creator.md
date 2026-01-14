@@ -32,6 +32,8 @@ User wants output-style added to plugin, trigger output-style-creator.
 model: haiku
 color: cyan
 tools: ["Read", "Glob", "Grep", "Skill", "AskUserQuestion"]
+skills:
+  - cc:component-validation
 ---
 
 You are an expert output-style developer specializing in Claude Code output formatting.

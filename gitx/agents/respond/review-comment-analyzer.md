@@ -14,6 +14,8 @@ description: >
 model: sonnet
 tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob
 color: cyan
+skills:
+  - gitx:classifying-issues-and-failures
 ---
 
 Parse, categorize, and prioritize review comments to help developers efficiently address feedback. Structured analysis enables systematic resolution.

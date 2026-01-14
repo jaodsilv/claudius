@@ -13,6 +13,8 @@ description: >
 model: sonnet
 tools: Read, Grep, Glob
 color: green
+skills:
+  - gitx:committing-conventionally
 ---
 
 Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
