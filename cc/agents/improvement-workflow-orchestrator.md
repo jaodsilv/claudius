@@ -50,7 +50,7 @@ Mark todo: Phase 1 in progress.
    Task @cc:[component-type]-improver:
      Analyze [component_type]: [component_path]
      Focus area: [focus if provided, otherwise "general analysis"]
-   
+
      Provide improvement suggestions categorized by severity:
      - CRITICAL: Must fix (broken functionality, security issues)
      - HIGH: Should fix (best practice violations)

@@ -25,6 +25,7 @@ Detailed validation rules for Claude Code skills.
 ### Description Examples
 
 Good:
+
 ```yaml
 description: >-
   Provides progressive disclosure patterns for organizing skill content.
@@ -33,6 +34,7 @@ description: >-
 ```
 
 Bad:
+
 ```yaml
 description: "Helps you organize skill content"  # Second-person, no triggers
 ```
