@@ -16,8 +16,9 @@ Handle complex comment flows for GitHub issues and PRs.
 Receive from caller:
 
 - **target**: PR or issue number
-- **target_type**: "pr" or "issue"
-- **flow_type**: One of: "last_response", "commit_summary", "review_response"
+- **target_type**: "pr", "issue"
+- **target_subtype**: "comment", "review"
+- **flow_type**: One of: "last_response", "commit_summary", "review_response", "review_posting"
 - **options**: Flow-specific options (commit hash, review text, etc.)
 
 ## Process
@@ -93,6 +94,10 @@ Create structured response:
 
 Return generated response as `$comment`.
 
+#### Flow: Review Posting
+
+If `options.review_text` provided, use it, otherwise prompt user for review text.
+
 ### 3. Validate Comment
 
 Use skill `gitx:validating-comments` with `$comment`.
@@ -112,7 +117,7 @@ Preview the comment via AskUserQuestion:
 
 Handle response:
 
-- **Post**: Execute `gh pr comment` or `gh issue comment`
+- **Post**: Execute `gh pr comment` or `gh issue comment` or `gh pr review` based on `target_type` and `target_subtype`
 - **Edit**: Prompt for changes, return to validation
 - **Cancel**: Exit without posting
 
