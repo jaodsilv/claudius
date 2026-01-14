@@ -1,16 +1,7 @@
 ---
 name: gitx:implementation-planner
-description: >
-  Use this agent to create a detailed implementation plan based on issue analysis and
-  codebase exploration. This agent should be invoked after understanding both the
-  requirements and the codebase to plan the work.
-  Examples:
-  <example>
-  Context: Issue analyzed and codebase explored, ready to plan.
-  user: "Create an implementation plan for this issue"
-  assistant: "I'll launch the implementation-planner agent to create a detailed
-  step-by-step plan."
-  </example>
+description: >-
+  Creates detailed implementation plans for issue fixes. Invoked after codebase exploration to plan changes.
 model: sonnet
 tools: Read, Write, Grep
 color: green

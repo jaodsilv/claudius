@@ -1,5 +1,5 @@
 ---
-description: Full workflow: worktree + development + push for an issue
+description: Orchestrates full fix workflow when addressing a GitHub issue. Use for end-to-end issue resolution with worktree setup.
 argument-hint: "[ISSUE]"
 allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion
 ---
@@ -179,7 +179,7 @@ Slug is generated from issue title (lowercase, hyphenated, max 30 chars).
 
 ### Generate Directory Name Options
 
-Use Skill tool with gitx:worktree-name:
+Use Skill tool with gitx:naming-worktrees:
 
 - Input: [branch-name] (e.g., `feature/issue-123-add-user-auth`)
 - Output: List of abbreviated directory options (e.g., `['auth', 'user-auth', 'add-user-auth']`)

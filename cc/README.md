@@ -85,8 +85,8 @@ This plugin requires `plugin-dev@claude-plugins-official`. Install it first:
 
 | Skill | Purpose |
 |-------|---------|
-| `improvement-workflow` | Patterns for interactive analyze-suggest-approve-apply workflows |
-| `orchestration-patterns` | Patterns for multi-agent coordination |
+| `improving-components` | Patterns for interactive analyze-suggest-approve-apply workflows |
+| `orchestrating-agents` | Patterns for multi-agent coordination |
 
 ## Usage Examples
 

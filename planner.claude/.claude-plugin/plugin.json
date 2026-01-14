@@ -21,7 +21,10 @@
     "architecture",
     "review",
     "RICE",
-    "MoSCoW"
+    "MoSCoW",
+    "prioritizing-work",
+    "planning-with-github",
+    "roadmapping"
   ],
   "license": "MIT",
   "homepage": "https://github.com/jaodsilv/claudius",

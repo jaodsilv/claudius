@@ -1,5 +1,5 @@
 ---
-description: Commit staged changes and push to remote
+description: Commits staged changes and pushes to remote when saving work. Use for standard git workflow or quick updates.
 argument-hint: ""
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git push:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*)
 ---
@@ -28,7 +28,7 @@ Review all changes to understand what's being committed:
 
 ## Draft Commit Message
 
-Use the gitx:conventional-commits skill to draft an appropriate message:
+Use the gitx:committing-conventionally skill to draft an appropriate message:
 
 1. Determine type:
    - `feat:` for new features

@@ -1,34 +1,6 @@
 ---
 name: component-writer
-description: Use this agent when you need to apply planned changes to plugin component files. This agent executes a change plan, applies edits in order, validates syntax after each change, and reports success/failure. Examples:
-
-<example>
-Context: Change plan ready to execute
-user: "Apply the change plan to my command file"
-assistant: "I'll use the component-writer agent to apply the changes."
-<commentary>
-Change plan exists and needs execution, trigger component-writer.
-</commentary>
-</example>
-
-<example>
-Context: New component content to write
-user: "Write this new command file"
-assistant: "I'll use the component-writer agent to create the file."
-<commentary>
-New file needs to be created, trigger component-writer.
-</commentary>
-</example>
-
-<example>
-Context: Multiple edits to apply
-user: "Execute these 4 edits to the agent file"
-assistant: "I'll use the component-writer agent to apply the edits in order."
-<commentary>
-Multiple ordered edits need application, trigger component-writer.
-</commentary>
-</example>
-
+description: Applies planned changes to component files. Invoked when executing change plans or writing new components.
 model: haiku
 color: green
 tools: ["Read", "Write", "Edit"]

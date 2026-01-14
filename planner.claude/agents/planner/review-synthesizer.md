@@ -1,16 +1,6 @@
 ---
 name: planner-review-synthesizer
-description: Use this agent for "synthesizing review findings", "merging feedback", "consolidating reviews", "prioritizing recommendations", or when multiple review perspectives need to be combined into actionable output. Examples:
-
-  <example>
-  Context: Part of orchestrated review workflow
-  user: "Combine these review findings into a unified report"
-  assistant: "I'll synthesize all findings into prioritized recommendations."
-  <commentary>
-  Need to merge multi-agent review outputs, trigger review-synthesizer.
-  </commentary>
-  </example>
-
+description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output.
 model: sonnet
 color: gold
 tools:

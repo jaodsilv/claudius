@@ -1,34 +1,6 @@
 ---
 name: skill-creator
-description: Use this agent when the user asks to "create a skill", "add a skill", "write skill documentation", "package knowledge as a skill", or needs specialized knowledge packaged as a skill. Examples:
-
-<example>
-Context: User wants to create a skill for API patterns
-user: "Create a skill for REST API design best practices"
-assistant: "I'll use the skill-creator agent to create this API design skill."
-<commentary>
-User requesting new skill creation, trigger skill-creator.
-</commentary>
-</example>
-
-<example>
-Context: User wants to package domain knowledge
-user: "I need a skill that teaches Claude about our company's coding standards"
-assistant: "I'll use the skill-creator agent to create a coding standards skill."
-<commentary>
-User wants to package knowledge as skill, trigger skill-creator.
-</commentary>
-</example>
-
-<example>
-Context: User wants to add skill to plugin
-user: "Add a testing skill to my plugin"
-assistant: "I'll use the skill-creator agent to create the testing skill."
-<commentary>
-User wants skill added to plugin, trigger skill-creator.
-</commentary>
-</example>
-
+description: Creates skills with progressive disclosure structure. Invoked when packaging domain knowledge as reusable skill.
 model: sonnet
 color: magenta
 tools: ["Read", "Glob", "Grep", "Skill", "Bash"]
@@ -212,7 +184,8 @@ Include:
 
 Validate the skill against these requirements:
 
-1. **Description**: Third-person with specific trigger phrases. Second-person descriptions prevent Claude from recognizing when to load the skill.
+1. **Description**: Third-person with specific trigger phrases. Second-person descriptions
+   prevent Claude from recognizing when to load the skill.
 2. **Body**: Imperative form, no second-person pronouns. Second-person creates ambiguity between instructions for Claude vs. content for users.
 3. **Length**: SKILL.md under 2000 words. Longer skills consume excessive context and reduce response quality.
 4. **Structure**: Progressive disclosure (core in SKILL.md, details in references/).

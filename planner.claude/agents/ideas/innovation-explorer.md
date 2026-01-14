@@ -1,16 +1,6 @@
 ---
 name: planner-ideas-innovation-explorer
-description: Use this agent for "exploring innovations", "researching novel approaches", "finding cutting-edge solutions", "cross-domain inspiration", or when creative research is needed. Part of the Ultrathink workflow. Examples:
-
-  <example>
-  Context: Need fresh perspectives on a problem
-  user: "What innovative approaches exist for this problem?"
-  assistant: "I'll research cutting-edge and cross-domain solutions."
-  <commentary>
-  Need innovation research, trigger innovation-explorer.
-  </commentary>
-  </example>
-
+description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery.
 model: sonnet
 color: teal
 tools:

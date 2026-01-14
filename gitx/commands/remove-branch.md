@@ -1,5 +1,5 @@
 ---
-description: Remove branch (local and/or remote)
+description: Removes a branch locally and/or remotely when cleaning up. Use for post-merge cleanup or abandoned branches.
 argument-hint: "[branch-name] [-f force] [-r remove-remote] [-ro remote-only]"
 allowed-tools: Bash(git branch:*), Bash(git push:*), Bash(git switch:*), Bash(git checkout:*), AskUserQuestion
 ---

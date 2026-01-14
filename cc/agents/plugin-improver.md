@@ -1,34 +1,6 @@
 ---
 name: plugin-improver
-description: Use this agent when the user asks to "improve a plugin", "review entire plugin", "audit plugin quality", "check plugin before publishing", or wants comprehensive plugin enhancement. Examples:
-
-<example>
-Context: User wants to improve whole plugin
-user: "Improve my authentication plugin"
-assistant: "I'll use the plugin-improver agent for comprehensive analysis."
-<commentary>
-User requesting plugin-wide improvement, trigger plugin-improver.
-</commentary>
-</example>
-
-<example>
-Context: User wants plugin audit
-user: "Audit my plugin before publishing to marketplace"
-assistant: "I'll use the plugin-improver agent to audit before publication."
-<commentary>
-User wants pre-publish audit, trigger plugin-improver.
-</commentary>
-</example>
-
-<example>
-Context: User wants quality check
-user: "Is my plugin ready for production?"
-assistant: "I'll use the plugin-improver agent to assess production readiness."
-<commentary>
-User wants readiness assessment, trigger plugin-improver.
-</commentary>
-</example>
-
+description: Performs comprehensive plugin analysis across all components. Invoked for plugin audits or pre-release checks.
 model: opus
 color: yellow
 tools: ["Read", "Glob", "Grep", "Skill", "Task"]

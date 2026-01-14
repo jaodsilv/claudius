@@ -1,16 +1,7 @@
 ---
 name: gitx:review-preparer
-description: >
-  Use this agent to prepare a PR for review by identifying potential concerns,
-  suggesting reviewers, and creating a self-review checklist. This helps ensure
-  PRs are review-ready.
-  Examples:
-  <example>
-  Context: PR is being created, need to prepare for review.
-  user: "Help me prepare this PR for review"
-  assistant: "I'll launch the review-preparer agent to identify potential concerns
-  and create a review preparation checklist."
-  </example>
+description: >-
+  Prepares review guidance and identifies focus areas for reviewers. Invoked during PR creation to help reviews.
 model: sonnet
 tools: Read, Grep, Glob
 color: yellow

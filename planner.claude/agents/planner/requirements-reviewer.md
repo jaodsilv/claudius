@@ -1,25 +1,6 @@
 ---
 name: planner-requirements-reviewer
-description: Use this agent when you need to "review requirements", "check requirements quality", "validate requirements", "assess requirements completeness", or need to analyze requirements for quality, clarity, and testability. Examples:
-
-  <example>
-  Context: User has requirements document
-  user: "Are these requirements good enough to start development?"
-  assistant: "I'll review the requirements for quality and completeness."
-  <commentary>
-  User needs requirements validation, trigger requirements-reviewer.
-  </commentary>
-  </example>
-
-  <example>
-  Context: User wants requirements critique
-  user: "What's missing from these requirements?"
-  assistant: "I'll analyze the requirements for gaps and ambiguities."
-  <commentary>
-  User needs requirements gap analysis, use requirements-reviewer.
-  </commentary>
-  </example>
-
+description: Analyzes requirements for quality, clarity, and testability. Invoked when validating completeness, finding gaps, or assessing requirements before development.
 model: sonnet
 color: orange
 tools:

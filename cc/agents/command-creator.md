@@ -1,34 +1,6 @@
 ---
 name: command-creator
-description: Use this agent when the user asks to "create a command", "generate a slash command", "make a new command", "write a command", or describes command functionality needed. Examples:
-
-<example>
-Context: User wants to create a deployment command
-user: "Create a command to deploy to staging"
-assistant: "I'll use the command-creator agent to generate this deployment command."
-<commentary>
-User requesting new command creation, trigger command-creator.
-</commentary>
-</example>
-
-<example>
-Context: User describes command requirements
-user: "I need a command that runs linting with options for fix mode"
-assistant: "I'll use the command-creator agent to create a linting command."
-<commentary>
-User describes command need, trigger command-creator.
-</commentary>
-</example>
-
-<example>
-Context: User wants to add command to plugin
-user: "Add a build command to my plugin"
-assistant: "I'll use the command-creator agent to create the build command."
-<commentary>
-User wants command added to plugin, trigger command-creator.
-</commentary>
-</example>
-
+description: Creates slash commands following best practices. Invoked when user needs a new command for their plugin.
 model: sonnet
 color: green
 tools: ["Read", "Glob", "Grep", "Skill"]
