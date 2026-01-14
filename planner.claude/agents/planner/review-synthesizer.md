@@ -7,6 +7,7 @@ tools:
   - Read
   - Write
   - Task
+  - Skill
 ---
 
 # Review Synthesizer Agent
