@@ -39,6 +39,8 @@ Define items the author should verify before requesting review:
 \`\`\`markdown
 
 #### Security
+
+
 - [ ] No secrets in code
 
 - [ ] No obvious N+1 issues
@@ -52,12 +54,8 @@ git log --oneline -10 -- path/to/affected/ | cut -d' ' -f1 | xargs git show --fo
 Guide reviewers to the most important parts: critical path changes (core functionality), new patterns (introduces new
 
 ### 5. Prepare Context for Reviewers
-
-
 ### 6. Identify Missing Items
 
-
-### 7. Output Format
 
 ## Review Preparation Report
 
@@ -72,25 +70,21 @@ Guide reviewers to the most important parts: critical path changes (core functio
 2. **[Concern Topic]**
    ...
 
+1. **[Concern Topic]**
 
 1. **[Concern Topic]**
    ...
-
-
-1. **[Concern Topic]**
-   ...
-
-
 ### Self-Review Checklist
 
 Complete these before requesting review:
-
 - [ ] Verified no debugging code remains
 - [ ] Checked for console.log statements
 - [ ] Reviewed variable/function names
+
 #### Testing
 
 - [ ] Ran tests locally
+
 
 #### Documentation
 
