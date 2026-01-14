@@ -66,7 +66,8 @@ claude plugin install gitx
 | Command | Description |
 |---------|-------------|
 | `/gitx:pr` | Create PR with orchestrated change analysis and description generation |
-| `/gitx:respond [--ci] [text]` | Orchestrated response to PR reviews or CI failures |
+| `/gitx:address-ci [--pr <pr>] [--worktree <worktree>] [--branch <branch>]` | Orchestrated response to CI failures |
+| `/gitx:address-review [--pr <pr>] [--worktree <worktree>] [--branch <branch>] [--address-level <address-level>] [<review-comment>]` | Orchestrated response to PR reviews |
 | `/gitx:update-pr` | Update PR title and description based on commits |
 | `/gitx:comment-to-pr [PR] [comment]` | Comment on a pull request |
 | `/gitx:merge-pr [PR]` | Merge PR and close related issues |
@@ -217,6 +218,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 ```
 
 **Flags:**
+
 - `-f, --force`: Force removal even with uncommitted changes
 - `-r, --remove-remote`: Also delete the remote branch
 
@@ -234,6 +236,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 ```
 
 **Flags:**
+
 - `-f, --force`: Force delete unmerged branch
 - `-r, --remove-remote`: Also delete remote branch
 - `-ro, --remote-only`: Only delete remote, keep local
@@ -255,6 +258,7 @@ Safely removes worktrees with junction/symlink detection to prevent data loss.
 ```
 
 **Orchestrated conflict resolution** provides:
+
 - Analysis of what both sides changed
 - AI-suggested resolutions with confidence levels
 - Validation before continuing
@@ -272,6 +276,7 @@ Finds the next issue to work on based on priority labels.
 ```
 
 **Priority order:**
+
 1. `priority:critical`
 2. `priority:high`
 3. `priority:medium`
@@ -286,6 +291,7 @@ Complete orchestrated workflow for fixing an issue:
 ```
 
 This command:
+
 1. **Analyzes** the issue to extract requirements and complexity
 2. **Explores** the codebase to find relevant files and patterns
 3. **Plans** the implementation with phased approach
@@ -303,28 +309,30 @@ Creates a pull request with orchestrated analysis:
 ```
 
 Features:
+
 - Comprehensive change analysis
 - AI-generated title and description
 - Review preparation (suggested reviewers, focus areas)
 - Self-review checklist
 - Supports draft PRs
 
-### `/gitx:respond`
+### `/gitx:address-review` and `/gitx:address-ci`
 
 Orchestrated response to PR feedback:
 
 ```bash
 # Respond to review comments (default)
-/gitx:respond
+/gitx:address-review
 
 # Respond to CI failures
-/gitx:respond --ci
+/gitx:address-ci
 
 # Provide context for response
-/gitx:respond --ci "The test was flaky, added retry logic"
+/gitx:address-ci "The test was flaky, added retry logic"
 ```
 
 Features:
+
 - Parallel analysis of review comments and CI failures
 - Categorized by type (code-style, logic, security, etc.)
 - Prioritized action plan (Critical → High → Medium → Low)
@@ -343,6 +351,7 @@ Merges a PR and handles cleanup.
 ```
 
 Features:
+
 - Checks mergeable status and CI
 - Offers merge strategy choice (squash, merge, rebase)
 - Auto-closes related issues
@@ -377,18 +386,21 @@ Provides guidance for branch naming following the [Conventional Branch](https://
 ## Configuration
 
 The plugin checks for dependencies at session start and warns if:
+
 - `git` is not installed
 - `gh` CLI is not installed or authenticated
 
 ## Cross-Platform Support
 
 The plugin works on both Windows and Unix-like systems:
+
 - Windows: Uses PowerShell for junction point detection
 - Unix/macOS: Uses bash for symlink detection
 
 ## Error Handling
 
 All commands include:
+
 - Pre-flight validation
 - Clear error messages
 - Suggested fixes

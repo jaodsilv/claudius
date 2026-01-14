@@ -1,7 +1,8 @@
 ---
-description: Add files or patterns to .gitignore
+description: Add files or patterns to .gitignore when excluding from tracking. Use for build artifacts, secrets, or temp files.
 argument-hint: "[PATTERNS...]"
 allowed-tools: Read, Edit, Write, Bash(git:*), AskUserQuestion
+model: haiku
 ---
 
 # Add to .gitignore
@@ -68,7 +69,7 @@ Read current .gitignore (if exists):
 Append patterns:
 
 - Add blank line before new patterns if file doesn't end with newline
-- Add comment with date: `# Added by gitx:ignore`
+- Add comment with date: `# Added by /gitx:ignore`
 - Add each pattern on its own line
 
 Write updated .gitignore:
