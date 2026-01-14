@@ -128,9 +128,39 @@ For each requirement, verify:
 ## Examples
 
 ### ❌ Poor Requirement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "The system should have good performance"
 
+
+
 ### ✅ Well-Formed Requirement
+
 **FR-005: User Authentication Response Time**
 - **Description**: The authentication endpoint shall process login requests and return responses
 - **Acceptance Criteria**:
@@ -144,4 +174,4 @@ For each requirement, verify:
 ## References
 
 - [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) for requirement language
-- [IEEE 830 Standard](https://standards.ieee.org/standard/830-1998.html) for requirements documentation
+- [IEEE 830 Standard](https://standards.ieee.org/standard/830-1998.html) for requirements documentatio

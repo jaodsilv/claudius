@@ -60,25 +60,70 @@ For each constraint identified, evaluate these properties:
 ## Examples of Assessed Constraints
 
 ### Example 1: Technical Performance Constraint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - **Type**: Technical (Performance)
+
+
 - **Source**: Customer requirements document
+
+
 - **Impact**: High (core business requirement)
+
+
 - **Negotiability**: Hard (contractual obligation)
+
+
 - **Validation**: Load testing and monitoring
+
+
 - **Mitigation**: Caching, CDN, database optimization, asynchronous processing
 
+
+
+
+
 ### Example 2: Resource Team Constraint
+
+
 - **Type**: Resource (Team)
 - **Source**: Budget allocation decision
+
 - **Impact**: Medium (affects delivery timeline)
 - **Negotiability**: Soft (could hire contractors)
+
 - **Validation**: Capacity planning exercise
 - **Mitigation**: Outsource specific modules, hire specialists, hire interns, reduce scope
 
+
 ### Example 3: Business Timeline Constraint
+
 - **Type**: Business (Timeline)
 - **Source**: Market window / executive decision
 - **Impact**: High (affects go-to-market)
 - **Negotiability**: Soft (could negotiate with stakeholders)
 - **Validation**: Stakeholder agreement
-- **Mitigation**: MVP approach, phased rollout, parallel workstreams, cut low-priority features
+- **Mitigation**: MVP approach, phased rollout, parallel workstreams, cut low-priority featur
