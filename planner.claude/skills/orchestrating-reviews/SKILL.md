@@ -81,6 +81,20 @@ Use Task tool with @[agent-name]:
 
 Example:
 
+```text
+Task @planner/review-analyzer:
+  Context: docs/roadmap.md
+  Mode: thorough
+  Phase: 1
+```
+
+## Output Format
+
+Reference `templates/review-report.md` for the standard output structure.
+
+Key sections:
+- Executive Summary
+- Critical Issues
 - Recommendations (prioritized)
 - Questions for Stakeholders
 

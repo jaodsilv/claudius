@@ -9,6 +9,7 @@ tools:
   - Grep
   - Task
   - AskUserQuestion
+  - Skill
 ---
 
 # Requirements Reviewer

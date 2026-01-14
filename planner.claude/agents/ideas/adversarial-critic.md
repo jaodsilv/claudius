@@ -6,6 +6,7 @@ color: red
 tools:
   - Read
   - Task
+  - Skill
 ---
 
 # Adversarial Critic Agent

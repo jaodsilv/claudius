@@ -9,6 +9,7 @@ tools:
   - Grep
   - WebSearch
   - Task
+  - Skill
 ---
 
 # Review Challenger Agent

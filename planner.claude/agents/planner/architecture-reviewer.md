@@ -10,6 +10,7 @@ tools:
   - Task
   - AskUserQuestion
   - WebSearch
+  - Skill
 ---
 
 # Architecture Reviewer
