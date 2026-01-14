@@ -19,6 +19,8 @@ tools:
   - Task
   - AskUserQuestion
   - TodoWrite
+skills:
+  - cc:orchestrating-agents
 ---
 
 # Ideas Facilitator Agent

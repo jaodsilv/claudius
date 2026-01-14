@@ -4,6 +4,7 @@ argument-hint: "[ISSUE|TASK|BRANCH|NAME]"
 allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git switch:*), Bash(gh issue:*), AskUserQuestion, Skill(gitx:conventional-branch), Skill(gitx:worktree-name)
 ---
 
+<!-- markdownlint-disable MD024 -->
 # Worktree Management
 
 Manage git worktrees for isolated feature development.
