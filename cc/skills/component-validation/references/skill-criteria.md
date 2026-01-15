@@ -41,7 +41,7 @@ description: "Helps you organize skill content"  # Second-person, no triggers
 
 ## Content Validation
 
-### Writing Style
+### Content Writing Style
 
 | Criterion | Requirement | Severity |
 |-----------|-------------|----------|
@@ -143,7 +143,7 @@ Nice to have polish:
 
 ## Example Structure
 
-```
+```text
 my-skill/
 ├── SKILL.md           # Core concepts (1500-2000 words)
 ├── references/

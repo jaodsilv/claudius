@@ -71,7 +71,7 @@ Good:
 - Avoid jargon unless technical audience confirmed
 - Direct and concise, avoid hedging
 
-```
+```markdown
 
 Bad:
 ```markdown
@@ -105,7 +105,7 @@ Template example:
 
 [Formatted documentation following this style]
 
-```
+```markdown
 
 Before/After example:
 
