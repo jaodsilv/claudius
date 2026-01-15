@@ -8,7 +8,8 @@ model: sonnet
 
 # Requirements Synthesis
 
-Consolidates brainstorming insights into structured requirements. Use when formulating requirements, prioritizing features, or validating requirement quality.
+Consolidates brainstorming insights into structured requirements.
+Use when formulating requirements, prioritizing features, or validating requirement quality.
 
 ## When to Use
 
@@ -45,7 +46,7 @@ Reference `references/moscow-guide.md` for MoSCoW prioritization:
 
 Provide a structured summary:
 
-```
+```text
 # Requirements Specification
 
 ## Executive Summary

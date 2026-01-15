@@ -36,7 +36,7 @@ See `references/research-areas.md` for detailed definitions and research questio
 
 Provide a structured analysis:
 
-```
+```text
 # Domain Research Report
 
 ## Executive Summary

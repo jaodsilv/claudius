@@ -140,7 +140,7 @@ Requirements often depend on each other. Map dependencies to:
 
 **Sequential Dependencies**:
 
-```
+```text
 P1: FR-001 (Database setup)
   ├── P1: FR-002 (User auth)
   ├── P2: FR-003 (Reporting)
@@ -157,19 +157,6 @@ For each dependency, document:
 
 ### Gap Categories
 
-
-**Information Gaps**:
-- Unclear acceptance criteria
-- Missing technical specifications
-- Undefined performance targets
-- Unknown user scenarios
-
-**Scope Gaps**:
-- Related requirements not yet identified
-- Error handling not specified
-- Integration points not defined
-
-**Resource Gaps**:
 - Skills not available
 - Infrastructure not in place
 - Tools not selected
@@ -185,7 +172,7 @@ For each dependency, document:
 
 For each gap, record:
 
-```
+```text
 GAP-001: [Missing Information]
 - Impact: [How it affects progress]
 - Owner: [Who should resolve]

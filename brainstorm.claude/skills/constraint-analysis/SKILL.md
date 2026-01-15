@@ -8,7 +8,8 @@ model: sonnet
 
 # Constraint Analysis
 
-Identifies and categorizes constraints that shape solution design. Use when analyzing project constraints, identifying trade-offs, or documenting boundaries.
+Identifies and categorizes constraints that shape solution design.
+Use when analyzing project constraints, identifying trade-offs, or documenting boundaries.
 
 ## When to Use
 
