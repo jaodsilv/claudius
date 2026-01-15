@@ -76,7 +76,6 @@ Report: "Warning: Focus analysis skill not available"
 Fallback: Proceed without focus weighting - treat all issues equally
 ```
 
-
 ## Agent Mapping
 
 | Component Type | Improver Agent |
@@ -284,6 +283,7 @@ Manual review checklists by component type:
 ### Change Planning Failure
 
 Offer: Retry with subset of changes
+
 ```
 
 ### Application Failure
