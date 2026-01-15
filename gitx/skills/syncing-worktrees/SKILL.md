@@ -1,4 +1,5 @@
 ---
+
 name: gitx:syncing-worktrees
 description: >-
   Synchronizes git worktrees with remote before operations. Use when creating

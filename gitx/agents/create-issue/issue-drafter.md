@@ -1,4 +1,5 @@
 ---
+
 name: issue-drafter
 description: >-
   Transforms informal issue descriptions into structured GitHub issues. Invoked

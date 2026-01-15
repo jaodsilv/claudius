@@ -1,4 +1,5 @@
 ---
+
 description: Orchestrates full fix workflow when addressing a GitHub issue. Use for end-to-end issue resolution with worktree setup.
 argument-hint: "[ISSUE]"
 allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion, Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references), Skill(gitx:naming-branches), Skill(gitx:naming-worktrees)

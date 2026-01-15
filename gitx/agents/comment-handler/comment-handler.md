@@ -1,4 +1,5 @@
 ---
+
 name: comment-handler
 description: >-
   Handles complex comment posting flows for issues and PRs. Use when comment
@@ -54,7 +55,7 @@ Skill returns formatted commit summary as `$comment`.
 
 #### Flow: Review Response
 
-**Step 1: Get Review Text**
+#### Step 1: Get Review Text
 
 If `options.review_text` provided, use it. Otherwise fetch latest review:
 
@@ -63,7 +64,7 @@ gh pr view <target> --json reviews \
   --jq '.reviews | map(select(.state != "APPROVED" and .state != "DISMISSED")) | sort_by(.submittedAt) | last'
 ```
 
-**Step 2: Get Work Evidence**
+#### Step 2: Get Work Evidence
 
 If `options.commit` provided:
 
@@ -72,7 +73,7 @@ If `options.commit` provided:
 
 Otherwise get recent commits: `git log --oneline -10`
 
-**Step 3: Generate Response**
+#### Step 3: Generate Response
 
 Create structured response:
 

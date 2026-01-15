@@ -1,4 +1,5 @@
 ---
+
 name: orchestration-improver
 description: Analyzes orchestrations for workflow issues. Invoked when user asks to improve multi-agent coordination.
 model: sonnet

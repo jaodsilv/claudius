@@ -1,4 +1,5 @@
 ---
+
 name: respond-synthesizer
 description: >-
   Synthesizes analysis results into actionable response plan. Invoked to combine feedback analysis into execution steps.

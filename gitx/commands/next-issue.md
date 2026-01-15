@@ -1,4 +1,5 @@
 ---
+
 description: Gets next issue by priority when selecting work. Use for picking the highest priority available task.
 argument-hint: "[-d detailed]"
 allowed-tools: Bash(gh issue:*), AskUserQuestion

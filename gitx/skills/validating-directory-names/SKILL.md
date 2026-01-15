@@ -1,4 +1,5 @@
 ---
+
 name: gitx:validating-directory-names
 description: >-
   Validates custom directory names for worktrees. Use when users provide custom

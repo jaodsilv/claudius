@@ -1,4 +1,5 @@
 ---
+
 name: gitx:generating-commit-summaries
 description: >-
   Generates narrative commit summaries with bullet-point details. Use when

@@ -1,4 +1,5 @@
 ---
+
 name: gitx:validating-comments
 description: >-
   Validates comment content before posting to GitHub. Use when posting comments

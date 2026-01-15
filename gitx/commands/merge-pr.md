@@ -1,4 +1,5 @@
 ---
+
 description: Merges a PR and closes related issues when ready to complete. Use for finalizing approved pull requests.
 argument-hint: "[PR]"
 allowed-tools: Bash(gh pr:*), Bash(gh issue:*), Bash(git:*), AskUserQuestion, Skill(gitx:performing-pr-preflight-checks)

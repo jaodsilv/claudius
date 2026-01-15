@@ -1,4 +1,5 @@
 ---
+
 name: description-generator
 description: >-
   Generates PR title and description from change analysis. Invoked during PR creation workflow.

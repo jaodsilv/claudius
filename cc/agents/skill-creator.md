@@ -1,4 +1,5 @@
 ---
+
 name: skill-creator
 description: Creates skills with progressive disclosure structure. Invoked when packaging domain knowledge as reusable skill.
 model: sonnet

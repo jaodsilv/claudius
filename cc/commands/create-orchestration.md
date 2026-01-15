@@ -1,4 +1,5 @@
 ---
+
 description: Creates multi-agent orchestrations when coordinating complex workflows.
 argument-hint: <orchestration-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]

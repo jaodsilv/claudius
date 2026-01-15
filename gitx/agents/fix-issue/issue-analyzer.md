@@ -1,4 +1,5 @@
 ---
+
 name: issue-analyzer
 description: >-
   Analyzes GitHub issues to extract requirements and acceptance criteria. Invoked at the start of fix-issue workflow.
