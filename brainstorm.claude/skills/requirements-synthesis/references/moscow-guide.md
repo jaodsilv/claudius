@@ -156,6 +156,8 @@ For each dependency, document:
 - **Sequence**: Must be completed before / in parallel with / after
 
 ### Gap Categories
+
+
 **Information Gaps**:
 - Unclear acceptance criteria
 - Missing technical specifications

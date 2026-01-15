@@ -61,8 +61,6 @@ For each constraint identified, evaluate these properties:
 
 ### Example 1: Technical Performance Constraint
 
-
-- **Type**: Business (Timeline)
 - **Impact**: High (affects go-to-market)
 - **Negotiability**: Soft (could negotiate with stakeholders)
 - **Mitigation**: MVP approach, phased rollout, parallel workstreams, cut low-priority featur

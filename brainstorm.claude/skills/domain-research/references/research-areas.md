@@ -9,8 +9,6 @@ This document defines the 7 research dimensions used in domain research analysis
 - Social listening and trend analysis platforms
 
 
-- Adjacent solutions (related problems or markets)
-
 - Pricing models and business strategies
 
 - Market positioning and messaging
@@ -24,9 +22,7 @@ This document defines the 7 research dimensions used in domain research analysis
 - Are there open source or free alternatives?
 - Job postings (insight into company strategy)
 
-
 ### Definition
-
 Industry standards, proven patterns, common approaches, and anti-patterns to avoid when implementing solutions.
 - Best-in-class implementations
 
@@ -46,11 +42,11 @@ Industry standards, proven patterns, common approaches, and anti-patterns to avo
 - Technical books on the domain
 
 ---
+
 ### What to Look For
 
 
 - Common workflows and use cases
-
 - Expected levels of support and service
 - How do users expect to accomplish key tasks?
 
@@ -64,17 +60,19 @@ Industry standards, proven patterns, common approaches, and anti-patterns to avo
 - Common system architectures and designs
 
 - Standard data models and structures
+
 ### Questions to Answer
 
 
 - How do systems typically integrate?
-- What API standards are followed?
 - What technologies are most commonly used?
 
 - What performance characteristics are expected?
 
 ### Sources to Consult
+
 - Technical documentation and APIs
+
 - Open source projects and their source code
 
 Understanding legal requirements, regulatory frameworks, privacy obligations, accessibility standards, and security requirements that apply to solutions in this domain.
@@ -88,6 +86,8 @@ Understanding legal requirements, regulatory frameworks, privacy obligations, ac
 
 - How do requirements vary by geography?
 - What are the penalties for non-compliance?
+
+
 ### Sources to Consult
 
 - Regulatory agency websites and guidance
@@ -95,7 +95,7 @@ Understanding legal requirements, regulatory frameworks, privacy obligations, ac
 - Legal and compliance blogs
 
 
-## 7. Domain Terminology and Conventions
+
 - Common terminology variations and synonyms
 - Concepts and frameworks unique to the domain
 - Acronyms and abbreviations
