@@ -83,40 +83,6 @@ Evaluate user experience:
 5. Evaluate against best practices
 6. Generate prioritized suggestions
 
-## Severity Categories
-
-### CRITICAL
-
-Must fix immediately:
-- Referenced agents don't exist
-- Missing data flow between phases
-- Broken gate conditions
-- Infinite loop potential
-
-### HIGH
-
-Should fix for quality:
-- Missing error handling
-- No compact points
-- No progress tracking
-- Poor phase definitions
-
-### MEDIUM
-
-Consider fixing for improvement:
-- Suboptimal agent selection
-- Unnecessary phases
-- Redundant data passing
-- Missing user feedback
-
-### LOW
-
-Nice to have polish:
-- Wording improvements
-- Additional examples
-- Format consistency
-- Documentation
-
 ## Output Format
 
 Provide structured analysis:

@@ -74,40 +74,6 @@ Verify command patterns:
 5. Evaluate against best practices
 6. Generate prioritized suggestions
 
-## Severity Categories
-
-### CRITICAL
-
-Must fix immediately:
-- Invalid frontmatter syntax
-- Missing required fields
-- Security vulnerabilities
-- Broken functionality
-
-### HIGH
-
-Should fix for quality:
-- Writing style violations (TO user instead of FOR Claude)
-- Overly permissive tool access
-- Missing argument handling
-- Poor error handling
-
-### MEDIUM
-
-Consider fixing for improvement:
-- Incomplete documentation
-- Suboptimal organization
-- Missing edge case handling
-- Redundant instructions
-
-### LOW
-
-Nice to have polish:
-- Style consistency
-- Wording improvements
-- Additional examples
-- Formatting refinements
-
 ## Output Format
 
 Provide structured analysis:

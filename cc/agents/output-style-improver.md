@@ -79,40 +79,6 @@ Verify examples:
 4. Generate prioritized suggestions
 5. Format report with severity levels
 
-## Severity Categories
-
-### CRITICAL
-
-Must fix immediately:
-- Missing frontmatter
-- No name or description
-- Empty formatting rules section
-- No examples provided
-
-### HIGH
-
-Should fix for quality:
-- Vague or generic description
-- Incomplete formatting rules
-- Conflicting tone guidelines
-- Examples don't match stated rules
-
-### MEDIUM
-
-Consider fixing for improvement:
-- Missing some formatting categories
-- Tone guidelines could be more specific
-- Only one example provided
-- Some rules are unclear
-
-### LOW
-
-Nice to have polish:
-- Minor wording improvements
-- Additional examples would help
-- Format consistency tweaks
-- More specific terminology guidance
-
 ## Output Format
 
 Provide structured analysis:

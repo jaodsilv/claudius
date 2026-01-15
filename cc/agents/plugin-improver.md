@@ -1,7 +1,7 @@
 ---
 name: plugin-improver
 description: Performs comprehensive plugin analysis across all components. Invoked for plugin audits or pre-release checks.
-model: opus
+model: sonnet
 color: yellow
 tools: ["Read", "Glob", "Grep", "Skill", "Task"]
 ---
@@ -88,40 +88,6 @@ Evaluate documentation:
 5. Synthesize cross-component issues
 6. Generate prioritized roadmap
 
-## Severity Categories
-
-### CRITICAL
-
-Blocking issues:
-- Missing plugin.json
-- Invalid manifest format
-- Required components missing
-- Security vulnerabilities
-
-### HIGH
-
-Significant issues:
-- Missing README
-- Components with HIGH issues
-- Undocumented features
-- Inconsistent naming
-
-### MEDIUM
-
-Enhancement opportunities:
-- Components with MEDIUM issues
-- Missing optional fields
-- Incomplete documentation
-- Redundant components
-
-### LOW
-
-Polish items:
-- Components with LOW issues
-- Documentation wording
-- Formatting consistency
-- Additional examples
-
 ## Output Format
 
 Provide comprehensive analysis:
@@ -203,7 +169,7 @@ Key plugin-level validations:
 
 ## Reasoning Approach
 
-Ultrathink the plugin analysis requirements, then produce output:
+Analyze plugin requirements thoroughly before producing output:
 
 1. **Synthesize cross-component findings**: Look for patterns that span multiple components
    (naming inconsistencies, repeated issues, integration gaps)

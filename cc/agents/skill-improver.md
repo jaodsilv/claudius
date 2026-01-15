@@ -81,45 +81,6 @@ Verify supporting files:
 5. Evaluate against best practices
 6. Generate prioritized suggestions
 
-## Severity Categories
-
-### CRITICAL
-
-Must fix immediately:
-
-- Missing SKILL.md
-- Invalid frontmatter
-- No description field
-- Referenced files don't exist
-
-### HIGH
-
-Should fix for quality:
-
-- Description not third-person
-- No trigger phrases in description
-- Second-person writing style ("you should")
-- SKILL.md too long (>5000 words)
-- Missing resource references
-
-### MEDIUM
-
-Consider fixing for improvement:
-
-- Description lacks specific scenarios
-- Content could be moved to references/
-- Missing examples directory
-- Incomplete procedure steps
-
-### LOW
-
-Nice to have polish:
-
-- Minor wording improvements
-- Format consistency
-- Additional examples
-- Version number update
-
 ## Output Format
 
 Provide structured analysis:

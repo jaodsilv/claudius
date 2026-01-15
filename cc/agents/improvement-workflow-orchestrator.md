@@ -282,8 +282,12 @@ Manual review checklists by component type:
 
 ### Change Planning Failure
 
-Offer: Retry with subset of changes
-
+```text
+Report: "Change planning failed"
+Action:
+1. Show which improvements could not be planned
+2. Offer to retry with subset of changes
+3. Suggest manual implementation for complex changes
 ```
 
 ### Application Failure

@@ -76,41 +76,6 @@ Evaluate the system prompt:
 5. Check against best practices
 6. Generate prioritized suggestions
 
-## Severity Categories
-
-### CRITICAL
-
-Must fix immediately:
-- Invalid identifier format
-- Missing or broken examples
-- System prompt too short (<200 words)
-- Missing role definition
-
-### HIGH
-
-Should fix for quality:
-- Insufficient example blocks (<2)
-- Vague triggering conditions
-- Overly permissive tool access
-- Missing process steps
-- No output format specified
-
-### MEDIUM
-
-Consider fixing for improvement:
-- Examples lack commentary
-- Missing edge case handling
-- Suboptimal color choice
-- Incomplete responsibility list
-
-### LOW
-
-Nice to have polish:
-- Example wording improvements
-- Additional triggering scenarios
-- Format consistency
-- Minor prompt refinements
-
 ## Output Format
 
 Provide structured analysis:
