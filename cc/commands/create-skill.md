@@ -22,7 +22,7 @@ If skill_name not provided, ask user to specify.
 
 ## Execution
 
-Apply Skill(Skill Development) for skill development best practices.
+Apply Skill(plugin-dev:skill-development) for skill development best practices.
 Apply Skill(cc:authoring-skills) for skill authoring best practices.
 
 Use TodoWrite to track progress:

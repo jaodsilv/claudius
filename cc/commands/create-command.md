@@ -22,7 +22,7 @@ If command_name not provided, ask user to specify.
 
 ## Execution
 
-Apply Skill(Command Development) for command development best practices.
+Apply Skill(plugin-dev:command-development) for command development best practices.
 Apply Skill(cc:component-validation) for validation criteria.
 
 Use TodoWrite to track progress:

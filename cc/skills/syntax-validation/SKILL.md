@@ -5,8 +5,6 @@ description: >-
   when validating YAML frontmatter, markdown structure, or component-specific
   syntax after writing or editing files.
 version: 1.0.0
-allowed-tools: Read, Skill
-model: haiku
 ---
 
 # Syntax Validation

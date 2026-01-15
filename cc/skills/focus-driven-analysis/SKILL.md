@@ -6,7 +6,6 @@ description: >-
   while still covering others, such as "focus on error handling" or "prioritize
   triggering issues".
 version: 1.0.0
-model: haiku
 ---
 
 # Focus-Driven Analysis
@@ -72,6 +71,15 @@ When a focus area is specified:
 | error handling | Recovery, fallbacks, partial completion |
 | coordination | Agent communication, handoffs |
 | context management | Context preservation, fresh context usage |
+
+### Output-Styles
+
+| Focus Area | Analysis Emphasis |
+|------------|-------------------|
+| formatting | Format rules, consistency, examples |
+| tone | Voice, formality, audience adaptation |
+| structure | Section organization, templates |
+| constraints | Length limits, prohibited patterns |
 
 ## Output Adaptation
 
