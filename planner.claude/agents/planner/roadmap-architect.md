@@ -4,14 +4,14 @@ description: Transforms goals into structured project plans with phases, milesto
 model: opus
 color: blue
 tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Task
-  - AskUserQuestion
+- Read
+- Write
+- Glob
+- Grep
+- Bash
+- WebSearch
+- Task
+- AskUserQuestion
 ---
 
 # Roadmap Architect

@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-requirements-synthesizer
 description: >
   Consolidates brainstorming outputs into structured requirements.

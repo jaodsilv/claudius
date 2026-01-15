@@ -1,8 +1,9 @@
 ---
+
 name: tdd-pro:tdd-workflow
 description: >-
   Provides a comprehensive test-driven development workflow with red-green-refactor
-  cycle, test isolation, and continuous integration practices.
+  cycle, test isolation, and continuous integration practices
 ---
 
 # TDD Workflow

@@ -1,4 +1,5 @@
 ---
+
 description: Merges base branch into current branch when syncing with upstream. Use for incorporating main branch changes.
 argument-hint: "[--base branch]"
 allowed-tools: Bash(git merge:*), Bash(git fetch:*), Bash(git status:*), Bash(git log:*), Bash(git branch:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Task, Read, AskUserQuestion, TodoWrite, Skill(gitx:orchestrating-conflict-resolution)

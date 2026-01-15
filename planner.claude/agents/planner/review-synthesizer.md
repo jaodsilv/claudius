@@ -4,9 +4,9 @@ description: Merges multi-agent review findings into prioritized recommendations
 model: sonnet
 color: gold
 tools:
-  - Read
-  - Write
-  - Task
+- Read
+- Write
+- Task
 ---
 
 # Review Synthesizer Agent

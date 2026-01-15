@@ -1,4 +1,5 @@
 ---
+
 description: Reviews requirements quality with multi-agent orchestration. Use for validating completeness and testability.
 allowed-tools: Task, Read, Glob, Grep, AskUserQuestion, TodoWrite
 argument-hint: <goal|roadmap-path> [--requirements-path <path>] [--mode <quick|thorough>]

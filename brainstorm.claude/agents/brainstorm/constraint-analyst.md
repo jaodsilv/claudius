@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-constraint-analyst
 description: >
   Identifies and analyzes constraints shaping the solution space.

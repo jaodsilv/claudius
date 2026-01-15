@@ -1,4 +1,5 @@
 ---
+
 name: change-analyzer
 description: >-
   Analyzes all commits and changes in a branch for PR creation. Invoked when preparing pull request content.

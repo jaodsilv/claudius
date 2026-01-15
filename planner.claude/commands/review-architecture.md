@@ -1,4 +1,5 @@
 ---
+
 description: Reviews architecture decisions with multi-agent orchestration. Use for validating technical designs against goals.
 allowed-tools: Task, Read, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite
 argument-hint: <goal|requirements-path> [--architecture-path <path>] [--mode <quick|thorough>]

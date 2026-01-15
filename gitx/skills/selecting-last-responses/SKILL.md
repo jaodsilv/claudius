@@ -1,4 +1,5 @@
 ---
+
 name: gitx:selecting-last-responses
 description: >-
   Retrieves and presents recent Claude responses for selection. Use when users

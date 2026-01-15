@@ -4,11 +4,11 @@ description: Stress-tests planning artifacts as devil's advocate. Invoked during
 model: opus
 color: red
 tools:
-  - Read
-  - Glob
-  - Grep
-  - WebSearch
-  - Task
+- Read
+- Glob
+- Grep
+- WebSearch
+- Task
 ---
 
 # Review Challenger Agent

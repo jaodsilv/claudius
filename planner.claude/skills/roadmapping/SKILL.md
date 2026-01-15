@@ -1,6 +1,7 @@
 ---
+
 name: planner:roadmapping
-description: Creates project roadmaps with phases, milestones, and dependencies. Invoked when user asks to create a roadmap, plan project phases, define milestones, or map out a project.
+description: Creates project roadmaps with phases, milestones, and dependencies. Invoked when user asks to create a roadmap, plan project phases, define milestones, or map out a project
 ---
 
 # Roadmapping

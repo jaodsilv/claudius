@@ -1,4 +1,5 @@
 ---
+
 description: Commits staged changes and pushes to remote when saving work. Use for standard git workflow or quick updates.
 argument-hint: ""
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git push:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*), Skill(gitx:committing-conventionally)

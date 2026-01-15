@@ -1,4 +1,5 @@
 ---
+
 description: Reviews plan files with multi-agent orchestration. Use for comprehensive plan quality analysis.
 allowed-tools: Task, Read, Glob, Grep, AskUserQuestion, TodoWrite
 argument-hint: <plan-path> [--goal <goal>] [--mode <quick|thorough>]

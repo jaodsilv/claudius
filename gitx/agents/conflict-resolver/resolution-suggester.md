@@ -1,4 +1,5 @@
 ---
+
 name: resolution-suggester
 description: >-
   Generates specific code resolutions for git conflicts with confidence levels. Invoked after conflict analysis to suggest solutions.

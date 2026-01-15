@@ -4,8 +4,8 @@ description: Rigorously challenges ideas and stress-tests assumptions. Invoked d
 model: opus
 color: red
 tools:
-  - Read
-  - Task
+- Read
+- Task
 ---
 
 # Adversarial Critic Agent

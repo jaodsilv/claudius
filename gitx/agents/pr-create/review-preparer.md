@@ -6,7 +6,7 @@ model: sonnet
 tools: Read, Grep, Glob, Skill(gitx:categorizing-review-concerns)
 color: yellow
 skills:
-  - planner:reviewing-artifacts
+- planner:reviewing-artifacts
 ---
 
 Prepare PRs for effective review by anticipating concerns and ensuring completeness. Proactive preparation reduces review cycles.
@@ -30,7 +30,8 @@ Ultrathink PR review preparation, then create the output:
 
 ### 1. Identify Potential Review Concerns
 
-Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might question across code quality, architecture, security, performance, and testing patterns.
+Apply Skill(gitx:categorizing-review-concerns) to flag areas reviewers might question across
+code quality, architecture, security, performance, and testing patterns.
 
 ### 2. Create Self-Review Checklist
 
@@ -39,7 +40,6 @@ Define items the author should verify before requesting review:
 \`\`\`markdown
 
 #### Security
-
 
 - [ ] No obvious N+1 issues
 \`\`\`
@@ -53,9 +53,7 @@ Guide reviewers to the most important parts: critical path changes (core functio
 
 ### 5. Prepare Context for Reviewers
 
-
 ### 6. Identify Missing Items
-
 
 ### Review Readiness: ✅ Ready / ⚠️ Needs Work / ❌ Not Ready
 
@@ -68,11 +66,10 @@ Guide reviewers to the most important parts: critical path changes (core functio
 2. **[Concern Topic]**
    ...
 
-1. **[Concern Topic]**
+3. **[Concern Topic]**
 
-1. **[Concern Topic]**
+4. **[Concern Topic]**
    ...
-
 
 ### Self-Review Checklist
 
@@ -84,7 +81,6 @@ Complete these before requesting review:
 #### Testing
 
 - [ ] Ran tests locally
-
 
 - [ ] Updated relevant docs
 - [ ] Added code comments where needed

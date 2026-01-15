@@ -1,4 +1,5 @@
 ---
+
 name: workflow-coordinator
 description: >-
   Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, and development phases.

@@ -4,12 +4,12 @@ description: Reviews architecture decisions and evaluates technical designs. Inv
 model: opus
 color: purple
 tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
-  - WebSearch
+- Read
+- Glob
+- Grep
+- Task
+- AskUserQuestion
+- WebSearch
 ---
 
 # Architecture Reviewer

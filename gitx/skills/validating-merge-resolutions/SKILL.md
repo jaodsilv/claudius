@@ -1,4 +1,5 @@
 ---
+
 name: gitx:validating-merge-resolutions
 description: >-
   Provides validation checklist and patterns for merge/rebase conflict

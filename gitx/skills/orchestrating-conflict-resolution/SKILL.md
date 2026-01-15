@@ -1,4 +1,5 @@
 ---
+
 name: gitx:orchestrating-conflict-resolution
 description: >-
   Orchestrates multi-agent conflict resolution workflow for merge and rebase

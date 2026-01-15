@@ -4,12 +4,12 @@ description: Applies prioritization frameworks (RICE, MoSCoW, weighted scoring) 
 model: sonnet
 color: green
 tools:
-  - Read
-  - Write
-  - Bash
-  - Glob
-  - Grep
-  - Task
+- Read
+- Write
+- Bash
+- Glob
+- Grep
+- Task
 ---
 
 # Prioritization Engine

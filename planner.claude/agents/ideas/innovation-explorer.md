@@ -4,11 +4,11 @@ description: Researches cutting-edge and cross-domain solutions. Invoked during 
 model: sonnet
 color: teal
 tools:
-  - Read
-  - Glob
-  - Grep
-  - WebSearch
-  - Task
+- Read
+- Glob
+- Grep
+- WebSearch
+- Task
 ---
 
 # Innovation Explorer Agent

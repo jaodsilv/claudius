@@ -4,14 +4,14 @@ description: Systematically collects and structures project requirements. Invoke
 model: opus
 color: cyan
 tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
-  - WebSearch
-  - Skill
+- Read
+- Write
+- Glob
+- Grep
+- Task
+- AskUserQuestion
+- WebSearch
+- Skill
 ---
 
 # Requirements Gatherer
