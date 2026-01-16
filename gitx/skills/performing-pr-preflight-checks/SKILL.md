@@ -1,6 +1,6 @@
 ---
-
 name: gitx:performing-pr-preflight-checks
+version: 1.0.0
 description: >-
   Performs pre-flight checks before PR operations. Use when creating PRs,
   merging, or modifying PR state to ensure operation will succeed.
@@ -22,7 +22,7 @@ If current branch is main/master:
 
 ## Check: Existing PR Status
 
-Run: `gh pr view --json number,url,state 2>/dev/null`
+Run: `gh pr view --json number,url,state`
 
 If PR already exists:
 
@@ -35,7 +35,7 @@ If PR already exists:
 
 ```bash
 git fetch origin
-git log origin/<branch>..HEAD 2>/dev/null
+git log origin/<branch>..HEAD
 ```
 
 | Condition             | Action                                          |

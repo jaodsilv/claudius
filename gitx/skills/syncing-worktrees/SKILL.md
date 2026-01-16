@@ -1,5 +1,4 @@
 ---
-
 name: gitx:syncing-worktrees
 description: >-
   Synchronizes git worktrees with remote before operations. Use when creating
@@ -63,7 +62,8 @@ if [ $PULL_EXIT_CODE -ne 0 ]; then
   if echo "$PULL_OUTPUT" | grep -q "Could not resolve host"; then
     echo "Error: Network issue. Check internet connection."
   elif git status | grep -q "rebase in progress"; then
-    echo "Error: Merge conflicts. Run: git rebase --continue or git rebase --abort"
+    echo "Error: Rebase conflicts occurred. Resolve conflicts then run: git rebase --continue"
+    echo "Or abort the rebase with: git rebase --abort"
   else
     echo "Error: Pull failed. Details: $PULL_OUTPUT"
   fi

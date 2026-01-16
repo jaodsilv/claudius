@@ -1,5 +1,4 @@
 ---
-
 name: gitx:orchestrating-conflict-resolution
 description: >-
   Orchestrates multi-agent conflict resolution workflow for merge and rebase
@@ -12,6 +11,13 @@ model: opus
 # Orchestrating Conflict Resolution
 
 Multi-agent workflow for resolving git conflicts during merge/rebase operations.
+
+## Input Variables
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `$base_branch` | Branch being merged/rebased onto | `main`, `develop` |
+| Operation type | Whether merge or rebase is in progress | `merge`, `rebase` |
 
 ## 5-Phase Workflow
 

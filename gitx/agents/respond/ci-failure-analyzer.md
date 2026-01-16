@@ -1,10 +1,9 @@
 ---
-
 name: ci-failure-analyzer
 description: >-
   Analyzes CI check failures to identify root causes and fixes. Invoked when addressing CI failures on a PR.
 model: haiku
-tools: Bash(gh:*), Bash(git:*), Read, WebFetch
+tools: Bash(gh:*), Bash(git:*), Read, WebFetch, Skill(gitx:classifying-issues-and-failures)
 color: red
 ---
 
