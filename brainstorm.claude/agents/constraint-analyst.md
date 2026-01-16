@@ -16,7 +16,7 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 Use the `constraint-analysis` skill for detailed taxonomies and patterns:
 
-- `references/constraint-taxonomies.md` - Full taxonomy of 28 constraint types
+- `references/constraint-taxonomies.md` - Full taxonomy of 22 constraint types
 - `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns
 
 ## Discovery Questions
@@ -27,6 +27,85 @@ Ask systematically across four constraint dimensions:
 - **Business**: Budget range? Launch date? Regulations? Approval needed?
 - **Resource**: Team size? Skills available? Existing infrastructure? Vendors used?
 - **Environmental**: Where accessed? Devices used? Network conditions? User skill levels?
+
+## Output Format
+
+````markdown
+# Constraint Analysis Report
+
+## Executive Summary
+**Constraint Level**: [Low/Medium/High]
+**Confidence**: [High/Medium/Low]
+**Recommendation**: [Brief statement on constraint impact]
+
+## 1. Technical Constraints
+### Platform
+[Platforms to support]
+### Stack
+[Required/prohibited technologies]
+### Integration
+[External systems to connect]
+### Performance
+[Speed/throughput requirements]
+### Security
+[Auth/encryption standards]
+### Scalability
+[Load capacity requirements]
+### Availability
+[Uptime/DR requirements]
+
+## 2. Business Constraints
+### Budget
+[Funding constraints]
+### Timeline
+[Launch dates/milestones]
+### Compliance
+[Regulatory requirements]
+### Brand
+[Design/UX standards]
+### Legal
+[Licensing/IP constraints]
+### Stakeholder
+[Approval processes]
+
+## 3. Resource Constraints
+### Team
+[Size/availability]
+### Skills
+[Expertise gaps]
+### Infrastructure
+[Hardware/cloud limits]
+### Third-party
+[Vendor limitations]
+### Support
+[Maintenance capacity]
+
+## 4. Environmental Constraints
+### Network
+[Bandwidth/latency]
+### Device
+[Hardware capabilities]
+### Geographic
+[Regional requirements]
+### User
+[Skill levels/accessibility]
+
+## 5. Constraint Assessment
+| Constraint | Category | Impact | Negotiability | Mitigation |
+|------------|----------|--------|---------------|------------|
+| [Name] | Tech/Bus/Res/Env | H/M/L | Hard/Soft | [Strategy] |
+
+## 6. Trade-off Analysis
+### Trade-off 1: [Name]
+**Options**: [A vs B]
+**Recommendation**: [Choice and rationale]
+**Risks**: [Accepted risks]
+
+## 7. Open Questions
+| Question | Impact | Priority |
+|----------|--------|----------|
+| [Question] | [Effect] | H/M/L |
+````
 
 ## Compact Summary Output
 

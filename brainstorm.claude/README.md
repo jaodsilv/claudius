@@ -52,7 +52,11 @@ Rounds based on depth:
 2. **Normal**: 5 rounds (~30-60 min)
 3. **Deep**: 8 rounds (~60-120 min)
 
-### Phase 2: Domain Exploration
+### Phases 2-4: Parallel Analysis
+
+**Note**: Phases 2, 3, and 4 execute in parallel for efficiency.
+
+#### Phase 2: Domain Exploration
 
 The domain explorer researches:
 
@@ -61,7 +65,7 @@ The domain explorer researches:
 3. User expectations
 4. Compliance considerations
 
-### Phase 3: Technical Analysis
+#### Phase 3: Technical Analysis
 
 The technical analyst evaluates:
 
@@ -70,7 +74,7 @@ The technical analyst evaluates:
 3. Technology recommendations
 4. Complexity estimation
 
-### Phase 4: Constraint Analysis
+#### Phase 4: Constraint Analysis
 
 The constraint analyst identifies:
 
@@ -78,6 +82,15 @@ The constraint analyst identifies:
 2. Business constraints
 3. Resource constraints
 4. Trade-offs and conflicts
+
+### Phase 4.5: Analysis Synthesis
+
+The analysis synthesizer merges outputs from the parallel analysis phases:
+
+1. Cross-references domain, technical, and constraint findings
+2. Identifies conflicts and overlaps between analyses
+3. Surfaces unified gaps and open questions
+4. Creates prioritized recommendations for requirements phase
 
 ### Phase 5: Requirements Synthesis
 
@@ -213,4 +226,4 @@ MIT License - see repository for details.
 
 ## Author
 
-João da Silva - [GitHub](https://github.com/jaodsilv)
+Joao da Silva - [GitHub](https://github.com/jaodsilv)

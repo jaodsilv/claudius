@@ -61,6 +61,86 @@ For each constraint identified, evaluate these properties:
 
 ### Example 1: Technical Performance Constraint
 
-- **Impact**: High (affects go-to-market)
-- **Negotiability**: Soft (could negotiate with stakeholders)
-- **Mitigation**: MVP approach, phased rollout, parallel workstreams, cut low-priority featur
+**Constraint**: API response time must be under 100ms for 99th percentile
+
+| Property | Value |
+|----------|-------|
+| Type | Technical (Performance) |
+| Source | Technical requirement from architecture review |
+| Impact | High (affects user experience and SLA) |
+| Negotiability | Soft (could negotiate to 150ms with stakeholders) |
+| Validation | Load testing and production monitoring |
+| Mitigation | Caching, CDN, database optimization, async processing |
+
+### Example 2: Business Timeline Constraint
+
+**Constraint**: MVP must launch by Q4 to capture holiday market
+
+| Property | Value |
+|----------|-------|
+| Type | Business (Timeline) |
+| Source | Executive stakeholder requirement |
+| Impact | High (affects go-to-market) |
+| Negotiability | Soft (could negotiate with stakeholders) |
+| Validation | Stakeholder confirmation |
+| Mitigation | MVP approach, phased rollout, parallel workstreams, cut low-priority features |
+
+### Example 3: Resource Skills Constraint
+
+**Constraint**: Team has no experience with GraphQL
+
+| Property | Value |
+|----------|-------|
+| Type | Resource (Skills) |
+| Source | Team assessment |
+| Impact | Medium (affects development speed) |
+| Negotiability | Soft (can be addressed with training or hiring) |
+| Validation | Skills inventory review |
+| Mitigation | Training program, hire contractor, use REST alternative |
+
+### Example 4: Environmental Network Constraint
+
+**Constraint**: Solution must work on low-bandwidth connections (< 1 Mbps)
+
+| Property | Value |
+|----------|-------|
+| Type | Environmental (Network) |
+| Source | User research in target market |
+| Impact | High (core functionality affected) |
+| Negotiability | Hard (user environment is fixed) |
+| Validation | Network simulation testing |
+| Mitigation | Offline-first architecture, progressive loading, compressed assets |
+
+## Constraint Interaction Patterns
+
+Constraints often interact and compound. Common patterns include:
+
+### Conflicting Constraints
+
+**Example**: "Fast launch" (Timeline) vs "High quality" (Technical)
+
+**Resolution approaches**:
+1. Prioritize one over the other
+2. Find middle ground (MVP with quality core)
+3. Renegotiate one constraint
+4. Add resources to satisfy both
+
+### Compounding Constraints
+
+**Example**: "Limited budget" + "Short timeline" + "Small team"
+
+**Impact**: Severely limits scope and quality
+**Resolution**: Focus on absolute minimum viable scope
+
+### Enabling Constraints
+
+**Example**: "Must use cloud" enables "Easy scaling"
+
+**Impact**: One constraint simplifies satisfying another
+**Resolution**: Leverage positive interactions
+
+## Related Documentation
+
+- See `trade-off-patterns.md` for resolution strategies
+- Reference technical architecture for feasibility assessment
+- Consult stakeholder requirements for negotiability assessment

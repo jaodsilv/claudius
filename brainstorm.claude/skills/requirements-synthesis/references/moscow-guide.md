@@ -297,4 +297,4 @@ Before finalizing prioritization:
 - See `smart-criteria.md` for requirement quality validation
 - Reference project roadmap for version planning
 - Consult technical architecture for feasibility assessment
-- Review resource plan for capacity evaluati
+- Review resource plan for capacity evaluation

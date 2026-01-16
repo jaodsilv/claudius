@@ -21,9 +21,11 @@ properties:
 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
-## Execution Checklist
+## Skills Used
 
-Apply Skill(brainstorm:workflow-validation) for session state validation.
+- `workflow-validation` - Gate check criteria and session state validation
+
+## Execution Checklist
 
 ### Step 1: Validate Session
 

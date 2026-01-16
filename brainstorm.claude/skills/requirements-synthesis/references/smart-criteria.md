@@ -24,8 +24,8 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 - Are all terms and conditions explicitly stated?
 
 **Anti-patterns**:
-- "The system should be fast" → ❌ Too vague
-- "The system shall load pages in under 2 seconds" → ✅ Specific
+- "The system should be fast" → Vague
+- "The system shall load pages in under 2 seconds" → Specific
 
 **Best Practices**:
 - Use "shall" for mandatory requirements
@@ -43,8 +43,8 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 - Can acceptance be objectively verified?
 
 **Anti-patterns**:
-- "User experience should be good" → ❌ Not measurable
-- "API response time shall not exceed 200ms for 95th percentile" → ✅ Measurable
+- "User experience should be good" → Not measurable
+- "API response time shall not exceed 200ms for 95th percentile" → Measurable
 
 **Best Practices**:
 - Define success metrics (response time, error rate, throughput)
@@ -63,8 +63,8 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 - Have similar requirements been implemented before?
 
 **Anti-patterns**:
-- "All queries shall return results in <1ms" (without sufficient infrastructure) → ❌ Unachievable
-- "Mobile app shall work on all devices from 2010 onwards" → ❌ May be impractical
+- "All queries shall return results in <1ms" (without sufficient infrastructure) → Unachievable
+- "Mobile app shall work on all devices from 2010 onwards" → May be impractical
 
 **Best Practices**:
 - Validate against technical constraints
@@ -84,8 +84,8 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 - Would removing it impact the product's value?
 
 **Anti-patterns**:
-- "The system shall support 47 languages" (for a regional product) → ❌ Not relevant
-- "Users shall be able to download their data" (supporting privacy goals) → ✅ Relevant
+- "The system shall support 47 languages" (for a regional product) → Not relevant
+- "Users shall be able to download their data" (supporting privacy goals) → Relevant
 
 **Best Practices**:
 - Map requirements to user stories or business goals
@@ -105,8 +105,8 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 - Would a developer know when they're done?
 
 **Anti-patterns**:
-- "The system shall be continuously improved" → ❌ No defined scope
-- "FR-001: User authentication for mobile app v2.0" → ✅ Time-bound and scoped
+- "The system shall be continuously improved" → No defined scope
+- "FR-001: User authentication for mobile app v2.0" → Time-bound and scoped
 
 **Best Practices**:
 - Define version or release scope
@@ -127,4 +127,85 @@ For each requirement, verify:
 
 ## Examples
 
-### ❌ Poor Requirement
+### Poor Requirement (Fails SMART)
+
+**Original**: "The system should be user-friendly and fast."
+
+**Issues**:
+- **S**: "User-friendly" is vague
+- **M**: "Fast" has no measurable threshold
+- **A**: Cannot assess without specifics
+- **R**: No connection to user needs stated
+- **T**: No scope or timeline
+
+### Improved Requirement (Passes SMART)
+
+**Revised**: "FR-042: The checkout flow shall complete in 3 steps or fewer, with page load times under 2 seconds on 3G connections, to reduce cart abandonment for mobile users in v2.0."
+
+**Validation**:
+- **S**: "3 steps or fewer", "under 2 seconds", "3G connections" - specific
+- **M**: Step count and load time are measurable
+- **A**: 2 seconds on 3G is realistic with optimization
+- **R**: "reduce cart abandonment for mobile users" - user need
+- **T**: "v2.0" - scoped to release
+
+### More Examples
+
+**Requirement**: "FR-015: The API shall support OAuth 2.0 authentication with token refresh, returning 401 Unauthorized for invalid tokens within 50ms."
+
+| Criterion | Assessment |
+|-----------|------------|
+| Specific | OAuth 2.0, token refresh, 401 response - clear |
+| Measurable | 50ms response time threshold |
+| Achievable | Standard OAuth implementation |
+| Relevant | Security requirement for API access |
+| Time-bound | Implicit scope to API v1 |
+
+**Requirement**: "NFR-003: The system shall maintain 99.9% uptime during business hours (8am-8pm EST) with no more than 3 planned maintenance windows per quarter."
+
+| Criterion | Assessment |
+|-----------|------------|
+| Specific | 99.9% uptime, business hours defined, maintenance windows |
+| Measurable | Uptime percentage, maintenance count |
+| Achievable | 99.9% is a common SLA target |
+| Relevant | Availability requirement for business users |
+| Time-bound | Per quarter, business hours scope |
+
+## SMART Validation Template
+
+Use this template to validate each requirement:
+
+```markdown
+## Requirement: [ID]
+**Statement**: [Full requirement text]
+
+### SMART Validation
+| Criterion | Pass/Fail | Evidence |
+|-----------|-----------|----------|
+| Specific | | |
+| Measurable | | |
+| Achievable | | |
+| Relevant | | |
+| Time-bound | | |
+
+### Issues Found
+[List any SMART criteria failures]
+
+### Recommended Revision
+[Improved requirement text if needed]
+```
+
+## Common Pitfalls
+
+1. **Vague adjectives**: "fast", "easy", "intuitive" - replace with metrics
+2. **Missing acceptance criteria**: Add testable conditions
+3. **Scope creep**: Define boundaries explicitly
+4. **Orphan requirements**: Always link to user needs or business goals
+5. **Unrealistic expectations**: Validate feasibility early
+6. **Open-ended scope**: Always define version or release boundaries
+
+## Related Documentation
+
+- See `moscow-guide.md` for prioritization framework
+- Reference project constraints for achievability assessment
+- Consult stakeholder requirements for relevance validation
