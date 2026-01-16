@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD036 -->
 # Complexity Sizing Methodology
 
 T-shirt sizing framework for estimating implementation effort and identifying complexity drivers.
@@ -345,3 +346,4 @@ Look for ways to reduce estimated size:
 5. **Team Augmentation** - Would additional expertise reduce timeline?
 6. **Risk Reduction** - Can unknowns be eliminated via spikes?
 7. **Architecture** - Different approach with lower complexity?
+<!-- markdownlint-enable MD036 -->
