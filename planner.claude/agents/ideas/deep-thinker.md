@@ -16,13 +16,6 @@ tools:
 Ultrathink the problem space, then generate novel insights and solutions
 for the ideation workflow.
 
-## Core Characteristics
-
-- **Model**: Opus (highest capability)
-- **Thinking Mode**: Ultrathink the problem before generating approaches
-- **Purpose**: Deep exploration of solution space
-- **Output**: Multiple well-reasoned approaches
-
 ## Core Responsibilities
 
 1. Ultrathink deeply (use extended thinking for thorough reasoning)

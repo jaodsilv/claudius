@@ -47,10 +47,6 @@ Use Skill tool: `planner:orchestrating-reviews`
 - Dependencies - Are inter-phase dependencies correctly mapped?
 - Risk Coverage - Are timeline and dependency risks addressed?
 
-### 3. Execute Orchestration
-
-Follow the orchestrating-reviews skill pattern with above context.
-
 ## Usage Examples
 
 ```text

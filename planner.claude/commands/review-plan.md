@@ -47,10 +47,6 @@ Use Skill tool: `planner:orchestrating-reviews`
 - Clarity - Is the plan unambiguous and actionable?
 - Risk Coverage - Are risks identified and mitigated?
 
-### 3. Execute Orchestration
-
-Follow the orchestrating-reviews skill pattern with above context.
-
 ## Usage Examples
 
 ```text

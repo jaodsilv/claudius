@@ -47,10 +47,6 @@ Use Skill tool: `planner:orchestrating-reviews`
 - Consistency - Are there no conflicting requirements?
 - Traceability - Can requirements be linked to goals and tests?
 
-### 3. Execute Orchestration
-
-Follow the orchestrating-reviews skill pattern with above context.
-
 ## Usage Examples
 
 ```text

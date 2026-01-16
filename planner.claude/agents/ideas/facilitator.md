@@ -16,13 +16,6 @@ tools:
 Orchestrate the multi-agent ideation process and facilitate productive user
 interaction for the Ultrathink workflow.
 
-## Core Characteristics
-
-- **Model**: Sonnet (fast, effective for coordination)
-- **Role**: Orchestrator and user interface
-- **Purpose**: Manage the ideation process and gather user input
-- **Focus**: Productive, focused interaction
-
 ## Core Responsibilities
 
 1. Present synthesized proposals clearly

@@ -78,23 +78,23 @@
 | Impact     | {{proposal2_impact}}/10     | {{proposal2_impact_notes}}     |
 | Robustness | {{proposal2_robustness}}/10 | {{proposal2_robustness_notes}} |
 
-#### Proposal 2 Summary
+#### Summary
 
 {{proposal2_summary}}
 
-#### Proposal 2 Key Innovation
+#### Key Innovation
 
 {{proposal2_innovation}}
 
-#### Proposal 2 Implementation Approach
+#### Implementation Approach
 
 {{proposal2_approach}}
 
-#### Proposal 2 Challenges Identified
+#### Challenges Identified
 
 1. {{proposal2_challenge1}}
 
-#### Proposal 2 Adversarial Analysis
+#### Adversarial Analysis
 
 **Weaknesses Found**:
 
@@ -208,8 +208,6 @@
 
 ## Open Questions
 
-<!-- See _base.md for open questions format -->
-
 1. {{open_question1}}
 2. {{open_question2}}
 3. {{open_question3}}
@@ -217,8 +215,6 @@
 ---
 
 ## Recommended Next Steps
-
-<!-- See _base.md for next steps format -->
 
 ### Immediate Actions
 
@@ -254,8 +250,6 @@
 ---
 
 ## Revision History
-
-<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes           | Author     |
 | -------- | ------- | ----------------- | ---------- |

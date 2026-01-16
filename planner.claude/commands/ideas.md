@@ -110,7 +110,12 @@ For each round (1 to {{rounds}}):
 
 1. Mark Round N as in_progress
 
-2. Launch ideation agents in parallel:
+2. Check mode and launch appropriate agents:
+
+   **If mode is "full" (default)**: Launch both agents in parallel
+   **If mode is "focused"**: Launch only Deep Thinker (skip Innovation Explorer)
+
+3. Launch ideation agents:
 
    **Deep Thinker (Opus with extended thinking)**:
 

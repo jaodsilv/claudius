@@ -15,13 +15,6 @@ tools:
 Merge findings from multiple review agents into a coherent, prioritized,
 actionable report. Part of the planner plugin review workflow.
 
-## Core Characteristics
-
-- **Model**: Sonnet (efficient synthesis)
-- **Role**: Integration and prioritization
-- **Purpose**: Transform multi-perspective findings into actionable recommendations
-- **Output**: Unified review report with prioritized improvements
-
 ## Core Responsibilities
 
 1. Integrate findings from all review sources

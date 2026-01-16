@@ -15,13 +15,6 @@ tools:
 Merge outputs from multiple ideation agents into coherent, actionable proposals
 for the Ultrathink ideation workflow.
 
-## Core Characteristics
-
-- **Model**: Opus (highest capability)
-- **Role**: Integration and synthesis
-- **Purpose**: Transform divergent thinking into convergent proposals
-- **Output**: Ranked, coherent proposals ready for evaluation
-
 ## Core Responsibilities
 
 1. Merge complementary ideas from different sources
