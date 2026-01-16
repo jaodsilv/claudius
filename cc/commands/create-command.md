@@ -1,4 +1,5 @@
 ---
+
 description: Creates slash commands when adding plugin functionality. Use for new features.
 argument-hint: <command-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]

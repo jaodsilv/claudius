@@ -1,9 +1,10 @@
 ---
-name: gitx:workflow-coordinator
+
+name: workflow-coordinator
 description: >-
   Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, and development phases.
 model: opus
-tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill
+tools: Task, TodoWrite, AskUserQuestion, Read, Write, Skill, Skill(gitx:syncing-worktrees), Skill(gitx:naming-branches), Skill(gitx:naming-worktrees)
 color: purple
 ---
 
@@ -23,9 +24,9 @@ Ultrathink phase transitions, then proceed:
 
 ## Workflow Phases
 
-1. Issue Analysis (gitx:issue-analyzer)
-2. Codebase Exploration (gitx:codebase-navigator)
-3. Implementation Planning (gitx:implementation-planner)
+1. Issue Analysis (gitx:fix-issue:issue-analyzer)
+2. Codebase Exploration (gitx:fix-issue:codebase-navigator)
+3. Implementation Planning (gitx:fix-issue:implementation-planner)
 4. User Approval (quality gate)
 5. Worktree Setup
 6. Development Delegation
@@ -52,10 +53,10 @@ TodoWrite:
 
 Mark "Analyze issue requirements" as in_progress.
 
-Launch gitx:issue-analyzer agent:
+Launch gitx:fix-issue:issue-analyzer agent:
 
 ```text
-Task (gitx:issue-analyzer):
+Task (gitx:fix-issue:issue-analyzer):
   Analyze issue #[number] to extract:
   - Requirements (explicit and implicit)
   - Acceptance criteria
@@ -69,10 +70,10 @@ Wait for results, then mark complete.
 
 Mark "Explore codebase for relevant files" as in_progress.
 
-Launch gitx:codebase-navigator agent:
+Launch gitx:fix-issue:codebase-navigator agent:
 
 ```text
-Task (gitx:codebase-navigator):
+Task (gitx:fix-issue:codebase-navigator):
   Using these key terms from issue analysis:
   [key terms]
 
@@ -89,10 +90,10 @@ Wait for results, then mark complete.
 
 Mark "Create implementation plan" as in_progress.
 
-Launch gitx:implementation-planner agent:
+Launch gitx:fix-issue:implementation-planner agent:
 
 ```text
-Task (gitx:implementation-planner):
+Task (gitx:fix-issue:implementation-planner):
   Create implementation plan based on:
 
   Issue Analysis:
@@ -135,48 +136,17 @@ Handle user response:
 Mark "Set up worktree" as in_progress.
 
 Determine branch name from issue analysis:
+
 - Bug → `bugfix/issue-[number]-[slug]`
 - Feature → `feature/issue-[number]-[slug]`
 - Default → `feature/issue-[number]-[slug]`
 
-Sync repository and create worktree:
+Sync repository using Skill tool with gitx:syncing-worktrees.
+The skill handles detached HEAD detection, fetching, stashing, pulling, and restoring.
+
+After successful sync, create the worktree:
 
 ```bash
-# Verify not in detached HEAD state
-CURRENT_BRANCH=$(git branch --show-current)
-if [ -z "$CURRENT_BRANCH" ]; then
-  echo "Error: Cannot create worktree from detached HEAD state."
-  echo "Please checkout a branch first: git checkout <branch-name>"
-  exit 1
-fi
-
-# Fetch latest from origin
-git fetch origin
-
-# Stash local changes if working directory is dirty
-STASHED=false
-if [ -n "$(git status --porcelain)" ]; then
-  git stash --include-untracked
-  STASHED=true
-fi
-
-# Pull latest on current branch
-if ! git pull --rebase origin "$CURRENT_BRANCH"; then
-  echo "Error: Pull failed. Please resolve conflicts manually."
-  if [ "$STASHED" = true ]; then
-    echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
-  fi
-  exit 1
-fi
-
-# Pop stash if we stashed earlier (conflicts are non-fatal, just warn user)
-if [ "$STASHED" = true ]; then
-  if ! git stash pop; then
-    echo "Warning: Stash pop had conflicts. Your changes are still in stash."
-    echo "Continuing with worktree creation. Run 'git stash pop' manually later."
-  fi
-fi
-
 # Create worktree as sibling
 git worktree add -b [branch-name] ../[directory-name]
 ```
@@ -289,6 +259,8 @@ Essential context for Issue #[number]:
 ```
 
 ## Output Format
+
+For agent outputs, use templates from `shared/output-templates/fix-issue-output.md`.
 
 Throughout the workflow, provide status updates:
 

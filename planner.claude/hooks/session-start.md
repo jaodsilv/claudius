@@ -1,4 +1,5 @@
 ---
+
 type: SessionStart
 description: Check for optional dependencies and inform user of available capabilities
 ---

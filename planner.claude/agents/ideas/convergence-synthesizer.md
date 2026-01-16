@@ -4,9 +4,9 @@ description: Merges multi-agent outputs into coherent proposals. Invoked during 
 model: opus
 color: gold
 tools:
-  - Read
-  - Write
-  - Task
+- Read
+- Write
+- Task
 ---
 
 # Convergence Synthesizer Agent

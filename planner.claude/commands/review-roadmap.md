@@ -1,4 +1,5 @@
 ---
+
 description: Reviews roadmaps with multi-agent orchestration against a goal. Use for validating roadmap alignment.
 allowed-tools: Task, Read, Glob, Grep, AskUserQuestion, TodoWrite
 argument-hint: <goal> [--roadmap-path <path>] [--mode <quick|thorough>]

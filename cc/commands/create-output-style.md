@@ -1,4 +1,5 @@
 ---
+
 description: Creates output-styles when defining consistent formatting patterns.
 argument-hint: <style-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]

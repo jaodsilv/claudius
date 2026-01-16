@@ -1,4 +1,5 @@
 ---
+
 name: output-style-creator
 description: Creates output-styles with formatting rules. Invoked when user needs consistent output formatting.
 model: haiku

@@ -4,9 +4,9 @@ description: Maps issue dependencies and blocking relationships. Invoked when id
 model: sonnet
 color: gray
 tools:
-  - Bash
-  - Read
-  - Task
+- Bash
+- Read
+- Task
 ---
 
 # GitHub Issue Relationship Mapper

@@ -4,10 +4,10 @@ description: Analyzes planning artifacts for structural completeness and best pr
 model: haiku
 color: cyan
 tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
+- Read
+- Glob
+- Grep
+- Task
 ---
 
 # Review Analyzer Agent

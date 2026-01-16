@@ -1,4 +1,5 @@
 ---
+
 description: Gather and structure project requirements, optionally using brainstorm-pro
 allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TodoWrite
 argument-hint: <goal> [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]

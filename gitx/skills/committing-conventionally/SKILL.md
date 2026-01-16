@@ -1,5 +1,6 @@
 ---
 name: gitx:committing-conventionally
+version: 1.0.0
 description: >-
   Applies project-specific conventional commit conventions for this repository.
   Invoked when creating git commits, reviewing commit history, or planning changes.

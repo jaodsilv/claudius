@@ -4,11 +4,11 @@ description: Generates novel insights using Opus extended thinking. Invoked for 
 model: opus
 color: magenta
 tools:
-  - Read
-  - Glob
-  - Grep
-  - WebSearch
-  - Task
+- Read
+- Glob
+- Grep
+- WebSearch
+- Task
 ---
 
 # Deep Thinker Agent

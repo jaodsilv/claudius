@@ -4,9 +4,9 @@ description: Fetches and analyzes GitHub issues for planning and prioritization.
 model: haiku
 color: gray
 tools:
-  - Bash
-  - Read
-  - Grep
+- Bash
+- Read
+- Grep
 ---
 
 # GitHub Issue Analyzer

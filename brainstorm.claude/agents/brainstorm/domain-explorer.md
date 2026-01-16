@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-domain-explorer
 description: >
   Researches industry practices, competitors, and domain knowledge.

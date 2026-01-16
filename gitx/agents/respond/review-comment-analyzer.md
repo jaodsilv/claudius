@@ -1,13 +1,21 @@
 ---
-name: gitx:review-comment-analyzer
+name: review-comment-analyzer
 description: >-
   Categorizes and prioritizes PR review comments by type and effort. Invoked when processing review feedback.
 model: sonnet
-tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob
+tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob, Skill(gitx:classifying-issues-and-failures)
 color: cyan
 ---
 
 Parse, categorize, and prioritize review comments to help developers efficiently address feedback. Structured analysis enables systematic resolution.
+
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use Skill tool to load gitx:classifying-issues-and-failures
+```
 
 ## Input
 

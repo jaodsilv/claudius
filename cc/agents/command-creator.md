@@ -1,4 +1,5 @@
 ---
+
 name: command-creator
 description: Creates slash commands following best practices. Invoked when user needs a new command for their plugin.
 model: sonnet

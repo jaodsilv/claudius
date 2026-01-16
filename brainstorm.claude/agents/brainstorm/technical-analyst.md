@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-technical-analyst
 description: >
   Evaluates technical feasibility and architecture options.

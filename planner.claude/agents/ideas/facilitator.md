@@ -4,11 +4,11 @@ description: Orchestrates the Ultrathink ideation process and manages user inter
 model: sonnet
 color: cyan
 tools:
-  - Read
-  - Write
-  - Task
-  - AskUserQuestion
-  - TodoWrite
+- Read
+- Write
+- Task
+- AskUserQuestion
+- TodoWrite
 ---
 
 # Ideas Facilitator Agent

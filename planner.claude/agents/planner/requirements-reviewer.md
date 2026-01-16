@@ -4,11 +4,11 @@ description: Analyzes requirements for quality, clarity, and testability. Invoke
 model: sonnet
 color: orange
 tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
+- Read
+- Glob
+- Grep
+- Task
+- AskUserQuestion
 ---
 
 # Requirements Reviewer

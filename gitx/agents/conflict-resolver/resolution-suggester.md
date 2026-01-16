@@ -1,5 +1,6 @@
 ---
-name: gitx:resolution-suggester
+
+name: resolution-suggester
 description: >-
   Generates specific code resolutions for git conflicts with confidence levels. Invoked after conflict analysis to suggest solutions.
 model: sonnet
@@ -13,7 +14,7 @@ Generate specific code resolutions for git conflicts based on analysis of both s
 
 Receive:
 
-1. Conflict analysis from gitx:conflict-analyzer
+1. Conflict analysis from gitx:conflict-resolver:conflict-analyzer
 2. File contents with conflicts
 3. Context about the merge/rebase operation
 
@@ -90,7 +91,7 @@ Specify tests that verify the resolution: unit tests for affected functions, int
 **Confidence**: High | Medium | Low
 
 **Original Conflict**:
-```typescript
+```text
 <<<<<<< HEAD
 [ours code]
 =======
@@ -100,7 +101,7 @@ Specify tests that verify the resolution: unit tests for affected functions, int
 
 **Suggested Resolution**:
 
-```typescript
+```text
 [resolved code - ready to paste]
 ```
 

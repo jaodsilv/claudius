@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-specification-writer
 description: >
   Produces consolidated specification document from brainstorming outputs.

@@ -1,7 +1,9 @@
 ---
+
 description: Create a GitHub issue from informal description
 argument-hint: "<description> [-l labels] [-a assignee] [-t template] [-m milestone] [--no-preview]"
 allowed-tools: Bash(gh:*), Bash(ls:*), Task, AskUserQuestion, TodoWrite
+model: sonnet
 ---
 
 # Create Issue
@@ -40,7 +42,7 @@ with available templates plus "No template" option.
 Launch issue drafter agent:
 
 ```text
-Task (gitx:issue-drafter):
+Task (gitx:create-issue:issue-drafter):
   Description: [user's informal description]
   Template: [template name or "none"]
 ```

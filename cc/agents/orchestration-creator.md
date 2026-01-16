@@ -1,4 +1,5 @@
 ---
+
 name: orchestration-creator
 description: Creates orchestration commands with phase coordination. Invoked when implementing multi-agent workflows.
 model: opus

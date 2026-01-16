@@ -4,11 +4,11 @@ description: Reviews plans, roadmaps, and prioritization documents for quality a
 model: sonnet
 color: yellow
 tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
+- Read
+- Glob
+- Grep
+- Task
+- AskUserQuestion
 ---
 
 # Plan Reviewer

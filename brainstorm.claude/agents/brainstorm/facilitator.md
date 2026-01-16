@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm-facilitator
 description: >
   Drives Socratic dialogue for requirements discovery.
