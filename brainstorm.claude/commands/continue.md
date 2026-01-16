@@ -21,9 +21,11 @@ properties:
 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
-## Skills Used
+## Skill Reference
 
-- `workflow-validation` - Gate check criteria and session state validation
+Use the `workflow-validation` skill for gate check criteria and session state validation:
+
+- `SKILL.md` - Gate criteria and validation patterns between phases
 
 ## Execution Checklist
 

@@ -54,9 +54,11 @@ Rounds based on depth:
 
 ### Phases 2-4: Parallel Analysis
 
-**Note**: Phases 2, 3, and 4 execute in parallel for efficiency.
+**Important**: Phases 2, 3, and 4 execute **simultaneously in parallel** using the Task tool
+to maximize efficiency. All three agents run at the same time, and the workflow waits for
+all three to complete before proceeding to Phase 4.5.
 
-#### Phase 2: Domain Exploration
+#### Phase 2: Domain Exploration (runs in parallel)
 
 The domain explorer researches:
 
@@ -65,7 +67,7 @@ The domain explorer researches:
 3. User expectations
 4. Compliance considerations
 
-#### Phase 3: Technical Analysis
+#### Phase 3: Technical Analysis (runs in parallel)
 
 The technical analyst evaluates:
 
@@ -74,7 +76,7 @@ The technical analyst evaluates:
 3. Technology recommendations
 4. Complexity estimation
 
-#### Phase 4: Constraint Analysis
+#### Phase 4: Constraint Analysis (runs in parallel)
 
 The constraint analyst identifies:
 

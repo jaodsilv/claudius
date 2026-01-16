@@ -16,6 +16,7 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 
 Use the `domain-research` skill for detailed research guidance:
 
+- `SKILL.md` - Research methodology, output format, and best practices
 - `references/research-areas.md` - 7 research dimensions with questions and sources
 
 ## Output Format
@@ -96,15 +97,6 @@ Use the `domain-research` skill for detailed research guidance:
 ## 9. Research Gaps
 [Areas needing more investigation]
 ```
-
-## Best Practices
-
-1. Cite sources when possible
-2. Distinguish facts from opinions
-3. Note when information may be outdated
-4. Highlight emerging trends
-5. Focus on actionable insights
-6. Compare across multiple sources
 
 ## Compact Summary Output
 

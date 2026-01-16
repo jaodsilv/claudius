@@ -17,11 +17,16 @@ Validates brainstorming phase outputs before proceeding to next phase. Use when 
 - When determining if early exit is appropriate
 - When quality concerns arise during execution
 
+## References
+
+- `references/synthesis-templates.md` - Output templates for analysis synthesis
+
 ## Validation Gates
 
 ### Gate 1: Post-Dialogue (After Phase 1)
 
 **Criteria**:
+
 - Clarity level is Medium or High
 - At least 3 key insights captured
 - Problem statement is articulated
@@ -33,6 +38,7 @@ Validates brainstorming phase outputs before proceeding to next phase. Use when 
 ### Gate 2: Post-Analysis (After Phases 2-4)
 
 **Criteria**:
+
 - All three analysis phases completed
 - Each analysis has at least 2 actionable findings
 - No critical gaps identified
@@ -44,6 +50,7 @@ Validates brainstorming phase outputs before proceeding to next phase. Use when 
 ### Gate 3: Post-Synthesis (After Phase 4.5)
 
 **Criteria**:
+
 - Unified context is coherent
 - Conflicts between analyses are documented
 - Recommendations align across analyses
@@ -55,6 +62,7 @@ Validates brainstorming phase outputs before proceeding to next phase. Use when 
 ### Gate 4: Post-Requirements (After Phase 5)
 
 **Criteria**:
+
 - At least 5 requirements documented
 - All requirements have SMART validation criteria
 - MoSCoW prioritization applied
@@ -66,6 +74,7 @@ Validates brainstorming phase outputs before proceeding to next phase. Use when 
 ### Gate 5: Post-Specification (After Phase 6)
 
 **Criteria**:
+
 - Document is complete (all required sections)
 - No placeholder content remaining
 - Cross-references valid
@@ -93,6 +102,7 @@ For each gate, perform these steps:
 ## Integration with Start Command
 
 The `start` command invokes this skill at phase transitions to:
+
 - Verify quality before proceeding
 - Capture gaps early
 - Enable early exit when appropriate
@@ -102,14 +112,14 @@ The `start` command invokes this skill at phase transitions to:
 
 ```text
 Phase 1 (Dialogue)
-    ↓ [Gate 1]
+    | [Gate 1]
 Phases 2-4 (Parallel Analysis)
-    ↓ [Gate 2]
+    | [Gate 2]
 Phase 4.5 (Synthesis)
-    ↓ [Gate 3]
+    | [Gate 3]
 Phase 5 (Requirements)
-    ↓ [Gate 4]
+    | [Gate 4]
 Phase 6 (Specification)
-    ↓ [Gate 5]
+    | [Gate 5]
 Complete
 ```

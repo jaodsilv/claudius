@@ -28,9 +28,13 @@ properties:
 
 Arguments: `<arguments>$ARGUMENTS</arguments>`
 
-## Skills Used
+## Skill Reference
 
-- `workflow-validation` - Gate check criteria and validation patterns between workflow phases
+Use the `workflow-validation` skill for gate checks between phases:
+
+- Gate criteria (1-5)
+- Validation patterns
+- Phase dependencies
 
 ## Initialization Checklist
 
@@ -109,21 +113,13 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ### Gate 1: Post-Dialogue Validation
 
-**Check the following before proceeding to analysis**:
-
-- [ ] Clarity level from facilitator is Medium or High
-- [ ] At least 3 key insights captured in batch summary
-- [ ] Problem statement is clearly articulated
-- [ ] Target users/personas are identified
-
-**If any check fails**: Run an additional facilitator batch to clarify
-**If all checks pass**: Proceed to Phases 2-4 (Parallel Analysis)
+Apply Gate 1 criteria from `workflow-validation` skill. If any check fails, run an additional facilitator batch.
 
 ### Phases 2-4: Parallel Analysis
 
 **Execute domain, technical, and constraint analysis in parallel using the Task tool.**
 
-Use Task tool to invoke **IN PARALLEL**:
+Use Task tool to invoke **IN PARALLEL** (all three agents simultaneously):
 
 1. **Domain Exploration** - `brainstorm:domain-explorer`:
 
@@ -166,16 +162,7 @@ Use Task tool to invoke **IN PARALLEL**:
 
 ### Gate 2: Post-Analysis Validation
 
-**Check the following before proceeding to synthesis**:
-
-- [ ] Domain analysis contains at least 2 actionable findings
-- [ ] Technical analysis contains at least 2 actionable findings
-- [ ] Constraint analysis contains at least 2 actionable findings
-- [ ] No critical gaps or errors in any analysis
-- [ ] Risks and constraints are documented
-
-**If any check fails**: Identify which analysis needs attention and rerun as needed
-**If all checks pass**: Proceed to Phase 4.5 (Analysis Synthesis)
+Apply Gate 2 criteria from `workflow-validation` skill. If any check fails, identify incomplete analyses and rerun.
 
 ### Phase 4.5: Analysis Synthesis
 
@@ -198,15 +185,7 @@ Returns: Unified analysis context for requirements synthesis
 
 ### Gate 3: Post-Synthesis Validation
 
-**Check the following before proceeding to requirements**:
-
-- [ ] Unified context is coherent and well-integrated
-- [ ] Conflicts between analyses are documented
-- [ ] Recommendations align across analyses
-- [ ] Clear direction is identified for requirements synthesis
-
-**If any check fails**: Re-run synthesis with clarifications from user
-**If all checks pass**: Proceed to Phase 5 (Requirements Synthesis)
+Apply Gate 3 criteria from `workflow-validation` skill. If any check fails, re-run synthesis with clarifications.
 
 ### Phase 5: Requirements Synthesis
 
@@ -226,15 +205,7 @@ Returns: Structured requirements document
 
 ### Gate 4: Post-Requirements Validation
 
-**Check the following before proceeding to specification**:
-
-- [ ] At least 5 requirements documented
-- [ ] All requirements have SMART validation criteria
-- [ ] MoSCoW prioritization applied
-- [ ] Dependencies mapped between requirements
-
-**If any check fails**: Refine and consolidate requirements, then recheck
-**If all checks pass**: Proceed to Phase 6 (Specification Generation)
+Apply Gate 4 criteria from `workflow-validation` skill. If any check fails, refine and consolidate requirements.
 
 ### Phase 6: Specification Generation
 
@@ -256,15 +227,7 @@ Returns: Complete specification document
 
 ### Gate 5: Post-Specification Validation
 
-**Check the following before marking session complete**:
-
-- [ ] Document is complete (all required sections present)
-- [ ] No placeholder content remaining
-- [ ] Cross-references are valid
-- [ ] Executive summary is present and captures essence
-
-**If any check fails**: Refine specification to address gaps
-**If all checks pass**: Session complete and ready for use
+Apply Gate 5 criteria from `workflow-validation` skill. If any check fails, refine specification.
 
 ## Completion Output
 

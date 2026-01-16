@@ -137,8 +137,8 @@ D: Glossary
 
 Use the `brainstorming` skill templates for output formatting:
 
-- `skills/brainstorming/references/requirements-document.md`
-- `skills/brainstorming/references/session-summary.md`
+- `references/requirements-document.md`
+- `references/session-summary.md`
 
 ## Delivery
 

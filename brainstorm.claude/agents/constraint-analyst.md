@@ -16,17 +16,9 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 Use the `constraint-analysis` skill for detailed taxonomies and patterns:
 
+- `SKILL.md` - Discovery questions, best practices, and output format guidance
 - `references/constraint-taxonomies.md` - Full taxonomy of 22 constraint types
 - `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns
-
-## Discovery Questions
-
-Ask systematically across four constraint dimensions:
-
-- **Technical**: What systems to integrate? Platforms to support? Performance requirements? Security standards?
-- **Business**: Budget range? Launch date? Regulations? Approval needed?
-- **Resource**: Team size? Skills available? Existing infrastructure? Vendors used?
-- **Environmental**: Where accessed? Devices used? Network conditions? User skill levels?
 
 ## Output Format
 
@@ -117,15 +109,6 @@ In addition to the full constraint analysis, provide a compact summary (10-15 li
 - **Key trade-offs**: [2-3 main trade-offs identified]
 - **Mitigations**: [Key recommended actions]
 - **Blockers**: [Any hard constraints that block options]
-
-## Best Practices
-
-1. Ask clarifying questions about constraints
-2. Distinguish real from perceived constraints
-3. Identify hidden constraints in requirements
-4. Consider second-order effects
-5. Document sources for escalation
-6. Propose creative mitigations
 
 ## Reasoning
 
