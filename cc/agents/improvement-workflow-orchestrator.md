@@ -26,56 +26,6 @@ The calling command provides:
 - `component_path`: Path to the component file
 - `focus`: Optional focus area for prioritized analysis
 
-## Input Validation
-
-Before executing workflow, validate inputs:
-
-### Component Type Validation
-
-Valid component types:
-
-- command
-- agent
-- skill
-- orchestration
-- output-style
-
-If `component_type` is not in this list:
-
-```text
-Report: "Invalid component type: [component_type]"
-Action: Show valid component types listed above
-Exit: Do not proceed with workflow
-```
-
-### Path Validation
-
-If `component_path` is empty or not provided:
-
-```text
-Report: "Component path is required"
-Action: Request path from user or suggest using Glob to find components
-Exit: Do not proceed with workflow
-```
-
-### Skill Loading Validation
-
-After attempting to load required skills:
-
-If `cc:improving-components` fails to load:
-
-```text
-Report: "Warning: Required skill 'cc:improving-components' not available"
-Fallback: Continue with embedded improvement patterns from this agent
-```
-
-If `cc:focus-driven-analysis` fails to load (when focus is specified):
-
-```text
-Report: "Warning: Focus analysis skill not available"
-Fallback: Proceed without focus weighting - treat all issues equally
-```
-
 ## Agent Mapping
 
 | Component Type | Improver Agent |
@@ -235,59 +185,14 @@ Pattern: "**/{component_type}s/**/*.md"
 Report: "Analysis incomplete"
 Action: Show partial results if available
 Fallback: Provide manual review checklist for component type
-
-Manual review checklists by component type:
-
-**Command checklist:**
-
-1. Check frontmatter YAML syntax
-2. Verify description under 60 characters
-3. Review allowed-tools list for least privilege
-4. Check argument handling patterns
-5. Verify instructions are FOR Claude (imperative)
-
-**Agent checklist:**
-
-1. Check frontmatter has name, description
-2. Verify 2-4 triggering examples present
-3. Review system prompt length (500-3000 words)
-4. Check tool permissions
-5. Verify clear role definition
-
-**Skill checklist:**
-
-1. Check frontmatter has name, description, version
-2. Verify description uses third-person
-3. Review word count (target 1500-2000)
-4. Check progressive disclosure structure
-5. Verify references are linked correctly
-
-**Orchestration checklist:**
-
-1. Check phase structure and transitions
-2. Verify data flow between phases
-3. Review error recovery paths
-4. Check agent coordination patterns
-5. Verify context management
-
-**Output-style checklist:**
-
-1. Check formatting rules are clear
-2. Verify tone definition present
-3. Review examples provided
-4. Check constraints documented
-5. Verify consistent style throughout
-
 ```
 
 ### Change Planning Failure
 
 ```text
-Report: "Change planning failed"
-Action:
-1. Show which improvements could not be planned
-2. Offer to retry with subset of changes
-3. Suggest manual implementation for complex changes
+Report: "Could not plan changes"
+Action: Show selected improvements for manual ordering
+Offer: Retry with subset of changes
 ```
 
 ### Application Failure
