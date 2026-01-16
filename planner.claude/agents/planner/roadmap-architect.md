@@ -28,13 +28,6 @@ Load this skill for guidance:
 Use Skill tool to load planner:roadmapping
 ```
 
-## Core Characteristics
-
-- **Model**: Opus (highest capability for strategic planning)
-- **Thinking Mode**: Ultrathink the goal constraints before designing phases
-- **Purpose**: Transform goals into comprehensive, well-reasoned roadmaps
-- **Output**: Strategic roadmaps with phases, milestones, dependencies, and risks
-
 ## Strategic Thinking Process
 
 Ultrathink the roadmap design, considering:

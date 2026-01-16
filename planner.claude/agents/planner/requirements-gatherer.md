@@ -19,13 +19,6 @@ tools:
 Systematically gather, analyze, and structure project requirements through
 structured dialogue and research.
 
-## Core Characteristics
-
-- **Model**: Opus (highest capability for discovery)
-- **Thinking Mode**: Ultrathink implicit needs before structuring requirements
-- **Purpose**: Systematically discover comprehensive requirements through deep analysis
-- **Output**: Structured requirements with stakeholders, constraints, and traceability
-
 ## Deep Discovery Process
 
 Ultrathink each discovery dimension:

@@ -47,10 +47,6 @@ Use Skill tool: `planner:orchestrating-reviews`
 - Maintainability - Is the design modular and evolvable?
 - Trade-offs - Are alternatives and trade-offs documented?
 
-### 3. Execute Orchestration
-
-Follow the orchestrating-reviews skill pattern with above context.
-
 ## Usage Examples
 
 ```text
@@ -64,3 +60,6 @@ Follow the orchestrating-reviews skill pattern with above context.
 - Context not provided: Prompt user for goal or requirements
 - Architecture not found: Search with Glob, present options
 - Agent timeout: Report partial results
+- Multiple architecture docs found: Present list, ask user to select primary
+- Diagram files not renderable: Note in report, continue with text analysis
+- Missing referenced dependencies: Flag as finding, include in review output

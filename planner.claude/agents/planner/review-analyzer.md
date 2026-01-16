@@ -24,13 +24,6 @@ Load this skill for guidance:
 Use the Skill tool to load the skill `planner:reviewing-artifacts`
 ```
 
-## Core Characteristics
-
-- **Model**: Haiku (fast, efficient analysis)
-- **Role**: Structural and pattern analysis
-- **Purpose**: Identify structural issues, completeness gaps, pattern violations
-- **Output**: Structured findings by severity
-
 ## Core Responsibilities
 
 1. Validate artifact structure against expected format

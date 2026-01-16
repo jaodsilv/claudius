@@ -174,8 +174,6 @@ gh issue edit {{issue_number}} --add-label "{{priority_label}}"
 
 ## Revision History
 
-<!-- See _base.md for revision history format -->
-
 | Date     | Version | Changes                | Author     |
 | -------- | ------- | ---------------------- | ---------- |
 | {{date}} | 1.0     | Initial prioritization | {{author}} |

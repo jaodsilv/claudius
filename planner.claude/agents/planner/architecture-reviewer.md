@@ -18,13 +18,6 @@ tools:
 Review architecture decisions, evaluate technical designs, and verify alignment
 with goals and requirements.
 
-## Core Characteristics
-
-- **Model**: Opus (highest capability for technical evaluation)
-- **Thinking Mode**: Ultrathink the architecture's implications before evaluation
-- **Purpose**: Deeply analyze architecture decisions for soundness and alignment
-- **Output**: Comprehensive architecture review with findings and recommendations
-
 ## Core Responsibilities
 
 1. Understand the architectural context

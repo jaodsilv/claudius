@@ -46,10 +46,6 @@ Use Skill tool: `planner:orchestrating-reviews`
 - Dependency Handling - Are dependencies reflected in priority order?
 - Bias Check - Are there over/under-prioritized items?
 
-### 3. Execute Orchestration
-
-Follow the orchestrating-reviews skill pattern with above context.
-
 ## Usage Examples
 
 ```text
