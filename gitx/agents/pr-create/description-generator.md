@@ -1,10 +1,9 @@
 ---
-
 name: description-generator
 description: >-
   Generates PR title and description from change analysis. Invoked during PR creation workflow.
 model: sonnet
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Skill(gitx:committing-conventionally)
 color: green
 ---
 

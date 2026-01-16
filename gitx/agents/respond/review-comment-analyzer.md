@@ -1,10 +1,9 @@
 ---
-
 name: review-comment-analyzer
 description: >-
   Categorizes and prioritizes PR review comments by type and effort. Invoked when processing review feedback.
 model: sonnet
-tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob
+tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob, Skill(gitx:classifying-issues-and-failures)
 color: cyan
 ---
 

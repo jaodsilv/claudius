@@ -20,7 +20,7 @@ Get repository and branch state:
 
 Check for existing PR:
 
-- `gh pr view --json number,url,state 2>/dev/null`
+- `gh pr view --json number,url,state`
 
 ## Pre-flight Checks
 

@@ -36,7 +36,7 @@ Mark "Gather PR context" as in_progress.
 Get PR information:
 
 - Current branch: !`git branch --show-current`
-- PR for branch: !`gh pr view --json number,url,title,state,reviewDecision 2>/dev/null`
+- PR for branch: !`gh pr view --json number,url,title,state,reviewDecision`
 
 If no PR found:
 

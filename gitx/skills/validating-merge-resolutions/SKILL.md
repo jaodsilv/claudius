@@ -1,5 +1,4 @@
 ---
-
 name: gitx:validating-merge-resolutions
 description: >-
   Provides validation checklist and patterns for merge/rebase conflict
@@ -32,19 +31,19 @@ Any remaining markers = blocking error.
 npx tsc --noEmit <file>
 
 # JSON
-cat <file.json> | jq . > /dev/null
+jq . <file.json>
 ```
 
 ### 3. Type Check
 
 ```bash
-npm run typecheck 2>&1 | head -50
+npm run typecheck
 ```
 
 ### 4. Lint Check
 
 ```bash
-npm run lint -- <resolved-files> 2>&1 | head -50
+npm run lint -- <resolved-files>
 ```
 
 ## Result Format

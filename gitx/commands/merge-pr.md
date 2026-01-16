@@ -24,7 +24,7 @@ If PR number provided:
 - `gh pr view <number> --json number,title,state,mergeable,mergeStateStatus,headRefName,baseRefName,body,reviews`
 
 If no PR number:
-- `gh pr view --json number,title,state,mergeable,mergeStateStatus,headRefName,baseRefName,body,reviews 2>/dev/null`
+- `gh pr view --json number,title,state,mergeable,mergeStateStatus,headRefName,baseRefName,body,reviews`
 
 If no PR found:
 - Report: "No PR found"

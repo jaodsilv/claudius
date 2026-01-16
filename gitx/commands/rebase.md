@@ -44,7 +44,7 @@ Determine base branch:
 Show commits to rebase:
 
 ```bash
-git log --oneline $base_branch..HEAD 2>/dev/null | head -20
+git log --oneline $base_branch..HEAD | head -20
 ```
 
 ## Pre-flight Checks
