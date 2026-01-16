@@ -21,7 +21,7 @@ to best practices. Part of the planner plugin review workflow.
 Load this skill for guidance:
 
 ```text
-Use Skill tool to load planner:reviewing-artifacts
+Use the Skill tool to load the skill `planner:reviewing-artifacts`
 ```
 
 ## Core Characteristics

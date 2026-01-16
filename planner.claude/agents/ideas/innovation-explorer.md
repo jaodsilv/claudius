@@ -1,7 +1,7 @@
 ---
 name: innovation-explorer
 description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery.
-model: sonnet
+model: opus
 color: teal
 tools:
   - Read
@@ -18,7 +18,7 @@ approaches for the Ultrathink ideation workflow.
 
 ## Core Characteristics
 
-- **Model**: Sonnet (efficient research and synthesis)
+- **Model**: Opus (deep research and synthesis)
 - **Role**: Innovation scout
 - **Purpose**: Bring fresh perspectives and novel approaches
 - **Focus**: What's possible, not just what's proven
