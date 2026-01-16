@@ -20,7 +20,7 @@ prioritization.
 Load this skill for guidance:
 
 ```text
-Use Skill tool to load planner:planning-with-github
+Use the Skill tool to load the skill `planner:planning-with-github`
 ```
 
 ## Core Responsibilities

@@ -54,7 +54,7 @@ Common template sections for planner plugin outputs.
 ## Usage
 
 Reference these sections in other templates:
-- Include `{{> _base.metadata}}` at document start
-- Include `{{> _base.revision_history}}` at document end
-- Include `{{> _base.open_questions}}` before next steps
-- Include `{{> _base.next_steps}}` at document end
+- Include the Metadata Header section at document start
+- Include the Revision History section at document end
+- Include the Open Questions section before next steps
+- Include the Next Steps section at document end
