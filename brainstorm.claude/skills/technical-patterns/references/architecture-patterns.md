@@ -6,7 +6,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 
 **Structure**: Single unified codebase with all components in one deployment unit.
 
-**When to Use**:
+### When to Use
 
 - Early-stage startups with small teams
 - Small to medium applications (<50 developers)
@@ -14,7 +14,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - Performance-critical systems where latency matters
 - Heavy coupling is acceptable or beneficial
 
-**Advantages**:
+### Advantages
 
 - **Simplicity**: Single deployment, centralized testing, shared libraries
 - **Performance**: No network calls, no serialization overhead
@@ -22,7 +22,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Development**: Straightforward local development, simple debugging
 - **Maintenance**: Consolidated monitoring, single database, unified logging
 
-**Disadvantages**:
+### Disadvantages
 
 - **Scalability**: Must scale entire application, not individual components
 - **Flexibility**: Deployment lock-step, shared resource contention
@@ -31,14 +31,14 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Blast Radius**: Bug in one module affects entire system
 - **Database**: Single database model, schema changes impact all features
 
-**Technology Fit**:
+### Technology Fit
 
 - Simple data model (single database)
 - Real-time requirements (in-process calls)
 - Heavy inter-feature dependencies
 - Synchronous workflows
 
-**Complexity Assessment**:
+### Complexity Assessment
 
 - **Data Model**: Any complexity handled internally
 - **Integration**: Fewer external systems preferred
@@ -51,7 +51,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 
 **Structure**: Multiple independent services, each with own codebase, database, and deployment.
 
-**When to Use**:
+### When to Use
 
 - Large teams (>20 developers) working independently
 - Independent scaling requirements across features
@@ -59,7 +59,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - High availability and fault isolation critical
 - Complex domain with clear service boundaries
 
-**Advantages**:
+### Advantages
 
 - **Independent Scaling**: Scale individual services by demand
 - **Technology Freedom**: Each service chooses optimal stack
@@ -68,7 +68,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Resilience**: Failure in one service isolates impact
 - **Large Systems**: Natural fit for complex, large applications
 
-**Disadvantages**:
+### Disadvantages
 
 - **Complexity**: Distributed system challenges (latency, consistency, failures)
 - **Debugging**: Cross-service tracing, multiple logs, timing issues
@@ -79,14 +79,14 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Testing**: Integration testing across service boundaries
 - **Cost**: Infrastructure complexity, redundancy needs
 
-**Technology Fit**:
+### Technology Fit
 
 - Independent scaling per feature
 - Polyglot requirements (different languages/frameworks)
 - API-driven interactions
 - Asynchronous communication possible
 
-**Complexity Assessment**:
+### Complexity Assessment
 
 - **Data Model**: Distributed schemas, eventual consistency
 - **Integration**: Service-to-service APIs, complex workflows
@@ -108,7 +108,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - Audit trail and event sourcing beneficial
 - Decoupling is priority over strong consistency
 
-**Advantages**:
+### Advantages
 
 - **Loose Coupling**: Services don't know about each other
 - **Scalability**: Subscribers can scale independently
@@ -117,7 +117,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Flexibility**: Add new subscribers without changing publisher
 - **Real-time**: Fast event propagation for responsive systems
 
-**Disadvantages**:
+### Disadvantages
 
 - **Debugging**: Event flows across services, timing sensitive
 - **Consistency**: Eventual consistency, duplicate event handling
@@ -127,14 +127,14 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Infrastructure**: Message broker required, operational complexity
 - **Latency**: Multiple hops through event system
 
-**Technology Fit**:
+### Technology Fit
 
 - Asynchronous workflows
 - Independent feature updates (notifications, reports)
 - Event sourcing desired
 - Publishing pattern (one-to-many)
 
-**Complexity Assessment**:
+### Complexity Assessment
 
 - **Data Model**: Event schema design, versioning
 - **Integration**: Message broker setup, routing rules
@@ -156,7 +156,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - Integrating with cloud services (events, storage)
 - Rapid prototyping and experimentation
 
-**Advantages**:
+### Advantages
 
 - **Scalability**: Platform auto-scales functions per demand
 - **Cost**: Pay per invocation, no idle costs
@@ -165,7 +165,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Integration**: Native cloud service integrations
 - **Simplicity**: No server management, deployment simple
 
-**Disadvantages**:
+### Disadvantages
 
 - **Cold Starts**: Latency spike on function startup
 - **Limitations**: Execution time limits, memory constraints
@@ -176,14 +176,14 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Costs**: Unpredictable expenses with spiky usage
 - **Testing**: Hard to reproduce production environment locally
 
-**Technology Fit**:
+### Technology Fit
 
 - Stateless operations
 - Short execution times
 - Spiky, event-driven workloads
 - Integration with cloud services
 
-**Complexity Assessment**:
+### Complexity Assessment
 
 - **Data Model**: External storage required (database, S3)
 - **Integration**: Cloud service integrations straightforward
@@ -204,7 +204,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - Shared transaction needs present
 - Clear module ownership desired
 
-**Advantages**:
+### Advantages
 
 - **Simplicity**: Single deployment like monolith
 - **Boundaries**: Enforced module isolation without network overhead
@@ -214,7 +214,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Performance**: In-process calls, no network latency
 - **Flexibility**: Deploy as monolith or split modules to services
 
-**Disadvantages**:
+### Disadvantages
 
 - **Discipline**: Requires enforced boundaries (often overlooked)
 - **Deployment**: Still single deployment artifact
@@ -223,14 +223,14 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 - **Complexity**: More complex than true monolith but less than microservices
 - **Monitoring**: Still single application view
 
-**Technology Fit**:
+### Technology Fit
 
 - Clear domain boundaries
 - Shared data needs
 - Mixed transaction requirements
 - Future growth into microservices
 
-**Complexity Assessment**:
+### Complexity Assessment
 
 - **Data Model**: Single database with modular schemas
 - **Integration**: Internal module APIs, clear boundaries

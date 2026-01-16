@@ -140,7 +140,9 @@ For each requirement, verify:
 
 ### Improved Requirement (Passes SMART)
 
+<!-- markdownlint-disable MD013 -->
 **Revised**: "FR-042: The checkout flow shall complete in 3 steps or fewer, with page load times under 2 seconds on 3G connections, to reduce cart abandonment for mobile users in v2.0."
+<!-- markdownlint-enable MD013 -->
 
 **Validation**:
 - **S**: "3 steps or fewer", "under 2 seconds", "3G connections" - specific
@@ -151,7 +153,9 @@ For each requirement, verify:
 
 ### More Examples
 
+<!-- markdownlint-disable MD013 -->
 **Requirement**: "FR-015: The API shall support OAuth 2.0 authentication with token refresh, returning 401 Unauthorized for invalid tokens within 50ms."
+<!-- markdownlint-enable MD013 -->
 
 | Criterion | Assessment |
 |-----------|------------|
@@ -161,7 +165,9 @@ For each requirement, verify:
 | Relevant | Security requirement for API access |
 | Time-bound | Implicit scope to API v1 |
 
+<!-- markdownlint-disable MD013 -->
 **Requirement**: "NFR-003: The system shall maintain 99.9% uptime during business hours (8am-8pm EST) with no more than 3 planned maintenance windows per quarter."
+<!-- markdownlint-enable MD013 -->
 
 | Criterion | Assessment |
 |-----------|------------|

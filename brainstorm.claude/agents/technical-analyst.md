@@ -137,11 +137,6 @@ Use the `technical-patterns` skill for detailed patterns and sizing:
 | Question | Impact | Priority |
 ````
 
-- **Recommended architecture**: [Pattern name] - [One-line rationale]
-- **Complexity**: [T-shirt size] - [Key factors]
-- **Top risks**: [3 main technical risks]
-- **Unknowns**: [Major technical unknowns to resolve]
-
 ## Reasoning
 
 Use extended thinking to:

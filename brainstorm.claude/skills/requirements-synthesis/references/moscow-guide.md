@@ -16,6 +16,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ### P1: Must Have
 
 **Characteristics**:
+
 - Essential to product viability
 - Required for MVP or release definition
 - Blocking other work if incomplete
@@ -23,6 +24,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Non-negotiable with stakeholders
 
 **Definition Process**:
+
 1. Identify core user flows
 2. Map to minimum viable product
 3. Validate against business goals
@@ -30,6 +32,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 5. Assess resource requirements
 
 **Examples**:
+
 - User authentication and authorization
 - Core feature that solves primary user problem
 - Critical security or compliance requirements
@@ -37,6 +40,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Platform stability and performance baselines
 
 **Questions to Ask**:
+
 - Would users call this a deal-breaker if it's missing?
 - Is this required for legal/compliance reasons?
 - Does the product fail without this?
@@ -45,6 +49,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ### P2: Should Have
 
 **Characteristics**:
+
 - Important for user experience
 - High value but not blocking
 - Improves on MVP but not essential
@@ -52,6 +57,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Worth doing if resources allow
 
 **Definition Process**:
+
 1. Identify valuable enhancement to core features
 2. Assess user request frequency
 3. Evaluate competitive advantage
@@ -59,6 +65,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 5. Prioritize by impact and effort
 
 **Examples**:
+
 - Search and filtering capabilities
 - Advanced user preferences
 - Notification systems
@@ -66,6 +73,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - UX improvements to common workflows
 
 **Questions to Ask**:
+
 - Would users significantly prefer this feature?
 - Do competitors offer this?
 - What's the impact on user satisfaction?
@@ -74,6 +82,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ### P3: Could Have
 
 **Characteristics**:
+
 - Nice-to-have features
 - Lower priority/impact
 - Improves but not essential
@@ -81,6 +90,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Worth doing only if spare capacity
 
 **Definition Process**:
+
 1. Identify enhancement opportunities
 2. Assess user request patterns
 3. Consider differentiation value
@@ -88,6 +98,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 5. Document for future consideration
 
 **Examples**:
+
 - Accessibility features beyond requirements
 - Mobile app responsive design improvements
 - Third-party integrations
@@ -95,6 +106,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Performance optimizations beyond baselines
 
 **Questions to Ask**:
+
 - Is this a nice-to-have or essential?
 - How many users would benefit?
 - Can this wait for a future release?
@@ -103,6 +115,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ### P4: Won't Have
 
 **Characteristics**:
+
 - Explicitly out of scope
 - Deferred to future versions
 - May conflict with current priorities
@@ -110,6 +123,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Documented for transparency
 
 **Definition Process**:
+
 1. Identify requested features
 2. Assess against scope
 3. Decide timing for future consideration
@@ -117,6 +131,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 5. Communicate to stakeholders
 
 **Examples**:
+
 - Multi-language support (deferred to v2)
 - Enterprise SSO integration (deferred to commercial tier)
 - Desktop client (focus on web first)
@@ -124,6 +139,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 - Full API customization (reserved for enterprise)
 
 **Questions to Ask**:
+
 - Why isn't this in scope?
 - When might this become relevant?
 - Is there a specific version/phase for this?
@@ -132,6 +148,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ## Dependency Mapping
 
 Requirements often depend on each other. Map dependencies to:
+
 - Identify blocking relationships
 - Sequence development activities
 - Plan parallel workstreams
@@ -139,6 +156,22 @@ Requirements often depend on each other. Map dependencies to:
 ### Dependency Patterns
 
 **Sequential Dependencies**:
+
+```text
+FR-001 (Authentication)
+  ├── FR-002 (User Profile) - Depends on FR-001
+  └── FR-003 (Preferences) - Depends on FR-001
+```
+
+**Cross-Priority Dependencies**:
+
+```text
+P1: FR-001 (Core feature)
+  └── P2: FR-010 (Enhancement) - Depends on P1
+      └── P3: FR-020 (Advanced feature) - Depends on P2
+```
+
+**Shared Dependencies**:
 
 ```text
 P1: FR-001 (Database setup)
@@ -150,12 +183,33 @@ P1: FR-001 (Database setup)
 ### Dependency Assessment
 
 For each dependency, document:
+
 - **Requirement ID**: FR-001 depends on FR-002
 - **Type**: Blocking / Enabling / Related
 - **Risk**: Impact if dependency is not met
 - **Sequence**: Must be completed before / in parallel with / after
 
+## Gap Analysis Approach
+
+Gap analysis identifies missing information or requirements that should be addressed before implementation.
+
 ### Gap Categories
+
+**Information Gaps**:
+
+- Unclear acceptance criteria
+- Missing technical specifications
+- Undefined performance targets
+- Unknown user scenarios
+
+**Scope Gaps**:
+
+- Related requirements not yet identified
+- Edge cases not covered
+- Error handling not specified
+- Integration points not defined
+
+**Resource Gaps**:
 
 - Skills not available
 - Infrastructure not in place
@@ -163,6 +217,7 @@ For each dependency, document:
 - Knowledge gaps in team
 
 **Validation Gaps**:
+
 - Not verified with users
 - Feasibility not confirmed
 - Dependencies not mapped
@@ -205,6 +260,7 @@ When prioritizing requirements, consider:
 Before finalizing prioritization:
 
 **For P1 (Must Have)**:
+
 - [ ] Essential to MVP or release definition
 - [ ] Business/stakeholder agreement on inclusion
 - [ ] Technical feasibility confirmed
@@ -213,6 +269,7 @@ Before finalizing prioritization:
 - [ ] Acceptance criteria defined
 
 **For P2 (Should Have)**:
+
 - [ ] High-value enhancement to core features
 - [ ] Resource estimates completed
 - [ ] Dependency implications understood
@@ -220,12 +277,14 @@ Before finalizing prioritization:
 - [ ] Priority vs. P1 items confirmed
 
 **For P3 (Could Have)**:
+
 - [ ] Non-critical feature or enhancement
 - [ ] Documented for future consideration
 - [ ] Impact if deferred is acceptable
 - [ ] Resource estimates for future planning
 
 **For P4 (Won't Have)**:
+
 - [ ] Reason for deferral documented
 - [ ] Stakeholder expectations managed
 - [ ] Version/timeline for future consideration identified
@@ -236,6 +295,7 @@ Before finalizing prioritization:
 ### Example 1: E-Commerce Application
 
 **P1 - Must Have**:
+
 - User registration and login
 - Product catalog with search
 - Shopping cart functionality
@@ -243,6 +303,7 @@ Before finalizing prioritization:
 - Order confirmation
 
 **P2 - Should Have**:
+
 - User profile and order history
 - Product reviews and ratings
 - Wish list / Save for later
@@ -250,6 +311,7 @@ Before finalizing prioritization:
 - Inventory management
 
 **P3 - Could Have**:
+
 - Product recommendations
 - Social sharing
 - Live chat support
@@ -257,6 +319,7 @@ Before finalizing prioritization:
 - Multi-language support
 
 **P4 - Won't Have** (for v1):
+
 - Subscription model
 - B2B wholesale features
 - Advanced analytics dashboard
@@ -265,6 +328,7 @@ Before finalizing prioritization:
 ### Example 2: Project Management Tool
 
 **P1 - Must Have**:
+
 - User authentication
 - Project creation and management
 - Task creation, assignment, status tracking
@@ -272,6 +336,7 @@ Before finalizing prioritization:
 - Basic reporting (status, completion)
 
 **P2 - Should Have**:
+
 - Kanban board view
 - Timeline/Gantt chart
 - File storage integration
@@ -279,6 +344,7 @@ Before finalizing prioritization:
 - Permission roles
 
 **P3 - Could Have**:
+
 - Time tracking
 - Automated workflows
 - Custom fields
@@ -286,6 +352,7 @@ Before finalizing prioritization:
 - Dark mode
 
 **P4 - Won't Have** (for v1):
+
 - Budget and resource forecasting
 - Advanced custom reporting
 - Enterprise SSO
