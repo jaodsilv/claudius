@@ -5,7 +5,7 @@ description: >
   Invoked during Phase 2 to inform feature development with market context.
 model: sonnet
 color: yellow
-tools: WebSearch
+tools: WebSearch, Skill
 ---
 
 # Domain Explorer

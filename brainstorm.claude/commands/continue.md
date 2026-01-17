@@ -1,6 +1,6 @@
 ---
 description: Continues interrupted brainstorming session from last checkpoint. Use when resuming after context overflow or interruption.
-allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, Glob
+allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, Glob, Skill
 argument-hint: --session-path: <session_path>
 model: sonnet
 ---

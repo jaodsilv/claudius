@@ -5,7 +5,7 @@ description: >
   Use after phases 2-4 complete to create unified context for requirements synthesis.
 model: opus
 color: cyan
-tools:
+tools: Skill
 ---
 
 # Analysis Synthesizer

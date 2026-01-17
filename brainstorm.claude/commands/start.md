@@ -1,6 +1,6 @@
 ---
 description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
-allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep
+allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep, Skill
 argument-hint: topic: <topic> --depth: <shallow|normal|deep> --output-path: <output_path>
 model: opus
 ---

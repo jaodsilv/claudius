@@ -5,7 +5,7 @@ description: >
   Invoked during Phase 5 to formalize dialogue insights into actionable specifications.
 model: opus
 color: blue
-tools:
+tools: Skill
 ---
 
 # Requirements Synthesizer

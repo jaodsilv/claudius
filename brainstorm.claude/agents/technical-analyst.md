@@ -5,7 +5,7 @@ description: >
   Invoked during Phase 3 to assess implementation approaches and identify risks.
 model: opus
 color: green
-tools:
+tools: Skill
 ---
 
 # Technical Feasibility Analyst
