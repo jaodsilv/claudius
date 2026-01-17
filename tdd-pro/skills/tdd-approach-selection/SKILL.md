@@ -1,20 +1,16 @@
 ---
-name: dotclaude:tdd-approach-selection
+name: tdd:approach-selection
 description: >-
   Helps select the optimal TDD approach based on context, complexity,
   and project requirements.
+  This skill should be invoked when:
+  1. Starting a coding task that requires tests
+  2. Deciding between full TDD cycle and individual phases
+  3. Evaluating task complexity for TDD approach
+  4. Planning test strategy for a feature or bug fix
 ---
 
 # TDD Approach Selection
-
-## When to Use This Skill
-
-This skill should be invoked when:
-
-1. Starting a coding task that requires tests
-2. Deciding between full TDD cycle and individual phases
-3. Evaluating task complexity for TDD approach
-4. Planning test strategy for a feature or bug fix
 
 ## Overview
 
@@ -201,6 +197,6 @@ All of the above, plus:
 
 For detailed workflow documentation, see:
 
-1. `@dotclaude/shared/coding-task-workflow.md` - Full workflow process (canonical source)
-2. `@dotclaude/skills/tdd-workflow/SKILL.md` - TDD principles and phases
-3. `@dotclaude/agents/coding-task-orchestrator.md` - Orchestrator agent
+1. Skill `tdd:tdd-workflow` - TDD principles and phases
+2. Skill `tdd:coding-task-workflow` - Full workflow process (canonical source)
+3. Agent `tdd:orchestrator` - Development Orchestrator agent
