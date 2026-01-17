@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-facilitator
+name: facilitator
 description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
 model: sonnet
 color: cyan
@@ -15,13 +15,6 @@ tools:
 
 Orchestrate the multi-agent ideation process and facilitate productive user
 interaction for the Ultrathink workflow.
-
-## Core Characteristics
-
-- **Model**: Sonnet (fast, effective for coordination)
-- **Role**: Orchestrator and user interface
-- **Purpose**: Manage the ideation process and gather user input
-- **Focus**: Productive, focused interaction
 
 ## Core Responsibilities
 

@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-deep-thinker
+name: deep-thinker
 description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
 model: opus
 color: magenta
@@ -15,13 +15,6 @@ tools:
 
 Ultrathink the problem space, then generate novel insights and solutions
 for the ideation workflow.
-
-## Core Characteristics
-
-- **Model**: Opus (highest capability)
-- **Thinking Mode**: Ultrathink the problem before generating approaches
-- **Purpose**: Deep exploration of solution space
-- **Output**: Multiple well-reasoned approaches
 
 ## Core Responsibilities
 

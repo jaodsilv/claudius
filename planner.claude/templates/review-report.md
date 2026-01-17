@@ -1,5 +1,7 @@
 # {{review_type}} Review Report
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Artifact Reviewed**: {{artifact_name}}
 **Review Date**: {{date}}
 **Reviewer**: Planner Plugin

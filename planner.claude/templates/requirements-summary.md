@@ -1,5 +1,7 @@
 # Requirements Summary: {{project_name}}
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Goal**: {{goal}}
 **Date**: {{date}}
 **Status**: {{status}}

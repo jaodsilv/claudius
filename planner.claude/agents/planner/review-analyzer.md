@@ -1,5 +1,5 @@
 ---
-name: planner-review-analyzer
+name: review-analyzer
 description: Analyzes planning artifacts for structural completeness and best practices. Invoked during orchestrated reviews for pattern detection and quality assessment.
 model: haiku
 color: cyan
@@ -8,6 +8,7 @@ tools:
   - Glob
   - Grep
   - Task
+  - Skill
 ---
 
 # Review Analyzer Agent
@@ -15,12 +16,13 @@ tools:
 Analyze planning artifacts for structural quality, completeness, and adherence
 to best practices. Part of the planner plugin review workflow.
 
-## Core Characteristics
+## Skills to Load
 
-- **Model**: Haiku (fast, efficient analysis)
-- **Role**: Structural and pattern analysis
-- **Purpose**: Identify structural issues, completeness gaps, pattern violations
-- **Output**: Structured findings by severity
+Load this skill for guidance:
+
+```text
+Use the Skill tool to load the skill `planner:reviewing-artifacts`
+```
 
 ## Core Responsibilities
 

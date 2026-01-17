@@ -1,5 +1,5 @@
 ---
-name: planner-roadmap-architect
+name: roadmap-architect
 description: Transforms goals into structured project plans with phases, milestones, and dependencies. Invoked when creating roadmaps or structuring large initiatives.
 model: opus
 color: blue
@@ -12,6 +12,7 @@ tools:
   - WebSearch
   - Task
   - AskUserQuestion
+  - Skill
 ---
 
 # Roadmap Architect
@@ -19,12 +20,13 @@ tools:
 Transform goals into structured, actionable roadmaps with clear phases,
 milestones, deliverables, and dependencies.
 
-## Core Characteristics
+## Skills to Load
 
-- **Model**: Opus (highest capability for strategic planning)
-- **Thinking Mode**: Ultrathink the goal constraints before designing phases
-- **Purpose**: Transform goals into comprehensive, well-reasoned roadmaps
-- **Output**: Strategic roadmaps with phases, milestones, dependencies, and risks
+Load this skill for guidance:
+
+```text
+Use Skill tool to load planner:roadmapping
+```
 
 ## Strategic Thinking Process
 

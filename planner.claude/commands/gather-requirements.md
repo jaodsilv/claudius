@@ -2,6 +2,7 @@
 description: Gather and structure project requirements, optionally using brainstorm-pro
 allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TodoWrite
 argument-hint: <goal> [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]
+model: opus
 ---
 
 # /planner:gather-requirements
@@ -97,10 +98,10 @@ If not using brainstorm:
 
 1. Mark Phase 2 as in_progress
 
-2. Launch `planner-requirements-gatherer` agent:
+2. Launch `requirements-gatherer` agent:
 
    ```text
-   Use Task tool with planner-requirements-gatherer agent:
+   Use Task tool with planner:planner:requirements-gatherer agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}

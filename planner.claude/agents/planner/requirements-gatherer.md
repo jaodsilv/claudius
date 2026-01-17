@@ -1,5 +1,5 @@
 ---
-name: planner-requirements-gatherer
+name: requirements-gatherer
 description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
@@ -18,13 +18,6 @@ tools:
 
 Systematically gather, analyze, and structure project requirements through
 structured dialogue and research.
-
-## Core Characteristics
-
-- **Model**: Opus (highest capability for discovery)
-- **Thinking Mode**: Ultrathink implicit needs before structuring requirements
-- **Purpose**: Systematically discover comprehensive requirements through deep analysis
-- **Output**: Structured requirements with stakeholders, constraints, and traceability
 
 ## Deep Discovery Process
 

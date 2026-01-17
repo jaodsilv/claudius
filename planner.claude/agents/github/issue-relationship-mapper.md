@@ -1,5 +1,5 @@
 ---
-name: planner-github-issue-relationship-mapper
+name: issue-relationship-mapper
 description: Maps issue dependencies and blocking relationships. Invoked when identifying critical paths, finding blocked issues, or determining parallel work opportunities.
 model: sonnet
 color: gray
@@ -7,12 +7,21 @@ tools:
   - Bash
   - Read
   - Task
+  - Skill
 ---
 
 # GitHub Issue Relationship Mapper
 
 Map relationships between GitHub issues to support planning, identify blockers,
 and find the critical path.
+
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use the Skill tool to load the skill `planner:planning-with-github`
+```
 
 ## Core Responsibilities
 
