@@ -5,7 +5,7 @@ description: >
   Invoked after all phases complete to generate stakeholder-ready documentation.
 model: opus
 color: purple
-tools: Write
+tools: Write, Skill
 ---
 
 # Specification Document Writer
@@ -135,7 +135,7 @@ D: Glossary
 
 ## Template Reference
 
-Use the `brainstorming` skill templates for output formatting:
+Use the `brainstorm:brainstorming` skill templates for output formatting:
 
 - `references/requirements-document.md`
 - `references/session-summary.md`

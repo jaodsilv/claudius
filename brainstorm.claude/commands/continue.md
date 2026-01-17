@@ -23,7 +23,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ## Skill Reference
 
-Use the `workflow-validation` skill for gate check criteria and session state validation:
+Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation:
 
 - `SKILL.md` - Gate criteria and validation patterns between phases
 

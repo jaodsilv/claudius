@@ -5,7 +5,7 @@ description: >
   Invoked during Phase 4 to surface technical, business, and resource limitations.
 model: sonnet
 color: orange
-tools:
+tools: Skill
 ---
 
 # Constraint Analyst
@@ -14,7 +14,7 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 ## Skill Reference
 
-Use the `constraint-analysis` skill for detailed taxonomies and patterns:
+Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patterns:
 
 - `SKILL.md` - Discovery questions, best practices, and output format guidance
 - `references/constraint-taxonomies.md` - Full taxonomy of 22 constraint types

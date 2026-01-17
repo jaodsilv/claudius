@@ -16,7 +16,7 @@ and connections across domain research, technical analysis, and constraint asses
 
 ## Skill Reference
 
-Use the `workflow-validation` skill for output templates:
+Use the `brainstorm:workflow-validation` skill for output templates:
 
 - `references/synthesis-templates.md` - Full and compact output templates
 

@@ -52,7 +52,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 
 ## Skill Reference
 
-Use the `technical-patterns` skill for detailed patterns and sizing:
+Use the `brainstorm:technical-patterns` skill for detailed patterns and sizing:
 
 - `references/architecture-patterns.md` - 5 architecture patterns with comparison matrix
 - `references/complexity-sizing.md` - T-shirt sizing methodology and complexity factors

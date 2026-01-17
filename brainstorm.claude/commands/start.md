@@ -30,7 +30,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 
 ## Skill Reference
 
-Use the `workflow-validation` skill for gate checks between phases:
+Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 
 - Gate criteria (1-5)
 - Validation patterns
