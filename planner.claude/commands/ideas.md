@@ -165,7 +165,7 @@ For each round (1 to {{rounds}}):
    5. Novel combinations
    ```
 
-3. Collect outputs from both agents
+4. Collect outputs from both agents
 
 #### Step 2: Adversarial Analysis
 

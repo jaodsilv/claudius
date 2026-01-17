@@ -1,5 +1,6 @@
 # Ultrathink Ideas Synthesis: {{topic}}
 
+<!-- markdownlint-disable MD024 -->
 <!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
 
 **Session ID**: {{session_id}}
