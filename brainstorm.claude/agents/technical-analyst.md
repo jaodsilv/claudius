@@ -137,6 +137,17 @@ Use the `brainstorm:technical-patterns` skill for detailed patterns and sizing:
 | Question | Impact | Priority |
 ````
 
+## Compact Summary Output
+
+In addition to the full output, provide a compact summary (10-15 lines):
+
+### Summary for Next Phase
+
+- **Feasibility**: [High/Medium/Low with brief rationale]
+- **Architecture**: [Recommended approach]
+- **Complexity**: [T-shirt size and main drivers]
+- **Key risks**: [Top 2-3 risks with mitigations]
+
 ## Reasoning
 
 Use extended thinking to:
