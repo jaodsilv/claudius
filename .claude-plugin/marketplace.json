@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jaodsilv-claudius-marketplace",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Personal productivity marketplace: TDD workflows, job hunting automation, and curated community development tools",
   "owner": {
     "name": "João da Silva",
@@ -13,7 +13,7 @@
       "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation",
       "source": "./brainstorm.claude",
       "category": "productivity",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "keywords": [
         "brainstorming",
         "requirements",
@@ -29,7 +29,7 @@
       "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components. Requires plugin-dev@claude-plugins-official",
       "source": "./cc",
       "category": "development-workflow",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "keywords": [
         "meta-tools",
         "plugin-development",
@@ -45,7 +45,7 @@
       "description": "Extended git/GitHub workflow commands with multi-agent orchestration for worktrees, issues, PRs, conflict resolution, and branch operations",
       "source": "./gitx",
       "category": "git-version-control",
-      "version": "1.4.0",
+      "version": "3.0.0",
       "keywords": [
         "git",
         "github",
@@ -64,7 +64,7 @@
       "description": "Strategic planning plugin: multi-agent orchestrated roadmapping, issue prioritization, requirements discovery, and comprehensive planning reviews",
       "source": "./planner.claude",
       "category": "productivity",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "keywords": [
         "planning",
         "roadmap",
