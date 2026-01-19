@@ -80,13 +80,19 @@ This plugin requires `plugin-dev@claude-plugins-official`. Install it first:
 |-------|---------|
 | `@cc:change-planner` | Plans change sequences with dependency ordering |
 | `@cc:component-writer` | Applies planned changes to component files |
+| `@cc:improvement-workflow-orchestrator` | Orchestrates the 6-phase improvement workflow |
+| `@cc:improvement-workflow-orchestrator` | Orchestrates the 6-phase improvement workflow |
 
 ## Skills
 
 | Skill | Purpose |
-|-------|---------|
+|-------|--------|
+| `authoring-skills` | Guidelines for writing effective skills with progressive disclosure |
+| `component-validation` | Validation criteria and quality standards for plugin components |
+| `focus-driven-analysis` | Patterns for prioritizing specific aspects during analysis |
 | `improving-components` | Patterns for interactive analyze-suggest-approve-apply workflows |
 | `orchestrating-agents` | Patterns for multi-agent coordination |
+| `syntax-validation` | Syntax validation patterns for YAML frontmatter and markdown |
 
 ## Usage Examples
 

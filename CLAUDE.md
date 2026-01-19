@@ -45,15 +45,16 @@ specialized plugin directories.
 **Purpose**: Meta-toolkit for creating and improving Claude Code plugin components
 **Contents**:
 
-1. 13 agents:
+1. 14 agents:
    - Creator agents (4): command, skill, orchestration, output-style
    - Improver agents (6): command, agent, skill, plugin, orchestration, output-style
    - Architect agent (1): orchestration
-   - Workflow agents (2): change-planner, component-writer
+   - Workflow agents (3): change-planner, component-writer, improvement-workflow-orchestrator
 2. 11 commands: create-command, create-skill, create-orchestration,
    create-output-style, improve-command, improve-agent, improve-skill,
    improve-plugin, improve-orchestration, improve-output-style, bump-version
-3. 2 skills: improvement-workflow, orchestration-patterns
+3. 6 skills: authoring-skills, component-validation, focus-driven-analysis,
+   improving-components, orchestrating-agents, syntax-validation
 
 **See**: `cc/README.md` for detailed documentation
 

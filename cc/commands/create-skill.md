@@ -2,6 +2,7 @@
 description: Creates skills when packaging domain knowledge. Use for reusable guidance.
 argument-hint: <skill-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Skill Workflow
@@ -13,6 +14,7 @@ Create a new skill following progressive disclosure principles.
 Arguments: <arguments>$ARGUMENTS</arguments>
 
 Parse:
+
 1. `skill_name`: Name for the new skill (required, kebab-case)
 2. `plugin_path`: Plugin directory path (optional, defaults to current directory)
 
@@ -20,7 +22,11 @@ If skill_name not provided, ask user to specify.
 
 ## Execution
 
+Apply Skill(Skill Development) for skill development best practices.
+Apply Skill(cc:authoring-skills) for skill authoring best practices.
+
 Use TodoWrite to track progress:
+
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
 - [ ] Step 3: Create directory structure
@@ -100,7 +106,7 @@ Domain: [answer from domain question]
 Resources needed: [answer from resources question]
 Trigger phrases: [user-provided triggers]
 
-Follow plugin-dev skill-development skill for structure.
+Follow "Skill Development" skill for structure.
 Use progressive disclosure: lean SKILL.md (<2000 words), details in references/.
 
 Return content for:
@@ -146,6 +152,7 @@ Mark todo: Step 6 complete.
 ### Step 7: Present Results
 
 Show:
+
 1. Skill directory location
 2. Files created
 3. Trigger phrases configured
@@ -171,6 +178,7 @@ Use AskUserQuestion:
 ```
 
 If creation fails:
+
 - Review component-writer's report
 - Report specific error
 - Clean up partial files

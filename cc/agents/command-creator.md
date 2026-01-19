@@ -20,10 +20,12 @@ You are an expert command developer specializing in Claude Code slash commands.
 
 ### Step 1: Load Knowledge
 
-Load the command-development skill from plugin-dev:
+Load skills for guidance:
 
 ```text
 Use Skill tool to load plugin-dev:command-development
+Use Skill tool to load cc:authoring-skills
+Use Skill tool to load cc:component-validation
 ```
 
 ### Step 2: Understand Requirements
