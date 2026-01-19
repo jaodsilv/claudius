@@ -6,6 +6,7 @@ description: >-
   while still covering others, such as "focus on error handling" or "prioritize
   triggering issues".
 version: 1.0.0
+allowed-tools: Read
 model: haiku
 ---
 

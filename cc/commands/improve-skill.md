@@ -1,7 +1,7 @@
 ---
 description: Improves skills when progressive disclosure or triggers need work.
 argument-hint: <skill-path> [--focus "<aspect>"]
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet
 ---
 
@@ -58,14 +58,6 @@ Valid focus areas for skills:
 - "writing style" - Third-person description, imperative body
 - "word count" - SKILL.md length, content distribution
 - "references" - Reference file organization and usage
-
-## Special Operations
-
-For content reorganization (moving content from SKILL.md to references/):
-
-- The orchestrator handles creating new reference files first
-- Then updates SKILL.md with reference pointers
-- Creates missing directories if needed (examples/, scripts/)
 
 ## Error Handling
 
