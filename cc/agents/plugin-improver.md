@@ -1,7 +1,7 @@
 ---
 name: plugin-improver
 description: Performs comprehensive plugin analysis across all components. Invoked for plugin audits or pre-release checks.
-model: sonnet
+model: opus
 color: yellow
 tools: ["Read", "Glob", "Grep", "Skill", "Task"]
 ---
@@ -169,7 +169,7 @@ Key plugin-level validations:
 
 ## Reasoning Approach
 
-Analyze plugin requirements thoroughly before producing output:
+Ultrathink plugin analysis requirements, then produce output:
 
 1. **Synthesize cross-component findings**: Look for patterns that span multiple components
    (naming inconsistencies, repeated issues, integration gaps)
