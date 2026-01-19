@@ -1,5 +1,7 @@
 # Configuration
 config:
+  # MD024 - no-duplicate-heading: disabled (intentional repeated section structure)
+  MD024: false
   # MD013 - line-length
   MD013:
     line_length: 140

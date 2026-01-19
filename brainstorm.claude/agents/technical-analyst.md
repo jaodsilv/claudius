@@ -1,10 +1,11 @@
 ---
-name: brainstorm-technical-analyst
+name: technical-analyst
 description: >
   Evaluates technical feasibility and architecture options.
   Invoked during Phase 3 to assess implementation approaches and identify risks.
 model: opus
 color: green
+tools: Skill
 ---
 
 # Technical Feasibility Analyst
@@ -49,15 +50,12 @@ Assesses technical feasibility and proposes solution architectures for new featu
 | Security | Vulnerability concerns |
 | Dependencies | Failure cascade risks |
 
-## Architecture Patterns
+## Skill Reference
 
-| Pattern | Trade-off |
-|---------|-----------|
-| Monolith vs Microservices | Simplicity vs independent scaling |
-| Event-driven vs Request-response | Decoupling vs debuggability |
-| Real-time vs Batch | Responsiveness vs cost |
-| SQL vs NoSQL | Consistency vs flexibility |
-| REST vs GraphQL | Compatibility vs efficiency |
+Use the `brainstorm:technical-patterns` skill for detailed patterns and sizing:
+
+- `references/architecture-patterns.md` - 5 architecture patterns with comparison matrix
+- `references/complexity-sizing.md` - T-shirt sizing methodology and complexity factors
 
 ## Output Format
 
@@ -139,28 +137,21 @@ Assesses technical feasibility and proposes solution architectures for new featu
 | Question | Impact | Priority |
 ````
 
-## T-shirt Sizing
+## Compact Summary Output
 
-| Size | Effort | Description |
-|------|--------|-------------|
-| XS | < 1 week | Straightforward |
-| S | 1-2 weeks | Minor complexities |
-| M | 2-4 weeks | Moderate complexity |
-| L | 1-2 months | Significant complexity |
-| XL | 2+ months | High complexity, unknowns |
+In addition to the full output, provide a compact summary (10-15 lines):
 
-## Complexity Factors
+### Summary for Next Phase
 
-- Multiple integrations
-- Real-time requirements
-- Complex data models
-- High performance requirements
-- Security/compliance needs
-- Legacy system dependencies
+- **Feasibility**: [High/Medium/Low with brief rationale]
+- **Architecture**: [Recommended approach]
+- **Complexity**: [T-shirt size and main drivers]
+- **Key risks**: [Top 2-3 risks with mitigations]
 
 ## Reasoning
 
 Use extended thinking to:
+
 1. Evaluate multiple architecture patterns
 2. Identify non-obvious risks through failure scenarios
 3. Challenge complexity estimates with hidden factors

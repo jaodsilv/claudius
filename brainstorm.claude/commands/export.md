@@ -2,6 +2,7 @@
 description: Exports or regenerates brainstorming session documents. Use for generating fresh specification from session data.
 allowed-tools: Task, Read, Write, Edit, Glob
 argument-hint: --session-path: <session_path> --format: <markdown|pdf|html>
+model: sonnet
 ---
 
 # Brainstorm Export
@@ -35,6 +36,7 @@ Arguments: `<arguments>$ARGUMENTS</arguments>`
 ### Step 2: Read Session Data
 
 Read all session files:
+
 - `{{session_path}}/session-log.md`
 - `{{session_path}}/requirements.md` (if exists)
 - `{{session_path}}/specification.md` (if exists)
@@ -43,12 +45,16 @@ Extract: Topic, Depth, Completion status
 
 ### Step 3: Regenerate Documents
 
-Launch `brainstorm-specification-writer`:
+Launch `brainstorm:specification-writer`:
 
 ```text
 Regenerate specification from session data.
 Session path: {{session_path}}
 Output format: {{format}}
+
+Use templates from: brainstorm:brainstorming skill references/
+- requirements-document.md
+- session-summary.md
 ```
 
 ### Step 4: Generate Format-Specific Outputs

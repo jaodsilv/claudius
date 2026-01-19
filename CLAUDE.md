@@ -81,9 +81,9 @@ specialized plugin directories.
 **Purpose**: Multi-agent requirements discovery through Socratic dialogue
 **Contents**:
 
-1. 6 agents: facilitator, domain-explorer, technical-analyst, constraint-analyst, requirements-synthesizer, specification-writer
+1. 7 agents: facilitator, domain-explorer, technical-analyst, constraint-analyst, analysis-synthesizer, requirements-synthesizer, specification-writer
 2. 3 commands: start, continue, export
-3. 1 skill: brainstorming
+3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, workflow-validation
 4. Templates for requirements and session summaries
 
 **See**: `brainstorm.claude/README.md` for detailed documentation

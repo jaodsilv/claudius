@@ -1,6 +1,6 @@
 {
   "name": "brainstorm",
-  "version": "1.1.0",
+  "version": "2.0.1",
   "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation. Transforms ambiguous ideas into actionable specifications through interactive dialogue and comprehensive analysis.",
   "author": {
     "name": "João da Silva",
@@ -20,21 +20,5 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/jaodsilv/claudius",
-  "repository": "https://github.com/jaodsilv/claudius.git",
-  "agents": [
-    "./agents/brainstorm/facilitator.md",
-    "./agents/brainstorm/technical-analyst.md",
-    "./agents/brainstorm/requirements-synthesizer.md",
-    "./agents/brainstorm/domain-explorer.md",
-    "./agents/brainstorm/constraint-analyst.md",
-    "./agents/brainstorm/specification-writer.md"
-  ],
-  "commands": [
-    "./commands/start.md",
-    "./commands/continue.md",
-    "./commands/export.md"
-  ],
-  "skills": [
-    "./skills/brainstorming/SKILL.md"
-  ]
+  "repository": "https://github.com/jaodsilv/claudius.git"
 }

@@ -3,6 +3,8 @@ name: brainstorm:brainstorming
 description: >-
   Orchestrates requirements discovery through multi-agent analysis and Socratic dialogue.
   Invoked when exploring vague ideas, discovering requirements, or defining feature scope.
+allowed-tools:
+model: opus
 ---
 
 # Brainstorming Skill
@@ -17,12 +19,13 @@ description: >-
 
 | Phase | Agent | Output |
 |-------|-------|--------|
-| 1. Dialogue | `brainstorm-facilitator` | Key insights, user needs |
-| 2. Domain | `brainstorm-domain-explorer` | Market research report |
-| 3. Technical | `brainstorm-technical-analyst` | Feasibility assessment |
-| 4. Constraints | `brainstorm-constraint-analyst` | Constraint analysis |
-| 5. Synthesis | `brainstorm-requirements-synthesizer` | Structured requirements |
-| 6. Document | `brainstorm-specification-writer` | Final specification |
+| 1. Dialogue | `brainstorm:facilitator` | Key insights, user needs (batched 2-3 rounds) |
+| 2-4. Analysis | `brainstorm:domain-explorer`, `brainstorm:technical-analyst`, `brainstorm:constraint-analyst` | Parallel analysis reports |
+| 4.5. Synthesis | `brainstorm:analysis-synthesizer` | Unified analysis context |
+| 5. Requirements | `brainstorm:requirements-synthesizer` | Structured requirements |
+| 6. Document | `brainstorm:specification-writer` | Final specification |
+
+**Note**: Phases 2-4 execute in parallel for efficiency. Phase 4.5 merges their outputs before requirements synthesis.
 
 ## Depth Levels
 
@@ -48,6 +51,25 @@ description: >-
 | `requirements.md` | Prioritized requirements (MoSCoW) |
 | `session-log.md` | Dialogue transcripts, phase outputs |
 | `summary.md` | Executive summary, next steps |
+
+## Templates
+
+Output document templates are available in references:
+
+- `references/requirements-document.md` - Full requirements specification template
+- `references/session-summary.md` - Executive summary template
+
+## Related Skills
+
+The brainstorming workflow leverages these specialized skills:
+
+- `constraint-analysis` - Constraint identification and trade-off patterns
+- `technical-patterns` - Architecture pattern selection and complexity sizing
+- `requirements-synthesis` - SMART criteria and MoSCoW prioritization
+- `domain-research` - Domain exploration research areas
+- `workflow-validation` - Quality gates between phases
+
+Each skill provides detailed reference material used by the corresponding agents.
 
 ## Quality Checklist
 

@@ -52,7 +52,16 @@ Rounds based on depth:
 2. **Normal**: 5 rounds (~30-60 min)
 3. **Deep**: 8 rounds (~60-120 min)
 
-### Phase 2: Domain Exploration
+### Phases 2-4: Parallel Analysis
+
+**Important**: Phases 2, 3, and 4 execute **simultaneously in parallel** using the Task tool
+to maximize efficiency. All three agents run at the same time, and the workflow waits for
+all three to complete before proceeding to Phase 4.5.
+
+The facilitator uses `Task` tool invocations to spawn the `domain-explorer`, `technical-analyst`,
+and `constraint-analyst` agents concurrently.
+
+#### Phase 2: Domain Exploration (runs in parallel)
 
 The domain explorer researches:
 
@@ -61,7 +70,7 @@ The domain explorer researches:
 3. User expectations
 4. Compliance considerations
 
-### Phase 3: Technical Analysis
+#### Phase 3: Technical Analysis (runs in parallel)
 
 The technical analyst evaluates:
 
@@ -70,7 +79,7 @@ The technical analyst evaluates:
 3. Technology recommendations
 4. Complexity estimation
 
-### Phase 4: Constraint Analysis
+#### Phase 4: Constraint Analysis (runs in parallel)
 
 The constraint analyst identifies:
 
@@ -78,6 +87,15 @@ The constraint analyst identifies:
 2. Business constraints
 3. Resource constraints
 4. Trade-offs and conflicts
+
+### Phase 4.5: Analysis Synthesis
+
+The analysis synthesizer merges outputs from the parallel analysis phases:
+
+1. Cross-references domain, technical, and constraint findings
+2. Identifies conflicts and overlaps between analyses
+3. Surfaces unified gaps and open questions
+4. Creates prioritized recommendations for requirements phase
 
 ### Phase 5: Requirements Synthesis
 
@@ -108,12 +126,13 @@ The specification writer creates:
 
 | Agent | Purpose |
 |-------|---------|
-| `brainstorm-facilitator` | Drives Socratic dialogue |
-| `brainstorm-domain-explorer` | Researches market and domain |
-| `brainstorm-technical-analyst` | Evaluates technical feasibility |
-| `brainstorm-constraint-analyst` | Identifies constraints |
-| `brainstorm-requirements-synthesizer` | Consolidates requirements |
-| `brainstorm-specification-writer` | Generates final documents |
+| `brainstorm:facilitator` | Drives Socratic dialogue |
+| `brainstorm:domain-explorer` | Researches market and domain |
+| `brainstorm:technical-analyst` | Evaluates technical feasibility |
+| `brainstorm:constraint-analyst` | Identifies constraints |
+| `brainstorm:analysis-synthesizer` | Merges and synthesizes parallel analysis outputs |
+| `brainstorm:requirements-synthesizer` | Consolidates requirements |
+| `brainstorm:specification-writer` | Generates final documents |
 
 ## Output Artifacts
 
@@ -212,4 +231,4 @@ MIT License - see repository for details.
 
 ## Author
 
-João da Silva - [GitHub](https://github.com/jaodsilv)
+Joao da Silva - [GitHub](https://github.com/jaodsilv)
