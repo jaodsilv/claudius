@@ -37,9 +37,9 @@ CHANGED_FILES=""
 if [[ -n "$PR_NUMBER" ]]; then
   # PR mode: get files from PR
   DETECTION_METHOD="pr"
-  CHANGED_FILES=$(gh pr view "$PR_NUMBER" --json files --jq '.files[].path' 2>&1)
+  CHANGED_FILES=$(gh pr view "$PR_NUMBER" --json files --jq '.files[].path')
   if [[ $? -ne 0 ]]; then
-    echo "error: Failed to get PR files: $CHANGED_FILES" >&2
+    echo "error: Failed to get PR files" >&2
     exit 1
   fi
 else
@@ -47,12 +47,12 @@ else
   DETECTION_METHOD="git-diff"
 
   # First try to find the default branch
-  DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>&1 | sed 's@^refs/remotes/origin/@@') || DEFAULT_BRANCH=""
+  DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') || DEFAULT_BRANCH=""
   if [[ -z "$DEFAULT_BRANCH" ]]; then
     # Fallback: try main, then master
-    if git show-ref --verify --quiet refs/remotes/origin/main; then
+    if git show-ref --verify refs/remotes/origin/main >/dev/null; then
       DEFAULT_BRANCH="main"
-    elif git show-ref --verify --quiet refs/remotes/origin/master; then
+    elif git show-ref --verify refs/remotes/origin/master >/dev/null; then
       DEFAULT_BRANCH="master"
     else
       echo "error: Could not determine default branch" >&2
@@ -61,12 +61,12 @@ else
   fi
 
   # Get changed files compared to default branch
-  CHANGED_FILES=$(git diff --name-only "origin/$DEFAULT_BRANCH"...HEAD 2>&1)
+  CHANGED_FILES=$(git diff --name-only "origin/$DEFAULT_BRANCH"...HEAD)
   if [[ $? -ne 0 ]]; then
     # Try without origin prefix
-    CHANGED_FILES=$(git diff --name-only "$DEFAULT_BRANCH"...HEAD 2>&1)
+    CHANGED_FILES=$(git diff --name-only "$DEFAULT_BRANCH"...HEAD)
     if [[ $? -ne 0 ]]; then
-      echo "error: Failed to get git diff: $CHANGED_FILES" >&2
+      echo "error: Failed to get git diff" >&2
       exit 1
     fi
   fi
@@ -83,7 +83,7 @@ jq -r '.plugins[] | "\(.source | ltrimstr("./"))|\(.name)"' "$MARKETPLACE_FILE" 
 
 # Process files and build result
 # First, build a mapping of plugin names to their files
-cat "$TEMP_DIR/changed_files.txt" | tr -d '\r' | while IFS= read -r file; do
+while IFS= read -r file; do
   [[ -z "$file" ]] && continue
 
   # Check against each plugin
@@ -102,7 +102,7 @@ cat "$TEMP_DIR/changed_files.txt" | tr -d '\r' | while IFS= read -r file; do
   if [[ -z "$MATCHED" ]]; then
     echo "UNMATCHED||$file"
   fi
-done > "$TEMP_DIR/matches.txt"
+done < <(cat "$TEMP_DIR/changed_files.txt" | tr -d '\r') > "$TEMP_DIR/matches.txt"
 
 # Build the final JSON using jq
 {
@@ -136,7 +136,12 @@ done > "$TEMP_DIR/matches.txt"
   ' "$TEMP_DIR/matches.txt")
 
   # Build unmatched files
-  UNMATCHED_LINES=$(grep '^UNMATCHED||' "$TEMP_DIR/matches.txt" | cut -d'|' -f3 || true)
+  GREP_EXIT=0
+  UNMATCHED_LINES=$(grep '^UNMATCHED||' "$TEMP_DIR/matches.txt" | cut -d'|' -f3) || GREP_EXIT=$?
+  if [[ $GREP_EXIT -eq 2 ]]; then
+    echo "error: grep failed" >&2
+    exit 1
+  fi
   if [[ -n "$UNMATCHED_LINES" ]]; then
     UNMATCHED_JSON=$(echo "$UNMATCHED_LINES" | jq -R -s 'split("\n") | map(select(length > 0))')
   else
