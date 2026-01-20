@@ -1,4 +1,7 @@
-files: .
+# Exclude external documentation files that should remain unmodified
+# Pattern: official-documentation.<optional-section>.<YYYY-MM-DD>.md
+exclude: '.*/official-documentation\.([-\w]+\.)?\d{4}(-\d{2}){2}\.md$'
+
 default_stages: [pre-commit, pre-push]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
