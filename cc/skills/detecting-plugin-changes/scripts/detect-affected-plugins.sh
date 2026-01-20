@@ -2,7 +2,7 @@
 # Detect affected plugins from PR or git diff
 # Reads marketplace.json and matches changed files to plugin directories
 
-set -uo pipefail
+set -euo pipefail
 
 # Convert Windows paths to bash format: D:\ or D:/ -> /d/
 convert_path() {
@@ -47,12 +47,12 @@ else
   DETECTION_METHOD="git-diff"
 
   # First try to find the default branch
-  DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>&1 | sed 's@^refs/remotes/origin/@@') || DEFAULT_BRANCH=""
   if [[ -z "$DEFAULT_BRANCH" ]]; then
     # Fallback: try main, then master
-    if git show-ref --verify --quiet refs/remotes/origin/main 2>/dev/null; then
+    if git show-ref --verify --quiet refs/remotes/origin/main; then
       DEFAULT_BRANCH="main"
-    elif git show-ref --verify --quiet refs/remotes/origin/master 2>/dev/null; then
+    elif git show-ref --verify --quiet refs/remotes/origin/master; then
       DEFAULT_BRANCH="master"
     else
       echo "error: Could not determine default branch" >&2
@@ -136,7 +136,7 @@ done > "$TEMP_DIR/matches.txt"
   ' "$TEMP_DIR/matches.txt")
 
   # Build unmatched files
-  UNMATCHED_LINES=$(grep '^UNMATCHED||' "$TEMP_DIR/matches.txt" 2>/dev/null | cut -d'|' -f3 || true)
+  UNMATCHED_LINES=$(grep '^UNMATCHED||' "$TEMP_DIR/matches.txt" | cut -d'|' -f3 || true)
   if [[ -n "$UNMATCHED_LINES" ]]; then
     UNMATCHED_JSON=$(echo "$UNMATCHED_LINES" | jq -R -s 'split("\n") | map(select(length > 0))')
   else
