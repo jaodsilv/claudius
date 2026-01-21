@@ -32,13 +32,13 @@ review-roadmap-arguments:
 
 ### 1. Load Skill
 
-Use Skill tool: `planner:orchestrating-reviews`
+Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 
 **Artifact Type**: roadmap
 **Primary Artifact Path**: `{{roadmap_path}}` (default: `docs/planning/roadmap.md`)
-**Domain Reviewer Agent**: `planner:planner:plan-reviewer` (roadmap mode)
+**Domain Reviewer Agent**: `planner/plan-reviewer` (roadmap mode)
 **Evaluation Dimensions**:
 
 - Goal Alignment - Does each phase contribute to the goal?

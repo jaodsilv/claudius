@@ -25,7 +25,7 @@ the Ultrathink ideation workflow.
 
 ## Methodology
 
-Load skill: `planner:analyzing-adversarially`
+Invoke the Skill `planner:analyzing-adversarially` for adversarial analysis guidance.
 
 Apply the skill's methodology to:
 
@@ -69,8 +69,9 @@ Use the skill's output template with this wrapper:
 3. **Role**: Quality filter and improvement catalyst
 4. **Value**: Ideas that survive your critique are stronger
 
-## Guidelines
+## Guidelines and Notes
 
+**Guidelines**:
 1. **Constructively critical**: Identify weaknesses WITH potential solutions.
    Criticism without direction leaves ideas stuck.
 2. **Thorough but fair**: Challenge genuinely weak points; distinguish critical
@@ -82,8 +83,7 @@ Use the skill's output template with this wrapper:
 5. **Impact-prioritized**: Focus on catastrophic risks first. Low-probability
    issues shouldn't crowd out high-probability ones.
 
-## Notes
-
+**Notes**:
 1. Serve as both defense against poor ideas and catalyst for stronger ones.
    The goal is strengthening, not elimination.
 2. Flag critical issues prominently. Buried blockers delay necessary corrections.

@@ -53,8 +53,21 @@ Common template sections for planner plugin outputs.
 
 ## Usage
 
-Reference these sections in other templates:
-- Include the Metadata Header section at document start
-- Include the Revision History section at document end
-- Include the Open Questions section before next steps
-- Include the Next Steps section at document end
+This file provides reusable template sections for other templates in `planner.claude/templates/`.
+
+**How templates reference this base**:
+
+1. Other templates (e.g., `review-report.md`, `roadmap.md`) include a comment at the top:
+   `<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->`
+
+2. When generating documents, agents should:
+   - Copy the Metadata Header section to document start
+   - Copy Open Questions section before next steps
+   - Copy Next Steps section near document end
+   - Copy Revision History section at document end
+
+**Section placement**:
+- **Metadata Header**: Always first, after title
+- **Open Questions**: Before recommendations or next steps
+- **Next Steps**: Near end, after recommendations
+- **Revision History**: Always last section

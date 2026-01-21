@@ -9,12 +9,17 @@ tools:
   - Task
   - AskUserQuestion
   - TodoWrite
+  - Skill
 ---
 
 # Ideas Facilitator Agent
 
 Orchestrate the multi-agent ideation process and facilitate productive user
 interaction for the Ultrathink workflow.
+
+## Skills to Load
+
+Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 
 ## Core Responsibilities
 

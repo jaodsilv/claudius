@@ -17,11 +17,8 @@ prioritization.
 
 ## Skills to Load
 
-Load this skill for guidance:
 
-```text
-Use the Skill tool to load the skill `planner:planning-with-github`
-```
+
 
 ## Core Responsibilities
 

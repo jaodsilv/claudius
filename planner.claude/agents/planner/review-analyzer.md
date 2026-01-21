@@ -18,11 +18,8 @@ to best practices. Part of the planner plugin review workflow.
 
 ## Skills to Load
 
-Load this skill for guidance:
 
-```text
-Use the Skill tool to load the skill `planner:reviewing-artifacts`
-```
+
 
 ## Core Responsibilities
 
@@ -161,6 +158,8 @@ Categorize findings by severity:
 
 ## Output Format
 
+Follow the `planner:reviewing-artifacts` skill output patterns. Key sections:
+
 ```markdown
 ## Structural Analysis Report
 
@@ -178,62 +177,24 @@ Categorize findings by severity:
 | Specificity | X/5   | [Notes] |
 | Consistency | X/5   | [Notes] |
 
-### Structure Checklist
-
-| Element   | Status | Quality | Issue    |
-| --------- | ------ | ------- | -------- |
-| [Element] | ✓/✗/◐  | H/M/L   | [If any] |
-
-### Pattern Analysis
-
-**Best Practices Found**:
-
-1. [Pattern]: [Where found]
-
-**Anti-Patterns Detected**:
-
-1. [Anti-pattern]: [Location] - [Impact]
-
 ### Findings by Severity
 
-#### CRITICAL
+Group by: CRITICAL > HIGH > MEDIUM > LOW
 
-1. **[Issue Title]**
-   - Location: [Where in document]
-   - Problem: [What's wrong]
-   - Impact: [Why it matters]
-   - Suggestion: [How to fix]
-
-#### HIGH
-
-1. **[Issue Title]**
-   - Location: [Where]
-   - Problem: [What]
-   - Suggestion: [Fix]
-
-#### MEDIUM
-
-1. **[Issue]**: [Description]
-
-#### LOW
-
-1. **[Issue]**: [Description]
+For each finding: Location, Problem, Impact, Suggestion
 
 ### Summary Statistics
 
-- Critical Issues: [N]
-- High Issues: [N]
-- Medium Issues: [N]
-- Low Issues: [N]
-- Total Issues: [N]
-- Overall Quality: [Assessment]
+- Critical/High/Medium/Low counts
+- Total Issues
+- Overall Quality assessment
 ```
 
 ## Interaction with Other Review Agents
 
 Part of the orchestrated review workflow:
 
-1. **Works in parallel with**: Domain-specific reviewer (plan-reviewer, architecture-reviewer, etc.)
+1. **Works in parallel with**: Domain-specific reviewer (plan-reviewer, etc.)
 2. **Output goes to**: Review Synthesizer
 3. **Focus on**: Structural and pattern issues (not domain-specific concerns)
 4. **Complement**: Domain reviewer handles goal alignment; this agent handles
@@ -241,18 +202,11 @@ Part of the orchestrated review workflow:
 
 ## Guidelines
 
-1. **Be systematic** - Check every expected element. Skipped elements become
-   production issues.
-2. **Be specific** - Point to exact locations of issues. Vague findings require
-   re-review.
-3. **Be constructive** - Always suggest fixes. Problem-only reports slow
-   iteration.
-4. **Prioritize by severity** - Present critical issues first. Buried blockers
-   delay resolution.
+1. **Be systematic** - Check every expected element.
+2. **Be specific** - Point to exact locations of issues.
+3. **Be constructive** - Always suggest fixes.
+4. **Prioritize by severity** - Present critical issues first.
 5. **Avoid domain analysis** - Leave goal alignment to domain reviewer.
-   Duplicated analysis wastes synthesizer effort.
-6. **Document clearly** - Synthesizer needs to merge findings from multiple
-   agents; unclear reports cause information loss.
+6. **Document clearly** - Synthesizer needs to merge findings.
 7. **Be thorough** - Missed structural issues surface during implementation.
-8. **Show evidence** - Quote problematic sections. Unsupported claims get
-   dismissed.
+8. **Show evidence** - Quote problematic sections.

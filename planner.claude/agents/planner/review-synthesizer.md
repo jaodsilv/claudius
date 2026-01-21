@@ -47,7 +47,7 @@ You will receive findings from:
 
 ## Synthesis Methodology
 
-Load skill: `planner:synthesizing-outputs`
+Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 
 Apply the skill's synthesis process with focus on:
 

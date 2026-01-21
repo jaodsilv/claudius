@@ -75,7 +75,7 @@ roadmap-arguments:
 3. Load the roadmapping skill for patterns:
 
    ```text
-   Use Skill tool to load: planner:roadmapping
+   Invoke the Skill `planner:roadmapping` for roadmap creation guidance.
    ```
 
 ### Phase 3: GitHub Integration
@@ -91,7 +91,7 @@ roadmap-arguments:
 3. If available, launch `issue-analyzer` agent:
 
    ```text
-   Use Task tool with planner:github:issue-analyzer agent:
+   Use Task tool with `planner/issue-analyzer` agent:
 
    Analyze open issues relevant to: {{goal}}
 
@@ -111,7 +111,7 @@ roadmap-arguments:
 2. Launch `roadmap-architect` agent:
 
    ```text
-   Use Task tool with planner:planner:roadmap-architect agent:
+   Use Task tool with `planner/roadmap-architect` agent:
 
    Create a roadmap for:
    Goal: {{goal}}

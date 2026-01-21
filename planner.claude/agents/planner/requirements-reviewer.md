@@ -28,7 +28,7 @@ Provide actionable improvement suggestions.
 
 ## Review Methodology
 
-Load skill: `planner:reviewing-artifacts`
+Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
 
 Follow the skill's review process with these domain-specific dimensions and
 quality criteria.

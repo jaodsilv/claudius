@@ -90,7 +90,7 @@ Task @planner/review-analyzer:
 
 ## Output Format
 
-Reference `templates/review-report.md` for the standard output structure.
+Use the `planner.claude/templates/review-report.md` template for the standard output structure.
 
 Key sections:
 - Executive Summary
