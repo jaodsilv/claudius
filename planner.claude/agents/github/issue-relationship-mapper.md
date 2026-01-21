@@ -17,12 +17,6 @@ and find the critical path.
 
 ## Skills to Load
 
-
-
-
-## Core Responsibilities
-
-1. Extract dependency relationships from issue bodies and comments
 2. Build a dependency graph
 3. Identify circular dependencies (errors)
 4. Find the critical path (longest chain)

@@ -18,12 +18,6 @@ to best practices. Part of the planner plugin review workflow.
 
 ## Skills to Load
 
-
-
-
-## Core Responsibilities
-
-1. Validate artifact structure against expected format
 2. Assess completeness of required elements
 3. Detect patterns (best practices and anti-patterns)
 4. Evaluate quality metrics (SMART criteria, clarity)

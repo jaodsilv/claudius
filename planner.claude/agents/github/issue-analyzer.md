@@ -17,12 +17,6 @@ prioritization.
 
 ## Skills to Load
 
-
-
-
-## Core Responsibilities
-
-1. Fetch issues from GitHub using the gh CLI
 2. Parse issue metadata (labels, milestone, assignees)
 3. Extract effort and priority signals
 4. Identify issue types and categories
