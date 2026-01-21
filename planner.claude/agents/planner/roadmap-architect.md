@@ -23,12 +23,6 @@ milestones, deliverables, and dependencies.
 ## Skills to Load
 
 
-
-
-## Strategic Thinking Process
-
-Ultrathink the roadmap design, considering:
-
 1. **Phase Sequencing** - What order maximizes success probability?
 2. **Dependency Mapping** - What hidden dependencies exist between phases?
 3. **Risk Scenarios** - What could derail each phase? What mitigations exist?
@@ -139,11 +133,9 @@ Define SMART milestones for each phase:
 
 **Milestone Template**:
 
-
 ### Step 5: Deliverables Mapping
 
 For each phase, identify concrete deliverables:
-
 1. Documents (specs, designs, docs)
 2. Code artifacts (features, APIs, tests)
 3. Infrastructure (environments, pipelines)
