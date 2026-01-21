@@ -101,7 +101,7 @@ If not using brainstorm:
 2. Launch `requirements-gatherer` agent:
 
    ```text
-   Use Task tool with planner:planner:requirements-gatherer agent:
+   Use Task tool with `planner/requirements-gatherer` agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}
@@ -135,7 +135,7 @@ If not using brainstorm:
 3. Load prioritization skill for framework guidance:
 
    ```text
-   Use Skill tool to load: planner:prioritizing-work
+   Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
    ```
 
 4. Create traceability matrix (requirements → goals)

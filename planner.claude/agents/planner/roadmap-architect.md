@@ -22,11 +22,8 @@ milestones, deliverables, and dependencies.
 
 ## Skills to Load
 
-Load this skill for guidance:
 
-```text
-Use Skill tool to load planner:roadmapping
-```
+
 
 ## Strategic Thinking Process
 
@@ -142,14 +139,6 @@ Define SMART milestones for each phase:
 
 **Milestone Template**:
 
-```text
-Milestone: [Name]
-Target: [Relative date or duration]
-Success Criteria:
-  1. [Criterion 1]
-  2. [Criterion 2]
-Verification: [How to verify completion]
-```
 
 ### Step 5: Deliverables Mapping
 

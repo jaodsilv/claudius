@@ -32,13 +32,13 @@ review-requirements-arguments:
 
 ### 1. Load Skill
 
-Use Skill tool: `planner:orchestrating-reviews`
+Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 
 **Artifact Type**: requirements
 **Primary Artifact Path**: `{{requirements_path}}` (default: `docs/planning/requirements.md`)
-**Domain Reviewer Agent**: `planner:planner:requirements-reviewer`
+**Domain Reviewer Agent**: `planner/requirements-reviewer`
 **Evaluation Dimensions**:
 
 - Clarity - Is each requirement specific and unambiguous?

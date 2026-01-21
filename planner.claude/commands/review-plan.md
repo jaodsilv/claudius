@@ -32,13 +32,13 @@ review-plan-arguments:
 
 ### 1. Load Skill
 
-Use Skill tool: `planner:orchestrating-reviews`
+Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 
 **Artifact Type**: plan
 **Primary Artifact Path**: `{{plan_path}}`
-**Domain Reviewer Agent**: `planner:planner:plan-reviewer`
+**Domain Reviewer Agent**: `planner/plan-reviewer`
 **Evaluation Dimensions**:
 
 - Goal Alignment - Does plan support stated objectives?

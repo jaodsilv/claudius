@@ -32,13 +32,13 @@ review-prioritization-arguments:
 
 ### 1. Load Skill
 
-Use Skill tool: `planner:orchestrating-reviews`
+Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 
 **Artifact Type**: prioritization
 **Primary Artifact Path**: `{{prioritization_path}}` (default: `docs/planning/prioritization.md`)
-**Domain Reviewer Agent**: `planner:planner:plan-reviewer`
+**Domain Reviewer Agent**: `planner/plan-reviewer`
 **Evaluation Dimensions**:
 
 - Framework Application - Is the prioritization framework consistently applied?
