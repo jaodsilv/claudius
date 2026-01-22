@@ -1,0 +1,22 @@
+{
+  "name": "review-loop",
+  "version": "2.1.1",
+  "description": "Generic Review-Task loop orchestrator with pause/resume support and config file auto-detection. Requires: gitx plugin for metadata management.",
+  "author": {
+    "name": "João da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "review",
+    "workflow",
+    "automation",
+    "development-workflow",
+    "multi-agent",
+    "orchestration",
+    "resumable",
+    "configurable"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}

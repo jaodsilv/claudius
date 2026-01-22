@@ -1,0 +1,49 @@
+# Default Review Loop Configuration
+# Copy to .config/review-loop/config.yaml in your project to customize
+#
+# Config locations (priority order):
+#   1. $PROJECT/.config/review-loop/config.yaml (project-level)
+#   2. ~/.config/review-loop/config.yaml (user-level)
+#   3. This file (plugin default)
+
+version: 1
+
+# REQUIRED: Specify your reviewer and developer agents
+# Uncomment and configure these before using /start-loop without arguments
+#
+# reviewer: "pr-review-toolkit:code-reviewer"
+# developer: "gitx:address-review:review-responder"
+
+# Optional: CI integration
+# Uncomment to enable automatic CI status checking and fixing
+#
+# ciChecker: "gitx:address-review:ci-status-checker"
+# ciFixer: "gitx:address-review:ci-status-fixer"
+
+# Loop settings
+maxRounds: 5
+approvalThreshold: all  # all | critical | important
+
+# Custom prompts (uncomment and modify as needed)
+# These provide additional instructions to the agents
+#
+# prompts:
+#   reviewer: |
+#     Focus on security vulnerabilities and performance issues.
+#     Be strict about test coverage.
+#   developer: |
+#     Address all critical and important issues first.
+#     Add tests for any new code paths.
+#   ciChecker: |
+#     Check for lint errors and type errors.
+#   ciFixer: |
+#     Fix lint errors automatically. For type errors, suggest fixes.
+
+# Fetching strategies (optional)
+# Control how context is gathered for each phase
+#
+# fetchingStrategies:
+#   review: |
+#     Fetch full diff context for changed files.
+#   response: |
+#     Include inline thread context.
