@@ -111,7 +111,7 @@ roadmap-arguments:
 2. Launch `roadmap-architect` agent:
 
    ```text
-   Use Task tool with `planner:planner:roadmap-architect` agent:
+   Use Task tool with `planner:creators:roadmap-architect` agent:
 
    Create a roadmap for:
    Goal: {{goal}}

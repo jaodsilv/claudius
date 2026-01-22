@@ -38,7 +38,7 @@ Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestr
 
 **Artifact Type**: architecture
 **Primary Artifact Path**: `{{architecture_path}}` (discover via Glob if not provided)
-**Domain Reviewer Agent**: `planner:planner:architecture-reviewer`
+**Domain Reviewer Agent**: `planner:reviewers:architecture-reviewer`
 **Evaluation Dimensions**:
 
 - Technical Soundness - Are design decisions well-justified?

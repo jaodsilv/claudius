@@ -116,7 +116,7 @@ prioritize-arguments:
 2. Launch `prioritization-engine` agent:
 
    ```text
-   Use Task tool with `planner:planner:prioritization-engine` agent:
+   Use Task tool with `planner:creators:prioritization-engine` agent:
 
    Apply {{framework}} framework to prioritize:
 
