@@ -36,7 +36,7 @@ specialized plugin directories.
 2. 15 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
    commit-push, next-issue, fix-issue, comment-to-issue, comment-to-pr, pr,
    respond, update-pr, merge-pr
-3. 2 skills: conventional-commits, conventional-branch
+3. Multiple skills: conventional-commits, conventional-branch, managing-issues, performing-pr-preflight-checks, categorizing-review-concerns, etc...
 
 **See**: `gitx/README.md` for detailed documentation
 
