@@ -3,77 +3,44 @@ name: gitx:naming-worktrees
 description: >-
   Generates abbreviated worktree directory names from branch names.
   Invoked when creating worktrees to offer short, meaningful options.
+allowed-tools: AskUserQuestion, Bash(scripts/generate-worktree-names.sh:*), Skill(gitx:validating-directory-names:*)
+context: fork
+model: sonnet
 ---
 
 # Naming Worktrees
 
 Generate abbreviated directory names from conventional branch names.
 
-## Input/Output
+## Execution
 
-```text
-feature/issue-123-add-user-auth → ['auth', 'user-auth', 'add-user-auth']
-bugfix/fix-login-error → ['error', 'login-error', 'fix-login-error']
-release/v1.2.0 → ['v1.2.0']
+Run the name generation script:
+
+```bash
+scripts/generate-worktree-names.sh <branch_name>
 ```
 
-## Algorithm
+### Script Output
 
-### 1. Parse Branch
+Returns JSON with suggested names and paths:
 
-Extract description after type prefix: `feature/issue-123-add-auth` → `issue-123-add-auth`
-
-### 2. Remove Issue Patterns
-
-Strip common issue references from start:
-
-| Pattern | Example |
-|---------|---------|
-| `^issue-\d+-` | `issue-123-` |
-| `^#\d+-` | `#123-` |
-| `^\d+-` | `123-` |
-| `^JIRA-\d+-`, `^BUG-\d+-`, etc. | `JIRA-456-` |
-
-If result empty after removal, keep original (fallback).
-
-### 3. Generate Options
-
-Split by hyphens, then build options from last word to full phrase:
-
-```text
-['add', 'user', 'auth'] →
-  - auth
-  - user-auth
-  - add-user-auth
+```json
+{
+  "branch": "feature/issue-123-add-user-auth",
+  "parent_dir": "/d/src/project",
+  "options": [
+    {"name": "auth", "path": "/d/src/project/auth"},
+    {"name": "user-auth", "path": "/d/src/project/user-auth"},
+    {"name": "add-user-auth", "path": "/d/src/project/add-user-auth"}
+  ]
+}
 ```
 
-### 4. Filter and Limit
+## Selection Flow
 
-1. Remove single-character and numeric-only options
-2. Filter meaningless words if only option: `fix`, `add`, `feature`, etc.
-3. Keep version strings as-is: `v1.2.0`
-4. Limit to 5 options maximum (shortest first)
+After getting options from the script:
 
-## Examples
-
-| Input | Output |
-|-------|--------|
-| `feature/issue-123-add-user-auth` | `['auth', 'user-auth', 'add-user-auth']` |
-| `bugfix/fix-login-error` | `['error', 'login-error', 'fix-login-error']` |
-| `hotfix/JIRA-789-security-patch` | `['patch', 'security-patch']` |
-| `release/v1.2.0` | `['v1.2.0']` |
-| `feature/auth` | `['auth']` |
-| `feature/issue-123` | `['issue-123']` (fallback) |
-
-## Validation Rules
-
-Generated names must be:
-- Lowercase only
-- Hyphens for word separation
-- No consecutive/leading/trailing hyphens
-- Filesystem safe
-- Not reserved (`main`, `master`, `develop`, `HEAD`)
-
-## Integration
-
-Used by `/gitx:worktree` and `/gitx:fix-issue` when creating worktrees.
+1. Present options to user via AskUserQuestion
+2. If user types custom name, validate with the Skill `gitx:validating-directory-names`
+3. Confirm final path with user
+4. Output the user choice as the result

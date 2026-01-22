@@ -1,26 +1,17 @@
 ---
 name: gitx:committing-conventionally
 description: >-
-  Applies project-specific conventional commit conventions for this repository.
-  Invoked when creating git commits, reviewing commit history, or planning changes.
+  Applies custom conventional commit conventions.
+  Invoked when creating git commits or creating PRs.
   Use when needing project-specific scopes, custom types, or non-standard rules.
+allowed-tools: Read, Grep, Glob
+model: sonnet
 ---
 
 # Committing Conventionally
 
-This skill provides project-specific extensions to standard Conventional Commits.
+This skill provides custom extensions to standard Conventional Commits.
 Claude already knows the standard specification (feat, fix, docs, etc.).
-
-## Project-Specific Scopes
-
-Use these scopes for commits in this repository:
-
-1. **commands**: Changes to slash command definitions (`commands/*.md`)
-2. **agents**: Changes to agent definitions (`agents/**/*.md`)
-3. **skills**: Changes to skill definitions (`skills/**/*.md`)
-4. **hooks**: Changes to git hooks or hook scripts
-5. **scripts**: Changes to utility scripts
-6. **templates**: Changes to output templates
 
 ## Custom Commit Types
 
@@ -32,12 +23,55 @@ Beyond standard types, this project uses:
    wip(feature-x): initial implementation
    ```
 
-## Project Rules
+## Custom Commit Rules
 
 1. **No Co-Authors**: Do not add "Co-Authored-By" or similar footers
 2. **Issue References**: Use `Fixes #123` or `Closes #123` in footer
-3. **Scope Required**: Always use scope for commands, agents, and skills changes
+3. **Scope Required**: Always use scope for any change
 4. **Body for Non-Trivial**: Include body explaining "why" for any change > 10 lines
+
+## User or project-defined Commit Types
+
+Look for a file called `commit-conventions.yaml` in the .claude folder of the repository or the of the user's home directory:
+
+- ~/.claude/commit-conventions.yaml
+- .claude/commit-conventions.yaml
+
+If it exists, parse them, and use AskUserQuestion to ask if you are confused or instructions are conflicting
+
+### `commit-conventions.yaml` Format
+
+```yaml
+rules:
+  - title: <title>
+    description: <description>
+types:
+  - type: <type>
+    scope: <restricted-scope>
+    description: <description>
+    examples:
+      - <example>
+```
+
+Example using the rules from this file:
+
+```yaml
+rules:
+  - title: No Co-Authors
+    description: Do not add "Co-Authored-By" or similar footers
+  - title: Issue References
+    description: Use `Fixes #123` or `Closes #123` in footer
+  - title: Scope Required
+    description: Always use scope for any change
+  - title: Body for Non-Trivial
+    description: Include body explaining "why" for any change > 10 lines
+types:
+  - type: wip
+    scope: null
+    description: Work in progress (squash before merging)
+    examples:
+      - "wip(feature-x): initial implementation"
+```
 
 ## Validation Checklist
 
