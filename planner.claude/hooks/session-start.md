@@ -34,7 +34,7 @@ The script returns JSON with:
 - Checks if `gh` is authenticated
 - Warns if missing or not authenticated
 
-### 2. Brainstorm Pro Plugin
+### 2. Brainstorm Plugin
 
 - Checks for `brainstorm.claude/.claude-plugin/plugin.json`
 - Informs if available for enhanced requirements gathering

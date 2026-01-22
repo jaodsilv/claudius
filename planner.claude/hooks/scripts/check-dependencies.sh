@@ -33,7 +33,7 @@ fi
 brainstorm_available="false"
 if [ -f "${PLUGIN_ROOT}/../brainstorm.claude/.claude-plugin/plugin.json" ] || [ -f "../brainstorm.claude/.claude-plugin/plugin.json" ]; then
     brainstorm_available="true"
-    info_msgs="Brainstorm Pro detected - /planner:gather-requirements can use enhanced brainstorming"
+    info_msgs="Brainstorm plugin detected - /planner:gather-requirements can use enhanced brainstorming"
 fi
 
 # Build template paths context
