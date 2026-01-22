@@ -1,5 +1,5 @@
 ---
-name: planner-requirements-gatherer
+name: requirements-gatherer
 description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
@@ -12,6 +12,8 @@ tools:
   - AskUserQuestion
   - WebSearch
   - Skill
+skills:
+  - brainstorm:analyzing-constraints
 ---
 
 # Requirements Gatherer
@@ -50,13 +52,13 @@ requirements that surface as scope creep during implementation.
 
 ## Brainstorm Integration
 
-Check for brainstorm-pro plugin availability:
+Check for brainstorm plugin availability:
 
-1. If brainstorm-pro available AND user wants deep discovery:
+1. If brainstorm available AND user wants deep discovery:
    1. Suggest using `/brainstorm:start` for comprehensive exploration
    2. Import brainstorm outputs if available
    3. Transform into planner requirements format
-2. If brainstorm-pro unavailable: Use the built-in gathering process below
+2. If brainstorm unavailable: Use the built-in gathering process below
 
 ## Process
 

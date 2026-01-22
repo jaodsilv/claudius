@@ -1,5 +1,5 @@
 ---
-name: planner-prioritization-engine
+name: prioritization-engine
 description: Applies prioritization frameworks (RICE, MoSCoW, weighted scoring) to rank issues and features. Invoked when creating priority matrices or deciding work order.
 model: sonnet
 color: green
@@ -10,6 +10,10 @@ tools:
   - Glob
   - Grep
   - Task
+  - Skill
+skills:
+  - planner:prioritizing-work
+  - planner:planning-with-github
 ---
 
 # Prioritization Engine

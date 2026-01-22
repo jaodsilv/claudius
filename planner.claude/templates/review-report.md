@@ -1,5 +1,7 @@
 # {{review_type}} Review Report
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Artifact Reviewed**: {{artifact_name}}
 **Review Date**: {{date}}
 **Reviewer**: Planner Plugin
@@ -155,6 +157,8 @@ No significant gaps identified.
 
 ## Questions for Discussion
 
+<!-- See _base.md for open questions format -->
+
 1. {{question1}}
 2. {{question2}}
 3. {{question3}}
@@ -162,6 +166,8 @@ No significant gaps identified.
 ---
 
 ## Recommended Next Steps
+
+<!-- See _base.md for next steps format -->
 
 ### Immediate Actions
 
@@ -192,6 +198,8 @@ This review was conducted using the following approach:
 ---
 
 ## Revision History
+
+<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes        | Author         |
 | -------- | ------- | -------------- | -------------- |

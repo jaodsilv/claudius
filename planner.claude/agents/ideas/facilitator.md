@@ -1,5 +1,5 @@
 ---
-name: planner-ideas-facilitator
+name: facilitator
 description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
 model: sonnet
 color: cyan
@@ -9,6 +9,8 @@ tools:
   - Task
   - AskUserQuestion
   - TodoWrite
+skills:
+  - cc:orchestrating-agents
 ---
 
 # Ideas Facilitator Agent

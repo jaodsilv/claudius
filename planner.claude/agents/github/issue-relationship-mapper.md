@@ -1,5 +1,5 @@
 ---
-name: planner-github-issue-relationship-mapper
+name: issue-relationship-mapper
 description: Maps issue dependencies and blocking relationships. Invoked when identifying critical paths, finding blocked issues, or determining parallel work opportunities.
 model: sonnet
 color: gray
@@ -7,6 +7,9 @@ tools:
   - Bash
   - Read
   - Task
+  - Skill
+skills:
+  - planner:planning-with-github
 ---
 
 # GitHub Issue Relationship Mapper
@@ -27,7 +30,7 @@ and find the critical path.
 
 ### Step 1: Fetch Issue Data
 
-Use the issue-analyzer agent or fetch directly:
+Use the planner:github:issue-analyzer agent or fetch directly:
 
 ```bash
 gh issue list --state open --json number,title,body,labels --limit 200

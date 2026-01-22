@@ -1,7 +1,8 @@
 ---
 description: Reviews architecture decisions with multi-agent orchestration. Use for validating technical designs against goals.
-allowed-tools: Task, Read, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite
+allowed-tools: Task, Read, Glob, Grep, WebSearch, Skill, AskUserQuestion, TodoWrite
 argument-hint: <goal|requirements-path> [--architecture-path <path>] [--mode <quick|thorough>]
+model: opus
 ---
 
 # /planner:review-architecture
@@ -27,101 +28,28 @@ review-architecture-arguments:
   required: [context]
 ```
 
-## Orchestration Pattern
-
-```text
-Thorough Mode:
-Phase 1: Parallel → planner-architecture-reviewer + planner-review-analyzer
-Phase 2: Challenge → planner-review-challenger
-Phase 3: Synthesize → planner-review-synthesizer
-Phase 4: Interactive → Present findings, gather feedback
-
-Quick Mode: Single agent (planner-architecture-reviewer)
-```
-
 ## Workflow
 
-### 1. Load Context
+### 1. Load Skill
 
-- [ ] Initialize TodoWrite with phases
-- [ ] If `$context` is file path: Load as requirements
-- [ ] Otherwise: Use as goal string
+Use Skill tool: `planner:orchestrating-reviews`
 
-### 2. Find Architecture Docs
+### 2. Domain Context
 
-- [ ] If `$architecture_path` provided: Read file
-- [ ] If not: `Glob: **/architecture*.md, **/design*.md, **/adr/*.md`
-- [ ] If multiple found: Ask user to select
-- [ ] Extract: components, data flows, technologies, decisions
+**Artifact Type**: architecture
+**Primary Artifact Path**: `{{architecture_path}}` (discover via Glob if not provided)
+**Domain Reviewer Agent**: `planner:planner:architecture-reviewer`
+**Evaluation Dimensions**:
 
-### 3. Analysis
+- Technical Soundness - Are design decisions well-justified?
+- Scalability - Can the architecture handle growth?
+- Security - Are security considerations addressed?
+- Maintainability - Is the design modular and evolvable?
+- Trade-offs - Are alternatives and trade-offs documented?
 
-**Thorough Mode - Parallel Analysis:**
+### 3. Execute Orchestration
 
-Launch `planner-architecture-reviewer`:
-- Goal alignment
-- Requirements coverage (Performance, Security, Scalability, Reliability)
-- Technical soundness
-- Patterns and anti-patterns
-
-Launch `planner-review-analyzer`:
-- Components defined?
-- Data flows described?
-- Trade-offs documented?
-- Security considerations?
-
-**Adversarial Challenge** (`planner-review-challenger`):
-- Scale failure modes
-- Security vulnerabilities
-- Technology risks
-- Complexity debt
-- Missing components
-
-**Synthesis** (`planner-review-synthesizer`):
-- Overall score
-- Prioritized concerns
-- Alternative recommendations
-
-**Quick Mode:**
-Single `planner-architecture-reviewer` pass only.
-
-### 4. Present Findings
-
-```markdown
-## Architecture Review
-
-**Context**: {{goal_or_requirements}}
-**Overall Score**: {{score}}/5
-
-### Goal Alignment
-| Aspect | Support | Gap |
-|--------|---------|-----|
-
-### Dimension Scores
-| Dimension | Score | Finding |
-|-----------|-------|---------|
-| Goal Alignment | X/5 | |
-| Technical Soundness | X/5 | |
-| Maintainability | X/5 | |
-| Scalability | X/5 | |
-| Security | X/5 | |
-
-### Patterns
-- Good: {{patterns}}
-- Concerns: {{anti_patterns}}
-```
-
-### 5. Recommendations
-
-```markdown
-## Recommendations
-
-### High Priority
-1. **{{concern}}**: Current → Suggested → Trade-off
-
-### Alternative Approaches
-- {{alternatives}}
-```
+Follow the orchestrating-reviews skill pattern with above context.
 
 ## Usage Examples
 
@@ -133,6 +61,6 @@ Single `planner-architecture-reviewer` pass only.
 
 ## Error Handling
 
-- Context not provided: Prompt user
+- Context not provided: Prompt user for goal or requirements
 - Architecture not found: Search with Glob, present options
 - Agent timeout: Report partial results

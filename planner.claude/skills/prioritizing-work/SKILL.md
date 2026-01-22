@@ -1,6 +1,8 @@
 ---
 name: planner:prioritizing-work
 description: Applies prioritization frameworks to rank items. Invoked when user asks to prioritize issues, rank features, apply RICE/MoSCoW scoring, or create priority matrices.
+allowed-tools: Bash
+model: sonnet
 ---
 
 # Prioritizing Work
@@ -23,24 +25,7 @@ Applies RICE, MoSCoW, Weighted Scoring, Kano, or Value vs Effort frameworks to r
 
 ## GitHub Label Mapping
 
-### Priority Labels
-
-| Label Pattern              | Framework Mapping          |
-| -------------------------- | -------------------------- |
-| `P0`, `critical`, `blocker`| Must Have, RICE +50% boost |
-| `P1`, `high-priority`      | Should Have, RICE +25%     |
-| `P2`, `medium`, `normal`   | Could Have                 |
-| `P3`, `low`                | Low priority, RICE -25%    |
-
-### Effort Labels
-
-| Label Pattern | Person-Days | RICE Effort |
-| ------------- | ----------- | ----------- |
-| `XS`, `trivial` | 0.25      | 0.5         |
-| `S`, `small`    | 0.5-1     | 1           |
-| `M`, `medium`   | 1-2       | 2           |
-| `L`, `large`    | 3-5       | 5           |
-| `XL`, `epic`    | 5-10      | 10          |
+For GitHub label conventions (priority, effort), see `planner:planning-with-github` skill.
 
 ## GitHub CLI Commands
 
