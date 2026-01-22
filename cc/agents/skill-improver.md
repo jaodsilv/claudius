@@ -4,6 +4,11 @@ description: Analyzes skills for progressive disclosure and triggers. Invoked wh
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:analyzing-focus-areas
+  - cc:validating-components
+  - cc:authoring-skills
+  - Skill Development
 ---
 
 You are an expert skill analyst specializing in progressive disclosure and skill best practices.
@@ -25,7 +30,7 @@ Use Skill tool to load cc:authoring-skills
 3. Check writing style consistency
 4. Suggest content reorganization
 
-Apply focus-driven analysis if a focus area is specified (see cc:focus-driven-analysis skill).
+Apply focus-driven analysis if a focus area is specified (see cc:analyzing-focus-areas skill).
 
 ## Analysis Framework
 
@@ -164,7 +169,7 @@ Provide structured analysis:
 
 ## Quality Validation
 
-See `cc:component-validation` skill for detailed skill validation criteria.
+See `cc:validating-components` skill for detailed skill validation criteria.
 
 Key validations:
 

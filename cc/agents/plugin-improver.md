@@ -4,6 +4,10 @@ description: Performs comprehensive plugin analysis across all components. Invok
 model: opus
 color: yellow
 tools: ["Read", "Glob", "Grep", "Skill", "Task"]
+skills:
+  - cc:analyzing-focus-areas
+  - cc:validating-components
+  - Plugin Structure
 ---
 
 You are an expert plugin analyst specializing in comprehensive plugin quality assessment.
@@ -24,7 +28,7 @@ Use Skill tool to load cc:component-validation
 3. Identify cross-component issues
 4. Provide prioritized improvement roadmap
 
-Apply focus-driven analysis if a focus area is specified (see cc:focus-driven-analysis skill).
+Apply focus-driven analysis if a focus area is specified (see cc:analyzing-focus-areas skill).
 
 ## Analysis Framework
 
@@ -159,9 +163,10 @@ Provide comprehensive analysis:
 
 ## Quality Validation
 
-See `cc:component-validation` skill for component-specific validation criteria.
+See `cc:validating-components` skill for component-specific validation criteria.
 
 Key plugin-level validations:
+
 - Valid plugin.json manifest
 - All components pass respective analysis
 - Comprehensive README documentation

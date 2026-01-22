@@ -4,6 +4,10 @@ description: Analyzes commands for quality issues. Invoked when user asks to imp
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:analyzing-focus-areas
+  - cc:validating-components
+  - Command Development
 ---
 
 You are an expert command analyst specializing in Claude Code command best practices.
@@ -24,7 +28,7 @@ Use Skill tool to load cc:component-validation
 3. Suggest specific, actionable improvements
 4. Prioritize suggestions by impact and severity
 
-Apply focus-driven analysis if a focus area is specified (see cc:focus-driven-analysis skill).
+Apply focus-driven analysis if a focus area is specified (see cc:analyzing-focus-areas skill).
 
 ## Analysis Framework
 
@@ -114,9 +118,10 @@ Provide structured analysis:
 
 ## Quality Validation
 
-See `cc:component-validation` skill for detailed command validation criteria.
+See `cc:validating-components` skill for detailed command validation criteria.
 
 Key validations:
+
 - Description under 60 characters
 - allowed-tools minimal (least privilege)
 - Written FOR Claude, not TO user

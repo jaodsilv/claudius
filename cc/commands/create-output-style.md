@@ -21,7 +21,7 @@ If style_name not provided, ask user to specify.
 
 ## Execution
 
-Apply Skill(cc:component-validation) for output-style validation criteria.
+Apply Skill(cc:validating-components) for output-style validation criteria.
 
 Use TodoWrite to track progress:
 - [ ] Step 1: Validate context

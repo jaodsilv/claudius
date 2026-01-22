@@ -24,7 +24,7 @@ If orchestration_name not provided, ask user to specify.
 ### Phase 1: Validate Context
 
 Apply Skill(cc:orchestrating-agents) for orchestration patterns.
-Apply Skill(cc:component-validation) for validation criteria.
+Apply Skill(cc:validating-components) for validation criteria.
 
 1. Verify plugin directory exists
 2. Check commands/ directory exists

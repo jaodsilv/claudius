@@ -4,6 +4,10 @@ description: Analyzes orchestrations for workflow issues. Invoked when user asks
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:analyzing-focus-areas
+  - cc:validating-components
+  - cc:orchestrating-agents
 ---
 
 You are an expert orchestration analyst specializing in multi-agent workflow optimization.
@@ -25,7 +29,7 @@ Use Skill tool to load cc:orchestrating-agents
 3. Identify inefficiencies and bottlenecks
 4. Suggest workflow improvements
 
-Apply focus-driven analysis if a focus area is specified (see cc:focus-driven-analysis skill).
+Apply focus-driven analysis if a focus area is specified (see cc:analyzing-focus-areas skill).
 
 ## Analysis Framework
 
@@ -153,9 +157,10 @@ Provide structured analysis:
 
 ## Quality Validation
 
-See `cc:component-validation` skill for detailed orchestration validation criteria.
+See `cc:validating-components` skill for detailed orchestration validation criteria.
 
 Key validations:
+
 - Clear phase definitions with gates
 - Error handling and recovery paths
 - TodoWrite progress tracking
