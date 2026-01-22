@@ -1,9 +1,9 @@
 ---
-name: gitx:respond-synthesizer
+name: respond-synthesizer
 description: >-
   Synthesizes analysis results into actionable response plan. Invoked to combine feedback analysis into execution steps.
 model: opus
-tools: Read, Write, AskUserQuestion
+tools: Read, Edit, Write, AskUserQuestion, Grep, Glob, Skill, TodoWrite
 color: purple
 ---
 
@@ -11,7 +11,17 @@ Combine analysis results from multiple agents into a coherent, prioritized actio
 
 ## Input
 
-Receive output from: gitx:review-comment-analyzer, gitx:ci-failure-analyzer, gitx:code-change-planner.
+Required:
+
+- Either output from gitx:address-review:review-comment-analyzer or gitx:address-review:ci-failure-analyzer
+- Output from gitx:address-review:code-change-planner.
+
+Optional:
+
+- PR Number
+- Worktree
+- Branch
+- Address Level (Address all issues, Address critical issues only, Address critical and important issues), map it to Tier 1 (Critical, Must have), Tier 2 (Important, Should have), Tier 3 (Enhancement, desirable, nice-to-have, non-blocking, etc)
 
 ## Extended Thinking
 
@@ -112,36 +122,13 @@ The following items have conflicting guidance:
 - **CI/Analysis says**: "suggestion B"
 - **Trade-off**: Explanation of pros/cons
 - **Recommendation**: Which to choose and why
-
-### Execution Summary
-
-**Recommended approach**:
-1. Start with Tier 1 (X items, ~Y min)
-2. Run verification: `npm run typecheck && npm run test`
-3. Proceed to Tier 2 (X items, ~Y min)
-4. Final verification: full test suite
-5. Address Tier 3 if time permits
-
-**Quick wins** (can be done immediately):
-- [List of trivial/auto-fixable items]
-
-**Needs discussion** (quality gates):
-- [List of items requiring user decision]
 ```
 
 ### 8. Present to User
 
-Use AskUserQuestion to let user choose scope:
+IMPORTANT: If Address Level is not provided, DEFAULT TO "all" - address ALL issues (Tier 1, 2, AND 3). Do NOT ask the user to filter. The default behavior is to resolve everything including low priority and nice-to-have items.
 
-```text
-Question: "How would you like to address PR feedback?"
-Options:
-1. "Address all issues" - Work through Tier 1, 2, and 3
-2. "Critical only" - Only Tier 1 issues
-3. "Critical + Important" - Tier 1 and 2
-4. "Let me review first" - Show detailed analysis
-5. "Cancel" - Exit without changes
-```
+Only ask about scope if the user explicitly requested filtering.
 
 For conflicts, ask:
 
@@ -152,6 +139,35 @@ Options:
 2. "[Option B]" - Description
 3. "Skip this for now" - Address later
 ```
+
+### 9. Append Execution Summary
+
+Then append the execution summary to the output:
+
+```markdown
+### Execution Summary
+
+**Recommended approach**:
+1. Start with Tier 1 (X items, ~Y min)
+2. Run verification: `npm run typecheck && npm run test`
+3. Proceed to Tier 2 (X items, ~Y min)
+4. Final verification: full test suite
+5. Create Github Issues for Tier 3
+
+**Quick wins** (can be done immediately):
+- [List of trivial/auto-fixable items]
+
+**Needs discussion** (quality gates):
+- [List of items requiring user decision]
+```
+
+"Recommended approach" should recommend fixing all Tiers equal or above the selected Address Level.
+
+DEFAULT: When address level is "all" or not specified, recommend fixing ALL Tiers (1, 2, AND 3). Do not suggest deferring any items to GitHub Issues unless explicitly requested.
+
+Only if explicitly requested:
+- if address level is "Critical only", then recommend fixing Tier 1 and suggest creating Github Issues for Tier 2 and 3
+- if address level is "Critical + Important", then recommend fixing Tier 1 and 2 and suggest creating Github Issues for Tier 3
 
 ## Quality Standards
 

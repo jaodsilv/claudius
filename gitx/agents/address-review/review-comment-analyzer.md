@@ -1,30 +1,48 @@
 ---
-name: gitx:review-comment-analyzer
+name: review-comment-analyzer
 description: >-
   Categorizes and prioritizes PR review comments by type and effort. Invoked when processing review feedback.
 model: sonnet
-tools: Bash(gh:*), Bash(git:*), Read, Grep, Glob
+tools: Bash(gh:*), Bash(git:*), Read, Edit, Grep, Glob, Write, TodoWrite, Skill, AskUserQuestion
 color: cyan
+skills:
+  - gitx:classifying-issues-and-failures
+  - gitx:using-gh-cli-for-reviews
 ---
 
 Parse, categorize, and prioritize review comments to help developers efficiently address feedback. Structured analysis enables systematic resolution.
 
 ## Input
 
-Receive: PR number, review threads JSON from `gh pr view`.
+Receive:
+
+- PR number
+- Optional: Either reviews JSON from pr metadata or review text itself.
+- Optional: Worktree
+- Optional: Branch
 
 ## Process
 
 ### 1. Fetch Review Data
 
-```bash
-gh pr view <PR> --json reviewThreads --jq '.reviewThreads[] | select(.isResolved == false)'
-gh pr view <PR> --json reviews --jq '.reviews[] | select(.state != "APPROVED")'
-```
+If review threads and review text are not provided, use `gitx:using-gh-cli-for-reviews` skill to list reviews:
 
-### 2. Analyze Each Comment
+- worktree: `$worktree`
 
-For each unresolved comment, determine:
+This returns `{ reviews: [...], reviewThreads: [...] }` from the metadata file.
+
+If the skill returns an error (metadata not found), regenerate metadata first:
+1. Report: "Metadata file not found. Regenerating..."
+2. Run the `fetch-pr-metadata` hook or use `/gitx:pr` to regenerate
+3. Retry the list reviews operation
+
+### 2. Splitting Big Comments
+
+For each comment that contains more than 1 suggestion, split it in memory into multiple comments, assigning each suggestion to a separate comment, assign a local ID to each comment, and keep a map of the original comment ID to the new comments.
+
+### 3. Analyze Each Comment
+
+For each comment, determine:
 
 **Category**: code-style (formatting, naming, conventions), logic-error (bugs, incorrect behavior), performance
 (efficiency concerns), security (vulnerabilities), documentation (missing docs, unclear code), testing (coverage,
@@ -37,12 +55,12 @@ files), significant (> 1 hour, architectural).
 
 **Dependencies**: Does this change depend on another comment being addressed first? Will addressing this affect other comments?
 
-### 3. Read Related Code
+### 4. Read Related Code
 
 For each comment, use Read tool to examine: the file and lines mentioned, surrounding context (5-10 lines
 before/after), related files if the change might cascade.
 
-### 4. Output Format
+### 5. Output Format
 
 Produce a structured analysis in this format:
 
@@ -60,15 +78,21 @@ Produce a structured analysis in this format:
 - **Author**: @username
 - **File**: path/to/file.ts:42-45
 - **Comment**: "Original review text..."
+- **Original Comment ID**: [comment_id]
+- **Local Comment ID**: [local_comment_id]
 - **Context**: Brief description of the code being reviewed
 - **Resolution Approach**: Suggested way to address this
 - **Dependencies**: None | Depends on Comment X
 
 #### Comment 2: [CATEGORY] - [EFFORT]
 ...
+
+### Comments Map
+- [Original Comment ID]: [Comma separated Local Comment IDs]
+- ...
 ```
 
-### 5. Priority Ordering
+### 6. Priority Ordering
 
 Order comments by priority:
 

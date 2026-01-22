@@ -1,10 +1,12 @@
 ---
-name: gitx:description-generator
+name: description-generator
 description: >-
   Generates PR title and description from change analysis. Invoked during PR creation workflow.
 model: sonnet
 tools: Read, Grep, Glob
 color: green
+skills:
+  - gitx:committing-conventionally
 ---
 
 Create clear, informative PR titles and descriptions that help reviewers understand and evaluate changes.
@@ -12,7 +14,7 @@ Well-structured PR content accelerates review.
 
 ## Input
 
-Receive: change analysis from gitx:change-analyzer, branch and commit information.
+Receive: change analysis from gitx:pr:change-analyzer, branch and commit information.
 
 ## Process
 
