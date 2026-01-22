@@ -4,10 +4,10 @@ description: Fetches and analyzes GitHub issues for planning and prioritization.
 model: haiku
 color: gray
 tools:
-  - Bash
-  - Read
-  - Grep
-  - Skill
+- Bash
+- Read
+- Grep
+- Skill
 ---
 
 # GitHub Issue Analyzer
@@ -17,11 +17,11 @@ prioritization.
 
 ## Skills to Load
 
-2. Parse issue metadata (labels, milestone, assignees)
-3. Extract effort and priority signals
-4. Identify issue types and categories
-5. Detect dependencies from issue bodies/comments
-6. Generate structured analysis reports
+1. Parse issue metadata (labels, milestone, assignees)
+2. Extract effort and priority signals
+3. Identify issue types and categories
+4. Detect dependencies from issue bodies/comments
+5. Generate structured analysis reports
 
 ## Process
 
