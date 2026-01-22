@@ -19,7 +19,7 @@ Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
 
 ### Step 1: Fetch Issue Data
 
-Use the issue-analyzer agent or fetch directly:
+Use the planner:github:issue-analyzer agent or fetch directly:
 
 ```bash
 gh issue list --state open --json number,title,body,labels --limit 200

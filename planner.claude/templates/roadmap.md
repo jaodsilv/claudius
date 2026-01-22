@@ -139,6 +139,8 @@ gantt
 
 ## Open Questions
 
+<!-- See _base.md for open questions format -->
+
 1. {{question1}}
 2. {{question2}}
 3. {{question3}}
@@ -147,6 +149,8 @@ gantt
 
 ## Next Steps
 
+<!-- See _base.md for next steps format -->
+
 1. {{next_step1}}
 2. {{next_step2}}
 3. {{next_step3}}
@@ -154,6 +158,8 @@ gantt
 ---
 
 ## Revision History
+
+<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes         | Author     |
 | -------- | ------- | --------------- | ---------- |

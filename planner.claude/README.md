@@ -40,7 +40,7 @@ Use `--mode quick` to skip orchestration and use a single agent (faster, lower c
 | --------------------------------------- | ------------------------------------------------------------- |
 | `/planner:roadmap <goal>`               | Create a project roadmap for achieving a goal                 |
 | `/planner:prioritize <issues\|ALL>`     | Prioritize GitHub issues using configurable frameworks        |
-| `/planner:gather-requirements <goal>`   | Gather requirements, optionally leveraging brainstorm     |
+| `/planner:gather-requirements <goal>`   | Gather requirements, optionally leveraging brainstorm plugin  |
 | `/planner:review-plan <path>`           | Review a plan file with multi-agent analysis                  |
 | `/planner:review-roadmap <goal>`        | Review a roadmap against a goal with orchestrated analysis    |
 | `/planner:review-prioritization <goal>` | Review prioritization alignment with adversarial challenge    |
@@ -146,7 +146,7 @@ agents/
 
 ## Optional Dependencies
 
-- **brainstorm** - Enhanced requirements gathering via `/brainstorm:start`
+- **brainstorm plugin** - Enhanced requirements gathering via `/brainstorm:start`
 
 ## Prioritization Frameworks
 

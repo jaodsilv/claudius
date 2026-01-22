@@ -209,6 +209,8 @@
 
 ## Open Questions
 
+<!-- See _base.md for open questions format -->
+
 1. {{open_question1}}
 2. {{open_question2}}
 3. {{open_question3}}
@@ -216,6 +218,8 @@
 ---
 
 ## Recommended Next Steps
+
+<!-- See _base.md for next steps format -->
 
 ### Immediate Actions
 
@@ -251,6 +255,8 @@
 ---
 
 ## Revision History
+
+<!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes           | Author     |
 | -------- | ------- | ----------------- | ---------- |

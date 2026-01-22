@@ -15,10 +15,8 @@ any items requiring comparative evaluation.
 
 Load these skills for guidance:
 
-```text
-Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
-Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
-```
+- `planner:prioritizing-work` for prioritization framework guidance.
+- `planner:planning-with-github` for GitHub integration guidance.
 
 ## Core Responsibilities
 

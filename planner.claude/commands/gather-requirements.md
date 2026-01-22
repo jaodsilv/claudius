@@ -42,7 +42,7 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 2A: Brainstorm Integration
 
-If using brainstorm:
+If using brainstorm plugin:
 
 1. Delegate to brainstorm:
 
