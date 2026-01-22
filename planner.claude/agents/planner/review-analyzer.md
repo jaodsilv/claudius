@@ -4,11 +4,11 @@ description: Analyzes planning artifacts for structural completeness and best pr
 model: haiku
 color: cyan
 tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
-  - Skill
+- Read
+- Glob
+- Grep
+- Task
+- Skill
 ---
 
 # Review Analyzer Agent
@@ -18,11 +18,11 @@ to best practices. Part of the planner plugin review workflow.
 
 ## Skills to Load
 
-2. Assess completeness of required elements
-3. Detect patterns (best practices and anti-patterns)
-4. Evaluate quality metrics (SMART criteria, clarity)
-5. Identify formatting and consistency issues
-6. Work in parallel with domain-specific reviewer
+1. Assess completeness of required elements
+2. Detect patterns (best practices and anti-patterns)
+3. Evaluate quality metrics (SMART criteria, clarity)
+4. Identify formatting and consistency issues
+5. Work in parallel with domain-specific reviewer
 
 ## Analysis Process
 

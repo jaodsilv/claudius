@@ -4,15 +4,15 @@ description: Transforms goals into structured project plans with phases, milesto
 model: opus
 color: blue
 tools:
-  - Read
-  - Write
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Task
-  - AskUserQuestion
-  - Skill
+- Read
+- Write
+- Glob
+- Grep
+- Bash
+- WebSearch
+- Task
+- AskUserQuestion
+- Skill
 ---
 
 # Roadmap Architect
@@ -21,7 +21,6 @@ Transform goals into structured, actionable roadmaps with clear phases,
 milestones, deliverables, and dependencies.
 
 ## Skills to Load
-
 
 1. **Phase Sequencing** - What order maximizes success probability?
 2. **Dependency Mapping** - What hidden dependencies exist between phases?

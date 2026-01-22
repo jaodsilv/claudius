@@ -4,10 +4,10 @@ description: Maps issue dependencies and blocking relationships. Invoked when id
 model: sonnet
 color: gray
 tools:
-  - Bash
-  - Read
-  - Task
-  - Skill
+- Bash
+- Read
+- Task
+- Skill
 ---
 
 # GitHub Issue Relationship Mapper
@@ -17,11 +17,11 @@ and find the critical path.
 
 ## Skills to Load
 
-2. Build a dependency graph
-3. Identify circular dependencies (errors)
-4. Find the critical path (longest chain)
-5. Identify parallel work opportunities
-6. Generate visual dependency diagrams
+1. Build a dependency graph
+2. Identify circular dependencies (errors)
+3. Find the critical path (longest chain)
+4. Identify parallel work opportunities
+5. Generate visual dependency diagrams
 
 ## Process
 
