@@ -1,5 +1,5 @@
 ---
-name: tdd-pro:code-quality
+name: tdd-pro:ensuring-code-quality
 description: >-
   Provides code quality guidelines and best practices for maintaining
   high-quality, maintainable code in test-driven development workflows.
@@ -56,6 +56,7 @@ Use this for rapid code review:
 #### Naming
 
 **DO:**
+
 - Use descriptive, meaningful names
 - Follow language conventions (camelCase, snake_case, etc.)
 - Use pronounceable names
@@ -73,6 +74,7 @@ function calc(p, r, m) { }
 ```
 
 **DON'T:**
+
 - Use single-letter variables (except loop counters)
 - Use misleading names
 - Use magic numbers without constants
@@ -82,6 +84,7 @@ function calc(p, r, m) { }
 **Target:** Functions should fit on one screen (20-40 lines)
 
 **Indicators of too large:**
+
 - Multiple levels of nested loops/conditionals
 - Mixing abstraction levels
 - Doing too many things
@@ -105,12 +108,14 @@ function processUser(user) {
 #### Code Comments
 
 **When to comment:**
+
 - Complex algorithms
 - Non-obvious business logic
 - Workarounds for external issues
 - TODO/FIXME items
 
 **When NOT to comment:**
+
 - Obvious code (let code speak for itself)
 - Outdated information
 - Commented-out code (use git instead)
@@ -200,6 +205,7 @@ function calculateTotal(database, userId, sessionId) {
 #### Edge Cases
 
 **Always consider:**
+
 - Empty inputs (null, undefined, empty array/string)
 - Boundary values (0, negative numbers, very large numbers)
 - Invalid inputs
@@ -274,6 +280,7 @@ function calculateDiscount(price, discountPercent) {
 #### Algorithm Complexity
 
 **Know Big O notation:**
+
 - O(1) - Constant
 - O(log n) - Logarithmic
 - O(n) - Linear
@@ -300,12 +307,14 @@ const user = users.find(u => u.id === userId);
 **"Premature optimization is the root of all evil"** - Donald Knuth
 
 **DO:**
+
 - Write clear code first
 - Measure before optimizing
 - Optimize bottlenecks only
 - Document why optimization was needed
 
 **DON'T:**
+
 - Sacrifice readability for micro-optimizations
 - Optimize without profiling
 - Guess at performance issues
@@ -424,12 +433,14 @@ async function deleteUser(userId) {
 #### Secrets Management
 
 **NEVER:**
+
 - Hard-code secrets
 - Commit secrets to git
 - Log secrets
 - Send secrets in URLs
 
 **DO:**
+
 - Use environment variables
 - Use secret management services
 - Rotate secrets regularly
@@ -441,6 +452,7 @@ async function deleteUser(userId) {
 #### Style Guides
 
 **Follow project conventions:**
+
 - Indentation (spaces vs tabs)
 - Line length
 - Brace style
@@ -448,6 +460,7 @@ async function deleteUser(userId) {
 - File naming
 
 **Use automated tools:**
+
 - Prettier, ESLint (JavaScript)
 - Black, Pylint (Python)
 - RuboCop (Ruby)
@@ -456,6 +469,7 @@ async function deleteUser(userId) {
 #### Patterns
 
 **Be consistent in:**
+
 - Error handling approach
 - Async patterns (callbacks, promises, async/await)
 - State management
