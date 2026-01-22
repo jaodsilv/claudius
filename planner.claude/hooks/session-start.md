@@ -1,57 +1,57 @@
----
-type: SessionStart
-description: Check for optional dependencies and inform user of available capabilities
----
-
 # Planner Session Start Hook
+
+This file documents the SessionStart hook behavior. The actual hook is implemented
+as a command hook in `hooks.json` that runs `scripts/check-dependencies.sh`.
 
 ## Purpose
 
-Check for optional plugin dependencies and available tools at session start.
-Early detection prevents cryptic failures mid-workflow.
+Check for optional plugin dependencies and provide template paths at session start.
+Early detection prevents cryptic failures mid-workflow, and template paths enable
+agents to correctly locate templates.
 
-## Checks
+## Implementation
+
+The hook is defined in `hooks.json` as a command hook:
+
+```json
+{
+  "type": "command",
+  "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check-dependencies.sh\"",
+  "timeout": 10
+}
+```
+
+The script returns JSON with:
+
+- `systemMessage`: Warnings about missing dependencies
+- `hookSpecificOutput.additionalContext`: Template paths for agents to use
+
+## Checks Performed
 
 ### 1. GitHub CLI (gh)
 
-Run: `gh --version`
-
-**If available**:
-
-- Log: "GitHub CLI detected - full issue prioritization available"
-
-**If not available**:
-
-- Warn: "GitHub CLI (gh) not found - /planner:prioritize requires gh for issue fetching. Install from <https://cli.github.com/>/>"
+- Checks if `gh` command is available
+- Checks if `gh` is authenticated
+- Warns if missing or not authenticated
 
 ### 2. Brainstorm Pro Plugin
 
-Check for: `brainstorm.claude/.claude-plugin/plugin.json` or installed brainstorm-pro plugin
+- Checks for `brainstorm.claude/.claude-plugin/plugin.json`
+- Informs if available for enhanced requirements gathering
 
-**If available**:
+## Template Paths Provided
 
-- Log: "Brainstorm Pro detected - /planner:gather-requirements can use enhanced brainstorming"
+The hook provides paths to all templates via `additionalContext`:
 
-**If not available**:
+| Template              | Path                                               |
+| --------------------- | -------------------------------------------------- |
+| Review Report         | `${PLUGIN_ROOT}/templates/review-report.md`        |
+| Roadmap               | `${PLUGIN_ROOT}/templates/roadmap.md`              |
+| Prioritization        | `${PLUGIN_ROOT}/templates/prioritization-matrix.md`|
+| Requirements Summary  | `${PLUGIN_ROOT}/templates/requirements-summary.md` |
+| Ideas Synthesis       | `${PLUGIN_ROOT}/templates/ideas-synthesis.md`      |
+| Base Sections         | `${PLUGIN_ROOT}/templates/_base.md`                |
+| Review Report (Skill) | See skill: `orchestrating-reviews`                 |
 
-- Info: "Tip: Install brainstorm-pro for deeper requirements discovery with Socratic dialogue"
-
-### 3. Output Directory
-
-Check for: `docs/planning/`
-
-**If not exists**:
-
-- Info: "Output directory docs/planning/ will be created on first use"
-
-## Output Format
-
-Present findings as a brief status summary. Concise output avoids cluttering
-session start while still surfacing actionable information:
-
-```text
-Planner Plugin Ready
-├── GitHub CLI: [Available|Not found]
-├── Brainstorm Pro: [Available|Not installed]
-└── Output: docs/planning/
-```
+Agents should reference these paths from the session context rather than
+hardcoding paths.
