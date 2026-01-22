@@ -1,98 +1,78 @@
 ---
 description: Bumps plugin versions when PR changes affect plugins. Use for release preparation.
-argument-hint: "[--pr <number>] [--plugins <list>]"
-allowed-tools: ["Bash(gh:*)", "Bash(git:*)", "Read", "Edit", "AskUserQuestion", "TodoWrite"]
+argument-hint: "[--plugins <list>] [--bump-version <x.y.z>] [--marketplace-only | --no-marketplace]"
+allowed-tools: []
+model: haiku
 ---
 
 # Bump Plugin Versions
 
-Updates version fields in package.json, marketplace.json, and plugin.json files.
+This is a **script-only command** - the hook script handles everything automatically.
 
 ## Arguments
 
-- `--pr <number>`: PR number to analyze for changed files
-- `--plugins <list>`: Comma-separated plugin names (e.g., `cc,gitx`)
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `--plugins <list>` | Comma-separated plugin names | Auto-detect from changes |
+| `--pr <number>` | PR number to analyze for changed files | - |
+| `--no-marketplace` | Skip marketplace version bump | - |
+| `--marketplace` | Bump marketplace version too | **default** |
+| `--marketplace-only` | Only bump marketplace, no plugins | - |
+| `--bump-version <x.y.z>` | Version increment (supports `-x.y.z`) | `0.0.1` |
+| `--bump-marketplace-version <x.y.z>` | Marketplace increment | Same as `--bump-version` |
+
+## Bump Types
+
+- **Patch** (default): `--bump-version 0.0.1` → `X.Y.Z` becomes `X.Y.(Z+1)`
+- **Minor**: `--bump-version 0.1.0` → `X.Y.Z` becomes `X.(Y+1).0`
+- **Major**: `--bump-version 1.0.0` → `X.Y.Z` becomes `(X+1).0.0`
+
+## What the Script Does
+
+1. Auto-detects affected plugins from git changes (or uses explicit `--plugins`)
+2. Validates all plugins exist in marketplace.json
+3. Reads current versions from all files
+4. Calculates new versions based on bump increment
+5. Updates files in order:
+   - Plugin `plugin.json` files
+   - `marketplace.json` plugin entries
+   - `marketplace.json` root version
+   - `package.json` root version
+6. Updates metadata at `.thoughts/marketplace/latest-version-bump.yaml`
+7. Prints summary table
+
+## Exit Codes
+
+| Code | Meaning |
+|------|---------|
+| 0 | Success - versions bumped, see output for summary |
+| 2 | Blocked - nothing to bump, or validation failed |
+
+## Examples
+
+```bash
+# Auto-detect and bump patch version (default)
+/cc:bump-version
+
+# Bump specific plugins
+/cc:bump-version --plugins cc,gitx
+
+# Minor version bump
+/cc:bump-version --bump-version 0.1.0
+
+# Only bump marketplace, not individual plugins
+/cc:bump-version --marketplace-only
+
+# Bump plugins but not marketplace root version
+/cc:bump-version --no-marketplace
+```
 
 ## Execution
 
-### Phase 1: Detect Affected Plugins
+The hook script has completed all version bumps. Check the output above for:
 
-Track with TodoWrite: Detect plugins, Validate, Get bump type, Read versions, Update files, Summary
+- Files modified with before/after versions
+- Detection method used
+- Metadata file location
 
-**If --plugins provided**: Parse list directly.
-
-**If --plugins NOT provided**:
-
-1. Check for PR (--pr flag or `gh pr view --json number`)
-2. If PR found: `gh pr view <number> --json files --jq '.files[].path'`
-3. If no PR: Use git diff from main/master
-4. Read `.claude-plugin/marketplace.json` to map directories to plugin names
-5. Match changed file paths to plugin directories
-
-Report: detection method, file count, affected plugins.
-
-### Phase 2: Validate Plugins
-
-For each plugin:
-
-- [ ] Exists in marketplace.json
-- [ ] Has plugin.json at `<source>/.claude-plugin/plugin.json`
-
-If missing, ask: remove and continue, or cancel.
-
-### Phase 3: Get Bump Type
-
-```text
-AskUserQuestion:
-  Question: "What type of version bump?"
-  Options:
-  - patch (X.Y.Z+1)
-  - minor (X.Y+1.0)
-  - major (X+1.0.0)
-  - Cancel
-```
-
-### Phase 4: Read & Validate Versions
-
-Read from:
-
-1. `./package.json` - root version
-2. `./.claude-plugin/marketplace.json` - marketplace and plugin entry versions
-3. `<plugin>/.claude-plugin/plugin.json` - individual plugin versions
-
-Validation:
-
-- [ ] Format matches `X.Y.Z` or `X.Y.Z-prerelease`
-- [ ] Marketplace and plugin.json versions match (ask if mismatch)
-- [ ] Handle pre-release suffixes (confirm stripping)
-
-### Phase 5: Apply Updates
-
-Track `$successful_edits` for rollback. For each file:
-
-1. Edit version string
-2. Add to successful edits on success
-3. On failure: report error, provide rollback command
-
-### Phase 6: Summary
-
-```markdown
-## Version Bump Complete
-
-| File | Before | After |
-|------|--------|-------|
-| package.json | X.Y.Z | X.Y.Z' |
-| ... | ... | ... |
-
-Files Modified: [list]
-Next: git diff, commit, push
-```
-
-## Error Handling
-
-| Error | Action |
-|-------|--------|
-| No plugins detected | Suggest --plugins flag |
-| Invalid version format | Report file and exit |
-| Git/gh command failure | Exit with command error |
-| Edit failure | Report, list modified files, provide rollback |
+**Next step**: Review changes with `git diff`, then commit and push.
