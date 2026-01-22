@@ -109,6 +109,17 @@ In addition to the full output, provide a compact summary (10-15 lines):
 - **Best practices**: [Key patterns to adopt]
 - **Compliance**: [Critical regulatory considerations]
 
+## Compact Summary Output
+
+In addition to the full output, provide a compact summary (10-15 lines):
+
+### Summary for Next Phase
+
+- **Market context**: [Key market insight]
+- **Top competitors**: [2-3 main competitors and approaches]
+- **Best practices**: [Key patterns to adopt]
+- **Compliance**: [Critical regulatory considerations]
+
 ## Reasoning
 
 Use extended thinking to:

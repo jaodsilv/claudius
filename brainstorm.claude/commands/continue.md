@@ -15,12 +15,13 @@ From `$ARGUMENTS`, extract:
 
 - session_path: Path to session output directory containing session-log.md
 
-
 ## Skill Reference
 
 Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation
 
 ## Execution Checklist
+
+Apply Skill(brainstorm:validating-workflow) for session state validation.
 
 ### Step 1: Validate Session
 
@@ -49,7 +50,6 @@ From `{{session_path}}/session-log.md` extract:
 | Phase 5 | Phase 6 (Document) |
 
 **Notes**:
-
 - Phase 1 uses batched dialogue (2-3 rounds per invocation)
 - Phases 2-4 execute in parallel (domain, technical, constraints)
 - Phase 4.5 synthesizes parallel outputs before requirements

@@ -25,6 +25,10 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 - Validation patterns
 - Phase dependencies
 
+## Skills Used
+
+- `brainstorm:validating-workflow` - Gate check criteria and validation patterns between workflow phases
+
 ## Initialization Checklist
 
 - [ ] Validate `$topic` provided

@@ -1,10 +1,10 @@
-# Brainstorm Pro Plugin
+# Brainstorm Plugin
 
 Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation.
 
 ## Overview
 
-Brainstorm Pro transforms ambiguous software ideas into actionable specifications through a structured,
+Brainstorm Plugin transforms ambiguous software ideas into actionable specifications through a structured,
 multi-phase workflow. It combines interactive Socratic dialogue with automated analysis to produce
 comprehensive requirements documentation.
 
