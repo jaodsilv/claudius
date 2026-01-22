@@ -82,7 +82,7 @@ Use Task tool with @[agent-name]:
 Example:
 
 ```text
-Task @planner:planner:review-analyzer:
+Task @planner:orchestration:review-analyzer:
   Context: docs/roadmap.md
   Mode: thorough
   Phase: 1

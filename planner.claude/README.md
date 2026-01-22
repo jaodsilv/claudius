@@ -115,6 +115,35 @@ The plugin reads:
 - Milestone information
 - Cross-references and dependencies
 
+## Agent Organization
+
+The plugin contains 16 agents organized into 5 functional groups:
+
+```text
+agents/
+├── creators/          # Agents that CREATE planning artifacts
+│   ├── prioritization-engine.md   (Sonnet) - RICE/MoSCoW scoring
+│   ├── requirements-gatherer.md   (Opus)   - Requirements discovery
+│   └── roadmap-architect.md       (Opus)   - Roadmap generation
+├── github/            # GitHub integration agents
+│   ├── issue-analyzer.md          (Haiku)  - Issue data extraction
+│   └── issue-relationship-mapper.md (Haiku) - Dependency mapping
+├── ideas/             # Ultrathink ideation agents
+│   ├── adversarial-critic.md      (Opus)   - Stress testing
+│   ├── convergence-synthesizer.md (Opus)   - Idea merging
+│   ├── deep-thinker.md            (Opus)   - Extended reasoning
+│   ├── facilitator.md             (Sonnet) - Session orchestration
+│   └── innovation-explorer.md     (Sonnet) - Cross-domain research
+├── orchestration/     # Multi-agent review workflow
+│   ├── review-analyzer.md         (Haiku)  - Structural analysis
+│   ├── review-challenger.md       (Opus)   - Devil's advocate
+│   └── review-synthesizer.md      (Sonnet) - Findings merger
+└── reviewers/         # Domain-specific artifact reviewers
+    ├── architecture-reviewer.md   (Opus)   - Architecture evaluation
+    ├── plan-reviewer.md           (Sonnet) - Plan quality review
+    └── requirements-reviewer.md   (Sonnet) - Requirements analysis
+```
+
 ## Optional Dependencies
 
 - **brainstorm-pro** - Enhanced requirements gathering via `/brainstorm:start`
