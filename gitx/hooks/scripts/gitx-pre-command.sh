@@ -38,11 +38,20 @@ ARGS=$(echo "$PROMPT" | sed -n 's|^[[:space:]]*/gitx:[a-z-]*[[:space:]]*||p')
 log_debug "COMMAND" "$COMMAND"
 log_debug "ARGS" "$ARGS"
 
-# Parse --worktree argument or use CWD
+# Parse worktree from arguments or use CWD
+# Supports: --worktree <path>, positional <path>, or default to CWD
 WORKTREE="$CWD"
 if [[ "$ARGS" =~ --worktree[[:space:]]+([^[:space:]]+) ]]; then
   WORKTREE="${BASH_REMATCH[1]}"
-  log_debug "WORKTREE (from args)" "$WORKTREE"
+  log_debug "WORKTREE (from --worktree)" "$WORKTREE"
+elif [[ -n "$ARGS" ]]; then
+  # First positional argument might be a worktree path
+  FIRST_ARG=$(echo "$ARGS" | awk '{print $1}')
+  # Check if it looks like a path (starts with ., /, or drive letter)
+  if [[ "$FIRST_ARG" =~ ^[./] ]] || [[ "$FIRST_ARG" =~ ^[A-Za-z]: ]]; then
+    WORKTREE="$FIRST_ARG"
+    log_debug "WORKTREE (from positional)" "$WORKTREE"
+  fi
 fi
 
 # Convert Windows paths to bash format: D:\ or D:/ -> /d/
@@ -56,9 +65,10 @@ if [[ "$WORKTREE" == "." ]] || [[ -z "$WORKTREE" ]]; then
   WORKTREE=$(convert_path "$(pwd)")
 fi
 
-# Resolve relative paths to absolute
+# Resolve relative paths to absolute (relative to CWD, not script dir)
 if [[ ! "$WORKTREE" = /* ]]; then
-  WORKTREE=$(convert_path "$(cd "$WORKTREE" 2>/dev/null && pwd)")
+  CWD_CONVERTED=$(convert_path "$CWD")
+  WORKTREE=$(convert_path "$(cd "$CWD_CONVERTED" && cd "$WORKTREE" 2>/dev/null && pwd)")
 fi
 log_debug "WORKTREE (resolved)" "$WORKTREE"
 
