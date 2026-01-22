@@ -1,0 +1,19 @@
+{
+  "name": "walkthrough",
+  "version": "1.0.1",
+  "description": "Walkthrough generation skill to help users review and understand the code that was just reviewed, manually testing it and explaining the code",
+  "author": {
+    "name": "Joao da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "walkthrough",
+    "walkthrough-generation",
+    "user-review",
+    "manual-testing",
+    "code-explanation"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jaodsilv/claudius",
+  "repository": "https://github.com/jaodsilv/claudius.git"
+}
