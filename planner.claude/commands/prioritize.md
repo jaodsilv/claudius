@@ -72,7 +72,7 @@ prioritize-arguments:
 1. Launch `issue-analyzer` agent:
 
    ```text
-   Use Task tool with `planner/issue-analyzer` agent:
+   Use Task tool with `planner:github:issue-analyzer` agent:
 
    Fetch and analyze issues: {{issues}}
 
@@ -96,7 +96,7 @@ prioritize-arguments:
 2. Launch `issue-relationship-mapper` agent:
 
    ```text
-   Use Task tool with `planner/issue-relationship-mapper` agent:
+   Use Task tool with `planner:github:issue-relationship-mapper` agent:
 
    Map dependencies for issues: {{issue_list}}
 
@@ -116,7 +116,7 @@ prioritize-arguments:
 2. Launch `prioritization-engine` agent:
 
    ```text
-   Use Task tool with `planner/prioritization-engine` agent:
+   Use Task tool with `planner:planner:prioritization-engine` agent:
 
    Apply {{framework}} framework to prioritize:
 

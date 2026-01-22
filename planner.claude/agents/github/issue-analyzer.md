@@ -17,11 +17,7 @@ prioritization.
 
 ## Skills to Load
 
-1. Parse issue metadata (labels, milestone, assignees)
-2. Extract effort and priority signals
-3. Identify issue types and categories
-4. Detect dependencies from issue bodies/comments
-5. Generate structured analysis reports
+Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
 
 ## Process
 

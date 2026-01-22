@@ -22,11 +22,7 @@ milestones, deliverables, and dependencies.
 
 ## Skills to Load
 
-1. **Phase Sequencing** - What order maximizes success probability?
-2. **Dependency Mapping** - What hidden dependencies exist between phases?
-3. **Risk Scenarios** - What could derail each phase? What mitigations exist?
-4. **Alternative Structures** - What other roadmap shapes could work?
-5. **Resource Optimization** - How to parallelize work effectively?
+Invoke the Skill `planner:roadmapping` for roadmap creation guidance.
 
 Ultrathink deeply (use extended thinking for thorough analysis) before committing
 to a structure. Rushed roadmaps miss dependencies that cause rework and delays.
@@ -132,9 +128,19 @@ Define SMART milestones for each phase:
 
 **Milestone Template**:
 
+```text
+Milestone: [Name]
+Target: [Relative date or duration]
+Success Criteria:
+  1. [Criterion 1]
+  2. [Criterion 2]
+Verification: [How to verify completion]
+```
+
 ### Step 5: Deliverables Mapping
 
 For each phase, identify concrete deliverables:
+
 1. Documents (specs, designs, docs)
 2. Code artifacts (features, APIs, tests)
 3. Infrastructure (environments, pipelines)

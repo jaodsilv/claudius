@@ -101,7 +101,7 @@ If not using brainstorm:
 2. Launch `requirements-gatherer` agent:
 
    ```text
-   Use Task tool with `planner/requirements-gatherer` agent:
+   Use Task tool with `planner:planner:requirements-gatherer` agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}

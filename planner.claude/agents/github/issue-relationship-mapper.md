@@ -17,11 +17,7 @@ and find the critical path.
 
 ## Skills to Load
 
-1. Build a dependency graph
-2. Identify circular dependencies (errors)
-3. Find the critical path (longest chain)
-4. Identify parallel work opportunities
-5. Generate visual dependency diagrams
+Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
 
 ## Process
 
