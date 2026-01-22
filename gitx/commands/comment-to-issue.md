@@ -1,7 +1,8 @@
 ---
 description: Comments on a GitHub issue when sharing progress or updates. Use for team communication or documenting work.
 argument-hint: "[ISSUE] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit>]"
-allowed-tools: Bash(gh issue:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
+allowed-tools: Bash(gh issue:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion, Skill
+model: sonnet
 ---
 
 # Comment on Issue
@@ -11,6 +12,7 @@ Add a comment to a GitHub issue. If issue number is not provided, attempts to in
 ## Parse Arguments
 
 From $ARGUMENTS, extract:
+
 - Issue number (optional): First numeric argument, or "#123" format
 - Comment text (optional): Remaining text after issue number
 - `--last` or `-l` flag: If present, triggers last response flow
@@ -21,18 +23,20 @@ From $ARGUMENTS, extract:
 
 If no issue number provided:
 
-1. Get current branch: !`git branch --show-current`
-2. Parse branch name for issue number patterns:
-   - `feature/issue-123-description` → 123
-   - `bugfix/123-description` → 123
-   - `fix/issue-456` → 456
-   - `feature/#789-something` → 789
+1. Check PR metadata for `linkedIssue`:
+   - If `.thoughts/pr/metadata.yaml` exists and has `linkedIssue`, use that
+   - This is set by `fetch-pr-metadata.sh` from branch name parsing
 
-If pattern found:
-- Use that issue number
+2. If no metadata or no `linkedIssue`, apply skill `gitx:parsing-issue-references`:
+   - Get current branch: !`git branch --show-current`
+   - Parse branch name for issue patterns
+
+If issue number found:
+
 - Verify issue exists: `gh issue view <number> --json number,title`
 
-If no pattern found or issue doesn't exist:
+If no issue found or doesn't exist:
+
 - Use AskUserQuestion: "Which issue would you like to comment on?"
 - Show recent open issues: `gh issue list --state open --limit 5`
 - Options: List issues, plus "Enter issue number manually"
@@ -42,6 +46,7 @@ If no pattern found or issue doesn't exist:
 If comment text not provided in arguments:
 
 Use AskUserQuestion:
+
 - "What would you like to comment on issue #<number>?"
 - Options:
   1. "Summarize recent work" - Generate summary from git log
@@ -52,6 +57,7 @@ Use AskUserQuestion:
 ### Auto-generated summaries
 
 If "Summarize recent work":
+
 - Get recent commits: `git log --oneline -10`
 - Get changed files: `git diff --stat HEAD~5..HEAD`
 - Generate summary of changes made
@@ -59,34 +65,14 @@ If "Summarize recent work":
 ### Commit-based summaries
 
 If `-c <commit>` or `--commit <commit>` flag used:
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
-3. Get changed files summary: `git diff --stat <commit>..HEAD`
-4. Generate summary in "Both combined" format:
-   - Narrative summary: A cohesive paragraph summarizing all changes holistically
-   - Followed by: Commit list for reference (bullet points of each commit)
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to issue #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
+
+- Use skill `gitx:generating-commit-summaries` with multi-commit mode
+- Target: issue #\<number\>
 
 If `-sc <commit>` or `--single-commit <commit>` flag used:
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
-3. Get the actual diff for the commit: `git show --no-stat <commit>`
-4. Generate summary focusing on that specific commit's changes
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to issue #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
+
+- Use skill `gitx:generating-commit-summaries` with single-commit mode
+- Target: issue #\<number\>
 
 If "Report progress":
 Template:
@@ -106,66 +92,37 @@ Template:
 
 If "Post last response" (or `--last` flag used):
 
-1. **Retrieve recent responses**: Get the last 4 valid responses from the current conversation thread
-   - **Valid response criteria**: Must have at least 4 lines of text OR 140 characters
-   - Extract title from first line of each response (before first newline)
-   - Title truncation rules:
-     - If title ≤ 80 chars: Use full text
-     - If title > 80 chars: Use first 77 chars + "..."
+1. Extract last 4 valid responses from conversation (main agent's responsibility)
+2. Apply skill `gitx:selecting-last-responses` with provided responses:
 
-2. **Handle edge cases**:
-   - **1-3 valid responses**: Show all available valid responses (adjust options list dynamically)
-   - **No valid responses found**: Error: "No valid Claude responses found in current conversation
-     (responses must have at least 4 lines or 140 characters). Cannot use --last flag."
-   - **First message in thread**: Error: "This is the first message in the conversation.
-     No previous responses to post."
+```text
+Apply skill gitx:selecting-last-responses
 
-3. **Present selection**: Use AskUserQuestion:
-   - Question: "Which response would you like to post to issue #<number>?"
-   - Header: "Response"
-   - Options (newest to oldest, max 4):
-     1. "🟢 <Response title>" - Most recent
-     2. "🔵 <Response title>"
-     3. "🔵 <Response title>"
-     4. "🔵 <Response title>" - Oldest shown
-   - Note: 🟢 = most recent, 🔵 = older responses
+target: issue #<number>
 
-4. **Preview confirmation**: After selection, use AskUserQuestion:
-   - Show preview: Full selected response
-   - Question: "Post this response to issue #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this response" - Proceed to validation
-     2. "🔄 Select different response" - Return to step 3
-     3. "❌ Cancel" - Abort posting
+<latest responses>
+<response>
+[full content of most recent valid response]
+</response>
+<response>
+[full content of second most recent valid response]
+</response>
+...up to 4 responses...
+</latest responses>
+```
 
-5. **Store selected response**: Save full content of selected response to `$comment` variable and proceed to validation.
+Note: Skills cannot access conversation history. The main agent MUST extract and pass responses.
 
 ## Validate Comment
 
-Before posting, validate the comment:
+Use skill `gitx:validating-comments` to validate `$comment` before posting.
 
-1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
-   - Report error: "Cannot post empty comment"
-   - Return to "Get Comment Text" section to request comment text
-
-2. **Size check**: Check comment length:
-   - If > 60,000 characters:
-     - Use AskUserQuestion: "Comment exceeds GitHub's 60K character limit. How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Truncate as-is" - Cut off at 60K characters
-       3. "Split into multiple comments" - Post as sequential comments
-       4. "Abort" - Cancel posting
-   - If > 20,000 characters (but ≤ 60,000):
-     - Use AskUserQuestion: "Comment is very long (>20K characters). How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Abort" - Cancel posting
+If validation fails with empty comment, return to "Get Comment Text" section.
 
 ## Post Comment
 
 Post the comment:
+
 - `gh issue comment <number> --body "$comment"`
 
 If the command fails, report the error and stop execution.
@@ -173,6 +130,7 @@ If the command fails, report the error and stop execution.
 ## Confirmation
 
 Show the posted comment:
+
 - Issue number and title
 - Comment preview (first 200 chars)
 - Link to issue

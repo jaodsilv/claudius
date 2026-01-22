@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 # Check for git and gh CLI dependencies
 # Returns JSON with systemMessage for warnings
 

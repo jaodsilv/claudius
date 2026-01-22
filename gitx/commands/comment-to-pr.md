@@ -1,380 +1,85 @@
 ---
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
-argument-hint: "[PR] [comment | -l | --last | -c <commit> | --commit <commit> | -sc <commit> | --single-commit <commit> | -r [\"text\"] | --review [\"text\"]]"
-allowed-tools: Bash(gh pr:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion
+argument-hint: '[PR] [-l or --last | -c or --commit <sha> | -sc or --single-commit <sha>] [-r or --review ["text"] | -rr or --review-response ["text"]] [--force | -f]'
+allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler:comment-handler:*), Skill(gitx:validating-comments:*)
+model: sonnet
 ---
 
 # Comment on Pull Request
 
-Add a comment to a GitHub pull request. If PR number is not provided, uses the PR for the current branch.
+Add a comment to a GitHub pull request. Delegates complex flows to gitx:comment-handler:comment-handler.
 
 ## Parse Arguments
 
-From $ARGUMENTS, extract:
+Extract from $ARGUMENTS:
 
-- PR number (optional): First numeric argument
-- Comment text (optional): Remaining text after PR number (unless flags are used)
-- `--last` or `-l` flag: If present, triggers last response flow
-- `-c` or `--commit` flag with value: If present, triggers commit-since summary flow
-- `-sc` or `--single-commit` flag with value: If present, triggers single-commit summary flow
-- `-r` or `--review` flag with optional value: If present, triggers review response flow
-  - If followed by quoted string: Use as the review text to respond to
-  - If no value provided: Auto-fetch latest review from PR
-  - Can be combined with `-c <commit>` or `-sc <commit>` to include commit evidence
-  - **Parsing note**: Quoted string must immediately follow `-r`/`--review` flag
+- **PR number** (optional): First numeric argument
+- **Comment text** (optional): Text after PR number (unless flags used)
+- **Flags**: See Flag Reference section
 
-**Flag combination rules:**
+## Flag Reference
 
-- `-r` alone: Respond to latest review with general summary of work done
-- `-r "text"`: Respond to specified review text with general summary
-- `-r -c <commit>`: Respond to latest review with commits since `<commit>` as evidence
-- `-r "text" -c <commit>`: Respond to specified review with commits since `<commit>`
-- `-r -sc <commit>`: Respond to latest review with single commit as evidence
-- `-r "text" -sc <commit>`: Respond to specified review with single commit as evidence
-- `-r` cannot be combined with `--last` (exclusive flows)
+| Flag | Description |
+|------|-------------|
+| `-l`, `--last` | Post last Claude response from session |
+| `-c <hash>`, `--commit <hash>` | Summary of commits since hash (inclusive) |
+| `-sc <hash>`, `--single-commit <hash>` | Summary of single commit |
+| `-r ["text"]`, `--review ["text"]` | Post review |
+| `-rr ["text"]`, `--review-response ["text"]` | Respond to review (auto-fetch or specified) |
+| `--force`, `-f` | Override turn validation |
 
-**Usage examples:**
+**Combinations**:
 
-```bash
-/comment-to-pr -r                         # Auto-fetch latest review, respond with recent work
-/comment-to-pr -r "Please address concerns"  # Respond to specified review text
-/comment-to-pr -r -c abc1234              # Respond with commits since abc1234 as evidence
-/comment-to-pr 42 -r -sc def5678          # Respond to PR #42 with single commit evidence
-```
+- `-r` can combine with `-l` after a review agent result. Cannot combine `-r` with `-c` or `-sc` or `-rr`.
+- `-rr` can combine with `-c` or `-sc` for commit evidence. Cannot combine `-rr` with `-l` or `-r`.
 
 ## Infer PR Number
 
-If no PR number provided:
+If no PR number in arguments:
 
 1. Get current branch: !`git branch --show-current`
-2. Find PR for branch: `gh pr view --json number,title`
+2. Find PR: `gh pr view --json number,title`
+3. If found: "Using PR #<number>: <title>"
+4. If not found: List recent PRs via AskUserQuestion
 
-If PR found:
+## Flow Routing
 
-- Use that PR number
-- Show: "Using PR #<number>: <title>"
+### Simple: Inline Comment
 
-If no PR found:
+If comment text provided directly in arguments:
 
-- Use AskUserQuestion: "No PR found for current branch. Enter PR number:"
-- Or list recent PRs: `gh pr list --state open --limit 5`
-- Options: List PRs, plus "Enter PR number manually"
+1. Use skill `gitx:validating-comments`
+2. Post: `gh pr comment <number> --body "$comment"` or, if -r is present, `gh pr review <number> --body "$comment"`
+3. Report success
 
-## Get Comment Text
+### Complex: Delegate to Agent
 
-If comment text not provided in arguments:
+For flag-based flows, delegate to `gitx:comment-handler:comment-handler` with:
 
-Use AskUserQuestion:
+| Flag | flow_type | Required Data |
+|------|-----------|---------------|
+| `--last` | `last_response` | Caller extracts & provides `<latest responses>` |
+| `-c`/`-sc` | `commit_summary` | `mode: multi\|single`, `commit: <hash>` |
+| `-rr` | `review_response` | `review_text`, optional `commit`/`commit_mode` |
+| `-r` | `review_posting` | `target_subtype: review`, optional `review_text` |
 
-- "What would you like to comment on PR #<number>?"
-- Options:
-  1. "Summarize recent changes" - Generate summary from commits since PR creation
-  2. "Request review" - Template for requesting review
-  3. "Status update" - Template for progress update
-  4. "Post last response" - Share Claude's latest response from this session
+Common parameters: `target: <PR number>`, `target_type: pr`, `target_subtype: comment` (except review_posting).
 
-### Auto-generated summaries
+Note: For `--last`, the main agent MUST extract responses from conversation - the agent cannot access history.
 
-If "Summarize recent changes":
+### Interactive: Template Selection
 
-- Get commits since PR creation
-- Get changed files summary
-- Generate summary of recent work
+If no arguments or flags, use AskUserQuestion:
 
-### Commit-based summaries
-
-If `-c <commit>` or `--commit <commit>` flag used:
-
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
-3. Get changed files summary: `git diff --stat <commit>..HEAD`
-4. Generate summary in "Both combined" format:
-   - Narrative summary: A cohesive paragraph summarizing all changes holistically
-   - Followed by: Commit list for reference (bullet points of each commit)
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
-
-If `-sc <commit>` or `--single-commit <commit>` flag used:
-
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
-3. Get the actual diff for the commit: `git show --no-stat <commit>`
-4. Generate summary focusing on that specific commit's changes
-5. **Preview confirmation**: Use AskUserQuestion:
-   - Show preview: Full generated summary
-   - Question: "Post this commit summary to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this summary" - Proceed to validation
-     2. "❌ Cancel" - Abort posting
-6. Store generated summary in `$comment` variable and proceed to validation
-
-### Review Response Flow
-
-If `-r` or `--review` flag used:
-
-#### Step 1: Get Review Text
-
-**If review text provided in arguments:**
-
-- Use the provided quoted string as `$review_text`
-
-**If no review text provided (flag used alone):**
-
-1. Fetch latest review from PR:
-
-   ```bash
-   # Filters for actionable reviews: PENDING, CHANGES_REQUESTED, COMMENTED
-   gh pr view <number> --json reviews \
-     --jq '.reviews
-       | map(select(.state != "APPROVED" and .state != "DISMISSED"))
-       | sort_by(.submittedAt)
-       | last'
-   ```
-
-2. If review found:
-   - Extract review body and author
-   - Show: "Found latest review from @<author>"
-   - Set `$review_text` to review body
-
-3. If no pending reviews found:
-   - Check for unresolved review comments (inline comments):
-
-     ```bash
-     gh pr view <number> --json reviewThreads \
-       --jq '[.reviewThreads[] | select(.isResolved == false)] | last'
-     ```
-
-   - If found, use the last unresolved thread's comments
-   - If no reviews or threads found:
-     - Use AskUserQuestion: "No pending reviews found. What would you like to do?"
-     - Header: "No Reviews"
-     - Options:
-       1. "Enter review text manually" - Prompt for review text
-       2. "Cancel" - Abort operation
-
-#### Step 2: Get Work Evidence
-
-**If `-c <commit>` also provided:**
-
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get all commits since that commit: `git log --oneline <commit>..HEAD`
-3. Get changed files summary: `git diff --stat <commit>..HEAD`
-4. Store in `$work_evidence` variable
-
-**If `-sc <commit>` also provided:**
-
-1. Validate commit hash exists: `git rev-parse --verify <commit>^{commit}`
-2. Get commit details: `git show --stat --format="%s%n%n%b" <commit>`
-3. Get the actual diff for the commit: `git show --no-stat <commit>`
-4. Store in `$work_evidence` variable
-
-**If neither `-c` nor `-sc` provided:**
-
-1. Get recent commits on this branch (last 10):
-
-   ```bash
-   git log --oneline -10
-   git diff --stat HEAD~10..HEAD
-   ```
-
-2. Store in `$work_evidence` variable (may be empty if no recent work)
-
-#### Step 3: Generate Response
-
-Generate a structured response addressing the review points:
-
-**Output format:**
-
-```markdown
-## Response to Review
-
-[Thoughtful response addressing each point raised in the review]
-
-[If the review raised specific concerns, address them point by point]
-
-## Work Done
-
-### Summary
-
-[Narrative paragraph summarizing what was done to address the review]
-
-### Changes
-[Bullet list of commits or changes made]
-```
-
-**If no `$work_evidence` available:**
-
-```markdown
-## Response to Review
-
-[Thoughtful response addressing each point raised in the review]
-
----
-*Note: This response is being posted before/without commit evidence. The work may be in progress or was addressed in conversation.*
-```
-
-**Response generation guidelines:**
-
-1. Analyze the review text to identify:
-   - Specific concerns or questions
-   - Requested changes
-   - Suggestions for improvement
-2. For each identified point, provide:
-   - Acknowledgment of the feedback
-   - How it was addressed (if applicable)
-   - Justification if not addressed (if applicable)
-3. Be professional and constructive in tone
-4. Reference specific commits when available
-
-#### Step 4: Preview and Confirm
-
-Use AskUserQuestion:
-
-- Show preview: Full generated response
-- Question: "Post this response to PR #<number>?"
-- Header: "Confirm"
-- Options:
-  1. "✅ Post this response" - Proceed to validation
-  2. "✏️ Edit response" - Allow modification based on feedback
-  3. "❌ Cancel" - Abort posting
-
-If "Edit response" selected:
-
-- Use AskUserQuestion: "What would you like to change about the response?"
-- Regenerate response based on user input
-- Return to Step 4 preview (loop continues until user selects "Post" or "Cancel")
-
-#### Step 5: Store and Proceed
-
-Store generated response in `$comment` variable and proceed to "Validate Comment" section.
-
-If "Request review":
-Template:
-
-```text
-## Ready for Review
-
-This PR is ready for review. Key changes:
-- <change 1>
-- <change 2>
-
-Please review when you have time. @<team-or-reviewer>
-```
-
-If "Status update":
-Template:
-
-```text
-## Status Update
-
-### Progress
-- <completed item>
-
-### Remaining
-- <pending item>
-
-### ETA
-<estimated completion>
-```
-
-If "Post last response" (or `--last` flag used):
-
-1. **Retrieve recent responses**: Get the last 4 valid responses from the current conversation thread
-   - **Valid response criteria**: Must have at least 4 lines of text OR 140 characters
-   - Extract title from first line of each response (before first newline)
-   - Title truncation rules:
-     - If title ≤ 80 chars: Use full text
-     - If title > 80 chars: Use first 77 chars + "..."
-
-2. **Handle edge cases**:
-   - **1-3 valid responses**: Show all available valid responses (adjust options list dynamically)
-   - **No valid responses found**: Error: "No valid Claude responses found in current conversation
-     (responses must have at least 4 lines or 140 characters). Cannot use --last flag."
-   - **First message in thread**: Error: "This is the first message in the conversation.
-     No previous responses to post."
-
-3. **Present selection**: Use AskUserQuestion:
-   - Question: "Which response would you like to post to PR #<number>?"
-   - Header: "Response"
-   - Options (newest to oldest, max 4):
-     1. "🟢 <Response title>" - Most recent
-     2. "🔵 <Response title>"
-     3. "🔵 <Response title>"
-     4. "🔵 <Response title>" - Oldest shown
-   - Note: 🟢 = most recent, 🔵 = older responses
-
-4. **Preview confirmation**: After selection, use AskUserQuestion:
-   - Show preview: Full selected response
-   - Question: "Post this response to PR #<number>?"
-   - Header: "Confirm"
-   - Options:
-     1. "✅ Post this response" - Proceed to validation
-     2. "🔄 Select different response" - Return to step 3
-     3. "❌ Cancel" - Abort posting
-
-5. **Store selected response**: Save full content of selected response to `$comment` variable and proceed to validation.
-
-## Validate Comment
-
-Before posting, validate the comment:
-
-1. **Empty check**: If comment text does not exist, is empty, or is whitespace-only:
-   - Report error: "Cannot post empty comment"
-   - Return to "Get Comment Text" section to request comment text
-
-2. **Size check**: Check comment length:
-   - If > 60,000 characters:
-     - Use AskUserQuestion: "Comment exceeds GitHub's 60K character limit. How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Truncate as-is" - Cut off at 60K characters
-       3. "Split into multiple comments" - Post as sequential comments
-       4. "Abort" - Cancel posting
-   - If > 20,000 characters (but ≤ 60,000):
-     - Use AskUserQuestion: "Comment is very long (>20K characters). How would you like to proceed?"
-     - Options:
-       1. "Shorten text" - Let Claude summarize/condense the content
-       2. "Abort" - Cancel posting
-
-## Post Comment
-
-Post the comment:
-
-- `gh pr comment <number> --body "$comment"`
-
-If the command fails, report the error and stop execution.
-
-## Confirmation
-
-Show the posted comment:
-
-- PR number and title
-- Comment preview (first 200 chars)
-- Link to PR
+- Options: ["Summarize recent changes", "Request review", "Status update", "Post last response"]
+- Route based on selection (delegate to agent for complex flows)
 
 ## Error Handling
 
-1. PR not found: Report error, suggest checking PR number.
-2. Empty comment: Request comment text via "Get Comment Text" section.
-3. Permission denied: Check repository access.
-4. gh not authenticated: Guide to `gh auth login`.
-5. gh command failure: Report the error message and stop execution.
-6. No valid responses (--last flag): Report error and suggest using a different comment option.
-7. First message in conversation (--last flag): Report error and suggest using a different comment option.
-8. Invalid commit hash: Report "Commit '<hash>' not found in repository. Please verify the commit hash."
-9. Commit not in history: Report "Commit '<hash>' exists but is not in current branch's history."
-10. No reviews found (--review flag): Triggers when user selects "Cancel" in the AskUserQuestion after no
-    reviews are found. Report "No pending reviews or unresolved review comments found for this PR."
-    Suggest using --review with explicit text or a different comment option.
-11. Review fetch failed (--review flag): Report the gh error and suggest checking PR access permissions.
-12. Invalid flag combination: If `-r` is combined with `--last`, report "Cannot combine --review
-    with --last flag. Use one or the other."
-13. Empty review text: If review text is explicitly provided but empty (e.g., `--review ""`),
-    report "Review text cannot be empty when using --review with quoted text."
+| Error | Action |
+|-------|--------|
+| PR not found | Report and suggest checking number |
+| Empty comment | Return to get comment text |
+| gh not authenticated | Guide to `gh auth login` |
+| Invalid flag combination | Report conflict |
+| Agent failure | Report error from agent |

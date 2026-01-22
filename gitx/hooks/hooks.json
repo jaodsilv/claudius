@@ -1,14 +1,36 @@
 {
-  "description": "Check for git and gh CLI dependencies at session start",
+  "description": "Global hooks for gitx plugin - command pre-validation and post-execution loops",
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
+        "matcher": "startup",
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'command -v bash >/dev/null 2>&1 && bash \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check-dependencies.sh\"' 2>&1 || powershell -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check-dependencies.ps1\"",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/check-dependencies.sh",
             "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-pre-command.sh",
+            "timeout": 660
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-post-command.sh",
+            "timeout": 30
           }
         ]
       }
