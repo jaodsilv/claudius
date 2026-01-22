@@ -18,11 +18,7 @@ to best practices. Part of the planner plugin review workflow.
 
 ## Skills to Load
 
-1. Assess completeness of required elements
-2. Detect patterns (best practices and anti-patterns)
-3. Evaluate quality metrics (SMART criteria, clarity)
-4. Identify formatting and consistency issues
-5. Work in parallel with domain-specific reviewer
+Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
 
 ## Analysis Process
 

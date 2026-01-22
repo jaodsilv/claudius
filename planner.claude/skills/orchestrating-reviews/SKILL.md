@@ -82,7 +82,7 @@ Use Task tool with @[agent-name]:
 Example:
 
 ```text
-Task @planner/review-analyzer:
+Task @planner:planner:review-analyzer:
   Context: docs/roadmap.md
   Mode: thorough
   Phase: 1
@@ -90,7 +90,7 @@ Task @planner/review-analyzer:
 
 ## Output Format
 
-Use the `planner.claude/templates/review-report.md` template for the standard output structure.
+Use the `report-template.md` template for the standard output structure.
 
 Key sections:
 - Executive Summary
