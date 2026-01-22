@@ -3,8 +3,12 @@ set -euo pipefail
 # Check for planner plugin dependencies and provide template paths
 # Returns JSON with systemMessage for warnings and additionalContext for templates
 
-# Get plugin root (parent of hooks/scripts)
-PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/../.." && pwd)}"
+# Get plugin root from Claude Code environment
+PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-}"
+if [ -z "$PLUGIN_ROOT" ]; then
+    echo '{"systemMessage": "[planner] Error: CLAUDE_PLUGIN_ROOT not set - hook cannot determine template paths"}'
+    exit 0
+fi
 
 warnings=""
 info_msgs=""
