@@ -2,6 +2,7 @@
 description: Creates output-styles when defining consistent formatting patterns.
 argument-hint: <style-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Output-Style Workflow
@@ -19,6 +20,8 @@ Parse:
 If style_name not provided, ask user to specify.
 
 ## Execution
+
+Apply Skill(cc:validating-components) for output-style validation criteria.
 
 Use TodoWrite to track progress:
 - [ ] Step 1: Validate context

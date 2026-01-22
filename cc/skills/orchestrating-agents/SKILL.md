@@ -5,6 +5,8 @@ description: >-
   coordinating multiple agents, or implementing phase-based command structures.
   Use when creating orchestrations or improving existing multi-agent workflows.
 version: 1.0.0
+allowed-tools: Read
+model: sonnet
 ---
 
 # Orchestrating Agents

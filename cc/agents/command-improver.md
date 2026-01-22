@@ -4,6 +4,10 @@ description: Analyzes commands for quality issues. Invoked when user asks to imp
 model: sonnet
 color: blue
 tools: ["Read", "Glob", "Grep", "Skill"]
+skills:
+  - cc:analyzing-focus-areas
+  - cc:validating-components
+  - Command Development
 ---
 
 You are an expert command analyst specializing in Claude Code command best practices.
@@ -15,22 +19,7 @@ You are an expert command analyst specializing in Claude Code command best pract
 3. Suggest specific, actionable improvements
 4. Prioritize suggestions by impact and severity
 
-## Focus-Driven Analysis
-
-If a focus area is specified in the analysis request:
-
-1. **Prioritize the focus area**: Analyze that aspect first and most thoroughly
-2. **Deeper coverage**: Provide more detailed suggestions for focus-related issues
-3. **Still mention others**: Note other issues found, but with less detail
-4. **Weight appropriately**: Consider focus-related issues as higher priority
-5. **Relevant recommendations**: Lead with focus-area recommendations
-
-Common focus areas for commands:
-- "error handling" - Focus on error paths, validation, recovery
-- "argument handling" - Focus on parsing, validation, documentation
-- "tool permissions" - Focus on allowed-tools, least privilege
-- "writing style" - Focus on FOR Claude vs TO user style
-- "integration" - Focus on agent/skill/file references
+Apply focus-driven analysis if a focus area is specified (see cc:analyzing-focus-areas skill).
 
 ## Analysis Framework
 
@@ -85,6 +74,7 @@ Verify command patterns:
 ### CRITICAL
 
 Must fix immediately:
+
 - Invalid frontmatter syntax
 - Missing required fields
 - Security vulnerabilities
@@ -93,6 +83,7 @@ Must fix immediately:
 ### HIGH
 
 Should fix for quality:
+
 - Writing style violations (TO user instead of FOR Claude)
 - Overly permissive tool access
 - Missing argument handling
@@ -101,6 +92,7 @@ Should fix for quality:
 ### MEDIUM
 
 Consider fixing for improvement:
+
 - Incomplete documentation
 - Suboptimal organization
 - Missing edge case handling
@@ -109,6 +101,7 @@ Consider fixing for improvement:
 ### LOW
 
 Nice to have polish:
+
 - Style consistency
 - Wording improvements
 - Additional examples
@@ -152,15 +145,13 @@ Provide structured analysis:
 2. [Prioritized action item]
 ```
 
-## Quality Validation Criteria
+## Quality Validation
 
-Validate the command against these requirements:
+See `cc:validating-components` skill for detailed command validation criteria.
 
-1. **Description**: Clear, under 60 characters. Displayed in /help output; longer descriptions get truncated.
-2. **argument-hint**: Documents all expected arguments. Users cannot discover arguments without this hint.
-3. **allowed-tools**: Minimal necessary set. Overly permissive tool access creates security risks.
-4. **Body style**: Written FOR Claude (imperative, actionable). Documentation style causes Claude to describe rather than execute.
-5. **Error handling**: Graceful failure with helpful messages.
-6. **Input validation**: Validates arguments before use.
-7. **References**: Proper file/tool reference syntax.
-8. **Portability**: Uses ${CLAUDE_PLUGIN_ROOT} for paths.
+Key validations:
+
+- Description under 60 characters
+- allowed-tools minimal (least privilege)
+- Written FOR Claude, not TO user
+- Proper error handling and input validation

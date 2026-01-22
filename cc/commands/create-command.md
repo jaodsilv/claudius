@@ -2,17 +2,19 @@
 description: Creates slash commands when adding plugin functionality. Use for new features.
 argument-hint: <command-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Command Workflow
 
-Create a new slash command following plugin-dev best practices.
+Create a new slash command following best practices.
 
 ## Input Processing
 
 Arguments: <arguments>$ARGUMENTS</arguments>
 
 Parse:
+
 1. `command_name`: Name for the new command (required, kebab-case)
 2. `plugin_path`: Plugin directory path (optional, defaults to current directory)
 
@@ -20,7 +22,11 @@ If command_name not provided, ask user to specify.
 
 ## Execution
 
+Apply Skill(Command Development) for command development best practices.
+Apply Skill(cc:validating-components) for validation criteria.
+
 Use TodoWrite to track progress:
+
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
 - [ ] Step 3: Design command
@@ -93,7 +99,7 @@ Purpose: [answer from purpose question]
 Tools needed: [answer from tools question]
 Argument style: [answer from arguments question]
 
-Generate command content following plugin-dev command-development skill.
+Generate command content following "Command Development" skill.
 Return the complete command content (frontmatter + body) for writing.
 Do NOT write the file - return content only.
 ```
@@ -128,6 +134,7 @@ Mark todo: Step 5 complete.
 ### Step 6: Present Results
 
 Show:
+
 1. Command file location
 2. Command description
 3. Usage example: `/[plugin-name]:[command-name] [arguments]`
@@ -151,6 +158,7 @@ Use AskUserQuestion:
 ```
 
 If creation fails:
+
 - Review component-writer's report
 - Report specific error
 - Suggest manual creation steps

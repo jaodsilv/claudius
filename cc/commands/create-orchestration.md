@@ -2,6 +2,7 @@
 description: Creates multi-agent orchestrations when coordinating complex workflows.
 argument-hint: <orchestration-name> [--plugin <plugin-path>]
 allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+model: sonnet
 ---
 
 # Create Orchestration Workflow
@@ -21,6 +22,9 @@ If orchestration_name not provided, ask user to specify.
 ## Execution
 
 ### Phase 1: Validate Context
+
+Apply Skill(cc:orchestrating-agents) for orchestration patterns.
+Apply Skill(cc:validating-components) for validation criteria.
 
 1. Verify plugin directory exists
 2. Check commands/ directory exists

@@ -4,7 +4,8 @@ description: >-
   Guides skill authoring following Anthropic platform best practices. Use when
   creating new skills, reviewing existing skills, or improving skill structure.
   Covers conciseness, naming, descriptions, progressive disclosure, and validation.
-version: 1.0.0
+allowed-tools: Read
+model: sonnet
 ---
 
 # Authoring Skills
