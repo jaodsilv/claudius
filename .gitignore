@@ -36,3 +36,6 @@ docs/_site/
 # Test coverage output
 coverage/
 coverage-*
+
+# Temporary Claude directories
+tmpclaude-*
