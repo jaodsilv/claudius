@@ -57,6 +57,6 @@ if [[ -n "$BRANCH" ]] && [[ "$ARGS" =~ -d|--delete ]]; then
 fi
 
 log_info "Worktree '$WT_PATH' removed"
-echo "Worktree '$WT_PATH' removed."
-log_exit 2 "block always"
-exit 2  # Block always
+log_exit 0 "block with JSON"
+echo "{\"decision\": \"block\", \"reason\": \"Worktree '$WT_PATH' removed.\"}"
+exit 0

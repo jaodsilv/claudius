@@ -41,11 +41,11 @@ log_debug "MERGE_RESULT" "$RESULT"
 
 if [[ $RESULT -eq 0 ]]; then
   log_info "PR merged successfully"
-  echo "PR #$PR_NUM merged successfully!"
+  log_exit 0 "block with JSON"
+  echo "{\"decision\": \"block\", \"reason\": \"PR #$PR_NUM merged successfully!\"}"
+  exit 0
 else
   log_error "Failed to merge PR"
   echo "Error: Failed to merge PR #$PR_NUM" >&2
+  exit 2
 fi
-
-log_exit 2 "block always"
-exit 2  # Block always - hook handles everything

@@ -46,10 +46,13 @@ if [[ "$REFRESH_ALL" == "true" ]]; then
 
   if bash "$FETCH_SCRIPT" "$WORKTREE"; then
     log_info "Metadata refreshed successfully"
-    echo "Metadata refreshed successfully."
+    log_exit 0 "block with JSON"
+    echo '{"decision": "block", "reason": "Metadata refreshed successfully."}'
+    exit 0
   else
     log_error "Failed to refresh metadata"
     echo "Error: Failed to refresh metadata" >&2
+    exit 2
   fi
 else
   # Selective refresh based on --fields
@@ -59,12 +62,12 @@ else
   # significant refactoring of fetch-pr-metadata.sh into modular functions)
   if bash "$FETCH_SCRIPT" "$WORKTREE"; then
     log_info "Metadata refreshed for fields: $FIELDS"
-    echo "Metadata refreshed for fields: $FIELDS"
+    log_exit 0 "block with JSON"
+    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed for fields: $FIELDS\"}"
+    exit 0
   else
     log_error "Failed to refresh metadata"
     echo "Error: Failed to refresh metadata" >&2
+    exit 2
   fi
 fi
-
-log_exit 2 "block always"
-exit 2  # Block always - hook handles everything

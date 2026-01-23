@@ -47,7 +47,7 @@ if [[ "$FAILED" -gt 0 ]]; then
 else
   log_info "All CI passed, setting turn to REVIEW"
   bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "REVIEW"
-  echo "All CI checks passed. No failures to address." >&2
-  log_exit 2 "all CI passed - blocking"
-  exit 2  # Block
+  log_exit 0 "all CI passed - block with JSON"
+  echo '{"decision": "block", "reason": "All CI checks passed. No failures to address. Turn set to REVIEW."}'
+  exit 0
 fi

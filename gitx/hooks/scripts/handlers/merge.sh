@@ -40,9 +40,9 @@ git -C "$WORKTREE" fetch origin "$CURRENT":"$CURRENT" 2>&1 || true
 log_info "Attempting merge of $BASE into $CURRENT..."
 if git -C "$WORKTREE" merge "$BASE" --no-edit 2>&1; then
   log_info "Merge successful, no conflicts"
-  echo "Merge successful. $BASE merged into $CURRENT."
-  log_exit 2 "merge successful - blocking"
-  exit 2  # Block - no LLM needed
+  log_exit 0 "merge successful - block with JSON"
+  echo "{\"decision\": \"block\", \"reason\": \"Merge successful. $BASE merged into $CURRENT.\"}"
+  exit 0
 else
   log_warn "Merge has conflicts, letting LLM handle"
   echo "Merge has conflicts. Proceeding to conflict resolution."

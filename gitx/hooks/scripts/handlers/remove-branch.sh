@@ -59,6 +59,6 @@ if [[ "$ARGS" =~ -r[[:space:]]|-ro[[:space:]]|--force ]]; then
 fi
 
 log_info "Branch '$BRANCH' removed"
-echo "Branch '$BRANCH' removed."
-log_exit 2 "block always"
-exit 2  # Block always
+log_exit 0 "block with JSON"
+echo "{\"decision\": \"block\", \"reason\": \"Branch '$BRANCH' removed.\"}"
+exit 0
