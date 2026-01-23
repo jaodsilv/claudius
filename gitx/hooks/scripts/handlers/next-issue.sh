@@ -10,9 +10,9 @@ log_debug "ISSUE_COUNT" "$ISSUE_COUNT"
 
 if [[ "$ISSUE_COUNT" -eq 0 ]]; then
   log_info "No open issues found"
-  log_exit 2 "no issues"
-  echo "No open issues found." >&2
-  exit 2
+  log_exit 0 "no issues - block with JSON"
+  echo '{"decision": "block", "reason": "No open issues found."}'
+  exit 0
 fi
 
 # Pick issue using standard labels/milestone (can be customized)
@@ -40,10 +40,13 @@ if [[ -n "$ISSUE" ]]; then
   NUMBER=$(echo "$ISSUE" | jq -r '.number')
   TITLE=$(echo "$ISSUE" | jq -r '.title')
   log_info "Selected issue #$NUMBER: $TITLE"
-  echo "Next issue: #$NUMBER - $TITLE"
-  echo ""
-  gh issue view "$NUMBER"
+  # Get issue details for the reason
+  ISSUE_BODY=$(gh issue view "$NUMBER" --json body,labels,assignees --jq '{body: .body[0:200], labels: [.labels[].name], assignees: [.assignees[].login]}' 2>/dev/null || echo "{}")
+  log_exit 0 "block with JSON"
+  echo "{\"decision\": \"block\", \"reason\": \"Next issue: #$NUMBER - $TITLE\"}"
+  exit 0
 fi
 
-log_exit 2 "block always"
-exit 2  # Block always - hook handles everything
+log_exit 0 "no issues found - block with JSON"
+echo '{"decision": "block", "reason": "No open issues found."}'
+exit 0

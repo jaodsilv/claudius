@@ -58,9 +58,9 @@ if git -C "$WORKTREE" rebase "$BASE" 2>&1; then
     log_info "Popping stash..."
     git -C "$WORKTREE" stash pop
   fi
-  echo "Rebase successful. Pushed to remote."
-  log_exit 2 "rebase successful - blocking"
-  exit 2  # Block - no LLM needed
+  log_exit 0 "rebase successful - block with JSON"
+  echo '{"decision": "block", "reason": "Rebase successful. Pushed to remote."}'
+  exit 0
 else
   log_warn "Rebase has conflicts, letting LLM handle"
   echo "Rebase has conflicts. Proceeding to conflict resolution."
