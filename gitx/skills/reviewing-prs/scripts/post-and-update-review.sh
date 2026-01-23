@@ -60,13 +60,7 @@ else
   exit 1
 fi
 
-# --- Phase 1: Get current reviews and comments to hide ---
-
-# Read current latestReviews and latestComments from metadata
-old_reviews=$(yq -o=json '.latestReviews // []' "$METADATA_FILE")
-old_comments=$(yq -o=json '.latestComments // []' "$METADATA_FILE")
-
-# --- Phase 2: Post the review ---
+# --- Phase 1: Post the review ---
 
 echo "Posting review to PR #$PR_NUMBER..."
 if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --comment --body-file "$REVIEW_FILE"; then
@@ -75,31 +69,7 @@ if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --comment --body-file
 fi
 echo "Review posted successfully"
 
-# --- Phase 3: Hide old comments and reviews ---
-
-# Hide old reviews
-old_reviews_count=$(echo "$old_reviews" | jq 'length')
-if [[ "$old_reviews_count" -gt 0 ]]; then
-  echo "Hiding $old_reviews_count old review(s)..."
-  echo "$old_reviews" | jq -r '.[].nodeid' | while read -r nodeid; do
-    if [[ -n "$nodeid" ]] && [[ "$nodeid" != "null" ]]; then
-      gh api graphql -f query="mutation { minimizeComment(input: {subjectId: \"$nodeid\", classifier: OUTDATED}) { minimizedComment { isMinimized } } }" >/dev/null 2>&1 || true
-    fi
-  done
-fi
-
-# Hide old comments
-old_comments_count=$(echo "$old_comments" | jq 'length')
-if [[ "$old_comments_count" -gt 0 ]]; then
-  echo "Hiding $old_comments_count old comment(s)..."
-  echo "$old_comments" | jq -r '.[].nodeid' | while read -r nodeid; do
-    if [[ -n "$nodeid" ]] && [[ "$nodeid" != "null" ]]; then
-      gh api graphql -f query="mutation { minimizeComment(input: {subjectId: \"$nodeid\", classifier: OUTDATED}) { minimizedComment { isMinimized } } }" >/dev/null 2>&1 || true
-    fi
-  done
-fi
-
-# --- Phase 4: Fetch and update review fields ---
+# --- Phase 2: Fetch and update review fields ---
 
 echo "Updating review metadata..."
 
@@ -123,7 +93,7 @@ query($owner: String!, $repo: String!, $number: Int!) {
   }
 }'
 
-reviews_result=$(gh api graphql -f query="$reviews_query" -f owner="$REPO_OWNER" -f repo="$REPO_NAME" -F number="$PR_NUMBER" 2>/dev/null)
+reviews_result=$(gh api graphql -f query="$reviews_query" -f owner="$REPO_OWNER" -f repo="$REPO_NAME" -F number="$PR_NUMBER" 2>/dev/null | tr -d '\r')
 reviews=$(echo "$reviews_result" | jq '[.data.repository.pullRequest.reviews.nodes[] | select(.isMinimized == false) | {nodeid: .id, body: .body, timestamp: .submittedAt, commitOid: .commit.oid}]' 2>/dev/null)
 
 if [[ -z "$reviews" ]] || [[ "$reviews" == "null" ]]; then
@@ -161,7 +131,7 @@ if [[ "$reviews_length" -gt 0 ]]; then
 fi
 
 # Fetch comments
-comments_json=$(gh pr view -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --json comments --jq '.comments // []' 2>/dev/null)
+comments_json=$(gh pr view -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --json comments --jq '.comments // []' 2>/dev/null | tr -d '\r')
 if [[ -z "$comments_json" ]] || [[ "$comments_json" == "null" ]]; then
   comments_json="[]"
 fi
