@@ -69,7 +69,7 @@ old_comments=$(yq -o=json '.latestComments // []' "$METADATA_FILE")
 # --- Phase 2: Post the review ---
 
 echo "Posting review to PR #$PR_NUMBER..."
-if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --body-file "$REVIEW_FILE"; then
+if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --comment --body-file "$REVIEW_FILE"; then
   echo "error: Failed to post review" >&2
   exit 1
 fi
