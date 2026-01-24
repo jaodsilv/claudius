@@ -16,7 +16,7 @@ invocation: planner:ideas:adversarial-critic
 
 Use `Task` tool to invoke this agent:
 
-```
+```text
 Task(planner:ideas:adversarial-critic)
 ```
 
@@ -40,7 +40,8 @@ Invoke `planner:analyzing-adversarially` skill. For each idea:
 
 ## Output Format
 
-For each idea: Idea name, critical assumptions, failure modes, counter-arguments, stress test results, survival verdict (Strong/Moderate/Weak), key weaknesses, must-address issues, viability confidence.
+For each idea: Idea name, critical assumptions, failure modes, counter-arguments, stress test results,
+survival verdict (Strong/Moderate/Weak), key weaknesses, must-address issues, viability confidence.
 
 ## Role in Workflow
 

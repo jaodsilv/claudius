@@ -102,7 +102,8 @@ Use the roadmap template to create the final document:
 
 ## Output Format
 
-Save to `docs/planning/roadmap.md` with: executive summary, Gantt chart, phase details, milestones, deliverables, dependencies, risks, and next steps.
+Save to `docs/planning/roadmap.md` with: executive summary, Gantt chart, phase details, milestones,
+deliverables, dependencies, risks, and next steps.
 
 ## Interaction Pattern
 

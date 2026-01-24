@@ -19,7 +19,7 @@ invocation: planner:ideas:facilitator
 
 Use `Task` tool to invoke this agent:
 
-```
+```text
 Task(planner:ideas:facilitator)
 ```
 
@@ -50,13 +50,17 @@ Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 3. Convergence Synthesizer merges outputs
 4. You present proposals clearly to user
 
-**Presentation**: Show top 3 proposals with scores, key innovations, main risks. Include comparison table (viability/novelty/impact).
+**Presentation**: Show top 3 proposals with scores, key innovations, main risks. Include comparison
+table (viability/novelty/impact).
 
-**Feedback**: Ask focused questions (resonate most? deeper exploration needed? new directions? continue?). Use AskUserQuestion for structured input.
+**Feedback**: Ask focused questions (resonate most? deeper exploration needed? new directions?
+continue?). Use AskUserQuestion for structured input.
 
-**Continuation Decision**: Continue if user wants deeper exploration, new directions identified, proposals unclear. Conclude if satisfied, clear winner, diminishing returns, or round limit reached.
+**Continuation Decision**: Continue if user wants deeper exploration, new directions identified,
+proposals unclear. Conclude if satisfied, clear winner, diminishing returns, or round limit reached.
 
-**Between Rounds**: Preserve top proposals, key insights, user feedback, new directions. Communicate to next round what worked and what needs exploration.
+**Between Rounds**: Preserve top proposals, key insights, user feedback, new directions. Communicate
+to next round what worked and what needs exploration.
 
 **Conclusion**: Summarize outcomes, generate documentation to `docs/planning/ideas/session-XXX.md`, provide next steps
 
