@@ -75,6 +75,7 @@ case "$LAST_COMMAND" in
   "reason": "PR not yet approved. Continuing next-turn loop. Run /gitx:next-turn to check status."
 }
 EOF
+    exit 0
     ;;
 
   "/gitx:address-ci")
@@ -98,6 +99,7 @@ EOF
   "reason": "CI-PENDING. Continuing next-turn loop to wait for CI results."
 }
 EOF
+      exit 0
     else
       log_info "Direct invocation, stopping"
       log_exit 0 "turn set to CI-PENDING"
