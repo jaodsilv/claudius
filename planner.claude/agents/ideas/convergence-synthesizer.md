@@ -8,9 +8,20 @@ tools:
   - Write
   - Task
   - Skill
+invocation: planner:ideas:convergence-synthesizer
 ---
 
 # Convergence Synthesizer Agent
+
+## How to Invoke
+
+Use `Task` tool to invoke this agent:
+
+```
+Task(planner:ideas:convergence-synthesizer)
+```
+
+Or from commands, reference via the full path: `planner:ideas:convergence-synthesizer`
 
 Merge outputs from multiple ideation agents into coherent, actionable proposals
 for the Ultrathink ideation workflow.

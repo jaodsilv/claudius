@@ -9,9 +9,20 @@ tools:
   - Grep
   - WebSearch
   - Task
+invocation: planner:ideas:innovation-explorer
 ---
 
 # Innovation Explorer Agent
+
+## How to Invoke
+
+Use `Task` tool to invoke this agent:
+
+```
+Task(planner:ideas:innovation-explorer)
+```
+
+Or from commands, reference via the full path: `planner:ideas:innovation-explorer`
 
 Explore cutting-edge solutions, cross-domain inspiration, and unconventional
 approaches for the Ultrathink ideation workflow.

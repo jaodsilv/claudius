@@ -8,6 +8,7 @@ tools:
 - Read
 - Task
 - Skill
+invocation: planner:github:issue-relationship-mapper
 ---
 
 # GitHub Issue Relationship Mapper

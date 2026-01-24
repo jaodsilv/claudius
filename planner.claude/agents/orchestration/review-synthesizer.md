@@ -8,6 +8,7 @@ tools:
   - Write
   - Task
   - Skill
+invocation: planner:orchestration:review-synthesizer
 ---
 
 # Review Synthesizer Agent

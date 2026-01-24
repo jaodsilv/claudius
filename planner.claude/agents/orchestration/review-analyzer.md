@@ -9,6 +9,7 @@ tools:
 - Grep
 - Task
 - Skill
+invocation: planner:orchestration:review-analyzer
 ---
 
 # Review Analyzer Agent

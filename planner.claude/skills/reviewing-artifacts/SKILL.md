@@ -9,6 +9,22 @@ model: sonnet
 
 # Reviewing Artifacts
 
+## How to Invoke This Skill
+
+Use the Skill tool to load this skill:
+
+```
+Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
+```
+
+Or from agents, use the Task tool:
+
+```
+Task(planner:reviewing-artifacts)
+```
+
+The skill provides standard evaluation formats, dimension scoring, and interactive refinement patterns for reviewing planning artifacts.
+
 ## Review Process
 
 1. **Read the Artifact**: Understand goal, map structure, note key decisions, identify gaps

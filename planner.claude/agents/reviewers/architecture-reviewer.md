@@ -11,6 +11,7 @@ tools:
   - AskUserQuestion
   - WebSearch
   - Skill
+invocation: planner:reviewers:architecture-reviewer
 ---
 
 # Architecture Reviewer
