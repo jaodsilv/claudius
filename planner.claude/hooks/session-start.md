@@ -60,22 +60,19 @@ Templates should be referenced in the following ways:
 
 1. **In Commands**: Use the template path directly from hook context:
 
-
-   ```
+   ```text
    Use the review-report template from ${PLUGIN_ROOT}/templates/review-report.md
    ```
 
-
 2. **From Session Context**: Templates are provided in hook output, reference by name:
 
-   ```
+   ```text
    Use the review-report template provided in session context
    ```
 
-
 3. **Explicit Path**: For direct file operations, use the absolute path pattern:
 
-   ```
+   ```text
    ${PLUGIN_ROOT}/templates/[template-name].md
    ```
 

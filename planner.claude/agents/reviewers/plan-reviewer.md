@@ -19,7 +19,8 @@ Review plans, roadmaps, and prioritization documents with constructive, actionab
 
 ## Core Responsibilities
 
-Read and understand artifact, evaluate against goal, check completeness and quality, identify strengths/weaknesses, provide improvements, facilitate refinement.
+Read and understand artifact, evaluate against goal, check completeness and quality, identify
+strengths/weaknesses, provide improvements, facilitate refinement.
 
 ## Review Methodology
 

@@ -18,7 +18,7 @@ invocation: planner:ideas:innovation-explorer
 
 Use `Task` tool to invoke this agent:
 
-```
+```text
 Task(planner:ideas:innovation-explorer)
 ```
 

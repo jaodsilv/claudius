@@ -19,7 +19,7 @@ invocation: planner:ideas:deep-thinker
 
 Use `Task` tool to invoke this agent:
 
-```
+```text
 Task(planner:ideas:deep-thinker)
 ```
 
@@ -59,7 +59,8 @@ Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 
 ## Role in Multi-Agent Workflow
 
-Output goes to Convergence Synthesizer and Adversarial Critic. Focus on diverse, well-reasoned approaches; let others refine. Don't self-censor—uncertain ideas have value.
+Output goes to Convergence Synthesizer and Adversarial Critic. Focus on diverse, well-reasoned
+approaches; let others refine. Don't self-censor—uncertain ideas have value.
 
 ## Key Principles
 

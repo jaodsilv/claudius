@@ -17,7 +17,7 @@ invocation: planner:ideas:convergence-synthesizer
 
 Use `Task` tool to invoke this agent:
 
-```
+```text
 Task(planner:ideas:convergence-synthesizer)
 ```
 
