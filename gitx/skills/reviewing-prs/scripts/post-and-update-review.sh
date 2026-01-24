@@ -158,5 +158,8 @@ yq -i ".latestReviewedCommit = $(if [[ -z "$latest_reviewed_commit" ]]; then ech
 yq -i ".reviewCount = $review_count" "$METADATA_FILE"
 yq -i ".latestComments = $filtered_comments" "$METADATA_FILE"
 
+# Delete review.md to prevent stale content on next run
+rm -f "$REVIEW_FILE"
+
 echo '{"status": "ok", "message": "Review posted and metadata updated"}'
 exit 0
