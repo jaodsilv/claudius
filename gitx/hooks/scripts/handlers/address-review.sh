@@ -18,25 +18,11 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   exit 2
 fi
 
-BRANCH=$(yq -r '.branch' "$METADATA_FILE")
-log_debug "BRANCH" "$BRANCH"
-
-# Wait for CI
+# Wait for CI using centralized operation
 log_info "Waiting for CI to complete..."
-MAX_WAIT=600
-ELAPSED=0
-while [[ $ELAPSED -lt $MAX_WAIT ]]; do
-  PENDING=$(gh run list -b "$BRANCH" --json status --jq '[.[] | select(.status != "completed")] | length' || echo "0")
-  log_debug "PENDING_CHECKS" "$PENDING"
-  if [[ "$PENDING" == "0" ]]; then
-    log_info "All CI checks completed"
-    break
-  fi
-  sleep 10
-  ELAPSED=$((ELAPSED + 10))
-done
+bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" wait-ci "$WORKTREE"
 
-# Refresh metadata
+# Refresh metadata - this computes turn correctly using statusCheckRollup
 log_info "Refreshing metadata..."
 bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
 

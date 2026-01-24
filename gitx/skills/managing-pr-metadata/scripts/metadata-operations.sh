@@ -205,6 +205,36 @@ case "$OPERATION" in
     echo '{"status": "ok", "latestCommit": "'"$LATEST"'"}'
     ;;
 
+  wait-ci)
+    # Poll for CI completion (max 10 minutes, poll every 10 seconds)
+    # Get branch from metadata or git
+    BRANCH=""
+    if [[ -f "$METADATA_FILE" ]]; then
+      BRANCH=$(yq -r '.branch // ""' "$METADATA_FILE" 2>/dev/null)
+    fi
+    if [[ -z "$BRANCH" ]]; then
+      BRANCH=$(git -C "$WORKTREE" branch --show-current 2>/dev/null || echo "")
+    fi
+    if [[ -z "$BRANCH" ]]; then
+      echo '{"error": "Could not determine branch"}' >&2
+      exit 1
+    fi
+
+    MAX_WAIT=600
+    ELAPSED=0
+    while [[ $ELAPSED -lt $MAX_WAIT ]]; do
+      PENDING=$(gh run list -b "$BRANCH" --json status --jq '[.[] | select(.status != "completed")] | length' || echo "0")
+      if [[ "$PENDING" == "0" ]]; then
+        echo '{"status": "ok", "branch": "'"$BRANCH"'", "waited": '$ELAPSED'}'
+        exit 0
+      fi
+      sleep 10
+      ELAPSED=$((ELAPSED + 10))
+    done
+    echo '{"status": "timeout", "branch": "'"$BRANCH"'", "waited": '$ELAPSED'}'
+    exit 0
+    ;;
+
   *)
     echo "Usage: metadata-operations.sh <operation> <worktree> [field] [value]" >&2
     echo "" >&2
@@ -220,6 +250,7 @@ case "$OPERATION" in
     echo "  post-push <worktree>                 - Clear CI, set turn to CI-PENDING, update commit" >&2
     echo "  clear-ci-status <worktree>           - Clear ciStatus array" >&2
     echo "  update-latest-commit <worktree>      - Update latestCommit from HEAD" >&2
+    echo "  wait-ci <worktree>                   - Wait for CI to complete (max 10 min)" >&2
     exit 1
     ;;
 esac
