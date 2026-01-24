@@ -8,6 +8,7 @@ tools:
 - Read
 - Grep
 - Skill
+invocation: planner:github:issue-analyzer
 ---
 
 # GitHub Issue Analyzer

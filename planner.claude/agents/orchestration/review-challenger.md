@@ -10,6 +10,7 @@ tools:
   - WebSearch
   - Task
   - Skill
+invocation: planner:orchestration:review-challenger
 ---
 
 # Review Challenger Agent

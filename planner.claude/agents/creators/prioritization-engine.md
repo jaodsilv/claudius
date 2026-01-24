@@ -11,6 +11,7 @@ tools:
   - Grep
   - Task
   - Skill
+invocation: planner:creators:prioritization-engine
 ---
 
 # Prioritization Engine

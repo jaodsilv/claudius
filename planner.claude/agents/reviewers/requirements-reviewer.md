@@ -10,6 +10,7 @@ tools:
   - Task
   - AskUserQuestion
   - Skill
+invocation: planner:reviewers:requirements-reviewer
 ---
 
 # Requirements Reviewer
