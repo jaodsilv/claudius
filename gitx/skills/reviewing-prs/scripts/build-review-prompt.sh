@@ -1,6 +1,6 @@
 #!/bin/bash
 # Build the review prompt from PR metadata
-# Reads from .thoughts/pr/metadata.yaml and outputs a formatted prompt for pr-review-toolkit
+# Reads from .thoughts/pr/metadata.yaml and writes prompt to .thoughts/pr/review-prompt.txt
 
 set -uo pipefail
 
@@ -22,6 +22,7 @@ elif [[ ! "$WORKTREE" = /* ]]; then
 fi
 
 METADATA_FILE="$WORKTREE/.thoughts/pr/metadata.yaml"
+OUTPUT_FILE="$WORKTREE/.thoughts/pr/review-prompt.txt"
 
 # Check if metadata file exists
 if [[ ! -f "$METADATA_FILE" ]]; then
@@ -51,8 +52,8 @@ if [[ "$comments_count" -gt 0 ]]; then
   has_comments=true
 fi
 
-# Build the prompt
-cat << EOF
+# Build the prompt - write to file
+cat << EOF > "$OUTPUT_FILE"
 PR: $PR_NUMBER
 
 Please write the comprehensive review to: $WORKTREE/.thoughts/pr/review.md
@@ -60,7 +61,7 @@ EOF
 
 # Add review range if there was a previous review
 if [[ -n "$LATEST_REVIEWED_COMMIT" ]] && [[ "$LATEST_REVIEWED_COMMIT" != "null" ]]; then
-  cat << EOF
+  cat << EOF >> "$OUTPUT_FILE"
 
 Review all changes from commit <commit>$LATEST_REVIEWED_COMMIT</commit> to tip of PR
 EOF
@@ -70,7 +71,7 @@ fi
 if [[ "$has_reviews" == "true" ]]; then
   # Format reviews as readable text
   REVIEWS_TEXT=$(echo "$LATEST_REVIEWS" | jq -r '.[] | "- [\(.timestamp)] \(.body | gsub("\n"; "\n  "))"')
-  cat << EOF
+  cat << EOF >> "$OUTPUT_FILE"
 
 Consider also your latest reviews
 
@@ -86,7 +87,7 @@ fi
 if [[ "$has_comments" == "true" ]]; then
   # Format comments as readable text
   COMMENTS_TEXT=$(echo "$LATEST_COMMENTS" | jq -r '.[] | "- [\(.timestamp)] @\(.author): \(.body | gsub("\n"; "\n  "))"')
-  cat << EOF
+  cat << EOF >> "$OUTPUT_FILE"
 
 Consider also the responses to the latest reviews
 
@@ -98,4 +99,5 @@ $COMMENTS_TEXT
 EOF
 fi
 
+echo "Review prompt written to: $OUTPUT_FILE"
 exit 0

@@ -81,7 +81,7 @@ Before committing, verify:
 - [ ] Scope matches affected component (if applicable)
 - [ ] Description uses imperative mood ("add" not "added")
 - [ ] No unrelated changes included
-- [ ] Breaking changes marked with `!` or footer
+- [ ] Breaking changes marked with ! or footer
 
 ## Edge Cases
 

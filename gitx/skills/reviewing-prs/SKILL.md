@@ -1,63 +1,36 @@
 ---
 name: gitx:reviewing-prs
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official to be installed
-allowed-tools: Skill, Read, Bash(script/build-review-prompt.sh:*), Bash(script/post-and-update-review.sh:*), Bash($CLAUDE_PLUGIN_ROOT/hooks/scripts/fetch-pr-metadata.sh:*)
+allowed-tools: Skill, Read, Bash(scripts/post-and-update-review.sh:*)
 model: opus
 ---
 
-## Step 0: Parse Input
+## Pre-conditions
 
-The input prompt represents the worktree path.
+The pre-command hook has already:
 
-Set `$worktree` to the input or "." if empty.
+1. Ensured metadata exists (fetched if needed)
+2. Validated turn is REVIEW
+3. Built the review prompt to `.thoughts/pr/review-prompt.txt`
 
-If a different input type is provided, exit with error.
+## Step 1: Read Prompt and Execute Review
 
-## Step 0.5: Ensure Metadata Exists
+1. Read the prompt from `.thoughts/pr/review-prompt.txt` (relative to worktree)
+2. Run the external plugin command with the prompt content:
 
-Use Skill `gitx:managing-pr-metadata`:
-
-```bash
-Skill(gitx:managing-pr-metadata):
-  operation: ensure
-  worktree: "$worktree"
-```
-
-If returned status is `needs_fetch`:
-
-1. Run the fetch script directly (saves tokens vs using an agent):
-
-   ```bash
-   $CLAUDE_PLUGIN_ROOT/hooks/scripts/fetch-pr-metadata.sh "$worktree"
+   ```
+   /pr-review-toolkit:review-pr <prompt-content>
    ```
 
-2. Verify the fetch succeeded (check for `"status": "ok"` in output)
-
-## Step 1: Build Review Prompt
-
-Use the Bash tool to run the build-review-prompt script:
-
-```bash
-scripts/build-review-prompt.sh "$worktree"
-```
-
-Capture the output as `$reviewPrompt`.
-
-## Step 2: Execute Review
-
-Use the Skill tool to run the slash command below
-
-```markdown
-/pr-review-toolkit:review-pr $reviewPrompt
-```
-
-## Step 3: Post Review and Update Metadata
+## Step 2: Post Review and Update Metadata
 
 Once the review is complete, run the post-and-update script:
 
 ```bash
 scripts/post-and-update-review.sh "$worktree"
 ```
+
+The `$worktree` path defaults to "." (current directory).
 
 ## Error Handling
 
