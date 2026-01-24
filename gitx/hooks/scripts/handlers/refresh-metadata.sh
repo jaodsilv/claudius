@@ -44,10 +44,16 @@ if [[ "$REFRESH_ALL" == "true" ]]; then
   rm -f "$METADATA_FILE"
   rm -rf "$WORKTREE/.thoughts/pr/ci"
 
-  if bash "$FETCH_SCRIPT" "$WORKTREE"; then
+  # Capture fetch output (suppress from stdout, we'll include in block reason)
+  if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
+    # Extract the message from fetch output if it's JSON
+    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | grep -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
+    if [[ -z "$FETCH_MESSAGE" ]]; then
+      FETCH_MESSAGE="$METADATA_FILE"
+    fi
     log_info "Metadata refreshed successfully"
     log_exit 0 "block with JSON"
-    echo '{"decision": "block", "reason": "Metadata refreshed successfully."}'
+    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed successfully. Written to $FETCH_MESSAGE\"}"
     exit 0
   else
     log_error "Failed to refresh metadata"
@@ -60,10 +66,15 @@ else
 
   # Always do a full refresh for now (selective refresh would require
   # significant refactoring of fetch-pr-metadata.sh into modular functions)
-  if bash "$FETCH_SCRIPT" "$WORKTREE"; then
+  # Capture fetch output (suppress from stdout, we'll include in block reason)
+  if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
+    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | grep -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
+    if [[ -z "$FETCH_MESSAGE" ]]; then
+      FETCH_MESSAGE="$METADATA_FILE"
+    fi
     log_info "Metadata refreshed for fields: $FIELDS"
     log_exit 0 "block with JSON"
-    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed for fields: $FIELDS\"}"
+    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed for fields: $FIELDS. Written to $FETCH_MESSAGE\"}"
     exit 0
   else
     log_error "Failed to refresh metadata"
