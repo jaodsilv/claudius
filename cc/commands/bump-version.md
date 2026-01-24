@@ -1,13 +1,13 @@
 ---
 description: Bumps plugin versions when PR changes affect plugins. Use for release preparation.
-argument-hint: "[--plugins <list>] [--bump-version <x.y.z>] [--marketplace-only | --no-marketplace]"
+argument-hint: "[--plugins <list>] [--delta <x.y.z>] [--scan] [--commit | --no-commit] [--worktree <path>]"
 allowed-tools: []
 model: haiku
 ---
 
 # Bump Plugin Versions
 
-This is a **script-only command** - the hook script handles everything automatically.
+This is a **script-only command** - the hook script handles everything automatically and outputs JSON to block the LLM phase.
 
 ## Arguments
 
@@ -18,14 +18,35 @@ This is a **script-only command** - the hook script handles everything automatic
 | `--no-marketplace` | Skip marketplace version bump | - |
 | `--marketplace` | Bump marketplace version too | **default** |
 | `--marketplace-only` | Only bump marketplace, no plugins | - |
-| `--bump-version <x.y.z>` | Version increment (supports `-x.y.z`) | `0.0.1` |
-| `--bump-marketplace-version <x.y.z>` | Marketplace increment | Same as `--bump-version` |
+| `--delta <x.y.z>` | Version increment (supports `-x.y.z`) | `0.0.1` |
+| `--bump-version <x.y.z>` | *Deprecated alias for --delta* | `0.0.1` |
+| `--bump-marketplace-version <x.y.z>` | Marketplace increment | Same as `--delta` |
+| `--scan` | Rebuild metadata from git blame, no bumping | - |
+| `--commit` | Force commit after version bump | - |
+| `--no-commit` | Skip commit even if only version files changed | - |
+| `--worktree <path>` | Override worktree path | CWD |
+
+## Modes
+
+### Bump Mode (default)
+
+Detects affected plugins and bumps versions.
+
+### Scan Mode (`--scan`)
+
+Rebuilds the metadata file from git blame without bumping any versions. Useful for initializing or repairing metadata.
 
 ## Bump Types
 
-- **Patch** (default): `--bump-version 0.0.1` → `X.Y.Z` becomes `X.Y.(Z+1)`
-- **Minor**: `--bump-version 0.1.0` → `X.Y.Z` becomes `X.(Y+1).0`
-- **Major**: `--bump-version 1.0.0` → `X.Y.Z` becomes `(X+1).0.0`
+- **Patch** (default): `--delta 0.0.1` → `X.Y.Z` becomes `X.Y.(Z+1)`
+- **Minor**: `--delta 0.1.0` → `X.Y.Z` becomes `X.(Y+1).0`
+- **Major**: `--delta 1.0.0` → `X.Y.Z` becomes `(X+1).0.0`
+
+## Auto-Commit Behavior
+
+When neither `--commit` nor `--no-commit` is specified:
+- If only version files are changed → auto-commits
+- If other files are changed → skips commit
 
 ## What the Script Does
 
@@ -39,14 +60,35 @@ This is a **script-only command** - the hook script handles everything automatic
    - `marketplace.json` root version
    - `package.json` root version
 6. Updates metadata at `.thoughts/marketplace/latest-version-bump.yaml`
-7. Prints summary table
+   - Preserves existing entries for non-bumped plugins
+   - Records commit SHA if committing
+7. Optionally commits the version bump
+8. Outputs JSON blocking response
 
-## Exit Codes
+## Metadata Format
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success - versions bumped, see output for summary |
-| 2 | Blocked - nothing to bump, or validation failed |
+```yaml
+# Last version bump metadata
+marketplace:
+  commit: <sha>
+  datetime: "<timestamp>"
+  version: <x.y.z>
+plugins:
+  <plugin-name>:
+    commit: <sha>
+    datetime: "<timestamp>"
+    version: <x.y.z>
+  ...
+```
+
+## Exit Behavior
+
+| Scenario | Exit Code | Output |
+|----------|-----------|--------|
+| Success (bump) | 0 | `{"decision": "block", "reason": "Versions bumped: ..."}` |
+| Success (scan) | 0 | `{"decision": "block", "reason": "Metadata rebuilt from git blame."}` |
+| Nothing to bump | 2 | stderr: "Nothing to bump..." |
+| Validation failure | 2 | stderr: error message |
 
 ## Examples
 
@@ -58,21 +100,24 @@ This is a **script-only command** - the hook script handles everything automatic
 /cc:bump-version --plugins cc,gitx
 
 # Minor version bump
-/cc:bump-version --bump-version 0.1.0
+/cc:bump-version --delta 0.1.0
 
 # Only bump marketplace, not individual plugins
 /cc:bump-version --marketplace-only
 
 # Bump plugins but not marketplace root version
 /cc:bump-version --no-marketplace
+
+# Rebuild metadata from git blame
+/cc:bump-version --scan
+
+# Force commit after bump
+/cc:bump-version --commit
+
+# Bump in different worktree
+/cc:bump-version --worktree /path/to/repo
 ```
 
 ## Execution
 
-The hook script has completed all version bumps. Check the output above for:
-
-- Files modified with before/after versions
-- Detection method used
-- Metadata file location
-
-**Next step**: Review changes with `git diff`, then commit and push.
+The hook script completes all version bumps and outputs JSON to block the LLM phase.
