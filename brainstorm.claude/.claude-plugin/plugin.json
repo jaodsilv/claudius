@@ -1,6 +1,6 @@
 {
   "name": "brainstorm",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation. Transforms ambiguous ideas into actionable specifications through interactive dialogue and comprehensive analysis.",
   "author": {
     "name": "João da Silva",
