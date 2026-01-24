@@ -55,7 +55,7 @@ fi
 cat << EOF
 PR: $PR_NUMBER
 
-Output to $WORKTREE/.thoughts/pr/review.md
+Please write the comprehensive review to: $WORKTREE/.thoughts/pr/review.md
 EOF
 
 # Add review range if there was a previous review

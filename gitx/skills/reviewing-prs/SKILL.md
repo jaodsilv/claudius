@@ -1,7 +1,7 @@
 ---
 name: gitx:reviewing-prs
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official to be installed
-allowed-tools: Skill, Read, Bash(script/build-review-prompt.sh:*), Bash(script/post-and-update-review.sh:*), Task
+allowed-tools: Skill, Read, Bash(script/build-review-prompt.sh:*), Bash(script/post-and-update-review.sh:*), Bash($CLAUDE_PLUGIN_ROOT/hooks/scripts/fetch-pr-metadata.sh:*)
 model: opus
 ---
 
@@ -25,14 +25,13 @@ Skill(gitx:managing-pr-metadata):
 
 If returned status is `needs_fetch`:
 
-1. Run Task(gitx:pr:metadata-fetcher) with worktree
+1. Run the fetch script directly (saves tokens vs using an agent):
 
-  ```bash
-  Task(gitx:pr:metadata-fetcher):
-    worktree: "$worktree"
-  ```
+   ```bash
+   $CLAUDE_PLUGIN_ROOT/hooks/scripts/fetch-pr-metadata.sh "$worktree"
+   ```
 
-2. Retry ensure
+2. Verify the fetch succeeded (check for `"status": "ok"` in output)
 
 ## Step 1: Build Review Prompt
 
@@ -59,3 +58,19 @@ Once the review is complete, run the post-and-update script:
 ```bash
 scripts/post-and-update-review.sh "$worktree"
 ```
+
+## Error Handling
+
+**CRITICAL**: If any script fails (non-zero exit code), do NOT attempt manual fallbacks.
+
+- Do NOT manually post the review using `gh pr comment` or `gh pr review`
+- Do NOT skip the metadata update step
+- Do NOT improvise alternative solutions
+
+Instead:
+
+1. Report the error clearly to the user
+2. Use AskUserQuestion to ask the user how to proceed:
+   - "Retry the failed step"
+   - "Abort the review process"
+   - "Let me handle it manually"
