@@ -1,6 +1,6 @@
 #!/bin/bash
 # Handler for /gitx:address-ci command
-# Wait for CI, update turn, block if not CI-REVIEW
+# Wait for CI, refresh metadata (which computes turn correctly), block if not CI-REVIEW
 
 log_section "Address-CI Handler"
 
@@ -11,45 +11,29 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   exit 2
 fi
 
-BRANCH=$(yq -r '.branch' "$METADATA_FILE")
-log_debug "BRANCH" "$BRANCH"
-
-# Wait for CI (poll every 10 seconds, max 10 minutes)
+# Wait for CI using centralized operation
 log_info "Waiting for CI to complete..."
-MAX_WAIT=600
-ELAPSED=0
-while [[ $ELAPSED -lt $MAX_WAIT ]]; do
-  PENDING=$(gh run list -b "$BRANCH" --json status --jq '[.[] | select(.status != "completed")] | length' || echo "0")
-  log_debug "PENDING_CHECKS" "$PENDING"
-  if [[ "$PENDING" == "0" ]]; then
-    log_info "All CI checks completed"
-    break
-  fi
-  sleep 10
-  ELAPSED=$((ELAPSED + 10))
-done
+bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" wait-ci "$WORKTREE"
 
-# Refresh metadata
+# Refresh metadata - this computes turn correctly using statusCheckRollup
+# which properly handles skipped jobs (unlike gh run list)
 log_info "Refreshing metadata..."
 bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
 
-# Check CI status - only the LATEST run per workflow
-FAILED=$(gh run list -b "$BRANCH" --json conclusion,workflowName \
-  | jq -r 'group_by(.workflowName) | map(.[0]) | [.[] | select(.conclusion == "failure")] | length' \
-  || echo "0")
-log_debug "FAILED_CHECKS" "$FAILED"
+# Trust the turn from the refreshed metadata
+TURN=$(yq -r '.turn' "$METADATA_FILE")
+log_debug "TURN" "$TURN"
 
-if [[ "$FAILED" -gt 0 ]]; then
-  log_info "CI has $FAILED failed checks, setting turn to CI-REVIEW"
-  bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "CI-REVIEW"
-  # Output context for Claude
+if [[ "$TURN" == "CI-REVIEW" ]]; then
+  # Count failing checks from metadata for context message
+  FAILED=$(yq -r '[.ciStatus[] | select(.conclusion != "SUCCESS" and .conclusion != "SKIPPED" and .conclusion != "CANCELLED" and .conclusion != "NEUTRAL" and .conclusion != null and .conclusion != "")] | length' "$METADATA_FILE")
+  log_info "CI has $FAILED failed checks"
   echo "CI Status: $FAILED failed checks. Proceed with /gitx:address-ci"
   log_exit 0 "CI failures to address"
   exit 0
 else
-  log_info "All CI passed, setting turn to REVIEW"
-  bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "REVIEW"
+  log_info "Turn is $TURN - no CI failures to address"
   log_exit 0 "all CI passed - block with JSON"
-  echo '{"decision": "block", "reason": "All CI checks passed. No failures to address. Turn set to REVIEW."}'
+  echo "{\"decision\": \"block\", \"reason\": \"Turn is $TURN. No CI failures to address.\"}"
   exit 0
 fi
