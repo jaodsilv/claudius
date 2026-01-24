@@ -29,7 +29,7 @@
       "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components. Requires plugin-dev@claude-plugins-official",
       "source": "./cc",
       "category": "development-workflow",
-      "version": "2.0.3",
+      "version": "2.0.4",
       "keywords": [
         "meta-tools",
         "plugin-development",
@@ -45,7 +45,7 @@
       "description": "Extended git/GitHub workflow commands with multi-agent orchestration for worktrees, issues, PRs, conflict resolution, and branch operations",
       "source": "./gitx",
       "category": "git-version-control",
-      "version": "3.3.7",
+      "version": "3.3.8",
       "keywords": [
         "git",
         "github",
