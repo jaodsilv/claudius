@@ -59,16 +59,22 @@ All templates are located in `planner.claude/templates/` and are accessible via 
 Templates should be referenced in the following ways:
 
 1. **In Commands**: Use the template path directly from hook context:
+
+
    ```
    Use the review-report template from ${PLUGIN_ROOT}/templates/review-report.md
    ```
 
+
 2. **From Session Context**: Templates are provided in hook output, reference by name:
+
    ```
    Use the review-report template provided in session context
    ```
 
+
 3. **Explicit Path**: For direct file operations, use the absolute path pattern:
+
    ```
    ${PLUGIN_ROOT}/templates/[template-name].md
    ```
