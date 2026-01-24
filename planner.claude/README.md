@@ -6,7 +6,7 @@ Strategic planning plugin for Claude Code with project roadmapping, issue priori
 
 1. **Roadmap Generation** - Create project roadmaps with phases, milestones, and dependencies
 2. **Issue Prioritization** - Prioritize GitHub issues using RICE, MoSCoW, or custom frameworks
-3. **Requirements Gathering** - Structured requirements discovery with optional brainstorm-pro integration
+3. **Requirements Gathering** - Structured requirements discovery with optional brainstorm integration
 4. **Multi-Agent Reviews** - Review plans, roadmaps, architecture, and requirements with orchestrated multi-agent analysis
 5. **Ultrathink Ideation** - Multi-agent deep ideation using Opus extended thinking
 
@@ -40,7 +40,7 @@ Use `--mode quick` to skip orchestration and use a single agent (faster, lower c
 | --------------------------------------- | ------------------------------------------------------------- |
 | `/planner:roadmap <goal>`               | Create a project roadmap for achieving a goal                 |
 | `/planner:prioritize <issues\|ALL>`     | Prioritize GitHub issues using configurable frameworks        |
-| `/planner:gather-requirements <goal>`   | Gather requirements, optionally leveraging brainstorm-pro     |
+| `/planner:gather-requirements <goal>`   | Gather requirements, optionally leveraging brainstorm     |
 | `/planner:review-plan <path>`           | Review a plan file with multi-agent analysis                  |
 | `/planner:review-roadmap <goal>`        | Review a roadmap against a goal with orchestrated analysis    |
 | `/planner:review-prioritization <goal>` | Review prioritization alignment with adversarial challenge    |
@@ -115,9 +115,38 @@ The plugin reads:
 - Milestone information
 - Cross-references and dependencies
 
+## Agent Organization
+
+The plugin contains 16 agents organized into 5 functional groups:
+
+```text
+agents/
+├── creators/          # Agents that CREATE planning artifacts
+│   ├── prioritization-engine.md   (Sonnet) - RICE/MoSCoW scoring
+│   ├── requirements-gatherer.md   (Opus)   - Requirements discovery
+│   └── roadmap-architect.md       (Opus)   - Roadmap generation
+├── github/            # GitHub integration agents
+│   ├── issue-analyzer.md          (Haiku)  - Issue data extraction
+│   └── issue-relationship-mapper.md (Haiku) - Dependency mapping
+├── ideas/             # Ultrathink ideation agents
+│   ├── adversarial-critic.md      (Opus)   - Stress testing
+│   ├── convergence-synthesizer.md (Opus)   - Idea merging
+│   ├── deep-thinker.md            (Opus)   - Extended reasoning
+│   ├── facilitator.md             (Sonnet) - Session orchestration
+│   └── innovation-explorer.md     (Sonnet) - Cross-domain research
+├── orchestration/     # Multi-agent review workflow
+│   ├── review-analyzer.md         (Haiku)  - Structural analysis
+│   ├── review-challenger.md       (Opus)   - Devil's advocate
+│   └── review-synthesizer.md      (Sonnet) - Findings merger
+└── reviewers/         # Domain-specific artifact reviewers
+    ├── architecture-reviewer.md   (Opus)   - Architecture evaluation
+    ├── plan-reviewer.md           (Sonnet) - Plan quality review
+    └── requirements-reviewer.md   (Sonnet) - Requirements analysis
+```
+
 ## Optional Dependencies
 
-- **brainstorm-pro** - Enhanced requirements gathering via `/brainstorm:start`
+- **brainstorm** - Enhanced requirements gathering via `/brainstorm:start`
 
 ## Prioritization Frameworks
 

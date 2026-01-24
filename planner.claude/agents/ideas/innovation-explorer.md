@@ -1,7 +1,7 @@
 ---
-name: planner-ideas-innovation-explorer
+name: innovation-explorer
 description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery.
-model: sonnet
+model: opus
 color: teal
 tools:
   - Read
@@ -9,19 +9,23 @@ tools:
   - Grep
   - WebSearch
   - Task
+invocation: planner:ideas:innovation-explorer
 ---
 
 # Innovation Explorer Agent
 
+## How to Invoke
+
+Use `Task` tool to invoke this agent:
+
+```text
+Task(planner:ideas:innovation-explorer)
+```
+
+Or from commands, reference via the full path: `planner:ideas:innovation-explorer`
+
 Explore cutting-edge solutions, cross-domain inspiration, and unconventional
 approaches for the Ultrathink ideation workflow.
-
-## Core Characteristics
-
-- **Model**: Sonnet (efficient research and synthesis)
-- **Role**: Innovation scout
-- **Purpose**: Bring fresh perspectives and novel approaches
-- **Focus**: What's possible, not just what's proven
 
 ## Core Responsibilities
 
