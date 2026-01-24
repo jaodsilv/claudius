@@ -1,7 +1,7 @@
 #!/bin/bash
 # Handler for /cc:bump-version command
 # Script-only - does ALL the work, no LLM phase needed
-# Exit 0: Success - versions bumped
+# Exit 0: Success - versions bumped (JSON blocking output)
 # Exit 2: Block - validation failed or nothing to bump
 
 log_section "Bump-Version Handler"
@@ -17,8 +17,11 @@ MARKETPLACE_ONLY=false
 BUMP_VERSION="0.0.1"
 BUMP_MARKETPLACE_VERSION=""
 PR_NUMBER=""
+WORKTREE_ARG=""
+SCAN_MODE=false
+COMMIT_MODE=""  # "force", "skip", or "" (auto-detect)
 
-# Parse --plugins, --no-marketplace, --marketplace, --marketplace-only, --bump-version, --bump-marketplace-version, --pr
+# Parse all supported arguments
 while [[ -n "$ARGS" ]]; do
   case "$ARGS" in
     --plugins\ *)
@@ -37,9 +40,15 @@ while [[ -n "$ARGS" ]]; do
       # Default behavior, just consume the flag
       ARGS=$(echo "$ARGS" | sed 's|^--marketplace[[:space:]]*||')
       ;;
-    --bump-version\ *)
-      BUMP_VERSION=$(echo "$ARGS" | sed -n 's|^--bump-version[[:space:]]\+\([^[:space:]]*\).*|\1|p')
+    --delta\ *)
+      BUMP_VERSION=$(echo "$ARGS" | sed -n 's|^--delta[[:space:]]\+\([^[:space:]]*\).*|\1|p')
       # Remove leading dash if present (supports -x.y.z format)
+      BUMP_VERSION="${BUMP_VERSION#-}"
+      ARGS=$(echo "$ARGS" | sed 's|^--delta[[:space:]]\+[^[:space:]]*[[:space:]]*||')
+      ;;
+    --bump-version\ *)
+      # Deprecated alias for --delta
+      BUMP_VERSION=$(echo "$ARGS" | sed -n 's|^--bump-version[[:space:]]\+\([^[:space:]]*\).*|\1|p')
       BUMP_VERSION="${BUMP_VERSION#-}"
       ARGS=$(echo "$ARGS" | sed 's|^--bump-version[[:space:]]\+[^[:space:]]*[[:space:]]*||')
       ;;
@@ -52,6 +61,22 @@ while [[ -n "$ARGS" ]]; do
       PR_NUMBER=$(echo "$ARGS" | sed -n 's|^--pr[[:space:]]\+\([^[:space:]]*\).*|\1|p')
       ARGS=$(echo "$ARGS" | sed 's|^--pr[[:space:]]\+[^[:space:]]*[[:space:]]*||')
       ;;
+    --worktree\ *)
+      WORKTREE_ARG=$(echo "$ARGS" | sed -n 's|^--worktree[[:space:]]\+\([^[:space:]]*\).*|\1|p')
+      ARGS=$(echo "$ARGS" | sed 's|^--worktree[[:space:]]\+[^[:space:]]*[[:space:]]*||')
+      ;;
+    --scan*)
+      SCAN_MODE=true
+      ARGS=$(echo "$ARGS" | sed 's|^--scan[[:space:]]*||')
+      ;;
+    --no-commit*)
+      COMMIT_MODE="skip"
+      ARGS=$(echo "$ARGS" | sed 's|^--no-commit[[:space:]]*||')
+      ;;
+    --commit*)
+      COMMIT_MODE="force"
+      ARGS=$(echo "$ARGS" | sed 's|^--commit[[:space:]]*||')
+      ;;
     *)
       # Skip unknown args
       ARGS=$(echo "$ARGS" | sed 's|^[^[:space:]]*[[:space:]]*||')
@@ -59,12 +84,25 @@ while [[ -n "$ARGS" ]]; do
   esac
 done
 
+# Apply worktree override if provided
+if [[ -n "$WORKTREE_ARG" ]]; then
+  WORKTREE=$(convert_path "$WORKTREE_ARG")
+  # Update paths based on new worktree
+  MARKETPLACE_FILE="$WORKTREE/.claude-plugin/marketplace.json"
+  METADATA_FILE="$WORKTREE/.thoughts/marketplace/latest-version-bump.yaml"
+  PACKAGE_JSON="$WORKTREE/package.json"
+  log_info "Worktree overridden to: $WORKTREE"
+fi
+
 log_debug "PLUGINS_ARG" "$PLUGINS_ARG"
 log_debug "NO_MARKETPLACE" "$NO_MARKETPLACE"
 log_debug "MARKETPLACE_ONLY" "$MARKETPLACE_ONLY"
 log_debug "BUMP_VERSION" "$BUMP_VERSION"
 log_debug "BUMP_MARKETPLACE_VERSION" "$BUMP_MARKETPLACE_VERSION"
 log_debug "PR_NUMBER" "$PR_NUMBER"
+log_debug "WORKTREE_ARG" "$WORKTREE_ARG"
+log_debug "SCAN_MODE" "$SCAN_MODE"
+log_debug "COMMIT_MODE" "$COMMIT_MODE"
 
 # If --bump-marketplace-version not set, use --bump-version
 if [[ -z "$BUMP_MARKETPLACE_VERSION" ]]; then
@@ -126,7 +164,7 @@ update_json_version() {
   local new_version="$2"
   local tmp_file="${file}.tmp"
 
-  if ! jq --arg v "$new_version" '.version = $v' "$file" > "$tmp_file" 2>/dev/null; then
+  if ! jq --arg v "$new_version" '.version = $v' "$file" > "$tmp_file" 2>&1; then
     rm -f "$tmp_file"
     return 1
   fi
@@ -144,7 +182,7 @@ update_marketplace_plugin_version() {
   local tmp_file="${file}.tmp"
 
   if ! jq --arg name "$plugin_name" --arg v "$new_version" \
-    '(.plugins[] | select(.name == $name)).version = $v' "$file" > "$tmp_file" 2>/dev/null; then
+    '(.plugins[] | select(.name == $name)).version = $v' "$file" > "$tmp_file" 2>&1; then
     rm -f "$tmp_file"
     return 1
   fi
@@ -152,6 +190,74 @@ update_marketplace_plugin_version() {
   mv "$tmp_file" "$file"
   return 0
 }
+
+# ============================================================================
+# Scan Mode - Rebuild metadata from git blame
+# ============================================================================
+
+scan_versions() {
+  log_section "Scanning Versions from Git Blame"
+
+  mkdir -p "$(dirname "$METADATA_FILE")"
+
+  # Get marketplace version and blame
+  MARKETPLACE_VERSION=$(jq -r '.version' "$MARKETPLACE_FILE")
+  MARKETPLACE_BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$MARKETPLACE_FILE" 2>&1 | head -1)
+  MARKETPLACE_COMMIT=$(echo "$MARKETPLACE_BLAME" | awk '{print $1}')
+
+  if [[ -n "$MARKETPLACE_COMMIT" ]] && [[ "$MARKETPLACE_COMMIT" != "fatal:"* ]]; then
+    MARKETPLACE_DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$MARKETPLACE_COMMIT" 2>&1 || echo "unknown")
+  else
+    MARKETPLACE_COMMIT=""
+    MARKETPLACE_DATETIME="unknown"
+  fi
+
+  log_info "Marketplace: version=$MARKETPLACE_VERSION commit=$MARKETPLACE_COMMIT"
+
+  # Build YAML with all plugins from marketplace.json
+  {
+    echo "# Last version bump metadata"
+    echo "marketplace:"
+    echo "  commit: $MARKETPLACE_COMMIT"
+    echo "  datetime: \"$MARKETPLACE_DATETIME\""
+    echo "  version: $MARKETPLACE_VERSION"
+    echo "plugins:"
+
+    # Get all plugins from marketplace.json
+    jq -r '.plugins[] | "\(.name)|\(.source)"' "$MARKETPLACE_FILE" | while IFS='|' read -r name source; do
+      PLUGIN_JSON="$WORKTREE/${source#./}/.claude-plugin/plugin.json"
+      if [[ -f "$PLUGIN_JSON" ]]; then
+        VERSION=$(jq -r '.version' "$PLUGIN_JSON")
+        BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$PLUGIN_JSON" 2>&1 | head -1)
+        COMMIT=$(echo "$BLAME" | awk '{print $1}')
+
+        if [[ -n "$COMMIT" ]] && [[ "$COMMIT" != "fatal:"* ]]; then
+          DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$COMMIT" 2>&1 || echo "unknown")
+        else
+          COMMIT=""
+          DATETIME="unknown"
+        fi
+
+        log_info "Plugin $name: version=$VERSION commit=$COMMIT"
+
+        echo "  $name:"
+        echo "    commit: $COMMIT"
+        echo "    datetime: \"$DATETIME\""
+        echo "    version: $VERSION"
+      fi
+    done
+  } > "$METADATA_FILE"
+
+  log_info "Metadata rebuilt: $METADATA_FILE"
+  log_exit 0 "metadata rebuilt from git blame"
+  echo "{\"decision\": \"block\", \"reason\": \"Metadata file rebuilt from git blame.\"}"
+  exit 0
+}
+
+# Early exit if scan mode
+if [[ "$SCAN_MODE" == "true" ]]; then
+  scan_versions
+fi
 
 # ============================================================================
 # Auto-detection logic
@@ -167,17 +273,18 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
   if [[ -f "$METADATA_FILE" ]]; then
     log_info "Found metadata file, checking for changes since last bump"
 
-    LAST_COMMIT=$(yq -r '.commit // ""' "$METADATA_FILE" 2>/dev/null || echo "")
+    # Check for top-level commit (legacy) or marketplace commit (new format)
+    LAST_COMMIT=$(yq -r '.commit // .marketplace.commit // ""' "$METADATA_FILE" 2>&1 || echo "")
     log_debug "LAST_COMMIT" "$LAST_COMMIT"
 
     if [[ -n "$LAST_COMMIT" ]]; then
       # Check if HEAD is the same as last bump commit
-      HEAD_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>/dev/null || echo "")
+      HEAD_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>&1 || echo "")
       log_debug "HEAD_COMMIT" "$HEAD_COMMIT"
 
       if [[ "$HEAD_COMMIT" == "$LAST_COMMIT"* ]] || [[ "$LAST_COMMIT" == "$HEAD_COMMIT"* ]]; then
         # Check for uncommitted changes
-        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain 2>/dev/null | grep -v '^\?\?' | head -1 || true)
+        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain 2>&1 | grep -v '^\?\?' | head -1 || true)
         if [[ -z "$UNCOMMITTED" ]]; then
           log_warn "Last bump commit is HEAD and no uncommitted changes"
           log_exit 2 "nothing to bump"
@@ -208,7 +315,7 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
     fi
 
     DETECTION_METHOD=$(echo "$DETECTION_RESULT" | jq -r '.detectionMethod // ""')
-    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' 2>&1 | tr '\n' ',' | sed 's/,$//')
     TOTAL_FILES=$(echo "$DETECTION_RESULT" | jq -r '.totalChangedFiles // 0')
 
     log_debug "DETECTION_METHOD" "$DETECTION_METHOD"
@@ -252,7 +359,7 @@ if [[ -n "$DETECTED_PLUGINS" ]]; then
     [[ -z "$plugin" ]] && continue
 
     # Check if plugin exists in marketplace.json
-    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE" 2>/dev/null)
+    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE" 2>&1)
     log_debug "PLUGIN_SOURCE for $plugin" "$PLUGIN_SOURCE"
 
     if [[ -z "$PLUGIN_SOURCE" ]]; then
@@ -270,7 +377,7 @@ if [[ -n "$DETECTED_PLUGINS" ]]; then
     fi
 
     # Read current version from plugin.json
-    CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON" 2>/dev/null)
+    CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON" 2>&1)
     NEW_VERSION=$(bump_version "$CURRENT_VERSION" "$BUMP_VERSION")
 
     PLUGIN_SOURCES["$plugin"]="$PLUGIN_SOURCE"
@@ -302,7 +409,7 @@ fi
 
 log_section "Version Calculation"
 
-MARKETPLACE_CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$MARKETPLACE_FILE" 2>/dev/null)
+MARKETPLACE_CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$MARKETPLACE_FILE" 2>&1)
 MARKETPLACE_NEW_VERSION=$(bump_version "$MARKETPLACE_CURRENT_VERSION" "$BUMP_MARKETPLACE_VERSION")
 
 log_debug "Marketplace: $MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION" ""
@@ -310,12 +417,91 @@ log_debug "Marketplace: $MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION
 PACKAGE_CURRENT_VERSION=""
 PACKAGE_NEW_VERSION=""
 if [[ -f "$PACKAGE_JSON" ]]; then
-  PACKAGE_CURRENT_VERSION=$(jq -r '.version // ""' "$PACKAGE_JSON" 2>/dev/null)
+  PACKAGE_CURRENT_VERSION=$(jq -r '.version // ""' "$PACKAGE_JSON" 2>&1)
   if [[ -n "$PACKAGE_CURRENT_VERSION" ]]; then
     PACKAGE_NEW_VERSION=$(bump_version "$PACKAGE_CURRENT_VERSION" "$BUMP_MARKETPLACE_VERSION")
     log_debug "Package.json: $PACKAGE_CURRENT_VERSION -> $PACKAGE_NEW_VERSION" ""
   fi
 fi
+
+# ============================================================================
+# Determine commit mode
+# ============================================================================
+
+determine_commit_mode() {
+  log_section "Commit Mode Detection"
+
+  # Explicit flags take precedence
+  if [[ "$COMMIT_MODE" == "force" ]]; then
+    log_info "Commit mode: forced by --commit"
+    WILL_COMMIT=true
+    return
+  fi
+  if [[ "$COMMIT_MODE" == "skip" ]]; then
+    log_info "Commit mode: skipped by --no-commit"
+    WILL_COMMIT=false
+    return
+  fi
+
+  # Auto-detect: check for uncommitted tracked changes beyond version files
+  log_info "Auto-detecting commit mode..."
+
+  # Get list of tracked changed files (exclude untracked with ??)
+  CHANGED=$(git -C "$WORKTREE" status --porcelain 2>&1 | grep -v '^\?\?' || true)
+
+  if [[ -z "$CHANGED" ]]; then
+    log_info "No tracked changes, will commit after version bump"
+    WILL_COMMIT=true
+    return
+  fi
+
+  # Build list of expected version files (relative to worktree)
+  EXPECTED_FILES=()
+  EXPECTED_FILES+=(".claude-plugin/marketplace.json")
+  EXPECTED_FILES+=("package.json")
+  EXPECTED_FILES+=(".thoughts/marketplace/latest-version-bump.yaml")
+
+  # Add plugin.json files for all plugins in marketplace
+  while IFS= read -r source; do
+    [[ -z "$source" ]] && continue
+    EXPECTED_FILES+=("${source#./}/.claude-plugin/plugin.json")
+  done < <(jq -r '.plugins[].source' "$MARKETPLACE_FILE")
+
+  log_debug "Expected version files" "${EXPECTED_FILES[*]}"
+
+  # Check if all changed files are version files
+  ALL_VERSION_FILES=true
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    # Handle both staged (M ) and unstaged ( M) formats - extract file path
+    FILE=$(echo "$line" | sed 's/^...//')
+    FOUND=false
+    for exp in "${EXPECTED_FILES[@]}"; do
+      if [[ "$FILE" == "$exp" ]]; then
+        FOUND=true
+        break
+      fi
+    done
+    if [[ "$FOUND" != "true" ]]; then
+      ALL_VERSION_FILES=false
+      log_info "Non-version file changed: $FILE"
+      break
+    fi
+  done <<< "$CHANGED"
+
+  if [[ "$ALL_VERSION_FILES" == "true" ]]; then
+    log_info "Only version files changed, will commit"
+    WILL_COMMIT=true
+  else
+    log_info "Other files changed, will not commit"
+    WILL_COMMIT=false
+  fi
+}
+
+WILL_COMMIT=false
+determine_commit_mode
+
+log_debug "WILL_COMMIT" "$WILL_COMMIT"
 
 # ============================================================================
 # Apply version updates
@@ -394,105 +580,181 @@ if [[ "$NO_MARKETPLACE" != "true" ]] && [[ -n "$PACKAGE_NEW_VERSION" ]]; then
 fi
 
 # ============================================================================
-# Update metadata file
+# Update metadata file (preserving existing entries)
 # ============================================================================
 
-log_section "Updating Metadata"
+update_metadata() {
+  log_section "Updating Metadata"
+  mkdir -p "$(dirname "$METADATA_FILE")"
 
-# Create directory if needed
-mkdir -p "$(dirname "$METADATA_FILE")"
+  TIMESTAMP=$(date -Iseconds)
 
-HEAD_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>/dev/null || echo "unknown")
-TIMESTAMP=$(date -Iseconds)
-
-# Build YAML content
-{
-  echo "# Last version bump metadata"
-  echo "commit: $HEAD_COMMIT"
-  echo "datetime: \"$TIMESTAMP\""
-  echo "plugins:"
-
-  if [[ -n "$DETECTED_PLUGINS" ]]; then
-    IFS=',' read -ra PLUGIN_ARRAY <<< "$DETECTED_PLUGINS"
-    for plugin in "${PLUGIN_ARRAY[@]}"; do
-      plugin=$(echo "$plugin" | xargs)
-      [[ -z "$plugin" ]] && continue
-      echo "  $plugin:"
-      echo "    datetime: \"$TIMESTAMP\""
-      echo "    commit: $HEAD_COMMIT"
-      echo "    version: ${PLUGIN_NEW_VERSIONS[$plugin]}"
-    done
+  # Determine commit value based on WILL_COMMIT flag
+  # If we will commit, we'll update this after commit with actual commit SHA
+  # For now, leave empty if not committing
+  if [[ "$WILL_COMMIT" == "true" ]]; then
+    # Will be updated after commit
+    COMMIT_VALUE="pending"
+  else
+    COMMIT_VALUE=""
   fi
 
-  if [[ "$NO_MARKETPLACE" != "true" ]]; then
+  # Get list of all plugins from marketplace.json
+  ALL_PLUGINS=$(jq -r '.plugins[].name' "$MARKETPLACE_FILE")
+
+  # Build new YAML - merge with existing
+  {
+    echo "# Last version bump metadata"
+
+    # Marketplace section
     echo "marketplace:"
-    echo "  datetime: \"$TIMESTAMP\""
-    echo "  commit: $HEAD_COMMIT"
-    echo "  version: $MARKETPLACE_NEW_VERSION"
-  fi
-} > "$METADATA_FILE"
+    if [[ "$NO_MARKETPLACE" != "true" ]]; then
+      echo "  commit: $COMMIT_VALUE"
+      echo "  datetime: \"$TIMESTAMP\""
+      echo "  version: $MARKETPLACE_NEW_VERSION"
+    else
+      # Preserve existing marketplace entry
+      if [[ -f "$METADATA_FILE" ]]; then
+        # Try new format first, then legacy
+        if yq -e '.marketplace' "$METADATA_FILE" &>/dev/null; then
+          yq -r '.marketplace | "  commit: \(.commit // "")\n  datetime: \"\(.datetime // \"unknown\")\"\n  version: \(.version // \"unknown\")"' "$METADATA_FILE" 2>&1
+        else
+          # Legacy format - no marketplace section
+          MKT_VER=$(jq -r '.version' "$MARKETPLACE_FILE")
+          echo "  commit: "
+          echo "  datetime: \"unknown\""
+          echo "  version: $MKT_VER"
+        fi
+      else
+        MKT_VER=$(jq -r '.version' "$MARKETPLACE_FILE")
+        echo "  commit: "
+        echo "  datetime: \"unknown\""
+        echo "  version: $MKT_VER"
+      fi
+    fi
 
-MODIFIED_FILES+=("$METADATA_FILE")
-log_info "Metadata updated: $METADATA_FILE"
+    echo "plugins:"
+
+    for plugin_name in $ALL_PLUGINS; do
+      # Check if this plugin was bumped (it's in DETECTED_PLUGINS)
+      if [[ -n "$DETECTED_PLUGINS" ]] && echo ",$DETECTED_PLUGINS," | grep -q ",$plugin_name,"; then
+        # Use new values
+        echo "  $plugin_name:"
+        echo "    commit: $COMMIT_VALUE"
+        echo "    datetime: \"$TIMESTAMP\""
+        echo "    version: ${PLUGIN_NEW_VERSIONS[$plugin_name]}"
+      else
+        # Preserve existing or get from plugin.json
+        if [[ -f "$METADATA_FILE" ]] && yq -e ".plugins.$plugin_name" "$METADATA_FILE" &>/dev/null; then
+          # Read existing entry
+          EXISTING_COMMIT=$(yq -r ".plugins.$plugin_name.commit // \"\"" "$METADATA_FILE" 2>&1)
+          EXISTING_DATETIME=$(yq -r ".plugins.$plugin_name.datetime // \"unknown\"" "$METADATA_FILE" 2>&1)
+          EXISTING_VERSION=$(yq -r ".plugins.$plugin_name.version // \"unknown\"" "$METADATA_FILE" 2>&1)
+          echo "  $plugin_name:"
+          echo "    commit: $EXISTING_COMMIT"
+          echo "    datetime: \"$EXISTING_DATETIME\""
+          echo "    version: $EXISTING_VERSION"
+        else
+          # Read from plugin.json
+          PLUGIN_SOURCE=$(jq -r --arg name "$plugin_name" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
+          PLUGIN_JSON="$WORKTREE/${PLUGIN_SOURCE#./}/.claude-plugin/plugin.json"
+          if [[ -f "$PLUGIN_JSON" ]]; then
+            VER=$(jq -r '.version' "$PLUGIN_JSON")
+            echo "  $plugin_name:"
+            echo "    commit: "
+            echo "    datetime: \"unknown\""
+            echo "    version: $VER"
+          fi
+        fi
+      fi
+    done
+  } > "$METADATA_FILE"
+
+  MODIFIED_FILES+=("$METADATA_FILE")
+  log_info "Metadata updated: $METADATA_FILE"
+}
+
+update_metadata
 
 # ============================================================================
-# Output summary
+# Execute commit if WILL_COMMIT is true
+# ============================================================================
+
+execute_commit() {
+  if [[ "$WILL_COMMIT" != "true" ]]; then
+    log_info "Skipping commit (WILL_COMMIT=false)"
+    return
+  fi
+
+  log_section "Committing Version Bump"
+
+  # Stage version files
+  for f in "${MODIFIED_FILES[@]}"; do
+    # Convert absolute path to relative for git add
+    REL_PATH="${f#$WORKTREE/}"
+    git -C "$WORKTREE" add "$REL_PATH" 2>&1
+    log_debug "Staged" "$REL_PATH"
+  done
+
+  # Create commit message
+  COMMIT_MSG="chore(release): bump versions"
+  if [[ -n "$DETECTED_PLUGINS" ]]; then
+    COMMIT_MSG="$COMMIT_MSG ($DETECTED_PLUGINS)"
+  fi
+
+  # Commit
+  git -C "$WORKTREE" commit -m "$COMMIT_MSG" 2>&1
+  COMMIT_RESULT=$?
+
+  if [[ $COMMIT_RESULT -eq 0 ]]; then
+    log_info "Committed: $COMMIT_MSG"
+
+    # Get actual commit SHA and update metadata
+    ACTUAL_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>&1)
+    log_info "Commit SHA: $ACTUAL_COMMIT"
+
+    # Update metadata with actual commit SHA
+    if [[ -f "$METADATA_FILE" ]]; then
+      sed -i "s/commit: pending/commit: $ACTUAL_COMMIT/g" "$METADATA_FILE"
+      # Stage the updated metadata
+      git -C "$WORKTREE" add ".thoughts/marketplace/latest-version-bump.yaml" 2>&1
+      git -C "$WORKTREE" commit --amend --no-edit 2>&1
+      log_info "Updated metadata with actual commit SHA"
+    fi
+  else
+    log_error "Commit failed"
+    WILL_COMMIT=false
+  fi
+}
+
+execute_commit
+
+# ============================================================================
+# Output JSON blocking response
 # ============================================================================
 
 log_section "Output"
 
-echo ""
-echo "=== Version Bump Complete ==="
-echo ""
-echo "| File | Before | After |"
-echo "|------|--------|-------|"
-
-# Plugin versions
+# Build summary for reason
+SUMMARY="Versions bumped:"
 if [[ "$MARKETPLACE_ONLY" != "true" ]] && [[ -n "$DETECTED_PLUGINS" ]]; then
   IFS=',' read -ra PLUGIN_ARRAY <<< "$DETECTED_PLUGINS"
   for plugin in "${PLUGIN_ARRAY[@]}"; do
     plugin=$(echo "$plugin" | xargs)
-    [[ -z "$plugin" ]] && continue
-    printf "| %s/plugin.json | %s | %s |\n" "$plugin" "${PLUGIN_CURRENT_VERSIONS[$plugin]}" "${PLUGIN_NEW_VERSIONS[$plugin]}"
+    SUMMARY="$SUMMARY $plugin (${PLUGIN_CURRENT_VERSIONS[$plugin]} -> ${PLUGIN_NEW_VERSIONS[$plugin]})"
   done
 fi
-
-# Marketplace version
 if [[ "$NO_MARKETPLACE" != "true" ]]; then
-  printf "| marketplace.json | %s | %s |\n" "$MARKETPLACE_CURRENT_VERSION" "$MARKETPLACE_NEW_VERSION"
+  SUMMARY="$SUMMARY, marketplace ($MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION)"
 fi
 
-# Package.json version
-if [[ "$NO_MARKETPLACE" != "true" ]] && [[ -n "$PACKAGE_NEW_VERSION" ]]; then
-  printf "| package.json | %s | %s |\n" "$PACKAGE_CURRENT_VERSION" "$PACKAGE_NEW_VERSION"
+if [[ "$WILL_COMMIT" == "true" ]]; then
+  SUMMARY="$SUMMARY. Committed."
 fi
 
-echo ""
-echo "Detection method: $DETECTION_METHOD"
-echo "Bump increment: $BUMP_VERSION"
-if [[ "$BUMP_MARKETPLACE_VERSION" != "$BUMP_VERSION" ]]; then
-  echo "Marketplace bump: $BUMP_MARKETPLACE_VERSION"
-fi
-echo ""
-echo "Files modified:"
-for f in "${MODIFIED_FILES[@]}"; do
-  echo "  - $f"
-done
-echo ""
-echo "Metadata updated: $METADATA_FILE"
-echo ""
+# Escape quotes in summary for JSON
+SUMMARY_ESCAPED=$(echo "$SUMMARY" | sed 's/"/\\"/g')
 
-if [[ ${#ERRORS[@]} -gt 0 ]]; then
-  echo "Errors encountered:"
-  for err in "${ERRORS[@]}"; do
-    echo "  - $err"
-  done
-  echo ""
-fi
-
-echo "Next: Review changes with 'git diff', then commit and push"
-echo ""
-echo "=== Done ==="
-
-log_exit 0 "versions bumped successfully"
+log_exit 0 "versions bumped - block with JSON"
+echo "{\"decision\": \"block\", \"reason\": \"$SUMMARY_ESCAPED\"}"
 exit 0
