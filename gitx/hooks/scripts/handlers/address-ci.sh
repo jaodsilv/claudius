@@ -33,8 +33,10 @@ done
 log_info "Refreshing metadata..."
 bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
 
-# Check CI status
-FAILED=$(gh run list -b "$BRANCH" --json conclusion --jq '[.[] | select(.conclusion == "failure")] | length' || echo "0")
+# Check CI status - only the LATEST run per workflow
+FAILED=$(gh run list -b "$BRANCH" --json conclusion,workflowName \
+  | jq -r 'group_by(.workflowName) | map(.[0]) | [.[] | select(.conclusion == "failure")] | length' \
+  || echo "0")
 log_debug "FAILED_CHECKS" "$FAILED"
 
 if [[ "$FAILED" -gt 0 ]]; then

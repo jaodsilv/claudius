@@ -34,7 +34,10 @@ log_info "Refreshing metadata..."
 bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
 
 # Update turn based on CI and review state
-FAILED=$(gh run list -b "$BRANCH" --json conclusion --jq '[.[] | select(.conclusion == "failure")] | length' || echo "0")
+# Only check the LATEST run per workflow (not old failed runs that have been re-run)
+FAILED=$(gh run list -b "$BRANCH" --json conclusion,workflowName \
+  | jq -r 'group_by(.workflowName) | map(.[0]) | [.[] | select(.conclusion == "failure")] | length' \
+  || echo "0")
 log_debug "FAILED_CHECKS" "$FAILED"
 
 REVIEW_DECISION=$(yq -r '.reviewDecision // ""' "$METADATA_FILE")

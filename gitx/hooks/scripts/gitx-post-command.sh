@@ -78,54 +78,29 @@ EOF
     ;;
 
   "/gitx:address-ci")
-    log_section "Address-CI Loop Check"
+    log_section "Address-CI Stop Hook"
 
-    # Loop until all CI passes
-    BRANCH=$(yq -r '.branch' "$METADATA_FILE")
-    log_debug "BRANCH" "$BRANCH"
+    # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
+    bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "CI-PENDING"
+    log_info "Turn set to CI-PENDING"
 
-    # Wait for CI to complete
-    log_info "Waiting for CI to complete..."
-    MAX_WAIT=600
-    ELAPSED=0
-    while [[ $ELAPSED -lt $MAX_WAIT ]]; do
-      PENDING=$(gh run list -b "$BRANCH" --json status --jq '[.[] | select(.status != "completed")] | length' || echo "0")
-      log_debug "PENDING_CHECKS" "$PENDING"
-      if [[ "$PENDING" == "0" ]]; then
-        log_info "All CI checks completed"
-        break
-      fi
-      sleep 10
-      ELAPSED=$((ELAPSED + 10))
-      log_debug "ELAPSED_SECONDS" "$ELAPSED"
-    done
+    # Check if this was triggered within a next-turn loop
+    # Look for /gitx:next-turn earlier in transcript
+    IN_NEXT_TURN_LOOP=$(grep -c '/gitx:next-turn' "$TRANSCRIPT_PATH" 2>/dev/null || echo "0")
+    log_debug "IN_NEXT_TURN_LOOP" "$IN_NEXT_TURN_LOOP"
 
-    # Check CI status
-    FAILED=$(gh run list -b "$BRANCH" --json conclusion --jq '[.[] | select(.conclusion == "failure")] | length' || echo "0")
-    log_debug "FAILED_CHECKS" "$FAILED"
-
-    if [[ "$FAILED" -gt 0 ]]; then
-      log_info "CI has $FAILED failed checks, continuing loop"
-
-      # Refresh metadata with new CI data
-      bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
-      bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "CI-REVIEW"
-
-      log_exit 0 "continue loop - CI failures"
+    if [[ "$IN_NEXT_TURN_LOOP" -gt 0 ]]; then
+      log_info "In next-turn loop, continuing loop"
+      log_exit 0 "continue loop - in next-turn"
       cat <<EOF
 {
   "decision": "block",
-  "reason": "CI still has $FAILED failed checks. Continuing address-ci loop. Fix the failures and run /gitx:address-ci."
+  "reason": "CI-PENDING. Continuing next-turn loop to wait for CI results."
 }
 EOF
     else
-      log_info "All CI passed, updating turn to REVIEW"
-
-      # All CI passed - update turn to REVIEW and stop
-      bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
-      bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" set-turn "$WORKTREE" "REVIEW"
-
-      log_exit 0 "CI passed"
+      log_info "Direct invocation, stopping"
+      log_exit 0 "turn set to CI-PENDING"
       exit 0
     fi
     ;;
