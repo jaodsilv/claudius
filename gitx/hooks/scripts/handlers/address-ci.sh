@@ -11,14 +11,14 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   exit 2
 fi
 
-# Wait for CI using centralized operation
+# Wait for CI using centralized operation (suppress stdout, errors go to stderr)
 log_info "Waiting for CI to complete..."
-bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" wait-ci "$WORKTREE"
+bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" wait-ci "$WORKTREE" >/dev/null
 
 # Refresh metadata - this computes turn correctly using statusCheckRollup
 # which properly handles skipped jobs (unlike gh run list)
 log_info "Refreshing metadata..."
-bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
+bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE" >/dev/null
 
 # Trust the turn from the refreshed metadata
 TURN=$(yq -r '.turn' "$METADATA_FILE")
