@@ -602,7 +602,35 @@ update_metadata() {
   # Get list of all plugins from marketplace.json
   ALL_PLUGINS=$(jq -r '.plugins[].name' "$MARKETPLACE_FILE")
 
-  # Build new YAML - merge with existing
+  # Cache existing metadata BEFORE writing (redirect truncates file first!)
+  declare -A CACHED_PLUGIN_COMMIT
+  declare -A CACHED_PLUGIN_DATETIME
+  declare -A CACHED_PLUGIN_VERSION
+  CACHED_MKT_COMMIT=""
+  CACHED_MKT_DATETIME=""
+  CACHED_MKT_VERSION=""
+
+  if [[ -f "$METADATA_FILE" ]]; then
+    log_info "Caching existing metadata before rewrite"
+    # Cache marketplace
+    if yq -e '.marketplace' "$METADATA_FILE" &>/dev/null 2>&1; then
+      CACHED_MKT_COMMIT=$(yq -r '.marketplace.commit // ""' "$METADATA_FILE" 2>/dev/null)
+      CACHED_MKT_DATETIME=$(yq -r '.marketplace.datetime // "unknown"' "$METADATA_FILE" 2>/dev/null)
+      CACHED_MKT_VERSION=$(yq -r '.marketplace.version // "unknown"' "$METADATA_FILE" 2>/dev/null)
+      log_debug "CACHED_MKT" "$CACHED_MKT_COMMIT / $CACHED_MKT_DATETIME / $CACHED_MKT_VERSION"
+    fi
+    # Cache plugins
+    for plugin_name in $ALL_PLUGINS; do
+      if yq -e ".plugins.$plugin_name" "$METADATA_FILE" &>/dev/null 2>&1; then
+        CACHED_PLUGIN_COMMIT["$plugin_name"]=$(yq -r ".plugins.$plugin_name.commit // \"\"" "$METADATA_FILE" 2>/dev/null)
+        CACHED_PLUGIN_DATETIME["$plugin_name"]=$(yq -r ".plugins.$plugin_name.datetime // \"unknown\"" "$METADATA_FILE" 2>/dev/null)
+        CACHED_PLUGIN_VERSION["$plugin_name"]=$(yq -r ".plugins.$plugin_name.version // \"unknown\"" "$METADATA_FILE" 2>/dev/null)
+        log_debug "CACHED_PLUGIN $plugin_name" "${CACHED_PLUGIN_COMMIT[$plugin_name]}"
+      fi
+    done
+  fi
+
+  # Build new YAML using cached values
   {
     echo "# Last version bump metadata"
 
@@ -613,19 +641,13 @@ update_metadata() {
       echo "  datetime: \"$TIMESTAMP\""
       echo "  version: $MARKETPLACE_NEW_VERSION"
     else
-      # Preserve existing marketplace entry
-      if [[ -f "$METADATA_FILE" ]]; then
-        # Try new format first, then legacy
-        if yq -e '.marketplace' "$METADATA_FILE" &>/dev/null; then
-          yq -r '.marketplace | "  commit: \(.commit // "")\n  datetime: \"\(.datetime // \"unknown\")\"\n  version: \(.version // \"unknown\")"' "$METADATA_FILE" 2>&1
-        else
-          # Legacy format - no marketplace section
-          MKT_VER=$(jq -r '.version' "$MARKETPLACE_FILE")
-          echo "  commit: "
-          echo "  datetime: \"unknown\""
-          echo "  version: $MKT_VER"
-        fi
+      # Preserve existing marketplace entry from cache
+      if [[ -n "$CACHED_MKT_VERSION" ]] && [[ "$CACHED_MKT_VERSION" != "unknown" ]]; then
+        echo "  commit: $CACHED_MKT_COMMIT"
+        echo "  datetime: \"$CACHED_MKT_DATETIME\""
+        echo "  version: $CACHED_MKT_VERSION"
       else
+        # No cached value, read from marketplace.json
         MKT_VER=$(jq -r '.version' "$MARKETPLACE_FILE")
         echo "  commit: "
         echo "  datetime: \"unknown\""
@@ -644,16 +666,12 @@ update_metadata() {
         echo "    datetime: \"$TIMESTAMP\""
         echo "    version: ${PLUGIN_NEW_VERSIONS[$plugin_name]}"
       else
-        # Preserve existing or get from plugin.json
-        if [[ -f "$METADATA_FILE" ]] && yq -e ".plugins.$plugin_name" "$METADATA_FILE" &>/dev/null; then
-          # Read existing entry
-          EXISTING_COMMIT=$(yq -r ".plugins.$plugin_name.commit // \"\"" "$METADATA_FILE" 2>&1)
-          EXISTING_DATETIME=$(yq -r ".plugins.$plugin_name.datetime // \"unknown\"" "$METADATA_FILE" 2>&1)
-          EXISTING_VERSION=$(yq -r ".plugins.$plugin_name.version // \"unknown\"" "$METADATA_FILE" 2>&1)
+        # Preserve existing from cache or get from plugin.json
+        if [[ -n "${CACHED_PLUGIN_VERSION[$plugin_name]:-}" ]]; then
           echo "  $plugin_name:"
-          echo "    commit: $EXISTING_COMMIT"
-          echo "    datetime: \"$EXISTING_DATETIME\""
-          echo "    version: $EXISTING_VERSION"
+          echo "    commit: ${CACHED_PLUGIN_COMMIT[$plugin_name]}"
+          echo "    datetime: \"${CACHED_PLUGIN_DATETIME[$plugin_name]}\""
+          echo "    version: ${CACHED_PLUGIN_VERSION[$plugin_name]}"
         else
           # Read from plugin.json
           PLUGIN_SOURCE=$(jq -r --arg name "$plugin_name" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
@@ -688,10 +706,15 @@ execute_commit() {
 
   log_section "Committing Version Bump"
 
-  # Stage version files
+  # Stage version files (skip gitignored metadata - it's just a local cache)
   for f in "${MODIFIED_FILES[@]}"; do
     # Convert absolute path to relative for git add
     REL_PATH="${f#$WORKTREE/}"
+    # Skip metadata file - it's gitignored
+    if [[ "$REL_PATH" == ".thoughts/"* ]]; then
+      log_debug "Skipping gitignored" "$REL_PATH"
+      continue
+    fi
     git -C "$WORKTREE" add "$REL_PATH" 2>&1
     log_debug "Staged" "$REL_PATH"
   done
@@ -709,17 +732,14 @@ execute_commit() {
   if [[ $COMMIT_RESULT -eq 0 ]]; then
     log_info "Committed: $COMMIT_MSG"
 
-    # Get actual commit SHA and update metadata
+    # Get actual commit SHA and update metadata (local cache only, not in git)
     ACTUAL_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>&1)
     log_info "Commit SHA: $ACTUAL_COMMIT"
 
     # Update metadata with actual commit SHA
     if [[ -f "$METADATA_FILE" ]]; then
       sed -i "s/commit: pending/commit: $ACTUAL_COMMIT/g" "$METADATA_FILE"
-      # Stage the updated metadata
-      git -C "$WORKTREE" add ".thoughts/marketplace/latest-version-bump.yaml" 2>&1
-      git -C "$WORKTREE" commit --amend --no-edit 2>&1
-      log_info "Updated metadata with actual commit SHA"
+      log_info "Updated metadata with commit SHA"
     fi
   else
     log_error "Commit failed"
