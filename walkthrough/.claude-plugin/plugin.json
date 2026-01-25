@@ -1,6 +1,6 @@
 {
   "name": "walkthrough",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Walkthrough generation skill to help users review and understand the code that was just reviewed, manually testing it and explaining the code",
   "author": {
     "name": "Joao da Silva",
