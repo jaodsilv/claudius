@@ -208,12 +208,8 @@ scan_versions() {
 
   # Get marketplace version and blame
   MARKETPLACE_VERSION=$(jq -r '.version' "$MARKETPLACE_FILE")
-  # Capture blame output - errors go to stderr naturally
-  if ! MARKETPLACE_BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$MARKETPLACE_FILE" | head -1); then
-    log_warn "Failed to get blame for marketplace.json"
-    MARKETPLACE_BLAME=""
-  fi
-  MARKETPLACE_COMMIT=$(echo "$MARKETPLACE_BLAME" | awk '{print $1}')
+  # Get blame (non-porcelain format) and find commit for version line
+  MARKETPLACE_COMMIT=$(git -C "$WORKTREE" blame "$MARKETPLACE_FILE" 2>/dev/null | awk '/"version"/ {print $1; exit}' || echo "")
 
   if [[ -n "$MARKETPLACE_COMMIT" ]] && [[ "$MARKETPLACE_COMMIT" != "fatal:"* ]]; then
     if ! MARKETPLACE_DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$MARKETPLACE_COMMIT"); then
@@ -240,11 +236,8 @@ scan_versions() {
       PLUGIN_JSON="$WORKTREE/${source#./}/.claude-plugin/plugin.json"
       if [[ -f "$PLUGIN_JSON" ]]; then
         VERSION=$(jq -r '.version' "$PLUGIN_JSON")
-        # Capture blame output - errors go to stderr naturally
-        if ! BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$PLUGIN_JSON" | head -1); then
-          BLAME=""
-        fi
-        COMMIT=$(echo "$BLAME" | awk '{print $1}')
+        # Get blame and find commit for version line
+        COMMIT=$(git -C "$WORKTREE" blame "$PLUGIN_JSON" 2>/dev/null | awk '/"version"/ {print $1; exit}' || echo "")
 
         if [[ -n "$COMMIT" ]] && [[ "$COMMIT" != "fatal:"* ]]; then
           if ! DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$COMMIT"); then
@@ -694,12 +687,20 @@ update_metadata() {
           # Read from plugin.json
           PLUGIN_SOURCE=$(jq -r --arg name "$plugin_name" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
           PLUGIN_JSON="$WORKTREE/${PLUGIN_SOURCE#./}/.claude-plugin/plugin.json"
+          log_debug "Looking for plugin.json" "$PLUGIN_JSON"
           if [[ -f "$PLUGIN_JSON" ]]; then
             VER=$(jq -r '.version' "$PLUGIN_JSON")
             echo "  $plugin_name:"
             echo "    commit: "
             echo "    datetime: \"unknown\""
             echo "    version: $VER"
+          else
+            log_warn "Plugin $plugin_name: plugin.json not found at $PLUGIN_JSON"
+            # Still write entry to avoid silent data loss
+            echo "  $plugin_name:"
+            echo "    commit: "
+            echo "    datetime: \"unknown\""
+            echo "    version: unknown"
           fi
         fi
       fi
