@@ -10,7 +10,7 @@ Determines and runs the correct next command based on the current PR workflow tu
 
 ## Context
 
-- Current turn: !`yq -r '.turn // "unknown"' $1.thoughts/pr/metadata.yaml 2>/dev/null || echo "NO_METADATA"`
+Run the bash command: `yq -r '.turn // "unknown"' $1/.thoughts/pr/metadata.yaml 2>/dev/null || echo "NO_METADATA"`
 
 ## Logic
 

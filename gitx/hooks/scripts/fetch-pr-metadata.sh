@@ -442,7 +442,9 @@ jq -n \
   }' | yq -P > "$OUTPUT_FILE"
 
 # Phase 12: Convert multi-line strings to literal block style for readability
-# This converts strings containing newlines from quoted ("...\n...") to literal block (|) style
+# Step 1: Normalize CRLF to LF (GitHub API sometimes returns \r\n)
+yq -i '(.. | select(tag == "!!str")) |= sub("\r\n"; "\n")' "$OUTPUT_FILE"
+# Step 2: Convert strings containing newlines to literal block (|) style
 yq -i '(.. | select(tag == "!!str" and test("\n"))) style="literal"' "$OUTPUT_FILE"
 
 # Output success message
