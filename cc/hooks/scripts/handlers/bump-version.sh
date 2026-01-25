@@ -163,11 +163,14 @@ update_json_version() {
   local file="$1"
   local new_version="$2"
   local tmp_file="${file}.tmp"
+  local err_file="${file}.err"
 
-  if ! jq --arg v "$new_version" '.version = $v' "$file" > "$tmp_file" 2>&1; then
-    rm -f "$tmp_file"
+  if ! jq --arg v "$new_version" '.version = $v' "$file" > "$tmp_file" 2>"$err_file"; then
+    log_error "jq failed for $file: $(cat "$err_file")"
+    rm -f "$tmp_file" "$err_file"
     return 1
   fi
+  rm -f "$err_file"
 
   mv "$tmp_file" "$file"
   return 0
@@ -180,12 +183,15 @@ update_marketplace_plugin_version() {
   local plugin_name="$2"
   local new_version="$3"
   local tmp_file="${file}.tmp"
+  local err_file="${file}.err"
 
   if ! jq --arg name "$plugin_name" --arg v "$new_version" \
-    '(.plugins[] | select(.name == $name)).version = $v' "$file" > "$tmp_file" 2>&1; then
-    rm -f "$tmp_file"
+    '(.plugins[] | select(.name == $name)).version = $v' "$file" > "$tmp_file" 2>"$err_file"; then
+    log_error "jq failed for plugin $plugin_name: $(cat "$err_file")"
+    rm -f "$tmp_file" "$err_file"
     return 1
   fi
+  rm -f "$err_file"
 
   mv "$tmp_file" "$file"
   return 0
@@ -202,11 +208,17 @@ scan_versions() {
 
   # Get marketplace version and blame
   MARKETPLACE_VERSION=$(jq -r '.version' "$MARKETPLACE_FILE")
-  MARKETPLACE_BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$MARKETPLACE_FILE" 2>&1 | head -1)
+  # Capture blame output - errors go to stderr naturally
+  if ! MARKETPLACE_BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$MARKETPLACE_FILE" | head -1); then
+    log_warn "Failed to get blame for marketplace.json"
+    MARKETPLACE_BLAME=""
+  fi
   MARKETPLACE_COMMIT=$(echo "$MARKETPLACE_BLAME" | awk '{print $1}')
 
   if [[ -n "$MARKETPLACE_COMMIT" ]] && [[ "$MARKETPLACE_COMMIT" != "fatal:"* ]]; then
-    MARKETPLACE_DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$MARKETPLACE_COMMIT" 2>&1 || echo "unknown")
+    if ! MARKETPLACE_DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$MARKETPLACE_COMMIT"); then
+      MARKETPLACE_DATETIME="unknown"
+    fi
   else
     MARKETPLACE_COMMIT=""
     MARKETPLACE_DATETIME="unknown"
@@ -228,11 +240,16 @@ scan_versions() {
       PLUGIN_JSON="$WORKTREE/${source#./}/.claude-plugin/plugin.json"
       if [[ -f "$PLUGIN_JSON" ]]; then
         VERSION=$(jq -r '.version' "$PLUGIN_JSON")
-        BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$PLUGIN_JSON" 2>&1 | head -1)
+        # Capture blame output - errors go to stderr naturally
+        if ! BLAME=$(git -C "$WORKTREE" blame -L '/\"version\":/,+1' --porcelain "$PLUGIN_JSON" | head -1); then
+          BLAME=""
+        fi
         COMMIT=$(echo "$BLAME" | awk '{print $1}')
 
         if [[ -n "$COMMIT" ]] && [[ "$COMMIT" != "fatal:"* ]]; then
-          DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$COMMIT" 2>&1 || echo "unknown")
+          if ! DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$COMMIT"); then
+            DATETIME="unknown"
+          fi
         else
           COMMIT=""
           DATETIME="unknown"
@@ -274,17 +291,17 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
     log_info "Found metadata file, checking for changes since last bump"
 
     # Check for top-level commit (legacy) or marketplace commit (new format)
-    LAST_COMMIT=$(yq -r '.commit // .marketplace.commit // ""' "$METADATA_FILE" 2>&1 || echo "")
+    LAST_COMMIT=$(yq -r '.commit // .marketplace.commit // ""' "$METADATA_FILE" || echo "")
     log_debug "LAST_COMMIT" "$LAST_COMMIT"
 
     if [[ -n "$LAST_COMMIT" ]]; then
       # Check if HEAD is the same as last bump commit
-      HEAD_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>&1 || echo "")
+      HEAD_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD || echo "")
       log_debug "HEAD_COMMIT" "$HEAD_COMMIT"
 
       if [[ "$HEAD_COMMIT" == "$LAST_COMMIT"* ]] || [[ "$LAST_COMMIT" == "$HEAD_COMMIT"* ]]; then
         # Check for uncommitted changes
-        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain 2>&1 | grep -v '^\?\?' | head -1 || true)
+        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain | grep -v '^\?\?' | head -1 || true)
         if [[ -z "$UNCOMMITTED" ]]; then
           log_warn "Last bump commit is HEAD and no uncommitted changes"
           log_exit 2 "nothing to bump"
@@ -302,7 +319,8 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
 
   if [[ -f "$DETECT_SCRIPT" ]]; then
     log_info "Running detect-affected-plugins.sh"
-    DETECTION_RESULT=$(bash "$DETECT_SCRIPT" "$PR_NUMBER" "$WORKTREE" 2>&1)
+    # Capture stdout for JSON, let stderr flow to terminal for visibility
+    DETECTION_RESULT=$(bash "$DETECT_SCRIPT" "$PR_NUMBER" "$WORKTREE")
     DETECT_EXIT=$?
     log_json "DETECTION_RESULT" "$DETECTION_RESULT"
     log_debug "DETECT_EXIT" "$DETECT_EXIT"
@@ -315,7 +333,7 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
     fi
 
     DETECTION_METHOD=$(echo "$DETECTION_RESULT" | jq -r '.detectionMethod // ""')
-    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' 2>&1 | tr '\n' ',' | sed 's/,$//')
+    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' | tr '\n' ',' | sed 's/,$//')
     TOTAL_FILES=$(echo "$DETECTION_RESULT" | jq -r '.totalChangedFiles // 0')
 
     log_debug "DETECTION_METHOD" "$DETECTION_METHOD"
@@ -359,7 +377,7 @@ if [[ -n "$DETECTED_PLUGINS" ]]; then
     [[ -z "$plugin" ]] && continue
 
     # Check if plugin exists in marketplace.json
-    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE" 2>&1)
+    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
     log_debug "PLUGIN_SOURCE for $plugin" "$PLUGIN_SOURCE"
 
     if [[ -z "$PLUGIN_SOURCE" ]]; then
@@ -377,7 +395,7 @@ if [[ -n "$DETECTED_PLUGINS" ]]; then
     fi
 
     # Read current version from plugin.json
-    CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON" 2>&1)
+    CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON")
     NEW_VERSION=$(bump_version "$CURRENT_VERSION" "$BUMP_VERSION")
 
     PLUGIN_SOURCES["$plugin"]="$PLUGIN_SOURCE"
@@ -409,7 +427,7 @@ fi
 
 log_section "Version Calculation"
 
-MARKETPLACE_CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$MARKETPLACE_FILE" 2>&1)
+MARKETPLACE_CURRENT_VERSION=$(jq -r '.version // "0.0.0"' "$MARKETPLACE_FILE")
 MARKETPLACE_NEW_VERSION=$(bump_version "$MARKETPLACE_CURRENT_VERSION" "$BUMP_MARKETPLACE_VERSION")
 
 log_debug "Marketplace: $MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION" ""
@@ -417,7 +435,7 @@ log_debug "Marketplace: $MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION
 PACKAGE_CURRENT_VERSION=""
 PACKAGE_NEW_VERSION=""
 if [[ -f "$PACKAGE_JSON" ]]; then
-  PACKAGE_CURRENT_VERSION=$(jq -r '.version // ""' "$PACKAGE_JSON" 2>&1)
+  PACKAGE_CURRENT_VERSION=$(jq -r '.version // ""' "$PACKAGE_JSON")
   if [[ -n "$PACKAGE_CURRENT_VERSION" ]]; then
     PACKAGE_NEW_VERSION=$(bump_version "$PACKAGE_CURRENT_VERSION" "$BUMP_MARKETPLACE_VERSION")
     log_debug "Package.json: $PACKAGE_CURRENT_VERSION -> $PACKAGE_NEW_VERSION" ""
@@ -447,7 +465,7 @@ determine_commit_mode() {
   log_info "Auto-detecting commit mode..."
 
   # Get list of tracked changed files (exclude untracked with ??)
-  CHANGED=$(git -C "$WORKTREE" status --porcelain 2>&1 | grep -v '^\?\?' || true)
+  CHANGED=$(git -C "$WORKTREE" status --porcelain | grep -v '^\?\?' || true)
 
   if [[ -z "$CHANGED" ]]; then
     log_info "No tracked changes, will commit after version bump"
@@ -612,19 +630,19 @@ update_metadata() {
 
   if [[ -f "$METADATA_FILE" ]]; then
     log_info "Caching existing metadata before rewrite"
-    # Cache marketplace
-    if yq -e '.marketplace' "$METADATA_FILE" &>/dev/null 2>&1; then
-      CACHED_MKT_COMMIT=$(yq -r '.marketplace.commit // ""' "$METADATA_FILE" 2>/dev/null)
-      CACHED_MKT_DATETIME=$(yq -r '.marketplace.datetime // "unknown"' "$METADATA_FILE" 2>/dev/null)
-      CACHED_MKT_VERSION=$(yq -r '.marketplace.version // "unknown"' "$METADATA_FILE" 2>/dev/null)
+    # Cache marketplace - yq -e sets exit code, redirect stdout only
+    if yq -e '.marketplace' "$METADATA_FILE" >/dev/null; then
+      CACHED_MKT_COMMIT=$(yq -r '.marketplace.commit // ""' "$METADATA_FILE")
+      CACHED_MKT_DATETIME=$(yq -r '.marketplace.datetime // "unknown"' "$METADATA_FILE")
+      CACHED_MKT_VERSION=$(yq -r '.marketplace.version // "unknown"' "$METADATA_FILE")
       log_debug "CACHED_MKT" "$CACHED_MKT_COMMIT / $CACHED_MKT_DATETIME / $CACHED_MKT_VERSION"
     fi
     # Cache plugins
     for plugin_name in $ALL_PLUGINS; do
-      if yq -e ".plugins.$plugin_name" "$METADATA_FILE" &>/dev/null 2>&1; then
-        CACHED_PLUGIN_COMMIT["$plugin_name"]=$(yq -r ".plugins.$plugin_name.commit // \"\"" "$METADATA_FILE" 2>/dev/null)
-        CACHED_PLUGIN_DATETIME["$plugin_name"]=$(yq -r ".plugins.$plugin_name.datetime // \"unknown\"" "$METADATA_FILE" 2>/dev/null)
-        CACHED_PLUGIN_VERSION["$plugin_name"]=$(yq -r ".plugins.$plugin_name.version // \"unknown\"" "$METADATA_FILE" 2>/dev/null)
+      if yq -e ".plugins.$plugin_name" "$METADATA_FILE" >/dev/null; then
+        CACHED_PLUGIN_COMMIT["$plugin_name"]=$(yq -r ".plugins.$plugin_name.commit // \"\"" "$METADATA_FILE")
+        CACHED_PLUGIN_DATETIME["$plugin_name"]=$(yq -r ".plugins.$plugin_name.datetime // \"unknown\"" "$METADATA_FILE")
+        CACHED_PLUGIN_VERSION["$plugin_name"]=$(yq -r ".plugins.$plugin_name.version // \"unknown\"" "$METADATA_FILE")
         log_debug "CACHED_PLUGIN $plugin_name" "${CACHED_PLUGIN_COMMIT[$plugin_name]}"
       fi
     done
@@ -698,6 +716,8 @@ update_metadata
 # Execute commit if WILL_COMMIT is true
 # ============================================================================
 
+COMMIT_OUTPUT=""
+
 execute_commit() {
   if [[ "$WILL_COMMIT" != "true" ]]; then
     log_info "Skipping commit (WILL_COMMIT=false)"
@@ -707,6 +727,7 @@ execute_commit() {
   log_section "Committing Version Bump"
 
   # Stage version files (skip gitignored metadata - it's just a local cache)
+  local add_output=""
   for f in "${MODIFIED_FILES[@]}"; do
     # Convert absolute path to relative for git add
     REL_PATH="${f#$WORKTREE/}"
@@ -715,7 +736,10 @@ execute_commit() {
       log_debug "Skipping gitignored" "$REL_PATH"
       continue
     fi
-    git -C "$WORKTREE" add "$REL_PATH" 2>&1
+    add_output=$(git -C "$WORKTREE" add "$REL_PATH" 2>&1) || true
+    if [[ -n "$add_output" ]]; then
+      log_debug "git add output" "$add_output"
+    fi
     log_debug "Staged" "$REL_PATH"
   done
 
@@ -725,15 +749,16 @@ execute_commit() {
     COMMIT_MSG="$COMMIT_MSG ($DETECTED_PLUGINS)"
   fi
 
-  # Commit
-  git -C "$WORKTREE" commit -m "$COMMIT_MSG" 2>&1
+  # Commit - capture output to avoid polluting stdout before JSON response
+  COMMIT_OUTPUT=$(git -C "$WORKTREE" commit -m "$COMMIT_MSG" 2>&1)
   COMMIT_RESULT=$?
 
   if [[ $COMMIT_RESULT -eq 0 ]]; then
     log_info "Committed: $COMMIT_MSG"
+    log_debug "Commit output" "$COMMIT_OUTPUT"
 
     # Get actual commit SHA and update metadata (local cache only, not in git)
-    ACTUAL_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>&1)
+    ACTUAL_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD)
     log_info "Commit SHA: $ACTUAL_COMMIT"
 
     # Update metadata with actual commit SHA
@@ -768,12 +793,15 @@ if [[ "$NO_MARKETPLACE" != "true" ]]; then
   SUMMARY="$SUMMARY, marketplace ($MARKETPLACE_CURRENT_VERSION -> $MARKETPLACE_NEW_VERSION)"
 fi
 
-if [[ "$WILL_COMMIT" == "true" ]]; then
+if [[ "$WILL_COMMIT" == "true" ]] && [[ -n "$COMMIT_OUTPUT" ]]; then
+  SUMMARY="$SUMMARY. Committed: $COMMIT_OUTPUT"
+elif [[ "$WILL_COMMIT" == "true" ]]; then
   SUMMARY="$SUMMARY. Committed."
 fi
 
-# Escape quotes in summary for JSON
-SUMMARY_ESCAPED=$(echo "$SUMMARY" | sed 's/"/\\"/g')
+# Escape for valid JSON: backslashes first, then quotes, then newlines
+# Order matters: escape backslashes before adding new ones
+SUMMARY_ESCAPED=$(printf '%s' "$SUMMARY" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g' | tr '\r' ' ')
 
 log_exit 0 "versions bumped - block with JSON"
 echo "{\"decision\": \"block\", \"reason\": \"$SUMMARY_ESCAPED\"}"
