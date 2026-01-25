@@ -1,6 +1,6 @@
 {
   "name": "cc",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components",
   "author": {
     "name": "Joao da Silva",

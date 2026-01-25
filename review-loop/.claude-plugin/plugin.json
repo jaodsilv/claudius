@@ -1,6 +1,6 @@
 {
   "name": "review-loop",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Generic Review-Task loop orchestrator with pause/resume support and config file auto-detection. Requires: gitx plugin for metadata management.",
   "author": {
     "name": "João da Silva",

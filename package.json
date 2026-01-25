@@ -1,6 +1,6 @@
 {
   "name": "claudius",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Claude Code configuration repository",
   "type": "module",
   "scripts": {
