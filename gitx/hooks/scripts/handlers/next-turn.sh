@@ -6,9 +6,11 @@
 log_section "Next-Turn Handler"
 
 if [[ ! -f "$METADATA_FILE" ]]; then
-  log_info "No metadata file, letting command handle"
-  log_exit 0 "no metadata - block with JSON"
-  echo '{"decision": "block", "reason": "No PR metadata. Run /gitx:pr to create a PR first.", "turn": "NO_METADATA"}'
+  log_info "No metadata file, blocking"
+  log_exit 0 "no metadata - block"
+  cat <<EOF
+{"decision": "block", "reason": "No PR metadata. Run /gitx:pr to create a PR first."}
+EOF
   exit 0
 fi
 
@@ -21,11 +23,15 @@ bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operati
 log_info "Refreshing metadata..."
 bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE" >/dev/null
 
-# Output single JSON with turn info
+# Build context for Claude using proper hookSpecificOutput format
 TURN=$(yq -r '.turn' "$METADATA_FILE")
 PR=$(yq -r '.pr // "null"' "$METADATA_FILE")
 BRANCH=$(yq -r '.branch // ""' "$METADATA_FILE")
 log_debug "FINAL_TURN" "$TURN"
 log_exit 0 "turn updated"
-echo "{\"turn\": \"$TURN\", \"pr\": $PR, \"branch\": \"$BRANCH\", \"worktree\": \"$WORKTREE\"}"
+
+# Use hookSpecificOutput.additionalContext for proper context injection
+cat <<EOF
+{"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Turn: $TURN | PR: $PR | Branch: $BRANCH | Worktree: $WORKTREE"}}
+EOF
 exit 0

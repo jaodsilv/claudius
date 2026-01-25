@@ -28,12 +28,17 @@ if [[ "$TURN" == "CI-REVIEW" ]]; then
   # Count failing checks from metadata for context message
   FAILED=$(yq -r '[.ciStatus[] | select(.conclusion != "SUCCESS" and .conclusion != "SKIPPED" and .conclusion != "CANCELLED" and .conclusion != "NEUTRAL" and .conclusion != null and .conclusion != "")] | length' "$METADATA_FILE")
   log_info "CI has $FAILED failed checks"
-  echo "CI Status: $FAILED failed checks. Proceed with /gitx:address-ci"
   log_exit 0 "CI failures to address"
+  # Use hookSpecificOutput for proper context injection
+  cat <<EOF
+{"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "CI Status: $FAILED failed checks. Proceed with /gitx:address-ci"}}
+EOF
   exit 0
 else
   log_info "Turn is $TURN - no CI failures to address"
-  log_exit 0 "all CI passed - block with JSON"
-  echo "{\"decision\": \"block\", \"reason\": \"Turn is $TURN. No CI failures to address.\"}"
+  log_exit 0 "all CI passed - block"
+  cat <<EOF
+{"decision": "block", "reason": "Turn is $TURN. No CI failures to address."}
+EOF
   exit 0
 fi

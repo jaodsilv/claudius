@@ -32,13 +32,18 @@ log_debug "TURN" "$TURN"
 
 if [[ "$TURN" == "AUTHOR" ]] || [[ "$FORCE" == "true" ]]; then
   log_info "Proceeding with address-review (turn=$TURN, force=$FORCE)"
-  echo "Turn: $TURN. Proceed with /gitx:address-review"
   log_exit 0 "proceed"
+  # Use hookSpecificOutput for proper context injection
+  cat <<EOF
+{"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": "Turn: $TURN. Proceed with /gitx:address-review"}}
+EOF
   exit 0
 else
   log_warn "Turn is $TURN, not AUTHOR - blocking"
-  echo "Current turn is $TURN, not AUTHOR. Cannot address review." >&2
-  echo "Use --force to override." >&2
-  log_exit 2 "wrong turn"
-  exit 2
+  log_exit 0 "wrong turn - block"
+  # Use decision: block with reason for proper blocking
+  cat <<EOF
+{"decision": "block", "reason": "Current turn is $TURN, not AUTHOR. Cannot address review. Use --force to override."}
+EOF
+  exit 0
 fi
