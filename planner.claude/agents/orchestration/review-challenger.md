@@ -3,14 +3,7 @@ name: review-challenger
 description: Stress-tests planning artifacts as devil's advocate. Invoked during orchestrated reviews to challenge assumptions and identify blind spots and risks.
 model: opus
 color: red
-tools:
-  - Read
-  - Glob
-  - Grep
-  - WebSearch
-  - Task
-  - Skill
-invocation: planner:orchestration:review-challenger
+tools: Read, Glob, Grep, WebSearch, Task, Skill
 ---
 
 # Review Challenger Agent

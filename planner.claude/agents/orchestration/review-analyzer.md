@@ -3,13 +3,7 @@ name: review-analyzer
 description: Analyzes planning artifacts for structural completeness and best practices. Invoked during orchestrated reviews for pattern detection and quality assessment.
 model: haiku
 color: cyan
-tools:
-- Read
-- Glob
-- Grep
-- Task
-- Skill
-invocation: planner:orchestration:review-analyzer
+tools: Read, Glob, Grep, Task, Skill
 ---
 
 # Review Analyzer Agent

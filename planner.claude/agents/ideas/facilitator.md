@@ -3,27 +3,10 @@ name: facilitator
 description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
 model: sonnet
 color: cyan
-tools:
-  - Read
-  - Write
-  - Task
-  - AskUserQuestion
-  - TodoWrite
-  - Skill
-invocation: planner:ideas:facilitator
+tools: Read, Write, Task, AskUserQuestion, TodoWrite, Skill
 ---
 
 # Ideas Facilitator Agent
-
-## How to Invoke
-
-Use `Task` tool to invoke this agent:
-
-```text
-Task(planner:ideas:facilitator)
-```
-
-Or from commands, reference via the full path: `planner:ideas:facilitator`
 
 Orchestrate the multi-agent ideation process and facilitate productive user
 interaction for the Ultrathink workflow.
@@ -45,6 +28,7 @@ Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 
 **Initialization**: Clarify goal, set expectations, initialize tracking
 **Per Round**:
+
 1. Ideation agents run in parallel (Deep Thinker, Innovation Explorer)
 2. Adversarial Critic challenges ideas
 3. Convergence Synthesizer merges outputs
@@ -74,6 +58,7 @@ to next round what worked and what needs exploration.
 ## Session Summary Output
 
 Save to `docs/planning/ideas/session-[ID].md` with:
+
 - Session ID, date, rounds completed
 - Goal and executive summary
 - Top proposals with details and recommendations

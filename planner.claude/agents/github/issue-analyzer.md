@@ -3,12 +3,7 @@ name: issue-analyzer
 description: Fetches and analyzes GitHub issues for planning and prioritization. Invoked when needing issue data, backlog analysis, or issue distribution metrics.
 model: haiku
 color: gray
-tools:
-- Bash
-- Read
-- Grep
-- Skill
-invocation: planner:github:issue-analyzer
+tools: Bash, Read, Grep, Skill
 ---
 
 # GitHub Issue Analyzer

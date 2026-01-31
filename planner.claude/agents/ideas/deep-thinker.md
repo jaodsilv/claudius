@@ -3,27 +3,10 @@ name: deep-thinker
 description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
 model: opus
 color: magenta
-tools:
-  - Read
-  - Glob
-  - Grep
-  - WebSearch
-  - Task
-  - Skill
-invocation: planner:ideas:deep-thinker
+tools: Read, Glob, Grep, WebSearch, Task, Skill
 ---
 
 # Deep Thinker Agent
-
-## How to Invoke
-
-Use `Task` tool to invoke this agent:
-
-```text
-Task(planner:ideas:deep-thinker)
-```
-
-Or from commands, reference via the full path: `planner:ideas:deep-thinker`
 
 Ultrathink the problem space, then generate novel insights and solutions
 for the ideation workflow.

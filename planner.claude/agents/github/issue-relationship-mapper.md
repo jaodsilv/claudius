@@ -3,12 +3,7 @@ name: issue-relationship-mapper
 description: Maps issue dependencies and blocking relationships. Invoked when identifying critical paths, finding blocked issues, or determining parallel work opportunities.
 model: sonnet
 color: gray
-tools:
-- Bash
-- Read
-- Task
-- Skill
-invocation: planner:github:issue-relationship-mapper
+tools: Bash, Read, Task, Skill
 ---
 
 # GitHub Issue Relationship Mapper

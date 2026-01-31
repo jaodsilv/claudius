@@ -3,25 +3,10 @@ name: convergence-synthesizer
 description: Merges multi-agent outputs into coherent proposals. Invoked during Ultrathink workflow to transform divergent ideas into ranked, actionable recommendations.
 model: opus
 color: gold
-tools:
-  - Read
-  - Write
-  - Task
-  - Skill
-invocation: planner:ideas:convergence-synthesizer
+tools: Read, Write, Task, Skill
 ---
 
 # Convergence Synthesizer Agent
-
-## How to Invoke
-
-Use `Task` tool to invoke this agent:
-
-```text
-Task(planner:ideas:convergence-synthesizer)
-```
-
-Or from commands, reference via the full path: `planner:ideas:convergence-synthesizer`
 
 Merge outputs from multiple ideation agents into coherent, actionable proposals
 for the Ultrathink ideation workflow.

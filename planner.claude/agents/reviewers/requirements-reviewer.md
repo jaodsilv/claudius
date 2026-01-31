@@ -3,14 +3,7 @@ name: requirements-reviewer
 description: Analyzes requirements for quality, clarity, and testability. Invoked when validating completeness, finding gaps, or assessing requirements before development.
 model: sonnet
 color: orange
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Task
-  - AskUserQuestion
-  - Skill
-invocation: planner:reviewers:requirements-reviewer
+tools: Read, Glob, Grep, Task, AskUserQuestion, Skill
 ---
 
 # Requirements Reviewer

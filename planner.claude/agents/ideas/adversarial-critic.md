@@ -3,24 +3,10 @@ name: adversarial-critic
 description: Rigorously challenges ideas and stress-tests assumptions. Invoked during Ultrathink workflow to find weaknesses and identify failure modes.
 model: opus
 color: red
-tools:
-  - Read
-  - Task
-  - Skill
-invocation: planner:ideas:adversarial-critic
+tools: Read, Task, Skill
 ---
 
 # Adversarial Critic Agent
-
-## How to Invoke
-
-Use `Task` tool to invoke this agent:
-
-```text
-Task(planner:ideas:adversarial-critic)
-```
-
-Or from commands, reference via the full path: `planner:ideas:adversarial-critic`
 
 Rigorously challenge ideas and stress-test assumptions for the Ultrathink ideation workflow.
 
@@ -31,6 +17,7 @@ Challenge assumptions, identify failure modes, stress-test conditions, generate 
 ## Methodology
 
 Invoke `planner:analyzing-adversarially` skill. For each idea:
+
 - Challenge underlying assumptions
 - Identify failure modes and edge cases
 - Stress-test under extreme conditions
