@@ -63,17 +63,19 @@ specialized plugin directories.
 **Purpose**: Strategic planning with roadmapping, prioritization, and deep ideation
 **Contents**:
 
-1. 16 agents in 3 groups:
+1. 16 agents in 5 groups:
+   - `creators/` - 3 agents (prioritization-engine, requirements-gatherer, roadmap-architect)
    - `github/` - 2 agents (issue-analyzer, issue-relationship-mapper)
    - `ideas/` - 5 agents (adversarial-critic, convergence-synthesizer, deep-thinker,
      facilitator, innovation-explorer)
-   - `planner/` - 9 agents (architecture-reviewer, plan-reviewer, prioritization-engine,
-     requirements-gatherer, requirements-reviewer, review-analyzer, review-challenger,
-     review-synthesizer, roadmap-architect)
+   - `orchestration/` - 3 agents (review-analyzer, review-challenger, review-synthesizer)
+   - `reviewers/` - 3 agents (architecture-reviewer, plan-reviewer, requirements-reviewer)
 2. 9 commands: roadmap, prioritize, gather-requirements, review-plan,
    review-roadmap, review-prioritization, review-architecture, review-requirements,
    ideas
-3. Multi-agent "Ultrathink" ideation with Opus extended thinking
+3. 7 skills: analyzing-adversarially, orchestrating-reviews, planning-with-github,
+   prioritizing-work, reviewing-artifacts, roadmapping, synthesizing-outputs
+4. Multi-agent "Ultrathink" ideation with Opus extended thinking
 
 **See**: `planner.claude/README.md` for detailed documentation
 
