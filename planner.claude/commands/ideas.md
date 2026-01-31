@@ -2,6 +2,7 @@
 description: Multi-agent Ultrathink deep ideation session with Opus extended thinking
 allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite, Skill
 argument-hint: <goal|roadmap-path> [--mode <full|focused>] [--rounds <number>] [--output <path>]
+model: opus
 ---
 
 # /planner:ideas
@@ -109,12 +110,17 @@ For each round (1 to {{rounds}}):
 
 1. Mark Round N as in_progress
 
-2. Launch ideation agents in parallel:
+2. Check mode and launch appropriate agents:
+
+   **If mode is "full" (default)**: Launch both agents in parallel
+   **If mode is "focused"**: Launch only Deep Thinker (skip Innovation Explorer)
+
+3. Launch ideation agents:
 
    **Deep Thinker (Opus with extended thinking)**:
 
    ```text
-   Use Task tool with planner-ideas-deep-thinker agent:
+   Use Task tool with planner:ideas:deep-thinker agent:
 
    Topic: {{goal}}
 
@@ -139,7 +145,7 @@ For each round (1 to {{rounds}}):
    **Innovation Explorer (Opus with web research)**:
 
    ```text
-   Use Task tool with planner-ideas-innovation-explorer agent:
+   Use Task tool with planner:ideas:innovation-explorer agent:
 
    Topic: {{goal}}
 
@@ -159,12 +165,12 @@ For each round (1 to {{rounds}}):
    5. Novel combinations
    ```
 
-3. Collect outputs from both agents
+4. Collect outputs from both agents
 
 #### Step 2: Adversarial Analysis
 
 ```text
-Use Task tool with planner-ideas-adversarial-critic agent:
+Use Task tool with planner:ideas:adversarial-critic agent:
 
 Ideas to challenge:
 
@@ -191,7 +197,7 @@ Be rigorous but constructive.
 1. Launch Convergence Synthesizer:
 
    ```text
-   Use Task tool with planner-ideas-convergence-synthesizer agent:
+   Use Task tool with planner:ideas:convergence-synthesizer agent:
 
    Deep Thinker Output:
    {{deep_thinker_output}}
@@ -217,7 +223,7 @@ Be rigorous but constructive.
 1. Launch Facilitator for presentation:
 
    ```text
-   Use Task tool with planner-ideas-facilitator agent:
+   Use Task tool with planner:ideas:facilitator agent:
 
    Round: {{current_round}} of {{max_rounds}}
 

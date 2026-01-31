@@ -1,5 +1,8 @@
 # Ultrathink Ideas Synthesis: {{topic}}
 
+<!-- markdownlint-disable MD024 -->
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Session ID**: {{session_id}}
 **Rounds Completed**: {{rounds_completed}}
 **Date**: {{date}}
@@ -76,23 +79,23 @@
 | Impact     | {{proposal2_impact}}/10     | {{proposal2_impact_notes}}     |
 | Robustness | {{proposal2_robustness}}/10 | {{proposal2_robustness_notes}} |
 
-#### Proposal 2 Summary
+#### Summary
 
 {{proposal2_summary}}
 
-#### Proposal 2 Key Innovation
+#### Key Innovation
 
 {{proposal2_innovation}}
 
-#### Proposal 2 Implementation Approach
+#### Implementation Approach
 
 {{proposal2_approach}}
 
-#### Proposal 2 Challenges Identified
+#### Challenges Identified
 
 1. {{proposal2_challenge1}}
 
-#### Proposal 2 Adversarial Analysis
+#### Adversarial Analysis
 
 **Weaknesses Found**:
 

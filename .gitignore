@@ -36,3 +36,4 @@ docs/_site/
 # Test coverage output
 coverage/
 coverage-*
+tmpclaude-*-cwd
