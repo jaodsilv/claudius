@@ -1,6 +1,7 @@
 ---
 description: Creates output-styles when defining consistent formatting patterns.
-argument-hint: <style-name> [--plugin <plugin-path>]
+argument-hint: "<style-name> [--plugin <plugin-path>]"
+user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet
 ---

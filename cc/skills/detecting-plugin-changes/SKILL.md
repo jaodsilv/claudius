@@ -1,5 +1,4 @@
 ---
-name: cc:detecting-plugin-changes
 description: Detects which plugins are affected by changed files in a PR or git diff. Use when analyzing what plugins need version bumps or when determining scope of changes.
 allowed-tools: Bash(scripts/detect-affected-plugins.sh:*)
 version: 1.0.0

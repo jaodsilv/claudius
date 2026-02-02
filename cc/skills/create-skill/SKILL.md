@@ -1,6 +1,7 @@
 ---
 description: Creates skills when packaging domain knowledge. Use for reusable guidance.
-argument-hint: <skill-name> [--plugin <plugin-path>]
+argument-hint: "<skill-name> [--plugin <plugin-path>]"
+user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
 model: sonnet
 ---

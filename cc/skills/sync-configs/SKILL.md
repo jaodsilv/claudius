@@ -1,6 +1,7 @@
 ---
 description: Read all plugin.json and the marketplace.json, and fix inconsistencies.
 argument-hint: "[--plugins <list>] [--fix]"
+user-invocable: true
 allowed-tools: ["Read", "Edit", "AskUserQuestion", "TodoWrite"]
 model: sonnet
 ---

@@ -1,6 +1,7 @@
 ---
 description: Bumps plugin versions when PR changes affect plugins. Use for release preparation.
 argument-hint: "[--plugins <list>] [--delta <x.y.z>] [--scan] [--commit | --no-commit] [--worktree <path>]"
+user-invocable: true
 allowed-tools: []
 model: haiku
 ---
@@ -92,31 +93,22 @@ plugins:
 
 ## Examples
 
-```bash
-# Auto-detect and bump patch version (default)
-/cc:bump-version
-
-# Bump specific plugins
-/cc:bump-version --plugins cc,gitx
-
-# Minor version bump
-/cc:bump-version --delta 0.1.0
-
-# Only bump marketplace, not individual plugins
-/cc:bump-version --marketplace-only
-
-# Bump plugins but not marketplace root version
-/cc:bump-version --no-marketplace
-
-# Rebuild metadata from git blame
-/cc:bump-version --scan
-
-# Force commit after bump
-/cc:bump-version --commit
-
-# Bump in different worktree
-/cc:bump-version --worktree /path/to/repo
-```
+- Auto-detect and bump patch version (default):
+  `/cc:bump-version`
+- Bump specific plugins
+  `/cc:bump-version --plugins cc,gitx`
+- Minor version bump
+  `/cc:bump-version --delta 0.1.0`
+- Only bump marketplace, not individual plugins
+  `/cc:bump-version --marketplace-only`
+- Bump plugins but not marketplace root version
+  `/cc:bump-version --no-marketplace`
+- Rebuild metadata from git blame
+  `/cc:bump-version --scan`
+- Force commit after bump
+  `/cc:bump-version --commit`
+- Bump in different worktree
+  `/cc:bump-version --worktree /path/to/repo`
 
 ## Execution
 

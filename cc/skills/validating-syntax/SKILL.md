@@ -1,9 +1,9 @@
 ---
-name: cc:validating-syntax
 description: >-
   Provides syntax validation patterns for Claude Code plugin components. Use
   when validating YAML frontmatter, markdown structure, or component-specific
   syntax after writing or editing files.
+user-invocable: false
 version: 1.0.0
 allowed-tools: Read, Skill
 model: opus

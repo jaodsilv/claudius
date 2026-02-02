@@ -1,9 +1,9 @@
 ---
-name: cc:validating-components
 description: >-
   Provides validation criteria for Claude Code plugin components. Use when validating
   commands, agents, skills, orchestrations, or output-styles against best practices.
   Load this skill during component creation or improvement workflows.
+user-invocable: false
 version: 1.0.0
 allowed-tools: Read
 model: sonnet

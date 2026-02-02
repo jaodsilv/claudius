@@ -1,9 +1,9 @@
 ---
-name: cc:orchestrating-agents
 description: >-
   Provides multi-agent orchestration patterns when designing complex workflows,
   coordinating multiple agents, or implementing phase-based command structures.
   Use when creating orchestrations or improving existing multi-agent workflows.
+user-invocable: false
 version: 1.0.0
 allowed-tools: Read
 model: sonnet

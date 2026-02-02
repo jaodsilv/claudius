@@ -211,13 +211,15 @@ scan_versions() {
   # Get blame (non-porcelain format) and find commit for version line
   MARKETPLACE_COMMIT=$(git -C "$WORKTREE" blame "$MARKETPLACE_FILE" 2>/dev/null | awk '/"version"/ {print $1; exit}' || echo "")
 
-  if [[ -n "$MARKETPLACE_COMMIT" ]] && [[ "$MARKETPLACE_COMMIT" != "fatal:"* ]]; then
+  # Handle uncommitted changes (00000000) or empty/error
+  if [[ -z "$MARKETPLACE_COMMIT" ]] || [[ "$MARKETPLACE_COMMIT" == "fatal:"* ]] || [[ "$MARKETPLACE_COMMIT" == "00000000" ]]; then
+    MARKETPLACE_COMMIT=""
+    # Use file modification time for uncommitted changes
+    MARKETPLACE_DATETIME=$(date -Iseconds -r "$MARKETPLACE_FILE" 2>/dev/null || echo "unknown")
+  else
     if ! MARKETPLACE_DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$MARKETPLACE_COMMIT"); then
       MARKETPLACE_DATETIME="unknown"
     fi
-  else
-    MARKETPLACE_COMMIT=""
-    MARKETPLACE_DATETIME="unknown"
   fi
 
   log_info "Marketplace: version=$MARKETPLACE_VERSION commit=$MARKETPLACE_COMMIT"
@@ -232,20 +234,23 @@ scan_versions() {
     echo "plugins:"
 
     # Get all plugins from marketplace.json
-    jq -r '.plugins[] | "\(.name)|\(.source)"' "$MARKETPLACE_FILE" | while IFS='|' read -r name source; do
+    # Use process substitution instead of pipe to avoid subshell issues on Windows
+    while IFS='|' read -r name source; do
       PLUGIN_JSON="$WORKTREE/${source#./}/.claude-plugin/plugin.json"
       if [[ -f "$PLUGIN_JSON" ]]; then
-        VERSION=$(jq -r '.version' "$PLUGIN_JSON")
+        VERSION=$(jq -r '.version' "$PLUGIN_JSON" | tr -d '\r')
         # Get blame and find commit for version line
         COMMIT=$(git -C "$WORKTREE" blame "$PLUGIN_JSON" 2>/dev/null | awk '/"version"/ {print $1; exit}' || echo "")
 
-        if [[ -n "$COMMIT" ]] && [[ "$COMMIT" != "fatal:"* ]]; then
+        # Handle uncommitted changes (00000000) or empty/error
+        if [[ -z "$COMMIT" ]] || [[ "$COMMIT" == "fatal:"* ]] || [[ "$COMMIT" == "00000000" ]]; then
+          COMMIT=""
+          # Use file modification time for uncommitted changes
+          DATETIME=$(date -Iseconds -r "$PLUGIN_JSON" 2>/dev/null || echo "unknown")
+        else
           if ! DATETIME=$(git -C "$WORKTREE" show -s --format=%cI "$COMMIT"); then
             DATETIME="unknown"
           fi
-        else
-          COMMIT=""
-          DATETIME="unknown"
         fi
 
         log_info "Plugin $name: version=$VERSION commit=$COMMIT"
@@ -255,7 +260,7 @@ scan_versions() {
         echo "    datetime: \"$DATETIME\""
         echo "    version: $VERSION"
       fi
-    done
+    done < <(jq -r '.plugins[] | "\(.name)|\(.source)"' "$MARKETPLACE_FILE" | tr -d '\r')
   } > "$METADATA_FILE"
 
   log_info "Metadata rebuilt: $METADATA_FILE"
@@ -294,7 +299,7 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
 
       if [[ "$HEAD_COMMIT" == "$LAST_COMMIT"* ]] || [[ "$LAST_COMMIT" == "$HEAD_COMMIT"* ]]; then
         # Check for uncommitted changes
-        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain | grep -v '^\?\?' | head -1 || true)
+        UNCOMMITTED=$(git -C "$WORKTREE" status --porcelain | rg -v '^\?\?' | head -1 || true)
         if [[ -z "$UNCOMMITTED" ]]; then
           log_warn "Last bump commit is HEAD and no uncommitted changes"
           log_exit 2 "nothing to bump"
@@ -313,7 +318,8 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
   if [[ -f "$DETECT_SCRIPT" ]]; then
     log_info "Running detect-affected-plugins.sh"
     # Capture stdout for JSON, let stderr flow to terminal for visibility
-    DETECTION_RESULT=$(bash "$DETECT_SCRIPT" "$PR_NUMBER" "$WORKTREE")
+    # Pass LAST_COMMIT as 3rd argument to compare against last bump instead of main
+    DETECTION_RESULT=$(bash "$DETECT_SCRIPT" "$PR_NUMBER" "$WORKTREE" "$LAST_COMMIT")
     DETECT_EXIT=$?
     log_json "DETECTION_RESULT" "$DETECTION_RESULT"
     log_debug "DETECT_EXIT" "$DETECT_EXIT"
@@ -326,7 +332,7 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
     fi
 
     DETECTION_METHOD=$(echo "$DETECTION_RESULT" | jq -r '.detectionMethod // ""')
-    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' | tr '\n' ',' | sed 's/,$//')
+    DETECTED_PLUGINS=$(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[].name' | tr -d '\r' | tr '\n' ',' | sed 's/,$//')
     TOTAL_FILES=$(echo "$DETECTION_RESULT" | jq -r '.totalChangedFiles // 0')
 
     log_debug "DETECTION_METHOD" "$DETECTION_METHOD"
@@ -370,7 +376,7 @@ if [[ -n "$DETECTED_PLUGINS" ]]; then
     [[ -z "$plugin" ]] && continue
 
     # Check if plugin exists in marketplace.json
-    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
+    PLUGIN_SOURCE=$(jq -r --arg name "$plugin" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE" | tr -d '\r')
     log_debug "PLUGIN_SOURCE for $plugin" "$PLUGIN_SOURCE"
 
     if [[ -z "$PLUGIN_SOURCE" ]]; then
@@ -458,7 +464,7 @@ determine_commit_mode() {
   log_info "Auto-detecting commit mode..."
 
   # Get list of tracked changed files (exclude untracked with ??)
-  CHANGED=$(git -C "$WORKTREE" status --porcelain | grep -v '^\?\?' || true)
+  CHANGED=$(git -C "$WORKTREE" status --porcelain | rg -v '^\?\?' || true)
 
   if [[ -z "$CHANGED" ]]; then
     log_info "No tracked changes, will commit after version bump"
@@ -476,7 +482,7 @@ determine_commit_mode() {
   while IFS= read -r source; do
     [[ -z "$source" ]] && continue
     EXPECTED_FILES+=("${source#./}/.claude-plugin/plugin.json")
-  done < <(jq -r '.plugins[].source' "$MARKETPLACE_FILE")
+  done < <(jq -r '.plugins[].source' "$MARKETPLACE_FILE" | tr -d '\r')
 
   log_debug "Expected version files" "${EXPECTED_FILES[*]}"
 
@@ -611,7 +617,7 @@ update_metadata() {
   fi
 
   # Get list of all plugins from marketplace.json
-  ALL_PLUGINS=$(jq -r '.plugins[].name' "$MARKETPLACE_FILE")
+  ALL_PLUGINS=$(jq -r '.plugins[].name' "$MARKETPLACE_FILE" | tr -d '\r')
 
   # Cache existing metadata BEFORE writing (redirect truncates file first!)
   declare -A CACHED_PLUGIN_COMMIT
@@ -685,7 +691,7 @@ update_metadata() {
           echo "    version: ${CACHED_PLUGIN_VERSION[$plugin_name]}"
         else
           # Read from plugin.json
-          PLUGIN_SOURCE=$(jq -r --arg name "$plugin_name" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE")
+          PLUGIN_SOURCE=$(jq -r --arg name "$plugin_name" '.plugins[] | select(.name == $name) | .source' "$MARKETPLACE_FILE" | tr -d '\r')
           PLUGIN_JSON="$WORKTREE/${PLUGIN_SOURCE#./}/.claude-plugin/plugin.json"
           log_debug "Looking for plugin.json" "$PLUGIN_JSON"
           if [[ -f "$PLUGIN_JSON" ]]; then

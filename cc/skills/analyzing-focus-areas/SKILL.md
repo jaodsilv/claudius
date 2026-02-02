@@ -1,10 +1,10 @@
 ---
-name: cc:analyzing-focus-areas
 description: >-
   Provides focus-driven analysis patterns when the user specifies a priority area
   for review. Use when implementing analysis that should emphasize specific aspects
   while still covering others, such as "focus on error handling" or "prioritize
   triggering issues".
+user-invocable: false
 version: 1.0.0
 model: opus
 ---

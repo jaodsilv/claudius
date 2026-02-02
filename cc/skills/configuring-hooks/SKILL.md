@@ -1,5 +1,4 @@
 ---
-name: cc:configuring-hooks
 description: >-
   Configures Claude Code plugin hooks with proper error handling, JSON output,
   and lifecycle patterns. Use when creating PreToolUse, PostToolUse, or other

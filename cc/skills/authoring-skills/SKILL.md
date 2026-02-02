@@ -1,5 +1,4 @@
 ---
-name: cc:authoring-skills
 description: >-
   Guides skill authoring following Anthropic platform best practices. Use when
   creating new skills, reviewing existing skills, or improving skill structure.

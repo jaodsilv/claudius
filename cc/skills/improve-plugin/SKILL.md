@@ -1,6 +1,7 @@
 ---
 description: Improves plugins comprehensively when preparing for release or audit.
-argument-hint: <plugin-path> [--focus "<aspect>"]
+argument-hint: "<plugin-path> [--focus \"<aspect>\"]"
+user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: opus
 ---
