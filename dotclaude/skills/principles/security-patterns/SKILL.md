@@ -1,5 +1,4 @@
 ---
-name: dotclaude:security-patterns
 description: >-
   Provides security patterns and guidelines for building secure applications,
   covering authentication, authorization, input validation, and secure coding.
