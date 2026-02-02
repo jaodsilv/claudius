@@ -1,8 +1,8 @@
 ---
-
-allowed-tools: Read, Task, TodoWrite, Write, LS, Grep, Glob, Edit
 description: Downloads a document from a URL or a list of URLs
-argument-hint: output-path: <output-folder> file-existing-mode: <file-existing-mode> url: <url> filename: <output-filename>
+argument-hint: "output-path: <output-folder> file-existing-mode: <file-existing-mode> url: <url> filename: <output-filename>"
+user-invocable: true
+allowed-tools: Read, Task, TodoWrite, Write, LS, Grep, Glob, Edit
 ---
 
 ## Context
