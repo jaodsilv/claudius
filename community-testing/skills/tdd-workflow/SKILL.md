@@ -1,5 +1,4 @@
 ---
-name: community-testing:tdd-workflow
 description: >-
   Provides a comprehensive test-driven development workflow with red-green-refactor
   cycle, test isolation, and continuous integration practices.

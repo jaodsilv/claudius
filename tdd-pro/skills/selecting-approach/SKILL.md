@@ -1,5 +1,4 @@
 ---
-name: tdd:selecting-approach
 description: >-
   Helps select the optimal TDD approach based on context, complexity,
   and project requirements.

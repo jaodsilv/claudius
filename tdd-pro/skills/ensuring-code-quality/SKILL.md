@@ -1,5 +1,4 @@
 ---
-name: tdd-pro:ensuring-code-quality
 description: >-
   Provides code quality guidelines and best practices for maintaining
   high-quality, maintainable code in test-driven development workflows.

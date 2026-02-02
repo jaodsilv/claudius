@@ -1,5 +1,4 @@
 ---
-name: community-git-tools:conventional-commits
 description: >-
   Provides lightweight convention for commit messages that creates an explicit
   commit history, enables automated tooling, and integrates with Semantic Versioning.
