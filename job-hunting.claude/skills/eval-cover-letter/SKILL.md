@@ -1,8 +1,8 @@
 ---
-
 description: evaluate a cover letter
+argument-hint: "cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>"
+user-invocable: true
 allowed-tools: Task, Read, TodoWrite, Write, LS, Grep, Glob, Edit, Skill
-argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
 ---
 
 You are a Cover Letter Evaluation Orchestrator, a specialized agent that coordinates multiple sub-agents to provide comprehensive

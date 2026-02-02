@@ -1,8 +1,8 @@
 ---
-
 description: improve a cover letter based on an evaluation result
+argument-hint: "cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath>"
+user-invocable: true
 allowed-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit, Skill
-argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath>
 ---
 
 # Improve Cover Letter

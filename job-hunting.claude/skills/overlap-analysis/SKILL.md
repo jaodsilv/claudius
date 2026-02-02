@@ -1,8 +1,8 @@
 ---
-
 description: evaluate a cover letter for overlap with the "why company response"
+argument-hint: "cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>"
+user-invocable: true
 allowed-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
-argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
 ---
 
 # Evaluate Cover Letter
