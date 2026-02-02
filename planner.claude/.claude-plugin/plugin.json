@@ -1,7 +1,7 @@
 {
   "name": "planner",
   "version": "1.1.0",
-  "description": "Strategic planning plugin for project roadmapping, issue prioritization, and deep ideation. Features multi-agent orchestrated reviews with adversarial analysis, Ultrathink-powered ideation with Opus, deep GitHub integration via gh CLI, and optional brainstorm-pro integration.",
+  "description": "Strategic planning plugin for project roadmapping, issue prioritization, and deep ideation. Features multi-agent orchestrated reviews with adversarial analysis, Ultrathink-powered ideation with Opus, deep GitHub integration via gh CLI, and optional brainstorm plugin integration.",
   "author": {
     "name": "Joao da Silva",
     "url": "https://github.com/jaodsilv"

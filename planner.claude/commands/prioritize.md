@@ -2,6 +2,7 @@
 description: Prioritize GitHub issues using RICE, MoSCoW, or custom frameworks
 allowed-tools: Task, Read, Write, Bash, Glob, Grep, TodoWrite, AskUserQuestion, Skill
 argument-hint: <issue-numbers|ALL> [--framework <RICE|MoSCoW|WeightedScoring>] [--output <path>]
+model: opus
 ---
 
 # /planner:prioritize
@@ -55,7 +56,7 @@ prioritize-arguments:
 2. Load prioritization skill:
 
    ```text
-   Use Skill tool to load: planner:prioritizing-work
+   Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
    ```
 
 3. Verify gh CLI:
@@ -68,10 +69,10 @@ prioritize-arguments:
 
 ### Phase 2: Issue Fetching
 
-1. Launch `planner-github-issue-analyzer` agent:
+1. Launch `issue-analyzer` agent:
 
    ```text
-   Use Task tool with planner-github-issue-analyzer agent:
+   Use Task tool with `planner:github:issue-analyzer` agent:
 
    Fetch and analyze issues: {{issues}}
 
@@ -92,10 +93,10 @@ prioritize-arguments:
 
 1. Mark Phase 3 as in_progress
 
-2. Launch `planner-github-issue-relationship-mapper` agent:
+2. Launch `issue-relationship-mapper` agent:
 
    ```text
-   Use Task tool with planner-github-issue-relationship-mapper agent:
+   Use Task tool with `planner:github:issue-relationship-mapper` agent:
 
    Map dependencies for issues: {{issue_list}}
 
@@ -112,10 +113,10 @@ prioritize-arguments:
 
 1. Mark Phase 4 as in_progress
 
-2. Launch `planner-prioritization-engine` agent:
+2. Launch `prioritization-engine` agent:
 
    ```text
-   Use Task tool with planner-prioritization-engine agent:
+   Use Task tool with `planner:creators:prioritization-engine` agent:
 
    Apply {{framework}} framework to prioritize:
 

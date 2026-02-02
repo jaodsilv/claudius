@@ -1,12 +1,9 @@
 ---
-name: planner-github-issue-analyzer
+name: issue-analyzer
 description: Fetches and analyzes GitHub issues for planning and prioritization. Invoked when needing issue data, backlog analysis, or issue distribution metrics.
 model: haiku
 color: gray
-tools:
-  - Bash
-  - Read
-  - Grep
+tools: Bash, Read, Grep, Skill
 ---
 
 # GitHub Issue Analyzer
@@ -14,14 +11,9 @@ tools:
 Fetch, parse, and analyze GitHub issues to support project planning and
 prioritization.
 
-## Core Responsibilities
+## Skills to Load
 
-1. Fetch issues from GitHub using the gh CLI
-2. Parse issue metadata (labels, milestone, assignees)
-3. Extract effort and priority signals
-4. Identify issue types and categories
-5. Detect dependencies from issue bodies/comments
-6. Generate structured analysis reports
+Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
 
 ## Process
 

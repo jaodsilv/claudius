@@ -1,5 +1,7 @@
 # Project Roadmap: {{project_name}}
 
+<!-- Base sections: See _base.md for metadata, revision history, open questions, next steps templates -->
+
 **Goal**: {{goal}}
 **Horizon**: {{horizon}}
 **Created**: {{date}}
