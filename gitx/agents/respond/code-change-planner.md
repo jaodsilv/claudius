@@ -1,5 +1,6 @@
 ---
-name: gitx:code-change-planner
+
+name: code-change-planner
 description: >-
   Plans code changes needed to address PR feedback. Invoked after feedback analysis to organize fixes.
 model: sonnet

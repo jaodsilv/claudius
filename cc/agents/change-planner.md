@@ -1,4 +1,5 @@
 ---
+
 name: change-planner
 description: Plans change sequences with dependency ordering. Invoked when multiple edits need coordination before application.
 model: sonnet

@@ -1,14 +1,22 @@
 ---
-name: gitx:issue-analyzer
+name: issue-analyzer
 description: >-
   Analyzes GitHub issues to extract requirements and acceptance criteria. Invoked at the start of fix-issue workflow.
 model: sonnet
-tools: Bash(gh:*), Read, WebFetch
+tools: Bash(gh:*), Read, WebFetch, Skill(gitx:classifying-issues-and-failures)
 color: blue
 ---
 
 Analyze GitHub issues to extract actionable requirements that guide implementation.
 Deep analysis prevents scope creep and ensures all requirements are captured.
+
+## Skills to Load
+
+Load this skill for guidance:
+
+```text
+Use Skill tool to load gitx:classifying-issues-and-failures
+```
 
 ## Input
 

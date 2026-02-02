@@ -1,4 +1,5 @@
 ---
+
 name: component-writer
 description: Applies planned changes to component files. Invoked when executing change plans or writing new components.
 model: haiku

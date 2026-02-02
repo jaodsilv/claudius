@@ -1,7 +1,9 @@
 ---
+
 description: Orchestrates full fix workflow when addressing a GitHub issue. Use for end-to-end issue resolution with worktree setup.
 argument-hint: "[ISSUE]"
-allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Task, Skill, TodoWrite, Write, AskUserQuestion, Skill(gitx:syncing-worktrees), Skill(gitx:parsing-issue-references), Skill(gitx:naming-branches), Skill(gitx:naming-worktrees)
+model: opus
 ---
 
 # Fix Issue (Orchestrated)
@@ -11,9 +13,10 @@ plans implementation, creates a worktree, and delegates to a development workflo
 
 ## Parse Arguments
 
-From $ARGUMENTS, extract:
+Use Skill tool with gitx:parsing-issue-references to parse $ARGUMENTS:
 
-- Issue number (required): Can be "123", "#123", or issue URL
+- Issue number (required): Supports "123", "#123", "issue-123", or GitHub issue URL
+- If parsing fails, report error with supported formats
 
 ## Initialize Progress Tracking
 
@@ -35,7 +38,7 @@ Mark "Analyze issue requirements" as in_progress.
 Launch issue analyzer:
 
 ```text
-Task (gitx:issue-analyzer):
+Task (gitx:fix-issue:issue-analyzer):
   Issue Number: [number]
 
   Analyze the issue to extract:
@@ -65,7 +68,7 @@ Mark "Explore codebase for relevant files" as in_progress.
 Launch codebase navigator:
 
 ```text
-Task (gitx:codebase-navigator):
+Task (gitx:fix-issue:codebase-navigator):
   Issue Analysis: [summary from Phase 1]
   Key Terms: [terms from Phase 1]
 
@@ -94,7 +97,7 @@ Mark "Create implementation plan" as in_progress.
 Launch implementation planner:
 
 ```text
-Task (gitx:implementation-planner):
+Task (gitx:fix-issue:implementation-planner):
   Issue Analysis:
   [Full output from Phase 1]
 
@@ -220,54 +223,14 @@ Store selected name for WORKTREE_PATH.
 
 ### Sync and Create Worktree
 
+Use Skill tool with gitx:syncing-worktrees to sync the current branch.
+The skill handles detached HEAD detection, fetching, stashing, pulling, and restoring.
+
+If sync fails, follow the skill's error handling guidance.
+
+After successful sync, create the worktree:
+
 ```bash
-# Verify not in detached HEAD state
-CURRENT_BRANCH=$(git branch --show-current)
-if [ -z "$CURRENT_BRANCH" ]; then
-  echo "Error: Cannot create worktree from detached HEAD state."
-  echo "Please checkout a branch first: git checkout <branch-name>"
-  exit 1
-fi
-
-# Fetch latest from origin
-git fetch origin
-
-# Stash local changes if working directory is dirty
-STASHED=false
-if [ -n "$(git status --porcelain)" ]; then
-  git stash --include-untracked
-  STASHED=true
-fi
-
-# Pull latest on current branch
-PULL_OUTPUT=$(git pull --rebase origin "$CURRENT_BRANCH" 2>&1)
-PULL_EXIT_CODE=$?
-if [ $PULL_EXIT_CODE -ne 0 ]; then
-  # Provide specific guidance based on failure type
-  if echo "$PULL_OUTPUT" | grep -q "Could not resolve host"; then
-    echo "Error: Pull failed due to network issue."
-    echo "Please check your internet connection and try again."
-  elif git status | grep -q "rebase in progress"; then
-    echo "Error: Pull failed due to merge conflicts."
-    echo "Please resolve conflicts manually: git rebase --continue or git rebase --abort"
-  else
-    echo "Error: Pull failed. Please check git status and resolve manually."
-    echo "Details: $PULL_OUTPUT"
-  fi
-  if [ "$STASHED" = true ]; then
-    echo "Note: Your changes are still in stash. Run 'git stash pop' after resolving."
-  fi
-  exit 1
-fi
-
-# Pop stash if we stashed earlier (conflicts are non-fatal, just warn user)
-if [ "$STASHED" = true ]; then
-  if ! git stash pop; then
-    echo "Warning: Stash pop had conflicts. Your changes are still in stash."
-    echo "Continuing with worktree creation. Run 'git stash pop' manually later."
-  fi
-fi
-
 # Create worktree as sibling directory
 # Use the abbreviated directory name selected by user (not the full branch name)
 WORKTREE_PATH="../[selected-directory-name]"

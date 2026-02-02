@@ -1,4 +1,5 @@
 ---
+
 name: output-style-improver
 description: Analyzes output-styles for completeness. Invoked when user asks to improve formatting rules.
 model: haiku

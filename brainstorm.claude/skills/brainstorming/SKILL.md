@@ -1,4 +1,5 @@
 ---
+
 name: brainstorm:brainstorming
 description: >-
   Orchestrates requirements discovery through multi-agent analysis and Socratic dialogue.

@@ -1,4 +1,5 @@
 ---
+
 name: cc:improving-components
 description: >-
   Provides interactive improvement workflows for plugin components when analyzing

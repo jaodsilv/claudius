@@ -1,4 +1,5 @@
 ---
+
 description: Bumps plugin versions when PR changes affect plugins. Use for release preparation.
 argument-hint: "[--pr <number>] [--plugins <list>]"
 allowed-tools: ["Bash(gh:*)", "Bash(git:*)", "Read", "Edit", "AskUserQuestion", "TodoWrite"]

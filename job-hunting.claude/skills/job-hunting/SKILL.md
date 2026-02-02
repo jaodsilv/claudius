@@ -1,8 +1,9 @@
 ---
+
 name: job-hunting-pro:job-hunting
 description: >-
   Provides comprehensive job hunting guidance including resume optimization,
-  cover letter evaluation, interview preparation, and career development strategies.
+  cover letter evaluation, interview preparation, and career development strategies
 ---
 
 # Job Hunting

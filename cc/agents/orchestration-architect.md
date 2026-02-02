@@ -1,4 +1,5 @@
 ---
+
 name: orchestration-architect
 description: Designs multi-agent workflow architectures. Invoked when planning complex orchestrations or reviewing coordination patterns.
 model: opus

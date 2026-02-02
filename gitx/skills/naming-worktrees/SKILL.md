@@ -1,5 +1,6 @@
 ---
 name: gitx:naming-worktrees
+version: 1.0.0
 description: >-
   Generates abbreviated worktree directory names from branch names.
   Invoked when creating worktrees to offer short, meaningful options.

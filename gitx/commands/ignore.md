@@ -1,7 +1,9 @@
 ---
+
 description: Adds files or patterns to .gitignore when excluding from tracking. Use for build artifacts, secrets, or temp files.
 argument-hint: "[PATTERNS...]"
 allowed-tools: Read, Edit, Write, Bash(git:*), AskUserQuestion
+model: haiku
 ---
 
 # Add to .gitignore

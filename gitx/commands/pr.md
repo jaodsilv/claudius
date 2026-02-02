@@ -1,7 +1,9 @@
 ---
+
 description: Creates a pull request when ready to merge changes. Use for feature completion, bug fixes, or any branch ready for review.
 argument-hint: ""
-allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TodoWrite
+allowed-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TodoWrite, Skill(gitx:performing-pr-preflight-checks)
+model: opus
 ---
 
 # Create Pull Request (Orchestrated)
@@ -18,48 +20,22 @@ Get repository and branch state:
 
 Check for existing PR:
 
-- `gh pr view --json number,url,state 2>/dev/null`
+- `gh pr view --json number,url,state`
 
 ## Pre-flight Checks
 
-### Check branch is not main
+Apply Skill(gitx:performing-pr-preflight-checks) to validate:
 
-If on main/master:
-
-- Report: "Cannot create PR from main branch"
-- Suggest: Create a feature branch first
-- Exit
-
-### Check for existing PR
-
-If PR already exists:
-
-- Report: "PR #<number> already exists for this branch"
-- Show: URL and state
-- Suggest: Use `/gitx:respond` to address feedback
-- Exit
-
-### Check remote is up to date
-
-```bash
-git fetch origin
-git log origin/<branch>..HEAD 2>/dev/null
-```
-
-If local is ahead of remote:
-
-- Push first: `git push -u origin <branch>`
-
-If remote doesn't exist:
-
-- Create and push: `git push -u origin <branch>`
+- Not on main/master branch
+- No existing PR for this branch
+- Remote is up to date (push if needed)
 
 ## Phase 1: Change Analysis
 
 Launch change analyzer:
 
 ```text
-Task (gitx:change-analyzer):
+Task (gitx:pr-create:change-analyzer):
   Branch: [current-branch]
   Base: [main-branch]
 
@@ -86,7 +62,7 @@ Store key results:
 Launch description generator and review preparer in parallel:
 
 ```text
-Task (gitx:description-generator):
+Task (gitx:pr-create:description-generator):
   Change Analysis: [output from Phase 1]
 
   Generate:
@@ -96,7 +72,7 @@ Task (gitx:description-generator):
 ```
 
 ```text
-Task (gitx:review-preparer):
+Task (gitx:pr-create:review-preparer):
   Change Analysis: [output from Phase 1]
 
   Identify:

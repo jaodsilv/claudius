@@ -1,4 +1,5 @@
 ---
+
 name: plugin-improver
 description: Performs comprehensive plugin analysis across all components. Invoked for plugin audits or pre-release checks.
 model: opus

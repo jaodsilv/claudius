@@ -1,4 +1,5 @@
 ---
+
 name: command-improver
 description: Analyzes commands for quality issues. Invoked when user asks to improve or review existing commands.
 model: sonnet

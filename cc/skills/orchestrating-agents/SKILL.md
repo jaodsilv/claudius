@@ -1,4 +1,5 @@
 ---
+
 name: cc:orchestrating-agents
 description: >-
   Provides multi-agent orchestration patterns when designing complex workflows,

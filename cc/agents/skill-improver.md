@@ -1,4 +1,5 @@
 ---
+
 name: skill-improver
 description: Analyzes skills for progressive disclosure and triggers. Invoked when user asks to improve skill organization.
 model: sonnet

@@ -1,4 +1,5 @@
 ---
+
 name: agent-improver
 description: Analyzes agents for improvement opportunities. Invoked when user asks to improve agents, review prompts, or fix triggering issues.
 model: sonnet

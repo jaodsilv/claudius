@@ -1,5 +1,6 @@
 ---
 name: gitx:naming-branches
+version: 1.0.0
 description: >-
   Applies project-specific branch naming conventions for this repository.
   Invoked when creating branches, worktrees, or validating branch names.
