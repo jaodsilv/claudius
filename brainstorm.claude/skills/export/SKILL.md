@@ -1,7 +1,8 @@
 ---
 description: Exports or regenerates brainstorming session documents. Use for generating fresh specification from session data.
+argument-hint: "[--session-path] <path> [--format <markdown|pdf|html>]"
+user-invocable: true
 allowed-tools: Task, Read, Write, Edit, Glob
-argument-hint: --session-path <session_path> --format <markdown|pdf|html>
 model: sonnet
 ---
 

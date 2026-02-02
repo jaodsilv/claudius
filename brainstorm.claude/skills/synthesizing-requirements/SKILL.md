@@ -1,7 +1,7 @@
 ---
-name: brainstorm:synthesizing-requirements
 description: >-
   Consolidates brainstorming insights into structured requirements. Use when formulating requirements, prioritizing features, or validating requirement quality.
+user-invocable: false
 allowed-tools:
 model: sonnet
 ---

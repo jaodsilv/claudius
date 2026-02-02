@@ -1,7 +1,7 @@
 ---
-name: brainstorm:researching-domain
 description: >-
   Explores industry practices, competitors, and domain knowledge to inform solution design with market context.
+user-invocable: false
 allowed-tools: WebSearch
 model: sonnet
 ---
