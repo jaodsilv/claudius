@@ -90,9 +90,9 @@ if [[ "$FOR_MERGE" == "true" ]] && [[ -n "$PR_NUMBER" ]]; then
   # Check 4: CI status
   CI_STATUS=$(gh pr checks "$PR_NUMBER" 2>/dev/null || echo "")
   if [[ -n "$CI_STATUS" ]]; then
-    FAILED=$(echo "$CI_STATUS" | grep -c "fail\|X" || echo "0")
-    PENDING=$(echo "$CI_STATUS" | grep -c "pending\|-" || echo "0")
-    PASSED=$(echo "$CI_STATUS" | grep -c "pass\|✓" || echo "0")
+    FAILED=$(echo "$CI_STATUS" | rg -c "fail|X" || echo "0")
+    PENDING=$(echo "$CI_STATUS" | rg -c "pending|-" || echo "0")
+    PASSED=$(echo "$CI_STATUS" | rg -c "pass|✓" || echo "0")
 
     if [[ "$FAILED" -gt 0 ]]; then
       CHECKS+=("{\"check\": \"ci_status\", \"status\": \"WARN\", \"message\": \"$FAILED checks failed, $PASSED passed\"}")

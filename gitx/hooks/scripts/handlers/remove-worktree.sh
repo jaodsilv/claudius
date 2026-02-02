@@ -3,12 +3,16 @@
 # Remove worktree, block always
 # --force: remove even if dirty
 
+# Source args validator and hook output
+source "$SCRIPTS_DIR/lib/args-validator.sh"
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Remove-Worktree Handler"
 log_debug "ARGS" "$ARGS"
 
-# Check for --force flag
+# Check for --force flag using has_flag
 FORCE=false
-if [[ "$ARGS" =~ --force ]]; then
+if has_flag "$ARGS" "-f or --force"; then
   FORCE=true
 fi
 log_debug "FORCE" "$FORCE"
@@ -49,14 +53,14 @@ log_debug "BRANCH" "$BRANCH"
 log_info "Removing worktree..."
 git worktree remove "$WT_PATH" --force
 
-# Remove branch if specified
-if [[ -n "$BRANCH" ]] && [[ "$ARGS" =~ -d|--delete ]]; then
+# Remove branch if specified using has_flag
+if [[ -n "$BRANCH" ]] && has_flag "$ARGS" "-d or --delete"; then
   log_info "Deleting branch '$BRANCH'..."
   git branch -D "$BRANCH" 2>&1 || true
   git push origin --delete "$BRANCH" 2>&1 || true
 fi
 
 log_info "Worktree '$WT_PATH' removed"
-log_exit 0 "block with JSON"
-echo "{\"decision\": \"block\", \"reason\": \"Worktree '$WT_PATH' removed.\"}"
+log_exit 0 "block"
+hook_output_block "Worktree '$WT_PATH' removed."
 exit 0

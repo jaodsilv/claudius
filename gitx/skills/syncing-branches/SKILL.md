@@ -1,7 +1,7 @@
 ---
-name: gitx:syncing-branches
 description: >-
   Synchronizes git branches with remote before operations. Use before rebasing or after a change made by a CI pipeline on a PR branch, before committing.
+user-invocable: false
 allowed-tools: Bash(scripts/sync-branch.sh:*)
 model: sonnet
 ---

@@ -97,7 +97,7 @@ run_lint_check() {
   fi
 
   # JavaScript/TypeScript via package.json
-  if [[ -f "package.json" ]] && grep -q '"lint"' package.json; then
+  if [[ -f "package.json" ]] && rg -q '"lint"' package.json; then
     echo "Running npm lint..." >&2
     npm run lint 2>&1 | head -50 || true
     return 0
@@ -150,7 +150,7 @@ LINT_SKIPPED=false
 
 # Check 1: Conflict markers
 echo "Checking for conflict markers..." >&2
-MARKER_RESULTS=$(grep -rn $INCLUDE_ARGS -E "^(<<<<<<<|=======|>>>>>>>)" . 2>/dev/null || true)
+MARKER_RESULTS=$(rg -n $INCLUDE_ARGS -e "^(<<<<<<<|=======|>>>>>>>)" . 2>/dev/null || true)
 if [[ -n "$MARKER_RESULTS" ]]; then
   MARKERS_FOUND=true
   MARKERS_COUNT=$(echo "$MARKER_RESULTS" | wc -l)
@@ -179,18 +179,18 @@ done
 TYPE_OUTPUT=$(run_type_check)
 if [[ "$TYPE_OUTPUT" == "SKIP" ]]; then
   TYPES_SKIPPED=true
-elif echo "$TYPE_OUTPUT" | grep -qiE "error"; then
+elif echo "$TYPE_OUTPUT" | rg -qi "error"; then
   TYPES_VALID=false
-  TYPE_ERRORS=$(echo "$TYPE_OUTPUT" | grep -iE "error" | head -10)
+  TYPE_ERRORS=$(echo "$TYPE_OUTPUT" | rg -i "error" | head -10)
 fi
 
 # Check 4: Lint check (language-agnostic)
 LINT_OUTPUT=$(run_lint_check)
 if [[ "$LINT_OUTPUT" == "SKIP" ]]; then
   LINT_SKIPPED=true
-elif echo "$LINT_OUTPUT" | grep -qiE "error|warning"; then
-  LINT_WARNINGS=$(echo "$LINT_OUTPUT" | grep -iE "error|warning" | head -10)
-  if echo "$LINT_OUTPUT" | grep -qi "error"; then
+elif echo "$LINT_OUTPUT" | rg -qi "error|warning"; then
+  LINT_WARNINGS=$(echo "$LINT_OUTPUT" | rg -i "error|warning" | head -10)
+  if echo "$LINT_OUTPUT" | rg -qi "error"; then
     LINT_VALID=false
   fi
 fi

@@ -1,9 +1,9 @@
 ---
-name: gitx:generating-commit-summaries
 description: >-
   Generates narrative commit summaries with bullet-point details. Use when
   creating PR descriptions, issue comments, or review responses that need
   commit context.
+user-invocable: false
 allowed-tools: Bash(git:*), AskUserQuestion
 model: sonnet
 ---

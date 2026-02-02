@@ -1,9 +1,9 @@
 ---
-name: gitx:managing-pr-metadata
 description: >-
   Centralized PR metadata management with lazy loading. Use when components
   need PR context or need to update metadata state (approved, resolveLevel).
-allowed-tools: Bash(scripts/metadata-operations.sh:*)
+user-invocable: false
+allowed-tools: Bash(../../hooks/scripts/handlers/metadata-operations.sh:*)
 model: haiku
 ---
 
@@ -14,7 +14,7 @@ Centralized metadata management with lazy loading fallback.
 ## execution
 
 ```bash
-scripts/metadata-operations.sh <operation> <worktree> [args...]
+../../hooks/scripts/handlers/metadata-operations.sh <operation> <worktree> [args...]
 ```
 
 ## Operations
@@ -24,7 +24,7 @@ scripts/metadata-operations.sh <operation> <worktree> [args...]
 Fetch PR metadata from GitHub:
 
 ```bash
-scripts/metadata-operations.sh fetch <worktree>
+../../hooks/scripts/handlers/metadata-operations.sh fetch <worktree>
 ```
 
 Fetches PR data for the current branch and writes to `<worktree>/.thoughts/pr/metadata.yaml`.
@@ -76,7 +76,7 @@ The metadata file contains:
 Check if metadata exists and is valid:
 
 ```bash
-scripts/metadata-operations.sh ensure <worktree>
+../../hooks/scripts/handlers/metadata-operations.sh ensure <worktree>
 ```
 
 Output on success:
@@ -96,7 +96,7 @@ Output when metadata needs fetching (exit 1):
 Read a specific field from metadata:
 
 ```bash
-scripts/metadata-operations.sh read <worktree> <field>
+../../hooks/scripts/handlers/metadata-operations.sh read <worktree> <field>
 ```
 
 Returns the field value as JSON. Exits with error if metadata doesn't exist.
@@ -106,7 +106,7 @@ Returns the field value as JSON. Exits with error if metadata doesn't exist.
 Update a specific field:
 
 ```bash
-scripts/metadata-operations.sh update <worktree> <field> <json_value>
+../../hooks/scripts/handlers/metadata-operations.sh update <worktree> <field> <json_value>
 ```
 
 Updates the field and sets `updatedAt` timestamp.
@@ -116,7 +116,7 @@ Updates the field and sets `updatedAt` timestamp.
 Update the resolve level field:
 
 ```bash
-scripts/metadata-operations.sh set-resolve-level <worktree> <level>
+../../hooks/scripts/handlers/metadata-operations.sh set-resolve-level <worktree> <level>
 ```
 
 Values: `all`, `critical`, `important`
@@ -126,7 +126,7 @@ Values: `all`, `critical`, `important`
 Update the approved field:
 
 ```bash
-scripts/metadata-operations.sh set-approved <worktree> <bool>
+../../hooks/scripts/handlers/metadata-operations.sh set-approved <worktree> <bool>
 ```
 
 Values: `true`, `false`
@@ -136,7 +136,7 @@ Values: `true`, `false`
 Remove a field from metadata:
 
 ```bash
-scripts/metadata-operations.sh remove-field <worktree> <field>
+../../hooks/scripts/handlers/metadata-operations.sh remove-field <worktree> <field>
 ```
 
 Removes the specified field and updates `updatedAt` timestamp.
@@ -146,7 +146,7 @@ Removes the specified field and updates `updatedAt` timestamp.
 Reset CI status and turn after pushing changes:
 
 ```bash
-scripts/metadata-operations.sh post-push <worktree>
+../../hooks/scripts/handlers/metadata-operations.sh post-push <worktree>
 ```
 
 Performs three updates atomically:
@@ -165,7 +165,7 @@ Output:
 Set the workflow turn state:
 
 ```bash
-scripts/metadata-operations.sh set-turn <worktree> <turn>
+../../hooks/scripts/handlers/metadata-operations.sh set-turn <worktree> <turn>
 ```
 
 Values: `CI-PENDING`, `CI-REVIEW`, `REVIEW`, `AUTHOR`
@@ -181,7 +181,7 @@ Output:
 Clear the CI status array:
 
 ```bash
-scripts/metadata-operations.sh clear-ci-status <worktree>
+../../hooks/scripts/handlers/metadata-operations.sh clear-ci-status <worktree>
 ```
 
 Output:
@@ -195,7 +195,7 @@ Output:
 Update the latest commit from HEAD:
 
 ```bash
-scripts/metadata-operations.sh update-latest-commit <worktree>
+../../hooks/scripts/handlers/metadata-operations.sh update-latest-commit <worktree>
 ```
 
 Output:

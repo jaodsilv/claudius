@@ -2,6 +2,7 @@
 description: >-
   Generates abbreviated worktree directory names from branch names.
   Invoked when creating worktrees to offer short, meaningful options.
+user-invocable: false
 allowed-tools: AskUserQuestion, Bash(scripts/generate-worktree-names.sh:*), Skill(gitx:validating-directory-names:*)
 context: fork
 model: sonnet

@@ -1,9 +1,9 @@
 ---
-name: gitx:merging-prs
 description: >-
   Merges a PR and handles post-merge cleanup including issue closure and
   branch deletion. Use for finalizing approved pull requests with minimal
   LLM involvement.
+user-invocable: false
 allowed-tools: Bash(scripts/merge-pr.sh:*), Read
 model: sonnet
 ---

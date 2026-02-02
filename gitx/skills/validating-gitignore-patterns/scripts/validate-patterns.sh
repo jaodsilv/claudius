@@ -59,8 +59,8 @@ for pattern in "${PATTERNS[@]}"; do
   exists="false"
   if [[ -n "$EXISTING_PATTERNS" ]]; then
     # Check exact match (with or without trailing /)
-    if echo "$EXISTING_PATTERNS" | grep -qxF "$normalized" || \
-       echo "$EXISTING_PATTERNS" | grep -qxF "${normalized%/}"; then
+    if echo "$EXISTING_PATTERNS" | rg -qxF "$normalized" || \
+       echo "$EXISTING_PATTERNS" | rg -qxF "${normalized%/}"; then
       exists="true"
     fi
   fi

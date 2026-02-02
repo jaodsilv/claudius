@@ -1,8 +1,8 @@
 ---
-name: gitx:performing-pr-preflight-checks
 description: >-
   Performs pre-flight checks before PR operations. Use when creating PRs,
   merging, or modifying PR state to ensure operation will succeed.
+user-invocable: false
 allowed-tools: Bash(scripts/pr-preflight.sh:*)
 model: sonnet
 ---

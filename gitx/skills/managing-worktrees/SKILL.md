@@ -1,8 +1,8 @@
 ---
-name: gitx:managing-worktrees
 description: >-
   Scripts for creating and removing git worktrees with smart naming, junction handling, and cleanup.
   Invoked when managing worktrees for isolated development environments.
+user-invocable: false
 allowed-tools: Bash(scripts/remove-worktree.sh:*), Bash(scripts/worktree-create.sh:*)
 model: sonnet
 ---

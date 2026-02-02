@@ -2,20 +2,20 @@
 # Handler for /gitx:refresh-metadata command
 # Refresh PR metadata, block always (no LLM needed)
 
+# Source args validator and hook output
+source "$SCRIPTS_DIR/lib/args-validator.sh"
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Refresh-Metadata Handler"
 log_debug "ARGS" "$ARGS"
 
-# Parse flags
+# Parse flags using library functions
 REFRESH_ALL=false
-FIELDS=""
-
-if [[ "$ARGS" =~ --all ]]; then
+if has_flag "$ARGS" "--all"; then
   REFRESH_ALL=true
 fi
 
-if [[ "$ARGS" =~ --fields[[:space:]]+([^[:space:]]+) ]]; then
-  FIELDS="${BASH_REMATCH[1]}"
-fi
+FIELDS=$(get_flag_value "$ARGS" "--fields")
 
 # Default to --all if no flags specified
 if [[ "$REFRESH_ALL" == "false" ]] && [[ -z "$FIELDS" ]]; then
@@ -25,8 +25,7 @@ fi
 log_debug "REFRESH_ALL" "$REFRESH_ALL"
 log_debug "FIELDS" "$FIELDS"
 
-# Validate PR exists for current branch
-CURRENT_BRANCH=$(git -C "$WORKTREE" branch --show-current)
+# Use CURRENT_BRANCH from parent (exported by init())
 log_debug "CURRENT_BRANCH" "$CURRENT_BRANCH"
 
 if ! gh pr view "$CURRENT_BRANCH" &>/dev/null; then
@@ -36,7 +35,7 @@ if ! gh pr view "$CURRENT_BRANCH" &>/dev/null; then
   exit 2
 fi
 
-FETCH_SCRIPT="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/fetch-pr-metadata.sh"
+FETCH_SCRIPT="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/fetch-pr-metadata.sh"
 
 if [[ "$REFRESH_ALL" == "true" ]]; then
   # Full refresh - delete and re-fetch
@@ -47,13 +46,13 @@ if [[ "$REFRESH_ALL" == "true" ]]; then
   # Capture fetch output (suppress from stdout, we'll include in block reason)
   if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
     # Extract the message from fetch output if it's JSON
-    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | grep -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
+    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | rg -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
     if [[ -z "$FETCH_MESSAGE" ]]; then
       FETCH_MESSAGE="$METADATA_FILE"
     fi
     log_info "Metadata refreshed successfully"
     log_exit 0 "block with JSON"
-    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed successfully. Written to $FETCH_MESSAGE\"}"
+    hook_output_block "Metadata refreshed successfully. Written to $FETCH_MESSAGE"
     exit 0
   else
     log_error "Failed to refresh metadata"
@@ -68,13 +67,13 @@ else
   # significant refactoring of fetch-pr-metadata.sh into modular functions)
   # Capture fetch output (suppress from stdout, we'll include in block reason)
   if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
-    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | grep -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
+    FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | rg -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
     if [[ -z "$FETCH_MESSAGE" ]]; then
       FETCH_MESSAGE="$METADATA_FILE"
     fi
     log_info "Metadata refreshed for fields: $FIELDS"
     log_exit 0 "block with JSON"
-    echo "{\"decision\": \"block\", \"reason\": \"Metadata refreshed for fields: $FIELDS. Written to $FETCH_MESSAGE\"}"
+    hook_output_block "Metadata refreshed for fields: $FIELDS. Written to $FETCH_MESSAGE"
     exit 0
   else
     log_error "Failed to refresh metadata"

@@ -1,8 +1,8 @@
 ---
-name: gitx:orchestrating-conflict-resolution
 description: >-
   Orchestrates multi-agent conflict resolution workflow for merge and rebase
   operations. Use when git conflicts occur during branch integration.
+user-invocable: false
 allowed-tools: Bash(git:*), Task, AskUserQuestion
 model: opus
 ---

@@ -73,7 +73,7 @@ pattern_exists() {
     fi
 
     # Exact match (ignoring leading/trailing whitespace)
-    grep -qxF "$pattern" "$gitignore" 2>/dev/null
+    rg -qxF "$pattern" "$gitignore" 2>/dev/null
 }
 
 # Find tracked files that match a pattern

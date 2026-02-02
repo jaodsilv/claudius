@@ -1,8 +1,8 @@
 ---
-name: gitx:using-gh-cli-for-reviews
 description: >-
   GitHub CLI operations for PR reviews. Use when checking PR ownership,
   listing reviews, creating comments, or minimizing resolved comments.
+user-invocable: false
 allowed-tools: Bash(scripts/gh-review-operations.sh:*)
 model: sonnet
 ---

@@ -1,10 +1,10 @@
 ---
-name: gitx:classifying-issues-and-failures
 description: >-
   Provides classification frameworks for issues, CI failures, and review comments.
   Use when categorizing items by type, effort, or priority in analysis agents.
 allowed-tools: []
 model: sonnet
+user-invocable: false
 ---
 
 # Classifying Issues and Failures

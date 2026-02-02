@@ -2,7 +2,15 @@
 # Handler for /gitx:merge-pr command
 # Validate approved, merge PR, block always
 
+# Source args validator
+source "$SCRIPTS_DIR/lib/args-validator.sh"
+
 log_section "Merge-PR Handler"
+log_debug "ARGS" "$ARGS"
+
+# Validate mutually exclusive merge strategies
+# Pattern: [--squash|--merge|--rebase]
+validate_mutually_exclusive "$ARGS" "--squash" "--merge" "--rebase"
 
 if [[ ! -f "$METADATA_FILE" ]]; then
   log_info "No metadata file, trying to get PR from current branch"
@@ -18,7 +26,7 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   fi
   # Fetch metadata
   log_info "Fetching metadata..."
-  bash "${CLAUDE_PLUGIN_ROOT}/skills/managing-pr-metadata/scripts/metadata-operations.sh" fetch "$WORKTREE"
+  bash "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh" fetch "$WORKTREE"
 fi
 
 APPROVED=$(yq -r '.approved // false' "$METADATA_FILE")
@@ -41,8 +49,9 @@ log_debug "MERGE_RESULT" "$RESULT"
 
 if [[ $RESULT -eq 0 ]]; then
   log_info "PR merged successfully"
-  log_exit 0 "block with JSON"
-  echo "{\"decision\": \"block\", \"reason\": \"PR #$PR_NUM merged successfully!\"}"
+  log_exit 0 "block"
+  source "$SCRIPTS_DIR/lib/hook-output.sh"
+  hook_output_block "PR #$PR_NUM merged successfully!"
   exit 0
 else
   log_error "Failed to merge PR"

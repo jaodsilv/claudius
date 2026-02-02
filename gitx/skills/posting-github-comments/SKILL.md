@@ -1,8 +1,8 @@
 ---
-name: gitx:posting-github-comments
 description: >-
   Scripts for posting comments to GitHub PRs and issues with target inference.
   Invoked when commenting on PRs or issues.
+user-invocable: false
 allowed-tools: Bash(scripts/comment-post.sh:*)
 model: sonnet
 ---

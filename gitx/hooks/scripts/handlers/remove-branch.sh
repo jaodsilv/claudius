@@ -3,20 +3,29 @@
 # Remove branch, block always
 # --force: delete current branch by switching to default first
 
+# Source args validator and hook output
+source "$SCRIPTS_DIR/lib/args-validator.sh"
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Remove-Branch Handler"
 log_debug "ARGS" "$ARGS"
 
-# Check for --force flag
+# Validate mutually exclusive remote flags
+# Pattern: [-r or --remove-remote | -ro or --remote-only]
+validate_mutually_exclusive "$ARGS" "-r or --remove-remote" "-ro or --remote-only"
+
+# Check for --force flag using has_flag
 FORCE=false
-if [[ "$ARGS" =~ --force ]]; then
+if has_flag "$ARGS" "-f or --force"; then
   FORCE=true
 fi
 log_debug "FORCE" "$FORCE"
 
-# Extract branch name (first arg that's not a flag)
-BRANCH=$(echo "$ARGS" | sed 's/--force//g; s/-f//g; s/-r//g; s/-ro//g' | xargs | cut -d' ' -f1)
+# Extract branch name using get_positional_arg
+BRANCH=$(get_positional_arg "$ARGS")
 if [[ -z "$BRANCH" ]]; then
-  BRANCH=$(git -C "$WORKTREE" branch --show-current)
+  # Default to current branch
+  BRANCH="$CURRENT_BRANCH"
 fi
 log_debug "BRANCH" "$BRANCH"
 
@@ -29,11 +38,10 @@ if ! git -C "$WORKTREE" rev-parse --verify "$BRANCH" &>/dev/null; then
   exit 2
 fi
 
-# Check if trying to delete current branch
-CURRENT=$(git -C "$WORKTREE" branch --show-current)
-log_debug "CURRENT" "$CURRENT"
+# Use CURRENT_BRANCH from parent (exported by init())
+log_debug "CURRENT_BRANCH" "$CURRENT_BRANCH"
 
-if [[ "$BRANCH" == "$CURRENT" ]]; then
+if [[ "$BRANCH" == "$CURRENT_BRANCH" ]]; then
   if [[ "$FORCE" == "false" ]]; then
     log_error "Cannot delete current branch without --force"
     log_exit 2 "current branch"
@@ -52,13 +60,13 @@ fi
 log_info "Deleting local branch..."
 git -C "$WORKTREE" branch -D "$BRANCH" 2>&1 || true
 
-# Delete remote (if -r or -ro flag)
-if [[ "$ARGS" =~ -r[[:space:]]|-ro[[:space:]]|--force ]]; then
+# Delete remote (if -r or -ro flag) using has_flag
+if has_flag "$ARGS" "-r or --remove-remote" || has_flag "$ARGS" "-ro or --remote-only"; then
   log_info "Deleting remote branch..."
   git -C "$WORKTREE" push origin --delete "$BRANCH" 2>&1 || true
 fi
 
 log_info "Branch '$BRANCH' removed"
-log_exit 0 "block with JSON"
-echo "{\"decision\": \"block\", \"reason\": \"Branch '$BRANCH' removed.\"}"
+log_exit 0 "block"
+hook_output_block "Branch '$BRANCH' removed."
 exit 0

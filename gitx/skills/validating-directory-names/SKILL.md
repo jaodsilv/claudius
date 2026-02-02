@@ -1,8 +1,8 @@
 ---
-name: gitx:validating-directory-names
 description: >-
   Validates custom directory names for worktrees. Use when users provide custom
   names for worktree directories to ensure filesystem compatibility.
+user-invocable: false
 allowed-tools: Bash(git worktree:*)
 model: sonnet
 ---

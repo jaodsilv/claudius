@@ -4,7 +4,9 @@ description: >-
   Invoked when creating git commits or creating PRs.
   Use when needing project-specific scopes, custom types, or non-standard rules.
 allowed-tools: Read, Grep, Glob
-model: sonnet
+model: opus
+user-invocable: false
+context: fork
 ---
 
 # Committing Conventionally
@@ -91,6 +93,29 @@ Before committing, verify:
 | Fix typo in docs | `docs` | Documentation, not code |
 | Rename variable for clarity | `refactor` | Code change, same behavior |
 | Add missing type annotation | `style` | Formatting/style, no logic change |
+
+## Generating a Commit Message
+
+Consider the following information:
+
+- Task or Issue: You may have received in the input a description of the task performed or issue fixed within `<task>` tags. If so, use it to generate a commit message instead of the staged files.
+- Staged files: If the Task or Issue was not provided, use the Bash tool to run the command `git diff --cached`.
+- Recent Commit: 
+  <recent-commits>
+  !`git log -n 5 --format="## Commit %h%n%n%B%n"`
+  </recent-commits>
+
+Generate and return a commit message following the Conventional Commits specification and the custom rules defined in this skill and considering recent commits and either the task description or the staged files.
+
+### Output Format
+
+Output using the following format
+
+```markdown
+<commit-message>
+[Generated Commit message]
+</commit-message>
+```
 
 ## Reference
 

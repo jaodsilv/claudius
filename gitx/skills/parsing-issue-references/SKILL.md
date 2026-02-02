@@ -1,8 +1,8 @@
 ---
-name: gitx:parsing-issue-references
 description: >-
   Parses issue references from various formats into normalized issue numbers.
   Use when processing issue arguments, branch names, or PR bodies for issue linkage.
+user-invocable: false
 allowed-tools: []
 model: haiku
 ---

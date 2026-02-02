@@ -1,8 +1,8 @@
 ---
-name: gitx:validating-comments
 description: >-
   Validates comment content before posting to GitHub. Use when posting comments
   to issues or PRs to ensure compliance with size limits and content requirements.
+user-invocable: false
 allowed-tools: AskUserQuestion
 model: sonnet
 ---

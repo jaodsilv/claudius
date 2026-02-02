@@ -2,6 +2,9 @@
 # Handler for /gitx:next-issue command
 # Verify 1+ issues, pick issue, block always
 
+# Source hook output
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Next-Issue Handler"
 
 log_info "Checking for open issues..."
@@ -10,8 +13,8 @@ log_debug "ISSUE_COUNT" "$ISSUE_COUNT"
 
 if [[ "$ISSUE_COUNT" -eq 0 ]]; then
   log_info "No open issues found"
-  log_exit 0 "no issues - block with JSON"
-  echo '{"decision": "block", "reason": "No open issues found."}'
+  log_exit 0 "no issues - block"
+  hook_output_block "No open issues found."
   exit 0
 fi
 
@@ -42,11 +45,11 @@ if [[ -n "$ISSUE" ]]; then
   log_info "Selected issue #$NUMBER: $TITLE"
   # Get issue details for the reason
   ISSUE_BODY=$(gh issue view "$NUMBER" --json body,labels,assignees --jq '{body: .body[0:200], labels: [.labels[].name], assignees: [.assignees[].login]}' 2>/dev/null || echo "{}")
-  log_exit 0 "block with JSON"
-  echo "{\"decision\": \"block\", \"reason\": \"Next issue: #$NUMBER - $TITLE\"}"
+  log_exit 0 "block"
+  hook_output_block "Next issue: #$NUMBER - $TITLE"
   exit 0
 fi
 
-log_exit 0 "no issues found - block with JSON"
-echo '{"decision": "block", "reason": "No open issues found."}'
+log_exit 0 "no issues found - block"
+hook_output_block "No open issues found."
 exit 0

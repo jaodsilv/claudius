@@ -1,7 +1,7 @@
 ---
-name: gitx:getting-default-branch
 description: >-
   Gets the default branch name and path from the git worktree list.
+user-invocable: false
 allowed-tools: Bash(scripts/get-default-branch.sh)
 model: sonnet
 ---

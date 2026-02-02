@@ -1,10 +1,10 @@
 ---
-name: gitx:categorizing-review-concerns
 description: >-
   Categorizes potential review concerns by priority and type. Use when preparing
   PRs for review or when analyzing review feedback patterns.
 allowed-tools: []
 model: sonnet
+user-invocable: false
 ---
 
 # Categorizing Review Concerns

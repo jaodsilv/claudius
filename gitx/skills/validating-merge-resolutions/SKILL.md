@@ -1,19 +1,26 @@
 ---
-name: gitx:validating-merge-resolutions
 description: >-
   Provides validation checklist and patterns for merge/rebase conflict
   resolutions. Use when checking resolved files before continuing git operations.
 allowed-tools: Bash(scripts/validate-resolution.sh:*)
 model: sonnet
+user-invocable: false
+context: fork
 ---
 
 # Validating Merge Resolutions
 
 Validation checklist for conflict resolutions before continuing operations.
 
+Using the Bash tool run:
+
+```bash
+scripts/validate-resolution.sh $ARGUMENTS
+```
+
 ## Usage
 
-Run the validation script (auto-detects project language):
+Run the validation script (empty $ARGUMENTS, auto-detects project language):
 
 ```bash
 scripts/validate-resolution.sh

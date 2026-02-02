@@ -1,8 +1,8 @@
 ---
-name: gitx:selecting-last-responses
 description: >-
   Retrieves and presents recent Claude responses for selection. Use when users
   want to post previous responses to issues or PRs via --last flag.
+user-invocable: false
 allowed-tools: AskUserQuestion
 model: sonnet
 ---

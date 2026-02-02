@@ -1,9 +1,9 @@
 ---
-name: gitx:rebasing-and-merging
 description: >-
   Performs rebase or merge operations with auto-stash and conflict detection.
   Use when rebasing or merging branches with deterministic workflow and LLM
   fallback only for conflict resolution.
+user-invocable: false
 allowed-tools: Bash(scripts/rebase-merge-common.sh:*)
 model: sonnet
 ---

@@ -2,24 +2,29 @@
 # Handler for /gitx:rebase command
 # Attempt rebase with sync, only run LLM if conflicts
 
+# Source libraries for validation and output
+source "$SCRIPTS_DIR/lib/args-validator.sh"
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Rebase Handler"
 log_debug "ARGS" "$ARGS"
 
-BASE="main"
-NO_STASH=false
 STASHED=false
 
-if [[ "$ARGS" =~ --base[[:space:]]+([^[:space:]]+) ]]; then
-  BASE="${BASH_REMATCH[1]}"
-fi
-if [[ "$ARGS" =~ --no-stash ]]; then
+# Use get_flag_value for --base
+BASE=$(get_flag_value "$ARGS" "--base")
+[[ -z "$BASE" ]] && BASE="main"
+
+# Use has_flag for --no-stash
+NO_STASH=false
+if has_flag "$ARGS" "--no-stash"; then
   NO_STASH=true
 fi
 log_debug "BASE" "$BASE"
 log_debug "NO_STASH" "$NO_STASH"
 
-CURRENT=$(git -C "$WORKTREE" branch --show-current)
-log_debug "CURRENT" "$CURRENT"
+# Use CURRENT_BRANCH from parent (exported by init())
+log_debug "CURRENT_BRANCH" "$CURRENT_BRANCH"
 
 # Check for dirty worktree
 DIRTY_COUNT=$(git -C "$WORKTREE" status --porcelain | wc -l)
@@ -58,8 +63,8 @@ if git -C "$WORKTREE" rebase "$BASE" 2>&1; then
     log_info "Popping stash..."
     git -C "$WORKTREE" stash pop
   fi
-  log_exit 0 "rebase successful - block with JSON"
-  echo '{"decision": "block", "reason": "Rebase successful. Pushed to remote."}'
+  log_exit 0 "rebase successful - block"
+  hook_output_block "Rebase successful. Pushed to remote."
   exit 0
 else
   log_warn "Rebase has conflicts, letting LLM handle"

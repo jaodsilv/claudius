@@ -2,16 +2,17 @@
 # Handler for /gitx:pr command
 # Validate PR doesn't already exist (creating new PR)
 
+source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_section "PR Handler"
 
-CURRENT=$(git -C "$WORKTREE" branch --show-current)
-log_debug "CURRENT_BRANCH" "$CURRENT"
+# Use CURRENT_BRANCH from parent (exported by init())
+log_debug "CURRENT_BRANCH" "$CURRENT_BRANCH"
 
-log_info "Checking if PR already exists for branch '$CURRENT'..."
-if gh pr view "$CURRENT" &>/dev/null; then
+log_info "Checking if PR already exists for branch '$CURRENT_BRANCH'..."
+if gh pr view "$CURRENT_BRANCH" &>/dev/null; then
   log_warn "PR already exists"
   log_exit 2 "PR exists"
-  echo "PR already exists for branch '$CURRENT'. Use /gitx:update-pr instead." >&2
+  hook_output_block "PR already exists for branch '$CURRENT_BRANCH'. Use /gitx:update-pr instead."
   exit 2
 fi
 
