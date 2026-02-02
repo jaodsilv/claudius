@@ -1,6 +1,7 @@
 ---
 description: Starts a review loop orchestration for iterative code review and fixes
-argument-hint: [--config <path>] [--reviewer <agent>] [--developer <agent>] [options]
+argument-hint: "[--config <path>] [--reviewer <agent>] [--developer <agent>] [options]"
+user-invocable: true
 model: sonnet
 tools: Task, Read, AskUserQuestion
 skills:

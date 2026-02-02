@@ -1,8 +1,8 @@
 ---
-name: review-loop:extending-loop-metadata
 description: >-
   Extends gitx PR metadata with review-loop orchestration fields. Use when
   initializing, pausing, resuming, or completing a review loop session.
+user-invocable: false
 version: 1.0.0
 dependencies:
   - gitx:managing-pr-metadata

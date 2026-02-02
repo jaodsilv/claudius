@@ -1,6 +1,7 @@
 ---
 description: Resumes a paused review loop session with optional config overrides
-argument-hint: [--worktree <path>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [--max-rounds <n>]
+argument-hint: "[--worktree <path>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [--max-rounds <n>]"
+user-invocable: true
 model: sonnet
 tools: Task, Read, AskUserQuestion, Glob
 skills:

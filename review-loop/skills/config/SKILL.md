@@ -1,6 +1,7 @@
 ---
 description: Interactive wizard to configure review-loop for project or user level
-argument-hint: [--project | --user] [--edit]
+argument-hint: "[--project | --user] [--edit]"
+user-invocable: true
 model: sonnet
 tools: Read, Write, AskUserQuestion, Glob, Bash
 skills:
