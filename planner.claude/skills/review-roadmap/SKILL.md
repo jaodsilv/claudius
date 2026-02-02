@@ -1,7 +1,8 @@
 ---
 description: Reviews roadmaps with multi-agent orchestration against a goal. Use for validating roadmap alignment.
+argument-hint: "<goal> [--roadmap-path <path>] [--mode <quick|thorough>]"
+user-invocable: true
 allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TodoWrite
-argument-hint: <goal> [--roadmap-path <path>] [--mode <quick|thorough>]
 model: opus
 ---
 

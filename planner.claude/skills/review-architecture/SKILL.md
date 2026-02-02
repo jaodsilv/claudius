@@ -1,7 +1,8 @@
 ---
 description: Reviews architecture decisions with multi-agent orchestration. Use for validating technical designs against goals.
+argument-hint: "<goal|requirements-path> [--architecture-path <path>] [--mode <quick|thorough>]"
+user-invocable: true
 allowed-tools: Task, Read, Glob, Grep, WebSearch, Skill, AskUserQuestion, TodoWrite
-argument-hint: <goal|requirements-path> [--architecture-path <path>] [--mode <quick|thorough>]
 model: opus
 ---
 

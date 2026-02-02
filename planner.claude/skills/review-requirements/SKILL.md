@@ -1,7 +1,8 @@
 ---
 description: Reviews requirements quality with multi-agent orchestration. Use for validating completeness and testability.
+argument-hint: "<goal|roadmap-path> [--requirements-path <path>] [--mode <quick|thorough>]"
+user-invocable: true
 allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TodoWrite
-argument-hint: <goal|roadmap-path> [--requirements-path <path>] [--mode <quick|thorough>]
 model: opus
 ---
 

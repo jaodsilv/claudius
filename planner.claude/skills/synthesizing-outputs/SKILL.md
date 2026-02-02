@@ -3,6 +3,7 @@ description: >-
   Provides multi-source synthesis methodology for merging findings from multiple
   agents. Use when combining review findings, ideation outputs, or other
   multi-perspective analyses into unified, prioritized recommendations.
+user-invocable: false
 model: sonnet
 ---
 

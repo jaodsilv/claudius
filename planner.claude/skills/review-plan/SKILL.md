@@ -1,7 +1,8 @@
 ---
 description: Reviews plan files with multi-agent orchestration. Use for comprehensive plan quality analysis.
+argument-hint: "<plan-path> [--goal <goal>] [--mode <quick|thorough>]"
+user-invocable: true
 allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TodoWrite
-argument-hint: <plan-path> [--goal <goal>] [--mode <quick|thorough>]
 model: opus
 ---
 
