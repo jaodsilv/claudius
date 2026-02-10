@@ -1,14 +1,6 @@
 #!/bin/bash
-# PostToolUse/Stop dual-mode dispatcher for gitx skills
+# PostToolUse dispatcher for gitx skills
 # Handles looping for next-turn and address-ci commands
-#
-# Detection:
-#   - tool_input present → PostToolUse event
-#   - transcript_path present → Stop event
-#
-# Output format:
-#   - Stop: {"decision": "block", "reason": "..."}
-#   - PostToolUse: {"decision": "block", "reason": "...", "hookSpecificOutput": {...}}
 set -uo pipefail
 
 # ============================================================================
@@ -26,14 +18,14 @@ source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"
 source "$LIBS_DIR/args-validator.sh"
 source "$LIBS_DIR/hook-output.sh"
-log_init "post-tool"
+log_init "post-skill"
 
 # PostToolUse event - has tool_input field
 export HOOK_EVENT_TYPE="PostToolUse"
 
 init
 
-$NEXT_TURN = ""
+NEXT_TURN=""
 # Dispatch based on command
 log_section "Command Dispatch"
 case "$COMMAND" in
@@ -41,19 +33,19 @@ case "$COMMAND" in
     log_section "Address-CI Stop Hook"
 
     # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
-    $NEXT_TURN = "CI-PENDING"
+    NEXT_TURN="CI-PENDING"
     ;;
   review)
     log_section "Review Stop Hook"
 
     # Set turn to AUTHOR (waiting for author to read and respond to the review)
-    $NEXT_TURN = "AUTHOR"
+    NEXT_TURN="AUTHOR"
     ;;
   address-review)
     log_section "Address-Review Stop Hook"
 
     # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
-    $NEXT_TURN = "CI-PENDING"
+    NEXT_TURN="CI-PENDING"
     ;;
   *)
     log_info "Not a looping command: $COMMAND"

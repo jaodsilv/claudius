@@ -18,7 +18,7 @@ source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"
 source "$LIBS_DIR/args-validator.sh"
 source "$LIBS_DIR/hook-output.sh"
-log_init "pre-tool"
+log_init "pre-skill"
 
 # Set hook event type for output formatting
 export HOOK_EVENT_TYPE="PreToolUse"

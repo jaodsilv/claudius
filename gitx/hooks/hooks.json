@@ -26,11 +26,21 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Skill|Task",
+        "matcher": "Skill",
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-pre-tool.sh",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-pre-skill.sh",
+            "timeout": 660
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-pre-task.sh",
             "timeout": 660
           }
         ]
@@ -49,11 +59,21 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "Skill|Task",
+        "matcher": "Skill",
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-post-tool.sh",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-post-skill.sh",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-post-task.sh",
             "timeout": 30
           }
         ]
