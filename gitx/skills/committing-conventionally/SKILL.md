@@ -6,7 +6,6 @@ description: >-
 allowed-tools: Read, Grep, Glob
 model: opus
 user-invocable: false
-context: fork
 ---
 
 # Committing Conventionally
@@ -31,48 +30,12 @@ Beyond standard types, this project uses:
 3. **Scope Required**: Always use scope for any change
 4. **Body for Non-Trivial**: Include body explaining "why" for any change > 10 lines
 
-## User or project-defined Commit Types
+## Project-Specific Conventions
 
-Look for a file called `commit-conventions.yaml` in the .claude folder of the repository or the of the user's home directory:
+If commit conventions are provided in the context (within `<commit-conventions>` tags),
+apply those rules and types alongside the defaults defined here.
 
-- ~/.claude/commit-conventions.yaml
-- .claude/commit-conventions.yaml
-
-If it exists, parse them, and use AskUserQuestion to ask if you are confused or instructions are conflicting
-
-### `commit-conventions.yaml` Format
-
-```yaml
-rules:
-  - title: <title>
-    description: <description>
-types:
-  - type: <type>
-    scope: <restricted-scope>
-    description: <description>
-    examples:
-      - <example>
-```
-
-Example using the rules from this file:
-
-```yaml
-rules:
-  - title: No Co-Authors
-    description: Do not add "Co-Authored-By" or similar footers
-  - title: Issue References
-    description: Use `Fixes #123` or `Closes #123` in footer
-  - title: Scope Required
-    description: Always use scope for any change
-  - title: Body for Non-Trivial
-    description: Include body explaining "why" for any change > 10 lines
-types:
-  - type: wip
-    scope: null
-    description: Work in progress (squash before merging)
-    examples:
-      - "wip(feature-x): initial implementation"
-```
+See `references/conventions-yaml-schema.md` for the YAML schema.
 
 ## Validation Checklist
 

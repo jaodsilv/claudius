@@ -6,6 +6,7 @@ set -uo pipefail
 
 # Get script directory and source logging
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
+HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 source "$SCRIPTS_DIR/lib/logging.sh"
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_init "commit-push-inject-diff"
@@ -148,6 +149,28 @@ log_section "Output"
 if [[ -n "$DIFFS" ]]; then
   # Prepare context string
   CONTEXT="Changed Files with Diffs:\n\n$DIFFS"
+
+  # Inject commit conventions for commit-writer agent or committing-conventionally skill
+  NEEDS_CONVENTIONS=false
+  if [[ "$TOOL_NAME" == "Task" ]]; then
+    TASK_AGENT=$(echo "$TOOL_INPUT" | jq -r '.subagent_type // ""')
+    [[ "$TASK_AGENT" == "gitx:commit:commit-writer" ]] && NEEDS_CONVENTIONS=true
+  elif [[ "$TOOL_NAME" == "Skill" ]]; then
+    SKILL=$(echo "$TOOL_INPUT" | jq -r '.skill // ""')
+    [[ "$SKILL" == "gitx:committing-conventionally" ]] && NEEDS_CONVENTIONS=true
+  fi
+
+  if [[ "$NEEDS_CONVENTIONS" == "true" ]]; then
+    for conv_path in ".claude/commit-conventions.yaml" "$HOME/.claude/commit-conventions.yaml"; do
+      if [[ -f "$conv_path" ]]; then
+        CONV_CONTENT=$(cat "$conv_path")
+        CONTEXT+="\n\n<commit-conventions>\n$CONV_CONTENT\n</commit-conventions>"
+        log_info "Injected commit conventions from $conv_path"
+        break
+      fi
+    done
+  fi
+
   log_info "Injecting diffs (${#DIFFS} chars)"
   hook_output_context "$CONTEXT"
 else

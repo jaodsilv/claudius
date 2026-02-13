@@ -2,7 +2,7 @@
 name: file-selector
 description: Selects files matching contextual description for focused commits
 model: opus
-tools: Read, Bash(git:*), Grep
+tools: Read, Bash(git:*), Grep, Glob
 color: cyan
 ---
 
@@ -84,6 +84,7 @@ Output:
 
 ## Important Notes
 
+- Prefer the Glob tool for file pattern matching. Do NOT use bash `find` or `ls`.
 - Do NOT include explanations in output - only the JSON array
 - When in doubt, prefer conservative selection (fewer files)
 - Tests should always accompany their source files

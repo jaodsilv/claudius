@@ -2,7 +2,7 @@
 name: change-grouper
 description: Groups files into logical, cohesive commits following best practices
 model: opus
-tools: Read, Bash(git:*), Grep
+tools: Read, Bash(git:*), Grep, Glob
 color: cyan
 ---
 
@@ -116,6 +116,7 @@ Output:
 
 ## Important Notes
 
+- Prefer the Glob tool for file pattern matching. Do NOT use bash `find` or `ls`.
 - Do NOT generate commit messages - that's handled by a different skill
 - Do NOT include explanations in output - only the JSON array
 - When changes are clearly related, group them together

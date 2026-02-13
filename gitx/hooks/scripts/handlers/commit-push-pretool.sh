@@ -56,7 +56,7 @@ case "$TOOL_NAME" in
     log_debug "AGENT_TYPE" "$AGENT_TYPE"
 
     case "$AGENT_TYPE" in
-      gitx:commit:file-selector|gitx:commit:change-grouper)
+      gitx:commit:file-selector|gitx:commit:change-grouper|gitx:commit:commit-writer)
         # Inject diffs for file selection/grouping
         log_info "Routing to inject-diff handler for agent"
         bash "$SCRIPTS_DIR/handlers/commit-push-inject-diff.sh" <<< "$INPUT"
