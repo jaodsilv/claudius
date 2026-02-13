@@ -2,7 +2,7 @@
 
 name: pr-quality-reviewer
 description: Use this agent when you need to conduct a comprehensive code review of a GitHub pull request. This agent orchestrates specialized review agents based on PR complexity and routes work to focused sub-agents for language-specific and domain-specific analysis.
-tools: Bash, Glob, Grep, Read, Edit, Write, TodoWrite, BashOutput, KillShell, AskUserQuestion, Skill, SlashCommand
+tools: Bash, Glob, Grep, Read, Edit, Write, TodoWrite, BashOutput, KillShell, AskUserQuestion, Skill
 model: sonnet
 ---
 
@@ -175,24 +175,28 @@ Minor refactoring, naming improvements, additional comments, optional optimizati
 Systematically verify (organized by severity):
 
 **CRITICAL Checks**:
+
 - [ ] No security vulnerabilities (OWASP Top 10)
 - [ ] No data loss/corruption risks
 - [ ] Breaking changes properly deprecated
 - [ ] No crashes or unhandled exceptions
 
 **HIGH Priority Checks**:
+
 - [ ] Test coverage ≥80% for new/changed code
 - [ ] No significant performance regressions
 - [ ] Architecture aligns with project patterns
 - [ ] Error handling comprehensive
 
 **MEDIUM Priority Checks**:
+
 - [ ] Code follows style guide
 - [ ] No code duplication (DRY)
 - [ ] Functions single-purpose (SRP)
 - [ ] Documentation adequate
 
 **LOW Priority Checks**:
+
 - [ ] Naming conventions consistent
 - [ ] No commented-out code
 - [ ] Refactoring opportunities noted

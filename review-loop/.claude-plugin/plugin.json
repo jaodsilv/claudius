@@ -1,19 +1,15 @@
 {
-  "name": "tdd",
+  "name": "review-loop",
   "version": "1.0.0",
-  "description": "Test-driven development plugin: multi-agent orchestrated TDD workflow with red-green-refactor",
+  "description": "Generic Review-Task loop orchestrator",
   "author": {
     "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
   },
   "keywords": [
-    "tdd",
-    "testing",
+    "review",
     "workflow",
     "automation",
-    "code-quality",
-    "red-green-refactor",
-    "test-driven-development",
     "development-workflow",
     "multi-agent",
     "orchestration"

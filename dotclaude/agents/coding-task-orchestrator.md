@@ -2,7 +2,7 @@
 
 name: coding-task-orchestrator
 description: Orchestrate coding tasks with TDD workflow. Manages git worktree setup, test evaluation, TDD approach selection, implementation, commits, and PR management. Use for new features, bug fixes, or refactoring.
-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TodoWrite, Skill, SlashCommand
+tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TodoWrite, Skill
 model: sonnet
 
 ---

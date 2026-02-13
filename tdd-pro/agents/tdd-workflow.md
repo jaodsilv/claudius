@@ -1,21 +1,17 @@
 ---
-name: tdd-pro:tdd-workflow
+name: tdd:tdd-workflow
 description: >-
   Provides a comprehensive test-driven development workflow with red-green-refactor
   cycle, test isolation, and continuous integration practices.
+  This skill should be invoked when:
+  1. Starting a new coding task
+  2. Working on feature development
+  3. Fixing bugs that require new tests
+  4. Planning development approach
+  5. Reviewing code quality and completeness
 ---
 
 # TDD Workflow
-
-## When to Use This Skill
-
-This skill should be invoked when:
-
-1. Starting a new coding task
-2. Working on feature development
-3. Fixing bugs that require new tests
-4. Planning development approach
-5. Reviewing code quality and completeness
 
 ## Overview
 
@@ -62,6 +58,16 @@ Every major step follows this pattern:
 ## Detailed Workflow
 
 ### Phase 0: Initial Setup
+
+#### Task state checking
+
+### Phase 0: Initial Setup
+
+Using the Task tool run the agent `gitx:worktree:creator` with the following context:
+
+```text
+Issue #[number] - [title]
+```
 
 **Purpose:** Isolate work in dedicated git worktree
 
