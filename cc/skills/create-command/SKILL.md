@@ -1,6 +1,6 @@
 ---
 description: Creates slash commands when adding plugin functionality. Use for new features.
-argument-hint: "<command-name> [--plugin <plugin-path>]"
+argument-hint: "[[--command-name] <command-name>] [--plugin <plugin-path>]"
 user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet

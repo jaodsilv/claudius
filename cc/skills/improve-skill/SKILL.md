@@ -1,6 +1,6 @@
 ---
 description: Improves skills when progressive disclosure or triggers need work.
-argument-hint: <skill-path> [--focus "<aspect>"]
+argument-hint: "[[--skill-path] <skill-path>] [--focus \"<aspect>\"]"
 user-invocable: true
 allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TodoWrite
 model: sonnet

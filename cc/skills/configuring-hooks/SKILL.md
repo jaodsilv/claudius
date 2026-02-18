@@ -3,6 +3,7 @@ description: >-
   Configures Claude Code plugin hooks with proper error handling, JSON output,
   and lifecycle patterns. Use when creating PreToolUse, PostToolUse, or other
   hooks. Covers exit codes, output capture, and cross-platform scripting.
+user-invocable: false
 version: 1.0.0
 allowed-tools: Read
 model: sonnet

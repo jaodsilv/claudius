@@ -1,6 +1,6 @@
 ---
 description: Bumps plugin versions when PR changes affect plugins. Use for release preparation.
-argument-hint: "[--plugins <list>] [--delta <x.y.z>] [--scan] [--commit | --no-commit] [--worktree <path>]"
+argument-hint: "[--plugins <list>] [--delta <x.y.z>] [--scan] [--commit | --no-commit] [--worktree <path>] [--no-marketplace]"
 user-invocable: true
 allowed-tools: []
 model: haiku

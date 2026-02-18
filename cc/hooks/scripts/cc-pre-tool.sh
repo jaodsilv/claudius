@@ -10,10 +10,16 @@ set -uo pipefail
 # export CC_LOG_VERBOSE=1    # Also print to stderr
 # ============================================================================
 
-# Get script directory and source logging
+# Get script directory and source libraries
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
-source "$SCRIPTS_DIR/lib/logging.sh"
-source "$SCRIPTS_DIR/lib/args-validator.sh"
+LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="CC"
+_PLUGIN_VALUE_FLAGS=(--plugin --plugins --delta --worktree --focus)
+
+source "$LIBS_DIR/logging.sh"
+source "$LIBS_DIR/args-validator.sh"
 log_init "pre-tool"
 
 # Set hook event type for output formatting

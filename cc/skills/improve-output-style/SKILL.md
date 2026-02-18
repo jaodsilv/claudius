@@ -1,6 +1,6 @@
 ---
 description: Improves output-styles when formatting rules need refinement.
-argument-hint: "<output-style-path> [--focus \"<aspect>\"]"
+argument-hint: "[[--output-style-path] <output-style-path>] [--focus \"<aspect>\"]"
 user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet

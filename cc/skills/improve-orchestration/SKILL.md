@@ -1,6 +1,6 @@
 ---
 description: Improves orchestrations when workflow coordination needs optimization.
-argument-hint: "<orchestration-path> [--focus \"<aspect>\"]"
+argument-hint: "[[--orchestration-path] <orchestration-path>] [--focus \"<aspect>\"]"
 user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet

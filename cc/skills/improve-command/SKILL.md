@@ -1,6 +1,6 @@
 ---
 description: Improves commands when workflow or structure needs enhancement.
-argument-hint: "<command-path> [--focus \"<aspect>\"]"
+argument-hint: "[[--command-path] <command-path>] [--focus \"<aspect>\"]"
 user-invocable: true
 allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
 model: sonnet
