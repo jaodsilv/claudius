@@ -161,10 +161,16 @@ if [[ -n "$DIFFS" ]]; then
   fi
 
   if [[ "$NEEDS_CONVENTIONS" == "true" ]]; then
+    # Determine model for inject_or_read strategy
+    local _conv_model="sonnet"
+    if [[ "$TOOL_NAME" == "Task" ]]; then
+      _conv_model=$(echo "$TOOL_INPUT" | jq -r '.model // "sonnet"')
+    fi
+
     for conv_path in ".claude/commit-conventions.yaml" "$HOME/.claude/commit-conventions.yaml"; do
       if [[ -f "$conv_path" ]]; then
-        CONV_CONTENT=$(cat "$conv_path")
-        CONTEXT+="\n\n<commit-conventions>\n$CONV_CONTENT\n</commit-conventions>"
+        CONV_CONTENT=$(inject_or_read "$conv_path" "commit-conventions" "$_conv_model")
+        CONTEXT+="\n\n$CONV_CONTENT"
         log_info "Injected commit conventions from $conv_path"
         break
       fi

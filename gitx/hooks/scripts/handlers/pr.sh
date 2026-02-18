@@ -17,6 +17,7 @@ if gh pr view "$CURRENT_BRANCH" &>/dev/null; then
 fi
 
 log_info "No existing PR, proceeding with creation"
+hook_output_context "<worktree>$WORKTREE</worktree>"
 echo "No existing PR. Proceeding with PR creation."
 log_exit 0 "proceed"
 exit 0

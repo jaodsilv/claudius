@@ -94,22 +94,22 @@ query($owner: String!, $repo: String!, $number: Int!) {
 }'
 
 reviews_result=$(gh api graphql -f query="$reviews_query" -f owner="$REPO_OWNER" -f repo="$REPO_NAME" -F number="$PR_NUMBER" 2>/dev/null | tr -d '\r')
-reviews=$(echo "$reviews_result" | jq '[.data.repository.pullRequest.reviews.nodes[] | select(.isMinimized == false) | {nodeid: .id, body: .body, timestamp: .submittedAt, commitOid: .commit.oid}]' 2>/dev/null)
+reviews=$(echo "$reviews_result" | jq '[.data.repository.pullRequest.reviews.nodes[] | select(.isMinimized == false) | {nodeid: .id, body: .body, timestamp: .submittedAt, commitOid: .commit.oid}]' 2>/dev/null | tr -d '\r')
 
 if [[ -z "$reviews" ]] || [[ "$reviews" == "null" ]]; then
   reviews="[]"
 fi
 
 # Sort reviews by timestamp ascending
-reviews=$(echo "$reviews" | jq 'sort_by(.timestamp)')
+reviews=$(echo "$reviews" | jq 'sort_by(.timestamp)' | tr -d '\r')
 
 # Calculate latest reviewed commit and review count
 latest_reviewed_commit=""
-reviews_length=$(echo "$reviews" | jq 'length')
+reviews_length=$(echo "$reviews" | jq 'length' | tr -d '\r')
 
 review_count=0
 if [[ "$reviews_length" -gt 0 ]]; then
-  latest_review_body=$(echo "$reviews" | jq -r '.[-1].body // ""')
+  latest_review_body=$(echo "$reviews" | jq -r '.[-1].body // ""' | tr -d '\r')
   round_match=$(echo "$latest_review_body" | head -5 | grep -oiE 'Round[[:space:]]*[0-9]+' | head -1 | grep -oE '[0-9]+')
 
   if [[ -n "$round_match" ]]; then
@@ -120,7 +120,7 @@ if [[ "$reviews_length" -gt 0 ]]; then
 fi
 
 if [[ "$reviews_length" -gt 0 ]]; then
-  latest_review_commit=$(echo "$reviews" | jq -r '.[-1].commitOid // empty')
+  latest_review_commit=$(echo "$reviews" | jq -r '.[-1].commitOid // empty' | tr -d '\r')
 
   if [[ -n "$latest_review_commit" ]]; then
     latest_reviewed_commit=$(git -C "$WORKTREE" log "$latest_review_commit^" --max-count=1 --format="%H" 2>/dev/null || echo "")
@@ -143,9 +143,9 @@ if [[ "$review_count" -gt 0 ]]; then
 fi
 
 if [[ -n "$oldest_review_timestamp" ]]; then
-  filtered_comments=$(echo "$comments_json" | jq --arg oldest "$oldest_review_timestamp" '[.[] | select(.createdAt > $oldest) | {nodeid: .id, author: .author.login, timestamp: .createdAt, body: .body}]')
+  filtered_comments=$(echo "$comments_json" | jq --arg oldest "$oldest_review_timestamp" '[.[] | select(.createdAt > $oldest) | {nodeid: .id, author: .author.login, timestamp: .createdAt, body: .body}]' | tr -d '\r')
 else
-  filtered_comments=$(echo "$comments_json" | jq '[.[] | {nodeid: .id, author: .author.login, timestamp: .createdAt, body: .body}]')
+  filtered_comments=$(echo "$comments_json" | jq '[.[] | {nodeid: .id, author: .author.login, timestamp: .createdAt, body: .body}]' | tr -d '\r')
 fi
 
 if [[ -z "$filtered_comments" ]] || [[ "$filtered_comments" == "null" ]]; then
@@ -158,7 +158,8 @@ yq -i ".latestReviewedCommit = $(if [[ -z "$latest_reviewed_commit" ]]; then ech
 yq -i ".reviewCount = $review_count" "$METADATA_FILE"
 yq -i ".latestComments = $filtered_comments" "$METADATA_FILE"
 
-# Delete review.md to prevent stale content on next run
+# Backup and delete review.md to prevent stale content on next run
+cp -f "$REVIEW_FILE" "${REVIEW_FILE}.bkp" 2>/dev/null
 rm -f "$REVIEW_FILE"
 
 echo '{"status": "ok", "message": "Review posted and metadata updated"}'

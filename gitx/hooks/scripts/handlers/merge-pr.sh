@@ -51,7 +51,8 @@ if [[ $RESULT -eq 0 ]]; then
   log_info "PR merged successfully"
   log_exit 0 "block"
   source "$SCRIPTS_DIR/lib/hook-output.sh"
-  hook_output_block "PR #$PR_NUM merged successfully!"
+  hook_output_block "<worktree>$WORKTREE</worktree>
+PR #$PR_NUM merged successfully!"
   exit 0
 else
   log_error "Failed to merge PR"

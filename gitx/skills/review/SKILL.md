@@ -1,36 +1,34 @@
 ---
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official to be installed
-argument-hint: "[<worktree>]"
-allowed-tools: Skill, Read, Bash(scripts/post-and-update-review.sh:*)
+user-invocable: true
+argument-hint: "[[--worktree] <worktree>]"
+allowed-tools: Skill, Read, Bash
+context: fork
 model: opus
 ---
 
-## Pre-conditions
+## Step 0: Hook Additional Context Parsing
 
-The pre-command hook has already:
+IGNORE arguments. Instead, parse input from hook additional context looking for the XML tags:
 
-1. Ensured metadata exists (fetched if needed)
-2. Validated turn is REVIEW
-3. Built the review prompt to `.thoughts/pr/review-prompt.txt`
+- `worktree`: store its value in `$worktree`
+- `review-prompt`: store its value in `$review-prompt`, keep it raw, no need to remove the escaping.
 
 ## Step 1: Read Prompt and Execute Review
 
-1. Read the prompt from `.thoughts/pr/review-prompt.txt` (relative to worktree)
-2. Run the external plugin command with the prompt content:
+Use the skill tool to RUN the external plugin command with the prompt content:
 
-   ```
-   /pr-review-toolkit:review-pr <prompt-content>
-   ```
+```markdown
+Skill(/pr-review-toolkit:review-pr $review-prompt)
+```
 
 ## Step 2: Post Review and Update Metadata
 
-Once the review is complete, run the post-and-update script:
+Once the review is complete, Use the bash tool to run the post-and-update script:
 
-```bash
-scripts/post-and-update-review.sh "$worktree"
+```markdown
+Bash(scripts/post-and-update-review.sh "$worktree")
 ```
-
-The `$worktree` path defaults to "." (current directory).
 
 ## Error Handling
 

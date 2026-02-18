@@ -1,6 +1,6 @@
 ---
 description: Comments on a GitHub issue when sharing progress or updates. Use for team communication or documenting work.
-argument-hint: "[<issue>] [<comment> | -l or --last | -sc or --since-commit <hash> | (-c or --single-commit) <hash>]"
+argument-hint: "[[--issue] <issue>] [[--comment] <comment> | -l or --last | -sc or --since-commit <hash> | (-c or --single-commit) <hash>]"
 user-invocable: true
 allowed-tools: Bash(gh issue:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git show:*), Bash(git rev-parse:*), AskUserQuestion, Skill
 model: sonnet

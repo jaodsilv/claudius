@@ -1,6 +1,6 @@
 ---
 description: Create a GitHub issue from informal description
-argument-hint: "<description> [-l <label>+] [-a <assignee>] [-t <template>] [-m <milestone>] [--no-preview]"
+argument-hint: "[[--description] <description>] [-l <label>+] [-a <assignee>] [-t <template>] [-m <milestone>] [--no-preview]"
 user-invocable: true
 allowed-tools: Task
 model: sonnet

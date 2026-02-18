@@ -6,7 +6,7 @@ allowed-tools: Bash(find:*)
 model: sonnet
 context: fork
 user-invocable: true
-argument-hint: "[WORKTREE]"
+argument-hint: "[[--worktree] <worktree>]"
 ---
 
 Find junctions and symlinks in a directory:

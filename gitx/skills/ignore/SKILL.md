@@ -1,6 +1,6 @@
 ---
 description: Add files or patterns to .gitignore when excluding from tracking. Use for build artifacts, secrets, or temp files.
-argument-hint: "[<pattern>]+"
+argument-hint: "[[--pattern] <pattern>]+"
 user-invocable: true
 allowed-tools: AskUserQuestion, Skill(gitx:validating-gitignore-patterns:*)
 model: sonnet

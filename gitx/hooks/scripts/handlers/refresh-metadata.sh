@@ -38,9 +38,8 @@ fi
 FETCH_SCRIPT="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/fetch-pr-metadata.sh"
 
 if [[ "$REFRESH_ALL" == "true" ]]; then
-  # Full refresh - delete and re-fetch
+  # Full refresh - re-fetch (atomic write preserves existing file on failure)
   log_info "Performing full metadata refresh..."
-  rm -f "$METADATA_FILE"
   rm -rf "$WORKTREE/.thoughts/pr/ci"
 
   # Capture fetch output (suppress from stdout, we'll include in block reason)

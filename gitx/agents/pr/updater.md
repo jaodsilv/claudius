@@ -23,36 +23,22 @@ Get repository state:
 
 - Current branch: !`git branch --show-current`
 - Main branch and path: Use the Skill `gitx:getting-default-branch` with no arguments
-- Set `$worktree` to current directory (`.`)
 
-### Ensure Metadata Exists
+### Determine Worktree
 
-Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
+Parse `<worktree>` from the input. Set `$worktree` to its value.
 
-If the skill indicates `needs_fetch`:
+### Read PR Metadata from Additional Context
 
-1. Run Task(gitx:pr:metadata-fetcher) with worktree
-2. Retry ensure
+Parse the `<pr-metadata>` block from the Additional Context to extract:
 
-### Get PR details
+- `<pr>`: Set the `$pr` variable (PR number)
+- `<branch>`: Set the `$branch` variable
+- `<base>`: Set the `$base` variable
+- `<title>`: Set the `$title` variable
+- `<description>`: Set the `$description` variable
 
-Use the Read tool to read the PR metadata file at `.thoughts/pr/metadata.yaml` (in current directory).
-
-If the file does not exist or has `noPr: true` or `error: true`:
-
-- Report: "No PR metadata found. Use `/gitx:pr` to create a PR."
-- Exit
-
-Parse the YAML file and extract:
-
-- `pr`: PR number
-- `branch`: PR branch
-- `base`: PR base
-- `worktree`: PR worktree
-- `title`: PR title
-- `description`: PR description
-
-Ignore other fields, they are not relevant to our task.
+The hook guarantees `<pr-metadata>` contains valid data (blocks if no PR exists).
 
 ## Pre-flight Checks
 

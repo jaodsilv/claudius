@@ -1,10 +1,14 @@
 ---
 name: ci-status-checker
-description: Checks CI status and provides feedback when needed.
+# description: Checks CI status and provides feedback when needed.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
 allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TodoWrite, Write, AskUserQuestion, Skill, Grep, Glob
 model: opus
 ---
+
+# DEPRECATED
+
+This agent has been replaced by the `gitx:ci:*` multi-agent pipeline. Use `/gitx:address-ci` which now orchestrates `gitx:ci:failures-analyses-orchestrator`, `gitx:ci:fix-planner`, and `gitx:ci:fixer` agents.
 
 # CI Status Checker
 
@@ -83,33 +87,18 @@ Mark "Gather PR context" as in_progress.
 
 ### Determine Worktree
 
-If `$worktree` is empty, set it to the current directory (`.`).
+Parse `<worktree>` from the input. If not found, set `$worktree` to the current directory (`.`).
 
-### Ensure Metadata Exists
+### Read PR Metadata from Additional Context
 
-Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
+Parse the `<pr-metadata>` block from the Additional Context to extract:
 
-If the skill indicates `needs_fetch`:
+- `<pr>`: Set the `$pr` variable
+- `<branch>`: Set the `$branch` variable
+- `<ci-status>`: Set the `$ciStatus` variable
+- `<latest-commit>`: Set the `$latestCommit` variable
 
-1. Run Task(gitx:pr:metadata-fetcher) with worktree
-2. Retry ensure
-
-### Read PR Metadata
-
-Use the Read tool to read the PR metadata file at `$worktree/.thoughts/pr/metadata.yaml`.
-
-If the file does not exist or has `noPr: true` or `error: true`:
-
-- Report: "No PR metadata found. Use `/gitx:pr` to create a PR."
-- Exit
-
-Parse the YAML file and extract:
-
-- Set the `$pr` variable to `pr`
-- Set the `$branch` variable to `branch`
-- Set the `$worktree` variable to `worktree`
-- Set the `$ciStatus` variable to `ciStatus`
-- Set the `$latestCommit` variable to `latestCommit`
+The hook guarantees `<pr-metadata>` contains valid data (blocks if no PR exists).
 
 Mark "Gather PR context" as completed.
 

@@ -108,7 +108,7 @@ Build commit pairs json:
 Escape that JSON and store it in `$JSON_COMMIT_PAIRS`. Execute the commit-push script directly:
 
 ```markdown
-Bash(command: "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-execute.sh $JSON_COMMIT_PAIRS")
+Bash("${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-execute.sh $JSON_COMMIT_PAIRS")
 ```
 
 The script will stage files, create commits, push to remote, and return results.

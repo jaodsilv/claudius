@@ -14,8 +14,14 @@ set -uo pipefail
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
 export HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="GITX"
+_PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"
+source "$SCRIPTS_DIR/gitx-helpers.sh"
 source "$LIBS_DIR/args-validator.sh"
 source "$LIBS_DIR/hook-output.sh"
 log_init "post-skill"

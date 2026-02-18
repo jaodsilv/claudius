@@ -111,7 +111,9 @@ fi
 # We must fetch the commit log range for the LLM if -sc or --since-commit is present
 
 log_info "PR #$PR_NUM validated, proceeding"
-hook_output_context "PR: $PR_NUM\nTurn: $TURN\n"
+hook_output_context "<worktree>$WORKTREE</worktree>
+PR: $PR_NUM
+Turn: $TURN"
 echo "PR #$PR_NUM validated. Proceeding."
 log_exit 0 "PR validated"
 exit 0

@@ -1,6 +1,6 @@
 ---
 description: Removes a branch locally and/or remotely when cleaning up. Use for post-merge cleanup or abandoned branches.
-argument-hint: "[<branch>] [-f or --force] [-r or --remove-remote | -ro or --remote-only]"
+argument-hint: "[[--branch] <branch>] [-f or --force] [-r or --remove-remote | -ro or --remote-only]"
 user-invocable: true
 allowed-tools: Task
 model: sonnet

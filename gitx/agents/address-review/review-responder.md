@@ -42,36 +42,19 @@ Mark "Gather PR context" as in_progress.
 
 ### Determine Worktree
 
-If `$worktree` is empty, set it to `$cwd`.
+Parse `<worktree>` from the input. If not found, set `$worktree` to `$cwd`.
 
-### Ensure Metadata Exists
+### Read PR Metadata from Additional Context
 
-Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
+Parse the `<pr-metadata>` block from the Additional Context to extract:
 
-If the skill indicates `needs_fetch`:
+- `<pr>`: Set the `$pr` variable
+- `<branch>`: Set the `$branch` variable
+- `<review-count>`: Set the `$review_count` variable
+- `<resolve-level>`: Set the `$resolve_level_meta` variable (used as fallback if `$resolve_level` not in args)
+- `<latest-reviews>`: If `$review_comments` is empty, set `$review_comments` to this value
 
-1. Run Task(gitx:pr:metadata-fetcher) with worktree
-2. Retry ensure
-
-### Read PR Metadata
-
-Using the Read tool to read the file `$worktree/.thoughts/pr/metadata.yaml` to get the PR metadata.
-
-Set its content to the `$metadata` variable.
-
-If no PR is found (has `noPr: true` or `error: true`):
-
-- Report: "No PR found for current branch"
-- Suggest: Use `/gitx:pr` to create one
-- Exit
-
-If a PR is found:
-
-- Set the `$pr` variable to the PR number `$metadata.pr`
-- Set the `$branch` variable to the PR branch `$metadata.branch`
-- Set the `$worktree` variable to the PR worktree `$metadata.worktree`
-- If `$review_comments` is empty, set the `$review_comments` variable to the existing PR review comments `$metadata.latestReviews`
-- Set the `$review_count` variable to the review count `$metadata.reviewCount`
+The hook guarantees `<pr-metadata>` contains valid data (blocks if no PR exists).
 
 Mark "Gather PR context" as completed.
 

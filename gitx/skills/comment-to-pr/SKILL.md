@@ -1,6 +1,6 @@
 ---
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
-argument-hint: '[<pr>|<worktree>] [<comment> | -l or --last | -sc or --since-commit <hash> | (-c or --single-commit) <hash>] [-r or --review | -rr or --review-response [<text>]] [-f or --force]'
+argument-hint: '[[--pr] <pr> | [--worktree] <worktree>] [[--comment] <comment> | -l or --last | -sc or --since-commit <hash> | (-c or --single-commit) <hash>] [-r or --review | -rr or --review-response [[--text] <text>]] [-f or --force]'
 user-invocable: true
 allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler:comment-handler:*), Skill(gitx:validating-comments:*)
 model: sonnet
@@ -9,6 +9,14 @@ model: sonnet
 # Comment on Pull Request
 
 Add a comment to a GitHub pull request. Delegates complex flows to gitx:comment-handler:comment-handler.
+
+## Step 0: Hook Additional Context Parsing
+
+Parse input from hook additional context looking for the XML tags:
+
+- `worktree`: store its value in `$worktree`
+
+Strip the `--worktree` argument from $ARGUMENTS if present.
 
 ## Parse Arguments
 

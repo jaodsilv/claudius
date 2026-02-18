@@ -1,10 +1,14 @@
 ---
 name: ci-status-fixer
-description: Fixes CI failures when feedback needs addressing. Use for iterating on pull request feedback.
+# description: Fixes CI failures when feedback needs addressing. Use for iterating on pull request feedback.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
 allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TodoWrite, Write, AskUserQuestion, Skill, Grep, Glob, Edit
 model: opus
 ---
+
+# DEPRECATED
+
+This agent has been replaced by the `gitx:ci:*` multi-agent pipeline. Use `/gitx:address-ci` which now orchestrates `gitx:ci:fix-planner` and `gitx:ci:fixer` agents.
 
 # CI Status Fixer
 

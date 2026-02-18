@@ -10,10 +10,14 @@ set -uo pipefail
 # export GITX_LOG_VERBOSE=1    # Also print to stderr
 # ============================================================================
 
-# Get script directory and source logging
+# Get script directory and source libraries
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
 export HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="GITX"
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"
 log_init "pre-task"
@@ -25,6 +29,8 @@ export HOOK_EVENT_TYPE="PreToolUse"
 _RAW_INPUT=$(cat)
 _AGENT_TYPE=$(echo "$_RAW_INPUT" | jq -r '.tool_input.subagent_type // ""')
 
+log_debug "AGENT_TYPE" "$_AGENT_TYPE"
+
 # Early exit if not a gitx agent
 if [[ "$_AGENT_TYPE" != gitx:* ]]; then
   log_exit 0 "non-gitx agent - pass through"
@@ -32,7 +38,6 @@ if [[ "$_AGENT_TYPE" != gitx:* ]]; then
 fi
 
 log_section "Task to Gitx Agent"
-log_debug "AGENT_TYPE" "$_AGENT_TYPE"
 
 case "$_AGENT_TYPE" in
   gitx:address-review:review-responder|gitx:address-review:ci-status-checker|gitx:pr:updater)

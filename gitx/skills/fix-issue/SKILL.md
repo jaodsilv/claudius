@@ -1,6 +1,6 @@
 ---
 description: Orchestrates full fix workflow when addressing a GitHub issue. Use for end-to-end issue resolution with worktree setup.
-argument-hint: "[ISSUE]"
+argument-hint: "[[--issue] <issue>]"
 user-invocable: true
 allowed-tools: Task
 model: sonnet

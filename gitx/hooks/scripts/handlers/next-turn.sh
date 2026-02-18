@@ -37,5 +37,6 @@ log_exit 0 "turn updated"
 
 # Use hookSpecificOutput.additionalContext for proper context injection
 # next-turn does not need to know extra information beyond the turn.
-hook_output_context "--turn $TURN"
+hook_output_context "<worktree>$WORKTREE</worktree>
+--turn $TURN"
 exit 0

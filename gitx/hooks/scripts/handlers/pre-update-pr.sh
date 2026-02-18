@@ -2,6 +2,8 @@
 # Handler for /gitx:update-pr command
 # Validate PR exists
 
+source "$SCRIPTS_DIR/lib/hook-output.sh"
+
 log_section "Update-PR Handler"
 
 log_info "Checking if PR exists for branch '$CURRENT_BRANCH'..."
@@ -13,6 +15,6 @@ if ! gh pr view "$CURRENT_BRANCH" &>/dev/null; then
 fi
 
 log_info "PR exists, proceeding with update"
-echo "PR exists. Proceeding with update."
 log_exit 0 "proceed"
+hook_output_context "<worktree>$WORKTREE</worktree>"
 exit 0

@@ -52,5 +52,9 @@ fi
 PROMPT_FILE="$WORKTREE/.thoughts/pr/review-prompt.txt"
 log_info "Setup complete, prompt at $PROMPT_FILE"
 log_exit 0 "proceed"
-echo "Review setup complete. Prompt ready at $PROMPT_FILE"
+
+# Read prompt content and output as additional context
+REVIEW_CONTENT=$(inject_or_read "$PROMPT_FILE" "review-prompt")
+hook_output_context "<worktree>$WORKTREE</worktree>
+$REVIEW_CONTENT"
 exit 0

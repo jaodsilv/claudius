@@ -36,7 +36,7 @@ write_no_pr() {
     --arg timestamp "$timestamp" \
     '{
       pr: null,
-      branch: $CURRENT_BRANCH,
+      branch: $branch,
       worktree: $worktree,
       noPr: true,
       message: $message,
@@ -412,7 +412,7 @@ jq -n \
   '{
     pr: $pr,
     author: $author,
-    branch: $CURRENT_BRANCH,
+    branch: $branch,
     worktree: $worktree,
     title: $title,
     description: $description,
@@ -433,13 +433,22 @@ jq -n \
     resolveLevel: $resolveLevel,
     createdAt: $timestamp,
     updatedAt: $timestamp
-  }' | yq -P > "$OUTPUT_FILE"
+  }' | yq -P > "$TEMP_DIR/output.yaml"
+
+# Validate the output was written successfully
+if [[ ! -s "$TEMP_DIR/output.yaml" ]]; then
+  echo "error: Failed to generate metadata YAML (empty output)" >&2
+  exit 1
+fi
 
 # Phase 12: Convert multi-line strings to literal block style for readability
 # Step 1: Normalize CRLF to LF (GitHub API sometimes returns \r\n)
-yq -i '(.. | select(tag == "!!str")) |= sub("\r\n"; "\n")' "$OUTPUT_FILE"
+yq -i '(.. | select(tag == "!!str")) |= sub("\r\n"; "\n")' "$TEMP_DIR/output.yaml"
 # Step 2: Convert strings containing newlines to literal block (|) style
-yq -i '(.. | select(tag == "!!str" and test("\n"))) style="literal"' "$OUTPUT_FILE"
+yq -i '(.. | select(tag == "!!str" and test("\n"))) style="literal"' "$TEMP_DIR/output.yaml"
+
+# Atomically replace the output file (only on success)
+mv -f "$TEMP_DIR/output.yaml" "$OUTPUT_FILE"
 
 # Output success message
 echo "{\"status\": \"ok\", \"message\": \"PR metadata written to $OUTPUT_FILE\"}"

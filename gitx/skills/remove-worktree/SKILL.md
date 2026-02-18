@@ -1,6 +1,6 @@
 ---
 description: Removes a worktree and associated branch when cleaning up. Use for post-merge cleanup or abandoned work.
-argument-hint: "[<name>] [-f or --force] [-r or --remove-remote]"
+argument-hint: "[[--name] <name>] [-f or --force] [-r or --remove-remote]"
 user-invocable: true
 allowed-tools: Task
 model: sonnet

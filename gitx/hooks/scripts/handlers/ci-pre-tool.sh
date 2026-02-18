@@ -22,6 +22,10 @@ PROMPT=$(echo "$TOOL_INPUT" | jq -r '.prompt // ""')
 log_section "CI Pre-Tool Dispatch"
 log_debug "AGENT" "$AGENT_NAME"
 
+# Extract model for inject_or_read decisions (default: sonnet)
+_AGENT_MODEL=$(echo "$RAW_INPUT" | jq -r '.tool_input.model // "sonnet"')
+log_debug "AGENT_MODEL" "$_AGENT_MODEL"
+
 # Extract agent suffix: gitx:ci:failure-analyzer -> failure-analyzer
 AGENT_SUFFIX="${AGENT_NAME#gitx:ci:}"
 log_debug "AGENT_SUFFIX" "$AGENT_SUFFIX"
@@ -55,11 +59,9 @@ case "$AGENT_SUFFIX" in
       exit 0
     fi
 
-    CONTENT=$(cat "$LOG_FILE")
-    log_info "Injecting failure log (${#CONTENT} bytes)"
-    hook_output_context "<failure-log>
-$CONTENT
-</failure-log>"
+    log_info "Injecting failure log"
+    LOG_CONTENT=$(inject_or_read "$LOG_FILE" "failure-log" "$_AGENT_MODEL")
+    hook_output_context "$LOG_CONTENT"
     ;;
 
   # ── analyses-merger (orchestrator) ───────────────────────────────────
@@ -130,15 +132,11 @@ $CONTENT
       exit 0
     fi
 
-    CONTENT1=$(cat "$FILE1")
-    CONTENT2=$(cat "$FILE2")
     log_info "Injecting two analyses for merge"
-    hook_output_context "<analysis1>
-$CONTENT1
-</analysis1>
-<analysis2>
-$CONTENT2
-</analysis2>"
+    CONTENT1=$(inject_or_read "$FILE1" "analysis1" "$_AGENT_MODEL")
+    CONTENT2=$(inject_or_read "$FILE2" "analysis2" "$_AGENT_MODEL")
+    hook_output_context "${CONTENT1}
+${CONTENT2}"
     ;;
 
   # ── analysis-splitter ────────────────────────────────────────────────
@@ -158,11 +156,9 @@ $CONTENT2
       exit 0
     fi
 
-    CONTENT=$(cat "$ANALYSIS_FILE")
-    log_info "Injecting analysis for splitting (${#CONTENT} bytes)"
-    hook_output_context "<analysis>
-$CONTENT
-</analysis>"
+    log_info "Injecting analysis for splitting"
+    ANALYSIS_CONTENT=$(inject_or_read "$ANALYSIS_FILE" "analysis" "$_AGENT_MODEL")
+    hook_output_context "$ANALYSIS_CONTENT"
     ;;
 
   # ── fix-planner ──────────────────────────────────────────────────────
@@ -182,11 +178,9 @@ $CONTENT
       exit 0
     fi
 
-    CONTENT=$(cat "$TASK_FILE")
-    log_info "Injecting task analysis for planning (${#CONTENT} bytes)"
-    hook_output_context "<analysis>
-$CONTENT
-</analysis>"
+    log_info "Injecting task analysis for planning"
+    TASK_CONTENT=$(inject_or_read "$TASK_FILE" "analysis" "$_AGENT_MODEL")
+    hook_output_context "$TASK_CONTENT"
     ;;
 
   # ── fixer ────────────────────────────────────────────────────────────
@@ -206,11 +200,9 @@ $CONTENT
       exit 0
     fi
 
-    CONTENT=$(cat "$PLAN_FILE")
-    log_info "Injecting fix plan (${#CONTENT} bytes)"
-    hook_output_context "<plan>
-$CONTENT
-</plan>"
+    log_info "Injecting fix plan"
+    PLAN_CONTENT=$(inject_or_read "$PLAN_FILE" "plan" "$_AGENT_MODEL")
+    hook_output_context "$PLAN_CONTENT"
     ;;
 
   # ── unknown agent ────────────────────────────────────────────────────

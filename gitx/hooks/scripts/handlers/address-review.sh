@@ -44,7 +44,8 @@ log_debug "TURN" "$TURN"
 if [[ "$TURN" == "AUTHOR" ]] || [[ "$FORCE" == "true" ]]; then
   log_info "Proceeding with address-review (turn=$TURN, force=$FORCE)"
   log_exit 0 "proceed"
-  hook_output_context "Turn: $TURN. Proceed with /gitx:address-review"
+  hook_output_context "<worktree>$WORKTREE</worktree>
+Turn: $TURN. Proceed with /gitx:address-review"
   exit 0
 else
   log_warn "Turn is $TURN, not AUTHOR - blocking"

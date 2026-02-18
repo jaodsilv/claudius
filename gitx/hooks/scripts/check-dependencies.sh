@@ -4,6 +4,11 @@ set -uo pipefail
 # Returns JSON with systemMessage for warnings
 
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
+LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="GITX"
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"
 

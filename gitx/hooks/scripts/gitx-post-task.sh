@@ -10,9 +10,13 @@ set -uo pipefail
 # export GITX_LOG_VERBOSE=1    # Also print to stderr
 # ============================================================================
 
-# Get script directory and source logging
+# Get script directory and source libraries
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
 LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="GITX"
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"
 log_init "post-task"
