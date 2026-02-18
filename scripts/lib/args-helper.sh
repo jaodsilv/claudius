@@ -31,14 +31,23 @@ get_worktree() {
   local CWD="$1"
   local ARGS="$2"
   local WORKTREE="$CWD"
-  if [[ "$ARGS" =~ --worktree[[:space:]]+([^[:space:]]+) ]]; then
+
+  # 1. Check XML tag <worktree>
+  if type -t has_xml_tag &>/dev/null && has_xml_tag "$ARGS" "worktree"; then
+    WORKTREE=$(get_xml_value "$ARGS" "worktree")
+    log_debug "WORKTREE (from <worktree> tag)" "$WORKTREE"
+  # 2. Check CLI flag --worktree
+  elif [[ "$ARGS" =~ --worktree[[:space:]]+([^[:space:]]+) ]]; then
     WORKTREE="${BASH_REMATCH[1]}"
     log_debug "WORKTREE (from --worktree)" "$WORKTREE"
   elif [[ -n "$ARGS" ]]; then
-    # First positional argument might be a worktree path
-    FIRST_ARG=$(echo "$ARGS" | awk '{print $1}')
-    # Check if it looks like a path (starts with ., /, or drive letter)
-    if [[ "$FIRST_ARG" =~ ^[./] ]] || [[ "$FIRST_ARG" =~ ^[A-Za-z]: ]]; then
+    # 3. Strip XML tags before positional matching
+    local stripped_args="$ARGS"
+    if type -t _strip_xml_tags &>/dev/null; then
+      stripped_args=$(_strip_xml_tags "$ARGS")
+    fi
+    FIRST_ARG=$(echo "$stripped_args" | awk '{print $1}')
+    if [[ -n "$FIRST_ARG" ]] && { [[ "$FIRST_ARG" =~ ^[./] ]] || [[ "$FIRST_ARG" =~ ^[A-Za-z]: ]]; }; then
       WORKTREE="$FIRST_ARG"
       log_debug "WORKTREE (from positional)" "$WORKTREE"
     else
@@ -61,6 +70,14 @@ validate_plugin_entity() {
     exit 0
   fi
   log_info "$entity is a ${_plugin_lower} entity"
+}
+
+# Trim leading and trailing newlines from a string
+_trim_newlines() {
+  local str="$1"
+  while [[ "${str:0:1}" == $'\n' ]]; do str="${str:1}"; done
+  while [[ -n "$str" && "${str: -1}" == $'\n' ]]; do str="${str%$'\n'}"; done
+  echo "$str"
 }
 
 # Shared init: parse stdin, extract COMMAND/ARGS, validate entity, resolve worktree
@@ -99,6 +116,8 @@ init() {
       exit 0
     fi
   fi
+
+  ARGS=$(_trim_newlines "$ARGS")
 
   log_debug "COMMAND" "$COMMAND"
   log_debug "ARGS" "$ARGS"

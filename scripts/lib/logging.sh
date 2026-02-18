@@ -1,8 +1,9 @@
 #!/bin/bash
-# Logging utility for cc hooks
+# Shared logging utility for plugin hooks
 # Source this file to enable structured logging
 #
 # Usage:
+#   HOOK_PLUGIN_NAME="GITX"   # Set BEFORE sourcing
 #   source "${SCRIPT_DIR}/lib/logging.sh"
 #   log_init "script-name"
 #   log_debug "variable" "$value"
@@ -12,17 +13,22 @@
 #   log_section "Section Name"
 #   log_json "label" "$json_data"
 #
-# Environment variables:
-#   CC_DEBUG=1        - Enable debug logging (default: off)
-#   CC_LOG_DIR        - Override log directory (default: $TMP/cc-hooks)
-#   CC_LOG_VERBOSE=1  - Also print logs to stderr (default: off)
+# Environment variables (per plugin):
+#   <PLUGIN>_DEBUG=1        - Enable debug logging (default: off)
+#   <PLUGIN>_LOG_DIR        - Override log directory (default: $TMP/<plugin>-hooks)
+#   <PLUGIN>_LOG_VERBOSE=1  - Also print logs to stderr (default: off)
 
 # ============================================================================
-# Configuration - Easy to change
+# Configuration - Resolved from HOOK_PLUGIN_NAME
 # ============================================================================
-CC_DEBUG="${CC_DEBUG:-0}"
-CC_LOG_VERBOSE="${CC_LOG_VERBOSE:-0}"
-CC_LOG_DIR="${CC_LOG_DIR:-${TMP:-/tmp}/cc-hooks}"
+_plugin_lower=$(echo "${HOOK_PLUGIN_NAME:-plugin}" | tr 'A-Z' 'a-z' | tr '_' '-')
+_debug_var="${HOOK_PLUGIN_NAME}_DEBUG"
+_verbose_var="${HOOK_PLUGIN_NAME}_LOG_VERBOSE"
+_logdir_var="${HOOK_PLUGIN_NAME}_LOG_DIR"
+
+HOOK_DEBUG="${!_debug_var:-0}"
+HOOK_LOG_VERBOSE="${!_verbose_var:-0}"
+HOOK_LOG_DIR="${!_logdir_var:-${TMP:-/tmp}/${_plugin_lower}-hooks}"
 
 # ============================================================================
 # Internal state
@@ -39,22 +45,22 @@ log_init() {
   _LOG_SCRIPT="$script_name"
   _LOG_START_TIME=$(date +%s%3N 2>/dev/null || date +%s)
 
-  if [[ "$CC_DEBUG" != "1" ]]; then
+  if [[ "$HOOK_DEBUG" != "1" ]]; then
     return 0
   fi
 
   # Create log directory
-  mkdir -p "$CC_LOG_DIR"
+  mkdir -p "$HOOK_LOG_DIR"
 
   # Create log file with timestamp
   local timestamp=$(date +"%Y%m%d-%H%M%S")
   local pid="$$"
-  _LOG_FILE="${CC_LOG_DIR}/${timestamp}-${script_name}-${pid}.log"
+  _LOG_FILE="${HOOK_LOG_DIR}/${timestamp}-${script_name}-${pid}.log"
 
   # Write header
   {
     echo "================================================================================"
-    echo "CC Hook Log: $script_name"
+    echo "${_plugin_lower^} Hook Log: $script_name"
     echo "================================================================================"
     echo "Timestamp:    $(date -Iseconds)"
     echo "PID:          $pid"
@@ -65,8 +71,8 @@ log_init() {
   } >> "$_LOG_FILE"
 
   # Log to stderr if verbose
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$script_name] Logging to: $_LOG_FILE" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$script_name] Logging to: $_LOG_FILE" >&2
   fi
 }
 
@@ -74,7 +80,7 @@ log_init() {
 # Log a debug message with variable name and value
 # ============================================================================
 log_debug() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local name="$1"
   local value="$2"
   local elapsed=$(_get_elapsed)
@@ -82,8 +88,8 @@ log_debug() {
   local msg="[${elapsed}ms] DEBUG $name = \"$value\""
   echo "$msg" >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] $msg" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] $msg" >&2
   fi
 }
 
@@ -91,15 +97,15 @@ log_debug() {
 # Log an info message
 # ============================================================================
 log_info() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local message="$1"
   local elapsed=$(_get_elapsed)
 
   local msg="[${elapsed}ms] INFO  $message"
   echo "$msg" >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] $msg" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] $msg" >&2
   fi
 }
 
@@ -107,15 +113,15 @@ log_info() {
 # Log a warning message
 # ============================================================================
 log_warn() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local message="$1"
   local elapsed=$(_get_elapsed)
 
   local msg="[${elapsed}ms] WARN  $message"
   echo "$msg" >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] $msg" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] $msg" >&2
   fi
 }
 
@@ -123,15 +129,15 @@ log_warn() {
 # Log an error message
 # ============================================================================
 log_error() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local message="$1"
   local elapsed=$(_get_elapsed)
 
   local msg="[${elapsed}ms] ERROR $message"
   echo "$msg" >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] $msg" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] $msg" >&2
   fi
 }
 
@@ -139,7 +145,7 @@ log_error() {
 # Log a section header
 # ============================================================================
 log_section() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local title="$1"
   local elapsed=$(_get_elapsed)
 
@@ -148,8 +154,8 @@ log_section() {
     echo "[${elapsed}ms] ======== $title ========"
   } >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] ======== $title ========" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] ======== $title ========" >&2
   fi
 }
 
@@ -157,7 +163,7 @@ log_section() {
 # Log JSON data (pretty-printed if jq available)
 # ============================================================================
 log_json() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local label="$1"
   local json="$2"
   local elapsed=$(_get_elapsed)
@@ -177,7 +183,7 @@ log_json() {
 # Log command execution and result
 # ============================================================================
 log_cmd() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local cmd="$1"
   local result="$2"
   local exit_code="$3"
@@ -196,7 +202,7 @@ log_cmd() {
 # Log script exit
 # ============================================================================
 log_exit() {
-  [[ "$CC_DEBUG" != "1" ]] && return 0
+  [[ "$HOOK_DEBUG" != "1" ]] && return 0
   local exit_code="$1"
   local reason="${2:-}"
   local elapsed=$(_get_elapsed)
@@ -210,8 +216,8 @@ log_exit() {
     echo "================================================================================"
   } >> "$_LOG_FILE"
 
-  if [[ "$CC_LOG_VERBOSE" == "1" ]]; then
-    echo "[cc:$_LOG_SCRIPT] Exit $exit_code (${elapsed}ms)${reason:+ - $reason}" >&2
+  if [[ "$HOOK_LOG_VERBOSE" == "1" ]]; then
+    echo "[${_plugin_lower}:$_LOG_SCRIPT] Exit $exit_code (${elapsed}ms)${reason:+ - $reason}" >&2
   fi
 }
 
@@ -227,7 +233,7 @@ _get_elapsed() {
 # Print log location (for user feedback)
 # ============================================================================
 log_location() {
-  if [[ "$CC_DEBUG" == "1" ]] && [[ -n "$_LOG_FILE" ]]; then
+  if [[ "$HOOK_DEBUG" == "1" ]] && [[ -n "$_LOG_FILE" ]]; then
     echo "$_LOG_FILE"
   fi
 }

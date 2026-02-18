@@ -83,3 +83,60 @@ hook_output_status_ok() {
     {"status": "ok"}
 EOF
 }
+
+# ---------------------------------------------------------------------------
+# Content injection strategy: inject inline vs explicit Read instruction
+# ---------------------------------------------------------------------------
+# Decision matrix (Cross-Model):
+#   Small  (<500 tok):  Always inject
+#   Medium (500-8K tok): Inject for Haiku, explicit Read for Opus/Sonnet
+#   Large  (10K+ tok):  Always explicit Read (with line ranges for Haiku)
+#
+# Usage:
+#   inject_or_read <filepath> <xml_tag> [model]
+#     model: "opus", "sonnet", or "haiku" (default: "sonnet")
+#
+# Output: XML-wrapped content (inject) or read instruction (explicit read)
+#   Inject:  <tag>file content</tag>
+#   Read:    <tag source="file" strategy="explicit-read">Read the file at: path</tag>
+# ---------------------------------------------------------------------------
+inject_or_read() {
+  local filepath="$1"
+  local xml_tag="$2"
+  local model="${3:-sonnet}"
+
+  # Locate count-tokens.py relative to this script
+  local _lib_dir
+  _lib_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  local count_tokens_script="$_lib_dir/count-tokens.py"
+
+  # Estimate tokens (fallback to inject if script missing or fails)
+  local tokens=0
+  if [[ -f "$count_tokens_script" ]]; then
+    tokens=$(python3 "$count_tokens_script" --filepath "$filepath" --porcelain 2>/dev/null || echo "0")
+  fi
+
+  # Determine strategy from decision matrix
+  local strategy="inject"
+  if [[ "$tokens" -ge 10000 ]]; then
+    strategy="read"
+  elif [[ "$tokens" -ge 500 ]]; then
+    if [[ "$model" != "haiku" ]]; then
+      strategy="read"
+    fi
+  fi
+
+  if [[ "$strategy" == "inject" ]]; then
+    local content
+    content=$(cat "$filepath")
+    printf '<%s>\n%s\n</%s>' "$xml_tag" "$content" "$xml_tag"
+  else
+    if [[ "$model" == "haiku" ]]; then
+      printf '<%s source="file" strategy="explicit-read-with-ranges">\nRead the file at: %s\nThe file is large (~%d tokens). Read it in sections using line ranges.\n</%s>' \
+        "$xml_tag" "$filepath" "$tokens" "$xml_tag"
+    else
+      printf '<%s source="file" strategy="explicit-read">\nRead the file at: %s\n</%s>' \
+        "$xml_tag" "$filepath" "$xml_tag"
+    fi
+  fi
+}
