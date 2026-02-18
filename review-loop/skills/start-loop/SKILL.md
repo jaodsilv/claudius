@@ -1,6 +1,6 @@
 ---
 description: Starts a review loop orchestration for iterative code review and fixes
-argument-hint: "[--config <path>] [--reviewer <agent>] [--developer <agent>] [options]"
+argument-hint: "[[--worktree] <worktree>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [options]"
 user-invocable: true
 model: sonnet
 tools: Task, Read, AskUserQuestion
@@ -12,9 +12,15 @@ skills:
 
 Lightweight command that loads configuration, parses arguments, and delegates to the orchestrator agent.
 
+## Step 0: Hook Additional Context Parsing
+
+IGNORE the worktree argument from `$ARGUMENTS`. Instead, parse input from hook additional context looking for the XML tags:
+
+- `worktree`: store its value in `$worktree`
+
 ## Parse Arguments
 
-Parse `$ARGUMENTS` (XML or CLI format) to extract:
+Parse `$ARGUMENTS` (XML or CLI format) to extract (EXCLUDING worktree which comes from additional context):
 
 **Configuration**:
 - `config`: Path to config file (optional, enables explicit config)
@@ -26,7 +32,6 @@ Parse `$ARGUMENTS` (XML or CLI format) to extract:
 - `ciFixer`: CI fixer agent name
 
 **Settings** (can come from config or CLI):
-- `worktree`: Path to worktree (default: current directory)
 - `maxRounds`: Max iterations (default: 5)
 - `approvalThreshold`: Approval level - all, critical, important (default: all)
 
@@ -117,13 +122,6 @@ If auto-detected:
 
 If no config found:
   "No config file found, using CLI arguments"
-
-## Determine Worktree
-
-If `worktree` not provided:
-1. Check if current directory contains `.thoughts/pr/metadata.yaml`
-2. If found, use current directory
-3. If not found, use current directory anyway (orchestrator will handle metadata creation)
 
 ## Delegate to Orchestrator
 

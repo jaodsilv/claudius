@@ -1,3 +1,11 @@
+---
+description: >-
+  Finds, parses, and merges review-loop configuration files. Use when starting
+  or resuming a review loop, or when editing configuration.
+user-invocable: false
+model: sonnet
+---
+
 # Loading Review Loop Configuration
 
 Knowledge for finding, parsing, and merging review-loop configuration files.

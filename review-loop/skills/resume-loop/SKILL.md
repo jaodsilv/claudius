@@ -1,9 +1,9 @@
 ---
 description: Resumes a paused review loop session with optional config overrides
-argument-hint: "[--worktree <path>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [--max-rounds <n>]"
+argument-hint: "[[--worktree] <worktree>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [--max-rounds <n>]"
 user-invocable: true
 model: sonnet
-tools: Task, Read, AskUserQuestion, Glob
+tools: Task, Read, AskUserQuestion
 skills:
   - review-loop:loading-config
 ---
@@ -13,12 +13,20 @@ skills:
 Lightweight command that finds a paused/active review loop, re-reads configuration,
 applies any overrides, and resumes execution.
 
+## Step 0: Hook Additional Context Parsing
+
+IGNORE the worktree argument from `$ARGUMENTS`. Instead, parse input from hook additional context looking for the XML tags:
+
+- `worktree`: store its value in `$worktree`
+- `pr-metadata`: contains sub-tags:
+  - `review-loop`: JSON object with reviewLoop state
+  - `turn`: current turn state
+  - `review-count`: current round number
+  - `approved`: approval status
+
 ## Parse Arguments
 
-Parse `$ARGUMENTS` to extract:
-
-**Location**:
-- `worktree` (optional): Path to worktree with paused loop
+Parse `$ARGUMENTS` to extract (EXCLUDING worktree which comes from additional context):
 
 **Configuration** (optional overrides):
 - `config`: Path to config file
@@ -28,32 +36,16 @@ Parse `$ARGUMENTS` to extract:
 - `ciFixer`: Override CI fixer agent
 - `maxRounds`: Override max rounds
 
-## Find Worktree
-
-If `worktree` provided, use it directly.
-
-Otherwise, search for worktree:
-
-1. Check current directory for `.thoughts/pr/metadata.yaml`
-2. If not found, check parent directories (up to 3 levels)
-3. If still not found, use Glob to search:
-   ```
-   **/.thoughts/pr/metadata.yaml
-   ```
-4. If multiple found, use AskUserQuestion:
-   ```
-   Question: "Multiple worktrees found. Which one to resume?"
-   Header: "Worktree"
-   Options: [list of found paths]
-   ```
-
 ## Validate Loop State
 
-Read `$worktree/.thoughts/pr/metadata.yaml`.
+Parse `<review-loop>` from context. Check for valid resumable state:
 
-Check for valid resumable state:
 - `reviewLoop.active = true` OR
 - `reviewLoop.pausedAt` is set (not null)
+
+If `<pr-metadata>` was not provided (no metadata file):
+  Report error: "No PR metadata found. Start a loop first with /start-loop."
+  Exit.
 
 If `reviewLoop` section doesn't exist:
   Report error: "No active or paused review loop found in this worktree."
@@ -119,15 +111,15 @@ Configuration changes for resumed loop:
 
 ## Report State Before Resume
 
-Output current state summary:
+Output current state summary using values from context:
 
 ```
 Resuming Review Loop
 
 Worktree: $worktree
-Round: $reviewCount
-Current Turn: $turn
-Paused At: $pausedAt (or "Active" if not paused)
+Round: $reviewCount (from <review-count>)
+Current Turn: $turn (from <turn>)
+Paused At: $pausedAt (from reviewLoop.pausedAt, or "Active" if not paused)
 
 Agents:
 - Reviewer: $reviewer
@@ -147,6 +139,7 @@ Using Task tool, run `review-loop:orchestrator` agent:
 ```xml
 <mode>resume</mode>
 <worktree>$worktree</worktree>
+<pr-metadata>$pr_metadata</pr-metadata>
 <reviewer>$reviewer</reviewer>
 <developer>$developer</developer>
 <ciChecker>$ciChecker</ciChecker>
@@ -154,6 +147,8 @@ Using Task tool, run `review-loop:orchestrator` agent:
 <maxRounds>$maxRounds</maxRounds>
 <approvalThreshold>$approvalThreshold</approvalThreshold>
 ```
+
+Where `$pr_metadata` is the full `<pr-metadata>` block received from the hook context.
 
 The orchestrator will:
 1. Update metadata with any config changes

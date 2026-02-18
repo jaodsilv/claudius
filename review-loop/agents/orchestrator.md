@@ -74,7 +74,7 @@ Mark "Initialize/Resume loop" as in_progress.
 
 ### Resume Mode
 
-1. Read metadata from `$worktree/.thoughts/pr/metadata.yaml`
+1. Parse `<pr-metadata>` from input to get `reviewLoop` state, `turn`, `reviewCount`, `approved`
 2. Verify `reviewLoop.active=true` OR `reviewLoop.pausedAt` is set
 3. If not found or invalid, report error and exit
 4. Clear pausedAt if set, using `gitx:managing-pr-metadata` skill:
