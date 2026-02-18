@@ -135,10 +135,7 @@ D: Glossary
 
 ## Template Reference
 
-Use the `brainstorm:brainstorming` skill templates for output formatting:
-
-- `references/requirements-document.md`
-- `references/session-summary.md`
+Use the `brainstorm:brainstorming` skill templates for output formatting for requirements document and session summary
 
 ## Delivery
 

@@ -186,6 +186,8 @@ Score Range → Size Mapping:
 
 ### Example 1: User Authentication
 
+Sizing: XS (< 1 week)
+
 **Implementation**
 
 - Algorithm: Low (1) - standard crypto
@@ -224,6 +226,8 @@ Score Range → Size Mapping:
 
 ### Example 2: Real-time Collaboration Editor
 
+Sizing: L (1-2 months)
+
 **Implementation**
 
 - Algorithm: High (4) - operational transform, conflict resolution
@@ -261,6 +265,8 @@ Score Range → Size Mapping:
 ---
 
 ### Example 3: Data Migration (SQL to NoSQL)
+
+Sizing: M (2-4 weeks)
 
 **Implementation**
 

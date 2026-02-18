@@ -64,7 +64,7 @@ This agent receives compact summaries from three parallel phases:
 
 ## Output Format
 
-Generate output using templates from `brainstorm:workflow-validation` skill:
+Generate output using templates from `brainstorm:validating-workflow` skill:
 
 1. **Full Output**: Use `synthesis-templates.md` full template for session log
 2. **Compact Summary**: Use compact template (15-20 lines) for requirements synthesizer

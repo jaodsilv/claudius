@@ -14,10 +14,12 @@ Investigates industry practices, competitor solutions, and domain-specific knowl
 
 ## Skill Reference
 
-Use the `brainstorm:domain-research` skill for detailed research guidance:
+Use the `brainstorm:researching-domain` skill for detailed research guidance on:
 
-- `SKILL.md` - Research methodology, output format, and best practices
-- `references/research-areas.md` - 7 research dimensions with questions and sources
+- Research methodology
+- Output format
+- Best practices
+- References
 
 ## Output Format
 

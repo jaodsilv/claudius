@@ -1,6 +1,6 @@
 ---
 description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
-argument-hint: "<topic> [--depth <shallow|normal|deep>] [--output-path <path>]"
+argument-hint: "[[--topic] <topic>] [--depth <shallow|normal|deep>] [--output-path <path>]"
 user-invocable: true
 allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep
 model: opus

@@ -4,7 +4,7 @@ This document defines the 7 research dimensions used in domain research analysis
 
 ## 1. Market Landscape Analysis
 
-### Definition
+Understanding the overall market structure, maturity, trends, and key players.
 
 ### What to Look For
 

@@ -119,3 +119,7 @@ Phase 6 (Specification)
     ↓ [Gate 5]
 Complete
 ```
+
+## References
+
+- [Synthesis Templates](references/synthesis-templates.md) - Output templates for analysis-synthesizer agent

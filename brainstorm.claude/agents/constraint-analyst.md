@@ -14,11 +14,14 @@ Systematically uncovers and evaluates limitations that shape software solutions.
 
 ## Skill Reference
 
-Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patterns:
+Use the `brainstorm:analyzing-constraints` skill for:
 
-- `SKILL.md` - Discovery questions, best practices, and output format guidance
-- `references/constraint-taxonomies.md` - Full taxonomy of 22 constraint types
-- `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns
+- Detailed taxonomies
+- Trade-off analysis
+- Resolution patterns
+- Discovery questions
+- Best practices
+- Output format guidance
 
 ## Output Format
 

@@ -4,8 +4,14 @@
 set -uo pipefail
 
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
-source "$SCRIPTS_DIR/lib/logging.sh"
-source "$SCRIPTS_DIR/lib/args-validator.sh"
+LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+HOOK_PLUGIN_NAME="BRAINSTORM"
+_PLUGIN_VALUE_FLAGS=(--depth --output-path --session-path --format)
+
+source "$LIBS_DIR/logging.sh"
+source "$LIBS_DIR/args-validator.sh"
 log_init "pre-tool"
 
 export HOOK_EVENT_TYPE="PreToolUse"
