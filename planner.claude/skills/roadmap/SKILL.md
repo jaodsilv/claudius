@@ -1,6 +1,6 @@
 ---
 description: Create a project roadmap with phases, milestones, and deliverables
-argument-hint: "<goal> [--phases <number>] [--horizon <weeks|months>] [--output <path>]"
+argument-hint: "[[--goal] <goal>] [--phases <number>] [--horizon <weeks|months>] [--output <path>]"
 user-invocable: true
 allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TodoWrite, AskUserQuestion, Skill
 model: opus

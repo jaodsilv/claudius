@@ -1,6 +1,6 @@
 ---
 description: Gather and structure project requirements, optionally using brainstorm plugin
-argument-hint: "<goal> [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]"
+argument-hint: "[[--goal] <goal>] [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]"
 user-invocable: true
 allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TodoWrite
 model: opus

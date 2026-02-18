@@ -1,6 +1,6 @@
 ---
 description: Prioritize GitHub issues using RICE, MoSCoW, or custom frameworks
-argument-hint: "<issue-numbers|ALL> [--framework <RICE|MoSCoW|WeightedScoring>] [--output <path>]"
+argument-hint: "[[--issues] <issue-numbers|ALL>] [--framework <RICE|MoSCoW|WeightedScoring>] [--output <path>]"
 user-invocable: true
 allowed-tools: Task, Read, Write, Bash, Glob, Grep, TodoWrite, AskUserQuestion, Skill
 model: opus
