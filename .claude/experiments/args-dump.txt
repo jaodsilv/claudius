@@ -1,0 +1,28 @@
+=== RAW ARGUMENTS ===
+testing first line --text-flag
+No empty line
+No empty line 2
+
+After empty line
+
+<xml-tag>Testing with XML tag</xml-tag>
+
+---
+
+=== INDEXED ARGUMENTS ===
+0: testing
+0: testing
+2: line
+2: line
+6: line
+6: line
+8: empty
+8: empty
+10: 2
+10: 2
+
+=== OTHER VALUES ===
+PreToolUse:Skill hook additional context: My additional 
+multi-lined
+context
+here, 'LOL'
