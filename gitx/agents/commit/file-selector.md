@@ -67,8 +67,6 @@ Input diffs show changes to:
 
 Output:
 
-
-```json
 ["src/auth/handler.ts", "src/auth/types.ts", "tests/auth.test.ts"]
 ```
 
@@ -79,9 +77,7 @@ Input diffs show changes to:
 - `src/components/LoginButton.test.tsx` (test update)
 - `src/api/auth.ts` (unrelated API change)
 
-
 Output:
-
 ```json
 ["src/components/LoginButton.tsx", "src/components/LoginButton.test.tsx"]
 ```

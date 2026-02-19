@@ -8,23 +8,15 @@ organization and supporting file capabilities.
 ### Option 1: Direct Skill Invocation (Recommended)
 
 
-Use `/review-loop:skill-name` directly. Skills are now user-invocable.
-
-
 Example:
-
 ```
 /review-loop:worktree
 ```
 
-
 ### Option 2: Stub Commands
 
 
-Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
-
 Example:
-
 ```
 /review-loop-skill-name
 ```

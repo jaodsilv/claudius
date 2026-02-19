@@ -87,8 +87,6 @@ If config file has `prompts` section:
 After merge, if `reviewer` is still missing:
   Use AskUserQuestion:
 
-
-  ```
   Question: "Which agent should perform code review?"
   Header: "Reviewer"
   Options:

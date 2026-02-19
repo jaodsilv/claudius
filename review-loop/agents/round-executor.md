@@ -37,8 +37,6 @@ When `phase=CI`:
 2. If `turn=CI-PENDING`:
    - Use Task tool to run `$ciChecker` agent with:
 
-
-     ```xml
      <worktree>$worktree</worktree>
      <ci-status>$ciStatus from metadata</ci-status>
 

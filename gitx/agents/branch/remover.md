@@ -97,8 +97,6 @@ git fetch --prune
 ```
 
 
-```
-
 ## Remote-Only Mode
 
 If `--remote-only` specified:
