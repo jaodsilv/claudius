@@ -88,9 +88,9 @@ EOF
 # Content injection strategy: inject inline vs explicit Read instruction
 # ---------------------------------------------------------------------------
 # Decision matrix (Cross-Model):
-#   Small  (<500 tok):  Always inject
-#   Medium (500-8K tok): Inject for Haiku, explicit Read for Opus/Sonnet
-#   Large  (10K+ tok):  Always explicit Read (with line ranges for Haiku)
+#   Small  (<500 tok):   Always inject
+#   Medium (500-10K tok): Inject for Haiku, explicit Read for Opus/Sonnet
+#   Large  (10K+ tok):   Always explicit Read (with line ranges for Haiku)
 #
 # Usage:
 #   inject_or_read <filepath> <xml_tag> [model]

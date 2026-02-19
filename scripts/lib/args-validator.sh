@@ -367,8 +367,8 @@ validate_flag_value() {
   # CLI flag check (existing regex logic)
   if [[ "$args" =~ (^|[[:space:]])($regex)([[:space:]]|$) ]]; then
     local matched_flag="${BASH_REMATCH[2]}"
-    local value_regex="(^|[[:space:]])($regex)[[:space:]]+([^[:space:]-][^[:space:]]*)"
-    if [[ ! "$args" =~ $value_regex ]]; then
+    local value_regex="(^|[[:space:]])($regex)[[:space:]]+([^[:space:]][^[:space:]]*)"
+    if [[ ! "$args" =~ $value_regex ]] || [[ "${BASH_REMATCH[3]}" == --* ]]; then
       log_error "Flag $matched_flag requires a value: <$value_name>"
       hook_output_block "Flag $matched_flag requires a value: <$value_name>"
       exit 0
