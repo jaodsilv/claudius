@@ -122,7 +122,7 @@ case "$MODE" in
         fi
         GROUPS_JSON+="$FILES_JSON"
       fi
-    done < <(echo "$ARGS" | perl -nle 'while(/--files\s+([^-]+)/g){$s=$1; $s=~s/\s+$//; print $s}')
+    done < <(echo "$ARGS" | perl -nle 'while(/--files\s+((?:(?!(?:^|\s)--)\S+\s*)+)/g){$s=$1; $s=~s/\s+$//; print $s}')
 
     GROUPS_JSON+="]"
     log_json "GROUPS_JSON" "$GROUPS_JSON"
@@ -143,7 +143,7 @@ case "$MODE" in
 
     if [[ -z "$DESCRIPTION" ]]; then
       # Try without quotes
-      DESCRIPTION=$(echo "$ARGS" | sed -n 's/.*--context[[:space:]]*\([^[:space:]-][^[:space:]]*\).*/\1/p')
+      DESCRIPTION=$(echo "$ARGS" | sed -n 's/.*--context[[:space:]]*\([^[:space:]][^[:space:]]*\).*/\1/p')
     fi
 
     log_debug "DESCRIPTION" "$DESCRIPTION"
