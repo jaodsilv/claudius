@@ -54,6 +54,8 @@ Mark "Initialize/Resume loop" as in_progress.
 2. If the skill indicates `needs_fetch`:
    - Run Task with `gitx:pr:metadata-fetcher`:
 
+
+     ```xml
      <worktree>$worktree</worktree>
 
      ```
@@ -65,7 +67,9 @@ Mark "Initialize/Resume loop" as in_progress.
    - field: reviewLoop
    - value: `{"active": true, "maxRounds": $maxRounds, "startedAt": "$timestamp", "pausedAt": null, "reviewer": "$reviewer", "developer": "$developer", "ciChecker": "$ciChecker", "ciFixer": "$ciFixer"}`
 
+
 4. If prompts provided, write to `.thoughts/review-loop/prompts.yaml`:
+
    ```yaml
    reviewer: $reviewerPrompt
    developer: $developerPrompt
@@ -101,8 +105,10 @@ While `approved=false` AND `reviewCount < maxRounds`:
 
 ### 1.1 CI Phase (if configured)
 
+
 If `turn` is `CI-PENDING` or `CI-REVIEW` AND ciChecker is configured:
 
+Run Task with `review-loop:round-executor`:
 
 ```xml
 <phase>CI</phase>
@@ -113,18 +119,22 @@ Wait for completion, then re-read metadata.
 
 ### 1.2 Review Phase
 
+
 If `turn` is `REVIEW`:
 
 Run Task with `review-loop:round-executor`:
+
 ```xml
 <phase>REVIEW</phase>
 <worktree>$worktree</worktree>
 ```
 
+
 Wait for completion, then re-read metadata.
 
 ### 1.3 Approval Check
 
+Run Task with `review-loop:approval-verifier`:
 
 ```xml
 <threshold>$resolveLevel</threshold>
@@ -136,15 +146,18 @@ Parse result:
 - If `APPROVED_WITH_COMMENTS` → Run developer phase, then Phase 2
 - If `NOT_APPROVED` → Continue to developer phase
 
+
 ### 1.4 Developer Phase
 
 If `turn` is `RESPONSE` or approval check returned `NOT_APPROVED`:
 
 Run Task with `review-loop:round-executor`:
+
 ```xml
 <phase>RESPONSE</phase>
 <worktree>$worktree</worktree>
 ```
+
 
 Wait for completion, then re-read metadata.
 
@@ -152,6 +165,7 @@ Wait for completion, then re-read metadata.
 
 If `reviewCount` is even AND `reviewCount > 0`:
 
+Use AskUserQuestion:
 
 ```
 Question: "Round $reviewCount complete. Continue?"
@@ -169,6 +183,7 @@ Handle response:
 - **Manual mode**: Set `reviewLoop.active=false`, output current state summary, exit
 - **Stop**: Set `reviewLoop.active=false`, exit
 
+
 ### 1.6 Round Increment Check
 
 Re-read metadata to check if round completed.
@@ -176,6 +191,7 @@ If `reviewCount` has increased and still not approved, loop back to 1.1.
 
 If `reviewCount >= maxRounds` and not approved:
 
+Use AskUserQuestion:
 
 ```
 Question: "Max rounds ($maxRounds) reached. PR not yet approved."

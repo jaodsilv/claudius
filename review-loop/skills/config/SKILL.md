@@ -207,12 +207,16 @@ developer: "$developer"
 If CI is configured, add:
 
 
+```yaml
+
 # CI Integration
 ciChecker: "$ciChecker"
 ciFixer: "$ciFixer"
 ```
 
+
 Add loop settings:
+
 ```yaml
 
 # Loop Settings
@@ -220,8 +224,10 @@ maxRounds: $maxRounds
 approvalThreshold: $approvalThreshold
 ```
 
+
 If custom prompts were requested, add commented template:
 
+```yaml
 
 # Custom Prompts (edit as needed)
 # prompts:
@@ -233,9 +239,11 @@ If custom prompts were requested, add commented template:
 
 ## Step 11: Ensure Directory Exists
 
+
 Using Bash tool, create parent directory if needed:
 
 For project-level:
+
 ```bash
 
 mkdir -p "$CWD/.config/review-loop"

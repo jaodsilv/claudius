@@ -8,15 +8,23 @@ organization and supporting file capabilities.
 ### Option 1: Direct Skill Invocation (Recommended)
 
 
+Use `/gitx:skill-name` directly. Skills are now user-invocable.
+
+
 Example:
+
 ```
 /gitx:worktree
 ```
 
+
 ### Option 2: Stub Commands
 
 
+Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
+
 Example:
+
 ```
 /gitx-skill-name
 ```

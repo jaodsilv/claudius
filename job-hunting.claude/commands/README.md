@@ -8,15 +8,23 @@ organization and supporting file capabilities.
 ### Option 1: Direct Skill Invocation (Recommended)
 
 
+Use `/job-hunting.claude:skill-name` directly. Skills are now user-invocable.
+
+
 Example:
+
 ```
 /job-hunting.claude:worktree
 ```
 
+
 ### Option 2: Stub Commands
 
 
+Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
+
 Example:
+
 ```
 /job-hunting.claude-skill-name
 ```

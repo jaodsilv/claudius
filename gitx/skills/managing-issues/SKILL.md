@@ -35,6 +35,8 @@ scripts/issue-create.sh [options]
 
 **Output** (info mode):
 
+
+```json
 {
   "title": "Fix bug in parser",
   "body": "Description...",
@@ -59,7 +61,9 @@ scripts/issue-close.sh <issue> [options]
 
 **Exit codes**: 0 ready, 1 already closed, 2 error
 
+
 **Output** (info mode):
+
 ```json
 {
   "issue": "123",
@@ -88,8 +92,10 @@ scripts/issue-list.sh [options]
 
 **Exit codes**: 0 success, 2 error
 
+
 **Output** (json format):
 
+```json
 [
   {
     "number": 123,
@@ -119,9 +125,11 @@ scripts/issue-update.sh <issue> [options]
 - `--state <open|closed>` - Update state
 - `--execute` - Apply updates
 
+
 **Exit codes**: 0 ready, 1 no changes, 2 error
 
 **Output** (info mode):
+
 ```json
 {
   "issue": "123",

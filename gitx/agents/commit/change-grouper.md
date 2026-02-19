@@ -76,6 +76,8 @@ Input files:
 
 Output:
 
+
+```json
 [
   ["src/auth/login.ts", "src/auth/login.test.ts"],
   ["src/payment/checkout.ts"],
@@ -91,7 +93,9 @@ Input files:
 - `src/api/users.test.ts` (endpoint tests)
 - `src/utils/validation.ts` (validation helper for users)
 
+
 Output:
+
 ```json
 [
   ["src/api/users.ts", "src/types/user.ts", "src/api/users.test.ts", "src/utils/validation.ts"]
@@ -105,8 +109,10 @@ Input files:
 - `src/ui/Button.tsx` (button style fix)
 - `.github/workflows/ci.yml` (CI update)
 
+
 Output:
 
+```json
 [
   ["src/auth/handler.ts"],
   ["src/ui/Button.tsx"],
