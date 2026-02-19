@@ -2,8 +2,18 @@
   "name": "analyzer",
   "version": "1.0.0",
   "description": "Generic analysis plugin for investigating issues, review comments, errors, and task descriptions with structured output for downstream planners",
-  "author": { "name": "Joao da Silva", "url": "https://github.com/jaodsilv" },
-  "keywords": ["analysis", "root-cause", "investigation", "adversarial", "structured-output", "multi-agent"],
+  "author": {
+    "name": "Joao da Silva",
+    "url": "https://github.com/jaodsilv"
+  },
+  "keywords": [
+    "analysis",
+    "root-cause",
+    "investigation",
+    "adversarial",
+    "structured-output",
+    "multi-agent"
+  ],
   "license": "MIT",
   "repository": "https://github.com/jaodsilv/claudius.git"
 }

@@ -36,17 +36,25 @@ When `phase=CI`:
 1. Check current `turn` value from metadata
 2. If `turn=CI-PENDING`:
    - Use Task tool to run `$ciChecker` agent with:
+
+
      ```xml
      <worktree>$worktree</worktree>
      <ci-status>$ciStatus from metadata</ci-status>
+
      ```
+
    - Wait for result
+
 3. If `turn=CI-REVIEW` and `$ciFixer` is configured:
    - Use Task tool to run `$ciFixer` agent with:
+
      ```xml
+
      <worktree>$worktree</worktree>
      <ci-failures>$ciStatus failures from metadata</ci-failures>
      ```
+
    - Max 3 iterations of fix attempts
    - After fix, refresh metadata via `gitx:pr:metadata-fetcher`
 4. Update metadata.turn based on CI result
@@ -76,10 +84,12 @@ When `phase=RESPONSE`:
 
 1. Build prompt with review context from metadata:
    - `latestReviews` (feedback to address)
+
    - `reviewThreads` (inline comments)
    - Custom `developerPrompt` if provided
 
 2. Use Task tool to run `$developer` agent with:
+
    ```xml
    <worktree>$worktree</worktree>
    <review>$latestReviews content</review>

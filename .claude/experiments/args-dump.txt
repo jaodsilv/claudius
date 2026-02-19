@@ -22,7 +22,7 @@ After empty line
 10: 2
 
 === OTHER VALUES ===
-PreToolUse:Skill hook additional context: My additional 
+PreToolUse:Skill hook additional context: My additional
 multi-lined
 context
 here, 'LOL'

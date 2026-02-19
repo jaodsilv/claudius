@@ -86,6 +86,8 @@ If config file has `prompts` section:
 
 After merge, if `reviewer` is still missing:
   Use AskUserQuestion:
+
+
   ```
   Question: "Which agent should perform code review?"
   Header: "Reviewer"
@@ -99,7 +101,9 @@ After merge, if `reviewer` is still missing:
   ```
 
 After merge, if `developer` is still missing:
+
   Use AskUserQuestion:
+
   ```
   Question: "Which agent should address review feedback?"
   Header: "Developer"

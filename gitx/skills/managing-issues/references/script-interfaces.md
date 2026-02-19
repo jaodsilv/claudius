@@ -67,6 +67,8 @@ If `--template` is provided:
 ### Output Examples
 
 **Info mode**:
+
+
 ```json
 {
   "title": "Add dark mode support",
@@ -79,7 +81,9 @@ If `--template` is provided:
 }
 ```
 
+
 **Execute mode**:
+
 ```json
 {
   "number": 456,
@@ -114,7 +118,9 @@ Options:
 
 ### Output Examples
 
+
 **Info mode (issue open)**:
+
 ```json
 {
   "issue": "123",
@@ -123,9 +129,11 @@ Options:
   "comment": "Fixed in PR #456",
   "linked_pr": "456"
 }
+
 ```
 
 **Info mode (already closed)**:
+
 ```json
 {
   "issue": "123",
@@ -133,10 +141,12 @@ Options:
   "closed_at": "2025-01-15T10:30:00Z",
   "closed_by": "alice",
   "message": "Issue already closed"
+
 }
 ```
 
 **Execute mode**:
+
 ```json
 {
   "issue": "123",
@@ -168,11 +178,13 @@ Options:
 ### Exit Codes
 
 - `0` - Success (may return empty array if no matches)
+
 - `2` - Error (invalid filter, gh CLI error)
 
 ### Output Examples
 
 **JSON format**:
+
 ```json
 [
   {
@@ -185,12 +197,14 @@ Options:
     "created_at": "2025-01-10T09:00:00Z",
     "updated_at": "2025-01-15T14:30:00Z",
     "comments": 5,
+
     "url": "https://github.com/owner/repo/issues/123"
   }
 ]
 ```
 
 **Table format**:
+
 ```
 #     State  Priority  Title                 Assignee  Milestone
 123   open   high      Fix parser bug        alice     v1.0
@@ -220,6 +234,7 @@ Options:
 
 ### Exit Codes
 
+
 - `0` - Success (info mode: changes ready, execute mode: updated)
 - `1` - No changes detected
 - `2` - Error (issue not found, invalid field, gh CLI error)
@@ -227,6 +242,7 @@ Options:
 ### Output Examples
 
 **Info mode (with changes)**:
+
 ```json
 {
   "issue": "123",
@@ -240,6 +256,7 @@ Options:
       "remove": ["priority:medium"]
     },
     "milestone": {
+
       "from": "v1.0",
       "to": "v1.1"
     }
@@ -248,6 +265,8 @@ Options:
 ```
 
 **Info mode (no changes)**:
+
+
 ```json
 {
   "issue": "123",
@@ -256,6 +275,7 @@ Options:
 ```
 
 **Execute mode**:
+
 ```json
 {
   "issue": "123",
@@ -279,6 +299,7 @@ Options:
   --comments              Include comments
   --events                Include timeline events
   --max-comments <n>      Maximum comments to include (default: 10)
+
 ```
 
 ### Exit Codes
@@ -289,6 +310,7 @@ Options:
 ### Output Examples
 
 **Markdown format (default)**:
+
 ```markdown
 # Issue #123: Fix parser bug in nested expressions
 
@@ -306,6 +328,7 @@ Parser fails when encountering nested expressions like:
 
 ## Comments (5)
 
+
 ### alice commented on Jan 10, 2025
 
 I can reproduce this with the following test case...
@@ -316,6 +339,7 @@ Looks like the issue is in the tokenizer...
 ```
 
 **JSON format**:
+
 ```json
 {
   "number": 123,

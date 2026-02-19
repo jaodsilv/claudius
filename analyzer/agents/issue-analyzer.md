@@ -52,6 +52,8 @@ Use the built-in Explore agent via the Task tool to investigate the codebase bas
 - For `generic`: broad keyword exploration
 
 Launch with:
+
+
 ```
 Task(Explore):
   prompt: "In the codebase at $worktree, [type-specific investigation query]"

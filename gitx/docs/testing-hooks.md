@@ -26,6 +26,7 @@ export GITX_LOG_DIR=/path/to/logs
 Uncomment the debug lines at the top of the main scripts:
 
 **`gitx/hooks/scripts/gitx-pre-command.sh`** (line 8-10):
+
 ```bash
 # ============================================================================
 # Debug Configuration - Set these to enable logging
@@ -105,6 +106,7 @@ cd /tmp
 **Purpose**: Verify PR creation validation.
 
 **Scenario A**: No existing PR
+
 ```bash
 # On a branch without a PR
 > /gitx:pr
@@ -116,6 +118,7 @@ cd /tmp
 - Log shows "No existing PR, proceeding with creation"
 
 **Scenario B**: PR already exists
+
 ```bash
 # On a branch with an existing PR
 > /gitx:pr
@@ -132,6 +135,7 @@ cd /tmp
 **Purpose**: Verify update-pr requires existing PR.
 
 **Scenario A**: PR exists
+
 ```bash
 # On a branch with a PR
 > /gitx:update-pr
@@ -142,6 +146,7 @@ cd /tmp
 - Message: "PR exists. Proceeding with update."
 
 **Scenario B**: No PR
+
 ```bash
 # On a branch without a PR
 > /gitx:update-pr
@@ -158,6 +163,7 @@ cd /tmp
 **Purpose**: Verify .gitignore is created if missing.
 
 **Scenario A**: No .gitignore
+
 ```bash
 # In a repo without .gitignore
 rm .gitignore  # if it exists
@@ -170,6 +176,7 @@ rm .gitignore  # if it exists
 - `.gitignore` file created
 
 **Scenario B**: .gitignore exists
+
 ```bash
 # In a repo with .gitignore
 > /gitx:ignore something
@@ -186,6 +193,7 @@ rm .gitignore  # if it exists
 **Purpose**: Verify issue existence check.
 
 **Scenario A**: Valid issue
+
 ```bash
 # With a valid issue number
 > /gitx:fix-issue 123
@@ -196,6 +204,7 @@ rm .gitignore  # if it exists
 - Message: "Issue #123 exists. Proceeding."
 
 **Scenario B**: Invalid issue
+
 ```bash
 # With a non-existent issue
 > /gitx:fix-issue 999999
@@ -206,6 +215,7 @@ rm .gitignore  # if it exists
 - Error: "Issue #999999 not found"
 
 **Scenario C**: Missing issue number
+
 ```bash
 > /gitx:fix-issue
 ```
@@ -223,6 +233,7 @@ rm .gitignore  # if it exists
 **Prerequisites**: Create a PR and set up `.thoughts/pr/metadata.yaml`
 
 **Scenario A**: Turn is AUTHOR
+
 ```bash
 # With metadata.yaml having turn: AUTHOR
 > /gitx:address-review
@@ -233,6 +244,7 @@ rm .gitignore  # if it exists
 - Message: "Turn: AUTHOR. Proceed with /gitx:address-review"
 
 **Scenario B**: Turn is REVIEW (wrong turn)
+
 ```bash
 # With metadata.yaml having turn: REVIEW
 > /gitx:address-review
@@ -243,6 +255,7 @@ rm .gitignore  # if it exists
 - Error: "Current turn is REVIEW, not AUTHOR. Cannot address review."
 
 **Scenario C**: Using --force to override
+
 ```bash
 # With turn: REVIEW
 > /gitx:address-review --force
@@ -259,6 +272,7 @@ rm .gitignore  # if it exists
 **Purpose**: Verify CI waiting and status checking.
 
 **Scenario A**: CI has failures
+
 ```bash
 # With failing CI checks
 > /gitx:address-ci
@@ -271,6 +285,7 @@ rm .gitignore  # if it exists
 - Turn set to CI-REVIEW
 
 **Scenario B**: All CI passes
+
 ```bash
 # With all CI passing
 > /gitx:address-ci
@@ -288,6 +303,7 @@ rm .gitignore  # if it exists
 **Purpose**: Verify merge attempts and conflict handling.
 
 **Scenario A**: Clean merge
+
 ```bash
 # On a branch that merges cleanly with main
 > /gitx:merge
@@ -299,6 +315,7 @@ rm .gitignore  # if it exists
 - Log shows "Merge successful, no conflicts"
 
 **Scenario B**: Merge conflicts
+
 ```bash
 # On a branch with conflicts against main
 > /gitx:merge
@@ -315,6 +332,7 @@ rm .gitignore  # if it exists
 **Purpose**: Verify rebase and stash handling.
 
 **Scenario A**: Clean rebase
+
 ```bash
 > /gitx:rebase
 ```
@@ -324,6 +342,7 @@ rm .gitignore  # if it exists
 - Message: "Rebase successful. Pushed to remote."
 
 **Scenario B**: Dirty worktree (auto-stash)
+
 ```bash
 # With uncommitted changes
 echo "test" >> somefile.txt
@@ -335,6 +354,7 @@ echo "test" >> somefile.txt
 - After success, log shows "Popping stash..."
 
 **Scenario C**: Dirty worktree with --no-stash
+
 ```bash
 echo "test" >> somefile.txt
 > /gitx:rebase --no-stash
@@ -351,6 +371,7 @@ echo "test" >> somefile.txt
 **Purpose**: Verify approval check before merge.
 
 **Scenario A**: PR not approved
+
 ```bash
 # With metadata showing approved: false
 > /gitx:merge-pr
@@ -361,6 +382,7 @@ echo "test" >> somefile.txt
 - Error: "PR #X is not approved. Get reviewer approval first."
 
 **Scenario B**: PR approved
+
 ```bash
 # With metadata showing approved: true
 > /gitx:merge-pr
@@ -377,6 +399,7 @@ echo "test" >> somefile.txt
 **Purpose**: Verify priority-based issue selection.
 
 **Scenario A**: Has open issues
+
 ```bash
 > /gitx:next-issue
 ```
@@ -387,6 +410,7 @@ echo "test" >> somefile.txt
 - Log shows which priority level matched
 
 **Scenario B**: No open issues
+
 ```bash
 # In a repo with no open issues
 > /gitx:next-issue
@@ -403,6 +427,7 @@ echo "test" >> somefile.txt
 **Purpose**: Verify branch deletion safety checks.
 
 **Scenario A**: Delete non-current branch
+
 ```bash
 > /gitx:remove-branch feature-old
 ```
@@ -412,6 +437,7 @@ echo "test" >> somefile.txt
 - Message: "Branch 'feature-old' removed."
 
 **Scenario B**: Delete current branch (without --force)
+
 ```bash
 > /gitx:remove-branch
 ```
@@ -421,6 +447,7 @@ echo "test" >> somefile.txt
 - Error: "Cannot delete current branch '...'. Use --force to switch and delete."
 
 **Scenario C**: Delete current branch (with --force)
+
 ```bash
 > /gitx:remove-branch --force
 ```
@@ -437,6 +464,7 @@ echo "test" >> somefile.txt
 **Purpose**: Verify worktree deletion safety checks.
 
 **Scenario A**: Clean worktree
+
 ```bash
 > /gitx:remove-worktree /path/to/worktree
 ```
@@ -446,6 +474,7 @@ echo "test" >> somefile.txt
 - Message: "Worktree '/path/to/worktree' removed."
 
 **Scenario B**: Dirty worktree (without --force)
+
 ```bash
 # With uncommitted changes in worktree
 > /gitx:remove-worktree /path/to/worktree
@@ -462,6 +491,7 @@ echo "test" >> somefile.txt
 **Purpose**: Verify review can only run during REVIEW turn.
 
 **Scenario A**: Turn is REVIEW
+
 ```bash
 # With metadata having turn: REVIEW
 > /gitx:review
@@ -472,6 +502,7 @@ echo "test" >> somefile.txt
 - Message: "Turn is REVIEW. Proceeding with review."
 
 **Scenario B**: Turn is not REVIEW
+
 ```bash
 # With metadata having turn: AUTHOR or CI-REVIEW
 > /gitx:review

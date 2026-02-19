@@ -1,5 +1,6 @@
 > ## Documentation Index
-> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+>
+> Fetch the complete documentation index at: <https://code.claude.com/docs/llms.txt>
 > Use this file to discover all available pages before exploring further.
 
 # Extend Claude with skills
@@ -229,9 +230,9 @@ Reference supporting files from `SKILL.md` so Claude knows what each file contai
 
 By default, both you and Claude can invoke any skill. You can type `/skill-name` to invoke it directly, and Claude can load it automatically when relevant to your conversation. Two frontmatter fields let you restrict this:
 
-* **`disable-model-invocation: true`**: Only you can invoke the skill. Use this for workflows with side effects or that you want to control timing, like `/commit`, `/deploy`, or `/send-slack-message`. You don't want Claude deciding to deploy because your code looks ready.
+- **`disable-model-invocation: true`**: Only you can invoke the skill. Use this for workflows with side effects or that you want to control timing, like `/commit`, `/deploy`, or `/send-slack-message`. You don't want Claude deciding to deploy because your code looks ready.
 
-* **`user-invocable: false`**: Only Claude can invoke the skill. Use this for background knowledge that isn't actionable as a command. A `legacy-system-context` skill explains how an old system works. Claude should know this when relevant, but `/legacy-system-context` isn't a meaningful action for users to take.
+- **`user-invocable: false`**: Only Claude can invoke the skill. Use this for background knowledge that isn't actionable as a command. A `legacy-system-context` skill explains how an old system works. Claude should know this when relevant, but `/legacy-system-context` isn't a meaningful action for users to take.
 
 This example creates a deploy skill that only you can trigger. The `disable-model-invocation: true` field prevents Claude from running it automatically:
 
@@ -443,9 +444,9 @@ Permission syntax: `Skill(name)` for exact match, `Skill(name:*)` for prefix mat
 
 Skills can be distributed at different scopes depending on your audience:
 
-* **Project skills**: Commit `.claude/skills/` to version control
-* **Plugins**: Create a `skills/` directory in your [plugin](/en/plugins)
-* **Managed**: Deploy organization-wide through [managed settings](/en/iam#managed-settings)
+- **Project skills**: Commit `.claude/skills/` to version control
+- **Plugins**: Create a `skills/` directory in your [plugin](/en/plugins)
+- **Managed**: Deploy organization-wide through [managed settings](/en/iam#managed-settings)
 
 ### Generate visual output
 
@@ -492,9 +493,9 @@ This creates `codebase-map.html` in the current directory and opens it in your d
 
 Create `~/.claude/skills/codebase-visualizer/scripts/visualize.py`. This script scans a directory tree and generates a self-contained HTML file with:
 
-* A **summary sidebar** showing file count, directory count, total size, and number of file types
-* A **bar chart** breaking down the codebase by file type (top 8 by size)
-* A **collapsible tree** where you can expand and collapse directories, with color-coded file type indicators
+- A **summary sidebar** showing file count, directory count, total size, and number of file types
+- A **bar chart** breaking down the codebase by file type (top 8 by size)
+- A **collapsible tree** where you can expand and collapse directories, with color-coded file type indicators
 
 The script requires Python but uses only built-in libraries, so there are no packages to install:
 
@@ -662,9 +663,9 @@ To increase the limit, set the `SLASH_COMMAND_TOOL_CHAR_BUDGET` environment vari
 
 ## Related resources
 
-* **[Subagents](/en/sub-agents)**: delegate tasks to specialized agents
-* **[Plugins](/en/plugins)**: package and distribute skills with other extensions
-* **[Hooks](/en/hooks)**: automate workflows around tool events
-* **[Memory](/en/memory)**: manage CLAUDE.md files for persistent context
-* **[Interactive mode](/en/interactive-mode#built-in-commands)**: built-in commands and shortcuts
-* **[Permissions](/en/iam)**: control tool and skill access
+- **[Subagents](/en/sub-agents)**: delegate tasks to specialized agents
+- **[Plugins](/en/plugins)**: package and distribute skills with other extensions
+- **[Hooks](/en/hooks)**: automate workflows around tool events
+- **[Memory](/en/memory)**: manage CLAUDE.md files for persistent context
+- **[Interactive mode](/en/interactive-mode#built-in-commands)**: built-in commands and shortcuts
+- **[Permissions](/en/iam)**: control tool and skill access

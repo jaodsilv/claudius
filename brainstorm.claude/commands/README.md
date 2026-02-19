@@ -6,17 +6,25 @@ organization and supporting file capabilities.
 ## How to Invoke
 
 ### Option 1: Direct Skill Invocation (Recommended)
+
+
 Use `/brainstorm.claude:skill-name` directly. Skills are now user-invocable.
 
+
 Example:
+
 ```
 /brainstorm.claude:worktree
 ```
 
+
 ### Option 2: Stub Commands
+
+
 Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
 
 Example:
+
 ```
 /brainstorm.claude-skill-name
 ```
