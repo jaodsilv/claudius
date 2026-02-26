@@ -3,7 +3,7 @@
 # Source this file to enable structured logging
 #
 # Usage:
-#   HOOK_PLUGIN_NAME="GITX"   # Set BEFORE sourcing
+#   export HOOK_PLUGIN_NAME="GITX"   # Set BEFORE sourcing
 #   source "${SCRIPT_DIR}/lib/logging.sh"
 #   log_init "script-name"
 #   log_debug "variable" "$value"

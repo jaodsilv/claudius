@@ -16,8 +16,8 @@ export HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 LIBS_DIR="${SCRIPTS_DIR}/lib"
 
 # Plugin config (set BEFORE sourcing shared libs)
-HOOK_PLUGIN_NAME="GITX"
-_PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
+export HOOK_PLUGIN_NAME="GITX"
+export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
 
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"

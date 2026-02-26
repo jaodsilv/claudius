@@ -16,7 +16,7 @@ export HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 LIBS_DIR="${SCRIPTS_DIR}/lib"
 
 # Plugin config (set BEFORE sourcing shared libs)
-HOOK_PLUGIN_NAME="GITX"
+export HOOK_PLUGIN_NAME="GITX"
 
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"

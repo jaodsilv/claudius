@@ -16,12 +16,20 @@
 set -uo pipefail
 
 # Get script directory and source libraries
-SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
-source "$SCRIPTS_DIR/lib/logging.sh"
+# Try to find logging.sh: first in cwd, then in plugin, then in standard location
+LOGGING_PATH=""
+if [[ -f "scripts/lib/logging.sh" ]]; then
+  LOGGING_PATH="scripts/lib/logging.sh"
+elif [[ -n "${CLAUDE_PLUGIN_ROOT:-}" ]] && [[ -f "${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh" ]]; then
+  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh"
+else
+  LOGGING_PATH="scripts/lib/logging.sh"
+fi
+source "$LOGGING_PATH" || exit 1
 log_init "commit-push-execute"
 
-# Get base64 argument
-COMMIT_PAIRS_B64="${1:-}"
+# Get base64 argument - try from args first, then from env var
+COMMIT_PAIRS_B64="${1:-${COMMIT_PAIRS_B64:-}}"
 log_section "Input Processing"
 log_debug "COMMIT_PAIRS_B64" "$COMMIT_PAIRS_B64"
 
@@ -53,12 +61,12 @@ fi
 
 # Extract options from commit pairs
 NO_PUSH=$(echo "$COMMIT_PAIRS" | jq -r '.no_push // false')
-PAIRS=$(echo "$COMMIT_PAIRS" | jq -c '.pairs // []')
+PAIRS=$(echo "$COMMIT_PAIRS" | jq -c '.pairs[]')
 
 log_debug "NO_PUSH" "$NO_PUSH"
 log_json "PAIRS" "$PAIRS"
 
-PAIR_COUNT=$(echo "$PAIRS" | jq 'length')
+PAIR_COUNT=$(echo "$PAIRS" | grep -c '.')
 if [[ "$PAIR_COUNT" -eq 0 ]]; then
   log_error "No commit pairs provided"
   echo "Error: No commit pairs to execute"
@@ -89,6 +97,8 @@ while IFS= read -r pair; do
   log_info "Staging files..."
   STAGE_ERROR=""
   for file in $FILES; do
+    # Remove carriage returns (Windows line-ending cleanup)
+    file=$(echo "$file" | tr -d '\r')
     log_debug "Staging" "$file"
     if ! git add -- "$file" 2>&1; then
       STAGE_ERROR="Failed to stage: $file"
