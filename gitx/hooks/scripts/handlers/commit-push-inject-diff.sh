@@ -147,10 +147,19 @@ fi
 log_section "Output"
 
 if [[ -n "$DIFFS" ]]; then
-  # Prepare context string
-  CONTEXT="Changed Files with Diffs:\n\n$DIFFS"
+  # 1. Determine model for diff injection strategy
+  _diff_model="sonnet"
+  if [[ "$TOOL_NAME" == "Task" ]]; then
+    _diff_model=$(echo "$TOOL_INPUT" | jq -r '.model // "sonnet"')
+  fi
 
-  # Inject commit conventions for commit-writer agent or committing-conventionally skill
+  # 2. Gate diffs through per-model thresholds
+  DIFF_CONTENT=$(inject_or_read_content "$DIFFS" "changed-files-diffs" "$_diff_model" "code")
+
+  # 3. Build context with gated diffs
+  CONTEXT="Changed Files with Diffs:\n\n$DIFF_CONTENT"
+
+  # 4. Optionally append commit conventions
   NEEDS_CONVENTIONS=false
   if [[ "$TOOL_NAME" == "Task" ]]; then
     TASK_AGENT=$(echo "$TOOL_INPUT" | jq -r '.subagent_type // ""')
@@ -161,8 +170,7 @@ if [[ -n "$DIFFS" ]]; then
   fi
 
   if [[ "$NEEDS_CONVENTIONS" == "true" ]]; then
-    # Determine model for inject_or_read strategy
-    local _conv_model="sonnet"
+    _conv_model="sonnet"
     if [[ "$TOOL_NAME" == "Task" ]]; then
       _conv_model=$(echo "$TOOL_INPUT" | jq -r '.model // "sonnet"')
     fi
@@ -177,7 +185,8 @@ if [[ -n "$DIFFS" ]]; then
     done
   fi
 
-  log_info "Injecting diffs (${#DIFFS} chars)"
+  # 5. Output
+  log_info "Injecting diffs (${#DIFFS} chars, model=$_diff_model)"
   hook_output_context "$CONTEXT"
 else
   log_info "No diffs to inject"
