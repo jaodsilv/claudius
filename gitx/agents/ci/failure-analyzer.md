@@ -54,16 +54,16 @@ For each affected file identified in the log:
 
 Write the analysis to `$worktree/.thoughts/pr/ci/analyses/$checkId.md`:
 
-```markdown
+````markdown
 ## Check $checkId: [CHECK_TYPE] - [CATEGORY]
 
 ### Root Cause
 Clear description of what went wrong.
 
 ### Error Messages
-\```
+```
 Exact error output from logs
-\```
+```
 
 ### Affected Files
 - path/to/file.ts:42 - specific issue description
@@ -78,7 +78,7 @@ trivial | minor | moderate | significant
 
 ### Related Errors
 Note if this failure is related to or caused by another issue.
-```
+````
 
 ## Output
 

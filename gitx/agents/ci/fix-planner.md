@@ -40,7 +40,7 @@ For each file mentioned in the analysis:
 
 Create a specific, actionable plan with exact changes:
 
-```markdown
+````markdown
 ## Fix Plan for Task $taskId
 
 ### Summary
@@ -52,13 +52,13 @@ One-line description of what this plan fixes.
 - **Action**: edit | create | delete
 - **Location**: line range or function name
 - **Current code**:
-  \```
+  ```
   exact current code
-  \```
+  ```
 - **New code**:
-  \```
+  ```
   exact replacement code
-  \```
+  ```
 - **Rationale**: Why this change fixes the issue
 
 #### Change 2: [file path]
@@ -66,13 +66,13 @@ One-line description of what this plan fixes.
 
 ### Verification
 Commands to verify the fix locally:
-\```bash
+```bash
 # e.g., npm test, npm run lint, etc.
-\```
+```
 
 ### Risks
 Any potential side effects or things to watch for.
-```
+````
 
 ### 4. Write Plan
 

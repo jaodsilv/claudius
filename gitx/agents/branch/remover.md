@@ -83,7 +83,7 @@ Report error based on JSON error code:
 
 After successful removal, report from JSON:
 
-```markdown
+````markdown
 ## Branch Removed
 
 - **Branch**: [branch]
@@ -97,7 +97,7 @@ git fetch --prune
 ```
 
 
-```
+````
 
 ## Remote-Only Mode
 
