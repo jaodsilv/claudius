@@ -194,10 +194,15 @@ def read_file(filepath: str) -> str:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Estimate or count tokens for a file."
+        description="Estimate or count tokens for a file or stdin."
     )
-    parser.add_argument(
-        "--filepath", required=True, help="Path to the file to analyze"
+    source_group = parser.add_mutually_exclusive_group(required=True)
+    source_group.add_argument(
+        "--filepath", help="Path to the file to analyze"
+    )
+    source_group.add_argument(
+        "--stdin", action="store_true",
+        help="Read content from stdin instead of a file"
     )
     parser.add_argument(
         "--force-content-type",
@@ -229,11 +234,24 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    # Read file
-    text = read_file(args.filepath)
+    # Read content from file or stdin
+    if args.stdin:
+        text = sys.stdin.read()
+        content_type = args.force_content_type or "code"  # default for stdin
+        source_label = "<stdin>"
+    else:
+        text = read_file(args.filepath)
+        content_type = args.force_content_type or detect_content_type(args.filepath)
+        source_label = args.filepath
 
-    # Detect content type
-    content_type = args.force_content_type or detect_content_type(args.filepath)
+    # Handle empty input
+    if not text.strip():
+        if args.porcelain:
+            print(0)
+        else:
+            print(f"File:         {source_label}")
+            print(f"Tokens:       0")
+        return
 
     # Initialize SDK (best-effort)
     _init_sdk()
@@ -269,13 +287,14 @@ def main():
     if args.porcelain:
         print(token_count)
     else:
-        file_size = os.path.getsize(args.filepath)
-        line_count = text.count("\n") + (1 if text and not text.endswith("\n") else 0)
         char_count = len(text)
         word_count = len(text.split())
+        line_count = text.count("\n") + (1 if text and not text.endswith("\n") else 0)
 
-        print(f"File:         {args.filepath}")
-        print(f"Size:         {file_size:,} bytes")
+        print(f"File:         {source_label}")
+        if not args.stdin:
+            file_size = os.path.getsize(args.filepath)
+            print(f"Size:         {file_size:,} bytes")
         print(f"Lines:        {line_count:,}")
         print(f"Characters:   {char_count:,}")
         print(f"Words:        {word_count:,}")
