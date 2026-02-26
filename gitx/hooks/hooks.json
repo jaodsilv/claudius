@@ -19,7 +19,7 @@
           {
             "type": "command",
             "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/gitx-pre-command.sh",
-            "timeout": 660
+            "timeout": 1800
           }
         ]
       }
