@@ -72,7 +72,7 @@ name: my-agent
 
 ### Unclosed Code Blocks
 
-```markdown
+````markdown
 # Wrong
 ```python
 def foo():
@@ -84,7 +84,7 @@ def foo():
 def foo():
     pass
 ```  # Properly closed
-```
+````
 
 ### Heading Skip
 

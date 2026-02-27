@@ -3,7 +3,7 @@
   "version": "1.0.10",
   "description": "Walkthrough generation skill to help users review and understand the code that was just reviewed, manually testing it and explaining the code",
   "author": {
-    "name": "Joao da Silva",
+    "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
   },
   "keywords": [

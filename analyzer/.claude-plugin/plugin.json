@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Generic analysis plugin for investigating issues, review comments, errors, and task descriptions with structured output for downstream planners",
   "author": {
-    "name": "Joao da Silva",
+    "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
   },
   "keywords": [

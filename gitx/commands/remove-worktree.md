@@ -6,3 +6,7 @@ model: sonnet
 ---
 
 Use the Task tool to run the `gitx:worktree:remover` agent with the prompt "$ARGUMENTS"
+
+```markdown
+Task(gitx:worktree:remover, prompt: "$ARGUMENTS")
+```

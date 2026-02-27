@@ -231,4 +231,4 @@ MIT License - see repository for details.
 
 ## Author
 
-Joao da Silva - [GitHub](https://github.com/jaodsilv)
+João da Silva - [GitHub](https://github.com/jaodsilv)
