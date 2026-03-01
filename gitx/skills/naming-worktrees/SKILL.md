@@ -17,7 +17,7 @@ Generate abbreviated directory names from conventional branch names.
 Run the name generation script:
 
 ```bash
-scripts/generate-worktree-names.sh <branch_name>
+${CLAUDE_PLUGIN_ROOT}/scripts/worktrees/generate-worktree-names.sh <branch_name>
 ```
 
 ### Script Output

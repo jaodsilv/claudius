@@ -26,7 +26,7 @@ Skill(/pr-review-toolkit:review-pr $review-prompt)
 Once the review is complete, Use the bash tool to run the post-and-update script:
 
 ```markdown
-Bash(scripts/post-and-update-review.sh "$worktree")
+Bash(${CLAUDE_PLUGIN_ROOT}/scripts/comments/post-and-update-review.sh "$worktree")
 ```
 
 ## Error Handling

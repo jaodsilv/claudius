@@ -15,7 +15,7 @@ Validation checklist for conflict resolutions before continuing operations.
 Using the Bash tool run:
 
 ```bash
-scripts/validate-resolution.sh $ARGUMENTS
+${CLAUDE_PLUGIN_ROOT}/scripts/conflicts/validate-resolution.sh $ARGUMENTS
 ```
 
 ## Usage
@@ -23,13 +23,13 @@ scripts/validate-resolution.sh $ARGUMENTS
 Run the validation script (empty $ARGUMENTS, auto-detects project language):
 
 ```bash
-scripts/validate-resolution.sh
+${CLAUDE_PLUGIN_ROOT}/scripts/conflicts/validate-resolution.sh
 ```
 
 Or specify file patterns explicitly:
 
 ```bash
-scripts/validate-resolution.sh "*.py" "*.pyi"
+${CLAUDE_PLUGIN_ROOT}/scripts/conflicts/validate-resolution.sh "*.py" "*.pyi"
 ```
 
 ## Language Detection

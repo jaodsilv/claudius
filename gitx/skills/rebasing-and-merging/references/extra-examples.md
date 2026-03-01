@@ -6,7 +6,7 @@ Additional usage examples for rebase-merge-common.sh.
 
 ```bash
 # With uncommitted changes - auto-stashes
-scripts/rebase-merge-common.sh rebase --base main
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh rebase --base main
 # Exit 0: {"success": true, ..., "stashed": true}
 ```
 
@@ -14,14 +14,14 @@ scripts/rebase-merge-common.sh rebase --base main
 
 ```bash
 # Fails if dirty
-scripts/rebase-merge-common.sh rebase --base main --no-stash
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh rebase --base main --no-stash
 # Exit 2: {"success": false, "error": "dirty_worktree", ...}
 ```
 
 ## Conflicts detected
 
 ```bash
-scripts/rebase-merge-common.sh rebase --base main
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh rebase --base main
 # Exit 1: {"success": false, "conflicts": true, "conflict_files": [...]}
 # Caller should use gitx:orchestrating-conflict-resolution skill
 ```

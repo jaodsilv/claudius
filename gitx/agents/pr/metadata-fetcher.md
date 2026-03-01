@@ -33,8 +33,8 @@ Use `gitx:managing-pr-metadata` skill to fetch PR metadata:
 
 ```bash
 Skill(gitx:managing-pr-metadata):
-  worktree: "$worktree"
-  operation: fetch
+  --worktree "$worktree"
+  --operation fetch
 ```
 
 ### Phase 3: Report Result

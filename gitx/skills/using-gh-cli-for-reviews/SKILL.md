@@ -14,7 +14,7 @@ GitHub CLI operations for PR review workflows.
 ## Usage
 
 ```bash
-scripts/gh-review-operations.sh <operation> [args...]
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh <operation> [args...]
 ```
 
 ## Operations
@@ -24,7 +24,7 @@ scripts/gh-review-operations.sh <operation> [args...]
 Check if current user is the PR owner (determines available actions):
 
 ```bash
-scripts/gh-review-operations.sh check-owner <pr_number>
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh check-owner <pr_number>
 ```
 
 Output:
@@ -40,7 +40,7 @@ Output:
 List non-minimized reviews and review threads from metadata file:
 
 ```bash
-scripts/gh-review-operations.sh list-reviews <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh list-reviews <worktree>
 ```
 
 Reads from `$worktree/.thoughts/pr/metadata.yaml` and returns:
@@ -65,7 +65,7 @@ Reads from `$worktree/.thoughts/pr/metadata.yaml` and returns:
 Create a review comment (for owner reviewing own PR):
 
 ```bash
-scripts/gh-review-operations.sh create-comment <pr_number> "<body>"
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-comment <pr_number> "<body>"
 ```
 
 ### create-pr-comment
@@ -73,7 +73,7 @@ scripts/gh-review-operations.sh create-comment <pr_number> "<body>"
 Create a regular PR comment (response to review):
 
 ```bash
-scripts/gh-review-operations.sh create-pr-comment <pr_number> "<body>"
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-pr-comment <pr_number> "<body>"
 ```
 
 ### minimize-comment
@@ -81,7 +81,7 @@ scripts/gh-review-operations.sh create-pr-comment <pr_number> "<body>"
 Minimize (hide) a comment with a reason:
 
 ```bash
-scripts/gh-review-operations.sh minimize-comment <node_id> [reason]
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh minimize-comment <node_id> [reason]
 ```
 
 Reasons: `RESOLVED`, `OUTDATED`, `OFF_TOPIC`, `ABUSE`, `SPAM`, `DUPLICATE`
@@ -91,7 +91,7 @@ Reasons: `RESOLVED`, `OUTDATED`, `OFF_TOPIC`, `ABUSE`, `SPAM`, `DUPLICATE`
 Get the latest non-review comment on a PR:
 
 ```bash
-scripts/gh-review-operations.sh get-latest-comment <pr_number>
+${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh get-latest-comment <pr_number>
 ```
 
 ## Owner vs Non-Owner Actions

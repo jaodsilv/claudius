@@ -37,7 +37,7 @@ Scripts with `--execute` flag:
 ### Full Options
 
 ```bash
-scripts/issue-create.sh [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-create.sh [options]
 
 Options:
   --title <text>          Issue title (required)
@@ -98,7 +98,7 @@ If `--template` is provided:
 ### Full Options
 
 ```bash
-scripts/issue-close.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-close.sh <issue> [options]
 
 Arguments:
   <issue>                 Issue number or URL
@@ -161,7 +161,7 @@ Options:
 ### Full Options
 
 ```bash
-scripts/issue-list.sh [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-list.sh [options]
 
 Options:
   --state <state>         open (default), closed, or all
@@ -216,7 +216,7 @@ Options:
 ### Full Options
 
 ```bash
-scripts/issue-update.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-update.sh <issue> [options]
 
 Arguments:
   <issue>                 Issue number or URL
@@ -289,7 +289,7 @@ Options:
 ### Full Options
 
 ```bash
-scripts/issue-view.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh <issue> [options]
 
 Arguments:
   <issue>                 Issue number or URL

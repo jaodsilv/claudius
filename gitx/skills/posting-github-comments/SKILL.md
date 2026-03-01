@@ -18,7 +18,7 @@ Post comments to PRs/issues with smart target inference from current branch.
 Posts comments or gathers commit info for summaries.
 
 ```bash
-scripts/comment-post.sh <type> [number] [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/comments/comment-post.sh <type> [number] [options]
 ```
 
 **Type**: `pr` or `issue`

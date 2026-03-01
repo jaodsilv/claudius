@@ -18,7 +18,7 @@ Remove git branches with merge status validation and safety checks.
 Removes a branch with safety checks for worktrees and unmerged commits.
 
 ```bash
-scripts/remove-branch.sh <branch> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/branches/remove-branch.sh <branch> [options]
 ```
 
 **Options**: `-f` force, `-r` remove remote, `--remote-only`, `--execute`

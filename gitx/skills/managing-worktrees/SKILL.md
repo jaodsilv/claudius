@@ -18,7 +18,7 @@ Create and remove git worktrees with smart branch/directory naming and Windows j
 Removes a worktree with optional branch cleanup.
 
 ```bash
-scripts/remove-worktree.sh <worktree> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/worktrees/remove-worktree.sh <worktree> [options]
 ```
 
 **Options**: `-f` force, `-r` remove remote, `--execute` perform removal
@@ -30,7 +30,7 @@ scripts/remove-worktree.sh <worktree> [options]
 Creates a worktree with the specified branch and directory.
 
 ```bash
-scripts/worktree-create.sh --branch <name> --dir <path> [--base <branch>]
+${CLAUDE_PLUGIN_ROOT}/scripts/worktrees/worktree-create.sh --branch <name> --dir <path> [--base <branch>]
 ```
 
 **Options**:

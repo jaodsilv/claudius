@@ -18,7 +18,7 @@ GitHub issue management operations with validation, template handling, and error
 Create issues with template selection and field validation.
 
 ```bash
-scripts/issue-create.sh [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-create.sh [options]
 ```
 
 **Options**:
@@ -50,7 +50,7 @@ scripts/issue-create.sh [options]
 Close issues with optional PR linking and status comment.
 
 ```bash
-scripts/issue-close.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-close.sh <issue> [options]
 ```
 
 **Options**:
@@ -78,7 +78,7 @@ scripts/issue-close.sh <issue> [options]
 List and filter issues with JSON output for processing.
 
 ```bash
-scripts/issue-list.sh [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-list.sh [options]
 ```
 
 **Options**:
@@ -113,7 +113,7 @@ scripts/issue-list.sh [options]
 Update issue fields with validation and change preview.
 
 ```bash
-scripts/issue-update.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-update.sh <issue> [options]
 ```
 
 **Options**:
@@ -151,7 +151,7 @@ scripts/issue-update.sh <issue> [options]
 View issue details with formatted output.
 
 ```bash
-scripts/issue-view.sh <issue> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh <issue> [options]
 ```
 
 **Options**:
@@ -178,20 +178,20 @@ scripts/issue-view.sh <issue> [options]
 
 ```bash
 # Markdown output (default)
-scripts/issue-view.sh 123
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123
 
 # JSON with default fields
-scripts/issue-view.sh 123 --json
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123 --json
 
 # JSON with specific fields
-scripts/issue-view.sh 123 --json number,title,labels
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123 --json number,title,labels
 
 # Use preset for branch naming
-scripts/issue-view.sh 123 --use-case branch-naming
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123 --use-case branch-naming
 
 # Filter with jq
-scripts/issue-view.sh 123 --json --jq '.title'
-scripts/issue-view.sh 123 --use-case quick --jq '.state'
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123 --json --jq '.title'
+${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh 123 --use-case quick --jq '.state'
 ```
 
 ## Two-Phase Pattern

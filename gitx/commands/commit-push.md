@@ -21,9 +21,9 @@ Commit changes with conventional messages and optional smart grouping.
 Extract from $ARGUMENTS or hook additional context:
 
 - **Explicit files (--files <file0> <file1> ... <fileN>)**: Explicit file groups with one or more `--files`, and each `--files` creates a separate commit. Here identified as `$GROUPS` for the array of file groups, `$GROUPS[i]` for the i-th file group, and `$MODE="lists"`
-- **Context Description (--context "<description>")**: Select files matching a contextual description. Here identified as `$DESCRIPTION` for the context description, and `$MODE="context-description"`
-- **Multiple Commits (--multi)**: Intelligent grouping of files into multiple logical commits. Here identified as `$MODE="multi-commit"`
-- **No push (--no-push)**: Create commits but skip push. Here identified as `$NO_PUSH="true"` if the no-push flag is present, otherwise `$NO_PUSH="false"`.
+- **Context Description (--context "<description>")**: If `--context` is present. Select files matching a contextual description. Here identified as `$DESCRIPTION` for the context description, and `$MODE="context-description"`
+- **Multiple Commits (--multi)**: If `--multi` is present, Intelligent grouping of files into multiple logical commits. Here identified as `$MODE="multi-commit"`
+- **No push (--no-push)**: If `--no-push` is present, Create commits but skip push. Here identified as `$NO_PUSH="true"` if the no-push flag is present, otherwise `$NO_PUSH="false"`.
 
 ## Behavioral Rules
 
@@ -107,7 +107,7 @@ Build commit pairs json:
 Escape that JSON and store it in `$JSON_COMMIT_PAIRS`. Execute the commit-push script directly:
 
 ```markdown
-Bash("${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-execute.sh $JSON_COMMIT_PAIRS")
+Bash(${CLAUDE_PLUGIN_ROOT}/scripts/commit/commit-push-execute.sh "$CLAUDE_PLUGIN_ROOT" "$JSON_COMMIT_PAIRS")
 ```
 
 The script will stage files, create commits, push to remote, and return results.

@@ -17,7 +17,7 @@ Leave input prompt unchanged. I'll be referencing it later as `$input_prompt`.
 Run the script with the input prompt arguments as-is.
 
 ```bash
-scripts/merge-pr.sh $input_prompt
+${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh $input_prompt
 ```
 
 ## Exit Codes
@@ -32,10 +32,10 @@ scripts/merge-pr.sh $input_prompt
 
 ```bash
 # Basic squash merge (current branch's PR)
-scripts/merge-pr.sh --squash
+${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh --squash
 
 # Merge with cleanup
-scripts/merge-pr.sh 123 --squash -d
+${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh 123 --squash -d
 ```
 
 See [references/extra-examples.md](references/extra-examples.md) for more scenarios.

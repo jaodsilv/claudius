@@ -18,7 +18,7 @@ Validate and add patterns to .gitignore with duplicate detection, tracked file c
 Validates patterns for conflicts and duplicates.
 
 ```bash
-scripts/validate-patterns.sh "<repo_root>" "<pattern1>" ...
+${CLAUDE_PLUGIN_ROOT}/scripts/gitignore/validate-patterns.sh "<repo_root>" "<pattern1>" ...
 ```
 
 ### gitignore-add.sh
@@ -26,7 +26,7 @@ scripts/validate-patterns.sh "<repo_root>" "<pattern1>" ...
 Validates and adds patterns to .gitignore.
 
 ```bash
-scripts/gitignore-add.sh <patterns...> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/gitignore/gitignore-add.sh <patterns...> [options]
 ```
 
 **Options**: `--execute`, `--untrack`

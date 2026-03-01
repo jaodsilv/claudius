@@ -13,7 +13,7 @@ Gets the default branch name and its worktree path.
 ## Usage
 
 ```bash
-scripts/get-default-branch.sh
+${CLAUDE_PLUGIN_ROOT}/scripts/branches/get-default-branch.sh
 ```
 
 ## Output

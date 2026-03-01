@@ -16,20 +16,18 @@
 set -uo pipefail
 
 # Get script directory and source libraries
-# Try to find logging.sh: first in cwd, then in plugin, then in standard location
+# Try to find logging.sh: first in plugin, then in plugin hooks
 LOGGING_PATH=""
-if [[ -f "scripts/lib/logging.sh" ]]; then
-  LOGGING_PATH="scripts/lib/logging.sh"
-elif [[ -n "${CLAUDE_PLUGIN_ROOT:-}" ]] && [[ -f "${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh" ]]; then
-  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh"
+if [[ -n "${CLAUDE_PLUGIN_ROOT:$1}" ]] && [[ -f "${CLAUDE_PLUGIN_ROOT:$1}/scripts/lib/logging.sh" ]]; then
+  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT:$1}/scripts/lib/logging.sh"
 else
-  LOGGING_PATH="scripts/lib/logging.sh"
+  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT:$1}/hooks/scripts/lib/logging.sh"
 fi
 source "$LOGGING_PATH" || exit 1
 log_init "commit-push-execute"
 
 # Get base64 argument - try from args first, then from env var
-COMMIT_PAIRS_B64="${1:-${COMMIT_PAIRS_B64:-}}"
+COMMIT_PAIRS_B64="${2:-${COMMIT_PAIRS_B64:-}}"
 log_section "Input Processing"
 log_debug "COMMIT_PAIRS_B64" "$COMMIT_PAIRS_B64"
 

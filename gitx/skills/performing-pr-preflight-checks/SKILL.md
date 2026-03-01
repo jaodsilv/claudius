@@ -16,13 +16,13 @@ Validate prerequisites before PR operations to prevent failures.
 For PR creation checks:
 
 ```bash
-scripts/pr-preflight.sh
+${CLAUDE_PLUGIN_ROOT}/scripts/prs/pr-preflight.sh
 ```
 
 For merge checks (includes CI and review status):
 
 ```bash
-scripts/pr-preflight.sh --for-merge <pr_number>
+${CLAUDE_PLUGIN_ROOT}/scripts/prs/pr-preflight.sh --for-merge <pr_number>
 ```
 
 ## Checks Performed

@@ -15,7 +15,7 @@ Deterministic script for rebase and merge operations with conflict detection.
 ## Usage
 
 ```bash
-scripts/rebase-merge-common.sh <mode> [options]
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh <mode> [options]
 ```
 
 ## Arguments
@@ -53,10 +53,10 @@ Report `{error}: {message}`. Common errors:
 
 ```bash
 # Basic rebase
-scripts/rebase-merge-common.sh rebase --base main
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh rebase --base main
 
 # Merge with explicit base
-scripts/rebase-merge-common.sh merge --base develop
+${CLAUDE_PLUGIN_ROOT}/scripts/rebasing/rebase-merge-common.sh merge --base develop
 ```
 
 See [references/extra-examples.md](references/extra-examples.md) for more scenarios.

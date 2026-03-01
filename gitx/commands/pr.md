@@ -15,8 +15,8 @@ Strip the `--worktree` argument from $ARGUMENTS if present.
 
 ## Step 1: Run Agent
 
-Use the Task tool to run the `gitx:pr:creator` agent with the prompt:
+Use the Task tool to run the `gitx:pr:creator` agent with the following prompt exactly as-is:
 
-```
+```markdown
 --worktree $worktree $ARGUMENTS
 ```
