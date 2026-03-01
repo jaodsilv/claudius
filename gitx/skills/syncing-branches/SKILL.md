@@ -2,7 +2,7 @@
 description: >-
   Synchronizes git branches with remote before operations. Use before rebasing or after a change made by a CI pipeline on a PR branch, before committing.
 user-invocable: false
-allowed-tools: Bash(scripts/sync-branch.sh:*)
+allowed-tools: Bash(*/scripts/branches/sync-branch.sh *)
 model: sonnet
 ---
 
@@ -18,7 +18,7 @@ Sync context branch with remote when:
 Run the sync script with optional worktree path:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/branch/sync-branch.sh [worktree_path]
+${CLAUDE_PLUGIN_ROOT}/scripts/branches/sync-branch.sh [worktree_path]
 ```
 
 If no path provided, uses current directory.

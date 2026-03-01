@@ -2,7 +2,7 @@
 name: fixer
 description: Executes a CI fix plan by making the specified code changes.
 model: opus
-tools: Read, Write, Edit, Bash(git:*), Grep, Glob
+tools: Read, Write, Edit, Bash(git *), Grep, Glob
 ---
 
 Execute a fix plan by applying all specified code changes.

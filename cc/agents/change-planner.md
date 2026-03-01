@@ -132,7 +132,7 @@ Return a structured change plan:
   ```
 
 - **After**: ```yaml
-  allowed-tools: ["Read", "Task", "TaskCreate", "TaskGet", "TaskList", "TaskUpdate"]
+  allowed-tools: ["Read", "Agent", "TaskCreate", "TaskGet", "TaskList", "TaskUpdate"]
   ```
 ````
 

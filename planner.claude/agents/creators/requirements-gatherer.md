@@ -3,7 +3,7 @@ name: requirements-gatherer
 description: Systematically collects and structures project requirements. Invoked when starting new features, discovering needs, or creating requirements documents.
 model: opus
 color: cyan
-tools: Read, Write, Glob, Grep, Task, AskUserQuestion, WebSearch, Skill
+tools: Read, Write, Glob, Grep, Agent, AskUserQuestion, WebSearch, Skill
 ---
 
 # Requirements Gatherer

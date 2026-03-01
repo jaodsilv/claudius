@@ -1,7 +1,7 @@
 ---
 description: Improves plugins comprehensively when preparing for release or audit.
 argument-hint: "[[--plugin-path] <plugin-path>] [--focus \"<aspect>\"]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 

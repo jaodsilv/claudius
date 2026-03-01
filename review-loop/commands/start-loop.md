@@ -2,7 +2,7 @@
 description: Starts a review loop orchestration for iterative code review and fixes
 argument-hint: "[[--worktree] <worktree>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [options]"
 model: sonnet
-tools: Task, Read, AskUserQuestion
+tools: Agent, Read, AskUserQuestion
 skills:
   - review-loop:loading-config
 ---

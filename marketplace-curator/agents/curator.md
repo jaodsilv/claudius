@@ -266,7 +266,7 @@ To run the curator agent:
 1. **Full Discovery**
 
    ```text
-   Launch Task agent with prompt:
+   Use Agent tool to launch with prompt:
    "Run full plugin discovery across all 6 marketplaces and 6 external resources.
    Generate raw-inventory.json with all discovered plugins."
    ```
@@ -274,7 +274,7 @@ To run the curator agent:
 2. **Categorization**
 
    ```text
-   Launch Task agent with prompt:
+   Use Agent tool to launch with prompt:
    "Categorize plugins from raw-inventory.json into functional categories.
    Generate categorized-inventory.json."
    ```
@@ -282,7 +282,7 @@ To run the curator agent:
 3. **Analysis**
 
    ```text
-   Launch Task agent with prompt:
+   Use Agent tool to launch with prompt:
    "Analyze plugins and generate:
    - marketplace-comparison.md
    - functionality-matrix.md
@@ -292,7 +292,7 @@ To run the curator agent:
 4. **Deduplication**
 
    ```text
-   Launch Task agent with prompt:
+   Use Agent tool to launch with prompt:
    "Identify duplicate and overlapping plugins.
    Generate deduplication-log.md with recommendations."
    ```

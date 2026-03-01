@@ -4,7 +4,7 @@ description: >-
   branch deletion. Use for finalizing approved pull requests with minimal
   LLM involvement.
 user-invocable: false
-allowed-tools: Bash(scripts/merge-pr.sh:*), Read
+allowed-tools: Bash(*/scripts/prs/merge-pr.sh *), Read
 model: sonnet
 ---
 

@@ -2,7 +2,7 @@
 name: picker
 description: Gets next issue by priority when selecting work. Use for picking the highest priority available task.
 model: sonnet
-tools: AskUserQuestion, Bash(gh issue:*)
+tools: AskUserQuestion, Bash(gh issue *)
 ---
 
 Find the next issue to work on based on priority labels, roadmap and dependencies.

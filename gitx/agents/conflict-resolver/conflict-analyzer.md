@@ -3,7 +3,7 @@ name: conflict-analyzer
 description: >-
   Analyzes git merge and rebase conflicts to understand semantic differences. Invoked when conflicts occur during merge or rebase operations.
 model: opus
-tools: Bash(git:*), Read, Grep
+tools: Bash(git *), Read, Grep
 color: red
 ---
 

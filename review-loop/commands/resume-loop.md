@@ -2,7 +2,7 @@
 description: Resumes a paused review loop session with optional config overrides
 argument-hint: "[[--worktree] <worktree>] [--config <path>] [--reviewer <agent>] [--developer <agent>] [--max-rounds <n>]"
 model: sonnet
-tools: Task, Read, AskUserQuestion
+tools: Agent, Read, AskUserQuestion
 skills:
   - review-loop:loading-config
 ---

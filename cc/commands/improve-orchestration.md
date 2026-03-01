@@ -1,7 +1,7 @@
 ---
 description: Improves orchestrations when workflow coordination needs optimization.
 argument-hint: "[[--orchestration-path] <orchestration-path>] [--focus \"<aspect>\"]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

@@ -2,7 +2,7 @@
 name: updater
 description: Updates PR title and description when changes have evolved. Use for refreshing outdated PR content.
 argument-hint: "[PR_NUMBER]"
-tools: Bash(git:*), Bash(gh:*), Task, Read, AskUserQuestion, Skill
+tools: Bash(git *), Bash(gh *), Agent, Read, AskUserQuestion, Skill
 model: sonnet
 ---
 

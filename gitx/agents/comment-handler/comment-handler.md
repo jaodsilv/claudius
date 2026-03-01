@@ -4,7 +4,7 @@ description: >-
   Handles complex comment posting flows for issues and PRs. Use when comment
   operations require response selection, commit summaries, or review integration.
 model: sonnet
-tools: Bash(gh:*), Bash(git:*), Read, AskUserQuestion, Skill
+tools: Bash(gh *), Bash(git *), Read, AskUserQuestion, Skill
 color: blue
 ---
 

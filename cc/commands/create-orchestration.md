@@ -1,7 +1,7 @@
 ---
 description: Creates multi-agent orchestrations when coordinating complex workflows.
 argument-hint: "[[--orchestration-name] <orchestration-name>] [--plugin <plugin-path>]"
-allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, Skill, Agent, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

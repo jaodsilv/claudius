@@ -4,7 +4,7 @@ description: >-
   Use when implementing review commands that use domain reviewers, structural
   analysis, adversarial challenge, and synthesis phases.
 user-invocable: false
-allowed-tools: Task
+allowed-tools: Agent
 model: opus
 ---
 

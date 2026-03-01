@@ -3,7 +3,7 @@ description: >-
   GitHub CLI operations for PR reviews. Use when checking PR ownership,
   listing reviews, creating comments, or minimizing resolved comments.
 user-invocable: false
-allowed-tools: Bash(scripts/gh-review-operations.sh:*)
+allowed-tools: Bash(*/scripts/reviews/gh-review-operations.sh *)
 model: sonnet
 ---
 
@@ -14,7 +14,7 @@ GitHub CLI operations for PR review workflows.
 ## Usage
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh <operation> [args...]
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh <operation> [args...]
 ```
 
 ## Operations
@@ -24,7 +24,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh <operation> [args..
 Check if current user is the PR owner (determines available actions):
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh check-owner <pr_number>
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh check-owner <pr_number>
 ```
 
 Output:
@@ -40,7 +40,7 @@ Output:
 List non-minimized reviews and review threads from metadata file:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh list-reviews <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh list-reviews <worktree>
 ```
 
 Reads from `$worktree/.thoughts/pr/metadata.yaml` and returns:
@@ -58,14 +58,14 @@ Reads from `$worktree/.thoughts/pr/metadata.yaml` and returns:
 - Only returns non-minimized reviews and threads (already filtered in metadata)
 - Includes `latestMinimizedReview` for context (previous review state)
 - If metadata file doesn't exist, returns `{"error": "...", "needs_fetch": true}` (exit 1)
-- Caller should trigger `Task(gitx:pr:metadata-fetcher)` with worktree, then retry
+- Caller should trigger `Agent(gitx:pr:metadata-fetcher)` with worktree, then retry
 
 ### create-comment
 
 Create a review comment (for owner reviewing own PR):
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-comment <pr_number> "<body>"
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh create-comment <pr_number> "<body>"
 ```
 
 ### create-pr-comment
@@ -73,7 +73,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-comment <pr_
 Create a regular PR comment (response to review):
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-pr-comment <pr_number> "<body>"
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh create-pr-comment <pr_number> "<body>"
 ```
 
 ### minimize-comment
@@ -81,7 +81,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh create-pr-comment <
 Minimize (hide) a comment with a reason:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh minimize-comment <node_id> [reason]
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh minimize-comment <node_id> [reason]
 ```
 
 Reasons: `RESOLVED`, `OUTDATED`, `OFF_TOPIC`, `ABUSE`, `SPAM`, `DUPLICATE`
@@ -91,7 +91,7 @@ Reasons: `RESOLVED`, `OUTDATED`, `OFF_TOPIC`, `ABUSE`, `SPAM`, `DUPLICATE`
 Get the latest non-review comment on a PR:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/review/gh-review-operations.sh get-latest-comment <pr_number>
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh get-latest-comment <pr_number>
 ```
 
 ## Owner vs Non-Owner Actions

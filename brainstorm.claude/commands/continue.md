@@ -1,7 +1,7 @@
 ---
 description: Continues interrupted brainstorming session from last checkpoint. Use when resuming after context overflow or interruption.
 argument-hint: "[--session-path] <path>"
-allowed-tools: Task, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Glob
+allowed-tools: Agent, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Glob
 model: sonnet
 ---
 

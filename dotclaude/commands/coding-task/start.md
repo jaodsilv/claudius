@@ -1,6 +1,6 @@
 ---
 
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 description: Start a coding task with TDD workflow orchestration
 argument-hint: task-description
 

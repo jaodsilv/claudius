@@ -4,7 +4,7 @@ description: >-
   planning. Use after analyzing an issue when the analysis contains multiple
   independent work units.
 argument-hint: "[--worktree <worktree>] [--analysis-path <path>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

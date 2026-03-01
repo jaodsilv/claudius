@@ -1,7 +1,7 @@
 ---
 description: Creates a pull request when ready to merge changes. Use for feature completion, bug fixes, or any branch ready for review.
 argument-hint: "[[--worktree] <worktree>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

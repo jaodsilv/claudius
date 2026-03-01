@@ -1,7 +1,7 @@
 ---
 description: Merges a PR and closes related issues when ready to complete. Use for finalizing approved pull requests.
 argument-hint: "[[--pr] <pr_number>] [--worktree <path>] [--squash|--merge|--rebase] [-d] [--delete-branch] [--delete-worktree] [--delete-remote]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

@@ -6,7 +6,7 @@ description: >-
   presentation, selection, planning, application, and validation phases.
 model: sonnet
 color: yellow
-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit
+tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit
 skills:
   - cc:improving-components
   - cc:analyzing-focus-areas

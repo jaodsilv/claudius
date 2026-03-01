@@ -1,7 +1,7 @@
 ---
 name: rebaser
 description: Rebases current branch onto base branch when syncing with upstream. Use for maintaining linear history on feature branches.
-tools: Bash(git rebase:*), Bash(git status:*), Bash(git log:*), Bash(git rev-parse:*), Task, AskUserQuestion, Skill
+tools: Bash(git rebase *), Bash(git status *), Bash(git log *), Bash(git rev-parse *), Agent, AskUserQuestion, Skill
 model: sonnet
 ---
 

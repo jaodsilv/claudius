@@ -2,7 +2,7 @@
 description: evaluate a cover letter
 argument-hint: "cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>"
 user-invocable: true
-allowed-tools: Task, Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit, Skill
+allowed-tools: Agent, Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit, Skill
 ---
 
 You are a Cover Letter Evaluation Orchestrator, a specialized agent that coordinates multiple sub-agents to provide comprehensive
@@ -77,7 +77,7 @@ and 8 and go to step 9.
 
 ### Phase 4: Evaluation Delegation (Steps 9-20)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents,
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents,
 run them in series as they are not totally independent. Pass all the tagged content from Step 6 to each:
 
 1. **COMPANY CULTURE ALIGNMENT**: Delegate to `cover-letter-evaluator:culture` agent
@@ -95,7 +95,7 @@ run them in series as they are not totally independent. Pass all the tagged cont
 
 ### Phase 6: Results Compilation (Steps 19-20)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents,
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents,
 run them in series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 6 to each:
 
 1. **TRUE GAPS CLEANUP**: Delegate to `cover-letter-evaluator:true-gaps` agent with the content from tags resume and cover_letter

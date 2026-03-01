@@ -2,7 +2,7 @@
 description: >-
   Gets the default branch name and path from the git worktree list.
 user-invocable: false
-allowed-tools: Bash(scripts/get-default-branch.sh)
+allowed-tools: Bash(*/scripts/branches/get-default-branch.sh *)
 model: sonnet
 ---
 

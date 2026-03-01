@@ -1,7 +1,7 @@
 ---
 description: Merges base branch into current branch when syncing with upstream. Use for incorporating main branch changes.
 argument-hint: "[--base <branch>] [--no-stash]"
-allowed-tools: Task, AskUserQuestion, Skill(gitx:rebasing-and-merging:*), Skill(gitx:orchestrating-conflict-resolution:*)
+allowed-tools: Agent, AskUserQuestion, Skill(gitx:rebasing-and-merging *), Skill(gitx:orchestrating-conflict-resolution *)
 model: sonnet
 ---
 

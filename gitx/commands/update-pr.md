@@ -1,7 +1,7 @@
 ---
 description: Updates PR title and description when changes have evolved. Use for refreshing outdated PR content.
 argument-hint: "[--worktree <worktree>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

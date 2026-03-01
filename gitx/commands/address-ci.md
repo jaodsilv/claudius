@@ -1,7 +1,7 @@
 ---
 description: Responds to CI failures with multi-agent analysis, planning, and automated fixes.
 argument-hint: "[--worktree <worktree>]"
-allowed-tools: Task, Skill
+allowed-tools: Agent, Skill
 model: sonnet
 ---
 
@@ -21,7 +21,7 @@ Ignore any $ARGUMENTS — all input comes from hook context.
 Use the Agent tool to run the `gitx:ci:failures-analyses-orchestrator` agent:
 
 ```
-Task(gitx:ci:failures-analyses-orchestrator):
+Agent(gitx:ci:failures-analyses-orchestrator):
   prompt: "<worktree>$worktree</worktree><check-ids>$checkIds</check-ids>"
 ```
 
@@ -31,10 +31,10 @@ If `$numTasks` is 0, report "No actionable CI failures found" and stop.
 
 ## Step 2: Plan Fixes (parallel)
 
-For each task index `$i` from 0 to `$numTasks - 1`, launch a Task **in parallel**:
+For each task index `$i` from 0 to `$numTasks - 1`, launch an Agent **in parallel**:
 
 ```
-Task(gitx:ci:fix-planner):
+Agent(gitx:ci:fix-planner):
   prompt: "<worktree>$worktree</worktree><task-id>$i</task-id>"
 ```
 
@@ -44,10 +44,10 @@ Wait for ALL planners to complete.
 
 ## Step 3: Execute Fixes
 
-For each completed fix-planner, using its stored `$taskId`, launch a Task for the fixer:
+For each completed fix-planner, using its stored `$taskId`, launch an Agent for the fixer:
 
 ```
-Task(gitx:ci:fixer):
+Agent(gitx:ci:fixer):
   prompt: "<worktree>$worktree</worktree><task-id>$taskId</task-id>"
 ```
 

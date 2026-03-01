@@ -1,7 +1,7 @@
 ---
 name: creator
 description: Adds a git worktree when needing isolated development environments. Use for parallel feature work or issue-based development.
-tools: Bash(git worktree:*), Bash(git branch:*), Bash(gh issue:*), AskUserQuestion, Skill
+tools: Bash(git worktree *), Bash(git branch *), Bash(gh issue *), AskUserQuestion, Skill
 model: sonnet
 ---
 

@@ -3,7 +3,7 @@ description: >-
   Centralized PR metadata management with lazy loading. Use when components
   need PR context or need to update metadata state (approved, resolveLevel).
 user-invocable: false
-allowed-tools: Bash(${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh:*)
+allowed-tools: Bash(*/scripts/metadata/metadata-operations.sh *)
 model: haiku
 ---
 
@@ -14,7 +14,7 @@ Centralized metadata management with lazy loading fallback.
 ## execution
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh <operation> <worktree> [args...]
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh <operation> <worktree> [args...]
 ```
 
 ## Operations
@@ -24,7 +24,7 @@ ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh <operation> 
 Fetch PR metadata from GitHub:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh fetch <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh fetch <worktree>
 ```
 
 Fetches PR data for the current branch and writes to `<worktree>/.thoughts/pr/metadata.yaml`.
@@ -76,7 +76,7 @@ The metadata file contains:
 Check if metadata exists and is valid:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh ensure <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh ensure <worktree>
 ```
 
 Output on success:
@@ -96,7 +96,7 @@ Output when metadata needs fetching (exit 1):
 Read a specific field from metadata:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh read <worktree> <field>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh read <worktree> <field>
 ```
 
 Returns the field value as JSON. Exits with error if metadata doesn't exist.
@@ -106,7 +106,7 @@ Returns the field value as JSON. Exits with error if metadata doesn't exist.
 Update a specific field:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh update <worktree> <field> <json_value>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh update <worktree> <field> <json_value>
 ```
 
 Updates the field and sets `updatedAt` timestamp.
@@ -116,7 +116,7 @@ Updates the field and sets `updatedAt` timestamp.
 Update the resolve level field:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh set-resolve-level <worktree> <level>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-resolve-level <worktree> <level>
 ```
 
 Values: `all`, `critical`, `important`
@@ -126,7 +126,7 @@ Values: `all`, `critical`, `important`
 Update the approved field:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh set-approved <worktree> <bool>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-approved <worktree> <bool>
 ```
 
 Values: `true`, `false`
@@ -136,7 +136,7 @@ Values: `true`, `false`
 Remove a field from metadata:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh remove-field <worktree> <field>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh remove-field <worktree> <field>
 ```
 
 Removes the specified field and updates `updatedAt` timestamp.
@@ -146,7 +146,7 @@ Removes the specified field and updates `updatedAt` timestamp.
 Reset CI status and turn after pushing changes:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh post-push <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh post-push <worktree>
 ```
 
 Performs three updates atomically:
@@ -165,7 +165,7 @@ Output:
 Set the workflow turn state:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh set-turn <worktree> <turn>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-turn <worktree> <turn>
 ```
 
 Values: `CI-PENDING`, `CI-REVIEW`, `REVIEW`, `AUTHOR`
@@ -181,7 +181,7 @@ Output:
 Clear the CI status array:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh clear-ci-status <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh clear-ci-status <worktree>
 ```
 
 Output:
@@ -195,7 +195,7 @@ Output:
 Update the latest commit from HEAD:
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh update-latest-commit <worktree>
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh update-latest-commit <worktree>
 ```
 
 Output:

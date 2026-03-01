@@ -4,7 +4,7 @@ description: >-
   advocate, stress-testing assumptions and finding blind spots. Use when critical
   review of any output is needed before acting on it.
 argument-hint: "[--worktree <worktree>] [--input-path <path>] [<input-text>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

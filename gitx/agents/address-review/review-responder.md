@@ -1,7 +1,7 @@
 ---
 name: review-responder
 description: Orchestrates the response to PR review comments using multi-agent orchestration.
-tools: Bash(gh:*), Bash(git:*), Read, Edit, Grep, Glob, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill
+tools: Bash(gh *), Bash(git *), Read, Edit, Grep, Glob, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill
 model: opus
 ---
 

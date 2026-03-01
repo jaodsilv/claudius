@@ -3,7 +3,7 @@ name: review-analyzer
 description: Analyzes planning artifacts for structural completeness and best practices. Invoked during orchestrated reviews for pattern detection and quality assessment.
 model: sonnet
 color: cyan
-tools: Read, Glob, Grep, Task, Skill
+tools: Read, Glob, Grep, Agent, Skill
 ---
 
 # Review Analyzer Agent

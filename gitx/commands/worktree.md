@@ -1,7 +1,7 @@
 ---
 description: Manages git worktrees when needing isolated development environments. Use for parallel feature work or issue-based development.
 argument-hint: "[[--issue] <issue> | [--task] <task> | [--branch] <branch> | [--name] <name>]"
-allowed-tools: Bash(git worktree:*), Bash(git branch:*), Bash(gh issue:*), AskUserQuestion, Skill
+allowed-tools: Bash(git worktree *), Bash(git branch *), Bash(gh issue *), AskUserQuestion, Skill
 context: fork
 model: sonnet
 ---

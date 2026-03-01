@@ -1,7 +1,7 @@
 ---
 name: issue-creator
 description: Create a GitHub issue from informal description
-tools: Bash(gh:*), Bash(ls:*), Task, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
+tools: Bash(gh *), Bash(ls *), Agent, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

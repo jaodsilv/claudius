@@ -3,7 +3,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Skill|Task",
+        "matcher": "Agent|Skill|Task",
         "hooks": [
           {
             "type": "command",

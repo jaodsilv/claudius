@@ -1,7 +1,7 @@
 ---
 description: Responds to PR review comments when feedback needs addressing. Use for iterating on pull request feedback.
 argument-hint: "[--worktree <worktree>] [--resolve-level <all|critical|important>] [-f or --force] [[--review-comment] <review-comment>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

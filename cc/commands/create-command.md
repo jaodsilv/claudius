@@ -1,7 +1,7 @@
 ---
 description: Creates slash commands when adding plugin functionality. Use for new features.
 argument-hint: "[[--command-name] <command-name>] [--plugin <plugin-path>]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -72,7 +72,7 @@ multiSelect: true
 Options:
 - Read/Write (file operations)
 - Bash (shell commands)
-- Task (agent delegation)
+- Agent (agent delegation)
 - AskUserQuestion (user interaction)
 ```
 

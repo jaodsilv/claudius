@@ -1,7 +1,7 @@
 ---
 description: Comments on a pull request when sharing status or responding. Use for PR discussion or posting summaries.
 argument-hint: '[[--pr] <pr> | [--worktree] <worktree>] [[--comment] <comment> | -l or --last | -sc or --since-commit <hash> | (-c or --single-commit) <hash>] [-r or --review | -rr or --review-response [[--text] <text>]] [-f or --force]'
-allowed-tools: Bash(gh pr:*), Bash(git branch:*), AskUserQuestion, Task(gitx:comment-handler:comment-handler:*), Skill(gitx:validating-comments:*)
+allowed-tools: Bash(gh pr *), Bash(git branch *), AskUserQuestion, Agent(gitx:comment-handler:comment-handler *), Skill(gitx:validating-comments *)
 model: sonnet
 ---
 

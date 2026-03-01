@@ -15,11 +15,21 @@
 #
 # Output: JSON with operation results
 
+# Parse --plugin-root flag
+for _arg in "$@"; do
+  if [[ "$_arg" == --plugin-root=* ]]; then
+    _PLUGIN_ROOT_PARAM="${_arg#--plugin-root=}"
+    break
+  fi
+done
+
+# Priority: env var > --plugin-root flag > self-location fallback
+export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
+
 set -uo pipefail
 
 # Get script directory for relative imports
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PLUGIN_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
 # Convert Windows paths to bash format: D:\ or D:/ -> /d/
 convert_path() {
@@ -109,7 +119,7 @@ fi
 
 # Get default branch if not specified
 if [[ -z "$BASE_BRANCH" ]]; then
-  DEFAULT_BRANCH_SCRIPT="$PLUGIN_ROOT/skills/getting-default-branch/scripts/get-default-branch.sh"
+  DEFAULT_BRANCH_SCRIPT="$CLAUDE_PLUGIN_ROOT/scripts/branches/get-default-branch.sh"
   if [[ -f "$DEFAULT_BRANCH_SCRIPT" ]]; then
     DEFAULT_INFO=$("$DEFAULT_BRANCH_SCRIPT" 2>&1)
     BASE_BRANCH=$(echo "$DEFAULT_INFO" | grep "^defaultBranch:" | cut -d' ' -f2)
@@ -161,7 +171,7 @@ if ! git -C "$WORKTREE" fetch origin 2>&1; then
 fi
 
 # Step 3: Sync branches using existing sync script (optional, can fail)
-SYNC_SCRIPT="$PLUGIN_ROOT/skills/syncing-branches/scripts/sync-branch.sh"
+SYNC_SCRIPT="$CLAUDE_PLUGIN_ROOT/scripts/branches/sync-branch.sh"
 if [[ -f "$SYNC_SCRIPT" ]]; then
   # Sync is best-effort - we continue even if it fails
   # The main rebase/merge will show any issues

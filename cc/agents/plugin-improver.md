@@ -3,7 +3,7 @@ name: plugin-improver
 description: Performs comprehensive plugin analysis across all components. Invoked for plugin audits or pre-release checks.
 model: opus
 color: yellow
-tools: ["Read", "Glob", "Grep", "Skill", "Task"]
+tools: ["Read", "Glob", "Grep", "Skill", "Agent"]
 skills:
   - cc:analyzing-focus-areas
   - cc:validating-components

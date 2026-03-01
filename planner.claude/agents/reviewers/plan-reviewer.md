@@ -3,7 +3,7 @@ name: plan-reviewer
 description: Reviews plans, roadmaps, and prioritization documents for quality and alignment. Invoked when validating planning artifacts or analyzing improvements.
 model: sonnet
 color: yellow
-tools: Read, Glob, Grep, Task, AskUserQuestion, Skill
+tools: Read, Glob, Grep, Agent, AskUserQuestion, Skill
 ---
 
 # Plan Reviewer

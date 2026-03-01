@@ -3,7 +3,7 @@ description: >-
   Scripts for removing git branches with safety checks.
   Invoked when deleting branches after merge or cleanup.
 user-invocable: false
-allowed-tools: Bash(scripts/remove-branch.sh:*)
+allowed-tools: Bash(*/scripts/branches/remove-branch.sh *)
 model: sonnet
 ---
 

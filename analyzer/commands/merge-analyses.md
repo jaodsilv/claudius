@@ -3,7 +3,7 @@ description: >-
   Merges multiple analysis files into a single consolidated analysis, handling
   overlaps and contradictions. Use when combining analyses from different sources.
 argument-hint: "[--worktree <worktree>] --analysis-paths <path1> <path2> [<path3> ...]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

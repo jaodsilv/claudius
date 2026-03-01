@@ -129,7 +129,7 @@ Execute processing:
 ---
 description: Complex analysis workflow
 argument-hint: <target>
-allowed-tools: ["Task", "Read", "AskUserQuestion"]
+allowed-tools: ["Agent", "Read", "AskUserQuestion"]
 ---
 
 # Analysis Workflow

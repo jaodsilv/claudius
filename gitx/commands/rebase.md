@@ -1,7 +1,7 @@
 ---
 description: Rebases current branch onto base branch when syncing with upstream. Use for maintaining linear history on feature branches.
 argument-hint: "[--base <branch>] [--no-stash]"
-allowed-tools: Task, AskUserQuestion, Skill(gitx:rebasing-and-merging:*), Skill(gitx:orchestrating-conflict-resolution:*)
+allowed-tools: Agent, AskUserQuestion, Skill(gitx:rebasing-and-merging *), Skill(gitx:orchestrating-conflict-resolution *)
 model: sonnet
 ---
 

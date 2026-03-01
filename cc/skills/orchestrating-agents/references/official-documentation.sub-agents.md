@@ -320,12 +320,12 @@ See [Hook input](/en/hooks#pretooluse-input) for the complete input schema and [
 
 #### Disable specific subagents
 
-You can prevent Claude from using specific subagents by adding them to the `deny` array in your [settings](/en/settings#permission-settings). Use the format `Task(subagent-name)` where `subagent-name` matches the subagent's name field.
+You can prevent Claude from using specific subagents by adding them to the `deny` array in your [settings](/en/settings#permission-settings). Use the format `Agent(subagent-name)` where `subagent-name` matches the subagent's name field.
 
 ```json  theme={null}
 {
   "permissions": {
-    "deny": ["Task(Explore)", "Task(my-custom-agent)"]
+    "deny": ["Agent(Explore)", "Agent(my-custom-agent)"]
   }
 }
 ```
@@ -333,7 +333,7 @@ You can prevent Claude from using specific subagents by adding them to the `deny
 This works for both built-in and custom subagents. You can also use the `--disallowedTools` CLI flag:
 
 ```bash  theme={null}
-claude --disallowedTools "Task(Explore)"
+claude --disallowedTools "Agent(Explore)"
 ```
 
 See [IAM documentation](/en/iam#tool-specific-permission-rules) for more details on permission rules.

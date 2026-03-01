@@ -1,11 +1,11 @@
 ---
 description: Commits and pushes changes with smart file grouping and conventional messages
 argument-hint: "[(--files <file>+)+ | --context <description> | --multi] [--no-push]"
-allowed-tools: Bash, Skill, Task, AskUserQuestion
+allowed-tools: Bash, Skill, Agent, AskUserQuestion
 model: haiku
 hooks:
   PreToolUse:
-    - matcher: "Task"
+    - matcher: "Agent"
       hooks:
         - type: command
           command: "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-pretool.sh"
@@ -27,7 +27,7 @@ Extract from $ARGUMENTS or hook additional context:
 
 ## Behavioral Rules
 
-1. Use EXACTLY the Task parameters shown. Do NOT modify prompts or add instructions.
+1. Use EXACTLY the Agent parameters shown. Do NOT modify prompts or add instructions.
 2. Do NOT re-run information gathering after receiving agent results. Trust agent output.
 3. Do NOT generate commit messages yourself. Delegate to the commit-writer agent.
 
@@ -107,7 +107,7 @@ Build commit pairs json:
 Escape that JSON and store it in `$JSON_COMMIT_PAIRS`. Execute the commit-push script directly:
 
 ```markdown
-Bash(${CLAUDE_PLUGIN_ROOT}/scripts/commit/commit-push-execute.sh "$CLAUDE_PLUGIN_ROOT" "$JSON_COMMIT_PAIRS")
+Bash(${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push-execute.sh "$CLAUDE_PLUGIN_ROOT" "$JSON_COMMIT_PAIRS")
 ```
 
 The script will stage files, create commits, push to remote, and return results.

@@ -2,7 +2,7 @@
 description: evaluate a cover letter
 argument-hint: "cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>"
 user-invocable: true
-allowed-tools: Task, Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit, Skill
+allowed-tools: Agent, Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit, Skill
 ---
 
 You are a Cover Letter Evaluation Orchestrator,
@@ -81,7 +81,7 @@ If the `cover_letter_guidelines_filepath` file exists skip to step 9
 
 ### Phase 4: Evaluation Delegation (Steps 10-21)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent.
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent.
 Even using separate subagents, run them in series as they are not totally independent. Pass all the marked tags and their content to each:
 
 Group 1: Style
@@ -119,7 +119,7 @@ Group 3: Job Description
 
 ### Phase 6: Results Compilation (Steps 19-20)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent.
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent.
 Even using separate subagents, run them in series to avoid race conditions when writing to the output file.
 Pass the aggregated content from Step 6 to each:
 

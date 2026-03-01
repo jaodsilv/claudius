@@ -3,7 +3,7 @@ name: change-analyzer
 description: >-
   Analyzes all commits and changes in a branch for PR creation. Invoked when preparing pull request content.
 model: sonnet
-tools: Bash(git:*), Read, Grep
+tools: Bash(git *), Read, Grep
 color: cyan
 ---
 

@@ -98,7 +98,7 @@ Delegate to `cover-letter-evaluator:presentation` agent
 
 ### Results Compilation (Steps 13-14)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in
 series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 7 to each:
 
 **STEP 13: TRUE GAPS CLEANUP**

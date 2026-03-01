@@ -16,6 +16,17 @@
 #
 # Output: JSON with worktree info and operation results
 
+# Parse --plugin-root flag
+for _arg in "$@"; do
+  if [[ "$_arg" == --plugin-root=* ]]; then
+    _PLUGIN_ROOT_PARAM="${_arg#--plugin-root=}"
+    break
+  fi
+done
+
+# Priority: env var > --plugin-root flag > self-location fallback
+export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
+
 set -euo pipefail
 
 # === Configuration ===

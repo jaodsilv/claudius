@@ -1,7 +1,7 @@
 ---
 name: merger
 description: Merges base branch into current branch when syncing with upstream. Use for incorporating main branch changes.
-tools: Bash(git merge:*), Bash(git commit:*), Bash(git status:*), Bash(git log:*), Bash(git rev-parse:*), Task, AskUserQuestion, Skill
+tools: Bash(git merge *), Bash(git commit *), Bash(git status *), Bash(git log *), Bash(git rev-parse *), Agent, AskUserQuestion, Skill
 model: haiku
 ---
 

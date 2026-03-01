@@ -3,7 +3,7 @@ description: >-
   Manages GitHub issues with validation and two-phase execution.
   Invoked when creating, closing, listing, updating, or viewing issues.
 user-invocable: false
-allowed-tools: Bash(scripts/issue-create.sh:*), Bash(scripts/issue-close.sh:*), Bash(scripts/issue-list.sh:*), Bash(scripts/issue-update.sh:*), Bash(scripts/issue-view.sh:*)
+allowed-tools: Bash(*/scripts/issues/issue-create.sh *), Bash(*/scripts/issues/issue-close.sh *), Bash(*/scripts/issues/issue-list.sh *), Bash(*/scripts/issues/issue-update.sh *), Bash(*/scripts/issues/issue-view.sh *)
 model: sonnet
 ---
 

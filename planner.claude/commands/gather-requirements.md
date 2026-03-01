@@ -1,7 +1,7 @@
 ---
 description: Gather and structure project requirements, optionally using brainstorm plugin
 argument-hint: "[[--goal] <goal>] [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]"
-allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Agent, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 

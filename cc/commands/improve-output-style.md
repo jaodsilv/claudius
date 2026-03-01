@@ -1,7 +1,7 @@
 ---
 description: Improves output-styles when formatting rules need refinement.
 argument-hint: "[[--output-style-path] <output-style-path>] [--focus \"<aspect>\"]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

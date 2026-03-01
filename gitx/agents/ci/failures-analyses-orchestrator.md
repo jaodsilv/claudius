@@ -2,7 +2,7 @@
 name: failures-analyses-orchestrator
 description: Orchestrates per-check CI failure analysis, merging, and splitting into independent tasks.
 model: sonnet
-tools: Task, Read, TaskCreate, TaskGet, TaskList, TaskUpdate
+tools: Agent, Read, TaskCreate, TaskGet, TaskList, TaskUpdate
 ---
 
 Orchestrate the full CI failure analysis pipeline: analyze each check, merge analyses, split into independent tasks.
@@ -29,10 +29,10 @@ TaskCreate:
 
 Mark "Analyze individual check failures" as in_progress.
 
-Parse `$checkIds` into individual IDs. For each check ID, launch a Task **in parallel**:
+Parse `$checkIds` into individual IDs. For each check ID, launch an Agent **in parallel**:
 
 ```
-Task(gitx:ci:failure-analyzer):
+Agent(gitx:ci:failure-analyzer):
   prompt: "<worktree>$worktree</worktree><check-id>$id</check-id>"
 ```
 
@@ -47,7 +47,7 @@ Mark "Merge analyses" as in_progress.
 Launch the analyses merger:
 
 ```
-Task(gitx:ci:analyses-merger):
+Agent(gitx:ci:analyses-merger):
   prompt: "<worktree>$worktree</worktree><check-ids>$checkIds</check-ids>"
 ```
 
@@ -62,7 +62,7 @@ Mark "Split into independent tasks" as in_progress.
 Launch the analysis splitter:
 
 ```
-Task(gitx:ci:analysis-splitter):
+Agent(gitx:ci:analysis-splitter):
   prompt: "<worktree>$worktree</worktree><analysis-id>$mergedId</analysis-id>"
 ```
 

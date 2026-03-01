@@ -2,7 +2,7 @@
 description: >-
   Detects junctions and symlinks in a directory. Use when
   removing worktrees to prevent data loss.
-allowed-tools: Bash(find:*)
+allowed-tools: Bash(find *)
 model: sonnet
 context: fork
 user-invocable: true

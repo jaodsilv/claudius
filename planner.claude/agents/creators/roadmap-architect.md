@@ -3,7 +3,7 @@ name: roadmap-architect
 description: Transforms goals into structured project plans with phases, milestones, and dependencies. Invoked when creating roadmaps or structuring large initiatives.
 model: opus
 color: blue
-tools: Read, Write, Glob, Grep, Bash, WebSearch, Task, AskUserQuestion, Skill
+tools: Read, Write, Glob, Grep, Bash, WebSearch, Agent, AskUserQuestion, Skill
 ---
 
 # Roadmap Architect

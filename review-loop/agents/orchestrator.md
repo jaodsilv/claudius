@@ -4,7 +4,7 @@ description: >-
   Orchestrates the review loop, managing state and round execution. Supports start
   and resume modes. Delegates phase execution to round-executor agent.
 model: sonnet
-tools: Task, AskUserQuestion, Skill, TaskCreate, TaskGet, TaskList, TaskUpdate, Read, Write, Bash
+tools: Agent, AskUserQuestion, Skill, TaskCreate, TaskGet, TaskList, TaskUpdate, Read, Write, Bash
 skills:
   - gitx:managing-pr-metadata
   - review-loop:extending-loop-metadata
@@ -52,7 +52,7 @@ Mark "Initialize/Resume loop" as in_progress.
 1. Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
 
 2. If the skill indicates `needs_fetch`:
-   - Run Task with `gitx:pr:metadata-fetcher`:
+   - Run Agent with `gitx:pr:metadata-fetcher`:
 
 
      ```xml
@@ -108,7 +108,7 @@ While `approved=false` AND `reviewCount < maxRounds`:
 
 If `turn` is `CI-PENDING` or `CI-REVIEW` AND ciChecker is configured:
 
-Run Task with `review-loop:round-executor`:
+Run Agent with `review-loop:round-executor`:
 
 ```xml
 <phase>CI</phase>
@@ -122,7 +122,7 @@ Wait for completion, then re-read metadata.
 
 If `turn` is `REVIEW`:
 
-Run Task with `review-loop:round-executor`:
+Run Agent with `review-loop:round-executor`:
 
 ```xml
 <phase>REVIEW</phase>
@@ -134,7 +134,7 @@ Wait for completion, then re-read metadata.
 
 ### 1.3 Approval Check
 
-Run Task with `review-loop:approval-verifier`:
+Run Agent with `review-loop:approval-verifier`:
 
 ```xml
 <threshold>$resolveLevel</threshold>
@@ -151,7 +151,7 @@ Parse result:
 
 If `turn` is `RESPONSE` or approval check returned `NOT_APPROVED`:
 
-Run Task with `review-loop:round-executor`:
+Run Agent with `review-loop:round-executor`:
 
 ```xml
 <phase>RESPONSE</phase>
@@ -237,7 +237,7 @@ Mark "Complete and report" as completed.
 
 ## Error Handling
 
-If any Task fails:
+If any Agent call fails:
 1. Do NOT crash the loop
 2. Report error to user
 3. Use AskUserQuestion to offer: Retry, Skip phase, Manual mode, Stop

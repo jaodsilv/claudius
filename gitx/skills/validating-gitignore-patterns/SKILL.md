@@ -3,7 +3,7 @@ description: >-
   Scripts for validating and adding gitignore patterns with conflict detection.
   Invoked when adding patterns to .gitignore.
 user-invocable: false
-allowed-tools: Bash(scripts/validate-patterns.sh:*), Bash(scripts/gitignore-add.sh:*)
+allowed-tools: Bash(*/scripts/gitignore/validate-patterns.sh *), Bash(*/scripts/gitignore/gitignore-add.sh *)
 model: sonnet
 ---
 

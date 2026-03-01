@@ -2,7 +2,7 @@
 name: fix-orchestrator
 description: Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, development, and review phases.
 model: opus
-tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Bash(git:*), Bash(gh:*), AskUserQuestion, Read, Write, Skill
+tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Bash(git *), Bash(gh *), AskUserQuestion, Read, Write, Skill
 color: purple
 ---
 

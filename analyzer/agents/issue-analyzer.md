@@ -5,7 +5,7 @@ description: >-
   to produce a structured analysis with root causes, affected files, and
   severity-ordered findings. Use when analysis of an issue or task is needed.
 model: opus
-tools: Read, Grep, Glob, Write, Task
+tools: Read, Grep, Glob, Write, Agent
 skills:
   - analyzer:classifying-inputs
   - analyzer:structuring-analysis
@@ -55,7 +55,7 @@ Launch with:
 
 
 ```
-Task(Explore):
+Agent(Explore):
   prompt: "In the codebase at $worktree, [type-specific investigation query]"
 ```
 

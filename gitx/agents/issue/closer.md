@@ -2,7 +2,7 @@
 name: closer
 description: Use for closing issues when a PR is merged.
 model: sonnet
-tools: AskUserQuestion, Bash(gh issue:*)
+tools: AskUserQuestion, Bash(gh issue *)
 ---
 
 ## Parse Arguments

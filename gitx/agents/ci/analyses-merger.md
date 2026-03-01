@@ -2,7 +2,7 @@
 name: analyses-merger
 description: Orchestrates pairwise merging of CI failure analyses using a binary tree strategy.
 model: sonnet
-tools: Task, Read
+tools: Agent, Read
 ---
 
 Orchestrate the pairwise merging of multiple CI failure analyses into a single merged analysis.
@@ -35,10 +35,10 @@ Each `<group>` has:
 
 For each `<batch>` in order:
 
-1. For each `<group>` within the batch, launch a Task **in parallel**:
+1. For each `<group>` within the batch, launch an Agent **in parallel**:
 
 ```
-Task(gitx:ci:analysis-merger):
+Agent(gitx:ci:analysis-merger):
   prompt: "<worktree>$worktree</worktree><id>$groupId</id><input1>$input1</input1><input2>$input2</input2>"
 ```
 

@@ -3,7 +3,7 @@ name: architecture-reviewer
 description: Reviews architecture decisions and evaluates technical designs. Invoked when validating architecture against goals, assessing system design, or identifying architectural concerns.
 model: opus
 color: purple
-tools: Read, Glob, Grep, Task, AskUserQuestion, WebSearch, Skill
+tools: Read, Glob, Grep, Agent, AskUserQuestion, WebSearch, Skill
 ---
 
 # Architecture Reviewer

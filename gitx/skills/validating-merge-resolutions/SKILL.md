@@ -2,7 +2,7 @@
 description: >-
   Provides validation checklist and patterns for merge/rebase conflict
   resolutions. Use when checking resolved files before continuing git operations.
-allowed-tools: Bash(scripts/validate-resolution.sh:*)
+allowed-tools: Bash(*/scripts/conflicts/validate-resolution.sh *)
 model: sonnet
 user-invocable: false
 context: fork

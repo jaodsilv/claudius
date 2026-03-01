@@ -2,7 +2,7 @@
 name: ci-failure-analyzer
 description: Analyzes CI check failures to identify root causes and fixes. Invoked when addressing CI failures on a PR.
 model: opus
-tools: Bash(gh:*), Bash(git:*), Read, WebFetch, Grep, Glob
+tools: Bash(gh *), Bash(git *), Read, WebFetch, Grep, Glob
 color: red
 skills:
   - gitx:classifying-issues-and-failures
@@ -20,7 +20,7 @@ Analyze CI check failures, identify root causes, and suggest specific remediatio
 
 ### Optional
 
-- Checks metadata, such as failed check names, details URLs, ids, etc..
+- Checks metadata, such as failed check names, details URLs, ids, etc.
 - Attempt Number
 
 ## Process

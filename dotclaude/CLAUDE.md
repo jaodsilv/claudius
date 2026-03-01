@@ -52,7 +52,7 @@ probably some leak, hopefully it is resolved soon
 
   ```text
   \<foreach $url in $urls\>
-    Launch Task using the Agent tool with sub-agent "@docs:batch-downloader"
+    Launch an agent using the Agent tool with sub-agent "@docs:batch-downloader"
       Download the urls: \<urls\>{{urls}}\</urls\>
   \</foreach\>
   ```

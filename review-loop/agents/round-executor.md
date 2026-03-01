@@ -2,7 +2,7 @@
 name: round-executor
 description: Executes a single phase (CI/Review/Response) of a review loop round. Invoked by orchestrator for phase isolation.
 model: sonnet
-tools: Task, Read, Write, Skill, Bash
+tools: Agent, Read, Write, Skill, Bash
 skills:
   - gitx:managing-pr-metadata
   - review-loop:extending-loop-metadata
@@ -130,7 +130,7 @@ Issues: [none | summary of any problems]
 
 ## Error Handling
 
-If agent Task fails:
+If the Agent call fails:
 
 1. Do NOT update turn state
 2. Return error summary with:

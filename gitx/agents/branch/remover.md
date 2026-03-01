@@ -1,7 +1,7 @@
 ---
 name: remover
 description: Removes a branch when cleaning up. Use for post-merge cleanup or abandoned work.
-tools: Bash(git branch:*), Bash(git push:*), Bash(git switch:*), AskUserQuestion, Skill
+tools: Bash(git branch *), Bash(git push *), Bash(git switch *), AskUserQuestion, Skill
 model: sonnet
 ---
 

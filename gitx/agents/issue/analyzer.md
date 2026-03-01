@@ -3,7 +3,7 @@ name: analyzer
 description: >-
   Analyzes GitHub issues to extract requirements and acceptance criteria. Invoked at the start of fix-issue workflow.
 model: sonnet
-tools: Bash(gh:*), Read, WebFetch
+tools: Bash(gh *), Read, WebFetch
 color: blue
 skills:
   - gitx:classifying-issues-and-failures

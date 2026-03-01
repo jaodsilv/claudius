@@ -13,15 +13,25 @@
 #   ]
 # }
 
+# Parse --plugin-root flag
+for _arg in "$@"; do
+  if [[ "$_arg" == --plugin-root=* ]]; then
+    _PLUGIN_ROOT_PARAM="${_arg#--plugin-root=}"
+    break
+  fi
+done
+
+# Priority: env var > --plugin-root flag > self-location fallback
+export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
+
 set -uo pipefail
 
 # Get script directory and source libraries
-# Try to find logging.sh: first in plugin, then in plugin hooks
 LOGGING_PATH=""
-if [[ -n "${CLAUDE_PLUGIN_ROOT:$1}" ]] && [[ -f "${CLAUDE_PLUGIN_ROOT:$1}/scripts/lib/logging.sh" ]]; then
-  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT:$1}/scripts/lib/logging.sh"
+if [[ -f "${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh" ]]; then
+  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT}/scripts/lib/logging.sh"
 else
-  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT:$1}/hooks/scripts/lib/logging.sh"
+  LOGGING_PATH="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/lib/logging.sh"
 fi
 source "$LOGGING_PATH" || exit 1
 log_init "commit-push-execute"

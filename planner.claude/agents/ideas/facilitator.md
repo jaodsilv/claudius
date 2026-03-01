@@ -3,7 +3,7 @@ name: facilitator
 description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
 model: sonnet
 color: cyan
-tools: Read, Write, Task, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
+tools: Read, Write, Agent, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 ---
 
 # Ideas Facilitator Agent

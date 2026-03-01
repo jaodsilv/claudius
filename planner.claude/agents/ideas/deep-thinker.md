@@ -3,7 +3,7 @@ name: deep-thinker
 description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
 model: opus
 color: magenta
-tools: Read, Glob, Grep, WebSearch, Task, Skill
+tools: Read, Glob, Grep, WebSearch, Agent, Skill
 ---
 
 # Deep Thinker Agent

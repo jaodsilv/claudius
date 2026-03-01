@@ -2,7 +2,7 @@
 
 name: docs:batch-downloader
 description: Batch download manager
-tools: Task, LS, Read, Write, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit, Grep, Glob, Bash(rm:*)
+tools: Agent, LS, Read, Write, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit, Grep, Glob, Bash(rm *)
 ---
 
 # Batch Downloader
@@ -26,7 +26,7 @@ You are going to be provided the following parameters:
 Please, consider the following when performing your task:
 <considerations>
 
-- Do not start two download Tasks simultaneously. Wait for the first Task to complete before starting the second one.
+- Do not start two download agents simultaneously. Wait for the first agent to complete before starting the second one.
 - Do run in parallel the convert Tasks
 </considerations>
 
@@ -51,7 +51,7 @@ Then do the following in this order:
         - The value of `$output-path/$url.filename` should replace the placeholder `{{output-path}}`
     5. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:downloader (subagent_type: "docs:downloader")</subagent>
-    6. Wait for this Task to complete
+    6. Wait for this agent to complete
     7. If download failed, print the message <download-failed>Download failed for url: $url.url. See logs for details.</download-failed>,
        and append with the Edit tool (Or Write tool if the file does not exist) the logging messages to the file <log-file>.claude/logs/agents/docs/batch-downloader.log</log-file>
     8. Otherwise, Fill the template <convert-template> with the following values from the completed task output:
@@ -61,12 +61,12 @@ Then do the following in this order:
         4. The value within the <output-path> block should replace the placeholder `{{output-path}}`
         5. The value within the <notes> block should replace the placeholder `{{notes}}`
     9. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
-       <subagent>@agent-docs:converter (subagent_type: "docs:converter")</subagent> and add the Task reference to the variable `$tasks`
+       <subagent>@agent-docs:converter (subagent_type: "docs:converter")</subagent> and add the agent reference to the variable `$tasks`
     10. wait 5 seconds to avoid rate limiting in the downloader
 3. </foreach>
 4. <foreach $task in $tasks>
     1. Wait for $task to finish
-    2. If the Task failed, print the message
+    2. If the agent failed, print the message
        <failed-task>Failed Task: Converting $url.url to $url.filename. See logs for details.</failed-task>,
        and append with the Edit tool (Or Write tool if the file does not exist) the logging messages to the file <log-file>.claude/logs/agents/docs/batch-downloader.log</log-file>
     3. Otherwise, Fill the template <convert-verify-template> with the following values from the completed task output:
@@ -77,9 +77,9 @@ Then do the following in this order:
         5. The value within the <notes> block should replace the placeholder `{{notes}}`
     4. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:conversion-verifier (subagent_type: "docs:conversion-verifier")</subagent>
-       and add the Task reference to the variable `$verified-tasks`
-    5. Wait for all Tasks in the variable `$verified-tasks` to complete
-    6. For any failed Task in the variable `$verified-tasks` print the message
+       and add the agent reference to the variable `$verified-tasks`
+    5. Wait for all agents in the variable `$verified-tasks` to complete
+    6. For any failed agent in the variable `$verified-tasks` print the message
        <failed-task>Failed Verification Task: Converting $url.url to $url.filename. See logs for details.</failed-task>,
        and append with the Edit tool (Or Write tool if the file does not exist) the logging messages to the file <log-file>.claude/logs/agents/docs/batch-downloader.log</log-file>
     7. Print the template <output-template> message for successful results if ALL Tasks completed successfully

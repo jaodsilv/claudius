@@ -2,7 +2,7 @@
 name: ci-status-fixer
 # description: Fixes CI failures when feedback needs addressing. Use for iterating on pull request feedback.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob, Edit
+allowed-tools: Bash(gh *), Bash(git *), Read, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob, Edit
 model: opus
 ---
 
@@ -109,7 +109,7 @@ Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
 
 If the skill indicates `needs_fetch`:
 
-1. Run Task(gitx:pr:metadata-fetcher) with worktree
+1. Run Agent(gitx:pr:metadata-fetcher) with worktree
 2. Retry ensure
 
 ### Read PR Metadata

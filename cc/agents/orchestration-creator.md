@@ -46,7 +46,7 @@ Structure the command file:
 ---
 description: [Brief workflow description]
 argument-hint: [Arguments]
-allowed-tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, Write, ...
+allowed-tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, Write, ...
 ---
 
 # Orchestration: [Name]

@@ -18,11 +18,21 @@
 #
 # Output: JSON with merge results
 
+# Parse --plugin-root flag
+for _arg in "$@"; do
+  if [[ "$_arg" == --plugin-root=* ]]; then
+    _PLUGIN_ROOT_PARAM="${_arg#--plugin-root=}"
+    break
+  fi
+done
+
+# Priority: env var > --plugin-root flag > self-location fallback
+export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
+
 set -uo pipefail
 
 # Get script directory for relative imports
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PLUGIN_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
 # Convert Windows paths to bash format
 convert_path() {
@@ -150,7 +160,7 @@ if [[ -z "$PR_NUMBER" ]] || [[ "$PR_NUMBER" == "null" ]]; then
 fi
 
 # Step 2: Pre-flight checks
-PREFLIGHT_SCRIPT="$PLUGIN_ROOT/skills/performing-pr-preflight-checks/scripts/pr-preflight.sh"
+PREFLIGHT_SCRIPT="$CLAUDE_PLUGIN_ROOT/scripts/prs/pr-preflight.sh"
 if [[ -f "$PREFLIGHT_SCRIPT" ]]; then
   PREFLIGHT_OUTPUT=$("$PREFLIGHT_SCRIPT" --for-merge "$PR_NUMBER" 2>&1)
   PREFLIGHT_EXIT=$?
@@ -167,7 +177,7 @@ if [[ -f "$PREFLIGHT_SCRIPT" ]]; then
 fi
 
 # Step 3: Sync branches before merge
-SYNC_SCRIPT="$PLUGIN_ROOT/skills/syncing-branches/scripts/sync-branch.sh"
+SYNC_SCRIPT="$CLAUDE_PLUGIN_ROOT/scripts/branches/sync-branch.sh"
 if [[ -f "$SYNC_SCRIPT" ]]; then
   # Best-effort sync
   "$SYNC_SCRIPT" "$WORKTREE" >/dev/null 2>&1 || true

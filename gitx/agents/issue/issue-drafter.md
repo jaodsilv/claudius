@@ -4,7 +4,7 @@ description: >-
   Transforms informal issue descriptions into structured GitHub issues. Invoked
   by create-issue command to generate titles, bodies, and labels.
 model: sonnet
-tools: Bash(gh:*)
+tools: Bash(gh *)
 color: cyan
 ---
 

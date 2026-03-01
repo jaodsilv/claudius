@@ -2,7 +2,7 @@
 description: Downloads a document from a URL or a list of URLs
 argument-hint: "output-path: <output-folder> file-existing-mode: <file-existing-mode> url: <url> filename: <output-filename>"
 user-invocable: true
-allowed-tools: Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
+allowed-tools: Read, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 ---
 
 ## Context
@@ -25,7 +25,7 @@ Follow the instructions described in the numbered list below:
         - {{urls}} with the values of the variables `$urls` or `[(url: $url, filename: $filename, notes: $notes)]`
         - {{output-path}} with the value of the variable `$output-path`
         - {{file-existing-mode}} with the value of the variable `$file-existing-mode`
-    2. Launch an async Task with the Agent tool using the filled template as a prompt to the sub-agent
+    2. Launch an async agent with the Agent tool using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:batch-downloader (subagent_type: "docs:batch-downloader")</subagent>
 4. </foreach>
 5. Wait for all Tasks to complete

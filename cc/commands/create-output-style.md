@@ -1,7 +1,7 @@
 ---
 description: Creates output-styles when defining consistent formatting patterns.
 argument-hint: "[[--style-name] <style-name>] [--plugin <plugin-path>]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

@@ -2,7 +2,7 @@
 name: failure-analyzer
 description: Analyzes a single CI check failure from its log to identify root causes and fix suggestions.
 model: opus
-tools: Read, Grep, Glob, Write, Bash(gh:*, git:*)
+tools: Read, Grep, Glob, Write, Bash(gh *, git *)
 skills:
   - gitx:classifying-issues-and-failures
 ---

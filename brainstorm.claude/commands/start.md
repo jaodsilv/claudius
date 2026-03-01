@@ -1,7 +1,7 @@
 ---
 description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
 argument-hint: "[[--topic] <topic>] [--depth <shallow|normal|deep>] [--output-path <path>]"
-allowed-tools: Task, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, WebSearch, Glob, Grep
+allowed-tools: Agent, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, WebSearch, Glob, Grep
 model: opus
 ---
 

@@ -455,7 +455,7 @@ pdf-processing/
 ---
 name: pdf-processing
 description: Extract text, fill forms, merge PDFs. Use when working with PDF files, forms, or document extraction. Requires pypdf and pdfplumber packages.
-allowed-tools: Read, Bash(python:*)
+allowed-tools: Read, Bash(python *)
 ---
 
 # PDF Processing

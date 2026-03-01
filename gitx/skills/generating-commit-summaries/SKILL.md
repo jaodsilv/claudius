@@ -4,7 +4,7 @@ description: >-
   creating PR descriptions, issue comments, or review responses that need
   commit context.
 user-invocable: false
-allowed-tools: Bash(git:*), AskUserQuestion
+allowed-tools: Bash(git *), AskUserQuestion
 model: sonnet
 ---
 

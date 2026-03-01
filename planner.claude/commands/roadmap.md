@@ -1,7 +1,7 @@
 ---
 description: Create a project roadmap with phases, milestones, and deliverables
 argument-hint: "[[--goal] <goal>] [--phases <number>] [--horizon <weeks|months>] [--output <path>]"
-allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Skill
+allowed-tools: Agent, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Skill
 model: opus
 ---
 

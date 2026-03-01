@@ -2,7 +2,7 @@
 name: metadata-fetcher
 description: Fetches PR metadata to .thoughts/pr/metadata.yaml on demand. Invoked when metadata doesn't exist or needs refresh.
 model: sonnet
-tools: Bash(gh:*), Bash(git:*), Read
+tools: Bash(gh *), Bash(git *), Read
 color: blue
 ---
 

@@ -1,7 +1,7 @@
 ---
 description: Multi-agent Ultrathink deep ideation session with Opus extended thinking
 argument-hint: "[[--goal] <goal> | [--roadmap-path] <roadmap-path>] [--mode <full|focused>] [--rounds <number>] [--output <path>]"
-allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
+allowed-tools: Agent, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 model: opus
 ---
 

@@ -3,7 +3,7 @@ name: merge-validator
 description: >-
   Validates merge and rebase resolutions before continuing operations. Invoked after conflicts are resolved to check for issues.
 model: sonnet
-tools: Bash(git:*), Bash(npm:*), Bash(npx:*), Bash(grep:*), Read, Grep
+tools: Bash(git *), Bash(npm *), Bash(npx *), Bash(grep *), Read, Grep
 color: purple
 skills: gitx:validating-merge-resolutions
 ---

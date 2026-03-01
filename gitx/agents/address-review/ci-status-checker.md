@@ -2,7 +2,7 @@
 name: ci-status-checker
 # description: Checks CI status and provides feedback when needed.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob
+allowed-tools: Bash(gh *), Bash(git *), Read, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob
 model: opus
 ---
 

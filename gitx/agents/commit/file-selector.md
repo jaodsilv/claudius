@@ -2,7 +2,7 @@
 name: file-selector
 description: Selects files matching contextual description for focused commits
 model: opus
-tools: Read, Bash(git:*), Grep, Glob
+tools: Read, Bash(git *), Grep, Glob
 color: cyan
 ---
 

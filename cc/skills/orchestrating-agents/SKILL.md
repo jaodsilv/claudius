@@ -39,7 +39,7 @@ For simple linear tasks, prefer single commands or agents.
 ---
 description: [Brief workflow description]
 argument-hint: [Arguments]
-allowed-tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, ...
+allowed-tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, ...
 ---
 
 # Orchestration: [Name]

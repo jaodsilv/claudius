@@ -2,7 +2,7 @@
 name: change-grouper
 description: Groups files into logical, cohesive commits following best practices
 model: opus
-tools: Read, Bash(git:*), Grep, Glob
+tools: Read, Bash(git *), Grep, Glob
 color: cyan
 ---
 

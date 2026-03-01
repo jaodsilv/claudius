@@ -1,7 +1,7 @@
 ---
 description: Gets next issue by priority when selecting work. Use for picking the highest priority available task.
 argument-hint: "[-d or --detailed]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

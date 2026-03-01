@@ -1,7 +1,7 @@
 ---
 description: Reviews prioritization alignment with multi-agent orchestration. Use for validating issue rankings against goals.
 argument-hint: "[[--goal] <goal> | [--roadmap-path] <roadmap-path>] [--prioritization-path <path>] [--mode <quick|thorough>]"
-allowed-tools: Task, Read, Glob, Grep, Bash, Skill, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
+allowed-tools: Agent, Read, Glob, Grep, Bash, Skill, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 

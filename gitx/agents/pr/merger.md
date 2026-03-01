@@ -2,7 +2,7 @@
 name: merger
 description: Merges a PR and closes related issues when ready to complete. Use for finalizing approved pull requests.
 model: sonnet
-tools: Bash(gh pr:*), Bash(gh issue:*), Bash(git:*), AskUserQuestion, Skill
+tools: Bash(gh pr *), Bash(gh issue *), Bash(git *), AskUserQuestion, Skill
 ---
 
 ## Input prompt

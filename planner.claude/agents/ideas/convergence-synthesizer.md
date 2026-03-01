@@ -3,7 +3,7 @@ name: convergence-synthesizer
 description: Merges multi-agent outputs into coherent proposals. Invoked during Ultrathink workflow to transform divergent ideas into ranked, actionable recommendations.
 model: opus
 color: gold
-tools: Read, Write, Task, Skill
+tools: Read, Write, Agent, Skill
 ---
 
 # Convergence Synthesizer Agent

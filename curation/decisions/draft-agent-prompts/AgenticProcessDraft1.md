@@ -6,7 +6,7 @@ Help me design a multi-agentic AI developer
 
 - I want the output as diagrams on how it should work
 - Feel free to output more than one artifact containing a diagram in each one
-- You can choose the proper file format, e.g., svg, html+react, etc..
+- You can choose the proper file format, e.g., svg, html+react, etc.
 
 ## Process
 

@@ -1,7 +1,7 @@
 ---
 description: Detects which plugins are affected by changed files in a PR or git diff. Use when analyzing what plugins need version bumps or when determining scope of changes.
 user-invocable: false
-allowed-tools: Bash(scripts/detect-affected-plugins.sh:*)
+allowed-tools: Bash(*/scripts/plugins/detect-affected-plugins.sh *)
 version: 1.0.0
 ---
 
@@ -14,13 +14,13 @@ This skill provides automated detection of affected plugins based on changed fil
 ### From a PR
 
 ```bash
-scripts/detect-affected-plugins.sh "123" "."
+${CLAUDE_PLUGIN_ROOT}/scripts/plugins/detect-affected-plugins.sh "123" "."
 ```
 
 ### From Uncommitted/Unpushed Changes
 
 ```bash
-scripts/detect-affected-plugins.sh "" "."
+${CLAUDE_PLUGIN_ROOT}/scripts/plugins/detect-affected-plugins.sh "" "."
 ```
 
 ## Input Arguments

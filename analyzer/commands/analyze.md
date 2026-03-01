@@ -4,7 +4,7 @@ description: >-
   to produce a structured analysis with root causes and severity-ordered findings.
   Use when needing to understand what is wrong and why before planning a fix.
 argument-hint: "[--worktree <worktree>] [--input-type <type>] [<input-text>]"
-allowed-tools: Task
+allowed-tools: Agent
 model: sonnet
 ---
 

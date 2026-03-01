@@ -1,7 +1,7 @@
 ---
 name: remover
 description: Removes a worktree and associated branch when cleaning up. Use for post-merge cleanup or abandoned work.
-tools: Bash(git worktree:*), Bash(git branch:*), Bash(git push:*), AskUserQuestion, Skill
+tools: Bash(git worktree *), Bash(git branch *), Bash(git push *), AskUserQuestion, Skill
 model: sonnet
 ---
 
