@@ -20,6 +20,7 @@ _PLUGIN_VALUE_FLAGS=(--plugin --plugins --delta --worktree --focus)
 
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-validator.sh"
+source "$LIBS_DIR/hook-output.sh"
 log_init "pre-tool"
 
 # Set hook event type for output formatting

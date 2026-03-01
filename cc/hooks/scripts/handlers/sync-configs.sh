@@ -168,7 +168,7 @@ log_section "Output"
 if [[ "$HAS_DIFFERENCES" != "true" ]]; then
   log_info "All configs in sync"
   log_exit 0 "already in sync - block with JSON"
-  echo '{"decision": "block", "reason": "All plugin configurations are in sync. No action needed."}'
+  hook_output_block "All plugin configurations are in sync. No action needed."
   exit 0
 fi
 

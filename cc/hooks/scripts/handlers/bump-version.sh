@@ -265,7 +265,7 @@ scan_versions() {
 
   log_info "Metadata rebuilt: $METADATA_FILE"
   log_exit 0 "metadata rebuilt from git blame"
-  echo "{\"decision\": \"block\", \"reason\": \"Metadata file rebuilt from git blame.\"}"
+  hook_output_block "Metadata file rebuilt from git blame."
   exit 0
 }
 
@@ -313,7 +313,7 @@ if [[ -z "$PLUGINS_ARG" ]] && [[ "$MARKETPLACE_ONLY" != "true" ]]; then
   fi
 
   # Use detect-affected-plugins.sh script
-  DETECT_SCRIPT="${CLAUDE_PLUGIN_ROOT}/skills/detecting-plugin-changes/scripts/detect-affected-plugins.sh"
+  DETECT_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/plugins/detect-affected-plugins.sh"
 
   if [[ -f "$DETECT_SCRIPT" ]]; then
     log_info "Running detect-affected-plugins.sh"
@@ -806,10 +806,6 @@ elif [[ "$WILL_COMMIT" == "true" ]]; then
   SUMMARY="$SUMMARY. Committed."
 fi
 
-# Escape for valid JSON: backslashes first, then quotes, then newlines
-# Order matters: escape backslashes before adding new ones
-SUMMARY_ESCAPED=$(printf '%s' "$SUMMARY" | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g' | tr '\r' ' ')
-
 log_exit 0 "versions bumped - block with JSON"
-echo "{\"decision\": \"block\", \"reason\": \"$SUMMARY_ESCAPED\"}"
+hook_output_block "$SUMMARY"
 exit 0
