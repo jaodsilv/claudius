@@ -1,7 +1,7 @@
 ---
 description: Read all plugin.json and the marketplace.json, and fix inconsistencies.
 argument-hint: "[--plugins <list>] [--fix]"
-allowed-tools: ["Read", "Edit", "AskUserQuestion", "TodoWrite"]
+allowed-tools: Read, Edit, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

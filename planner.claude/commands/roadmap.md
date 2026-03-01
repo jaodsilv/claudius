@@ -1,7 +1,7 @@
 ---
 description: Create a project roadmap with phases, milestones, and deliverables
 argument-hint: "[[--goal] <goal>] [--phases <number>] [--horizon <weeks|months>] [--output <path>]"
-allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TodoWrite, AskUserQuestion, Skill
+allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Skill
 model: opus
 ---
 
@@ -22,7 +22,7 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Goal Analysis
 
-1. Initialize TodoWrite with phases:
+1. Initialize task list using TaskCreate with phases:
    - Phase 1: Goal Analysis (in_progress)
    - Phase 2: Context Gathering (pending)
    - Phase 3: GitHub Integration (pending)

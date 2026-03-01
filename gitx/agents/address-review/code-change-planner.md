@@ -3,7 +3,7 @@ name: code-change-planner
 description: >-
   Plans code changes needed to address PR feedback. Invoked after feedback analysis to organize fixes.
 model: opus
-tools: Read, Edit, Grep, Glob, Write, TodoWrite, Skill, AskUserQuestion
+tools: Read, Edit, Grep, Glob, Write, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill, AskUserQuestion
 color: green
 ---
 

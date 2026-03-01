@@ -63,7 +63,7 @@ Every major step follows this pattern:
 
 ### Phase 0: Initial Setup
 
-Using the Task tool run the agent `gitx:worktree:creator` with the following context:
+Using the Agent tool run the agent `gitx:worktree:creator` with the following context:
 
 ```text
 Issue #[number] - [title]

@@ -4,7 +4,7 @@ name: docs:downloader
 description: |
   Specialized web content downloader that fetches HTML content from URLs, extracts specific sections by HTML tag ID, converts to markdown,
   and saves to specified file paths. Use proactively for web scraping, documentation extraction, and content archiving tasks.
-tools: WebFetch, Write, Read, Task, TodoWrite
+tools: WebFetch, Write, Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

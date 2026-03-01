@@ -1,7 +1,7 @@
 ---
 description: Improves plugins comprehensively when preparing for release or audit.
 argument-hint: "[[--plugin-path] <plugin-path>] [--focus \"<aspect>\"]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 
@@ -39,7 +39,7 @@ Glob pattern="[plugin-path]/skills/**/SKILL.md"
 Glob pattern="[plugin-path]/hooks/hooks.json"
 ```
 
-1. Create TodoWrite with all components to analyze:
+1. Create task list using TaskCreate with all components to analyze:
    - [ ] Analyze plugin structure
    - [ ] Analyze commands (X total)
    - [ ] Analyze agents (X total)
@@ -51,7 +51,7 @@ Glob pattern="[plugin-path]/hooks/hooks.json"
 
 ### Phase 2: Plugin Structure Analysis
 
-Use Task tool with @cc:plugin-improver agent:
+Use Agent tool with @cc:plugin-improver agent:
 
 ```text
 Analyze plugin structure: [plugin_path]
@@ -78,7 +78,7 @@ For each component type, launch analysis in parallel if many components, or sequ
 For each command:
 
 ```text
-Use Task tool with @cc:command-improver:
+Use Agent tool with @cc:command-improver:
   Analyze command: [command-path]
   Provide summary of issues by severity.
 ```
@@ -90,7 +90,7 @@ Mark todo: Analyze commands - Complete
 For each agent:
 
 ```text
-Use Task tool with @cc:agent-improver:
+Use Agent tool with @cc:agent-improver:
   Analyze agent: [agent-path]
   Provide summary of issues by severity.
 ```
@@ -102,7 +102,7 @@ Mark todo: Analyze agents - Complete
 For each skill:
 
 ```text
-Use Task tool with @cc:skill-improver:
+Use Agent tool with @cc:skill-improver:
   Analyze skill: [skill-path]
   Provide summary of issues by severity.
 ```
@@ -170,7 +170,7 @@ Options: [List improvements]
 
 ### Phase 7: Plan Changes
 
-Use Task tool with @cc:change-planner agent:
+Use Agent tool with @cc:change-planner agent:
 
 ```text
 Plan changes for plugin: [plugin_path]
@@ -190,7 +190,7 @@ Mark todo: Plan changes - Complete
 
 ### Phase 8: Apply Improvements
 
-Use Task tool with @cc:component-writer agent:
+Use Agent tool with @cc:component-writer agent:
 
 ```text
 Apply change plan to plugin: [plugin_path]
@@ -202,7 +202,7 @@ Apply each change in order.
 Report success/failure for each step.
 ```
 
-Update TodoWrite progress.
+Update progress using TaskUpdate.
 
 Mark todo: Apply selected improvements - Complete
 

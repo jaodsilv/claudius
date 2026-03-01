@@ -2,7 +2,7 @@
 
 name: jobs:Cover-Letter-improver-standalone
 description: Standalone agent to evaluate and improve a cover letter
-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
+tools: Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
 ---
 

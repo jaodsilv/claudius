@@ -1,7 +1,7 @@
 ---
 description: Prioritize GitHub issues using RICE, MoSCoW, or custom frameworks
 argument-hint: "[[--issues] <issue-numbers|ALL>] [--framework <RICE|MoSCoW|WeightedScoring>] [--output <path>]"
-allowed-tools: Task, Read, Write, Bash, Glob, Grep, TodoWrite, AskUserQuestion, Skill
+allowed-tools: Task, Read, Write, Bash, Glob, Grep, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Skill
 model: opus
 ---
 
@@ -21,7 +21,7 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Initialization
 
-1. Initialize TodoWrite:
+1. Initialize task list using TaskCreate:
    - Phase 1: Initialization (in_progress)
    - Phase 2: Issue Fetching (pending)
    - Phase 3: Relationship Mapping (pending)
@@ -44,7 +44,7 @@ Extract from `$ARGUMENTS`:
 1. Launch `issue-analyzer` agent:
 
    ```text
-   Use Task tool with `planner:github:issue-analyzer` agent:
+   Use Agent tool with `planner:github:issue-analyzer` agent:
 
    Fetch and analyze issues: {{issues}}
 
@@ -68,7 +68,7 @@ Extract from `$ARGUMENTS`:
 2. Launch `issue-relationship-mapper` agent:
 
    ```text
-   Use Task tool with `planner:github:issue-relationship-mapper` agent:
+   Use Agent tool with `planner:github:issue-relationship-mapper` agent:
 
    Map dependencies for issues: {{issue_list}}
 
@@ -88,7 +88,7 @@ Extract from `$ARGUMENTS`:
 2. Launch `prioritization-engine` agent:
 
    ```text
-   Use Task tool with `planner:creators:prioritization-engine` agent:
+   Use Agent tool with `planner:creators:prioritization-engine` agent:
 
    Apply {{framework}} framework to prioritize:
 

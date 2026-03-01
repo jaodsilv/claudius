@@ -4,12 +4,12 @@ Patterns for communication and coordination between agents in orchestrations.
 
 ## Agent Communication
 
-### Task Tool Invocation
+### Agent Tool Invocation
 
-Invoke agents using the Task tool:
+Invoke agents using the Agent tool:
 
 ```markdown
-Use Task tool with @agent-name:
+Use Agent tool with @agent-name:
 
 prompt: |
   [Context from previous phase]
@@ -28,7 +28,7 @@ Pass relevant context between agents:
 ```markdown
 ### Good Context Passing
 
-Use Task tool with @implementer:
+Use Agent tool with @implementer:
 
 prompt: |
   ## Context from Design Phase
@@ -45,7 +45,7 @@ prompt: |
 ```markdown
 ### Bad Context Passing
 
-Use Task tool with @implementer:
+Use Agent tool with @implementer:
 
 prompt: |
   [Dumps entire previous conversation]
@@ -136,7 +136,7 @@ If FAILED:
 
 ## Shared State
 
-### Via TodoWrite
+### Via Task Tools (TaskCreate/TaskUpdate)
 
 ```markdown
 ### State in Todos

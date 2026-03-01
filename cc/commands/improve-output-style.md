@@ -1,7 +1,7 @@
 ---
 description: Improves output-styles when formatting rules need refinement.
 argument-hint: "[[--output-style-path] <output-style-path>] [--focus \"<aspect>\"]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -33,7 +33,7 @@ Use AskUserQuestion:
 Delegate to improvement workflow orchestrator:
 
 ```text
-Use Task tool with @cc:improvement-workflow-orchestrator:
+Use Agent tool with @cc:improvement-workflow-orchestrator:
 
 component_type: output-style
 component_path: [output_style_path]

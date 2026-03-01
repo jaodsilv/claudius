@@ -3,7 +3,7 @@ name: orchestration-creator
 description: Creates orchestration commands with phase coordination. Invoked when implementing multi-agent workflows.
 model: opus
 color: green
-tools: ["Read", "Write", "Glob", "Grep", "Skill", "Task"]
+tools: ["Read", "Write", "Glob", "Grep", "Skill", "Agent"]
 skills:
   - cc:orchestrating-agents
 ---
@@ -46,7 +46,7 @@ Structure the command file:
 ---
 description: [Brief workflow description]
 argument-hint: [Arguments]
-allowed-tools: Task, TodoWrite, AskUserQuestion, Read, Write, ...
+allowed-tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, Write, ...
 ---
 
 # Orchestration: [Name]
@@ -60,7 +60,7 @@ allowed-tools: Task, TodoWrite, AskUserQuestion, Read, Write, ...
 [What this phase accomplishes]
 
 ### Execution
-Use Task tool with @[agent-name]:
+Use Agent tool with @[agent-name]:
 
 prompt: |
   [Detailed instructions for the agent]
@@ -113,15 +113,15 @@ For each new agent needed:
 
 ```markdown
 ## Phase 1: Discovery
-[Task tool invocation]
+[Agent tool invocation]
 [COMPACT: preserve discovery results]
 
 ## Phase 2: Design
-[Task tool invocation using Phase 1 results]
+[Agent tool invocation using Phase 1 results]
 [COMPACT: preserve design results]
 
 ## Phase 3: Implementation
-[Task tool invocation using Phase 2 results]
+[Agent tool invocation using Phase 2 results]
 ```
 
 ### Parallel Phases
@@ -129,16 +129,16 @@ For each new agent needed:
 ```markdown
 ## Phase 1: Parallel Analysis
 
-Launch in parallel using Task tool:
+Launch in parallel using Agent tool:
 
 ### Thread A: Security Analysis
-Use Task tool with @security-reviewer in background
+Use Agent tool with @security-reviewer in background
 
 ### Thread B: Performance Analysis
-Use Task tool with @performance-reviewer in background
+Use Agent tool with @performance-reviewer in background
 
 ### Thread C: Style Analysis
-Use Task tool with @style-reviewer in background
+Use Agent tool with @style-reviewer in background
 
 ### Merge Results
 Collect outputs from all threads
@@ -154,10 +154,10 @@ Set iteration counter to 0
 Set max iterations to 3
 
 ### Phase A: Generate
-Use Task tool with @generator
+Use Agent tool with @generator
 
 ### Phase B: Review
-Use Task tool with @reviewer
+Use Agent tool with @reviewer
 
 ### Gate: Review Passed?
 If approved: Exit loop, proceed to finalization
@@ -172,7 +172,7 @@ If rejected and iterations >= max: Ask user to accept or abort
 ### Context Passing
 
 ```markdown
-Use Task tool with @phase-2-agent:
+Use Agent tool with @phase-2-agent:
 
 prompt: |
   ## Context from Phase 1
@@ -191,7 +191,7 @@ prompt: |
 ### State Tracking
 
 ```markdown
-Use TodoWrite to track:
+Use TaskCreate/TaskUpdate to track:
 - [x] Phase 1: Discovery - Complete
 - [ ] Phase 2: Design - In progress
 - [ ] Phase 3: Implementation
@@ -215,7 +215,7 @@ Validate the orchestration against these requirements:
 1. **Phase definitions**: Clear purpose and boundaries for each phase. Ambiguous phases cause agent confusion about responsibilities.
 2. **Data flow**: Explicit context passing between phases. Missing data flow breaks downstream phases.
 3. **Error handling**: Graceful failure and recovery paths. Unhandled errors terminate the entire workflow.
-4. **Progress tracking**: TodoWrite usage for phase status.
+4. **Progress tracking**: TaskCreate/TaskUpdate usage for phase status.
 5. **Compact points**: Context preservation markers after each phase.
 6. **Gate conditions**: Validation before proceeding to next phase.
 7. **User visibility**: Progress reporting to user.

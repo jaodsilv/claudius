@@ -3,7 +3,7 @@
 name: cover-letter-evaluator:terminology
 description: Use this agent when you need to analyze terminology alignment between a cover letter and job description to improve ATS matching and keyword optimization. Examples: <example>Context: User has drafted a cover letter for a software engineering position and wants to ensure it uses the same terminology as the job posting. user: 'I've written a cover letter for this backend developer role, but I'm worried about ATS compatibility. Can you check if my terminology matches the job description?' assistant: 'I'll use the cover-letter-evaluator:terminology agent to identify terminology mismatches and provide specific recommendations for better ATS optimization.' <commentary>Since the user needs terminology analysis for ATS optimization, use the cover-letter-evaluator:terminology agent to compare cover letter and job description terminology.</commentary></example> <example>Context: User is applying to multiple tech companies and wants to optimize their cover letter terminology for each specific job posting. user: 'Here's my cover letter draft and the job description. I want to make sure I'm using their exact terminology for better keyword matching.' assistant: 'Let me analyze your cover letter terminology against the job description using the cover-letter-evaluator:terminology agent to identify alignment opportunities.' <commentary>The user specifically wants terminology alignment analysis, so use the cover-letter-evaluator:terminology agent to provide detailed keyword matching recommendations.</commentary></example>
 model: sonnet
-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
+tools: Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 color: purple
 ---
 

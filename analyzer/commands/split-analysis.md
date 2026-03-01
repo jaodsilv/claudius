@@ -23,7 +23,7 @@ Extract `--analysis-path` from $ARGUMENTS if provided. If not provided, default 
 
 ## Step 2: Run Agent
 
-Use the Task tool to run the `analyzer:analysis-splitter` agent with the prompt:
+Use the Agent tool to run the `analyzer:analysis-splitter` agent with the prompt:
 
 ```
 <worktree>$worktree</worktree>

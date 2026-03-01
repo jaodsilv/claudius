@@ -2,7 +2,7 @@
 
 name: docs:batch-downloader
 description: Batch download manager
-tools: Task, LS, Read, Write, TodoWrite, Edit, Grep, Glob, Bash(rm:*)
+tools: Task, LS, Read, Write, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit, Grep, Glob, Bash(rm:*)
 ---
 
 # Batch Downloader
@@ -33,7 +33,7 @@ Please, consider the following when performing your task:
 Then do the following in this order:
 
 1. Read the templates for calling the sub-agents below and fill them with the values of the variables on the section
-   "Template Prompts for sub-agent Task tool" within the xml tags <download-template>, <convert-template>, and <convert-verify-template>
+   "Template Prompts for sub-agent Agent tool" within the xml tags <download-template>, <convert-template>, and <convert-verify-template>
 2. <foreach $url in $urls>
     1. If the value of $file-existing-mode is `overwrite`:
         1. Check if the file with the name of $url.filename exists in the folder $output-path
@@ -49,7 +49,7 @@ Then do the following in this order:
         - The value of `$url.url` should replace the placeholder `{{url}}`
         - The value of `$url.notes` should replace the placeholder `{{notes}}`
         - The value of `$output-path/$url.filename` should replace the placeholder `{{output-path}}`
-    5. Using the Task tool start a task using the filled template as a prompt to the sub-agent
+    5. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:downloader (subagent_type: "docs:downloader")</subagent>
     6. Wait for this Task to complete
     7. If download failed, print the message <download-failed>Download failed for url: $url.url. See logs for details.</download-failed>,
@@ -60,7 +60,7 @@ Then do the following in this order:
         3. The value within the <raw-content-path> block should replace the placeholder `{{raw-content-path}}`
         4. The value within the <output-path> block should replace the placeholder `{{output-path}}`
         5. The value within the <notes> block should replace the placeholder `{{notes}}`
-    9. Using the Task tool start a task using the filled template as a prompt to the sub-agent
+    9. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:converter (subagent_type: "docs:converter")</subagent> and add the Task reference to the variable `$tasks`
     10. wait 5 seconds to avoid rate limiting in the downloader
 3. </foreach>
@@ -75,7 +75,7 @@ Then do the following in this order:
         3. The value within the <raw-content-path> block should replace the placeholder `{{raw-content-path}}`
         4. The value within the <output-path> block should replace the placeholder `{{output-path}}`
         5. The value within the <notes> block should replace the placeholder `{{notes}}`
-    4. Using the Task tool start a task using the filled template as a prompt to the sub-agent
+    4. Using the Agent tool start a task using the filled template as a prompt to the sub-agent
        <subagent>@agent-docs:conversion-verifier (subagent_type: "docs:conversion-verifier")</subagent>
        and add the Task reference to the variable `$verified-tasks`
     5. Wait for all Tasks in the variable `$verified-tasks` to complete
@@ -96,7 +96,7 @@ Then do the following in this order:
 
 \* Except for logging errors, messages should be printed to your regular output, not using bash and redirecting to a file
 
-## Template Prompts for sub-agent Task tool
+## Template Prompts for sub-agent Agent tool
 
 <download-template>
 

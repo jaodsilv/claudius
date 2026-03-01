@@ -47,7 +47,7 @@ Each phase should have:
 
 | Pattern | Description | Severity if Missing |
 |---------|-------------|---------------------|
-| State preservation | TodoWrite for progress tracking | MEDIUM |
+| State preservation | TaskCreate/TaskUpdate for progress tracking | MEDIUM |
 | Context passing | Explicit data handoff between phases | HIGH |
 | Intermediate results | Store for later phases | MEDIUM |
 
@@ -106,7 +106,7 @@ Should fix for quality:
 
 - Phases without gates/validation
 - Missing data flow between phases
-- No TodoWrite progress tracking
+- No TaskCreate/TaskUpdate progress tracking
 - Vague agent task descriptions
 - Missing error recovery
 
@@ -159,7 +159,7 @@ Nice to have polish:
 **Execution**:
 1. Use Glob to find all command files
 2. Use Glob to find all agent files
-3. Create TodoWrite with component list
+3. Create task list using TaskCreate with component list
 
 **Gate**: At least one component found
 

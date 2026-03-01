@@ -15,7 +15,7 @@ Strip the `--worktree` argument and its value from $ARGUMENTS if present.
 
 ## Step 1: Run Agent
 
-Use the Task tool to run the `gitx:pr:updater` agent with the prompt:
+Use the Agent tool to run the `gitx:pr:updater` agent with the prompt:
 
 ```
 <worktree>$worktree</worktree>

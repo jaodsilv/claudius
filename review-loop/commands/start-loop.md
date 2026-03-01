@@ -128,7 +128,7 @@ If no config found:
 
 ## Delegate to Orchestrator
 
-Using Task tool, run `review-loop:orchestrator` agent:
+Using Agent tool, run `review-loop:orchestrator` agent:
 
 ```xml
 <mode>start</mode>

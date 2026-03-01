@@ -1,7 +1,7 @@
 ---
 description: Improves skills when progressive disclosure or triggers need work.
 argument-hint: "[[--skill-path] <skill-path>] [--focus \"<aspect>\"]"
-allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TodoWrite
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -34,7 +34,7 @@ Use AskUserQuestion:
 Delegate to improvement workflow orchestrator:
 
 ```text
-Use Task tool with @cc:improvement-workflow-orchestrator:
+Use Agent tool with @cc:improvement-workflow-orchestrator:
 
 component_type: skill
 component_path: [skill_path]

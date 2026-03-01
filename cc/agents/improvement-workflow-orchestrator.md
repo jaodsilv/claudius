@@ -6,7 +6,7 @@ description: >-
   presentation, selection, planning, application, and validation phases.
 model: sonnet
 color: yellow
-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite", "Edit"]
+tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Edit
 skills:
   - cc:improving-components
   - cc:analyzing-focus-areas
@@ -41,10 +41,10 @@ Mark todo: Phase 1 in progress.
 
 1. Validate component file exists using Read tool
 2. Determine improver agent from component_type
-3. Use Task tool with the appropriate improver agent:
+3. Use Agent tool with the appropriate improver agent:
 
    ```text
-   Task @cc:[component-type]-improver:
+   Agent @cc:[component-type]-improver:
      Analyze [component_type]: [component_path]
      Focus area: [focus if provided, otherwise "general analysis"]
 
@@ -102,7 +102,7 @@ Mark todo: Phase 3 complete
 
 Mark todo: Phase 4 in progress.
 
-Use Task tool with @cc:change-planner agent:
+Use Agent tool with @cc:change-planner agent:
 
 ```text
 Plan changes for [component_type]: [component_path]
@@ -129,7 +129,7 @@ Mark todo: Phase 4 complete
 
 Mark todo: Phase 5 in progress.
 
-Use Task tool with @cc:component-writer agent:
+Use Agent tool with @cc:component-writer agent:
 
 ```text
 Apply change plan to: [component_path]

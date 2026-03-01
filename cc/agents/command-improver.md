@@ -57,7 +57,7 @@ Check for proper integration patterns:
 
 1. **File references**: Correct @path syntax
 2. **Bash execution**: Proper !`command` syntax
-3. **Agent delegation**: Appropriate Task tool usage
+3. **Agent delegation**: Appropriate Agent tool usage
 4. **Skill integration**: Proper Skill tool loading
 
 ### Pattern Analysis

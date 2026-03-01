@@ -1,7 +1,7 @@
 ---
 description: Creates skills when packaging domain knowledge. Use for reusable guidance.
 argument-hint: "[[--skill-name] <skill-name>] [--plugin <plugin-path>]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -25,7 +25,7 @@ If skill_name not provided, ask user to specify.
 Apply Skill(Skill Development) for skill development best practices.
 Apply Skill(cc:authoring-skills) for skill authoring best practices.
 
-Use TodoWrite to track progress:
+Use TaskCreate/TaskUpdate to track progress:
 
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
@@ -97,7 +97,7 @@ mkdir -p [plugin_path]/skills/[skill_name]/scripts
 
 Mark todo: Step 3 complete, Step 4 in progress.
 
-Use Task tool with @cc:skill-creator agent:
+Use Agent tool with @cc:skill-creator agent:
 
 ```text
 Design skill: [skill_name]
@@ -121,7 +121,7 @@ Do NOT write files - return content only.
 
 Mark todo: Step 4 complete, Step 5 in progress.
 
-Use Task tool with @cc:component-writer agent:
+Use Agent tool with @cc:component-writer agent:
 
 ```text
 Write skill files:

@@ -3,7 +3,7 @@
 name: cover-letter-evaluator:result-combiner
 description: Use this agent when you need to compile and synthesize the results from 12 previous cover letter analysis steps to provide a comprehensive final evaluation and score. This agent should be called after completing all individual analysis steps (overlap analysis, keywords coverage, ATS friendliness, skills alignment, alternative naming, company culture alignment, communication style, relevance, impact demonstration, personalization level, technical positioning, and professional presentation) and you have all their results ready for final compilation. Examples: <example>Context: User has completed all 12 cover letter analysis steps and needs final compilation. user: 'I've completed all the individual analyses for my cover letter. Here are the results from steps 1-12: [analysis results]. Please provide the final evaluation and score.' assistant: 'I'll use the cover-letter-evaluator:result-combiner agent to compile all your analysis results and provide a comprehensive final evaluation with prioritized recommendations and an overall quality score.'</example> <example>Context: User is running a comprehensive cover letter evaluation workflow. user: 'The individual analysis steps are complete. I need the final compilation step to get my overall score and prioritized improvement recommendations.' assistant: 'Now I'll launch the cover-letter-evaluator:result-combiner agent to synthesize all the previous analysis results and provide your final cover letter evaluation with a quality score out of 100.'</example>
 model: sonnet
-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
+tools: Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 color: purple
 ---
 

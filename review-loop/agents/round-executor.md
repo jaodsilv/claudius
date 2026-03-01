@@ -35,7 +35,7 @@ When `phase=CI`:
 
 1. Check current `turn` value from metadata
 2. If `turn=CI-PENDING`:
-   - Use Task tool to run `$ciChecker` agent with:
+   - Use Agent tool to run `$ciChecker` agent with:
 
 
      ```xml
@@ -47,7 +47,7 @@ When `phase=CI`:
    - Wait for result
 
 3. If `turn=CI-REVIEW` and `$ciFixer` is configured:
-   - Use Task tool to run `$ciFixer` agent with:
+   - Use Agent tool to run `$ciFixer` agent with:
 
      ```xml
 
@@ -69,7 +69,7 @@ When `phase=REVIEW`:
    - `latestCommit` (what to review)
    - Custom `reviewerPrompt` if provided
 
-2. Use Task tool to run `$reviewer` agent with prompt
+2. Use Agent tool to run `$reviewer` agent with prompt
 
 3. After reviewer completes:
    - The reviewer agent is expected to post review via gh CLI
@@ -88,7 +88,7 @@ When `phase=RESPONSE`:
    - `reviewThreads` (inline comments)
    - Custom `developerPrompt` if provided
 
-2. Use Task tool to run `$developer` agent with:
+2. Use Agent tool to run `$developer` agent with:
 
    ```xml
    <worktree>$worktree</worktree>

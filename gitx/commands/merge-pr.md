@@ -15,7 +15,7 @@ Strip the `--worktree` argument from $ARGUMENTS if present.
 
 ## Step 1: Run Agent
 
-Using the Task tool, run the `gitx:pr:merger` agent with the following arguments:
+Using the Agent tool, run the `gitx:pr:merger` agent with the following arguments:
 
 ```
 --worktree $worktree $ARGUMENTS

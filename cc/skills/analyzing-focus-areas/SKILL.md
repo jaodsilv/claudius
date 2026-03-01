@@ -41,7 +41,7 @@ When a focus area is specified:
 | argument handling | Parsing, validation, documentation, $ARGUMENTS usage |
 | tool permissions | allowed-tools, least privilege, security |
 | writing style | FOR Claude vs TO user, imperative form |
-| integration | Agent/skill/file references, Task tool usage |
+| integration | Agent/skill/file references, Agent tool usage |
 
 ### Agents
 

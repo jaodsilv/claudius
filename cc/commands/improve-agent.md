@@ -1,7 +1,7 @@
 ---
 description: Improves agents when triggering or prompts need enhancement.
 argument-hint: "[[--agent-path] <agent-path>] [--focus \"<aspect>\"]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -33,7 +33,7 @@ Use AskUserQuestion:
 Delegate to improvement workflow orchestrator:
 
 ```text
-Use Task tool with @cc:improvement-workflow-orchestrator:
+Use Agent tool with @cc:improvement-workflow-orchestrator:
 
 component_type: agent
 component_path: [agent_path]

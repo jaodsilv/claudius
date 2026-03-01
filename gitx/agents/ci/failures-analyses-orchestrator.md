@@ -2,7 +2,7 @@
 name: failures-analyses-orchestrator
 description: Orchestrates per-check CI failure analysis, merging, and splitting into independent tasks.
 model: sonnet
-tools: Task, Read, TodoWrite
+tools: Task, Read, TaskCreate, TaskGet, TaskList, TaskUpdate
 ---
 
 Orchestrate the full CI failure analysis pipeline: analyze each check, merge analyses, split into independent tasks.
@@ -19,7 +19,7 @@ From the prompt:
 ### Initialize Progress Tracking
 
 ```
-TodoWrite:
+TaskCreate:
 1. [ ] Analyze individual check failures
 2. [ ] Merge analyses
 3. [ ] Split into independent tasks

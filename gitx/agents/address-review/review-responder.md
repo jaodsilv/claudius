@@ -1,7 +1,7 @@
 ---
 name: review-responder
 description: Orchestrates the response to PR review comments using multi-agent orchestration.
-tools: Bash(gh:*), Bash(git:*), Read, Edit, Grep, Glob, Task, TodoWrite, Write, AskUserQuestion, Skill
+tools: Bash(gh:*), Bash(git:*), Read, Edit, Grep, Glob, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill
 model: opus
 ---
 
@@ -24,7 +24,7 @@ You will receive the following inputs:
 ## Initialize Progress Tracking
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Gather PR context
 2. [ ] Check Review Comment exists
 3. [ ] Analyze feedback
@@ -87,7 +87,7 @@ Mark "Check Review Comment exists" as completed.
 
 Mark "Analyze feedback" as in_progress.
 
-Using the Task tool, run the `gitx:address-review:review-comment-analyzer` agent with the following prompt:
+Using the Agent tool, run the `gitx:address-review:review-comment-analyzer` agent with the following prompt:
 
 ```text
 PR Number: [number]
@@ -111,7 +111,7 @@ Mark "Analyze feedback" as completed.
 
 Mark "Plan changes" as in_progress.
 
-Using the Task tool, run the `gitx:address-review:code-change-planner` agent with the following prompt:
+Using the Agent tool, run the `gitx:address-review:code-change-planner` agent with the following prompt:
 
 ```text
 PR Number: [number]
@@ -144,7 +144,7 @@ IMPORTANT: If `$resolve_level` is empty or not set, DEFAULT TO "all". Address AL
 
 Only if the user explicitly passed a resolve_level parameter should filtering occur.
 
-Using the Task tool, run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
+Using the Agent tool, run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
 
 ```text
 PR Number: [number]
@@ -177,7 +177,7 @@ If there are no changes to be made nor Github issues to create, report "APPROVED
 
 Mark "Execute approved changes" as in_progress.
 
-Using the Task tool, launch a separate agent for each independent piece of planned change.
+Using the Agent tool, launch a separate agent for each independent piece of planned change.
 
 for each approved change in planned order:
 

@@ -2,7 +2,7 @@
 name: ci-status-checker
 # description: Checks CI status and provides feedback when needed.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TodoWrite, Write, AskUserQuestion, Skill, Grep, Glob
+allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob
 model: opus
 ---
 
@@ -74,7 +74,7 @@ Set the following variables:
 ## Initialize Progress Tracking
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Gather PR context
 2. [ ] Waiting All CI Checks to finish
 3. [ ] Check CI failures exist
@@ -148,7 +148,7 @@ Mark "Check CI failures exist" as completed.
 
 Mark "Failure Analysis" as in_progress.
 
-Use the Task tool to run the `gitx:address-review:ci-failure-analyzer` agent with the following prompt:
+Use the Agent tool to run the `gitx:address-review:ci-failure-analyzer` agent with the following prompt:
 
 ```text
 PR Number: [number]

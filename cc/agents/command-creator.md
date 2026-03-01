@@ -53,7 +53,7 @@ Plan the command structure:
 
 3. **Tool usage**
    - Identify which tools are needed
-   - Consider Task tool for complex logic
+   - Consider Agent tool for complex logic
    - Use AskUserQuestion for user input
 
 ### Step 3: Generate Command
@@ -138,7 +138,7 @@ Arguments: <arguments>$ARGUMENTS</arguments>
 
 1. Validate target exists
 2. Gather requirements via AskUserQuestion
-3. Delegate to @analyzer agent via Task tool
+3. Delegate to @analyzer agent via Agent tool
 4. Present results
 ```
 
@@ -186,7 +186,7 @@ Run the build: !`npm run build`
 ### Agent Delegation
 
 ```markdown
-Use Task tool with @analyzer agent:
+Use Agent tool with @analyzer agent:
   prompt: "Analyze the codebase for [criteria]"
   description: "Running analysis"
 ```

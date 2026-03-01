@@ -2,7 +2,7 @@
 description: Updates a conversation history file in the @job-hunting/history directory.
 argument-hint: "Raw text copy-pasted from either email or linkedin"
 user-invocable: true
-allowed-tools: Task, Read, TodoWrite, Write, LS, Grep, Glob, Edit
+allowed-tools: Task, Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 ---
 
 ## Context

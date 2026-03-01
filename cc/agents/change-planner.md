@@ -132,7 +132,7 @@ Return a structured change plan:
   ```
 
 - **After**: ```yaml
-  allowed-tools: ["Read", "Task", "TodoWrite"]
+  allowed-tools: ["Read", "Task", "TaskCreate", "TaskGet", "TaskList", "TaskUpdate"]
   ```
 ````
 
@@ -144,7 +144,7 @@ Return a structured change plan:
 - **After**: ```markdown
   ### Phase 3: Plan Changes
 
-  Use Task tool with @change-planner...
+  Use Agent tool with @change-planner...
   ```
 ````
 
@@ -154,7 +154,7 @@ Return a structured change plan:
 - **Type**: append
 - **Target**: ## Quality Standards section
 - **After**: ```markdown
-  - Track progress with TodoWrite
+  - Track progress with TaskCreate/TaskUpdate
   ```
 ````
 
@@ -163,14 +163,14 @@ Return a structured change plan:
 ### Frontmatter + Body Changes
 
 Given changes:
-1. Add "TodoWrite" to allowed-tools (frontmatter)
-2. Add TodoWrite tracking section (body)
+1. Add "TaskCreate", "TaskGet", "TaskList", "TaskUpdate" to allowed-tools (frontmatter)
+2. Add TaskCreate/TaskUpdate tracking section (body)
 3. Fix description length (frontmatter)
 
 Order:
 1. Fix description length (frontmatter, line 2)
-2. Add "TodoWrite" to allowed-tools (frontmatter, line 4)
-3. Add TodoWrite tracking section (body, after line 10)
+2. Add "TaskCreate", "TaskGet", "TaskList", "TaskUpdate" to allowed-tools (frontmatter, line 4)
+3. Add TaskCreate/TaskUpdate tracking section (body, after line 10)
 
 Rationale: Frontmatter changes first, body changes second.
 

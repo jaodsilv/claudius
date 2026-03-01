@@ -1,7 +1,7 @@
 ---
 description: Improves commands when workflow or structure needs enhancement.
 argument-hint: "[[--command-path] <command-path>] [--focus \"<aspect>\"]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -33,7 +33,7 @@ Use AskUserQuestion:
 Delegate to improvement workflow orchestrator:
 
 ```text
-Use Task tool with @cc:improvement-workflow-orchestrator:
+Use Agent tool with @cc:improvement-workflow-orchestrator:
 
 component_type: command
 component_path: [command_path]

@@ -43,7 +43,7 @@ If `<input-type>` is not provided, use the `analyzer:classifying-inputs` skill t
 
 ### 3. Explore Codebase
 
-Use the built-in Explore agent via the Task tool to investigate the codebase based on input type:
+Use the built-in Explore agent via the Agent tool to investigate the codebase based on input type:
 
 - For `review-comment`: explore files and lines mentioned in the comment
 - For `ci-log`: explore files from stack traces and build errors

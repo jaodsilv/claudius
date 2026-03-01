@@ -1,6 +1,6 @@
 ---
 
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TodoWrite, Skill
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Task, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 description: Start a coding task with TDD workflow orchestration
 argument-hint: task-description
 
@@ -29,16 +29,16 @@ Ask user: "What coding task would you like to work on? Please describe the featu
 
 ### Step 2: Launch Orchestrator Agent
 
-Use the Task tool to launch the coding-task-orchestrator agent:
+Use the Agent tool to launch the coding-task-orchestrator agent:
 
 ```text
-Task tool parameters:
+Agent tool parameters:
 - subagent_type: "coding-task-orchestrator" (if registered) OR "general-purpose"
 - prompt: See template below
 - description: "Orchestrate coding task"
 ```
 
-### Template Prompt for Task Tool
+### Template Prompt for Agent Tool
 
 ```markdown
 ## Coding Task Request

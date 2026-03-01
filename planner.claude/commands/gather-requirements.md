@@ -1,7 +1,7 @@
 ---
 description: Gather and structure project requirements, optionally using brainstorm plugin
 argument-hint: "[[--goal] <goal>] [--use-brainstorm] [--depth <shallow|normal|deep>] [--output <path>]"
-allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TodoWrite
+allowed-tools: Task, Read, Write, Glob, Grep, Skill, AskUserQuestion, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 
@@ -22,7 +22,7 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Plugin Detection
 
-1. Initialize TodoWrite:
+1. Initialize task list using TaskCreate:
    - Phase 1: Setup (in_progress)
    - Phase 2: Requirements Gathering (pending)
    - Phase 3: Synthesis (pending)
@@ -73,7 +73,7 @@ If not using brainstorm:
 2. Launch `requirements-gatherer` agent:
 
    ```text
-   Use Task tool with `planner:creators:requirements-gatherer` agent:
+   Use Agent tool with `planner:creators:requirements-gatherer` agent:
 
    Gather requirements for: {{goal}}
    Depth: {{depth}}

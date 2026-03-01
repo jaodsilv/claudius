@@ -2,7 +2,7 @@
 name: ci-status-fixer
 # description: Fixes CI failures when feedback needs addressing. Use for iterating on pull request feedback.
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TodoWrite, Write, AskUserQuestion, Skill, Grep, Glob, Edit
+allowed-tools: Bash(gh:*), Bash(git:*), Read, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob, Edit
 model: opus
 ---
 
@@ -84,7 +84,7 @@ Set the following variables:
 ## Initialize Progress Tracking
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Gather PR context
 2. [ ] Plan changes
 3. [ ] Synthesize and present plan
@@ -133,7 +133,7 @@ Mark "Gather PR context" as completed.
 
 Mark "Plan changes" as in_progress.
 
-Use the Task tool to run the `gitx:address-review:code-change-planner` agent with the following prompt:
+Use the Agent tool to run the `gitx:address-review:code-change-planner` agent with the following prompt:
 
 ```markdown
 PR Number: $pr
@@ -155,7 +155,7 @@ Mark "Plan changes" as completed.
 
 Mark "Synthesize and present plan" as in_progress.
 
-Use the Task tool to run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
+Use the Agent tool to run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
 
 ```markdown
 PR Number: $pr
@@ -178,7 +178,7 @@ Mark "Synthesize and present plan" as completed.
 
 Mark "Execute approved changes" as in_progress.
 
-For each approved change in planned order, using the Task tool for each independent change:
+For each approved change in planned order, using the Agent tool for each independent change:
 
 **Test failures:**
 

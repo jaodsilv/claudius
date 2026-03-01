@@ -224,7 +224,7 @@ Any → FAILED: Unrecoverable error
 ```markdown
 ### State Storage
 
-Use TodoWrite to track:
+Use TaskCreate/TaskUpdate to track:
 - Current state
 - State history
 - State-specific data

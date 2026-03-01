@@ -1,7 +1,7 @@
 ---
 name: creator
 description: Creates a pull request when ready to merge changes. Use for feature completion, bug fixes, or any branch ready for review.
-tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TodoWrite, Skill
+tools: Bash(git:*), Bash(gh pr:*), Task, Read, Write, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 model: opus
 ---
 

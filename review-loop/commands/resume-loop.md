@@ -133,7 +133,7 @@ Settings:
 
 ## Delegate to Orchestrator
 
-Using Task tool, run `review-loop:orchestrator` agent:
+Using Agent tool, run `review-loop:orchestrator` agent:
 
 ```xml
 <mode>resume</mode>

@@ -4,7 +4,7 @@ description: >-
   Orchestrates the review loop, managing state and round execution. Supports start
   and resume modes. Delegates phase execution to round-executor agent.
 model: sonnet
-tools: Task, AskUserQuestion, Skill, TodoWrite, Read, Write, Bash
+tools: Task, AskUserQuestion, Skill, TaskCreate, TaskGet, TaskList, TaskUpdate, Read, Write, Bash
 skills:
   - gitx:managing-pr-metadata
   - review-loop:extending-loop-metadata
@@ -37,7 +37,7 @@ From prompt, extract mode and configuration:
 
 ## Phase 0: Initialize or Resume
 
-Create TodoWrite:
+Create task list using TaskCreate:
 
 ```text
 - [ ] Initialize/Resume loop

@@ -5,4 +5,4 @@ allowed-tools: Task
 model: sonnet
 ---
 
-Use the Task tool to run the `gitx:issue:picker` agent with the prompt "$ARGUMENTS"
+Use the Agent tool to run the `gitx:issue:picker` agent with the prompt "$ARGUMENTS"

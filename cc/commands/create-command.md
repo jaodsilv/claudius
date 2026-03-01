@@ -1,7 +1,7 @@
 ---
 description: Creates slash commands when adding plugin functionality. Use for new features.
 argument-hint: "[[--command-name] <command-name>] [--plugin <plugin-path>]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -25,7 +25,7 @@ If command_name not provided, ask user to specify.
 Apply Skill(Command Development) for command development best practices.
 Apply Skill(cc:validating-components) for validation criteria.
 
-Use TodoWrite to track progress:
+Use TaskCreate/TaskUpdate to track progress:
 
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
@@ -90,7 +90,7 @@ Options:
 
 Mark todo: Step 2 complete, Step 3 in progress.
 
-Use Task tool with @cc:command-creator agent:
+Use Agent tool with @cc:command-creator agent:
 
 ```text
 Design command: [command_name]
@@ -108,7 +108,7 @@ Do NOT write the file - return content only.
 
 Mark todo: Step 3 complete, Step 4 in progress.
 
-Use Task tool with @cc:component-writer agent:
+Use Agent tool with @cc:component-writer agent:
 
 ```text
 Write new command file:

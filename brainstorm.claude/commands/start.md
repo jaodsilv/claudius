@@ -1,7 +1,7 @@
 ---
 description: Starts interactive brainstorming session for requirements discovery. Use for exploring new features or software concepts.
 argument-hint: "[[--topic] <topic>] [--depth <shallow|normal|deep>] [--output-path <path>]"
-allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, WebSearch, Glob, Grep
+allowed-tools: Task, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, WebSearch, Glob, Grep
 model: opus
 ---
 
@@ -33,7 +33,7 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 
 - [ ] Validate `$topic` provided
 - [ ] Create output directory: `mkdir -p {{output_path}}`
-- [ ] Initialize TodoWrite with 7 phases (including Analysis Synthesis)
+- [ ] Initialize task list using TaskCreate with 7 phases (including Analysis Synthesis)
 - [ ] Create `{{output_path}}/session-log.md` with header:
 
 ```markdown
@@ -109,9 +109,9 @@ Apply Gate 1 criteria from `brainstorm:workflow-validation` skill. If any check 
 
 ### Phases 2-4: Parallel Analysis
 
-**Execute domain, technical, and constraint analysis in parallel using the Task tool.**
+**Execute domain, technical, and constraint analysis in parallel using the Agent tool.**
 
-Use Task tool to invoke **IN PARALLEL** (all three agents simultaneously):
+Use Agent tool to invoke **IN PARALLEL** (all three agents simultaneously):
 
 1. **Domain Exploration** - `brainstorm:domain-explorer`:
 

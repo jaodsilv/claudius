@@ -48,14 +48,14 @@ Evaluate agent usage:
 
 1. **Agent availability**: Do all referenced agents exist?
 2. **Responsibility distribution**: Is work balanced?
-3. **Task tool usage**: Are invocations correct?
+3. **Agent tool usage**: Are invocations correct?
 4. **Coordination overhead**: Is there excessive passing?
 
 ### State Management Analysis
 
 Evaluate state handling:
 
-1. **TodoWrite usage**: Is progress tracked?
+1. **TaskCreate/TaskUpdate usage**: Is progress tracked?
 2. **Compact points**: Are they placed correctly?
 3. **Context preservation**: Is essential state saved?
 4. **State recovery**: Can workflow resume?
@@ -163,5 +163,5 @@ Key validations:
 
 - Clear phase definitions with gates
 - Error handling and recovery paths
-- TodoWrite progress tracking
+- TaskCreate/TaskUpdate progress tracking
 - Appropriate complexity level

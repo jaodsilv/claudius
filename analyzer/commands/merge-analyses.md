@@ -21,7 +21,7 @@ Extract the `--analysis-paths` value(s) from $ARGUMENTS. At least 2 paths are re
 
 ## Step 2: Run Agent
 
-Use the Task tool to run the `analyzer:analyses-merger` agent with the prompt:
+Use the Agent tool to run the `analyzer:analyses-merger` agent with the prompt:
 
 ```
 <worktree>$worktree</worktree>

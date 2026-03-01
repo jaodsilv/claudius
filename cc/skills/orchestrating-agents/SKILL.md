@@ -39,7 +39,7 @@ For simple linear tasks, prefer single commands or agents.
 ---
 description: [Brief workflow description]
 argument-hint: [Arguments]
-allowed-tools: ["Task", "TodoWrite", "AskUserQuestion", "Read", ...]
+allowed-tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, ...
 ---
 
 # Orchestration: [Name]
@@ -50,7 +50,7 @@ allowed-tools: ["Task", "TodoWrite", "AskUserQuestion", "Read", ...]
 [What this phase accomplishes]
 
 ### Execution
-Use Task tool with @[agent-name]:
+Use Agent tool with @[agent-name]:
   [Detailed instructions]
 
 ### Gate
@@ -77,7 +77,7 @@ Each phase requires:
 
 1. Pass summaries, not raw content between phases
 2. Use compact points to preserve essential state
-3. Track progress with TodoWrite
+3. Track progress with TaskCreate/TaskUpdate
 4. Define explicit handoffs between agents
 
 ## Complexity Assessment

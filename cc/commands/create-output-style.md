@@ -1,7 +1,7 @@
 ---
 description: Creates output-styles when defining consistent formatting patterns.
 argument-hint: "[[--style-name] <style-name>] [--plugin <plugin-path>]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -23,7 +23,7 @@ If style_name not provided, ask user to specify.
 
 Apply Skill(cc:validating-components) for output-style validation criteria.
 
-Use TodoWrite to track progress:
+Use TaskCreate/TaskUpdate to track progress:
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
 - [ ] Step 3: Create directory
@@ -96,7 +96,7 @@ mkdir -p [plugin_path]/output-styles
 
 Mark todo: Step 3 complete, Step 4 in progress.
 
-Use Task tool with @cc:output-style-creator agent:
+Use Agent tool with @cc:output-style-creator agent:
 
 ```text
 Design output-style: [style_name]
@@ -119,7 +119,7 @@ Do NOT write the file - return content only.
 
 Mark todo: Step 4 complete, Step 5 in progress.
 
-Use Task tool with @cc:component-writer agent:
+Use Agent tool with @cc:component-writer agent:
 
 ```text
 Write output-style file:

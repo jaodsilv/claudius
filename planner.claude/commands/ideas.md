@@ -1,7 +1,7 @@
 ---
 description: Multi-agent Ultrathink deep ideation session with Opus extended thinking
 argument-hint: "[[--goal] <goal> | [--roadmap-path] <roadmap-path>] [--mode <full|focused>] [--rounds <number>] [--output <path>]"
-allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite, Skill
+allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 model: opus
 ---
 
@@ -43,7 +43,7 @@ Round N (repeat for --rounds):
 
 ### Initialization
 
-1. Initialize TodoWrite:
+1. Initialize task list using TaskCreate:
    - Initialization (in_progress)
    - Round 1 (pending)
    - Round 2 (pending)
@@ -90,7 +90,7 @@ For each round (1 to {{rounds}}):
    **Deep Thinker (Opus with extended thinking)**:
 
    ```text
-   Use Task tool with planner:ideas:deep-thinker agent:
+   Use Agent tool with planner:ideas:deep-thinker agent:
 
    Topic: {{goal}}
 
@@ -115,7 +115,7 @@ For each round (1 to {{rounds}}):
    **Innovation Explorer (Opus with web research)**:
 
    ```text
-   Use Task tool with planner:ideas:innovation-explorer agent:
+   Use Agent tool with planner:ideas:innovation-explorer agent:
 
    Topic: {{goal}}
 
@@ -140,7 +140,7 @@ For each round (1 to {{rounds}}):
 #### Step 2: Adversarial Analysis
 
 ```text
-Use Task tool with planner:ideas:adversarial-critic agent:
+Use Agent tool with planner:ideas:adversarial-critic agent:
 
 Ideas to challenge:
 
@@ -167,7 +167,7 @@ Be rigorous but constructive.
 1. Launch Convergence Synthesizer:
 
    ```text
-   Use Task tool with planner:ideas:convergence-synthesizer agent:
+   Use Agent tool with planner:ideas:convergence-synthesizer agent:
 
    Deep Thinker Output:
    {{deep_thinker_output}}
@@ -193,7 +193,7 @@ Be rigorous but constructive.
 1. Launch Facilitator for presentation:
 
    ```text
-   Use Task tool with planner:ideas:facilitator agent:
+   Use Agent tool with planner:ideas:facilitator agent:
 
    Round: {{current_round}} of {{max_rounds}}
 

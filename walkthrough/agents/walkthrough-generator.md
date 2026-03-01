@@ -2,7 +2,7 @@
 
 name: walkthrough-generator
 description: Use this agent when the main agent completes a multi-agent task, finishes implementing a feature, completes a bug fix, or wraps up any significant coding work. This agent should be proactively triggered at every complete work to document verification and testing steps.
-tools: Glob, Grep, Read, Edit, Write, BashOutput, KillShell, Skill, TodoWrite
+tools: Glob, Grep, Read, Edit, Write, BashOutput, KillShell, Skill, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 

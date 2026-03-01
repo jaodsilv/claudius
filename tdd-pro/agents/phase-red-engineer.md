@@ -19,7 +19,7 @@ Write failing tests with framework patterns
 
 ### Phase 1: Unit Tests Design
 
-Use the Task tool to run the agents with instructions below:
+Use the Agent tool to run the agents with instructions below:
 
 **Agent Pattern**: Design → Review → Loop (max 3-5 iterations)
 

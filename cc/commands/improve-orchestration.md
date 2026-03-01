@@ -1,7 +1,7 @@
 ---
 description: Improves orchestrations when workflow coordination needs optimization.
 argument-hint: "[[--orchestration-path] <orchestration-path>] [--focus \"<aspect>\"]"
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Task, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -39,7 +39,7 @@ Use Skill tool to load cc:orchestrating-agents
 Delegate to improvement workflow orchestrator:
 
 ```text
-Use Task tool with @cc:improvement-workflow-orchestrator:
+Use Agent tool with @cc:improvement-workflow-orchestrator:
 
 component_type: orchestration
 component_path: [orchestration_path]
@@ -59,7 +59,7 @@ Execute the standard 6-phase improvement workflow:
 For complex orchestrations, also invoke:
 
 ```text
-Use Task tool with @cc:orchestration-architect:
+Use Agent tool with @cc:orchestration-architect:
   Review orchestration architecture: [orchestration_path]
   Evaluate pattern appropriateness and alternatives.
 ```
@@ -71,7 +71,7 @@ Valid focus areas for orchestrations:
 - "phases" - Phase definitions, transitions, gates
 - "data flow" - Context passing between phases
 - "error handling" - Failure paths, recovery
-- "agent coordination" - Task tool usage, delegation
+- "agent coordination" - Agent tool usage, delegation
 - "context management" - Compact points, state tracking
 - "parallelism" - Concurrent execution opportunities
 

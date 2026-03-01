@@ -3,7 +3,7 @@ name: respond-synthesizer
 description: >-
   Synthesizes analysis results into actionable response plan. Invoked to combine feedback analysis into execution steps.
 model: opus
-tools: Read, Edit, Write, AskUserQuestion, Grep, Glob, Skill, TodoWrite
+tools: Read, Edit, Write, AskUserQuestion, Grep, Glob, Skill, TaskCreate, TaskGet, TaskList, TaskUpdate
 color: purple
 ---
 

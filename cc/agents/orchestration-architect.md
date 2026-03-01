@@ -161,7 +161,7 @@ Provide architecture design:
 [Description of data movement between phases]
 
 ### State Management
-- TodoWrite usage: [how progress is tracked]
+- TaskCreate/TaskUpdate usage: [how progress is tracked]
 - Compact points: [where context is preserved]
 - Recovery: [how to resume from failure]
 

@@ -1,7 +1,7 @@
 ---
 description: Creates multi-agent orchestrations when coordinating complex workflows.
 argument-hint: "[[--orchestration-name] <orchestration-name>] [--plugin <plugin-path>]"
-allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, Skill, Task, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -30,7 +30,7 @@ Apply Skill(cc:validating-components) for validation criteria.
 2. Check commands/ directory exists
 3. Check existing agents available in plugin
 
-Use TodoWrite to track progress:
+Use TaskCreate/TaskUpdate to track progress:
 - [ ] Design architecture
 - [ ] Review with user
 - [ ] Create orchestration command
@@ -70,7 +70,7 @@ Options: [User provides description]
 
 ### Phase 3: Design Architecture
 
-Use Task tool with @cc:orchestration-architect agent:
+Use Agent tool with @cc:orchestration-architect agent:
 
 ```text
 Design orchestration: [orchestration_name]
@@ -109,7 +109,7 @@ Mark todo: Review with user - Complete
 
 ### Phase 5: Create Components
 
-Use Task tool with @cc:orchestration-creator agent:
+Use Agent tool with @cc:orchestration-creator agent:
 
 ```text
 Create orchestration: [orchestration_name]
@@ -122,7 +122,7 @@ Create:
 3. Ensure data flow is implemented
 4. Add error handling
 5. Include compact points
-6. Add TodoWrite tracking
+6. Add TaskCreate/TaskUpdate tracking
 ```
 
 Mark todos: Create orchestration command, Create any new agents - Complete

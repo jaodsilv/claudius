@@ -1,7 +1,7 @@
 ---
 description: Reviews roadmaps with multi-agent orchestration against a goal. Use for validating roadmap alignment.
 argument-hint: "[[--goal] <goal>] [--roadmap-path <path>] [--mode <quick|thorough>]"
-allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TodoWrite
+allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 

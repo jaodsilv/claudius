@@ -1,7 +1,7 @@
 ---
 name: issue-creator
 description: Create a GitHub issue from informal description
-tools: Bash(gh:*), Bash(ls:*), Task, AskUserQuestion, TodoWrite
+tools: Bash(gh:*), Bash(ls:*), Task, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -38,7 +38,7 @@ with available templates plus "No template" option.
 
 ## Phase 2: Issue Drafting
 
-Use the Task tool to run the `gitx:issue:drafter` agent with the following prompt:
+Use the Agent tool to run the `gitx:issue:drafter` agent with the following prompt:
 
 ```text
 Description: [user's informal description]

@@ -18,7 +18,7 @@ Ignore any $ARGUMENTS — all input comes from hook context.
 
 ## Step 1: Analyze CI Failures
 
-Use the Task tool to run the `gitx:ci:failures-analyses-orchestrator` agent:
+Use the Agent tool to run the `gitx:ci:failures-analyses-orchestrator` agent:
 
 ```
 Task(gitx:ci:failures-analyses-orchestrator):

@@ -2,7 +2,7 @@
 name: fix-orchestrator
 description: Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, development, and review phases.
 model: opus
-tools: Task, TodoWrite, Bash(git:*), Bash(gh:*), AskUserQuestion, Read, Write, Skill
+tools: Task, TaskCreate, TaskGet, TaskList, TaskUpdate, Bash(git:*), Bash(gh:*), AskUserQuestion, Read, Write, Skill
 color: purple
 ---
 
@@ -46,7 +46,7 @@ Ultrathink phase transitions, then proceed:
 Set up progress tracking:
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Analyze issue requirements
 2. [ ] Workflow Selection
 3. [ ] Set up worktree
@@ -96,7 +96,7 @@ Once selected, mark "Workflow Selection" as completed.
 
 Mark "Set up worktree" as in_progress.
 
-Use the Task tool to run the agent `gitx:worktree:creator` with the prompt:
+Use the Agent tool to run the agent `gitx:worktree:creator` with the prompt:
 
 ```text
 [issue number]
@@ -127,7 +127,7 @@ Mark "Complete development" as completed. Skip to phase 9.
 
 Mark "Complete development" as in_progress.
 
-Using the Task tool run agent `tdd:tdd-orchestrator` with the following prompt:
+Using the Agent tool run agent `tdd:tdd-orchestrator` with the following prompt:
 
 ```text
 Context: Issue #[number] - [title]
@@ -143,7 +143,7 @@ Mark "Complete development" as completed. Skip to phase 9.
 Expand the progress tracking:
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Analyze issue requirements
 2. [ ] Workflow Selection
 3. [ ] Set up worktree
@@ -160,7 +160,7 @@ TodoWrite:
 Change the progress tracking:
 
 ```text
-TodoWrite:
+TaskCreate:
 1. [ ] Analyze issue requirements
 2. [ ] Workflow Selection
 3. [ ] Set up worktree
@@ -175,7 +175,7 @@ Mark "Explore codebase for relevant files" as in_progress.
 
 If you skipped Phase 1, read the file `.thoughts/issue-fixer/<issue-number>/issue-analysis.md`.
 
-Use the Task tool to launch the gitx:issue:codebase-navigator agent with the following prompt:
+Use the Agent tool to launch the gitx:issue:codebase-navigator agent with the following prompt:
 
 ```markdown
 <analysis-summary>[summary from Phase 1]</analysis-summary>
@@ -192,7 +192,7 @@ Mark "Create implementation plan" as in_progress.
 
 If you skpped Phase 2, read the files `.thoughts/issue-fixer/<issue-number>/issue-analysis.md` and `.thoughts/issue-fixer/<issue-number>/codebase-exploration.md`.
 
-Use the Task tool to launch the gitx:issue:implementation-planner agent with the following prompt:
+Use the Agent tool to launch the gitx:issue:implementation-planner agent with the following prompt:
 
 ```text
 <issue-analysis>[markdown of issue analysis]</issue-analysis>
@@ -237,7 +237,7 @@ If user selected "Skip development", exit this agent.
 
 Mark "Complete development" as in_progress.
 
-Use the Task tool to run an agent handing out the development plan asking it to proceed with the development.
+Use the Agent tool to run an agent handing out the development plan asking it to proceed with the development.
 
 Once complete, mark "Complete development" as completed.
 
@@ -266,7 +266,7 @@ Mark "Commit and create PR" as completed.
 
 Mark "Review Loop" as in_progress.
 
-Using the Task tool, run the agent `review-loop:orchestrator` with the following prompt:
+Using the Agent tool, run the agent `review-loop:orchestrator` with the following prompt:
 
 ```text
 <reviewer>gitx:review:reviewer</reviewer>

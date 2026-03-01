@@ -73,7 +73,7 @@ The orchestrator:
 ## Agent Invocation Pattern
 
 ```text
-Use Task tool with @[agent-name]:
+Use Agent tool with @[agent-name]:
   Context: [artifact path], [goal if any]
   Mode: [thorough|quick]
   Phase: [1|2|3|4]

@@ -2,7 +2,7 @@
 
 name: pr-quality-reviewer
 description: Use this agent when you need to conduct a comprehensive code review of a GitHub pull request. This agent orchestrates specialized review agents based on PR complexity and routes work to focused sub-agents for language-specific and domain-specific analysis.
-tools: Bash, Glob, Grep, Read, Edit, Write, TodoWrite, BashOutput, KillShell, AskUserQuestion, Skill
+tools: Bash, Glob, Grep, Read, Edit, Write, TaskCreate, TaskGet, TaskList, TaskUpdate, BashOutput, KillShell, AskUserQuestion, Skill
 model: sonnet
 ---
 
