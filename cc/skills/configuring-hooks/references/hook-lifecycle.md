@@ -62,20 +62,20 @@ Hooks receive context via environment variables:
 
 ## PreToolUse Decisions
 
-PreToolUse hooks return a decision:
+PreToolUse hooks return a decision using the `hookSpecificOutput` format:
 
 | Decision | Effect |
 |----------|--------|
 | `allow` | Tool executes normally |
-| `block` | Tool blocked, reason shown to Claude |
+| `deny` | Tool blocked, reason shown to Claude |
 | `modify` | Tool parameters modified (advanced) |
 
 ```bash
 # Allow
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 
 # Block with reason
-jq -n '{"decision": "block", "reason": "Operation not permitted"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": "Operation not permitted"}}'
 ```
 
 ## Hook Ordering
@@ -89,7 +89,7 @@ hooks/PreToolUse/
   99_allow.sh        # Runs last
 ```
 
-**First blocking decision wins**: If any hook returns `block`, subsequent hooks do not run.
+**First blocking decision wins**: If any hook returns `deny`, subsequent hooks do not run.
 
 ## Execution Timeout
 
@@ -104,7 +104,7 @@ Hooks have a default timeout (typically 30 seconds). Long-running operations sho
 set -euo pipefail
 
 # Quick decision
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 
 # Background logging (doesn't block)
 (echo "$(date): $CLAUDE_TOOL_NAME" >> /tmp/hook.log &)
@@ -179,13 +179,13 @@ TEMP=$(mktemp)
 
 # Check for required command
 if ! command -v jq &>/dev/null; then
-    echo '{"decision": "allow", "warning": "jq not available"}'
+    echo '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "warning": "jq not available"}'
     exit 0
 fi
 
 # ... hook logic ...
 
 rm -f "$TEMP"
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 exit 0
 ```

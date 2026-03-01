@@ -4,12 +4,12 @@ Proper JSON generation and escaping for hook responses.
 
 ## The Output Contract
 
-Hooks communicate via JSON on stdout:
+PreToolUse hooks communicate via JSON on stdout using the `hookSpecificOutput` format:
 
 ```json
-{"decision": "allow"}
-{"decision": "block", "reason": "Explanation"}
-{"decision": "allow", "metadata": {"key": "value"}}
+{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}
+{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": "Explanation"}}
+{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "metadata": {"key": "value"}}
 ```
 
 **Critical**: Any non-JSON stdout before the final output corrupts the response.
@@ -34,14 +34,14 @@ jq -n --arg msg "$message" '{"error": $msg}'
 ### Single Field
 
 ```bash
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 ```
 
 ### With Variables
 
 ```bash
 reason="Tool blocked by policy"
-jq -n --arg r "$reason" '{"decision": "block", "reason": $r}'
+jq -n --arg r "$reason" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": $r}}'
 ```
 
 ### Multiple Variables
@@ -50,7 +50,7 @@ jq -n --arg r "$reason" '{"decision": "block", "reason": $r}'
 tool="Bash"
 action="blocked"
 jq -n --arg t "$tool" --arg a "$action" \
-    '{"tool": $t, "action": $a, "decision": "block"}'
+    '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": ($t + " " + $a)}}'
 ```
 
 ### Raw String Input
@@ -67,11 +67,13 @@ jq -n --argjson c "$count" '{"count": $c}'
 
 ```bash
 jq -n \
-    --arg decision "allow" \
     --arg tool "$TOOL_NAME" \
     --argjson timestamp "$(date +%s)" \
     '{
-        decision: $decision,
+        hookSpecificOutput: {
+            hookEventName: "PreToolUse",
+            permissionDecision: "allow"
+        },
         metadata: {
             tool: $tool,
             timestamp: $timestamp
@@ -84,12 +86,14 @@ jq -n \
 For complex JSON, use heredoc and pipe to jq:
 
 ```bash
-decision="allow"
 reason="Passed validation"
 
 cat <<TEMPLATE | jq -c .
 {
-    "decision": "$decision",
+    "hookSpecificOutput": {
+        "hookEventName": "PreToolUse",
+        "permissionDecision": "allow"
+    },
     "reason": "$reason",
     "checks": ["syntax", "security", "policy"]
 }
@@ -114,7 +118,10 @@ output=$(some_command 2>&1) || true
 
 # Include in JSON with proper escaping
 jq -n --arg out "$output" '{
-    decision: "allow",
+    hookSpecificOutput: {
+        hookEventName: "PreToolUse",
+        permissionDecision: "allow"
+    },
     command_output: $out
 }'
 exit 0
@@ -129,7 +136,10 @@ log_content=$(cat /var/log/app.log | tail -20)
 
 # jq handles newlines correctly
 jq -n --arg log "$log_content" '{
-    decision: "allow",
+    hookSpecificOutput: {
+        hookEventName: "PreToolUse",
+        permissionDecision: "allow"
+    },
     recent_logs: $log
 }'
 exit 0
@@ -152,7 +162,7 @@ exit 0
 ```bash
 # Write debug to stderr, only JSON to stdout
 echo "Debug: processing $TOOL_NAME" >&2
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 exit 0
 ```
 
@@ -168,6 +178,6 @@ exit 0
 ```bash
 LOG_FILE="/tmp/hook_debug.log"
 echo "$(date): Tool=$TOOL_NAME" >> "$LOG_FILE"
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 exit 0
 ```

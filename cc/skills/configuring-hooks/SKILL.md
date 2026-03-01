@@ -59,14 +59,12 @@ Any stdout before JSON corrupts the response:
 # BAD - echo corrupts JSON
 echo "Processing..."
 cat <<EOF
-{"decision": "allow"}
+{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}
 EOF
 
 # GOOD - capture to variable, output only JSON
 result=$(some_command 2>&1)
-cat <<EOF
-{"decision": "allow", "log": "$result"}
-EOF
+jq -n --arg log "$result" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "log": $log}'
 exit 0
 ```
 
@@ -98,12 +96,12 @@ TOOL_INPUT="${CLAUDE_TOOL_INPUT:-}"
 # Decision logic
 if [[ "$TOOL_NAME" == "Bash" ]]; then
     # Block with reason
-    jq -n '{"decision": "block", "reason": "Bash disabled"}'
+    jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": "Bash disabled"}}'
     exit 0
 fi
 
 # Allow by default
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 exit 0
 ```
 

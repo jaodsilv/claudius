@@ -36,7 +36,7 @@ set -euo pipefail
 
 # Method 1: Conditional check
 if ! result=$(some_command 2>&1); then
-    jq -n --arg err "$result" '{"decision": "allow", "warning": $err}'
+    jq -n --arg err "$result" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "warning": $err}'
     exit 0
 fi
 
@@ -50,7 +50,7 @@ status=$?
 set -e
 
 if [[ $status -ne 0 ]]; then
-    jq -n --arg err "$output" '{"decision": "block", "reason": $err}'
+    jq -n --arg err "$output" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": $err}}'
     exit 0
 fi
 ```
@@ -89,7 +89,7 @@ TEMP_FILE=$(mktemp)
 # ... use temp file ...
 
 # Cleanup happens automatically on any exit
-jq -n '{"decision": "allow"}'
+jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}}'
 exit 0
 ```
 
@@ -102,7 +102,7 @@ Complete pattern for error-resilient hooks:
 set -euo pipefail
 
 # Trap for unexpected errors
-trap 'jq -n "{\"decision\": \"allow\", \"error\": \"Unexpected failure\"}" && exit 0' ERR
+trap 'jq -n "{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"allow\"}, \"error\": \"Unexpected failure\"}" && exit 0' ERR
 
 # Safe variable access
 TOOL_NAME="${CLAUDE_TOOL_NAME:-unknown}"
@@ -110,9 +110,9 @@ TOOL_INPUT="${CLAUDE_TOOL_INPUT:-{}}"
 
 # Protected command execution
 if result=$(validate_tool "$TOOL_NAME" 2>&1); then
-    jq -n --arg r "$result" '{"decision": "allow", "note": $r}'
+    jq -n --arg r "$result" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "note": $r}'
 else
-    jq -n --arg r "$result" '{"decision": "allow", "warning": $r}'
+    jq -n --arg r "$result" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "warning": $r}'
 fi
 
 exit 0

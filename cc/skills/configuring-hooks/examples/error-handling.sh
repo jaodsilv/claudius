@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # Trap unexpected errors - still output valid JSON
-trap 'jq -n "{\"decision\": \"allow\", \"error\": \"Unexpected script failure\"}" && exit 0' ERR
+trap 'jq -n "{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"allow\"}, \"error\": \"Unexpected script failure\"}" && exit 0' ERR
 
 # Safe environment variable access with defaults
 TOOL_NAME="${CLAUDE_TOOL_NAME:-unknown}"
@@ -12,11 +12,11 @@ TOOL_INPUT="${CLAUDE_TOOL_INPUT:-{}}"
 # Method 1: Conditional command execution
 if output=$(validate_tool "$TOOL_NAME" 2>&1); then
     # Command succeeded
-    jq -n --arg out "$output" '{"decision": "allow", "validation": $out}'
+    jq -n --arg out "$output" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "validation": $out}'
     exit 0
 else
     # Command failed - handle gracefully
-    jq -n --arg err "$output" '{"decision": "allow", "warning": $err}'
+    jq -n --arg err "$output" '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "warning": $err}'
     exit 0
 fi
 

@@ -15,7 +15,7 @@ DEBUG="${HOOK_DEBUG:-false}"
 # ============================================================================
 
 # Trap for unexpected failures - still return valid JSON
-trap 'jq -n "{\"decision\": \"allow\", \"error\": \"Hook failed unexpectedly\"}" && exit 0' ERR
+trap 'jq -n "{\"hookSpecificOutput\": {\"hookEventName\": \"PreToolUse\", \"permissionDecision\": \"allow\"}, \"error\": \"Hook failed unexpectedly\"}" && exit 0' ERR
 
 # ============================================================================
 # Helper Functions
@@ -53,7 +53,7 @@ log "INFO" "Processing tool: $TOOL_NAME"
 # Check for empty tool name
 if [[ -z "$TOOL_NAME" ]]; then
     log "WARN" "Empty tool name received"
-    jq -n '{"decision": "allow", "warning": "Empty tool name"}'
+    jq -n '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "allow"}, "warning": "Empty tool name"}'
     exit 0
 fi
 
@@ -61,7 +61,7 @@ fi
 if is_blocked_tool "$TOOL_NAME"; then
     log "BLOCK" "Tool $TOOL_NAME is in blocked list"
     jq -n --arg tool "$TOOL_NAME" \
-        '{"decision": "block", "reason": ("Tool " + $tool + " is not permitted")}'
+        '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": ("Tool " + $tool + " is not permitted")}}'
     exit 0
 fi
 
@@ -77,7 +77,7 @@ if [[ "$TOOL_NAME" == "Bash" ]]; then
         if echo "$command" | grep -qE 'rm\s+-rf\s+/|sudo\s+rm|chmod\s+777'; then
             log "BLOCK" "Dangerous command pattern detected"
             jq -n --arg cmd "$command" \
-                '{"decision": "block", "reason": "Command contains dangerous patterns"}'
+                '{"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": "Command contains dangerous patterns"}}'
             exit 0
         fi
     fi
@@ -88,7 +88,10 @@ log "INFO" "Allowing tool: $TOOL_NAME"
 jq -n --arg tool "$TOOL_NAME" \
     --argjson ts "$(date +%s)" \
     '{
-        decision: "allow",
+        hookSpecificOutput: {
+            hookEventName: "PreToolUse",
+            permissionDecision: "allow"
+        },
         metadata: {
             tool: $tool,
             timestamp: $ts,
