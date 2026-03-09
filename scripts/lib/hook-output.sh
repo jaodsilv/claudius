@@ -78,12 +78,6 @@ hook_output_system_message() {
 EOF
 }
 
-hook_output_status_ok() {
-  cat <<EOF
-    {"status": "ok"}
-EOF
-}
-
 # ---------------------------------------------------------------------------
 # Per-model injection ceilings (tokens)
 # Content below the ceiling is injected inline; above triggers read strategies

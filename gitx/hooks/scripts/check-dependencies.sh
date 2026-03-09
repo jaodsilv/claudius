@@ -44,8 +44,6 @@ if [ -n "$missing_deps" ]; then
     hook_output_system_message "[gitx plugin] Missing dependencies: $missing_deps. Some commands may not work. Install git from https://git-scm.com/ and gh from https://cli.github.com/"
 elif [ -n "$warnings" ]; then
     hook_output_system_message "[gitx plugin] Warning: $warnings"
-else
-    hook_output_status_ok
 fi
 
 # Exit 1 if critical dependency (git) is missing, exit 0 for optional deps
