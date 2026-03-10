@@ -2,9 +2,9 @@
 # Direct execution script for git commit/push operations
 # Performs: stage -> commit -> push for all commit pairs
 #
-# Usage: commit-push-execute.sh <base64-encoded-json>
+# Usage: commit-push-execute.sh <plugin-root> <json-string>
 #
-# Input format (base64 encoded):
+# Input format:
 # {
 #   "no_push": false,
 #   "pairs": [
@@ -12,6 +12,8 @@
 #     {"files": ["test.ts"], "message": "test: add tests"}
 #   ]
 # }
+
+set -uo pipefail
 
 # Parse --plugin-root flag
 for _arg in "$@"; do
@@ -23,8 +25,7 @@ done
 
 # Priority: env var > --plugin-root flag > self-location fallback
 export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
-
-set -uo pipefail
+export HOOK_PLUGIN_NAME='GITX'
 
 # Get script directory and source libraries
 LOGGING_PATH=""
@@ -36,28 +37,17 @@ fi
 source "$LOGGING_PATH" || exit 1
 log_init "commit-push-execute"
 
-# Get base64 argument - try from args first, then from env var
-COMMIT_PAIRS_B64="${2:-${COMMIT_PAIRS_B64:-}}"
+# Get JSON argument - try from args first, then from env var
+COMMIT_PAIRS="${2:-${COMMIT_PAIRS:-}}"
 log_section "Input Processing"
-log_debug "COMMIT_PAIRS_B64" "$COMMIT_PAIRS_B64"
+log_debug "COMMIT_PAIRS" "$COMMIT_PAIRS"
 
-if [[ -z "$COMMIT_PAIRS_B64" ]]; then
+if [[ -z "$COMMIT_PAIRS" ]]; then
   echo "Error: No commit pairs provided"
-  echo "Usage: commit-push-execute.sh <base64-encoded-json>"
+  echo "Usage: commit-push-execute.sh <plugin-root> <json-string>"
   log_exit 2 "no input"
   exit 1
 fi
-
-# Decode commit pairs
-COMMIT_PAIRS=$(echo "$COMMIT_PAIRS_B64" | base64 -d 2>/dev/null)
-if [[ $? -ne 0 ]]; then
-  log_error "Failed to decode commit pairs"
-  echo "Error: Invalid commit pairs encoding"
-  log_exit 2 "decode failed"
-  exit 1
-fi
-
-log_json "COMMIT_PAIRS" "$COMMIT_PAIRS"
 
 # Validate JSON
 if ! echo "$COMMIT_PAIRS" | jq . >/dev/null 2>&1; then
@@ -147,7 +137,7 @@ while IFS= read -r pair; do
   COMMITS_RESULT+=("{\"sha\":\"$SHA\",\"message\":$(echo "$MESSAGE" | jq -Rs .),\"files\":$FILES_JSON}")
 
   INDEX=$((INDEX + 1))
-done < <(echo "$PAIRS" | jq -c '.[]')
+done <<< "$PAIRS"
 
 # ============================================================================
 # Push to remote
