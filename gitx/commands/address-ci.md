@@ -20,7 +20,7 @@ Ignore any $ARGUMENTS — all input comes from hook context.
 
 Use the Agent tool to run the `gitx:ci:failures-analyses-orchestrator` agent:
 
-```
+```markdown
 Agent(gitx:ci:failures-analyses-orchestrator):
   prompt: "<worktree>$worktree</worktree><check-ids>$checkIds</check-ids>"
 ```
@@ -33,7 +33,7 @@ If `$numTasks` is 0, report "No actionable CI failures found" and stop.
 
 For each task index `$i` from 0 to `$numTasks - 1`, launch an Agent **in parallel**:
 
-```
+```markdown
 Agent(gitx:ci:fix-planner):
   prompt: "<worktree>$worktree</worktree><task-id>$i</task-id>"
 ```
@@ -46,7 +46,7 @@ Wait for ALL planners to complete.
 
 For each completed fix-planner, using its stored `$taskId`, launch an Agent for the fixer:
 
-```
+```markdown
 Agent(gitx:ci:fixer):
   prompt: "<worktree>$worktree</worktree><task-id>$taskId</task-id>"
 ```
@@ -59,7 +59,7 @@ Wait for ALL fixers to complete. Collect their output summaries.
 
 Use the Skill tool to invoke `/gitx:commit-push`:
 
-```
+```markdown
 Skill(/gitx:commit-push):
   args: "--worktree $worktree"
 ```

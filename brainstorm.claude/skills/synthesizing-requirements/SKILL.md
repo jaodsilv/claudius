@@ -28,6 +28,7 @@ prioritizing features, or validating requirement quality.
 ## Quality Criteria
 
 Reference `references/smart-criteria.md` for the SMART validation framework:
+
 - **S**pecific: Unambiguous and clear
 - **M**easurable: Can be verified and tested
 - **A**chievable: Technically feasible
@@ -37,6 +38,7 @@ Reference `references/smart-criteria.md` for the SMART validation framework:
 ## Prioritization
 
 Reference `references/moscow-guide.md` for MoSCoW prioritization:
+
 - **P1 Must Have**: Essential for MVP/release
 - **P2 Should Have**: Important, not critical
 - **P3 Could Have**: Desirable if time permits
@@ -44,25 +46,16 @@ Reference `references/moscow-guide.md` for MoSCoW prioritization:
 
 ## Output Format
 
-Provide a structured summary:
+**Full output**: Provide a structured summary filling the template file `references/output-template.md`. Depending on the request, it may be output to a file.
+**Compact Output**: In addition to the full output, provide a compact summary (10-15 lines) direct to the user. For that use the template from the `### Compact Output Template` section.
 
-```text
-# Requirements Specification
+### Compact Output Template
 
-## Executive Summary
-- Name: [Product/Feature]
-- Problem: [1-2 sentences]
-- Users: [Primary segments]
-- Value: [Key benefit]
-
-## Functional Requirements (by priority)
-## Non-Functional Requirements (organized by category)
-## Constraints (with impact assessment)
-## Assumptions (with risk identification)
-## Out of Scope
-## Dependency Map
-## Gaps and Open Questions
-## Traceability Matrix
+```markdown
+- **Requirements count**: [X functional, Y non-functional, Z constraints]
+- **Priority breakdown**: [P1: X, P2: Y, P3: Z]
+- **Key dependencies**: [Top 3 critical dependencies]
+- **Gaps identified**: [Major gaps requiring follow-up]
 ```
 
 ## Writing Standards

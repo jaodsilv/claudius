@@ -33,7 +33,7 @@ Remaining prompt text: inline text to challenge, OR description of what to criti
 
 Extract `<worktree>` (required). Check for `<input-content>` from hook injection. If not present, use the remaining prompt text as inline input to critique.
 
-### 2. Load Methodology
+### 2. Structured Adversarial Approach
 
 Use the `analyzer:analyzing-adversarially` skill for the structured adversarial approach.
 

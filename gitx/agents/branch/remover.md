@@ -95,8 +95,6 @@ To clean up stale remote references:
 ```bash
 git fetch --prune
 ```
-
-
 ````
 
 ## Remote-Only Mode

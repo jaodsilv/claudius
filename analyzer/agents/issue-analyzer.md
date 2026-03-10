@@ -54,7 +54,7 @@ Use the built-in Explore agent via the Agent tool to investigate the codebase ba
 Launch with:
 
 
-```
+```markdown
 Agent(Explore):
   prompt: "In the codebase at $worktree, [type-specific investigation query]"
 ```
@@ -90,7 +90,7 @@ Write to `$worktree/.thoughts/analyzer/summary.md` — a 10-15 line summary cont
 
 ## Output
 
-```
+```markdown
 <analysis-path>$worktree/.thoughts/analyzer/full-analysis.md</analysis-path>
 <summary-path>$worktree/.thoughts/analyzer/summary.md</summary-path>
 <num-findings>N</num-findings>

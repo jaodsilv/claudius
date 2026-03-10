@@ -15,7 +15,7 @@ From `$ARGUMENTS`, extract:
 
 - topic: The idea/feature/software concept to explore
 - depth: The depth of the brainstorming. Possible values are: shallow, normal (default), deep
-- output_path: The output path. Defaults to $CWD/brainstorm-output/
+- output_path: The output path. Defaults to `${worktree}/.thoughts/brainstorm/`
 
 ## Skill Reference
 
@@ -24,10 +24,6 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 - Gate criteria (1-5)
 - Validation patterns
 - Phase dependencies
-
-## Skills Used
-
-- `brainstorm:validating-workflow` - Gate check criteria and validation patterns between workflow phases
 
 ## Initialization Checklist
 

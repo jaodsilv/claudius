@@ -17,7 +17,8 @@ Strip the `--worktree` argument and its value from $ARGUMENTS if present.
 
 Use the Agent tool to run the `gitx:address-review:review-responder` agent with the prompt:
 
-```
-<worktree>$worktree</worktree>
-$ARGUMENTS
+```markdown
+Agent(gitx:address-review:review-responder)
+  <worktree>$worktree</worktree>
+  $ARGUMENTS"
 ```
