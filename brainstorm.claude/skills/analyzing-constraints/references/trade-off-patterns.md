@@ -9,7 +9,7 @@ Constraints often conflict, requiring explicit trade-off analysis and resolution
 ### Common Conflict Patterns
 
 | Pattern | Constraints | Tension | Example |
-|---------|-----------|---------|---------|
+| :------ | :---------- | :------ | :------ |
 | **Speed vs. Quality** | Timeline + Security/Performance | Faster delivery vs. more testing | 6-month launch requires cutting security review |
 | **Cost vs. Scale** | Budget + Scalability | Lower cost vs. supporting growth | $100K budget cannot support 1M users |
 | **Features vs. Timeline** | Scope + Timeline | Feature completeness vs. launch date | All features cannot ship in 6 months |
@@ -42,7 +42,7 @@ Conflict: [How they contradict]
 For each constraint in the trade-off:
 
 | Property | Meaning | Questions |
-|----------|---------|-----------|
+| :------- | :------ | :-------- |
 | **Impact** | How much it affects the solution | Is it really high impact? What if we ignore it? |
 | **Negotiability** | Can it be changed | Who decided this? Could they change their mind? |
 | **Source** | Where it came from | Is it a hard requirement or a preference? |

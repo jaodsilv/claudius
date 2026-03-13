@@ -51,7 +51,7 @@ Use templates from: brainstorm:brainstorming skill references/
 ### Step 4: Generate Format-Specific Outputs
 
 | Format | Files Generated |
-|--------|----------------|
+| :----- | :------------- |
 | markdown | `specification.md`, `requirements.md`, `summary.md` |
 | pdf | Convert markdown to PDF (requires pandoc) |
 | html | Convert markdown to HTML with styling |

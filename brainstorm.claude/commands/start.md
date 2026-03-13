@@ -248,7 +248,7 @@ Apply Gate 5 criteria from `brainstorm:workflow-validation` skill. If any check 
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Agent failure | Log error, offer retry or skip |
 | User cancellation | Save progress, allow resumption |
 | Context overflow | Run `/compact` proactively |

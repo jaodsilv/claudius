@@ -74,4 +74,4 @@ GAP-001: {{Missing info}} - Impact: {{Effect}} - Needed by: {{Date}}
 ## Traceability Matrix
 
 | Requirement | User Need | Feasibility | Priority |
-| ----------- | --------- | ----------- | -------- |
+| :---------- | :-------- | :---------- | :------- |

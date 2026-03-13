@@ -18,7 +18,7 @@ model: opus
 ## Workflow Phases
 
 | Phase | Agent | Output |
-|-------|-------|--------|
+| :---- | :---- | :----- |
 | 1. Dialogue | `brainstorm:facilitator` | Key insights, user needs (batched 2-3 rounds) |
 | 2-4. Analysis | `brainstorm:domain-explorer`, `brainstorm:technical-analyst`, `brainstorm:constraint-analyst` | Parallel analysis reports |
 | 4.5. Synthesis | `brainstorm:analysis-synthesizer` | Unified analysis context |
@@ -30,7 +30,7 @@ model: opus
 ## Depth Levels
 
 | Level | Rounds | Best For | Time |
-|-------|--------|----------|------|
+| :---- | :----- | :------- | :--- |
 | shallow | 3 | Small features, extensions | 15-30 min |
 | normal | 5 | New features, moderate complexity | 30-60 min |
 | deep | 8 | New products, strategic features | 60-120 min |
@@ -38,7 +38,7 @@ model: opus
 ## Commands
 
 | Command | Purpose |
-|---------|---------|
+| :------ | :------ |
 | `/brainstorm:start` | Start new session |
 | `/brainstorm:continue` | Resume interrupted session |
 | `/brainstorm:export` | Regenerate documents |
@@ -46,7 +46,7 @@ model: opus
 ## Output Artifacts
 
 | File | Contents |
-|------|----------|
+| :--- | :------- |
 | `specification.md` | Complete specification with all sections |
 | `requirements.md` | Prioritized requirements (MoSCoW) |
 | `session-log.md` | Dialogue transcripts, phase outputs |
@@ -117,7 +117,7 @@ Each skill provides detailed reference material used by the corresponding agents
 ## Troubleshooting
 
 | Issue | Resolution |
-|-------|------------|
+| :---- | :--------- |
 | Too little information | Ask specific questions, provide examples |
 | Session going in circles | Summarize understanding, move to next phase |
 | Requirements conflict | Document conflict, analyze trade-offs, escalate |

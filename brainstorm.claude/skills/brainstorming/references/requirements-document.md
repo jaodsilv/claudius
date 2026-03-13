@@ -5,7 +5,7 @@
 ## Document Control
 
 | Version | Date | Author | Changes |
-|---------|------|--------|---------|
+| :------ | :--- | :----- | :------ |
 | {{version}} | {{date}} | Brainstorm Session | Initial draft |
 
 ## Executive Summary
@@ -25,7 +25,7 @@
 ### 1.3 Definitions
 
 | Term | Definition |
-|------|------------|
+| :--- | :--------- |
 | {{term}} | {{definition}} |
 
 ## 2. Problem Statement
@@ -77,7 +77,7 @@
 ### 4.4 Success Metrics
 
 | Metric | Current | Target | Method |
-|--------|---------|--------|--------|
+| :----- | :------ | :----- | :----- |
 
 | {{metric}} | {{current}} | {{target}} | {{method}} |
 
@@ -161,13 +161,13 @@
 
 | ID | Risk | Prob | Impact | Mitigation | Owner |
 
-|----|------|------|--------|------------|-------|
+| :- | :--- | :--- | :----- | :--------- | :---- |
 | {{risk_id}} | {{risk}} | {{probability}} | {{impact}} | {{mitigation}} | {{owner}} |
 
 ## 10. Assumptions
 
 | ID | Assumption | Risk if Invalid | Validation |
-|----|------------|-----------------|------------|
+| :- | :--------- | :-------------- | :--------- |
 | {{assumption_id}} | {{assumption}} | {{risk}} | {{validation}} |
 
 ## 11. Out of Scope
@@ -177,7 +177,7 @@
 ## 12. Open Questions
 
 | ID | Question | Impact | Owner | Due |
-|----|----------|--------|-------|-----|
+| :- | :------- | :----- | :---- | :-- |
 | {{question_id}} | {{question}} | {{impact}} | {{owner}} | {{due_date}} |
 
 ## 13. Next Steps
@@ -217,5 +217,5 @@
 ## Appendix D: Glossary
 
 | Term | Definition |
-|------|------------|
+| :--- | :--------- |
 | {{glossary_term}} | {{glossary_definition}} |

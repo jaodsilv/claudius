@@ -28,7 +28,7 @@ Use this template for the complete unified analysis summary:
 ## Technical-Constraint Alignment
 
 | Technical Decision | Supporting Constraints | Conflicting Constraints | Resolution |
-|-------------------|----------------------|-------------------------|------------|
+| :----------------- | :--------------------- | ----------------------- | ---------- |
 | [Decision] | [Support] | [Conflict] | [How to resolve] |
 
 ## Identified Conflicts
@@ -47,7 +47,7 @@ Use this template for the complete unified analysis summary:
 ### Unified Gap Analysis
 
 | Gap | Source Phase | Impact | Priority | Recommended Action |
-|-----|--------------|--------|----------|-------------------|
+| :-- | :----------- | :----- | :------- | :----------------- |
 | [Gap] | Domain/Tech/Constraint | H/M/L | 1-5 | [Action] |
 
 ### Open Questions by Category
@@ -81,7 +81,7 @@ Use this template for the complete unified analysis summary:
 ### Risk Mitigation Priorities
 
 | Risk | Source | Combined Impact | Recommended Mitigation |
-|------|--------|----------------|------------------------|
+| :--- | :----- | :-------------- | :--------------------- |
 | [Risk] | Tech/Domain/Constraint | H/M/L | [Mitigation] |
 
 ## Dependency Analysis
@@ -95,7 +95,7 @@ Use this template for the complete unified analysis summary:
 ## Assumptions Requiring Validation
 
 | Assumption | Source | Risk if Invalid | Validation Method |
-|------------|--------|-----------------|-------------------|
+| :--------- | :----- | :-------------- | :---------------- |
 | [Assumption] | Phase | [Risk] | [How to validate] |
 ````
 

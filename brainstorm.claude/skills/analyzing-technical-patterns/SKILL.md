@@ -41,7 +41,7 @@ Reference `references/complexity-sizing.md` for:
 ## Analysis Dimensions
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Implementation | Algorithm, data model, integration, UI/UX |
 | Technology Fit | Stack compatibility, frameworks, performance, scalability |
 | Resources | Effort, infrastructure, third-party dependencies, maintenance |

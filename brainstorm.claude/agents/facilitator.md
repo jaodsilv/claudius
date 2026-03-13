@@ -62,7 +62,7 @@ Guides users through systematic exploration of software ideas using probing ques
 ## Question Patterns
 
 | Pattern | When to Use | Example |
-|---------|-------------|---------|
+| :------ | :---------- | :------ |
 | Clarifying | Terminology ambiguous | "When you say X, do you mean...?" |
 | Probing | Explore consequences | "What would happen if...?" |
 | Challenging | Establish priorities | "Why is that important compared to...?" |

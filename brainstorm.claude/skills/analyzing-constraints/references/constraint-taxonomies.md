@@ -5,7 +5,7 @@ Comprehensive classification of constraints that shape software solution design.
 ## 1. Technical Constraints
 
 | Type | Description | Examples |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | **Platform** | Operating systems, browsers, devices the solution must support | iOS/Android only, Windows 11+, Chrome/Safari/Firefox, specific device form factors |
 | **Stack** | Required or prohibited technologies and frameworks | Must use React, cannot use third-party payment gateway, requires Node.js 18+ |
 | **Integration** | External systems and services that must be connected | Salesforce integration required, SAP backend, legacy mainframe connectivity |
@@ -17,7 +17,7 @@ Comprehensive classification of constraints that shape software solution design.
 ## 2. Business Constraints
 
 | Type | Description | Examples |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | **Budget** | Funding constraints for development and operations | Development budget $500K, operational budget $100K/month, cost per user < $5 |
 | **Timeline** | Launch dates, milestones, and time-to-market requirements | MVP in 6 months, launch by Q4, market window closing in 8 weeks |
 | **Compliance** | Regulatory and certification requirements | HIPAA compliance, SOC 2 Type II, FDA approval, industry certifications |
@@ -28,7 +28,7 @@ Comprehensive classification of constraints that shape software solution design.
 ## 3. Resource Constraints
 
 | Type | Description | Examples |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | **Team** | Team size, availability, and organizational structure | 8-person team, distributed across 4 time zones, embedded with customer |
 | **Skills** | Expertise gaps and required specializations | No GraphQL experience, need DevOps expertise, learning curve on Go |
 | **Infrastructure** | Hardware, cloud resources, and physical constraints | On-premise only, AWS-only deployment, limited cloud budget allocation |
@@ -38,7 +38,7 @@ Comprehensive classification of constraints that shape software solution design.
 ## 4. Environmental Constraints
 
 | Type | Description | Examples |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | **Network** | Bandwidth, latency, and connectivity requirements | Low-bandwidth environments (< 1 Mbps), high-latency (satellite), offline-first needs |
 | **Device** | Hardware capabilities and device diversity | Older devices (2GB RAM), mobile-only, no JavaScript support, accessibility needs |
 | **Geographic** | Regional requirements and data locality needs | Data residency in EU, APAC-specific servers, timezone considerations |
@@ -49,7 +49,7 @@ Comprehensive classification of constraints that shape software solution design.
 For each constraint identified, evaluate these properties:
 
 | Property | Description | Values |
-|----------|-------------|--------|
+| :------- | :---------- | :----- |
 | **Type** | Which category does it fall into | Technical / Business / Resource / Environmental |
 | **Source** | Where did the constraint originate | Stakeholder statement / Technical requirement / Legal document / Market research |
 | **Impact** | How much does it affect the solution | High / Medium / Low |
@@ -64,7 +64,7 @@ For each constraint identified, evaluate these properties:
 **Constraint**: API response time must be under 100ms for 99th percentile
 
 | Property | Value |
-|----------|-------|
+| :------- | :---- |
 | Type | Technical (Performance) |
 | Source | Technical requirement from architecture review |
 | Impact | High (affects user experience and SLA) |
@@ -77,7 +77,7 @@ For each constraint identified, evaluate these properties:
 **Constraint**: MVP must launch by Q4 to capture holiday market
 
 | Property | Value |
-|----------|-------|
+| :------- | :---- |
 | Type | Business (Timeline) |
 | Source | Executive stakeholder requirement |
 | Impact | High (affects go-to-market) |
@@ -90,7 +90,7 @@ For each constraint identified, evaluate these properties:
 **Constraint**: Team has no experience with GraphQL
 
 | Property | Value |
-|----------|-------|
+| :------- | :---- |
 | Type | Resource (Skills) |
 | Source | Team assessment |
 | Impact | Medium (affects development speed) |
@@ -103,7 +103,7 @@ For each constraint identified, evaluate these properties:
 **Constraint**: Solution must work on low-bandwidth connections (< 1 Mbps)
 
 | Property | Value |
-|----------|-------|
+| :------- | :---- |
 | Type | Environmental (Network) |
 | Source | User research in target market |
 | Impact | High (core functionality affected) |

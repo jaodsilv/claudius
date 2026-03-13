@@ -5,7 +5,7 @@ T-shirt sizing framework for estimating implementation effort and identifying co
 ## T-shirt Sizing Scale
 
 | Size | Effort Range | Description | Characteristics |
-|------|--------------|-------------|-----------------|
+| :--- | :----------- | :---------- | :-------------- |
 | **XS** | < 1 week | Straightforward | No unknowns, single component, familiar tech, isolated change |
 | **S** | 1-2 weeks | Minor complexities | Few dependencies, one complexity factor, mostly straightforward |
 | **M** | 2-4 weeks | Moderate complexity | Multiple factors, 2-3 integration points, some unknowns |

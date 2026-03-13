@@ -5,7 +5,7 @@ The SMART framework ensures that requirements are well-formed, testable, and act
 ## Criteria Overview
 
 | Criterion | Description | How to Validate |
-|-----------|-------------|-----------------|
+| :-------- | :---------- | :-------------- |
 | **S**pecific | Unambiguous and clearly defined | Remove vague language; include what, who, when, where |
 | **M**easurable | Can be verified and tested | Define acceptance criteria; specify metrics or thresholds |
 | **A**chievable | Technically feasible within constraints | Review against technical constraints and resource availability |
@@ -175,7 +175,7 @@ For each requirement, verify:
 <!-- markdownlint-enable MD013 -->
 
 | Criterion | Assessment |
-|-----------|------------|
+| :-------- | :--------- |
 | Specific | OAuth 2.0, token refresh, 401 response - clear |
 | Measurable | 50ms response time threshold |
 | Achievable | Standard OAuth implementation |
@@ -187,7 +187,7 @@ For each requirement, verify:
 <!-- markdownlint-enable MD013 -->
 
 | Criterion | Assessment |
-|-----------|------------|
+| :-------- | :--------- |
 | Specific | 99.9% uptime, business hours defined, maintenance windows |
 | Measurable | Uptime percentage, maintenance count |
 | Achievable | 99.9% is a common SLA target |
@@ -204,7 +204,7 @@ Use this template to validate each requirement:
 
 ### SMART Validation
 | Criterion | Pass/Fail | Evidence |
-|-----------|-----------|----------|
+| :-------- | :-------- | :------- |
 | Specific | | |
 | Measurable | | |
 | Achievable | | |

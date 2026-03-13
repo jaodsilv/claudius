@@ -5,7 +5,7 @@ MoSCoW is a prioritization framework that categorizes requirements into four cat
 ## Priority Levels
 
 | Level | Name | Description | Example |
-|-------|------|-------------|---------|
+| :---- | :--- | :---------- | :------ |
 | P1 | Must Have | Essential for MVP or this release | User login functionality |
 | P2 | Should Have | Important, high-value, but not critical | Password reset email |
 | P3 | Could Have | Desirable if time and resources permit | Social login integration |

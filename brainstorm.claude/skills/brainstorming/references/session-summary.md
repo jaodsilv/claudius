@@ -1,7 +1,7 @@
 # Brainstorm Session Summary
 
 | Property | Value |
-|----------|-------|
+| :------- | :---- |
 | **Topic** | {{topic}} |
 | **Date** | {{date}} |
 | **Duration** | {{duration}} |
@@ -26,7 +26,7 @@
 ### Requirements Captured
 
 | Category | Count |
-|----------|-------|
+| :------- | :---- |
 | Functional (P1) | {{p1_count}} |
 | Functional (P2) | {{p2_count}} |
 | Functional (P3) | {{p3_count}} |
@@ -41,7 +41,7 @@
 ### Constraints
 
 | Category | Count |
-|----------|-------|
+| :------- | :---- |
 
 | Technical | {{tc_count}} |
 | Business | {{bc_count}} |
@@ -51,7 +51,7 @@
 ## Generated Artifacts
 
 | Artifact | Path |
-|----------|------|
+| :------- | :--- |
 
 | Specification | `{{output_path}}/specification.md` |
 | Requirements | `{{output_path}}/requirements.md` |
@@ -86,7 +86,7 @@
 ## Session Metrics
 
 | Metric | Value |
-|--------|-------|
+| :----- | :---- |
 | Questions Asked | {{questions_count}} |
 | Insights Captured | {{insights_count}} |
 | Trade-offs Identified | {{tradeoffs_count}} |

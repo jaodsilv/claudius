@@ -17,7 +17,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 1. Implementation Complexity
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Algorithm | Computational requirements |
 | Data Model | Relationships, constraints |
 | Integration | External systems, APIs |
@@ -26,7 +26,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 2. Technology Fit
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Stack | Existing compatibility |
 | Libraries | Available frameworks |
 | Performance | Characteristics match |
@@ -35,7 +35,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 3. Resource Requirements
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Effort | T-shirt sizing |
 | Infrastructure | Hardware, cloud |
 | Third-party | Service dependencies |
@@ -44,7 +44,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 4. Risk Assessment
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Unknowns | Technical uncertainty |
 | Performance | Latency, throughput risks |
 | Security | Vulnerability concerns |

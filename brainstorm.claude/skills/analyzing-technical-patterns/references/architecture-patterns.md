@@ -242,7 +242,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 ## Pattern Comparison Matrix
 
 | Factor | Monolith | Modular | Microservices | Event-Driven | Serverless |
-|--------|----------|---------|---------------|--------------|-----------|
+| :----- | :------- | :------ | :------------ | :----------- | :-------- |
 | **Team Size** | <10 | 10-30 | 30+ | 10-50 | <20 |
 | **Scalability** | Limited | Limited | Independent | Independent | Auto |
 | **Complexity** | Low | Medium | High | High | Medium |
@@ -290,7 +290,7 @@ Comprehensive reference for evaluating and comparing architectural approaches.
 ## Trade-offs Summary
 
 | Architecture | Gain | Lose |
-|--------------|------|------|
+| :----------- | :--- | :--- |
 | Monolith → Modular | Boundaries | Still monolithic |
 | Monolith → Microservices | Independent scaling | Distributed complexity |
 | Monolith → Event-Driven | Loose coupling | Eventual consistency |

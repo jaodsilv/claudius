@@ -42,7 +42,7 @@ From `{{session_path}}/session-log.md` extract:
 ### Step 3: Determine Resume Point
 
 | Last Completed | Resume From |
-|----------------|-------------|
+| :------------- | :---------- |
 | None | Phase 1 (Dialogue - batched) |
 | Phase 1 | Phases 2-4 (Parallel Analysis) |
 | Phases 2-4 | Phase 4.5 (Analysis Synthesis) |
@@ -82,7 +82,7 @@ Present final summary as defined in `/brainstorm:start` completion section.
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Session not found | Inform user, suggest checking path |
 | Corrupted log | Inform user, offer to restart |
 | Missing context | Ask user for missing information |

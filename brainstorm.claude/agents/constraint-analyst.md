@@ -87,7 +87,7 @@ Use the `brainstorm:analyzing-constraints` skill for:
 
 ## 5. Constraint Assessment
 | Constraint | Category | Impact | Negotiability | Mitigation |
-|------------|----------|--------|---------------|------------|
+| :--------- | :------- | :----- | :------------ | :--------- |
 | [Name] | Tech/Bus/Res/Env | H/M/L | Hard/Soft | [Strategy] |
 
 ## 6. Trade-off Analysis
@@ -98,7 +98,7 @@ Use the `brainstorm:analyzing-constraints` skill for:
 
 ## 7. Open Questions
 | Question | Impact | Priority |
-|----------|--------|----------|
+| :------- | :----- | :------- |
 | [Question] | [Effect] | H/M/L |
 ````
 
