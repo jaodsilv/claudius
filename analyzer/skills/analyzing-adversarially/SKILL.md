@@ -15,7 +15,7 @@ Constructively critical analysis to identify weaknesses before they become failu
 ## Analysis Components
 
 | Component | Purpose | Key Questions |
-|-----------|---------|---------------|
+| :-------- | :------ | :------------ |
 | Assumption Hunting | Find fragile premises | What must be true? What if opposite? |
 | Failure Mode Analysis | Explore how it could fail | What triggers failure? What's probability/impact? |
 | Counter-Arguments | Strongest opposing view | What would a skeptic say? |
@@ -39,7 +39,7 @@ If Wrong: [Consequence]
 ## Failure Mode Categories
 
 | Category | Description |
-|----------|-------------|
+| :------- | :---------- |
 | Complete Failure | Analysis/proposal is entirely wrong |
 | Partial Failure | Correct in some areas, wrong in others |
 | Missing Context | Correct given available data, but key data is missing |
@@ -50,7 +50,7 @@ If Wrong: [Consequence]
 Beyond the standard 5 components, apply these when critiquing analytical output:
 
 | Check | Purpose | Key Questions |
-|-------|---------|---------------|
+| :---- | :------ | :------------ |
 | **Blind Spots** | Areas not investigated | What parts of the codebase/system were not examined? |
 | **Missing Evidence** | Claims without data | Which assertions lack supporting code, logs, or error messages? |
 | **Alternative Root Causes** | Other explanations | What else could explain the findings? |
@@ -67,7 +67,7 @@ Beyond the standard 5 components, apply these when critiquing analytical output:
 ## Stress Test Dimensions
 
 | Dimension | Test Variations |
-|-----------|-----------------|
+| :-------- | :-------------- |
 | Scale | What if the problem is 10x larger than described? |
 | Context | What if key context was missed or misunderstood? |
 | Time | What if the analysis is based on stale information? |
@@ -80,12 +80,12 @@ Beyond the standard 5 components, apply these when critiquing analytical output:
 
 ### Critical Assumptions
 | Assumption | Fragility | Challenge | If Wrong |
-|------------|-----------|-----------|----------|
+| :--------- | :-------- | :-------- | :------- |
 | ... | High/Med/Low | ... | ... |
 
 ### Failure Modes
 | Mode | Trigger | Probability | Impact | Mitigation |
-|------|---------|-------------|--------|------------|
+| :--- | :------ | :---------- | :----- | :--------- |
 | ... | ... | High/Med/Low | High/Med/Low | ... |
 
 ### Counter-Arguments
@@ -95,7 +95,7 @@ Beyond the standard 5 components, apply these when critiquing analytical output:
 
 ### Stress Test Results
 | Dimension | Scenario | Outcome | Risk Level |
-|-----------|----------|---------|------------|
+| :-------- | :------- | :------ | :--------- |
 | ... | ... | ... | High/Med/Low |
 
 ### Blind Spots

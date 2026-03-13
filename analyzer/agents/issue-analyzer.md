@@ -34,7 +34,7 @@ Extract `<worktree>` (required), optional `<input-type>`, and the raw input text
 If `<input-type>` is not provided, use the Skill tool to load the skill `analyzer:classifying-inputs` to determine the input type based on heuristics:
 
 | Input Type | Indicators |
-|-----------|------------|
+| :--------- | :--------- |
 | `review-comment` | File paths with line numbers, review vocabulary ("nit:", "please change") |
 | `ci-log` | Build/test output, exit codes, timestamps, CI markers |
 | `error-text` | Stack traces, exception names, error codes |

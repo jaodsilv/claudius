@@ -14,7 +14,7 @@ Determine the input type to select the appropriate analysis strategy.
 ## Classification Heuristics
 
 | Input Type | Indicators | Analysis Strategy |
-|-----------|------------|-------------------|
+| :--------- | :--------- | :---------------- |
 | `review-comment` | File paths with line numbers, review vocabulary ("nit:", "please change", "consider", "suggestion:"), diff hunks, inline code references | Map to code locations, check surrounding context, understand reviewer intent |
 | `ci-log` | Build/test output, exit codes, timestamps, CI system markers (GitHub Actions, Jenkins, CircleCI), step names, artifact references | Extract error lines, parse stack traces, identify failing tests/builds |
 | `error-text` | Stack traces, exception class names, error codes, "at line" references, segfault/panic messages | Parse trace to find origin, locate source files, check error handling |
@@ -39,7 +39,7 @@ Determine the input type to select the appropriate analysis strategy.
 After classification, use these templates for codebase exploration:
 
 | Type | Exploration Focus |
-|------|-------------------|
+| :--- | :---------------- |
 | `review-comment` | "Explore the file(s) mentioned: [files]. Focus on lines [N-M] and surrounding context." |
 | `ci-log` | "Explore files from the stack trace: [files]. Check for recent changes that could cause [error type]." |
 | `error-text` | "Explore the source of [exception/error]: [file:line]. Trace the call chain to find the root cause." |
