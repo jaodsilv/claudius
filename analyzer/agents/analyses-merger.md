@@ -71,7 +71,7 @@ Write to `$worktree/.thoughts/analyzer/merged-summary.md` — 10-15 lines contai
 
 ## Output
 
-```
+```xml
 <merged-path>$worktree/.thoughts/analyzer/merged-analysis.md</merged-path>
 <summary-path>$worktree/.thoughts/analyzer/merged-summary.md</summary-path>
 <num-findings>N</num-findings>

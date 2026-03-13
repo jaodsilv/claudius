@@ -23,12 +23,20 @@ Extract `--analysis-path` from $ARGUMENTS if provided. If not provided, default 
 
 ## Step 2: Run Agent
 
-Use the Agent tool to run the `analyzer:analysis-splitter` agent with the prompt:
+Use the Agent tool to spawn the agent `analyzer:analysis-splitter` to split the analysis:
 
+```markdown
+Agent(analyzer:analysis-splitter):
+  prompt:
+    <worktree>$worktree</worktree>
+    <analysis-path>$analysisPath</analysis-path>
 ```
-<worktree>$worktree</worktree>
-<analysis-path>$analysisPath</analysis-path>
-```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed.
 
 ## Step 3: Return Results
 

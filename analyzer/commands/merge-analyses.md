@@ -21,12 +21,20 @@ Extract the `--analysis-paths` value(s) from $ARGUMENTS. At least 2 paths are re
 
 ## Step 2: Run Agent
 
-Use the Agent tool to run the `analyzer:analyses-merger` agent with the prompt:
+Use the Agent tool to spawn the agent `analyzer:analyses-merger` to merge the analyses:
 
+```markdown
+Agent(analyzer:analyses-merger):
+  prompt:
+    <worktree>$worktree</worktree>
+    <analysis-paths>$analysisPaths</analysis-paths>
 ```
-<worktree>$worktree</worktree>
-<analysis-paths>$analysisPaths</analysis-paths>
-```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed.
 
 ## Step 3: Return Results
 

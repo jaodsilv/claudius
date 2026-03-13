@@ -1,5 +1,5 @@
 #!/bin/bash
-# PreToolUse dispatcher for analyzer agents invoked via Task tool
+# PreToolUse dispatcher for analyzer agents invoked via Agent tool
 # Handles context injection for analyzer sub-agents
 set -uo pipefail
 
@@ -37,7 +37,7 @@ if [[ "$_AGENT_TYPE" != analyzer:* ]]; then
   exit 0
 fi
 
-log_section "Task to Analyzer Agent"
+log_section "Analyzer Agent"
 log_debug "AGENT_TYPE" "$_AGENT_TYPE"
 
 # Extract model for inject_or_read decisions (default: sonnet)

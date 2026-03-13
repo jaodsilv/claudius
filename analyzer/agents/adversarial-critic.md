@@ -80,7 +80,7 @@ Write to `$worktree/.thoughts/analyzer/critique-summary.md` — 10-15 lines cont
 
 ## Output
 
-```
+```xml
 <critique-path>$worktree/.thoughts/analyzer/critique.md</critique-path>
 <verdict>Strong|Moderate|Weak</verdict>
 <must-address-count>N</must-address-count>

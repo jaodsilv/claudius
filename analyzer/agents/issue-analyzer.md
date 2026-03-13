@@ -31,7 +31,7 @@ Extract `<worktree>` (required), optional `<input-type>`, and the raw input text
 
 ### 2. Classify Input
 
-If `<input-type>` is not provided, use the `analyzer:classifying-inputs` skill to determine the input type based on heuristics:
+If `<input-type>` is not provided, use the Skill tool to load the skill `analyzer:classifying-inputs` to determine the input type based on heuristics:
 
 | Input Type | Indicators |
 |-----------|------------|
@@ -43,21 +43,13 @@ If `<input-type>` is not provided, use the `analyzer:classifying-inputs` skill t
 
 ### 3. Explore Codebase
 
-Use the built-in Explore agent via the Agent tool to investigate the codebase based on input type:
+Use the Agent tool to spawn the agent `Explore` to investigate the codebase at $worktree based on input type:
 
 - For `review-comment`: explore files and lines mentioned in the comment
 - For `ci-log`: explore files from stack traces and build errors
 - For `error-text`: explore source of exceptions and error origins
 - For `task-description`: explore areas matching the described task
 - For `generic`: broad keyword exploration
-
-Launch with:
-
-
-```markdown
-Agent(Explore):
-  prompt: "In the codebase at $worktree, [type-specific investigation query]"
-```
 
 ### 4. Deep Analysis
 

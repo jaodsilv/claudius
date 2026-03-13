@@ -18,12 +18,20 @@ Strip the `--worktree` argument and its value from $ARGUMENTS if present.
 
 ## Step 1: Run Agent
 
-Use the Agent tool to run the `analyzer:adversarial-critic` agent with the prompt:
+Use the Agent tool to spawn the agent `analyzer:adversarial-critic` to challenge the input:
 
+```markdown
+Agent(analyzer:adversarial-critic):
+  prompt:
+    <worktree>$worktree</worktree>
+    $ARGUMENTS
 ```
-<worktree>$worktree</worktree>
-$ARGUMENTS
-```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed.
 
 ## Step 2: Return Results
 
