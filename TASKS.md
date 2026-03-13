@@ -131,10 +131,11 @@ This directory contains Claude Code configurations specifically for job hunting 
 
 ## Structure
 
-```
+```markdown
 job-hunting.claude/
 ├── agents/              # Job hunting specialized agents
 ├── commands/            # Job hunting slash commands
+├── skills/              # Job hunting skills
 ├── shared/              # Job hunting shared resources
 └── README.md
 ```
