@@ -63,11 +63,11 @@ Output document templates are available in references:
 
 The brainstorming workflow leverages these specialized skills:
 
-- `constraint-analysis` - Constraint identification and trade-off patterns
-- `technical-patterns` - Architecture pattern selection and complexity sizing
-- `requirements-synthesis` - SMART criteria and MoSCoW prioritization
-- `domain-research` - Domain exploration research areas
-- `workflow-validation` - Quality gates between phases
+- `analyzing-constraints` - Constraint identification and trade-off patterns
+- `analyzing-technical-patterns` - Architecture pattern selection and complexity sizing
+- `synthesizing-requirements` - SMART criteria and MoSCoW prioritization
+- `researching-domain` - Domain exploration research areas
+- `validating-workflow` - Quality gates between phases
 
 Each skill provides detailed reference material used by the corresponding agents.
 

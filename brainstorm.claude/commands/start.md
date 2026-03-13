@@ -19,7 +19,7 @@ From `$ARGUMENTS`, extract:
 
 ## Skill Reference
 
-Use the `brainstorm:workflow-validation` skill for gate checks between phases:
+Use the `brainstorm:validating-workflow` skill for gate checks between phases:
 
 - Gate criteria (1-5)
 - Validation patterns
@@ -101,7 +101,7 @@ Use the `brainstorm:workflow-validation` skill for gate checks between phases:
 
 ### Gate 1: Post-Dialogue Validation
 
-Apply Gate 1 criteria from `brainstorm:workflow-validation` skill. If any check fails, run an additional facilitator batch.
+Apply Gate 1 criteria from `brainstorm:validating-workflow` skill. If any check fails, run an additional facilitator batch.
 
 ### Phases 2-4: Parallel Analysis
 
@@ -150,7 +150,7 @@ Use Agent tool to invoke **IN PARALLEL** (all three agents simultaneously):
 
 ### Gate 2: Post-Analysis Validation
 
-Apply Gate 2 criteria from `brainstorm:workflow-validation` skill. If any check fails, identify incomplete analyses and rerun.
+Apply Gate 2 criteria from `brainstorm:validating-workflow` skill. If any check fails, identify incomplete analyses and rerun.
 
 ### Phase 4.5: Analysis Synthesis
 
@@ -173,7 +173,7 @@ Returns: Unified analysis context for requirements synthesis
 
 ### Gate 3: Post-Synthesis Validation
 
-Apply Gate 3 criteria from `brainstorm:workflow-validation` skill. If any check fails, re-run synthesis with clarifications.
+Apply Gate 3 criteria from `brainstorm:validating-workflow` skill. If any check fails, re-run synthesis with clarifications.
 
 ### Phase 5: Requirements Synthesis
 
@@ -193,7 +193,7 @@ Returns: Structured requirements document
 
 ### Gate 4: Post-Requirements Validation
 
-Apply Gate 4 criteria from `brainstorm:workflow-validation` skill. If any check fails, refine and consolidate requirements.
+Apply Gate 4 criteria from `brainstorm:validating-workflow` skill. If any check fails, refine and consolidate requirements.
 
 ### Phase 6: Specification Generation
 
@@ -215,7 +215,7 @@ Returns: Complete specification document
 
 ### Gate 5: Post-Specification Validation
 
-Apply Gate 5 criteria from `brainstorm:workflow-validation` skill. If any check fails, refine specification.
+Apply Gate 5 criteria from `brainstorm:validating-workflow` skill. If any check fails, refine specification.
 
 ## Completion Output
 

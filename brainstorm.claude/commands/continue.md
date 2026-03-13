@@ -17,7 +17,7 @@ From `$ARGUMENTS`, extract:
 
 ## Skill Reference
 
-Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation
+Use the `brainstorm:validating-workflow` skill for gate check criteria and session state validation
 
 ## Execution Checklist
 
