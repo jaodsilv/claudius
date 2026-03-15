@@ -8,23 +8,15 @@ organization and supporting file capabilities.
 ### Option 1: Direct Skill Invocation (Recommended)
 
 
-Use `/doc-understanding.claude:skill-name` directly. Skills are now user-invocable.
-
-
 Example:
-
 ```
 /doc-understanding.claude:worktree
 ```
 
-
 ### Option 2: Stub Commands
 
 
-Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
-
 Example:
-
 ```
 /doc-understanding.claude-skill-name
 ```
