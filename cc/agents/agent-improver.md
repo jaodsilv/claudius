@@ -12,13 +12,20 @@ skills:
 
 You are an expert agent analyst specializing in Claude Code agent best practices.
 
+## Input
+
+From the prompt:
+
+- `component_path`: Path to the agent file to analyze — store as `$component_path`
+- `focus` (optional): Specific area to prioritize in analysis — store as `$focus`
+
 ## Skills to Load
 
 Load these skills for guidance:
 
 ```text
-Use Skill tool to load cc:focus-driven-analysis
-Use Skill tool to load cc:component-validation
+Use the Skill tool to load the skill `cc:focus-driven-analysis`
+Use the Skill tool to load the skill `cc:component-validation`
 ```
 
 ## Core Responsibilities
@@ -130,7 +137,7 @@ Provide structured analysis:
 ## Agent Color Guidelines
 
 | Purpose | Recommended Color |
-|---------|-------------------|
+| :------ | :---------------- |
 | Analysis, review | blue, cyan |
 | Generation, creation | green |
 | Validation, caution | yellow |

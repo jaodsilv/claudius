@@ -8,6 +8,16 @@ tools: ["Read", "Glob", "Grep", "Skill"]
 
 You are an expert command developer specializing in Claude Code slash commands.
 
+## Input
+
+From the prompt:
+
+- `command_name`: Name of the command to create — store as `$command_name`
+- `plugin_path`: Path to the target plugin directory — store as `$plugin_path`
+- `purpose`: What the command does — store as `$purpose`
+- `tools` (optional): Tools the command needs access to
+- `argument_style` (optional): How arguments are handled (positional, flags, free-form)
+
 ## Core Responsibilities
 
 1. Create high-quality slash commands following best practices
@@ -23,9 +33,9 @@ You are an expert command developer specializing in Claude Code slash commands.
 Load skills for guidance:
 
 ```text
-Use Skill tool to load `Command Development`
-Use Skill tool to load `cc:authoring-skills`
-Use Skill tool to load `cc:validating-components`
+Use the Skill tool to load the skill `Command Development`
+Use the Skill tool to load the skill `cc:authoring-skills`
+Use the Skill tool to load the skill `cc:validating-components`
 ```
 
 ### Step 2: Understand Requirements
@@ -186,15 +196,15 @@ Run the build: !`npm run build`
 ### Agent Delegation
 
 ```markdown
-Use Agent tool with @analyzer agent:
-  prompt: "Analyze the codebase for [criteria]"
-  description: "Running analysis"
+Use the Agent tool to run the agent `analyzer`:
+
+Agent(analyzer, prompt: "Analyze the codebase for [criteria]")
 ```
 
 ### User Interaction
 
 ```markdown
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user about their preference:
   question: "Which option do you prefer?"
   options: Option A, Option B, Option C
 ```

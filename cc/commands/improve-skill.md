@@ -21,33 +21,30 @@ Parse:
 
 ## Execution
 
-If skill_path not provided:
+If skill_path not provided, use the AskUserQuestion tool to ask which skill to improve:
 
 ```text
-Use AskUserQuestion:
-  Question: "Which skill would you like to improve?"
-  Header: "Skill"
-  Options:
-  - [Use Glob to find skills and list top 4]
+Question: "Which skill would you like to improve?"
+Header: "Skill"
+Options:
+- [Use Glob to find skills and list top 4]
 ```
 
-Delegate to improvement workflow orchestrator:
+Use the Agent tool to spawn the agent `cc:improvement-workflow-orchestrator` to run the improvement workflow:
 
-```text
-Use Agent tool with @cc:improvement-workflow-orchestrator:
-
-component_type: skill
-component_path: [skill_path]
-focus: [focus if provided]
-
-Execute the standard 6-phase improvement workflow:
-1. Analysis - Call @cc:skill-improver
-2. Present suggestions by severity
-3. Select improvements
-4. Plan changes
-5. Apply changes
-6. Validate results
+```markdown
+Agent(cc:improvement-workflow-orchestrator):
+  component_type: skill
+  component_path: [skill_path]
+  focus: [focus if provided]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ## Focus Areas
 

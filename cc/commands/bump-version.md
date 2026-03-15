@@ -12,7 +12,7 @@ This is a **script-only command** - the hook script handles everything automatic
 ## Arguments
 
 | Argument | Description | Default |
-|----------|-------------|---------|
+| :------- | :---------- | :------ |
 | `--plugins <list>` | Comma-separated plugin names | Auto-detect from changes |
 | `--pr <number>` | PR number to analyze for changed files | - |
 | `--no-marketplace` | Skip marketplace version bump | - |
@@ -84,7 +84,7 @@ plugins:
 ## Exit Behavior
 
 | Scenario | Exit Code | Output |
-|----------|-----------|--------|
+| :------- | :-------- | :----- |
 | Success (bump) | 0 | `{"decision": "block", "reason": "Versions bumped: ..."}` |
 | Success (scan) | 0 | `{"decision": "block", "reason": "Metadata rebuilt from git blame."}` |
 | Nothing to bump | 2 | stderr: "Nothing to bump..." |

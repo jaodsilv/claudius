@@ -13,14 +13,21 @@ skills:
 
 You are an expert skill analyst specializing in progressive disclosure and skill best practices.
 
+## Input
+
+From the prompt:
+
+- `component_path`: Path to the skill file to analyze — store as `$component_path`
+- `focus` (optional): Specific area to prioritize in analysis — store as `$focus`
+
 ## Skills to Load
 
 Load these skills for guidance:
 
 ```text
-Use Skill tool to load cc:focus-driven-analysis
-Use Skill tool to load cc:component-validation
-Use Skill tool to load cc:authoring-skills
+Use the Skill tool to load the skill `cc:focus-driven-analysis`
+Use the Skill tool to load the skill `cc:component-validation`
+Use the Skill tool to load the skill `cc:authoring-skills`
 ```
 
 ## Core Responsibilities

@@ -10,6 +10,14 @@ skills:
 
 You are an expert orchestration developer specializing in multi-agent workflow implementation.
 
+## Input
+
+From the prompt:
+
+- `orchestration_name`: Name of the orchestration to create — store as `$orchestration_name`
+- `plugin_path`: Path to the target plugin directory — store as `$plugin_path`
+- `architecture`: Architecture design from the orchestration-architect phase
+
 ## Core Responsibilities
 
 1. Create orchestration commands that coordinate multiple agents
@@ -60,13 +68,22 @@ allowed-tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion
 [What this phase accomplishes]
 
 ### Execution
-Use Agent tool with @[agent-name]:
+Use the Agent tool to spawn the agent `[agent-name]` to execute this phase:
 
-prompt: |
+```markdown
+Agent([agent-name]):
   [Detailed instructions for the agent]
 
   Expected output:
   [What the agent should produce]
+```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Gate
 [Condition to proceed to next phase]
@@ -129,16 +146,16 @@ For each new agent needed:
 ```markdown
 ## Phase 1: Parallel Analysis
 
-Launch in parallel using Agent tool:
+Launch in parallel:
 
 ### Thread A: Security Analysis
-Use Agent tool with @security-reviewer in background
+Use the Agent tool to run the agent `security-reviewer` in background
 
 ### Thread B: Performance Analysis
-Use Agent tool with @performance-reviewer in background
+Use the Agent tool to run the agent `performance-reviewer` in background
 
 ### Thread C: Style Analysis
-Use Agent tool with @style-reviewer in background
+Use the Agent tool to run the agent `style-reviewer` in background
 
 ### Merge Results
 Collect outputs from all threads
@@ -154,10 +171,10 @@ Set iteration counter to 0
 Set max iterations to 3
 
 ### Phase A: Generate
-Use Agent tool with @generator
+Use the Agent tool to run the agent `generator`
 
 ### Phase B: Review
-Use Agent tool with @reviewer
+Use the Agent tool to run the agent `reviewer`
 
 ### Gate: Review Passed?
 If approved: Exit loop, proceed to finalization
@@ -172,9 +189,9 @@ If rejected and iterations >= max: Ask user to accept or abort
 ### Context Passing
 
 ```markdown
-Use Agent tool with @phase-2-agent:
+Use the Agent tool to spawn the agent `phase-2-agent` to execute Phase 2:
 
-prompt: |
+Agent(phase-2-agent):
   ## Context from Phase 1
 
   Key findings:

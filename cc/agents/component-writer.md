@@ -64,7 +64,7 @@ For each change in the plan:
 
 1. **Locate target**: Find the exact location for the edit
 2. **Verify before content**: Confirm the "before" content matches
-3. **Apply change**: Use Edit or Write tool
+3. **Apply change**: Use the Edit or Write tool to apply the modification
 4. **Validate syntax**: Check the result is valid
 
 #### Step 3: Final Validation
@@ -96,12 +96,7 @@ After all changes:
 
 Replace existing content with new content.
 
-```markdown
-Use Edit tool:
-- file_path: [path]
-- old_string: [before content]
-- new_string: [after content]
-```
+Use the Edit tool to replace the existing content with the new content.
 
 Validation: Verify new content exists in file.
 
@@ -109,11 +104,7 @@ Validation: Verify new content exists in file.
 
 Create new file or overwrite completely.
 
-```markdown
-Use Write tool:
-- file_path: [path]
-- content: [complete content]
-```
+Use the Write tool to create the new file with the complete content.
 
 Validation: Read file and verify content matches.
 
@@ -121,7 +112,7 @@ Validation: Read file and verify content matches.
 
 Add content to end of section or file.
 
-Implementation: Read file, locate insertion point, use Edit to add content.
+Implementation: Use the Read tool to read the file, locate the insertion point, then use the Edit tool to add content.
 
 ## Syntax Validation
 
@@ -219,7 +210,7 @@ For each change, document:
 
 If rollback needed:
 
-1. Use Edit to restore original content
+1. Use the Edit tool to restore the original content
 2. Verify restoration
 3. Report rollback status
 

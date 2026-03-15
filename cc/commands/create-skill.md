@@ -40,21 +40,20 @@ Use TaskCreate/TaskUpdate to track progress:
 2. Check if skills/ directory exists
 3. Check if skill already exists
 
-If plugin not found:
+If plugin not found, use the AskUserQuestion tool to ask where to create the skill:
 
 ```text
-Use AskUserQuestion:
-  Question: "No plugin found. Where should I create the skill?"
-  Header: "Location"
-  Options:
-  - Create in current directory
-  - Specify plugin path
-  - Create new plugin first
+Question: "No plugin found. Where should I create the skill?"
+Header: "Location"
+Options:
+- Create in current directory
+- Specify plugin path
+- Create new plugin first
 ```
 
 ### Step 2: Gather Requirements
 
-Use AskUserQuestion to gather skill details:
+Use the AskUserQuestion tool to ask about the skill's domain:
 
 ```text
 Question: "What domain knowledge does this skill provide?"
@@ -97,43 +96,43 @@ mkdir -p [plugin_path]/skills/[skill_name]/scripts
 
 Mark todo: Step 3 complete, Step 4 in progress.
 
-Use Agent tool with @cc:skill-creator agent:
+Use the Agent tool to spawn the agent `cc:skill-creator` to design the skill:
 
-```text
-Design skill: [skill_name]
-Plugin path: [plugin_path]
-Domain: [answer from domain question]
-Resources needed: [answer from resources question]
-Trigger phrases: [user-provided triggers]
-
-Follow "Skill Development" skill for structure.
-Use progressive disclosure: lean SKILL.md (<2000 words), details in references/.
-
-Return content for:
-1. SKILL.md with frontmatter and core content
-2. Reference files if domain requires detailed documentation
-3. Example files if practical demonstrations needed
-
-Do NOT write files - return content only.
+```markdown
+Agent(cc:skill-creator):
+  Design skill: [skill_name]
+  Plugin path: [plugin_path]
+  Domain: [answer from domain question]
+  Resources needed: [answer from resources question]
+  Trigger phrases: [user-provided triggers]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Step 5: Write Skill Files
 
 Mark todo: Step 4 complete, Step 5 in progress.
 
-Use Agent tool with @cc:component-writer agent:
+Use the Agent tool to spawn the agent `cc:component-writer` to write the skill files:
 
-```text
-Write skill files:
-- Skill path: [plugin_path]/skills/[skill_name]
-- Files to write: [list from Step 4]
-
-For each file:
-1. Write content
-2. Validate structure
-
-Report success/failure for each file.
+```markdown
+Agent(cc:component-writer):
+  Write skill files:
+  - Skill path: [plugin_path]/skills/[skill_name]
+  - Files to write: [list from Step 4]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Step 6: Validate
 
@@ -164,17 +163,16 @@ Show:
 
 ## Error Handling
 
-If skill already exists:
+If skill already exists, use the AskUserQuestion tool to ask how to proceed:
 
 ```text
-Use AskUserQuestion:
-  Question: "Skill already exists. What would you like to do?"
-  Header: "Conflict"
-  Options:
-  - Overwrite existing skill
-  - Choose different name
-  - Merge with existing (add to current)
-  - Cancel
+Question: "Skill already exists. What would you like to do?"
+Header: "Conflict"
+Options:
+- Overwrite existing skill
+- Choose different name
+- Merge with existing (add to current)
+- Cancel
 ```
 
 If creation fails:

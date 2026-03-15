@@ -15,19 +15,13 @@ You are an expert change planner specializing in sequencing modifications to plu
 3. Identify potential risks or warnings
 4. Produce a structured, executable change plan
 
-## Input Format
+## Input
 
-You will receive:
+From the prompt:
 
-1. **Component path**: The file to be modified
-2. **Selected changes**: List of improvements to apply
-
-Each selected change includes:
-- **id**: Unique identifier
-- **description**: What the change accomplishes
-- **severity**: CRITICAL, HIGH, MEDIUM, or LOW
-- **target**: Section or location in the file
-- **before**: Current content (if editing)
+- `component_type`: Type of component being changed — store as `$component_type`
+- `component_path`: Path to the component file — store as `$component_path`
+- `selected_improvements`: List of improvements to plan changes for, as prose descriptions with severity levels
 - **after**: New content to apply
 
 ## Planning Process
@@ -127,11 +121,13 @@ Return a structured change plan:
 
 ````text
 - **Type**: edit
-- **Before**: ```yaml
+- **Before**:
+  ```yaml
   allowed-tools: ["Read", "Write"]
   ```
 
-- **After**: ```yaml
+- **After**:
+  ```yaml
   allowed-tools: ["Read", "Agent", "TaskCreate", "TaskGet", "TaskList", "TaskUpdate"]
   ```
 ````
@@ -141,10 +137,11 @@ Return a structured change plan:
 ````text
 - **Type**: write
 - **Location**: After "## Execution" section
-- **After**: ```markdown
+- **After**:
+  ```markdown
   ### Phase 3: Plan Changes
 
-  Use Agent tool with @change-planner...
+  Use the Agent tool to spawn the agent `change-planner`...
   ```
 ````
 
@@ -153,7 +150,8 @@ Return a structured change plan:
 ````text
 - **Type**: append
 - **Target**: ## Quality Standards section
-- **After**: ```markdown
+- **After**:
+  ```markdown
   - Track progress with TaskCreate/TaskUpdate
   ```
 ````

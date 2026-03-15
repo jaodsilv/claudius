@@ -26,7 +26,7 @@ The calling command provides:
 ## Agent Mapping
 
 | Component Type | Improver Agent |
-|----------------|----------------|
+| :------------- | :------------- |
 | command | @cc:command-improver |
 | agent | @cc:agent-improver |
 | skill | @cc:skill-improver |
@@ -39,21 +39,21 @@ The calling command provides:
 
 Mark todo: Phase 1 in progress.
 
-1. Validate component file exists using Read tool
+1. Use the Read tool to validate the component file exists
 2. Determine improver agent from component_type
-3. Use Agent tool with the appropriate improver agent:
+3. Use the Agent tool to spawn the agent `cc:[component-type]-improver` to analyze the component:
 
-   ```text
-   Agent @cc:[component-type]-improver:
+   ```markdown
+   Agent(cc:[component-type]-improver):
      Analyze [component_type]: [component_path]
      Focus area: [focus if provided, otherwise "general analysis"]
-
-     Provide improvement suggestions categorized by severity:
-     - CRITICAL: Must fix (broken functionality, security issues)
-     - HIGH: Should fix (best practice violations)
-     - MEDIUM: Consider fixing (enhancement opportunities)
-     - LOW: Nice to have (polish items)
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 4. Store analysis results for next phase
 5. Mark todo: Phase 1 complete
@@ -66,7 +66,7 @@ Mark todo: Phase 2 in progress.
 2. Count issues per category
 3. Present grouped suggestions to user with summary
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user about which severity levels to address:
 
 ```text
 Question: "Which severity levels would you like to address?"
@@ -87,6 +87,8 @@ Mark todo: Phase 3 in progress.
 
 For each selected severity level, present individual improvements:
 
+Use the AskUserQuestion tool to ask the user about which improvements to apply:
+
 ```text
 Question: "Which [SEVERITY] improvements would you like to apply?"
 Header: "Changes"
@@ -102,24 +104,22 @@ Mark todo: Phase 3 complete
 
 Mark todo: Phase 4 in progress.
 
-Use Agent tool with @cc:change-planner agent:
+Use the Agent tool to spawn the agent `cc:change-planner` to plan the changes:
 
-```text
-Plan changes for [component_type]: [component_path]
+```markdown
+Agent(cc:change-planner):
+  Plan changes for [component_type]: [component_path]
 
-Selected improvements:
-[List all selected improvements with details]
-
-Analyze dependencies and order changes:
-1. Frontmatter changes first
-2. Structural changes second
-3. Content changes third
-
-Return structured change plan with:
-- Ordered steps
-- Before/after content for each change
-- Validation criteria per step
+  Selected improvements:
+  [List all selected improvements with details]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Store change plan for application phase.
 
@@ -129,21 +129,22 @@ Mark todo: Phase 4 complete
 
 Mark todo: Phase 5 in progress.
 
-Use Agent tool with @cc:component-writer agent:
+Use the Agent tool to spawn the agent `cc:component-writer` to apply the changes:
 
-```text
-Apply change plan to: [component_path]
+```markdown
+Agent(cc:component-writer):
+  Apply change plan to: [component_path]
 
-Change plan:
-[Change plan from Phase 4]
-
-For each change:
-1. Apply the edit
-2. Validate syntax
-3. Report success/failure
-
-Provide application report with status per change.
+  Change plan:
+  [Change plan from Phase 4]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Phase 5 complete
 

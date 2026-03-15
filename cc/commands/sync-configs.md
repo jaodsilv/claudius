@@ -78,7 +78,7 @@ Update order:
 ## Config Sync Complete
 
 | Plugin | Field | Before | After |
-|--------|-------|--------|-------|
+| :----- | :---- | :----- | :---- |
 | cc | version | 1.0.0 | 1.1.0 |
 | gitx | version | 1.0.5 | 1.1.0 |
 | ... | ... | ... | ... |
@@ -89,7 +89,7 @@ Files Modified: [list]
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Edit failure | Report file, continue with others |
 | File not found | Skip plugin, report in summary |
 | Invalid JSON | Report parsing error, skip file |
