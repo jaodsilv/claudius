@@ -11,6 +11,17 @@ model: sonnet
 Update the title and description of an existing PR based on comprehensive
 analysis of commits and changes.
 
+## Input
+
+From the prompt:
+
+- `<worktree>`: Path to the worktree — store as `$worktree`
+- Remaining text: optional PR number — store as `$pr_number`
+
+Hook-injected (via `inject-pr-metadata.sh`):
+
+- `<pr-metadata>`: PR metadata XML block containing `<pr>`, `<branch>`, `<base>`, `<title>`, `<description>`
+
 ## Parse Arguments
 
 From $ARGUMENTS:
@@ -22,7 +33,11 @@ From $ARGUMENTS:
 Get repository state:
 
 - Current branch: !`git branch --show-current`
-- Main branch and path: Use the Skill `gitx:getting-default-branch` with no arguments
+- Main branch and path: Use the Skill tool to execute the skill `gitx:getting-default-branch`:
+
+  ```markdown
+  Skill(gitx:getting-default-branch)
+  ```
 
 ### Determine Worktree
 
@@ -52,36 +67,39 @@ Save for comparison:
 
 ## Phase 1: Change Analysis
 
-Launch change analyzer to understand all commits:
+Use the Agent tool to spawn the agent `gitx:pr:change-analyzer` to understand all commits:
 
-```text
-Task (gitx:pr:change-analyzer):
-  Branch: [head branch from PR]
-  Base: [base branch from PR]
-
-  Analyze:
-  - All commits from base to HEAD
-  - Files changed (added, modified, deleted)
-  - Change type and scope
-  - Related issues
-  - Breaking changes
+```markdown
+Agent(gitx:pr:change-analyzer):
+  prompt:
+    Branch: [head branch from PR]
+    Base: [base branch from PR]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for analysis to complete.
 
 ## Phase 2: Content Generation
 
-Launch description generator:
+Use the Agent tool to spawn the agent `gitx:pr:description-generator` to generate updated content:
 
-```text
-Task (gitx:pr:description-generator):
-  Change Analysis: [output from Phase 1]
-
-  Generate:
-  - PR title (conventional format)
-  - PR body (Summary, Features, Changes, Related Issues, Test Plan)
-  - Suggested labels
+```markdown
+Agent(gitx:pr:description-generator):
+  prompt: <change-analysis>[output from Phase 1]</change-analysis>
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for generation to complete.
 
@@ -107,7 +125,7 @@ Present comparison:
 [generated description]
 ```
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask how to proceed with the PR update:
 
 ```text
 Question: "Review the proposed PR update. How would you like to proceed?"
@@ -148,7 +166,7 @@ gh pr edit <PR_NUMBER> --body "[body]"
 
 ## Phase 5: Sync Metadata
 
-After successful PR update, sync local metadata using `gitx:managing-pr-metadata` skill:
+After successful PR update, use the Skill tool to load the skill `gitx:managing-pr-metadata` to sync local metadata:
 
 If title was updated:
 

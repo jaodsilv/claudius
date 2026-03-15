@@ -9,6 +9,16 @@ model: opus
 
 Create a GitHub pull request for the current branch using multi-agent orchestration for comprehensive change analysis and professional PR content.
 
+## Input
+
+From the prompt:
+
+- `--worktree <path>`: Path to the worktree (optional, defaults to current directory) — store as `$worktree`
+- Remaining arguments: passed through as `$ARGUMENTS`
+
+Hook-injected (via PreToolUse hooks):
+- Additional context may be provided by hooks
+
 ## Gather Context
 
 Get repository and branch state:
@@ -23,7 +33,11 @@ Check for existing PR:
 
 ## Pre-flight Checks
 
-Apply Skill(gitx:performing-pr-preflight-checks) to validate:
+Use the Skill tool to execute the skill `gitx:performing-pr-preflight-checks` to validate readiness:
+
+```markdown
+Skill(gitx:performing-pr-preflight-checks)
+```
 
 - Not on main/master branch
 - No existing PR for this branch
@@ -31,21 +45,21 @@ Apply Skill(gitx:performing-pr-preflight-checks) to validate:
 
 ## Phase 1: Change Analysis
 
-Launch change analyzer:
+Use the Agent tool to spawn the agent `gitx:pr:change-analyzer` to analyze changes:
 
-```text
-Task (gitx:pr:change-analyzer):
-  Branch: [current-branch]
-  Base: [main-branch]
-
-  Analyze:
-  - All commits from base to HEAD
-  - Files changed (added, modified, deleted)
-  - Change type and scope
-  - Related issues
-  - Breaking changes
-  - Test coverage assessment
+```markdown
+Agent(gitx:pr:change-analyzer):
+  prompt:
+    Branch: [current-branch]
+    Base: [main-branch]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Key results to store:
 
@@ -58,26 +72,34 @@ Key results to store:
 
 Launch description generator and review preparer in parallel:
 
-```text
-Task (gitx:pr:description-generator):
-  Change Analysis: [output from Phase 1]
+Use the Agent tool to spawn the agent `gitx:pr:description-generator` to generate PR content:
 
-  Generate:
-  - PR title (conventional format)
-  - PR body (Summary, Changes, Related Issues, Test Plan)
-  - Suggested labels
+```markdown
+Agent(gitx:pr:description-generator):
+  prompt: <change-analysis>[output from Phase 1]</change-analysis>
 ```
 
-```text
-Task (gitx:pr:review-preparer):
-  Change Analysis: [output from Phase 1]
+**IMPORTANT**:
 
-  Identify:
-  - Potential review concerns
-  - Suggested reviewers
-  - Self-review checklist
-  - Areas needing attention
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
+
+Use the Agent tool to spawn the agent `gitx:pr:review-preparer` to prepare review notes:
+
+```markdown
+Agent(gitx:pr:review-preparer):
+  prompt:
+    Change Analysis: [output from Phase 1]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ## Phase 3: User Review
 
@@ -111,7 +133,7 @@ Present generated content:
 - [Concern 2]
 ```
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask how to proceed with the PR content:
 
 ```text
 Question: "Review the generated PR content. How would you like to proceed?"
@@ -151,10 +173,18 @@ If labels suggested:
 
 After successful PR creation, initialize metadata for subsequent operations:
 
-```text
-Task (gitx:pr:metadata-fetcher):
-  worktree: [current directory]
+Use the Agent tool to run the agent `gitx:pr:metadata-fetcher`:
+
+```markdown
+Agent(gitx:pr:metadata-fetcher, prompt: "worktree: [current directory]")
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ## Report Results
 
@@ -194,13 +224,14 @@ If you need to:
 
 If orchestration fails:
 
+Use the AskUserQuestion tool to ask how to handle the orchestration failure:
+
 ```text
-AskUserQuestion:
-  Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
-  Options:
-  1. "Yes, create basic PR" - Use simple title/body
-  2. "Retry orchestration" - Try again
-  3. "Cancel" - Abort
+Question: "Orchestrated PR creation encountered an issue. Continue with basic mode?"
+Options:
+1. "Yes, create basic PR" - Use simple title/body
+2. "Retry orchestration" - Try again
+3. "Cancel" - Abort
 ```
 
 For basic mode:

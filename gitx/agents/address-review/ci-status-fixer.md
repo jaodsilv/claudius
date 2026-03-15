@@ -83,15 +83,16 @@ Set the following variables:
 
 ## Initialize Progress Tracking
 
-```text
-TaskCreate:
-1. [ ] Gather PR context
-2. [ ] Plan changes
-3. [ ] Synthesize and present plan
-4. [ ] Execute approved changes
-5. [ ] Commit and push
-6. [ ] Post comment to PR
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Gather PR context
+- [ ] Plan changes
+- [ ] Synthesize and present plan
+- [ ] Execute approved changes
+- [ ] Commit and push
+- [ ] Post comment to PR
+</new-tasks>
 
 ## Phase 1: Gather Context
 
@@ -109,7 +110,7 @@ Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
 
 If the skill indicates `needs_fetch`:
 
-1. Run Agent(gitx:pr:metadata-fetcher) with worktree
+1. Use the Agent tool to run the agent `gitx:pr:metadata-fetcher` to fetch PR metadata for the worktree
 2. Retry ensure
 
 ### Read PR Metadata
@@ -133,21 +134,29 @@ Mark "Gather PR context" as completed.
 
 Mark "Plan changes" as in_progress.
 
-Use the Agent tool to run the `gitx:address-review:code-change-planner` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:code-change-planner` to plan CI failure fixes:
 
 ```markdown
-PR Number: $pr
-worktree: $worktree
-Branch: $branch
+Agent(gitx:address-review:code-change-planner):
+  prompt:
+    PR Number: $pr
+    worktree: $worktree
+    Branch: $branch
 
-CI Failures Analysis:
+    CI Failures Analysis:
 
-<ci_failures_analysis>
-$failures_analysis
-</ci_failures_analysis>
+    <ci_failures_analysis>
+    $failures_analysis
+    </ci_failures_analysis>
 
-Output to .thoughts/checks/plan.md
+    Output to .thoughts/checks/plan.md
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Plan changes" as completed.
 
@@ -155,22 +164,30 @@ Mark "Plan changes" as completed.
 
 Mark "Synthesize and present plan" as in_progress.
 
-Use the Agent tool to run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:respond-synthesizer` to synthesize the action plan:
 
 ```markdown
-PR Number: $pr
-worktree: $worktree
-Branch: $branch
-Resolve Level: all
+Agent(gitx:address-review:respond-synthesizer):
+  prompt:
+    PR Number: $pr
+    worktree: $worktree
+    Branch: $branch
+    Resolve Level: all
 
-Plan:
+    Plan:
 
-<plan>
-$plan
-</plan>
+    <plan>
+    $plan
+    </plan>
 
-Output to .thoughts/checks/action-plan.md
+    Output to .thoughts/checks/action-plan.md
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Synthesize and present plan" as completed.
 
@@ -199,14 +216,13 @@ For each approved change in planned order, using the Agent tool for each indepen
 
 For each quality gate identified in the plan:
 
-```text
-AskUserQuestion:
-  Question: "[Description of change]. Proceed?"
-  Options:
+Use the AskUserQuestion tool to ask about the proposed change:
+
+- "[Description of change]. Proceed?"
+- Options:
   1. "Apply this change"
   2. "Skip this change"
   3. "Modify approach"
-```
 
 Mark "Execute approved changes" as completed.
 
@@ -274,7 +290,7 @@ Output the report to the user/orchestrator.
 
 If orchestration fails or user prefers manual mode:
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask about the orchestration failure:
 
 - "Orchestrated analysis encountered an issue. Continue manually?"
 - Options:

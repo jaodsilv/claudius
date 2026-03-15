@@ -14,7 +14,7 @@ Create a GitHub issue from an informal description using AI-assisted drafting.
 From the input extract:
 
 | Flag | Description |
-|------|-------------|
+| :--- | :---------- |
 | (positional) | Description text (required) |
 | `-l`, `--labels` | Comma-separated labels |
 | `-a`, `--assignee` | Assignee username |
@@ -121,7 +121,7 @@ Basic mode prompts for title and body directly, then proceeds to Phase 4.
 ## Error Handling
 
 | Error | Resolution |
-|-------|------------|
+| :---- | :--------- |
 | Empty description | Prompt via AskUserQuestion |
 | Template not found | Warn, continue without |
 | Label not found | Warn, continue without |

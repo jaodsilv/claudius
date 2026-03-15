@@ -51,7 +51,7 @@ Conflict structure:
 
 #### Read Surrounding Context
 
-Use Read tool to examine 20 lines before conflict, the conflict region, 20 lines after conflict, and related
+Use the Read tool to examine 20 lines before conflict, the conflict region, 20 lines after conflict, and related
 functions/classes. Context reveals the semantic purpose of each change.
 
 ### 3. Understand "Ours" Changes
@@ -156,7 +156,7 @@ Categorize the relationship between changes:
 Some conflicts may need to be resolved in a specific order:
 
 | Conflict | Depends On | Reason |
-|----------|------------|--------|
+| :------- | :--------- | :----- |
 | File A, #2 | File A, #1 | Same function |
 | File B, #1 | File A, #2 | Uses type from A |
 

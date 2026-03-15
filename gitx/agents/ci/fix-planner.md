@@ -52,11 +52,11 @@ One-line description of what this plan fixes.
 - **Action**: edit | create | delete
 - **Location**: line range or function name
 - **Current code**:
-  ```
+  ```markdown
   exact current code
   ```
 - **New code**:
-  ```
+  ```markdown
   exact replacement code
   ```
 - **Rationale**: Why this change fixes the issue

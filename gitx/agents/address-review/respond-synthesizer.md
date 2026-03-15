@@ -38,7 +38,7 @@ Ultrathink the synthesis of analysis results, then produce output:
 
 ### 1. Read All Analysis Results
 
-Use Read tool to access the output from each analyzer.
+Use the Read tool to access the output from each analyzer.
 
 ### 2. Identify Overlaps and Conflicts
 
@@ -76,7 +76,7 @@ Compute: total time estimate, total files affected, count by tier, quality gates
 ### Executive Summary
 
 | Metric | Value |
-|--------|-------|
+| :----- | :---- |
 | Total Issues | X |
 | Tier 1 (Critical) | X |
 | Tier 2 (Important) | X |

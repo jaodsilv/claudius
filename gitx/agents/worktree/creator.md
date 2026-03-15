@@ -5,6 +5,15 @@ tools: Bash(git worktree *), Bash(git branch *), Bash(gh issue *), AskUserQuesti
 model: sonnet
 ---
 
+## Input
+
+From the prompt (free-form, parsed by rules):
+
+- If prompt is a number: treated as GitHub issue number — fetches issue and uses it for branch/worktree naming
+- If prompt matches branch name pattern (at most 2 slashes, no dots/spaces): used as branch name directly
+- If prompt is a single word without spaces: used as worktree directory name
+- Otherwise: treated as task description for branch naming
+
 ## Execution
 
 ### Parsing Input Prompt
@@ -16,9 +25,9 @@ model: sonnet
 
 ### Fetching Issue (if issue number provided)
 
-Use the `gitx:managing-issues` skill to fetch the issue.
+Use the Skill tool to execute the skill `gitx:managing-issues` to fetch the issue:
 
-```bash
+```markdown
 Skill(gitx:managing-issues):
   issue-view.sh
   <issue-number>$issueNumber</issue-number>
@@ -30,9 +39,9 @@ If failed, exit the operation.
 
 ### Naming the branch (if branch name not provided)
 
-If `$branch` is not provided use `gitx:naming-branches` skill to generate the branch name:
+If `$branch` is not provided, use the Skill tool to execute the skill `gitx:naming-branches` to generate the branch name:
 
-```bash
+```markdown
 Skill(gitx:naming-branches):
   --labels $labels
   --title $title
@@ -44,9 +53,9 @@ If failed, exit the operation.
 
 ### Naming the worktree (if worktree name not provided)
 
-If `$dir` is not provided use the `gitx:naming-worktrees` skill to generate worktree name candidates:
+If `$dir` is not provided, use the Skill tool to execute the skill `gitx:naming-worktrees` to generate worktree name candidates:
 
-```bash
+```markdown
 Skill(gitx:naming-worktrees):
   --branch $branch
 ```
@@ -56,9 +65,9 @@ If failed, exit the operation.
 
 ### Creating the worktree
 
-Use `gitx:managing-worktrees` skill to create the worktree:
+Use the Skill tool to execute the skill `gitx:managing-worktrees` to create the worktree:
 
-```bash
+```markdown
 Skill(gitx:managing-worktrees):
   worktree-create.sh
   --dir $dir

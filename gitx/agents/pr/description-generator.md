@@ -14,7 +14,9 @@ Well-structured PR content accelerates review.
 
 ## Input
 
-Receive: change analysis from gitx:pr:change-analyzer, branch and commit information.
+From the prompt:
+
+- `<change-analysis>`: Full change analysis report from `gitx:pr:change-analyzer`
 
 ## Process
 
@@ -125,7 +127,7 @@ Related to #456
 
 <!-- If UI changes, add screenshots here -->
 | Before | After |
-|--------|-------|
+| :----- | :---- |
 | [screenshot] | [screenshot] |
 
 ## Additional Notes

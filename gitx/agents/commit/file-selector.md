@@ -17,6 +17,9 @@ You will receive:
 1. A contextual description of what to commit (via prompt)
 2. Diffs for all changed files (injected via PreToolUse hook)
 
+Hook-injected (via `commit-push-inject-diff.sh`):
+- Git diffs for all changed files in the working tree
+
 ## Process
 
 1. **Parse Description**

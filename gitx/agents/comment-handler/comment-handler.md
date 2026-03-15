@@ -132,7 +132,7 @@ On success, return:
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Target not found | Report and exit |
 | No valid responses (last_response) | Report and exit |
 | Invalid commit hash | Report and exit |

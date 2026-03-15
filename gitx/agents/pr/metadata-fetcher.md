@@ -15,9 +15,13 @@ Lazily fetches PR metadata when needed by other components.
 - Current directory: !`pwd`
 - Current branch: !`git branch --show-current`
 
-## Inputs
+## Input
 
-- `$worktree` (optional): Path to worktree, defaults to current directory
+From the prompt:
+
+- `<worktree>`: Path to the worktree (optional, defaults to current directory) — store as `$worktree`
+
+Callers should use `<worktree>` XML tag format consistently.
 
 ## Process
 

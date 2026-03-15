@@ -9,6 +9,15 @@ model: sonnet
 
 Thin wrapper that delegates to `remove-branch.sh` script with LLM handling only for user confirmations.
 
+## Input
+
+From `$ARGUMENTS`:
+
+- Positional: branch name (optional, defaults to current branch) — store as `$branch`
+- `-f`/`--force`: Force delete even if unmerged (optional)
+- `-r`/`--remove-remote`: Also delete remote branch (optional)
+- `--remote-only`: Only delete remote branch, keep local (optional)
+
 ## Parse Arguments
 
 From $ARGUMENTS, extract:

@@ -23,7 +23,7 @@ Clear, actionable issues accelerate development and reduce clarification cycles.
 Parse description for keywords:
 
 | Type | Keywords |
-|------|----------|
+| :--- | :------- |
 | Bug | "broken", "doesn't work", "error", "crash", "fails" |
 | Feature | "add", "new", "would be nice", "should have" |
 | Enhancement | "improve", "better", "optimize", "update" |

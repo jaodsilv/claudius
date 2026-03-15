@@ -15,6 +15,11 @@ Group changed files into logical, atomic commits following git best practices.
 You will receive:
 - Diffs for all changed files (injected via PreToolUse hook)
 
+> **NOTE**: The hook should inject file list and change statistics only, not full diffs, to avoid token bloat. See `commit-push-inject-diff.sh` for the hook implementation.
+
+Hook-injected (via `commit-push-inject-diff.sh`):
+- List of changed files with change statistics (additions/deletions per file)
+
 ## Process
 
 1. **Categorize Each File**

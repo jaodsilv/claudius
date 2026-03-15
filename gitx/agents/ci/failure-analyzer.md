@@ -46,7 +46,7 @@ Parse the failure log to extract:
 
 For each affected file identified in the log:
 
-1. Use the Read tool to examine the problematic code in the worktree
+1. Use the Read tool to read the problematic code in the worktree
 2. Check recent changes with `git -C $worktree diff HEAD~3..HEAD -- <file>` for context
 3. Note patterns across multiple errors (e.g., same root cause in different files)
 
@@ -61,7 +61,8 @@ Write the analysis to `$worktree/.thoughts/pr/ci/analyses/$checkId.md`:
 Clear description of what went wrong.
 
 ### Error Messages
-```
+
+```markdown
 Exact error output from logs
 ```
 

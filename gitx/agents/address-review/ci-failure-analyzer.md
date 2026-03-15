@@ -35,7 +35,7 @@ gh run list -b $branch --json headSha,conclusion,databaseId,name,url,workflowNam
 
 ### 2. Categorize Failures
 
-Use the Skill `gitx:classifying-issues-and-failures` to learn how to classify each failed check.
+Use the Skill tool to load the skill `gitx:classifying-issues-and-failures` to learn how to classify each failed check.
 
 ### 3. Analyze Each Failure
 
@@ -59,7 +59,7 @@ If logs are not accessible via CLI, note the `url` for manual review.
 
 ### 4. Read Affected Files
 
-For each identified failure point: use Read tool to examine the problematic code, check recent changes with
+For each identified failure point: use the Read tool to examine the problematic code, check recent changes with
 `git diff main..HEAD -- <file>`, look for patterns across multiple failures.
 
 ### 5. Output Format

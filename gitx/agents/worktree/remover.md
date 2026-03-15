@@ -9,6 +9,14 @@ model: sonnet
 
 Thin wrapper that delegates to `remove-worktree.sh` script with LLM handling only for user confirmations.
 
+## Input
+
+From `$ARGUMENTS`:
+
+- Positional: worktree path or name (optional, defaults to current directory) — store as `$worktree`
+- `-f`/`--force`: Force removal even with uncommitted changes (optional)
+- `-r`/`--remove-remote`: Delete remote branch after removal (optional)
+
 ## Parse Arguments
 
 From $ARGUMENTS, extract:

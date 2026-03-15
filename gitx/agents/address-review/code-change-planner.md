@@ -88,7 +88,7 @@ changes the analysis was uncertain about.
 Changes that other changes depend on.
 
 | # | Type | File | Lines | Description | Depends On | Blocks |
-|---|------|------|-------|-------------|------------|--------|
+| - | ---- | ---- | ----- | ----------- | ---------- | ------ |
 | 1 | type-fix | src/types.ts | 12-15 | Fix return type | - | #3, #5 |
 | 2 | import | src/utils.ts | 1-5 | Add missing import | - | #4 |
 
@@ -96,7 +96,7 @@ Changes that other changes depend on.
 Main functionality fixes.
 
 | # | Type | File | Lines | Description | Depends On | Blocks |
-|---|------|------|-------|-------------|------------|--------|
+| - | ---- | ---- | ----- | ----------- | ---------- | ------ |
 | 3 | logic | src/handler.ts | 42-55 | Fix null check | #1 | #7 |
 | 4 | security | src/auth.ts | 88-92 | Sanitize input | #2 | - |
 
@@ -106,7 +106,7 @@ Main functionality fixes.
 Tests, docs, and formatting.
 
 | # | Type | File | Lines | Description | Depends On | Blocks |
-|---|------|------|-------|-------------|------------|--------|
+| - | ---- | ---- | ----- | ----------- | ---------- | ------ |
 | 5 | test | tests/types.test.ts | NEW | Add type tests | #1 | - |
 | 6 | lint | src/*.ts | various | Apply auto-fix | #3, #4 | - |
 
@@ -140,7 +140,7 @@ npm run lint
 ### Risks and Mitigations
 
 | Risk | Mitigation |
-|------|------------|
+| :--- | :--------- |
 | Change #3 might break other tests | Run full test suite after |
 | Lint auto-fix might conflict with manual changes | Run lint last |
 ````

@@ -23,7 +23,7 @@ Receive:
 
 ### 1. Search for Key Terms
 
-Use the key terms from issue analysis to find relevant files using Grep and Glob tools to find relevant files.
+Use the Grep tool to search for key terms from issue analysis to find relevant files. Use the Glob tool to find files by name patterns.
 
 ### 2. Identify Entry Points
 
@@ -42,7 +42,7 @@ affected area, dependencies between components, external service integrations.
 
 ### 4. Find Similar Implementations
 
-Using your Grep tool, search for patterns to follow:
+Use the Grep tool to search for patterns to follow:
 
 - Similar feature
 - Pattern we should follow

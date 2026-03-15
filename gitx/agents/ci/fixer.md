@@ -36,7 +36,7 @@ For each change in the plan, in order:
 **For edits**:
 1. Read the target file to verify the current code matches
 2. Use the Edit tool to make the replacement
-3. If the exact match isn't found, use Grep to locate the code and adjust
+3. If the exact match isn't found, use the Grep tool to locate the code and adjust
 
 **For new files**:
 1. Use the Write tool to create the file
@@ -57,7 +57,7 @@ After all changes are applied:
 
 Provide a short summary of changes made:
 
-```
+```markdown
 Applied N changes for task $taskId:
 - [file1]: [description of change]
 - [file2]: [description of change]

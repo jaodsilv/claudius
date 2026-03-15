@@ -7,8 +7,16 @@ model: sonnet
 
 If input prompt is empty:
 
-- Invoke the skill `gitx:reviewing-prs` with the Skill tool.
+- Use the Skill tool to execute the skill `gitx:reviewing-prs`:
+
+  ```markdown
+  Skill(gitx:reviewing-prs)
+  ```
 
 Otherwise:
 
-- Invoke the skill `gitx:reviewing-prs $1` with the Skill tool.
+- Use the Skill tool to execute the skill `gitx:reviewing-prs` with the input:
+
+  ```markdown
+  Skill(gitx:reviewing-prs, args: "$1")
+  ```

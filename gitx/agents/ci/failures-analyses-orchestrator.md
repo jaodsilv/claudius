@@ -18,12 +18,13 @@ From the prompt:
 
 ### Initialize Progress Tracking
 
-```
-TaskCreate:
-1. [ ] Analyze individual check failures
-2. [ ] Merge analyses
-3. [ ] Split into independent tasks
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Analyze individual check failures
+- [ ] Merge analyses
+- [ ] Split into independent tasks
+</new-tasks>
 
 ### Step 1: Analyze Each Check Failure
 
@@ -31,7 +32,7 @@ Mark "Analyze individual check failures" as in_progress.
 
 Parse `$checkIds` into individual IDs. For each check ID, launch an Agent **in parallel**:
 
-```
+```markdown
 Agent(gitx:ci:failure-analyzer):
   prompt: "<worktree>$worktree</worktree><check-id>$id</check-id>"
 ```
@@ -46,7 +47,7 @@ Mark "Merge analyses" as in_progress.
 
 Launch the analyses merger:
 
-```
+```markdown
 Agent(gitx:ci:analyses-merger):
   prompt: "<worktree>$worktree</worktree><check-ids>$checkIds</check-ids>"
 ```
@@ -61,7 +62,7 @@ Mark "Split into independent tasks" as in_progress.
 
 Launch the analysis splitter:
 
-```
+```markdown
 Agent(gitx:ci:analysis-splitter):
   prompt: "<worktree>$worktree</worktree><analysis-id>$mergedId</analysis-id>"
 ```

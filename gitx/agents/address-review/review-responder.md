@@ -23,18 +23,19 @@ You will receive the following inputs:
 
 ## Initialize Progress Tracking
 
-```text
-TaskCreate:
-1. [ ] Gather PR context
-2. [ ] Check Review Comment exists
-3. [ ] Analyze feedback
-4. [ ] Plan changes
-5. [ ] Synthesize and present plan
-6. [ ] Execute approved changes
-7. [ ] Commit and push
-8. [ ] Create issues for the remaining unresolved comments
-9. [ ] Post comment to PR
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Gather PR context
+- [ ] Check Review Comment exists
+- [ ] Analyze feedback
+- [ ] Plan changes
+- [ ] Synthesize and present plan
+- [ ] Execute approved changes
+- [ ] Commit and push
+- [ ] Create issues for the remaining unresolved comments
+- [ ] Post comment to PR
+</new-tasks>
 
 ## Phase 1: Gather Context
 
@@ -87,21 +88,29 @@ Mark "Check Review Comment exists" as completed.
 
 Mark "Analyze feedback" as in_progress.
 
-Using the Agent tool, run the `gitx:address-review:review-comment-analyzer` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:review-comment-analyzer` to analyze review comments:
 
-```text
-PR Number: [number]
-Worktree: [worktree]
-Branch: [branch]
+```markdown
+Agent(gitx:address-review:review-comment-analyzer):
+  prompt:
+    PR Number: [number]
+    Worktree: [worktree]
+    Branch: [branch]
 
-Review Comments:
+    Review Comments:
 
-<review-comments>
-  [review-comments]
-</review-comments>
+    <review-comments>
+      [review-comments]
+    </review-comments>
 
-Output to .thoughts/pr/review-analysis.md
+    Output to .thoughts/pr/review-analysis.md
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for analyzer to complete.
 
@@ -111,20 +120,28 @@ Mark "Analyze feedback" as completed.
 
 Mark "Plan changes" as in_progress.
 
-Using the Agent tool, run the `gitx:address-review:code-change-planner` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:code-change-planner` to plan code changes:
 
-```text
-PR Number: [number]
-Worktree: [worktree]
-Branch: [branch]
+```markdown
+Agent(gitx:address-review:code-change-planner):
+  prompt:
+    PR Number: [number]
+    Worktree: [worktree]
+    Branch: [branch]
 
-Review Comment Analysis:
-<review-comment-analysis>
-  [Output from review-comment-analyzer]
-</review-comment-analysis>
+    Review Comment Analysis:
+    <review-comment-analysis>
+      [Output from review-comment-analyzer]
+    </review-comment-analysis>
 
-Output to .thoughts/review/plan.md
+    Output to .thoughts/review/plan.md
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Plan changes" as completed.
 
@@ -144,28 +161,36 @@ IMPORTANT: If `$resolve_level` is empty or not set, DEFAULT TO "all". Address AL
 
 Only if the user explicitly passed a resolve_level parameter should filtering occur.
 
-Using the Agent tool, run the `gitx:address-review:respond-synthesizer` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:respond-synthesizer` to synthesize the response plan:
 
-```text
-PR Number: [number]
-Worktree: [worktree]
-Branch: [branch]
+```markdown
+Agent(gitx:address-review:respond-synthesizer):
+  prompt:
+    PR Number: [number]
+    Worktree: [worktree]
+    Branch: [branch]
 
-Review Comment Analysis:
+    Review Comment Analysis:
 
-<review-comment-analysis>
-  [Output from review-comment-analyzer]
-</review-comment-analysis>
+    <review-comment-analysis>
+      [Output from review-comment-analyzer]
+    </review-comment-analysis>
 
-Planned Changes:
-<planned-changes>
-  [Output from code-change-planner]
-</planned-changes>
+    Planned Changes:
+    <planned-changes>
+      [Output from code-change-planner]
+    </planned-changes>
 
-Resolve Level: [resolve-level]
+    Resolve Level: [resolve-level]
 
-Output to .thoughts/review/synthesis.md
+    Output to .thoughts/review/synthesis.md
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for synthesizer to complete.
 
@@ -177,7 +202,7 @@ If there are no changes to be made nor Github issues to create, report "APPROVED
 
 Mark "Execute approved changes" as in_progress.
 
-Using the Agent tool, launch a separate agent for each independent piece of planned change.
+Use the Agent tool to launch a separate agent for each independent piece of planned change.
 
 for each approved change in planned order:
 
@@ -188,14 +213,13 @@ for each approved change in planned order:
 
 For each quality gate identified in the plan:
 
-```text
-AskUserQuestion:
-  Question: "[Description of change]. Proceed?"
-  Options:
+Use the AskUserQuestion tool to ask about the proposed change:
+
+- "[Description of change]. Proceed?"
+- Options:
   1. "Apply this change"
   2. "Skip this change"
   3. "Modify approach"
-```
 
 Mark "Execute approved changes" as completed.
 
@@ -227,12 +251,12 @@ Mark "Commit and push" as completed.
 Mark "Create issues for the remaining unresolved comments" as in_progress.
 
 Create an issue for each remaining unresolved comment.
-For each issue use the Skill tool to run the following slash command:
+For each issue, use the Skill tool to execute the skill `gitx:create-issue` to create a GitHub issue:
 
 ```markdown
-/gitx:create-issue <description>[issue-description]</description>
+Skill(gitx:create-issue, args: "<description>[issue-description]</description>
 
-Once created, evaluate the priority according to @$priorities_file, add the proper github issue labels, milestones, and add it to the priorities file. For milestones, if not documented in the priorities file, check the existing ones before applying them.
+Once created, evaluate the priority according to @$priorities_file, add the proper github issue labels, milestones, and add it to the priorities file. For milestones, if not documented in the priorities file, check the existing ones before applying them.")
 ```
 
 Mark "Create issues for the remaining unresolved comments" as completed.
@@ -328,7 +352,7 @@ Output a report as a response to the reviewer, guiding them on next iteration.
 
 If orchestration fails or user prefers manual mode:
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask about the orchestration failure:
 
 - "Orchestrated analysis encountered an issue. Continue manually?"
 - Options:

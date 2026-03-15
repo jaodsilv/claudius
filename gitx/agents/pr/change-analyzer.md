@@ -11,7 +11,14 @@ Analyze all changes in a branch to support high-quality PR creation. Comprehensi
 
 ## Input
 
-Receive: current branch name and base branch (usually main).
+From the prompt:
+
+- `<worktree>`: Path to the worktree — store as `$worktree`
+
+The agent discovers branch and base branch from git commands within the worktree. No additional structured input is required.
+
+Hook-injected (if applicable):
+- Additional branch context may be provided by hooks
 
 ## Process
 
@@ -96,7 +103,7 @@ git diff --name-only main..HEAD | grep -E '\.[tj]sx?$' | grep -v -E '\.(test|spe
 ### Commit Summary
 
 | Hash | Type | Message | Files |
-|------|------|---------|-------|
+| :--- | :--- | :------ | :---- |
 | abc1234 | feat | Add user authentication | 5 |
 | def5678 | test | Add auth tests | 3 |
 | ghi9012 | fix | Fix login redirect | 1 |
@@ -120,13 +127,13 @@ git diff --name-only main..HEAD | grep -E '\.[tj]sx?$' | grep -v -E '\.(test|spe
 
 **Source Code (X files)**:
 | File | Status | Changes |
-|------|--------|---------|
+| :--- | :----- | :------ |
 | src/auth/handler.ts | Added | +150 |
 | src/routes/index.ts | Modified | +10 / -2 |
 
 **Tests (X files)**:
 | File | Status | Changes |
-|------|--------|---------|
+| :--- | :----- | :------ |
 | tests/auth.test.ts | Added | +200 |
 
 **Configuration (X files)**:
@@ -138,7 +145,7 @@ git diff --name-only main..HEAD | grep -E '\.[tj]sx?$' | grep -v -E '\.(test|spe
 ### Related Issues
 
 | Issue | Source | Relationship |
-|-------|--------|--------------|
+| :---- | :----- | :----------- |
 | #123 | Branch name | Primary |
 | #456 | Commit message | Mentioned |
 

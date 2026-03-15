@@ -37,7 +37,7 @@ For each `<batch>` in order:
 
 1. For each `<group>` within the batch, launch an Agent **in parallel**:
 
-```
+```markdown
 Agent(gitx:ci:analysis-merger):
   prompt: "<worktree>$worktree</worktree><id>$groupId</id><input1>$input1</input1><input2>$input2</input2>"
 ```

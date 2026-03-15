@@ -73,13 +73,14 @@ Set the following variables:
 
 ## Initialize Progress Tracking
 
-```text
-TaskCreate:
-1. [ ] Gather PR context
-2. [ ] Waiting All CI Checks to finish
-3. [ ] Check CI failures exist
-4. [ ] Analyze CI failures
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Gather PR context
+- [ ] Waiting All CI Checks to finish
+- [ ] Check CI failures exist
+- [ ] Analyze CI failures
+</new-tasks>
 
 ## Phase 1: Gather Context
 
@@ -148,22 +149,31 @@ Mark "Check CI failures exist" as completed.
 
 Mark "Failure Analysis" as in_progress.
 
-Use the Agent tool to run the `gitx:address-review:ci-failure-analyzer` agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:address-review:ci-failure-analyzer` to analyze CI failures:
 
-```text
-PR Number: [number]
-worktree: [worktree]
-Branch: [branch]
-Attempt Number: [attempt-number]
+```markdown
+Agent(gitx:address-review:ci-failure-analyzer):
+  prompt:
+    <worktree>$worktree</worktree>
+    <pr>$pr</pr>
+    <branch>$branch</branch>
+    <attempt-number>$attemptNumber</attempt-number>
 
-CI Failures:
+    CI Failures:
 
-<ci_failures>
-[CI_FAILURES]
-</ci_failures>
+    <ci_failures>
+    [CI_FAILURES]
+    </ci_failures>
 
-Output to .thoughts/checks/analysis.md
+    Output to <output-path>`.thoughts/checks/analysis.md`</output-path>
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for analyzer to complete.
 
@@ -182,7 +192,7 @@ Return the result of the analyzer to the user/orchestrator.
 
 If orchestration fails or user prefers manual mode:
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask about the orchestration failure:
 
 - "Orchestrated analysis encountered an issue. Continue manually?"
 - Options:

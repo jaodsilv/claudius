@@ -11,7 +11,11 @@ each phase. Proper orchestration ensures nothing is missed and context is preser
 
 ## Parse Arguments
 
-Use Skill tool with gitx:parsing-issue-references to parse $ARGUMENTS:
+Use the Skill tool to execute the skill `gitx:parsing-issue-references` to parse $ARGUMENTS:
+
+```markdown
+Skill(gitx:parsing-issue-references)
+```
 
 - Issue number (required): Supports "123", "#123", "issue-123", or GitHub issue URL
 - If parsing fails, report error with supported formats
@@ -45,15 +49,16 @@ Ultrathink phase transitions, then proceed:
 
 Set up progress tracking:
 
-```text
-TaskCreate:
-1. [ ] Analyze issue requirements
-2. [ ] Workflow Selection
-3. [ ] Set up worktree
-4. [ ] Complete development
-5. [ ] Commit and create PR
-6. [ ] Review Loop
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Analyze issue requirements
+- [ ] Workflow Selection
+- [ ] Set up worktree
+- [ ] Complete development
+- [ ] Commit and create PR
+- [ ] Review Loop
+</new-tasks>
 
 Check if the folder `.thoughts/issue-fixer/<issue-number>/` exists to see if this is a new issue or a continuation of a previous one.
 If a continuation, load the todo file, update the progress, and continue from there.
@@ -64,11 +69,18 @@ If a new issue, create the folder and the todo file.
 
 Mark "Analyze issue requirements" as in_progress.
 
-Launch gitx:issue:analyzer agent with the following prompt:
+Use the Agent tool to run the agent `gitx:issue:analyzer`:
 
 ```markdown
-[issue number]
+Agent(gitx:issue:analyzer, prompt: "[issue number]")
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Analyze issue requirements" as completed.
 
@@ -76,7 +88,7 @@ Mark "Analyze issue requirements" as completed.
 
 Mark "Workflow Selection" as in_progress.
 
-Use the AskUserQuestion tool to ask which workflow to use:
+Use the AskUserQuestion tool to ask which development approach to use for the issue:
 
 ```text
 Question: "Which development approach would you like to use for Issue #[number] - [title]?"
@@ -96,11 +108,18 @@ Once selected, mark "Workflow Selection" as completed.
 
 Mark "Set up worktree" as in_progress.
 
-Use the Agent tool to run the agent `gitx:worktree:creator` with the prompt:
+Use the Agent tool to run the agent `gitx:worktree:creator`:
 
-```text
-[issue number]
+```markdown
+Agent(gitx:worktree:creator, prompt: "[issue number]")
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Set up worktree" as completed.
 
@@ -112,13 +131,10 @@ Based on the user selection in Phase 2, delegate the development to the appropri
 
 Mark "Complete development" as in_progress.
 
-Using the Skill tool run the slash command
+Use the Skill tool to execute the skill `feature-dev:feature-dev`:
 
-```text
-/feature-dev:feature-dev
-  Context: Issue #[number] - [title]
-  worktree: [path]
-  [Issue Analysis]
+```markdown
+Skill(feature-dev:feature-dev, args: "Context: Issue #[number] - [title] worktree: [path] [Issue Analysis]")
 ```
 
 Mark "Complete development" as completed. Skip to phase 9.
@@ -127,14 +143,22 @@ Mark "Complete development" as completed. Skip to phase 9.
 
 Mark "Complete development" as in_progress.
 
-Using the Agent tool run agent `tdd:tdd-orchestrator` with the following prompt:
+Use the Agent tool to spawn the agent `tdd:tdd-orchestrator` to run the TDD workflow:
 
-```text
-Context: Issue #[number] - [title]
-worktree: [path]
-[Issue Analysis]
-
+```markdown
+Agent(tdd:tdd-orchestrator):
+  prompt:
+    Context: Issue #[number] - [title]
+    worktree: [path]
+    [Issue Analysis]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Complete development" as completed. Skip to phase 9.
 
@@ -142,32 +166,34 @@ Mark "Complete development" as completed. Skip to phase 9.
 
 Expand the progress tracking:
 
-```text
-TaskCreate:
-1. [ ] Analyze issue requirements
-2. [ ] Workflow Selection
-3. [ ] Set up worktree
-4. [ ] Explore codebase for relevant files
-5. [ ] Create implementation plan
-6. [ ] Get user approval on plan
-7. [ ] Complete development
-8. [ ] Commit and prepare for PR
-9. [ ] Review Loop
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Analyze issue requirements
+- [ ] Workflow Selection
+- [ ] Set up worktree
+- [ ] Explore codebase for relevant files
+- [ ] Create implementation plan
+- [ ] Get user approval on plan
+- [ ] Complete development
+- [ ] Commit and prepare for PR
+- [ ] Review Loop
+</new-tasks>
 
 #### Skip Development
 
 Change the progress tracking:
 
-```text
-TaskCreate:
-1. [ ] Analyze issue requirements
-2. [ ] Workflow Selection
-3. [ ] Set up worktree
-4. [ ] Explore codebase for relevant files
-5. [ ] Create implementation plan
-6. [ ] Get user approval on plan
-```
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Analyze issue requirements
+- [ ] Workflow Selection
+- [ ] Set up worktree
+- [ ] Explore codebase for relevant files
+- [ ] Create implementation plan
+- [ ] Get user approval on plan
+</new-tasks>
 
 ### Phase 5: Codebase Exploration
 
@@ -175,14 +201,23 @@ Mark "Explore codebase for relevant files" as in_progress.
 
 If you skipped Phase 1, read the file `.thoughts/issue-fixer/<issue-number>/issue-analysis.md`.
 
-Use the Agent tool to launch the gitx:issue:codebase-navigator agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:issue:codebase-navigator` to explore the codebase:
 
 ```markdown
-<analysis-summary>[summary from Phase 1]</analysis-summary>
-<key-terms>[terms from Phase 1]</key-terms>
-<requirements>[requirements from Phase 1]</requirements>
-<type>[type from Phase 1]</type>
+Agent(gitx:issue:codebase-navigator):
+  prompt:
+    <analysis-summary>[summary from Phase 1]</analysis-summary>
+    <key-terms>[terms from Phase 1]</key-terms>
+    <requirements>[requirements from Phase 1]</requirements>
+    <type>[type from Phase 1]</type>
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Explore codebase for relevant files" as completed.
 
@@ -192,12 +227,21 @@ Mark "Create implementation plan" as in_progress.
 
 If you skpped Phase 2, read the files `.thoughts/issue-fixer/<issue-number>/issue-analysis.md` and `.thoughts/issue-fixer/<issue-number>/codebase-exploration.md`.
 
-Use the Agent tool to launch the gitx:issue:implementation-planner agent with the following prompt:
+Use the Agent tool to spawn the agent `gitx:issue:implementation-planner` to create the plan:
 
-```text
-<issue-analysis>[markdown of issue analysis]</issue-analysis>
-<codebase-navigation>[markdown of codebase exploration]</codebase-navigation>
+```markdown
+Agent(gitx:issue:implementation-planner):
+  prompt:
+    <issue-analysis>[markdown of issue analysis]</issue-analysis>
+    <codebase-navigation>[markdown of codebase exploration]</codebase-navigation>
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Create implementation plan" as completed.
 
@@ -207,16 +251,15 @@ Mark "Get user approval on plan" as in_progress.
 
 If you skipped Phase 3, read the file `.thoughts/issue-fixer/<issue-number>/dev-plan.md`.
 
-Present the implementation plan to user, then ask for approval using the AskUserQuestion tool:
+Present the implementation plan to user, then use the AskUserQuestion tool to ask for approval on the plan:
 
 ```text
-AskUserQuestion:
-  Question: "Review the implementation plan for Issue #[number]. How would you like to proceed?"
-  Options:
-  1. "Approve and continue" - Proceed with worktree setup and development
-  2. "Modify the plan" - Adjust before proceeding
-  3. "Add more detail" - Expand specific sections
-  4. "Cancel" - Abort the workflow
+Question: "Review the implementation plan for Issue #[number]. How would you like to proceed?"
+Options:
+1. "Approve and continue" - Proceed with worktree setup and development
+2. "Modify the plan" - Adjust before proceeding
+3. "Add more detail" - Expand specific sections
+4. "Cancel" - Abort the workflow
 ```
 
 Handle user response:
@@ -254,9 +297,17 @@ After development completes:
    git diff --stat
    ```
 
-2. **If changes exist**, use the Skill tool to run the slash command `/commit-commands:commit-push-pr`
+2. **If changes exist**, use the Skill tool to execute the skill `commit-commands:commit-push-pr`:
 
-3. **If no changes exist**, use the Skill tool to run the slash command `/gitx:pr`
+   ```markdown
+   Skill(commit-commands:commit-push-pr)
+   ```
+
+3. **If no changes exist**, use the Skill tool to execute the skill `gitx:pr`:
+
+   ```markdown
+   Skill(gitx:pr)
+   ```
 
 Store the PR number in `$pr_number`
 
@@ -266,40 +317,51 @@ Mark "Commit and create PR" as completed.
 
 Mark "Review Loop" as in_progress.
 
-Using the Agent tool, run the agent `review-loop:orchestrator` with the following prompt:
+Use the Agent tool to spawn the agent `review-loop:orchestrator` to run the review loop:
 
-```text
-<reviewer>gitx:review:reviewer</reviewer>
-<developer>gitx:address-review:review-responder</developer>
-<automated-checker>gitx:address-review:ci-status-checker</automated-checker>
-<automated-checks-fixer>gitx:address-review:ci-status-fixer</automated-checks-fixer>
+```markdown
+Agent(review-loop:orchestrator):
+  prompt:
+    <mode>start</mode>
+    <worktree>$worktree</worktree>
+    <reviewer>gitx:review:reviewer</reviewer>
+    <developer>gitx:address-review:review-responder</developer>
+    <ciChecker>gitx:address-review:ci-status-checker</ciChecker>
+    <ciFixer>gitx:address-review:ci-status-fixer</ciFixer>
 
-<reviewer-prompt>
-<pr_number>$pr_number</pr_number>
+    <reviewerPrompt>
+    <pr_number>$pr_number</pr_number>
 
-Consider also the previous review and the response to that review, if any:
-</reviewer-prompt>
+    Consider also the previous review and the response to that review, if any:
+    </reviewerPrompt>
 
-<developer-prompt>
-<worktree>$worktree</worktree>
-<pr_number>$pr_number</pr_number>
-</developer-prompt>
+    <developerPrompt>
+    <worktree>$worktree</worktree>
+    <pr_number>$pr_number</pr_number>
+    </developerPrompt>
 
-<automated-checker-prompt>
-<pr_number>$pr_number</pr_number>
-<worktree>$worktree</worktree>
-<branch>$branch</branch>
-</automated-checker-prompt>
+    <ciCheckerPrompt>
+    <pr_number>$pr_number</pr_number>
+    <worktree>$worktree</worktree>
+    <branch>$branch</branch>
+    </ciCheckerPrompt>
 
-<automated-checks-fixer-prompt>
-<pr_number>$pr_number</pr_number>
-<worktree>$worktree</worktree>
-<branch>$branch</branch>
-</automated-checks-fixer-prompt>
+    <ciFixerPrompt>
+    <pr_number>$pr_number</pr_number>
+    <worktree>$worktree</worktree>
+    <branch>$branch</branch>
+    </ciFixerPrompt>
 
-<max-rounds>0</max-rounds>
-<approval-threshold>all</approval-threshold>
+    <maxRounds>0</maxRounds>
+    <approvalThreshold>all</approvalThreshold>
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark "Review Loop" as completed.
 

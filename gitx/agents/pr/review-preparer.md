@@ -11,7 +11,9 @@ Prepare PRs for effective review by anticipating concerns and ensuring completen
 
 ## Input
 
-Receive: change analysis from gitx:pr:change-analyzer, PR description from gitx:pr:description-generator.
+Receive: change analysis output from `gitx:pr:change-analyzer`.
+
+The PR description is NOT provided as input — focus analysis on the change data.
 
 ## Extended Thinking
 
@@ -172,7 +174,7 @@ Complete these before requesting review:
 ### Suggested Reviewers
 
 | Reviewer | Reason | Expertise |
-|----------|--------|-----------|
+| :------- | :----- | :-------- |
 | @developer1 | Primary owner of affected area | Core expertise |
 | @developer2 | Recent contributor | Context |
 | @developer3 | Security expertise | Security review |
@@ -215,7 +217,7 @@ Include this context in PR description or as a comment:
 Items that should be completed before merge:
 
 | Item | Status | Action Needed |
-|------|--------|---------------|
+| :--- | :----- | :------------ |
 | Documentation | ⚠️ Missing | Add API docs |
 | Tests | ✅ Complete | - |
 | Migration | ⚠️ Needed | Create migration script |
