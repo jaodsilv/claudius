@@ -26,6 +26,7 @@ dotclaude/plans/
 
 # Temporary walkthrough files
 **/.thoughts/
+**/thoughts/
 
 # Node.js dependencies
 node_modules/

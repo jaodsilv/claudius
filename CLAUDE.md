@@ -86,7 +86,7 @@ specialized plugin directories.
 
 1. 7 agents: facilitator, domain-explorer, technical-analyst, constraint-analyst, analysis-synthesizer, requirements-synthesizer, specification-writer
 2. 3 commands: start, continue, export
-3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, workflow-validation
+3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, validating-workflow
 4. Templates for requirements and session summaries
 
 **See**: `brainstorm.claude/README.md` for detailed documentation
