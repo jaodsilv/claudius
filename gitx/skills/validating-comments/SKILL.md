@@ -25,7 +25,7 @@ If comment text does not exist, is empty, or is whitespace-only:
 Check comment length against GitHub limits:
 
 | Condition | Action |
-|-----------|--------|
+| :-------- | :----- |
 | > 60,000 chars | Hard limit exceeded - must resolve |
 | > 20,000 chars | Warning - long comment |
 | <= 20,000 chars | Pass validation |
@@ -53,7 +53,7 @@ Options:
 ## Return Values
 
 | Result | Next Step |
-|--------|-----------|
+| :----- | :-------- |
 | Pass | Proceed to post comment |
 | Empty | Return to get comment text |
 | Abort | Cancel operation |

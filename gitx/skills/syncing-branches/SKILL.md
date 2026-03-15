@@ -51,7 +51,7 @@ On error:
 ## Error Handling
 
 | Error | Cause | Resolution |
-| ----- | ----- | ---------- |
+| :---- | :---- | :--------- |
 | Detached HEAD | Not on a branch | `git checkout <branch>` |
 | Network failure | No internet | Check connection, retry |
 | Rebase conflicts | Diverged history | `git rebase --continue/--abort` |

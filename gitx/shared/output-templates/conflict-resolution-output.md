@@ -84,7 +84,7 @@ npm run test -- --testPathPattern="affected"
 
 ### Summary
 | Check | Status |
-|-------|--------|
+| :---- | :----- |
 | Conflict Markers | ✅ Pass / ❌ Fail |
 | Syntax Valid | ✅ Pass / ❌ Fail |
 | Types Check | ✅ Pass / ❌ Fail |

@@ -205,7 +205,7 @@ Options:
 
 **Table format**:
 
-```
+```text
 #     State  Priority  Title                 Assignee  Milestone
 123   open   high      Fix parser bug        alice     v1.0
 124   open   medium    Add validation        bob       v1.1
@@ -396,7 +396,7 @@ Before calling gh CLI:
 Common error scenarios:
 
 | Error | Detection | Suggestion |
-|-------|-----------|------------|
+| :---- | :-------- | :--------- |
 | gh CLI not found | Command not found | Install gh CLI |
 | Not in repo | gh error: not a git repository | Run from repo directory |
 | Issue not found | gh error: Could not resolve | Check issue number |

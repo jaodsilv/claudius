@@ -22,56 +22,64 @@ git status --porcelain | grep "^UU\|^AA\|^DD"
 git diff --name-only --diff-filter=U
 ```
 
-Launch conflict-analyzer agent:
+Use the Agent tool to spawn the agent `gitx:conflict-resolver:conflict-analyzer`:
 
-```text
-Task (gitx:conflict-resolver:conflict-analyzer):
-  Operation: [merge|rebase]
-  Base Branch: $base_branch
-  Conflicting Files: [list from git status]
-
-  Analyze each conflict:
-  - What both sides changed
-  - Why they conflict
-  - Semantic vs syntactic conflict
-  - Recommended resolution strategy
+```markdown
+Agent(gitx:conflict-resolver:conflict-analyzer):
+  prompt:
+    Operation: [merge|rebase]
+    Base Branch: $base_branch
+    Conflicting Files: [list from git status]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Phase 2: Resolution Suggestions
 
-Launch resolution-suggester agent:
+Use the Agent tool to spawn the agent `gitx:conflict-resolver:resolution-suggester`:
 
-```text
-Task (gitx:conflict-resolver:resolution-suggester):
-  Conflict Analysis: [output from Phase 1]
-
-  For each conflict:
-  - Generate specific resolution code
-  - Provide confidence level
-  - Note verification steps
+```markdown
+Agent(gitx:conflict-resolver:resolution-suggester):
+  prompt:
+    Conflict Analysis: [output from Phase 1]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Phase 3: User-Guided Resolution
 
 Present options for each conflict using AskUserQuestion.
-See [references/resolution-options.md](references/resolution-options.md) for details.
+See [references/resolution-options.md](${CLAUDE_SKILL_DIR}/references/resolution-options.md) for details.
 
 After each resolution: `git add <file>`
 
 ### Phase 4: Validation
 
-Launch merge-validator agent:
+Use the Agent tool to spawn the agent `gitx:conflict-resolver:merge-validator`:
 
-```text
-Task (gitx:conflict-resolver:merge-validator):
-  Resolved Files: [list]
-  Operation: [merge|rebase]
-
-  Validate:
-  - No remaining conflict markers
-  - Syntax is valid
-  - Types check (if applicable)
+```markdown
+Agent(gitx:conflict-resolver:merge-validator):
+  prompt:
+    Resolved Files: [list]
+    Operation: [merge|rebase]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 If validation fails, report issues and allow fixing before continuing.
 

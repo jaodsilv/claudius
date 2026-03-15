@@ -7,7 +7,7 @@
 ### Primary Files to Modify
 
 | File | Purpose | Change Type |
-|------|---------|-------------|
+| :--- | :------ | :---------- |
 | src/components/Feature.tsx | Main UI component | Modify |
 | src/api/feature.ts | API integration | Modify |
 | src/types/feature.ts | Type definitions | Add new types |
@@ -30,7 +30,7 @@
 ### New Files Needed
 
 | Path | Purpose | Based On |
-|------|---------|----------|
+| :--- | :------ | :------- |
 | src/components/NewFeature.tsx | New feature component | src/components/ExistingFeature.tsx |
 
 ### Patterns to Follow
@@ -52,7 +52,7 @@
 ### Test Files
 
 | Implementation | Test File | Test Type |
-|---------------|-----------|-----------|
+| :------------ | :-------- | :-------- |
 | src/feature.ts | tests/feature.test.ts | Unit |
 | src/api/feature.ts | tests/api/feature.integration.test.ts | Integration |
 
@@ -87,7 +87,7 @@ Areas that seem related but don't need changes:
 ### Code Ownership
 
 | Area | Primary Contributor | Recent Activity |
-|------|---------------------|-----------------|
+| :--- | :------------------ | :-------------- |
 | src/feature/ | @developer | Active (3 commits this week) |
 | src/api/ | @other-dev | Stable (no changes in month) |
 

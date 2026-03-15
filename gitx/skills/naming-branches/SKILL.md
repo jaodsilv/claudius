@@ -33,7 +33,7 @@ You will be provided with an input string. Your task is to create a branch names
 Map GitHub issue labels to branch types:
 
 | Label | Branch Type |
-|-------|-------------|
+| :---- | :---------- |
 | bug | bugfix/ |
 | feature, enhancement | feature/ |
 | documentation | docs/ |

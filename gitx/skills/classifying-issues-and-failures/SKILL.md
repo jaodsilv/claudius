@@ -14,7 +14,7 @@ Standard classification frameworks for consistent categorization.
 ## Issue Types
 
 | Type | Description |
-|------|-------------|
+| :--- | :---------- |
 | bug | Defects, incorrect behavior |
 | feature | New functionality |
 | enhancement | Improvements to existing features |
@@ -25,7 +25,7 @@ Standard classification frameworks for consistent categorization.
 ## CI Failure Types
 
 | Type | Description | Priority |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | build-failure | Compilation/bundling errors | 1 (highest) |
 | type-error | Type checking | 2 |
 | test-failure | Unit/integration/e2e tests | 3 |
@@ -37,7 +37,7 @@ Standard classification frameworks for consistent categorization.
 ## Review Comment Types
 
 | Type | Description |
-|------|-------------|
+| :--- | :---------- |
 | code-style | Formatting, naming, conventions |
 | logic-error | Bugs, incorrect behavior |
 | performance | Efficiency concerns |
@@ -49,7 +49,7 @@ Standard classification frameworks for consistent categorization.
 ## Effort Levels
 
 | Level | Time Estimate | Scope |
-|-------|---------------|-------|
+| :---- | :------------ | :---- |
 | trivial | < 5 min | Single line change |
 | minor | 5-15 min | Localized changes |
 | moderate | 15-60 min | Multiple files |

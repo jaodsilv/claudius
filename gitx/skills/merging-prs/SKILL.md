@@ -23,7 +23,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh $input_prompt
 ## Exit Codes
 
 | Code | Meaning | Action |
-|------|---------|--------|
+| :--- | :------ | :----- |
 | 0 | Success | Report: PR #{pr} merged via {strategy}. Closed issues: {closed_issues}. Branch deleted: {branch_deleted} |
 | 1 | Pre-flight failed | Present {check} failure: "{message}". Ask user whether to proceed anyway |
 | 2 | Error | Report {error}: "{message}". Suggest manual fix |
@@ -38,7 +38,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh --squash
 ${CLAUDE_PLUGIN_ROOT}/scripts/prs/merge-pr.sh 123 --squash -d
 ```
 
-See [references/extra-examples.md](references/extra-examples.md) for more scenarios.
+See [references/extra-examples.md](${CLAUDE_SKILL_DIR}/references/extra-examples.md) for more scenarios.
 
 ## Issue Closing Handling
 

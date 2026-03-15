@@ -55,7 +55,7 @@ Use AskUserQuestion:
 ## Error Handling
 
 | Error | Message |
-|-------|---------|
+| :---- | :------ |
 | Invalid commit | "Commit '\<hash\>' not found in repository. Please verify the commit hash." |
 | Not in history | "Commit '\<hash\>' exists but is not in current branch's history." |
 

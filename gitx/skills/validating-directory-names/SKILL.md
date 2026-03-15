@@ -24,7 +24,7 @@ Valid names must:
 ## Length Rules
 
 | Condition | Action |
-|-----------|--------|
+| :-------- | :----- |
 | < 2 chars | Reject - "Name too short (min 2 chars)" |
 | > 30 chars | Reject - "Name too long (max 30 chars)" |
 | 2-30 chars | Pass validation |
@@ -47,7 +47,7 @@ Before accepting a name:
 ## Error Messages with Suggestions
 
 | Error | Suggestion |
-|-------|------------|
+| :---- | :--------- |
 | Contains uppercase | Suggest lowercase version |
 | Contains underscores | Suggest hyphens version |
 | Too long | Suggest truncated at 30 chars |
@@ -57,6 +57,6 @@ Before accepting a name:
 ## Return Values
 
 | Result | Next Step |
-|--------|-----------|
+| :----- | :-------- |
 | Pass | Proceed with directory creation |
 | Fail | Return error with suggestion |

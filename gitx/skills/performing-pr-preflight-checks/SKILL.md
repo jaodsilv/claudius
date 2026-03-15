@@ -57,7 +57,7 @@ Returns JSON with check results:
 ## Status Values
 
 | Status | Meaning |
-|--------|---------|
+| :----- | :------ |
 | PASS | Check passed |
 | FAIL | Check failed, blocks operation |
 | WARN | Warning, can proceed with caution |

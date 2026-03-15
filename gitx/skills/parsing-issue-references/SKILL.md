@@ -14,7 +14,7 @@ Extract issue numbers from various input formats.
 ## Supported Formats
 
 | Format | Example | Result |
-|--------|---------|--------|
+| :----- | :------ | :----- |
 | Bare number | `123` | `123` |
 | Hash prefix | `#123` | `123` |
 | Issue prefix | `issue-123` | `123` |
@@ -89,7 +89,7 @@ If no pattern matches, return:
 ## Error Messages
 
 | Condition | Message |
-|-----------|---------|
+| :-------- | :------ |
 | Empty input | "No issue reference provided" |
 | No match | "Could not parse issue reference from: \<input\>" |
 | Invalid number | "Invalid issue number: \<value\>" |

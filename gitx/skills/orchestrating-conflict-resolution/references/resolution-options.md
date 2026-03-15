@@ -17,7 +17,7 @@ Options:
 ## Resolution Actions
 
 | Option | Command | Notes |
-|--------|---------|-------|
+| :----- | :------ | :---- |
 | Apply suggested | Apply suggester code | Use resolution from Phase 2 |
 | Keep ours | `git checkout --ours <file>` | Current branch wins |
 | Keep theirs | `git checkout --theirs <file>` | Base branch wins |

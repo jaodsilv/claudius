@@ -165,7 +165,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-view.sh <issue> [options]
 **Use-cases**:
 
 | Name | Fields | Notes |
-|------|--------|-------|
+| :--- | :----- | :---- |
 | `branch-naming` | closedAt,labels,number,state,stateReason,title | Exit 1 if closed |
 | `analysis` | author,body,closedAt,comments,createdAt,labels,milestone,title,updatedAt | Deep analysis |
 | `picking` | assignees,labels,milestone,number,state,title | Issue triage |
@@ -224,4 +224,4 @@ Callers describe WHAT operation is needed. Scripts handle HOW to interact with g
 
 ### Reference Files
 
-- **`references/script-interfaces.md`** - Complete script specifications with all options and JSON schemas
+- **`${CLAUDE_SKILL_DIR}/references/script-interfaces.md`** - Complete script specifications with all options and JSON schemas

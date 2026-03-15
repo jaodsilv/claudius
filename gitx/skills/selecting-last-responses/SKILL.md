@@ -50,7 +50,7 @@ A response is valid if it has:
 ## Edge Cases
 
 | Condition | Action |
-|-----------|--------|
+| :-------- | :----- |
 | No `<latest responses>` provided | Error: "No responses provided. Caller must extract and pass responses from conversation." |
 | 1-3 valid responses | Show all available (adjust options dynamically) |
 | No valid responses | Error: "No valid Claude responses found (responses must have at least 4 lines or 140 characters). Cannot use --last flag." |

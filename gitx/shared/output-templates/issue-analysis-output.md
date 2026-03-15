@@ -45,7 +45,7 @@
 ### Related Issues
 
 | Issue | Relationship | Status |
-|-------|--------------|--------|
+| :---- | :----------- | :----- |
 | #XXX | Blocks this | Open |
 | #YYY | Related | Closed |
 

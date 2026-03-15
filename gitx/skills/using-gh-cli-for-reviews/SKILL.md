@@ -97,7 +97,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/reviews/gh-review-operations.sh get-latest-comment
 ## Owner vs Non-Owner Actions
 
 | Action | Owner Can | Non-Owner Can |
-|--------|-----------|---------------|
+| :----- | :-------- | :------------ |
 | Create review comment | Yes (COMMENTED only) | Yes (all states) |
 | Approve PR | No | Yes |
 | Request changes | No | Yes |

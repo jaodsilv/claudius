@@ -46,7 +46,7 @@ Output when no PR found (exit 0):
 The metadata file contains:
 
 | Field | Type | Description |
-|-------|------|-------------|
+| :---- | :--- | :---------- |
 | pr | number | PR number |
 | author | string | PR author login |
 | branch | string | Feature branch name |

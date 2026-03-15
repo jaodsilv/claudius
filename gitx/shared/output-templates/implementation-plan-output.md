@@ -144,7 +144,7 @@ router.post('/feature', featureHandler);
 ### Risk Assessment
 
 | Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
+| :--- | :--------- | :----- | :--------- |
 | [Risk 1] | Medium | High | [Strategy] |
 | [Risk 2] | Low | Medium | [Strategy] |
 

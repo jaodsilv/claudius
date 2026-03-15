@@ -35,7 +35,7 @@ Beyond standard types, this project uses:
 If commit conventions are provided in the context (within `<commit-conventions>` tags),
 apply those rules and types alongside the defaults defined here.
 
-See `references/conventions-yaml-schema.md` for the YAML schema.
+See `${CLAUDE_SKILL_DIR}/references/conventions-yaml-schema.md` for the YAML schema.
 
 ## Validation Checklist
 
@@ -50,7 +50,7 @@ Before committing, verify:
 ## Edge Cases
 
 | Change | Type | Reason |
-|--------|------|--------|
+| :----- | :--- | :----- |
 | Update dependencies | `build` | Build tool/system change |
 | Config file cleanup | `chore` | Maintenance, no feature impact |
 | Fix typo in docs | `docs` | Documentation, not code |

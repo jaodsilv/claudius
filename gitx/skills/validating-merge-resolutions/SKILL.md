@@ -12,7 +12,7 @@ context: fork
 
 Validation checklist for conflict resolutions before continuing operations.
 
-Using the Bash tool run:
+Use the Bash tool to run the validation script:
 
 ```bash
 ${CLAUDE_PLUGIN_ROOT}/scripts/conflicts/validate-resolution.sh $ARGUMENTS
@@ -37,7 +37,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/conflicts/validate-resolution.sh "*.py" "*.pyi"
 The script auto-detects project type by checking for:
 
 | Language | Detection Files | Type Checker | Linter |
-|----------|-----------------|--------------|--------|
+| :------- | :-------------- | :----------- | :----- |
 | Python | pyproject.toml, setup.py, requirements.txt | mypy, pyright | ruff, flake8 |
 | TypeScript/JS | tsconfig.json, package.json | tsc | npm lint |
 | Go | go.mod | go vet | golangci-lint |
@@ -58,7 +58,7 @@ Returns a markdown validation report:
 ## Validation Report
 
 | Check | Status | Details |
-|-------|--------|---------|
+| :---- | :----- | :------ |
 | Conflict Markers | PASS | 0 remaining |
 | Syntax Valid | PASS | OK |
 | Types Check | PASS | OK |
@@ -72,7 +72,7 @@ All checks passed
 ## Status Values
 
 | Status | Meaning |
-|--------|---------|
+| :----- | :------ |
 | PASS | Check passed |
 | FAIL | Check failed, blocks operation |
 | WARN | Warning, can proceed with caution |
@@ -81,7 +81,7 @@ All checks passed
 ## Quality Gate
 
 | Result | Action |
-|--------|--------|
+| :----- | :----- |
 | PROCEED | All checks pass, safe to continue |
 | PROCEED_WITH_CAUTION | Minor issues, can continue |
 | DO_NOT_PROCEED | Critical issues must be resolved |

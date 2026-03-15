@@ -59,4 +59,4 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/branches/rebase-merge-common.sh rebase --base main
 ${CLAUDE_PLUGIN_ROOT}/scripts/branches/rebase-merge-common.sh merge --base develop
 ```
 
-See [references/extra-examples.md](references/extra-examples.md) for more scenarios.
+See [references/extra-examples.md](${CLAUDE_SKILL_DIR}/references/extra-examples.md) for more scenarios.

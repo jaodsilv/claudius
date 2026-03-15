@@ -46,7 +46,7 @@ This template defines the structure for output from the fix-issue workflow agent
 
 ### Primary Files to Modify
 | File | Purpose | Change Type |
-|------|---------|-------------|
+| :--- | :------ | :---------- |
 | src/file.ts | Description | Modify |
 
 ### Patterns to Follow
@@ -56,7 +56,7 @@ This template defines the structure for output from the fix-issue workflow agent
 
 ### Test Files
 | Implementation | Test File |
-|---------------|-----------|
+| :------------ | :-------- |
 | src/feature.ts | tests/feature.test.ts |
 
 ### Impact Assessment
