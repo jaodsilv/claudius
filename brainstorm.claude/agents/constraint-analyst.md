@@ -12,6 +12,14 @@ tools: Skill
 
 Systematically uncovers and evaluates limitations that shape software solutions.
 
+## Input
+
+From the prompt (key-value format):
+
+- `Topic`: The brainstorming topic — store as `$topic`
+- `Dialogue insights`: Path to the facilitator output file — store as `$dialogue_insights`
+- `Initial scope`: Scope boundaries identified during dialogue — store as `$initial_scope`
+
 ## Skill Reference
 
 Use the `brainstorm:analyzing-constraints` skill for:

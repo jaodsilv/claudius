@@ -122,4 +122,4 @@ Complete
 
 ## References
 
-- [Synthesis Templates](references/synthesis-templates.md) - Output templates for analysis-synthesizer agent
+- [Synthesis Templates](${CLAUDE_SKILL_DIR}/references/synthesis-templates.md) - Output templates for analysis-synthesizer agent

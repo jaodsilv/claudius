@@ -30,7 +30,7 @@ The domain research skill covers 7 key research dimensions:
 6. **Regulatory/Compliance** - Legal requirements, privacy, accessibility, and security
 7. **Domain Terminology** - Industry vocabulary, conventions, and standard concepts
 
-See `references/research-areas.md` for detailed definitions and research questions for each area.
+See `${CLAUDE_SKILL_DIR}/references/research-areas.md` for detailed definitions and research questions for each area.
 
 ## Output Format
 

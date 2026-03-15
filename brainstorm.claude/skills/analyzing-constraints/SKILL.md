@@ -27,7 +27,7 @@ The skill covers four primary constraint dimensions:
 - **Resource**: Team, skills, infrastructure, third-party, support
 - **Environmental**: Network, device, geographic, user
 
-See `references/constraint-taxonomies.md` for the full taxonomy with descriptions and examples for each constraint type.
+See `${CLAUDE_SKILL_DIR}/references/constraint-taxonomies.md` for the full taxonomy with descriptions and examples for each constraint type.
 
 ## Trade-off Analysis
 
@@ -37,7 +37,7 @@ Constraints often conflict, requiring trade-off analysis. The skill provides:
 - Framework for assessing constraint properties (type, source, impact, negotiability)
 - Mitigation strategies and creative workarounds
 
-See `references/trade-off-patterns.md` for detailed trade-off analysis patterns.
+See `${CLAUDE_SKILL_DIR}/references/trade-off-patterns.md` for detailed trade-off analysis patterns.
 
 ## Output Format
 

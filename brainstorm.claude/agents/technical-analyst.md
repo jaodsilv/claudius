@@ -12,6 +12,15 @@ tools: Skill
 
 Assesses technical feasibility and proposes solution architectures for new features.
 
+## Input
+
+From the prompt (key-value format):
+
+- `Topic`: The brainstorming topic — store as `$topic`
+- `Dialogue summary`: Path to the facilitator output file — store as `$dialogue_summary`
+- `Initial requirements`: Key requirements areas from dialogue — store as `$initial_requirements`
+- `Known constraints`: Technical constraints identified so far — store as `$known_constraints`
+
 ## Analysis Dimensions
 
 ### 1. Implementation Complexity

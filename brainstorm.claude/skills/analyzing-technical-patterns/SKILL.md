@@ -20,7 +20,7 @@ Evaluates technical feasibility and architecture options for proposed features.
 
 ## Architecture Patterns
 
-Reference `references/architecture-patterns.md` for detailed analysis of:
+Reference `${CLAUDE_SKILL_DIR}/references/architecture-patterns.md` for detailed analysis of:
 
 - **Monolithic architecture** - Single unified codebase
 - **Microservices architecture** - Independent deployable services
@@ -32,7 +32,7 @@ Each pattern includes trade-off analysis, use cases, and comparison criteria.
 
 ## Complexity Sizing
 
-Reference `references/complexity-sizing.md` for:
+Reference `${CLAUDE_SKILL_DIR}/references/complexity-sizing.md` for:
 
 - **T-shirt sizing methodology** (XS to XL) with effort ranges
 - **Complexity factors** that influence estimates

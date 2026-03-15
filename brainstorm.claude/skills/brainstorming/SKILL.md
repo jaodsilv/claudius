@@ -56,8 +56,8 @@ model: opus
 
 Output document templates are available in references:
 
-- `references/requirements-document.md` - Full requirements specification template
-- `references/session-summary.md` - Executive summary template
+- `${CLAUDE_SKILL_DIR}/references/requirements-document.md` - Full requirements specification template
+- `${CLAUDE_SKILL_DIR}/references/session-summary.md` - Executive summary template
 
 ## Related Skills
 

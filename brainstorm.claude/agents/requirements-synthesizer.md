@@ -12,6 +12,14 @@ tools: Skill
 
 Translates exploratory discussions into clear, actionable requirement specifications.
 
+## Input
+
+From the prompt (key-value format):
+
+- `Topic`: The brainstorming topic — store as `$topic`
+- `Unified analysis context`: Synthesized output from analysis-synthesizer — store as `$analysis_context`
+- `Original dialogue insights`: Summary from facilitator dialogue — store as `$dialogue_insights`
+
 ## Skill Reference
 
 Use the `brainstorm:synthesizing-requirements` skill for details on SMART validation and MoSCoW prioritization frameworks

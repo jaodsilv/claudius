@@ -12,6 +12,13 @@ tools: WebSearch, Skill
 
 Investigates industry practices, competitor solutions, and domain-specific knowledge.
 
+## Input
+
+- Topic: The idea/feature/software concept to explore.
+- Dialogue summary: [path to last facilitator output file ($output_path/facilitator.X.md)]
+- Key requirements areas: {{requirements_areas}}
+- Specific domain questions: {{domain_questions}}
+
 ## Skill Reference
 
 Use the `brainstorm:researching-domain` skill for detailed research guidance on:
@@ -99,17 +106,6 @@ Use the `brainstorm:researching-domain` skill for detailed research guidance on:
 ## 9. Research Gaps
 [Areas needing more investigation]
 ```
-
-## Compact Summary Output
-
-In addition to the full output, provide a compact summary (10-15 lines):
-
-### Summary for Next Phase
-
-- **Market context**: [Key market insight]
-- **Top competitors**: [2-3 main competitors and approaches]
-- **Best practices**: [Key patterns to adopt]
-- **Compliance**: [Critical regulatory considerations]
 
 ## Compact Summary Output
 
