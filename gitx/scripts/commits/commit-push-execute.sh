@@ -59,6 +59,7 @@ fi
 
 # Extract options from commit pairs
 NO_PUSH=$(echo "$COMMIT_PAIRS" | jq -r '.no_push // false')
+STAGED_ONLY=$(echo "$COMMIT_PAIRS" | jq -r '.staged_only // false')
 PAIRS=$(echo "$COMMIT_PAIRS" | jq -c '.pairs[]')
 
 log_debug "NO_PUSH" "$NO_PUSH"
@@ -91,26 +92,30 @@ while IFS= read -r pair; do
   log_debug "FILES" "$FILES"
   log_debug "MESSAGE" "$MESSAGE"
 
-  # Stage files
-  log_info "Staging files..."
-  STAGE_ERROR=""
-  for file in $FILES; do
-    # Remove carriage returns (Windows line-ending cleanup)
-    file=$(echo "$file" | tr -d '\r')
-    log_debug "Staging" "$file"
-    if ! git add -- "$file" 2>&1; then
-      STAGE_ERROR="Failed to stage: $file"
-      break
-    fi
-  done
+  if [[ "$STAGED_ONLY" != "true" ]]; then
+    # Stage files
+    log_info "Staging files..."
+    STAGE_ERROR=""
+    for file in $FILES; do
+      # Remove carriage returns (Windows line-ending cleanup)
+      file=$(echo "$file" | tr -d '\r')
+      log_debug "Staging" "$file"
+      if ! git add -- "$file" 2>&1; then
+        STAGE_ERROR="Failed to stage: $file"
+        break
+      fi
+    done
 
-  if [[ -n "$STAGE_ERROR" ]]; then
-    log_error "$STAGE_ERROR"
-    echo "Error staging files: $STAGE_ERROR"
-    echo ""
-    echo "Please check the files and try again."
-    log_exit 2 "stage failed"
-    exit 1
+    if [[ -n "$STAGE_ERROR" ]]; then
+      log_error "$STAGE_ERROR"
+      echo "Error staging files: $STAGE_ERROR"
+      echo ""
+      echo "Please check the files and try again."
+      log_exit 2 "stage failed"
+      exit 1
+    fi
+  else
+    log_info "Using pre-staged files (--staged mode)"
   fi
 
   # Create commit

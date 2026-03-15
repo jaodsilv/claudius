@@ -1,7 +1,7 @@
 #!/bin/bash
 # PreToolUse dispatcher for gitx:ci:* agents
 # Injects context (failure logs, analyses, plans) into agent prompts
-# Called from gitx-pre-task.sh when Task targets a gitx:ci:* agent
+# Called from gitx-pre-task.sh when task targets a gitx:ci:* agent
 
 set -uo pipefail
 

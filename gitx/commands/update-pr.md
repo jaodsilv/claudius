@@ -17,7 +17,7 @@ Strip the `--worktree` argument and its value from $ARGUMENTS if present.
 
 Use the Agent tool to run the `gitx:pr:updater` agent with the prompt:
 
-```
+```markdown
 <worktree>$worktree</worktree>
 $ARGUMENTS
 ```

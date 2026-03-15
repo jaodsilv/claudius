@@ -57,11 +57,10 @@ Wait for ALL fixers to complete. Collect their output summaries.
 
 ## Step 4: Commit and Push
 
-Use the Skill tool to invoke `/gitx:commit-push`:
+Use the Skill tool to execute the skill `/gitx:commit-push`:
 
 ```markdown
-Skill(/gitx:commit-push):
-  args: "--worktree $worktree"
+Skill(/gitx:commit-push, args: "--worktree $worktree")
 ```
 
 ## Step 5: Output Summary

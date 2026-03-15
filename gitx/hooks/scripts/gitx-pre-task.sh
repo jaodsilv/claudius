@@ -1,5 +1,5 @@
 #!/bin/bash
-# PreToolUse dispatcher for gitx agents invoked via Task tool
+# PreToolUse dispatcher for gitx agents invoked via Agent tool
 # Handles metadata injection and context setup for gitx sub-agents
 set -uo pipefail
 
@@ -37,7 +37,7 @@ if [[ "$_AGENT_TYPE" != gitx:* ]]; then
   exit 0
 fi
 
-log_section "Task to Gitx Agent"
+log_section "Gitx Agent"
 
 case "$_AGENT_TYPE" in
   gitx:address-review:review-responder|gitx:address-review:ci-status-checker|gitx:pr:updater)

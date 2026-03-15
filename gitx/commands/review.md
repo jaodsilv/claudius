@@ -15,7 +15,7 @@ IGNORE arguments. Instead, parse input from hook additional context looking for 
 
 ## Step 1: Read Prompt and Execute Review
 
-Use the skill tool to RUN the external plugin command with the prompt content:
+Use the Skill tool to execute the skill `/pr-review-toolkit:review-pr`:
 
 ```markdown
 Skill(/pr-review-toolkit:review-pr $review-prompt)
@@ -23,10 +23,10 @@ Skill(/pr-review-toolkit:review-pr $review-prompt)
 
 ## Step 2: Post Review and Update Metadata
 
-Once the review is complete, Use the bash tool to run the post-and-update script:
+Once the review is complete, use the Bash tool to run the post-and-update script:
 
-```markdown
-Bash(${CLAUDE_PLUGIN_ROOT}/scripts/reviews/post-and-update-review.sh "$worktree")
+```bash
+${CLAUDE_PLUGIN_ROOT}/scripts/reviews/post-and-update-review.sh "$worktree"
 ```
 
 ## Error Handling

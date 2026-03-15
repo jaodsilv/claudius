@@ -250,7 +250,7 @@ cat << EOF
 ## Validation Report
 
 | Check | Status | Details |
-|-------|--------|---------|
+| :---- | :----- | :------ |
 | Conflict Markers | $(if [[ "$MARKERS_FOUND" == "true" ]]; then echo "FAIL"; else echo "PASS"; fi) | $MARKERS_COUNT remaining |
 | Syntax Valid | $(if [[ "$SYNTAX_VALID" == "true" ]]; then echo "PASS"; else echo "FAIL"; fi) | $(if [[ -n "$SYNTAX_ERRORS" ]]; then echo "errors found"; else echo "OK"; fi) |
 | Types Check | $(types_status) | $(if [[ "$TYPES_SKIPPED" == "true" ]]; then echo "no checker"; elif [[ -n "$TYPE_ERRORS" ]]; then echo "errors found"; else echo "OK"; fi) |

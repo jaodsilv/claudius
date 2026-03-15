@@ -28,7 +28,7 @@ Extract from $ARGUMENTS:
 ## Named Arguments Reference
 
 | Flag | Description |
-|------|-------------|
+| :--- | :---------- |
 | `-l`, `--last` | Post last Claude response from session |
 | `-sc <hash>`, `--since-commit <hash>` | Summary of commits since hash (inclusive) |
 | `-c <hash>`, `--single-commit <hash>` | Summary of single commit |
@@ -65,7 +65,7 @@ If comment text provided directly in arguments:
 For flag-based flows, delegate to `gitx:comment-handler:comment-handler` with:
 
 | Flag | flow_type | Required Data |
-|------|-----------|---------------|
+| :--- | :-------- | :------------ |
 | `--last` | `last_response` | Caller extracts & provides `<latest responses>` |
 | `-c`/`-sc` | `commit_summary` | `mode: multi\|single`, `commit: <hash>` |
 | `-rr` | `review_response` | `review_text`, optional `commit`/`commit_mode` |
@@ -85,7 +85,7 @@ If no arguments or flags, use AskUserQuestion:
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | PR not found | Report and suggest checking number |
 | Empty comment | Return to get comment text |
 | gh not authenticated | Guide to `gh auth login` |

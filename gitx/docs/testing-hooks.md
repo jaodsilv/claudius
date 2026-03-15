@@ -598,7 +598,7 @@ echo "CLAUDE_PLUGIN_ROOT=$CLAUDE_PLUGIN_ROOT"
 ### 5. Common Issues
 
 | Issue | Cause | Solution |
-|-------|-------|----------|
+| :---- | :---- | :------- |
 | "Not a git repository" | Wrong WORKTREE path | Check path conversion |
 | "No metadata file" | PR not created yet | Run `/gitx:pr` first |
 | Handler not found | Wrong HANDLERS_DIR | Check script location |
@@ -611,7 +611,7 @@ echo "CLAUDE_PLUGIN_ROOT=$CLAUDE_PLUGIN_ROOT"
 
 Each log entry includes:
 
-```
+```markdown
 [<elapsed_ms>ms] <LEVEL> <message>
 ```
 

@@ -15,8 +15,15 @@ Strip the `--worktree` argument from $ARGUMENTS if present.
 
 ## Step 1: Run Agent
 
-Using the Agent tool, run the `gitx:pr:merger` agent with the following arguments:
+Use the Agent tool to run the agent `gitx:pr:merger`:
 
+```markdown
+Agent(gitx:pr:merger, prompt: "--worktree $worktree $ARGUMENTS")
 ```
---worktree $worktree $ARGUMENTS
-```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.

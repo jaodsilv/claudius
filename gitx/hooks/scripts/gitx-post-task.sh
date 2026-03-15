@@ -1,5 +1,5 @@
 #!/bin/bash
-# PostToolUse dispatcher for gitx agents invoked via Task tool
+# PostToolUse dispatcher for gitx agents invoked via Agent tool
 # Minimal pass-through (no Task-specific post-handling exists today)
 set -uo pipefail
 

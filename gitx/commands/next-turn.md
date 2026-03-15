@@ -34,10 +34,10 @@ Extract the value for `--turn` from $ARGUMENTS (passed by the hook).
 Based on the value for `--turn` select the correct skill to run.
 
 | Turn | Action |
-|------|--------|
+| :--- | :----- |
 | `NO_METADATA` | Run `/gitx:pr --worktree $worktree` to create PR first |
 | `CI-REVIEW` | Run `/gitx:address-ci --worktree $worktree` |
 | `AUTHOR` | Run `/gitx:address-review --worktree $worktree` |
 | `REVIEW` | Run `/gitx:review --worktree $worktree` |
 
-Use the Skill tool to invoke the appropriate command.
+Use the Skill tool to execute the appropriate command based on the turn value.

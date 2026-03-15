@@ -1,6 +1,6 @@
 ---
 description: Commits and pushes changes with smart file grouping and conventional messages
-argument-hint: "[(--files <file>+)+ | --context <description> | --multi] [--no-push]"
+argument-hint: "[(--files <file>+)+ | --context <description> | --multi | --staged] [--no-push]"
 allowed-tools: Bash, Skill, Agent, AskUserQuestion
 model: haiku
 hooks:
@@ -23,7 +23,8 @@ Extract from $ARGUMENTS or hook additional context:
 - **Explicit files (--files <file0> <file1> ... <fileN>)**: Explicit file groups with one or more `--files`, and each `--files` creates a separate commit. Here identified as `$GROUPS` for the array of file groups, `$GROUPS[i]` for the i-th file group, and `$MODE="lists"`
 - **Context Description (--context "<description>")**: If `--context` is present. Select files matching a contextual description. Here identified as `$DESCRIPTION` for the context description, and `$MODE="context-description"`
 - **Multiple Commits (--multi)**: If `--multi` is present, Intelligent grouping of files into multiple logical commits. Here identified as `$MODE="multi-commit"`
-- **No push (--no-push)**: If `--no-push` is present, Create commits but skip push. Here identified as `$NO_PUSH="true"` if the no-push flag is present, otherwise `$NO_PUSH="false"`.
+- **Staged Only (--staged)**: If `--staged` is present, commit only the files that are already staged in the git index. Here identified as `$MODE="staged"` and `$STAGED_ONLY="true"`.
+- **No push (--no-push)**: If `--no-push` is present, Create commits but skip push. Here identified as `$NO_PUSH="true"` if the no-push flag is present, otherwise `$NO_PUSH="false"`. Also set `$STAGED_ONLY="false"` for all non-staged modes.
 
 ## Behavioral Rules
 
@@ -65,6 +66,18 @@ Task:
 
 Store the result as `$GROUPS`.
 
+### If $MODE = "staged"
+
+Get the list of currently staged files:
+
+```markdown
+Bash(git diff --cached --name-only)
+```
+
+If no files are staged, inform the user and stop.
+
+Store the returned file list as `$GROUPS[0]`.
+
 ## Phase 2: Generate Commit Messages
 
 For EACH file group in `$GROUPS`, launch the `gitx:commit:commit-writer` agent IN PARALLEL:
@@ -97,6 +110,7 @@ Build commit pairs json:
 ```json
 {
   "no_push": $NO_PUSH,
+  "staged_only": $STAGED_ONLY,
   "pairs": [
     {"files": [$OUTPUTS[0][0]], "message": "$OUTPUTS[0][1]"},
     {"files": [$OUTPUTS[1][0]], "message": "$OUTPUTS[1][1]"}
@@ -117,6 +131,7 @@ The script will stage files, create commits, push to remote, and return results.
 ```json
 {
   "no_push": false,
+  "staged_only": false,
   "pairs": [
     {"files": ["src/a.ts", "src/b.ts"], "message": "feat(core): ..."},
     {"files": ["test.ts"], "message": "test(core): ..."}
@@ -170,6 +185,14 @@ Selects files related to authentication, creates one commit.
 ```
 
 Analyzes all changes and creates separate commits for each logical group.
+
+### Staged files only
+
+```markdown
+/gitx:commit-push --staged
+```
+
+Commits only files already in the staging area without re-staging.
 
 ### Without push
 
