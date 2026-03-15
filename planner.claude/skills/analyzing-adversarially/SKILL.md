@@ -14,7 +14,7 @@ Constructively critical analysis to identify weaknesses before they become failu
 ## Analysis Components
 
 | Component | Purpose | Key Questions |
-|-----------|---------|---------------|
+| :-------- | :------ | :------------ |
 | Assumption Hunting | Find fragile premises | What must be true? What if opposite? |
 | Failure Mode Analysis | Explore how it could fail | What triggers failure? What's probability/impact? |
 | Counter-Arguments | Strongest opposing view | What would a skeptic say? |
@@ -38,7 +38,7 @@ If Wrong: [Consequence]
 ## Failure Mode Categories
 
 | Category | Description |
-|----------|-------------|
+| :------- | :---------- |
 | Complete Failure | Doesn't work at all |
 | Partial Failure | Works with significant limitations |
 | Scale Failure | Works small, fails at scale |
@@ -47,7 +47,7 @@ If Wrong: [Consequence]
 ## Stress Test Dimensions
 
 | Dimension | Test Variations |
-|-----------|-----------------|
+| :-------- | :-------------- |
 | Scale | 10x/0.1x adoption rates |
 | Resources | Budget/timeline/people constraints |
 | Environment | Market/technology/competition changes |
@@ -68,12 +68,12 @@ If Wrong: [Consequence]
 
 ### Critical Assumptions
 | Assumption | Fragility | Challenge | If Wrong |
-|------------|-----------|-----------|----------|
+| :--------- | :-------- | :-------- | :------- |
 | ... | High/Med/Low | ... | ... |
 
 ### Failure Modes
 | Mode | Trigger | Probability | Impact | Mitigation |
-|------|---------|-------------|--------|------------|
+| :--- | :------ | :---------- | :----- | :--------- |
 | ... | ... | High/Med/Low | High/Med/Low | ... |
 
 ### Counter-Arguments
@@ -83,7 +83,7 @@ If Wrong: [Consequence]
 
 ### Stress Test Results
 | Dimension | Scenario | Outcome | Risk Level |
-|-----------|----------|---------|------------|
+| :-------- | :------- | :------ | :--------- |
 | ... | ... | ... | High/Med/Low |
 ```
 

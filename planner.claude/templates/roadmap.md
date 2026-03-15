@@ -44,7 +44,7 @@ gantt
 #### Milestones
 
 | ID   | Milestone           | Target Date         | Success Criteria        | Status                |
-| ---- | ------------------- | ------------------- | ----------------------- | --------------------- |
+| :--- | :------------------ | :------------------ | :---------------------- | --------------------- |
 | M1.1 | {{milestone1_name}} | {{milestone1_date}} | {{milestone1_criteria}} | {{milestone1_status}} |
 | M1.2 | {{milestone2_name}} | {{milestone2_date}} | {{milestone2_criteria}} | {{milestone2_status}} |
 
@@ -66,7 +66,7 @@ gantt
 #### Risks
 
 | Risk           | Probability    | Impact           | Mitigation           |
-| -------------- | -------------- | ---------------- | -------------------- |
+| :------------- | :------------- | :--------------- | :------------------- |
 | {{risk1_name}} | {{risk1_prob}} | {{risk1_impact}} | {{risk1_mitigation}} |
 | {{risk2_name}} | {{risk2_prob}} | {{risk2_impact}} | {{risk2_mitigation}} |
 
@@ -81,7 +81,7 @@ gantt
 #### Phase 2 Milestones
 
 | ID   | Milestone          | Target Date        | Success Criteria       | Status               |
-| ---- | ------------------ | ------------------ | ---------------------- | -------------------- |
+| :--- | :----------------- | :----------------- | :--------------------- | -------------------- |
 | M2.1 | {{milestone_name}} | {{milestone_date}} | {{milestone_criteria}} | {{milestone_status}} |
 
 #### Phase 2 Deliverables
@@ -97,7 +97,7 @@ gantt
 #### Phase 2 Risks
 
 | Risk          | Probability   | Impact          | Mitigation          |
-| ------------- | ------------- | --------------- | ------------------- |
+| :------------ | :------------ | :-------------- | :------------------ |
 | {{risk_name}} | {{risk_prob}} | {{risk_impact}} | {{risk_mitigation}} |
 
 ---
@@ -107,7 +107,7 @@ gantt
 ### Team Requirements
 
 | Phase   | Role      | Allocation      |
-| ------- | --------- | --------------- |
+| :------ | :-------- | :-------------- |
 | Phase 1 | {{role1}} | {{allocation1}} |
 | Phase 2 | {{role2}} | {{allocation2}} |
 
@@ -120,7 +120,7 @@ gantt
 ## Success Metrics
 
 | Metric           | Target             | Measurement Method | Frequency        |
-| ---------------- | ------------------ | ------------------ | ---------------- |
+| :--------------- | :----------------- | :----------------- | :--------------- |
 | {{metric1_name}} | {{metric1_target}} | {{metric1_method}} | {{metric1_freq}} |
 | {{metric2_name}} | {{metric2_target}} | {{metric2_method}} | {{metric2_freq}} |
 
@@ -131,7 +131,7 @@ gantt
 ### Aligned Objectives
 
 | Phase   | Objective      | Key Results Impacted |
-| ------- | -------------- | -------------------- |
+| :------ | :------------- | :------------------- |
 | Phase 1 | {{objective1}} | {{kr1}}, {{kr2}}     |
 | Phase 2 | {{objective2}} | {{kr3}}, {{kr4}}     |
 
@@ -162,5 +162,5 @@ gantt
 <!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes         | Author     |
-| -------- | ------- | --------------- | ---------- |
+| :------- | :------ | :-------------- | :--------- |
 | {{date}} | 1.0     | Initial roadmap | {{author}} |

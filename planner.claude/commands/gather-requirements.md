@@ -22,11 +22,14 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Plugin Detection
 
-1. Initialize task list using TaskCreate:
-   - Phase 1: Setup (in_progress)
-   - Phase 2: Requirements Gathering (pending)
-   - Phase 3: Synthesis (pending)
-   - Phase 4: Documentation (pending)
+1. Use the TaskCreate tool to add the following task(s) to the task list:
+
+   <new-tasks>
+   - [ ] Phase 1: Setup (in_progress)
+   - [ ] Phase 2: Requirements Gathering (pending)
+   - [ ] Phase 3: Synthesis (pending)
+   - [ ] Phase 4: Documentation (pending)
+   </new-tasks>
 
 2. Check for brainstorm plugin:
    - Look for `brainstorm.claude/.claude-plugin/plugin.json`
@@ -70,24 +73,20 @@ If not using brainstorm:
 
 1. Mark Phase 2 as in_progress
 
-2. Launch `requirements-gatherer` agent:
+2. Use the Agent tool to spawn the agent `planner:creators:requirements-gatherer` to conduct structured requirements discovery:
 
-   ```text
-   Use Agent tool with `planner:creators:requirements-gatherer` agent:
-
-   Gather requirements for: {{goal}}
-   Depth: {{depth}}
-
-   Conduct structured requirements discovery:
-   1. Understand the problem space
-   2. Identify stakeholders and users
-   3. Discover functional requirements
-   4. Discover non-functional requirements
-   5. Document constraints
-   6. Note assumptions
-
-   Be interactive - ask clarifying questions as needed.
+   ```markdown
+   Agent(planner:creators:requirements-gatherer):
+     prompt:
+       Gather requirements for: {{goal}}
+       Depth: {{depth}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 3. The agent will interact with user through AskUserQuestion
 
@@ -104,7 +103,7 @@ If not using brainstorm:
    - Identify gaps
    - Note open questions
 
-3. Load prioritization skill `planner:prioritizing-work` for prioritization framework guidance.
+3. Use the Skill tool to load the skill `planner:prioritizing-work` for prioritization framework guidance.
 
 4. Create traceability matrix (requirements → goals)
 

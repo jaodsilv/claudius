@@ -23,7 +23,7 @@
 **Overall Score**: {{proposal1_overall}}/10
 
 | Criterion  | Score                       | Notes                          |
-| ---------- | --------------------------- | ------------------------------ |
+| :--------- | :-------------------------- | ------------------------------ |
 | Viability  | {{proposal1_viability}}/10  | {{proposal1_viability_notes}}  |
 | Novelty    | {{proposal1_novelty}}/10    | {{proposal1_novelty_notes}}    |
 | Impact     | {{proposal1_impact}}/10     | {{proposal1_impact_notes}}     |
@@ -73,7 +73,7 @@
 **Overall Score**: {{proposal2_overall}}/10
 
 | Criterion  | Score                       | Notes                          |
-| ---------- | --------------------------- | ------------------------------ |
+| :--------- | :-------------------------- | ------------------------------ |
 | Viability  | {{proposal2_viability}}/10  | {{proposal2_viability_notes}}  |
 | Novelty    | {{proposal2_novelty}}/10    | {{proposal2_novelty_notes}}    |
 | Impact     | {{proposal2_impact}}/10     | {{proposal2_impact_notes}}     |
@@ -114,7 +114,7 @@
 ## Proposal Comparison
 
 | Aspect            | Proposal 1       | Proposal 2       | Proposal 3       |
-| ----------------- | ---------------- | ---------------- | ---------------- |
+| :---------------- | :--------------- | :--------------- | :--------------- |
 | Overall Score     | {{p1_score}}     | {{p2_score}}     | {{p3_score}}     |
 | Time to Implement | {{p1_time}}      | {{p2_time}}      | {{p3_time}}      |
 | Risk Level        | {{p1_risk}}      | {{p2_risk}}      | {{p3_risk}}      |
@@ -160,7 +160,7 @@
 ## Discarded Ideas
 
 | Idea                | Initial Promise        | Reason Discarded      |
-| ------------------- | ---------------------- | --------------------- |
+| :------------------ | :--------------------- | --------------------- |
 | {{discarded1_idea}} | {{discarded1_promise}} | {{discarded1_reason}} |
 | {{discarded2_idea}} | {{discarded2_promise}} | {{discarded2_reason}} |
 
@@ -259,5 +259,5 @@
 <!-- See _base.md for revision history format -->
 
 | Date     | Version | Changes           | Author     |
-| -------- | ------- | ----------------- | ---------- |
+| :------- | :------ | :---------------- | :--------- |
 | {{date}} | 1.0     | Initial synthesis | {{author}} |

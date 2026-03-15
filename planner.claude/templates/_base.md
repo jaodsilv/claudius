@@ -21,7 +21,7 @@ Common template sections for planner plugin outputs.
 ## Revision History
 
 | Date | Version | Changes | Author |
-|------|---------|---------|--------|
+| :--- | :------ | :------ | :----- |
 | {{date}} | 1.0 | Initial creation | {{author}} |
 ```
 

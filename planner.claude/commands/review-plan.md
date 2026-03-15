@@ -21,7 +21,7 @@ Extract from `$ARGUMENTS`:
 
 ### 1. Load Skill
 
-Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
+Use the Skill tool to load the skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 

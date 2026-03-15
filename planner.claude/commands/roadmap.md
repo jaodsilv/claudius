@@ -22,12 +22,15 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Goal Analysis
 
-1. Initialize task list using TaskCreate with phases:
-   - Phase 1: Goal Analysis (in_progress)
-   - Phase 2: Context Gathering (pending)
-   - Phase 3: GitHub Integration (pending)
-   - Phase 4: Roadmap Generation (pending)
-   - Phase 5: Output Generation (pending)
+1. Use the TaskCreate tool to add the following task(s) to the task list:
+
+   <new-tasks>
+   - [ ] Phase 1: Goal Analysis (in_progress)
+   - [ ] Phase 2: Context Gathering (pending)
+   - [ ] Phase 3: GitHub Integration (pending)
+   - [ ] Phase 4: Roadmap Generation (pending)
+   - [ ] Phase 5: Output Generation (pending)
+   </new-tasks>
 
 2. Validate goal is provided
 
@@ -45,7 +48,7 @@ Extract from `$ARGUMENTS`:
    - Existing plans or specs
    - Related issues or PRs
 
-3. Load the `planner:roadmapping` skill for roadmap creation guidance and patterns.
+3. Use the Skill tool to load the skill `planner:roadmapping` for roadmap creation guidance and patterns.
 
 ### Phase 3: GitHub Integration
 
@@ -57,17 +60,18 @@ Extract from `$ARGUMENTS`:
    gh --version
    ```
 
-3. If gh CLIT is available, launch the `planner:github:issue-analyzer` agent with the prompt:
+3. If gh CLI is available, use the Agent tool to spawn the agent `planner:github:issue-analyzer` to analyze relevant issues:
 
-   ```text
-   Analyze open issues relevant to: $goal
-
-   Identify:
-   - Issues that relate to this goal
-   - Existing work in progress
-   - Potential blockers
-   - Effort indicators from labels
+   ```markdown
+   Agent(planner:github:issue-analyzer):
+     prompt: Analyze open issues relevant to: $goal
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 4. Collect issue insights for roadmap integration
 
@@ -75,27 +79,28 @@ Extract from `$ARGUMENTS`:
 
 1. Mark Phase 4 as in_progress
 
-2. Launch `planner:creators:roadmap-architect` agent with the prompt:
+2. Use the Agent tool to spawn the agent `planner:creators:roadmap-architect` to design the roadmap:
 
-   ```text
-   Create a roadmap for:
-   Goal: $goal
-   Phases: $phases
-   Horizon: $horizon
+   ```markdown
+   Agent(planner:creators:roadmap-architect):
+     prompt:
+       Create a roadmap for:
+       Goal: $goal
+       Phases: $phases
+       Horizon: $horizon
 
-   Context gathered:
-   {{context_summary}}
+       Context gathered:
+       {{context_summary}}
 
-   GitHub issues relevant:
-   {{github_issues}}
-
-   Design phases with:
-   - Clear objectives per phase
-   - SMART milestones
-   - Concrete deliverables
-   - Dependencies mapped
-   - Risks identified
+       GitHub issues relevant:
+       {{github_issues}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 3. Receive roadmap structure from agent
 

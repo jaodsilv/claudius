@@ -16,7 +16,7 @@ Applies RICE, MoSCoW, Weighted Scoring, Kano, or Value vs Effort frameworks to r
 ## Framework Selection
 
 | Framework        | Best For                          |
-| ---------------- | --------------------------------- |
+| :--------------- | :-------------------------------- |
 | RICE             | Data-driven product decisions     |
 | MoSCoW           | Stakeholder-driven prioritization |
 | Weighted Scoring | Custom criteria evaluation        |
@@ -43,7 +43,7 @@ gh issue view <number> --json number,title,body,labels,state
 
 ```markdown
 | Rank | Item | Reach | Impact | Confidence | Effort | Score |
-| ---- | ---- | ----- | ------ | ---------- | ------ | ----- |
+| :--- | :--- | :---- | :----- | :--------- | :----- | :---- |
 | 1    | ...  | ...   | ...    | ...        | ...    | ...   |
 ```
 

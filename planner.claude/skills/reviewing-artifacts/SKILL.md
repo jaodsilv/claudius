@@ -21,7 +21,7 @@ model: sonnet
 ## Dimension Scoring (1-5 Scale)
 
 | Score | Meaning                                  |
-| ----- | ---------------------------------------- |
+| :---- | :--------------------------------------- |
 | 5     | Excellent - exceeds expectations         |
 | 4     | Good - meets expectations                |
 | 3     | Adequate - acceptable with minor issues  |
@@ -46,7 +46,7 @@ model: sonnet
 ## Gap Analysis Format
 
 | Gap               | Impact               | Suggested Resolution |
-| ----------------- | -------------------- | -------------------- |
+| :---------------- | :------------------- | :------------------- |
 | [Missing element] | [Impact on artifact] | [How to address]     |
 
 ## Interactive Refinement

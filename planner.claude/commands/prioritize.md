@@ -21,15 +21,18 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 1: Initialization
 
-1. Initialize task list using TaskCreate:
-   - Phase 1: Initialization (in_progress)
-   - Phase 2: Issue Fetching (pending)
-   - Phase 3: Relationship Mapping (pending)
-   - Phase 4: Framework Application (pending)
-   - Phase 5: Interactive Review (pending)
-   - Phase 6: Output Generation (pending)
+1. Use the TaskCreate tool to add the following task(s) to the task list:
 
-2. Load prioritization skill `planner:prioritizing-work` for prioritization framework guidance.
+   <new-tasks>
+   - [ ] Phase 1: Initialization (in_progress)
+   - [ ] Phase 2: Issue Fetching (pending)
+   - [ ] Phase 3: Relationship Mapping (pending)
+   - [ ] Phase 4: Framework Application (pending)
+   - [ ] Phase 5: Interactive Review (pending)
+   - [ ] Phase 6: Output Generation (pending)
+   </new-tasks>
+
+2. Use the Skill tool to load the skill `planner:prioritizing-work` for prioritization framework guidance.
 
 3. Verify gh CLI:
 
@@ -41,23 +44,18 @@ Extract from `$ARGUMENTS`:
 
 ### Phase 2: Issue Fetching
 
-1. Launch `issue-analyzer` agent:
+1. Use the Agent tool to spawn the agent `planner:github:issue-analyzer` to fetch and analyze issues:
 
-   ```text
-   Use Agent tool with `planner:github:issue-analyzer` agent:
-
-   Fetch and analyze issues: {{issues}}
-
-   For each issue, extract:
-   - Number and title
-   - Labels (priority, type, effort)
-   - Milestone
-   - Description/body
-   - Comments (for context)
-   - Linked PRs (for status)
-
-   Parse effort and priority signals from labels.
+   ```markdown
+   Agent(planner:github:issue-analyzer):
+     prompt: Fetch and analyze issues: {{issues}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 2. Receive structured issue data
 
@@ -65,19 +63,18 @@ Extract from `$ARGUMENTS`:
 
 1. Mark Phase 3 as in_progress
 
-2. Launch `issue-relationship-mapper` agent:
+2. Use the Agent tool to spawn the agent `planner:github:issue-relationship-mapper` to map issue dependencies:
 
-   ```text
-   Use Agent tool with `planner:github:issue-relationship-mapper` agent:
-
-   Map dependencies for issues: {{issue_list}}
-
-   Identify:
-   - Blocking relationships
-   - Issue dependencies
-   - Critical paths
-   - Parallel work opportunities
+   ```markdown
+   Agent(planner:github:issue-relationship-mapper):
+     prompt: Map dependencies for issues: {{issue_list}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 3. Receive dependency graph
 
@@ -85,31 +82,25 @@ Extract from `$ARGUMENTS`:
 
 1. Mark Phase 4 as in_progress
 
-2. Launch `prioritization-engine` agent:
+2. Use the Agent tool to spawn the agent `planner:creators:prioritization-engine` to apply the prioritization framework:
 
-   ```text
-   Use Agent tool with `planner:creators:prioritization-engine` agent:
+   ```markdown
+   Agent(planner:creators:prioritization-engine):
+     prompt:
+       Apply {{framework}} framework to prioritize:
 
-   Apply {{framework}} framework to prioritize:
+       Issues:
+       {{issue_data}}
 
-   Issues:
-   {{issue_data}}
-
-   Dependencies:
-   {{dependency_graph}}
-
-   For RICE:
-   - Estimate Reach from issue scope
-   - Assess Impact from problem severity
-   - Gauge Confidence from available data
-   - Estimate Effort from labels/complexity
-
-   For MoSCoW:
-   - Classify by criticality
-   - Validate effort distribution
-
-   Generate ranked priority list with rationale.
+       Dependencies:
+       {{dependency_graph}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 3. Receive prioritized list
 
