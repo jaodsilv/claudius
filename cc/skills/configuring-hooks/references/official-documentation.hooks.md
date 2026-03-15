@@ -324,7 +324,7 @@ Prompt-based hooks work with any hook event, but are most useful for:
 ### Comparison with bash command hooks
 
 | Feature               | Bash Command Hooks      | Prompt-Based Hooks             |
-| --------------------- | ----------------------- | ------------------------------ |
+| :-------------------- | :---------------------- | ------------------------------ |
 | **Execution**         | Runs bash script        | Queries LLM                    |
 | **Decision logic**    | You implement in code   | LLM evaluates context          |
 | **Setup complexity**  | Requires script file    | Configure prompt               |
@@ -841,7 +841,7 @@ Hooks communicate status through exit codes, stdout, and stderr:
 #### Exit Code 2 Behavior
 
 | Hook Event          | Behavior                                                           |
-| ------------------- | ------------------------------------------------------------------ |
+| :------------------ | :----------------------------------------------------------------- |
 | `PreToolUse`        | Blocks the tool call, shows stderr to Claude                       |
 | `PermissionRequest` | Denies the permission, shows stderr to Claude                      |
 | `PostToolUse`       | Shows stderr to Claude (tool already ran)                          |

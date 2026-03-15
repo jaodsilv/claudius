@@ -7,14 +7,14 @@ Detailed validation rules for Claude Code output-styles.
 ### Required Fields
 
 | Field | Requirement | Severity if Missing |
-|-------|-------------|---------------------|
+| :---- | :---------- | :------------------ |
 | name | Descriptive identifier | CRITICAL |
 | description | Clear purpose statement | CRITICAL |
 
 ### Optional Fields
 
 | Field | Best Practice | Severity if Violated |
-|-------|---------------|----------------------|
+| :---- | :------------ | :------------------- |
 | version | Semantic version format | LOW |
 
 ## Content Validation
@@ -22,7 +22,7 @@ Detailed validation rules for Claude Code output-styles.
 ### Required Sections
 
 | Section | Purpose | Severity if Missing |
-|---------|---------|---------------------|
+| :------ | :------ | :------------------ |
 | Purpose/Overview | Why this style exists | HIGH |
 | Formatting Rules | Specific format requirements | CRITICAL |
 | Tone Guidelines | Communication style | HIGH |
@@ -33,7 +33,7 @@ Detailed validation rules for Claude Code output-styles.
 ### Structure
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Explicit rules | Clear, specific directives | HIGH |
 | Examples | Show correct formatting | HIGH |
 | Prohibited patterns | What to avoid | MEDIUM |
@@ -41,7 +41,7 @@ Detailed validation rules for Claude Code output-styles.
 ### Common Rule Categories
 
 | Category | Examples |
-|----------|----------|
+| :------- | :------- |
 | Headers | H1 usage, capitalization |
 | Lists | Bullet vs numbered, nesting |
 | Code blocks | Language tags, line length |
@@ -54,7 +54,7 @@ Detailed validation rules for Claude Code output-styles.
 ### Required Elements
 
 | Element | Requirement | Severity |
-|---------|-------------|----------|
+| :------ | :---------- | :------- |
 | Voice definition | Active/passive, perspective | HIGH |
 | Formality level | Casual, professional, technical | HIGH |
 | Audience awareness | Who the output is for | MEDIUM |
@@ -85,7 +85,7 @@ Be nice and professional.  # Too vague
 ### Requirements
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Presence | At least 2 examples | HIGH |
 | Clarity | Easy to understand | MEDIUM |
 | Relevance | Match intended use cases | HIGH |
@@ -163,7 +163,7 @@ Nice to have polish:
 ### Internal Consistency
 
 | Check | Description | Severity |
-|-------|-------------|----------|
+| :---- | :---------- | :------- |
 | Rules match examples | Examples follow stated rules | CRITICAL |
 | No contradictions | Rules don't conflict | CRITICAL |
 | Complete coverage | Major format aspects addressed | HIGH |
@@ -171,7 +171,7 @@ Nice to have polish:
 ### External Consistency
 
 | Check | Description | Severity |
-|-------|-------------|----------|
+| :---- | :---------- | :------- |
 | Plugin consistency | Matches other plugin output-styles | LOW |
 | Standard compliance | Follows markdown/format standards | MEDIUM |
 
@@ -180,7 +180,7 @@ Nice to have polish:
 ### When Output-Styles Apply
 
 | Context | Application |
-|---------|-------------|
+| :------ | :---------- |
 | User-facing output | Primary use case |
 | Documentation generation | If creating docs |
 | Report formatting | If creating reports |

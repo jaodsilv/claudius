@@ -9,9 +9,9 @@ Patterns for communication and coordination between agents in orchestrations.
 Invoke agents using the Agent tool:
 
 ```markdown
-Use Agent tool with @agent-name:
+Use the Agent tool to spawn the agent `agent-name`:
 
-prompt: |
+Agent(agent-name):
   [Context from previous phase]
 
   Your task:
@@ -28,9 +28,9 @@ Pass relevant context between agents:
 ```markdown
 ### Good Context Passing
 
-Use Agent tool with @implementer:
+Use the Agent tool to spawn the agent `implementer`:
 
-prompt: |
+Agent(implementer):
   ## Context from Design Phase
 
   Architecture: [summary, not full document]
@@ -45,9 +45,9 @@ prompt: |
 ```markdown
 ### Bad Context Passing
 
-Use Agent tool with @implementer:
+Use the Agent tool to spawn the agent `implementer`:
 
-prompt: |
+Agent(implementer):
   [Dumps entire previous conversation]
   [Includes irrelevant details]
   [No clear task statement]

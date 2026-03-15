@@ -38,7 +38,7 @@ Common issues:
 ### Component-Specific Checks
 
 | Component | Required Fields | Key Validations |
-|-----------|-----------------|-----------------|
+| :-------- | :-------------- | :-------------- |
 | Command | description | Under 60 chars, allowed-tools valid |
 | Agent | name, description | Kebab-case name, 2+ examples |
 | Skill | name, description, version | Third-person description |
@@ -104,10 +104,10 @@ def foo():
 
 ## Integration
 
-Load this skill when applying changes:
+Use the Skill tool to load the skill `cc:validating-syntax` when applying changes:
 
-```text
-Use Skill tool to load cc:validating-syntax
+```markdown
+Skill(cc:validating-syntax)
 ```
 
 Apply validation after each modification and before proceeding to next change.

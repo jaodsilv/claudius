@@ -148,7 +148,7 @@ exit 0
 ## Common Mistakes
 
 | Mistake | Problem | Fix |
-|---------|---------|-----|
+| :------ | :------ | :-- |
 | `echo` before JSON | Corrupts output | Remove or redirect to stderr |
 | Manual escaping | Breaks on special chars | Use `jq --arg` |
 | Unquoted heredoc vars | Injection risk | Use jq for dynamic content |

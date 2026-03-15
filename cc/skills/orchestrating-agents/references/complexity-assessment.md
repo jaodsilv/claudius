@@ -7,7 +7,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 ### Factor 1: Phase Count
 
 | Phases | Complexity | Notes |
-|--------|------------|-------|
+| :----- | :--------- | :---- |
 | 1-2 | Simple | Consider if orchestration is needed |
 | 3-4 | Moderate | Standard orchestration |
 | 5-7 | Complex | Consider hierarchical pattern |
@@ -16,7 +16,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 ### Factor 2: Agent Count
 
 | Agents | Complexity | Notes |
-|--------|------------|-------|
+| :----- | :--------- | :---- |
 | 1-2 | Simple | May not need orchestration |
 | 3-4 | Moderate | Standard coordination |
 | 5-7 | Complex | Consider sub-coordinators |
@@ -25,7 +25,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 ### Factor 3: Data Dependencies
 
 | Type | Complexity | Description |
-|------|------------|-------------|
+| :--- | :--------- | :---------- |
 | Linear | Simple | Each phase depends only on previous |
 | Fork-Join | Moderate | Parallel then merge |
 | Cross-Phase | Complex | Multiple dependencies |
@@ -34,7 +34,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 ### Factor 4: User Interaction
 
 | Interaction Points | Complexity | Notes |
-|-------------------|------------|-------|
+| :---------------- | :--------- | :---- |
 | 0-1 | Simple | Mostly automated |
 | 2-3 | Moderate | Key decision points |
 | 4+ | Complex | Heavy user involvement |
@@ -42,7 +42,7 @@ Guidelines for assessing orchestration complexity and choosing appropriate patte
 ### Factor 5: Error Scenarios
 
 | Error Handling | Complexity | Description |
-|----------------|------------|-------------|
+| :------------- | :--------- | :---------- |
 | Fail-fast | Simple | Stop on any error |
 | Retry | Moderate | Attempt recovery |
 | Partial | Complex | Continue with available results |
@@ -208,7 +208,7 @@ After (2 interactions):
 ## Documentation Requirements by Complexity
 
 | Complexity | Required Documentation |
-|------------|------------------------|
+| :--------- | :--------------------- |
 | Simple | Phase list, agent list |
 | Moderate | + Data flow, error handling |
 | Complex | + State diagram, recovery procedures |

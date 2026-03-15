@@ -53,7 +53,7 @@ Hooks live in the plugin's `.claude-plugin/hooks/` directory:
 Hooks receive context via environment variables:
 
 | Variable | Description | Available In |
-|----------|-------------|--------------|
+| :------- | :---------- | :----------- |
 | `CLAUDE_TOOL_NAME` | Name of tool being called | PreToolUse, PostToolUse |
 | `CLAUDE_TOOL_INPUT` | JSON string of tool parameters | PreToolUse, PostToolUse |
 | `CLAUDE_TOOL_OUTPUT` | Tool execution result | PostToolUse only |
@@ -65,7 +65,7 @@ Hooks receive context via environment variables:
 PreToolUse hooks return a decision using the `hookSpecificOutput` format:
 
 | Decision | Effect |
-|----------|--------|
+| :------- | :----- |
 | `allow` | Tool executes normally |
 | `deny` | Tool blocked, reason shown to Claude |
 | `modify` | Tool parameters modified (advanced) |
@@ -163,7 +163,7 @@ exit 0
 ## Cross-Platform Considerations
 
 | Concern | Solution |
-|---------|----------|
+| :------ | :------- |
 | Shebang | Use `#!/usr/bin/env bash` |
 | Line endings | Ensure LF, not CRLF |
 | Path separators | Use `/` (bash normalizes on Windows) |

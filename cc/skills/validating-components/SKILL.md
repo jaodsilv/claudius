@@ -16,12 +16,12 @@ Validation criteria and quality standards for Claude Code plugin components.
 ## Quick Reference
 
 | Component | Key Validations | Reference |
-|-----------|-----------------|-----------|
-| Command | description <60 chars, allowed-tools minimal, FOR Claude style | `references/command-criteria.md` |
-| Agent | 2-4 examples, 500-3000 word prompt, clear role | `references/agent-criteria.md` |
-| Skill | third-person description, 1500-2000 words, progressive disclosure | `references/skill-criteria.md` |
-| Orchestration | phase gates, data flow, error recovery | `references/orchestration-criteria.md` |
-| Output-Style | formatting rules, tone definition, examples | `references/output-style-criteria.md` |
+| :-------- | :-------------- | :-------- |
+| Command | description <60 chars, allowed-tools minimal, FOR Claude style | `${CLAUDE_SKILL_DIR}/references/command-criteria.md` |
+| Agent | 2-4 examples, 500-3000 word prompt, clear role | `${CLAUDE_SKILL_DIR}/references/agent-criteria.md` |
+| Skill | third-person description, 1500-2000 words, progressive disclosure | `${CLAUDE_SKILL_DIR}/references/skill-criteria.md` |
+| Orchestration | phase gates, data flow, error recovery | `${CLAUDE_SKILL_DIR}/references/orchestration-criteria.md` |
+| Output-Style | formatting rules, tone definition, examples | `${CLAUDE_SKILL_DIR}/references/output-style-criteria.md` |
 
 ## Universal Criteria
 
@@ -46,7 +46,7 @@ All components must satisfy:
 Assign severity based on impact:
 
 | Severity | Criteria |
-|----------|----------|
+| :------- | :------- |
 | CRITICAL | Prevents component from functioning, security vulnerability |
 | HIGH | Best practice violation affecting quality or maintainability |
 | MEDIUM | Enhancement opportunity, suboptimal but functional |
@@ -56,8 +56,8 @@ Assign severity based on impact:
 
 Detailed criteria for each component type:
 
-- **`references/command-criteria.md`** - Command validation rules
-- **`references/agent-criteria.md`** - Agent validation rules
-- **`references/skill-criteria.md`** - Skill validation rules
-- **`references/orchestration-criteria.md`** - Orchestration validation rules
-- **`references/output-style-criteria.md`** - Output-style validation rules
+- **`${CLAUDE_SKILL_DIR}/references/command-criteria.md`** - Command validation rules
+- **`${CLAUDE_SKILL_DIR}/references/agent-criteria.md`** - Agent validation rules
+- **`${CLAUDE_SKILL_DIR}/references/skill-criteria.md`** - Skill validation rules
+- **`${CLAUDE_SKILL_DIR}/references/orchestration-criteria.md`** - Orchestration validation rules
+- **`${CLAUDE_SKILL_DIR}/references/output-style-criteria.md`** - Output-style validation rules

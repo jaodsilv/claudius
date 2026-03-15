@@ -27,7 +27,7 @@ For simple linear tasks, prefer single commands or agents.
 ## Pattern Selection
 
 | Pattern | Use Case |
-|---------|----------|
+| :------ | :------- |
 | Sequential | Phases execute in order, each depends on previous |
 | Parallel | Independent analyses that merge results |
 | Iterative | Refinement loops with quality gates |
@@ -50,7 +50,9 @@ allowed-tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion
 [What this phase accomplishes]
 
 ### Execution
-Use Agent tool with @[agent-name]:
+Use the Agent tool to spawn the agent `[agent-name]`:
+
+Agent([agent-name]):
   [Detailed instructions]
 
 ### Gate
@@ -83,7 +85,7 @@ Each phase requires:
 ## Complexity Assessment
 
 | Factor | Simple | Moderate | Complex |
-|--------|--------|----------|---------|
+| :----- | :----- | :------- | :------ |
 | Phases | 1-2 | 3-4 | 5+ |
 | Agents | 1-2 | 3-4 | 5+ |
 | User interactions | 0-1 | 2-3 | 4+ |
@@ -92,6 +94,6 @@ If complexity exceeds "Moderate", consider decomposition.
 
 ## Additional Resources
 
-- **`references/coordinator-patterns.md`** - Detailed coordination patterns
-- **`references/agent-coordination.md`** - Agent communication patterns
-- **`references/complexity-assessment.md`** - Complexity scoring guidelines
+- **`${CLAUDE_SKILL_DIR}/references/coordinator-patterns.md`** - Detailed coordination patterns
+- **`${CLAUDE_SKILL_DIR}/references/agent-coordination.md`** - Agent communication patterns
+- **`${CLAUDE_SKILL_DIR}/references/complexity-assessment.md`** - Complexity scoring guidelines

@@ -23,7 +23,7 @@ Guidelines for interactive improvement workflows in Claude Code plugins.
 ## Severity Levels
 
 | Level | Description | Examples |
-|-------|-------------|----------|
+| :---- | :---------- | :------- |
 | CRITICAL | Breaks functionality/security | Invalid syntax, missing fields, vulnerabilities |
 | HIGH | Best practice violations | Missing examples, wrong style, permissive tools |
 | MEDIUM | Enhancement opportunities | Incomplete docs, suboptimal organization |
@@ -87,5 +87,5 @@ Options: [List of specific improvements]
 
 ## Additional Resources
 
-- **`references/interactive-patterns.md`** - AskUserQuestion patterns
-- **`references/approval-workflows.md`** - Multi-step approval patterns
+- **`${CLAUDE_SKILL_DIR}/references/interactive-patterns.md`** - AskUserQuestion patterns
+- **`${CLAUDE_SKILL_DIR}/references/approval-workflows.md`** - Multi-step approval patterns

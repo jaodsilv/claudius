@@ -99,7 +99,7 @@ pdf-skill/
 Claude accesses these files only when referenced. The filesystem model means each content type has different strengths: instructions for flexible guidance, code for reliability, resources for factual lookup.
 
 | Level | When Loaded | Token Cost | Content |
-|-------|------------|------------|---------|
+| :---- | :--------- | :--------- | :------ |
 | **Level 1: Metadata** | Always (at startup) | ~100 tokens per Skill | `name` and `description` from YAML frontmatter |
 | **Level 2: Instructions** | When Skill is triggered | Under 5k tokens | SKILL.md body with instructions and guidance |
 | **Level 3+: Resources** | As needed | Effectively unlimited | Bundled files executed via bash without loading contents into context |

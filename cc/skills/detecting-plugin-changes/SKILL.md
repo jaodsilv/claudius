@@ -26,7 +26,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/plugins/detect-affected-plugins.sh "" "."
 ## Input Arguments
 
 | Argument | Required | Description |
-|----------|----------|-------------|
+| :------- | :------- | :---------- |
 | `$1` | No | PR number (empty string for git diff mode) |
 | `$2` | No | Working directory (defaults to ".") |
 

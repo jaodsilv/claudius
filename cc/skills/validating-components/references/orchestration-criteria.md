@@ -7,7 +7,7 @@ Detailed validation rules for Claude Code orchestration commands.
 ### Required Sections
 
 | Section | Purpose | Severity if Missing |
-|---------|---------|---------------------|
+| :------ | :------ | :------------------ |
 | Phase definitions | Clear phase structure | CRITICAL |
 | Data flow | Information passing between phases | HIGH |
 | Error handling | Recovery and fallback patterns | HIGH |
@@ -19,7 +19,7 @@ Detailed validation rules for Claude Code orchestration commands.
 Each phase should have:
 
 | Element | Requirement | Severity |
-|---------|-------------|----------|
+| :------ | :---------- | :------- |
 | Purpose | Clear description of phase goal | HIGH |
 | Execution | Specific actions to perform | CRITICAL |
 | Gate/Validation | Conditions to proceed to next phase | HIGH |
@@ -28,7 +28,7 @@ Each phase should have:
 ### Phase Naming
 
 | Convention | Example | Severity |
-|------------|---------|----------|
+| :--------- | :------ | :------- |
 | Numbered | Phase 1, Phase 2 | - |
 | Named | Discovery, Analysis, Application | - |
 | Mixed | Phase 1: Discovery | RECOMMENDED |
@@ -38,7 +38,7 @@ Each phase should have:
 ### Input Handling
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Input parsing | Arguments parsed explicitly | HIGH |
 | Validation | Inputs validated before use | MEDIUM |
 | Defaults | Sensible defaults for optional inputs | LOW |
@@ -46,7 +46,7 @@ Each phase should have:
 ### Inter-Phase Communication
 
 | Pattern | Description | Severity if Missing |
-|---------|-------------|---------------------|
+| :------ | :---------- | :------------------ |
 | State preservation | TaskCreate/TaskUpdate for progress tracking | MEDIUM |
 | Context passing | Explicit data handoff between phases | HIGH |
 | Intermediate results | Store for later phases | MEDIUM |
@@ -56,7 +56,7 @@ Each phase should have:
 ### Delegation Patterns
 
 | Pattern | When to Use | Severity if Wrong |
-|---------|-------------|-------------------|
+| :------ | :---------- | :---------------- |
 | Sequential | Phases depend on previous results | - |
 | Parallel | Independent analyses | MEDIUM (if not used when possible) |
 | Hierarchical | Coordinator → Sub-agents | - |
@@ -64,7 +64,7 @@ Each phase should have:
 ### Agent Communication
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Clear prompts | Specific task description for each agent | HIGH |
 | Context provision | Necessary context passed to agents | HIGH |
 | Result handling | Agent outputs properly processed | HIGH |
@@ -74,7 +74,7 @@ Each phase should have:
 ### Required Patterns
 
 | Pattern | Requirement | Severity if Missing |
-|---------|-------------|---------------------|
+| :------ | :---------- | :------------------ |
 | Phase failure | What to do if a phase fails | HIGH |
 | Agent failure | Recovery if delegated agent fails | HIGH |
 | Partial completion | Handle partial success | MEDIUM |
@@ -83,7 +83,7 @@ Each phase should have:
 ### Recovery Strategies
 
 | Strategy | When to Use |
-|----------|-------------|
+| :------- | :---------- |
 | Retry | Transient failures |
 | Skip | Non-critical phase |
 | Fallback | Alternative approach available |
@@ -133,7 +133,7 @@ Nice to have polish:
 ### When to Use Orchestration
 
 | Scenario | Recommendation |
-|----------|----------------|
+| :------- | :------------- |
 | Single-step task | Simple command, not orchestration |
 | 2-3 sequential steps | Simple command may suffice |
 | 4+ phases | Orchestration appropriate |
@@ -143,7 +143,7 @@ Nice to have polish:
 ### Pattern Selection
 
 | Pattern | Use When |
-|---------|----------|
+| :------ | :------- |
 | Sequential | Each phase depends on previous |
 | Parallel | Independent analyses can run together |
 | Iterative | Refinement cycles needed |
@@ -157,9 +157,13 @@ Nice to have polish:
 **Purpose**: Identify all components to analyze
 
 **Execution**:
-1. Use Glob to find all command files
-2. Use Glob to find all agent files
-3. Create task list using TaskCreate with component list
+1. Use the Glob tool to find all command files
+2. Use the Glob tool to find all agent files
+3. Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] [component list items]
+</new-tasks>
 
 **Gate**: At least one component found
 

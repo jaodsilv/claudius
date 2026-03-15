@@ -36,7 +36,7 @@ When a focus area is specified:
 ### Commands
 
 | Focus Area | Analysis Emphasis |
-|------------|-------------------|
+| :--------- | :---------------- |
 | error handling | Error paths, validation, recovery, graceful failures |
 | argument handling | Parsing, validation, documentation, $ARGUMENTS usage |
 | tool permissions | allowed-tools, least privilege, security |
@@ -46,7 +46,7 @@ When a focus area is specified:
 ### Agents
 
 | Focus Area | Analysis Emphasis |
-|------------|-------------------|
+| :--------- | :---------------- |
 | triggering | Description, examples, trigger phrases |
 | system prompt | Clarity, structure, completeness, length |
 | tools | Tool selection, permissions, least privilege |
@@ -56,7 +56,7 @@ When a focus area is specified:
 ### Skills
 
 | Focus Area | Analysis Emphasis |
-|------------|-------------------|
+| :--------- | :---------------- |
 | progressive disclosure | Content organization, SKILL.md vs references |
 | trigger phrases | Description wording, activation scenarios |
 | writing style | Third-person description, imperative body |
@@ -66,7 +66,7 @@ When a focus area is specified:
 ### Orchestrations
 
 | Focus Area | Analysis Emphasis |
-|------------|-------------------|
+| :--------- | :---------------- |
 | phases | Phase structure, transitions, gates |
 | data flow | Information passing between phases |
 | error handling | Recovery, fallbacks, partial completion |
@@ -100,7 +100,7 @@ When focus is specified, adapt output:
 When focus is specified, adjust severity weighting:
 
 | Issue Type | Normal Weight | With Focus |
-|------------|---------------|------------|
+| :--------- | :------------ | :--------- |
 | Focus-area CRITICAL | CRITICAL | CRITICAL |
 | Focus-area HIGH | HIGH | HIGH |
 | Focus-area MEDIUM | MEDIUM | HIGH |
@@ -112,10 +112,10 @@ When focus is specified, adjust severity weighting:
 
 ## Integration
 
-Load this skill when implementing component analyzers:
+Use the Skill tool to load the skill `cc:analyzing-focus-areas` when implementing component analyzers:
 
-```text
-Use Skill tool to load cc:analyzing-focus-areas
+```markdown
+Skill(cc:analyzing-focus-areas)
 ```
 
 Then check if focus area is specified in the request and apply the pattern accordingly.

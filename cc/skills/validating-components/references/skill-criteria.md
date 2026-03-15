@@ -8,7 +8,7 @@ Detailed validation rules for Claude Code skills.
 ### Required Fields
 
 | Field | Requirement | Severity if Missing |
-|-------|-------------|---------------------|
+| :---- | :---------- | :------------------ |
 | name | Format: `namespace:skill-name` | CRITICAL |
 | description | Third-person, trigger phrases | CRITICAL |
 | version | Semantic version format | HIGH |
@@ -18,7 +18,7 @@ Detailed validation rules for Claude Code skills.
 ### Writing Style
 
 | Criterion | Good | Bad | Severity |
-|-----------|------|-----|----------|
+| :-------- | :--- | :-- | :------- |
 | Perspective | "This skill provides..." | "Use this skill to..." | HIGH |
 | Trigger phrases | "Use when implementing..., analyzing..." | Vague descriptions | HIGH |
 | Scenarios | Lists concrete use cases | Generic capabilities | MEDIUM |
@@ -44,7 +44,7 @@ description: "Helps you organize skill content"  # Second-person, no triggers
 ### Writing Style
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Form | Imperative (verb-first) | HIGH |
 | Person | No second-person ("you should") | HIGH |
 | Structure | Procedural, step-by-step | MEDIUM |
@@ -52,7 +52,7 @@ description: "Helps you organize skill content"  # Second-person, no triggers
 ### Length Guidelines
 
 | Component | Target | Severity if Exceeded |
-|-----------|--------|----------------------|
+| :-------- | :----- | :------------------- |
 | SKILL.md | 1500-2000 words | HIGH (if >5000) |
 | Individual references | Unlimited | - |
 | Total skill | Consider splitting if >10000 | MEDIUM |
@@ -89,7 +89,7 @@ Avoid in main file:
 ### Other Directories
 
 | Directory | Purpose |
-|-----------|---------|
+| :-------- | :------ |
 | `examples/` | Complete, runnable code and templates |
 | `scripts/` | Validation utilities, automation tools |
 
@@ -135,7 +135,7 @@ Nice to have polish:
 ## Resource Validation
 
 | Check | Requirement | Severity |
-|-------|-------------|----------|
+| :---- | :---------- | :------- |
 | Referenced files exist | All `references/*.md` mentioned in SKILL.md must exist | CRITICAL |
 | No duplication | Content not repeated across files | HIGH |
 | Focused files | Each file has single focused purpose | MEDIUM |

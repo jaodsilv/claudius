@@ -5,7 +5,7 @@ Detailed patterns for robust error handling in Claude Code hooks.
 ## The Exit Code Contract
 
 | Exit Code | Meaning | Claude Behavior |
-|-----------|---------|-----------------|
+| :-------- | :------ | :-------------- |
 | 0 | Success | Processes JSON output normally |
 | Non-zero | Error | Hook considered failed, may retry or abort |
 
@@ -21,7 +21,7 @@ set -euo pipefail
 ```
 
 | Flag | Effect |
-|------|--------|
+| :--- | :----- |
 | `-e` | Exit on any command failure |
 | `-u` | Error on undefined variables |
 | `-o pipefail` | Pipeline fails if any command fails |
@@ -121,7 +121,7 @@ exit 0
 ## Common Pitfalls
 
 | Pitfall | Problem | Solution |
-|---------|---------|----------|
+| :------ | :------ | :------- |
 | Missing `exit 0` | Last command exit code used | Always end with `exit 0` |
 | Unquoted variables | Word splitting, glob expansion | Always quote: `"$VAR"` |
 | Undefined variables | Script aborts with `-u` | Use defaults: `${VAR:-}` |

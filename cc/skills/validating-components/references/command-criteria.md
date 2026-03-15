@@ -7,13 +7,13 @@ Detailed validation rules for Claude Code slash commands.
 ### Required Fields
 
 | Field | Requirement | Severity if Missing |
-|-------|-------------|---------------------|
+| :---- | :---------- | :------------------ |
 | description | Present, under 60 characters | CRITICAL |
 
 ### Optional Fields
 
 | Field | Best Practice | Severity if Violated |
-|-------|---------------|----------------------|
+| :---- | :------------ | :------------------- |
 | argument-hint | Document all expected arguments | HIGH |
 | allowed-tools | Minimal necessary set (least privilege) | HIGH |
 | model | Appropriate for command complexity | MEDIUM |
@@ -24,7 +24,7 @@ Detailed validation rules for Claude Code slash commands.
 ### Writing Style
 
 | Criterion | Good | Bad | Severity |
-|-----------|------|-----|----------|
+| :-------- | :--- | :-- | :------- |
 | Perspective | "Read the file and analyze..." | "This command will read the file..." | HIGH |
 | Voice | Imperative (action-oriented) | Descriptive (documentation-style) | HIGH |
 | Clarity | Explicit step-by-step instructions | Vague or ambiguous guidance | MEDIUM |
@@ -32,7 +32,7 @@ Detailed validation rules for Claude Code slash commands.
 ### Argument Handling
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | $ARGUMENTS usage | Properly referenced in body | HIGH |
 | Validation | Arguments validated before use | MEDIUM |
 | Documentation | argument-hint describes all arguments | HIGH |
@@ -40,11 +40,11 @@ Detailed validation rules for Claude Code slash commands.
 ### Integration Patterns
 
 | Pattern | Correct Syntax | Severity if Wrong |
-|---------|----------------|-------------------|
+| :------ | :------------- | :---------------- |
 | File references | `@path/to/file.md` | HIGH |
 | Bash execution | `` !`command` `` | HIGH |
 | Agent delegation | `Task @agent-name` | HIGH |
-| Skill integration | `Use Skill tool to load skill-name`\* | MEDIUM |
+| Skill integration | `Use the Skill tool to load the skill skill-name`\* | MEDIUM |
 | Plugin paths | `${CLAUDE_PLUGIN_ROOT}/path` | MEDIUM |
 
 \* Skill integration in agents is also possible by adding the skills field to the frontmatter:

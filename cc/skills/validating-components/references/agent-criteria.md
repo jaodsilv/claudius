@@ -7,14 +7,14 @@ Detailed validation rules for Claude Code agents.
 ### Required Fields
 
 | Field | Requirement | Severity if Missing |
-|-------|-------------|---------------------|
+| :---- | :---------- | :------------------ |
 | name | 3-50 chars, kebab-case, alphanumeric start/end | CRITICAL |
 | description | Triggering conditions with 2-4 example blocks | CRITICAL |
 
 ### Optional Fields
 
 | Field | Best Practice | Severity if Violated |
-|-------|---------------|----------------------|
+| :---- | :------------ | :------------------- |
 | model | Appropriate for task complexity | MEDIUM |
 | color | Consistent with agent purpose | LOW |
 | tools | Minimal necessary set | HIGH |
@@ -22,7 +22,7 @@ Detailed validation rules for Claude Code agents.
 ## Identifier Validation
 
 | Criterion | Requirement | Examples |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Length | 3-50 characters | `code-reviewer`, `pr-analyzer` |
 | Characters | Lowercase, numbers, hyphens only | NOT: `Code_Reviewer`, `PR.Analyzer` |
 | Format | Starts and ends with alphanumeric | NOT: `-reviewer`, `reviewer-` |
@@ -33,7 +33,7 @@ Detailed validation rules for Claude Code agents.
 ### Triggering Conditions
 
 | Criterion | Requirement | Severity |
-|-----------|-------------|----------|
+| :-------- | :---------- | :------- |
 | Clarity | Specific, unambiguous conditions | HIGH |
 | Example count | 2-4 example blocks | HIGH |
 | Example format | context/user/assistant/commentary | HIGH |
@@ -58,7 +58,7 @@ assistant: "[How to respond and invoke agent]"
 ### Structure
 
 | Section | Requirement | Severity if Missing |
-|---------|-------------|---------------------|
+| :------ | :---------- | :------------------ |
 | Role definition | Clear expert persona | HIGH |
 | Responsibilities | Numbered, specific list | HIGH |
 | Process | Step-by-step workflow | HIGH |
@@ -69,7 +69,7 @@ assistant: "[How to respond and invoke agent]"
 ### Length Guidelines
 
 | Length | Assessment | Severity |
-|--------|------------|----------|
+| :----- | :--------- | :------- |
 | <200 words | Too short, lacks guidance | CRITICAL |
 | 200-500 words | Minimal, may miss edge cases | MEDIUM |
 | 500-3000 words | Ideal range | - |
@@ -117,7 +117,7 @@ Nice to have polish:
 ## Model Selection Guidelines
 
 | Task Type | Recommended Model |
-|-----------|-------------------|
+| :-------- | :---------------- |
 | Simple analysis, formatting | haiku |
 | Standard analysis, design | sonnet |
 | Complex reasoning, architecture | opus |
@@ -125,7 +125,7 @@ Nice to have polish:
 ## Color Guidelines
 
 | Purpose | Recommended Color |
-|---------|-------------------|
+| :------ | :---------------- |
 | Analysis, review | blue, cyan |
 | Generation, creation | green |
 | Validation, caution | yellow |

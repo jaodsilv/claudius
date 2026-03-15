@@ -31,7 +31,7 @@ Before publishing, verify:
 The context window is a public good. Only add context Claude doesn't already have.
 
 | Ask Yourself | If Yes |
-|--------------|--------|
+| :----------- | :----- |
 | Does Claude already know this? | Remove it |
 | Can I assume Claude knows this? | Remove explanation |
 | Does this justify its token cost? | Keep or condense |
@@ -51,7 +51,7 @@ with pdfplumber.open("file.pdf") as pdf:
 Match specificity to task fragility:
 
 | Freedom | When to Use | Example |
-|---------|-------------|---------|
+| :------ | :---------- | :------ |
 | High | Multiple valid approaches | Code review guidelines |
 | Medium | Preferred pattern with variation | Parameterized scripts |
 | Low | Fragile/critical operations | Database migrations |
@@ -69,7 +69,7 @@ Test skills with all target models:
 Use **gerund form** (verb + -ing) for skill names:
 
 | Good | Avoid |
-|------|-------|
+| :--- | :---- |
 | `processing-pdfs` | `pdf-processor` |
 | `analyzing-data` | `data-analysis` |
 | `testing-code` | `test-runner` |
@@ -120,8 +120,8 @@ description: I can help you process PDFs
 Read reference files based on your task:
 
 | Task | Reference File |
-|------|----------------|
-| Organizing skill content | [references/structure.md](references/structure.md) |
-| Writing workflow templates | [references/patterns.md](references/patterns.md) |
-| Testing and iteration | [references/evaluation.md](references/evaluation.md) |
-| Adding scripts/dependencies | [references/advanced.md](references/advanced.md) |
+| :--- | :------------- |
+| Organizing skill content | [${CLAUDE_SKILL_DIR}/references/structure.md](${CLAUDE_SKILL_DIR}/references/structure.md) |
+| Writing workflow templates | [${CLAUDE_SKILL_DIR}/references/patterns.md](${CLAUDE_SKILL_DIR}/references/patterns.md) |
+| Testing and iteration | [${CLAUDE_SKILL_DIR}/references/evaluation.md](${CLAUDE_SKILL_DIR}/references/evaluation.md) |
+| Adding scripts/dependencies | [${CLAUDE_SKILL_DIR}/references/advanced.md](${CLAUDE_SKILL_DIR}/references/advanced.md) |

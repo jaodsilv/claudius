@@ -27,7 +27,7 @@ Before publishing a hook, verify:
 ## Hook Types
 
 | Hook | Fires | Use Cases |
-|------|-------|-----------|
+| :--- | :---- | :-------- |
 | PreToolUse | Before tool execution | Block, modify, or log tool calls |
 | PostToolUse | After tool returns | Process results, update state |
 | Notification | On events | Respond to session events |
@@ -110,18 +110,18 @@ exit 0
 Read reference files based on your task:
 
 | Task | Reference File |
-|------|----------------|
-| Error handling patterns | [references/error-handling-rules.md](references/error-handling-rules.md) |
-| JSON output and escaping | [references/json-output-patterns.md](references/json-output-patterns.md) |
-| Hook execution lifecycle | [references/hook-lifecycle.md](references/hook-lifecycle.md) |
+| :--- | :------------- |
+| Error handling patterns | [${CLAUDE_SKILL_DIR}/references/error-handling-rules.md](${CLAUDE_SKILL_DIR}/references/error-handling-rules.md) |
+| JSON output and escaping | [${CLAUDE_SKILL_DIR}/references/json-output-patterns.md](${CLAUDE_SKILL_DIR}/references/json-output-patterns.md) |
+| Hook execution lifecycle | [${CLAUDE_SKILL_DIR}/references/hook-lifecycle.md](${CLAUDE_SKILL_DIR}/references/hook-lifecycle.md) |
 
 ## Example Files
 
 Working examples for common patterns:
 
 | Pattern | Example File |
-|---------|--------------|
-| Error handling | [examples/error-handling.sh](examples/error-handling.sh) |
-| JSON output | [examples/json-output.sh](examples/json-output.sh) |
-| Capture and log | [examples/capture-and-log.sh](examples/capture-and-log.sh) |
-| Complete PreToolUse | [examples/complete-pretooluse-hook.sh](examples/complete-pretooluse-hook.sh) |
+| :------ | :----------- |
+| Error handling | [${CLAUDE_SKILL_DIR}/examples/error-handling.sh](${CLAUDE_SKILL_DIR}/examples/error-handling.sh) |
+| JSON output | [${CLAUDE_SKILL_DIR}/examples/json-output.sh](${CLAUDE_SKILL_DIR}/examples/json-output.sh) |
+| Capture and log | [${CLAUDE_SKILL_DIR}/examples/capture-and-log.sh](${CLAUDE_SKILL_DIR}/examples/capture-and-log.sh) |
+| Complete PreToolUse | [${CLAUDE_SKILL_DIR}/examples/complete-pretooluse-hook.sh](${CLAUDE_SKILL_DIR}/examples/complete-pretooluse-hook.sh) |

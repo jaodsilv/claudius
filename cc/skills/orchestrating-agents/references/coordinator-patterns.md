@@ -240,7 +240,7 @@ On resume:
 ## Choosing a Pattern
 
 | Scenario | Recommended Pattern |
-|----------|---------------------|
+| :------- | :------------------ |
 | Linear workflow, clear dependencies | Sequential |
 | Independent parallel analysis | Fork-Join |
 | Quality refinement loops | Iterative |
