@@ -175,7 +175,7 @@ Provide before/after benchmark commands when requesting performance testing.
 
 Structure output as follows:
 
-```markdown
+````markdown
 ## Performance Analysis Results
 
 **Performance Score**: X/10
@@ -200,10 +200,10 @@ Structure output as follows:
 ### Complexity Comparison
 
 | Component | Before | After | Improvement |
-|-----------|--------|-------|-------------|
+| :-------- | :----- | :---- | :---------- |
 | Function1 | O(n²)  | O(n)  | ✓ Better    |
 | Function2 | O(n)   | O(n)  | = Same      |
-```
+````
 
 ## Integration with Orchestrator
 

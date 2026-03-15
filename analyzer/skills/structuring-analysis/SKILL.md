@@ -13,7 +13,7 @@ Canonical format for all analysis output files in the analyzer plugin.
 
 ## Full Analysis Format
 
-Use the template in `references/analysis-schema.md` for the complete analysis file.
+Use the template in `${CLAUDE_SKILL_DIR}/references/analysis-schema.md` for the complete analysis file.
 
 Key sections:
 1. **Metadata** — Input type, timestamp, source description
@@ -33,7 +33,7 @@ Key sections:
 
 ## Severity Levels
 
-Use the definitions in `references/severity-levels.md` for consistent severity assignment.
+Use the definitions in `${CLAUDE_SKILL_DIR}/references/severity-levels.md` for consistent severity assignment.
 
 ## Writing Guidelines
 

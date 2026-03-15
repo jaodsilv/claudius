@@ -40,30 +40,36 @@ From prompt, extract mode and configuration:
 
 ## Phase 0: Initialize or Resume
 
-Create task list using TaskCreate:
+Use the TaskCreate tool to add the following task(s) to the task list:
 
-```text
+<new-tasks>
 - [ ] Initialize/Resume loop
 - [ ] Execute rounds (max: $maxRounds)
 - [ ] Complete and report
-```
+</new-tasks>
 
 Mark "Initialize/Resume loop" as in_progress.
 
 ### Start Mode
 
-1. Use `gitx:managing-pr-metadata` skill to ensure metadata exists at `$worktree`.
+1. Use the Skill tool to load the skill `gitx:managing-pr-metadata` to ensure metadata exists at `$worktree`.
 
 2. If the skill indicates `needs_fetch`:
-   - Run Agent `gitx:pr:metadata-fetcher`:
+   - Use the Agent tool to run the agent `gitx:pr:metadata-fetcher`:
 
      ```markdown
      Agent(gitx:pr:metadata-fetcher, prompt: "<worktree>$worktree</worktree>")
      ```
 
+     **IMPORTANT**:
+     - Run this agent with the prompt exactly as requested.
+     - The agent have full instructions of what to do with this prompt.
+     - The only required changes are replacing then placeholders by their values.
+     - Other than that, the only acceptable changes are eventual escapings needed and formatting.
+
    - Wait for completion, then retry ensure
 
-3. Initialize reviewLoop fields using `gitx:managing-pr-metadata` skill:
+3. Use the Skill tool to load the skill `gitx:managing-pr-metadata` to initialize reviewLoop fields:
    - worktree: `$worktree`
    - field: reviewLoop
    - value: `{"active": true, "maxRounds": $maxRounds, "startedAt": "$timestamp", "pausedAt": null, "reviewer": "$reviewer", "developer": "$developer", "ciChecker": "$ciChecker", "ciFixer": "$ciFixer"}`
@@ -83,7 +89,7 @@ Mark "Initialize/Resume loop" as in_progress.
 1. Parse `<pr-metadata>` from input to get `reviewLoop` state, `turn`, `reviewCount`, `approved`
 2. Verify `reviewLoop.active=true` OR `reviewLoop.pausedAt` is set
 3. If not found or invalid, report error and exit
-4. Clear pausedAt if set, using `gitx:managing-pr-metadata` skill:
+4. Clear pausedAt if set. Use the Skill tool to load the skill `gitx:managing-pr-metadata` to update the fields:
    - Update reviewLoop.pausedAt to null
    - Update reviewLoop.active to true
 
@@ -98,7 +104,7 @@ Mark "Execute rounds" as in_progress.
 Read metadata to get current state:
 
 - `reviewCount`: Current round number
-- `turn`: Current phase (REVIEW, RESPONSE, CI-PENDING, CI-REVIEW)
+- `turn`: Current phase (REVIEW, AUTHOR, CI-PENDING, CI-REVIEW)
 - `approved`: Exit condition
 - `maxRounds`: From reviewLoop configuration
 
@@ -108,11 +114,17 @@ While `approved=false` AND `reviewCount < maxRounds`:
 
 If `turn` is `CI-PENDING` or `CI-REVIEW` AND ciChecker is configured:
 
-Run Agent `review-loop:round-executor`:
+Use the Agent tool to run the agent `review-loop:round-executor`:
 
 ```markdown
 Agent(review-loop:round-executor, prompt: "<phase>CI</phase><worktree>$worktree</worktree>")
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for completion, then re-read metadata.
 
@@ -120,21 +132,33 @@ Wait for completion, then re-read metadata.
 
 If `turn` is `REVIEW`:
 
-Run Agent `review-loop:round-executor`:
+Use the Agent tool to run the agent `review-loop:round-executor`:
 
 ```markdown
 Agent(review-loop:round-executor, prompt: "<phase>REVIEW</phase><worktree>$worktree</worktree>")
 ```
 
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
+
 Wait for completion, then re-read metadata.
 
 ### 1.3 Approval Check
 
-Run Agent `review-loop:approval-verifier`:
+Use the Agent tool to run the agent `review-loop:approval-verifier`:
 
 ```markdown
 Agent(review-loop:approval-verifier, prompt: "<threshold>$resolveLevel</threshold><worktree>$worktree</worktree>")
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Parse result:
 
@@ -144,13 +168,19 @@ Parse result:
 
 ### 1.4 Developer Phase
 
-If `turn` is `RESPONSE` or approval check returned `NOT_APPROVED`:
+If `turn` is `AUTHOR` or approval check returned `NOT_APPROVED`:
 
-Run Agent `review-loop:round-executor`:
+Use the Agent tool to run the agent `review-loop:round-executor`:
 
 ```markdown
-Agent(review-loop:round-executor, prompt: "<phase>RESPONSE</phase><worktree>$worktree</worktree>")
+Agent(review-loop:round-executor, prompt: "<phase>AUTHOR</phase><worktree>$worktree</worktree>")
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Wait for completion, then re-read metadata.
 
@@ -158,7 +188,7 @@ Wait for completion, then re-read metadata.
 
 If `reviewCount` is even AND `reviewCount > 0`:
 
-Use `AskUserQuestion` tool:
+Use the AskUserQuestion tool to ask whether to continue the loop:
 
 ```markdown
 Question: "Round $reviewCount complete. Continue?"
@@ -184,7 +214,7 @@ If `reviewCount` has increased and still not approved, loop back to 1.1.
 
 If `reviewCount >= maxRounds` and not approved:
 
-Use `AskUserQuestion` tool:
+Use the AskUserQuestion tool to ask how to proceed after reaching the max rounds limit:
 
 ```markdown
 Question: "Max rounds ($maxRounds) reached. PR not yet approved."
@@ -200,7 +230,7 @@ Options:
 Mark "Execute rounds" as completed.
 Mark "Complete and report" as in_progress.
 
-Update metadata using `gitx:managing-pr-metadata` skill:
+Use the Skill tool to execute the skill `gitx:managing-pr-metadata` to update the metadata:
 
 ```markdown
 Skill(gitx:managing-pr-metadata, args: '--worktree "$worktree" --field "reviewLoop.active" --value false')
@@ -236,7 +266,7 @@ If any Agent call fails:
 
 1. Do NOT crash the loop
 2. Report error to user
-3. Use `AskUserQuestion` tool to offer: Retry, Skip phase, Manual mode, Stop
+3. Use the AskUserQuestion tool to ask the user to choose between: Retry, Skip phase, Manual mode, Stop
 
 If metadata read/write fails:
 

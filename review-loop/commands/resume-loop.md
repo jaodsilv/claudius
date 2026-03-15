@@ -100,7 +100,7 @@ For each field:
 
 If any overrides were applied, output:
 
-```
+```markdown
 Configuration changes for resumed loop:
   - Reviewer: $oldReviewer → $newReviewer (if changed)
   - Developer: $oldDeveloper → $newDeveloper (if changed)
@@ -112,7 +112,7 @@ Configuration changes for resumed loop:
 
 Output current state summary using values from context:
 
-```
+```markdown
 Resuming Review Loop
 
 Worktree: $worktree
@@ -133,19 +133,19 @@ Settings:
 
 ## Delegate to Orchestrator
 
-Using Agent tool, run `review-loop:orchestrator` agent:
+Use the Agent tool to spawn the agent `review-loop:orchestrator` to resume the review loop:
 
-```xml
-<mode>resume</mode>
-<worktree>$worktree</worktree>
-<pr-metadata>$pr_metadata</pr-metadata>
-<reviewer>$reviewer</reviewer>
-<developer>$developer</developer>
-<ciChecker>$ciChecker</ciChecker>
-<ciFixer>$ciFixer</ciFixer>
-<maxRounds>$maxRounds</maxRounds>
-<approvalThreshold>$approvalThreshold</approvalThreshold>
+```markdown
+Agent(review-loop:orchestrator):
+  prompt: "<mode>resume</mode><worktree>$worktree</worktree><pr-metadata>$pr_metadata</pr-metadata><reviewer>$reviewer</reviewer><developer>$developer</developer><ciChecker>$ciChecker</ciChecker><ciFixer>$ciFixer</ciFixer><maxRounds>$maxRounds</maxRounds><approvalThreshold>$approvalThreshold</approvalThreshold>"
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Where `$pr_metadata` is the full `<pr-metadata>` block received from the hook context.
 

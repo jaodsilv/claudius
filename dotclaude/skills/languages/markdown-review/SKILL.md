@@ -67,7 +67,7 @@ Align columns consistently for readability.
 
 ```markdown
 | Name | Age |
-|------|-----|
+| :--- | :-- |
 | John | 25  |
 ```
 

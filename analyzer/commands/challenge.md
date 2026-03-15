@@ -28,6 +28,7 @@ Agent(analyzer:adversarial-critic):
 ```
 
 **IMPORTANT**:
+
 - Run this agent with the prompt exactly as requested.
 - The agent have full instructions of what to do with this prompt.
 - The only required changes are replacing then placeholders by their values.

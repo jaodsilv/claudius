@@ -10,7 +10,7 @@ The `scripts/lib/count-tokens.py` estimates token usage. Thresholds in `inject_o
 
 All plugin `lib/` directories are **symlinks** to `scripts/lib/`, confirmed:
 
-```
+```markdown
 analyzer/hooks/scripts/lib        -> ../../../scripts/lib
 brainstorm.claude/hooks/scripts/lib -> ../../../scripts/lib
 cc/hooks/scripts/lib               -> ../../../scripts/lib
@@ -24,7 +24,7 @@ review-loop/hooks/scripts/lib      -> ../../../scripts/lib
 ## Current Thresholds (in `inject_or_read`)
 
 | Token Range | Haiku | Sonnet/Opus |
-|---|---|---|
+| :---------- | :---- | :---------- |
 | < 500 | Inject inline | Inject inline |
 | 500 - 9,999 | Inject inline | Explicit Read |
 | 10,000+ | Explicit Read (with line-range hints) | Explicit Read |
@@ -46,7 +46,7 @@ fi
 ## Central Files (Single Change Point)
 
 | File | Role | Key Lines |
-|---|---|---|
+| :--- | :--- | :-------- |
 | `scripts/lib/hook-output.sh` | `inject_or_read()` -- the **only** function that applies token thresholds | 103-142 |
 | `scripts/lib/count-tokens.py` | Token estimation engine (288 lines) called by `inject_or_read` | All |
 
@@ -57,7 +57,7 @@ fi
 ### gitx plugin (8 call sites)
 
 | Handler | Call Sites | Files Loaded | Consuming Agents |
-|---|---|---|---|
+| :------ | :--------- | :----------- | :--------------- |
 | `gitx/hooks/scripts/handlers/ci-pre-tool.sh` | 6 calls (lines 63, 136, 137, 160, 182, 204) | CI failure logs, analysis files, task files, plan files from `.thoughts/pr/ci/` | `gitx:ci:failure-analyzer`, `gitx:ci:analysis-merger`, `gitx:ci:analysis-splitter`, `gitx:ci:fix-planner`, `gitx:ci:fixer` |
 | `gitx/hooks/scripts/handlers/commit-push-inject-diff.sh` | 1 call (line 172) | `.claude/commit-conventions.yaml` | `gitx:commit:commit-writer` (via `gitx:committing-conventionally` skill) |
 | `gitx/hooks/scripts/handlers/review.sh` | 1 call (line 57) | `.thoughts/pr/review-prompt.txt` | `gitx:review:reviewer` (via `gitx:review` skill) |
@@ -65,7 +65,7 @@ fi
 ### analyzer plugin (3 call sites)
 
 | Handler | Call Sites | Files Loaded | Consuming Agents |
-|---|---|---|---|
+| :------ | :--------- | :----------- | :--------------- |
 | `analyzer/hooks/scripts/analyzer-pre-task.sh` | 3 calls (lines 75, 103, 118) | Analysis files, input files from `.thoughts/analyzer/` | `analyzer:analysis-splitter`, `analyzer:analyses-merger`, `analyzer:adversarial-critic` |
 
 > **Note:** Line 103 is inside a `for` loop, so at runtime it may execute multiple times per invocation.
@@ -79,7 +79,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### gitx plugin
 
 | Handler | Content Injected | Consuming Skill/Agent |
-|---|---|---|
+| :------ | :--------------- | :-------------------- |
 | `inject-pr-metadata.sh` (lines 67, 84, 101) | PR metadata fields from `.thoughts/pr/metadata.yaml` (parsed via `yq`) | `gitx:address-review:review-responder`, `gitx:address-review:ci-status-checker`, `gitx:pr:updater` |
 | `commit-push-inject-diff.sh` (line 181) | Git diffs (raw `git diff` output, **unbounded size**) | `gitx:commit:commit-writer`, `gitx:commit:file-selector`, `gitx:commit:change-grouper` |
 | `commit-push-pre.sh` (line 187) | File lists and status JSON | `gitx:commit-push` skill |
@@ -93,7 +93,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### analyzer plugin
 
 | Handler | Content Injected | Consuming Skill |
-|---|---|---|
+| :------ | :--------------- | :-------------- |
 | `analyze.sh` (line 9) | `<worktree>` | `analyzer:analyze` skill |
 | `split-analysis.sh` (line 20) | `<worktree>` | `analyzer:split-analysis` skill (via command) |
 | `merge-analyses.sh` (line 26) | `<worktree>` | `analyzer:merge-analyses` skill (via command) |
@@ -102,7 +102,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### review-loop plugin
 
 | Handler | Content Injected | Consuming Skill |
-|---|---|---|
+| :------ | :--------------- | :-------------- |
 | `start-loop.sh` (line 22) | `<worktree>` | `review-loop:start-loop` skill |
 | `resume-loop.sh` (lines 31, 44) | `<worktree>` + `<pr-metadata>` (review-loop state, turn, review count, approved) | `review-loop:resume-loop` skill |
 
@@ -113,7 +113,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### Agents receiving `inject_or_read` content (threshold-dependent)
 
 | Agent | Plugin | Files Injected |
-|---|---|---|
+| :---- | :----- | :------------- |
 | `gitx:ci:failure-analyzer` | gitx | CI failure logs |
 | `gitx:ci:analysis-merger` | gitx | Two analysis markdown files |
 | `gitx:ci:analysis-splitter` | gitx | One analysis markdown file |
@@ -128,7 +128,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### Agents receiving always-injected content (NOT threshold-gated today)
 
 | Agent | Plugin | Content Injected |
-|---|---|---|
+| :---- | :----- | :--------------- |
 | `gitx:address-review:review-responder` | gitx | PR metadata (PR#, branch, reviews JSON) |
 | `gitx:address-review:ci-status-checker` | gitx | PR metadata (PR#, branch, CI status JSON) |
 | `gitx:pr:updater` | gitx | PR metadata (PR#, branch, title, description) |
@@ -143,14 +143,14 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ### Skills consuming `inject_or_read` output
 
 | Skill | Plugin | Content Received |
-|---|---|---|
+| :---- | :----- | :--------------- |
 | `gitx:committing-conventionally` | gitx | Commit conventions YAML |
 | `gitx:review` | gitx | Review prompt text |
 
 ### Skills consuming always-injected output
 
 | Skill | Plugin | Content Received |
-|---|---|---|
+| :---- | :----- | :--------------- |
 | `gitx:commit-push` | gitx | File lists/status |
 | `gitx:address-review` | gitx | Worktree + turn |
 | `gitx:next-turn` | gitx | Worktree + turn |
@@ -170,7 +170,7 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 ## Scripts Affected
 
 | Script | Role | Impact |
-|---|---|---|
+| :----- | :--- | :----- |
 | `scripts/lib/hook-output.sh` | Defines `inject_or_read()` | **Primary change target** -- threshold values live here (lines 119-127) |
 | `scripts/lib/count-tokens.py` | Token estimation | May need updates if threshold logic moves here or new output modes are needed |
 | `scripts/lib/args-validator.sh` | Sources `hook-output.sh` at line 24 | Indirectly affected -- any handler using `args-validator.sh` also gets `inject_or_read` |

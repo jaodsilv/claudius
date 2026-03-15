@@ -20,7 +20,7 @@ From prompt, extract:
 
 ## Read Metadata
 
-Read `$worktree/.thoughts/pr/metadata.yaml` and extract:
+Use the Read tool to read `$worktree/.thoughts/pr/metadata.yaml` and extract:
 
 - `latestReviews`: Array of reviews to analyze
 - `reviewThreads`: Inline comments (check isResolved status)
@@ -57,7 +57,7 @@ Also count unresolved threads from `reviewThreads`:
 Based on `threshold`:
 
 | Threshold | APPROVED if | APPROVED_WITH_COMMENTS if |
-|-----------|-------------|---------------------------|
+| :-------- | :---------- | :------------------------ |
 | critical | criticalCount = 0 | criticalCount = 0 AND (importantCount > 0 OR minorCount > 0) |
 | important | criticalCount = 0 AND importantCount = 0 | criticalCount = 0 AND importantCount = 0 AND minorCount > 0 |
 | all | criticalCount = 0 AND importantCount = 0 AND minorCount = 0 AND unresolvedCount = 0 | N/A (must be fully clean) |
@@ -72,20 +72,20 @@ Also consider GitHub's `reviewDecision`:
 
 Return exactly one of:
 
-```
+```text
 APPROVED
 ```
 
 OR
 
-```
+```text
 APPROVED_WITH_COMMENTS
 Critical: 0, Important: 0, Minor: N
 ```
 
 OR
 
-```
+```text
 NOT_APPROVED
 Critical: N, Important: M, Minor: K
 Unresolved threads: U

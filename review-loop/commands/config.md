@@ -21,9 +21,9 @@ Extract from `$ARGUMENTS`:
 
 ## Step 1: Choose Config Level
 
-If neither `--project` nor `--user` provided, use AskUserQuestion:
+If neither `--project` nor `--user` provided, use the AskUserQuestion tool to ask the user to choose the config level:
 
-```
+```markdown
 Question: "Where should the configuration be saved?"
 Header: "Config Level"
 Options:
@@ -41,11 +41,11 @@ Based on level:
 
 ## Step 3: Check Existing Config
 
-Try to read config at determined path.
+Use the Read tool to read the config at the determined path.
 
-If config exists AND `--edit` not specified:
+If config exists AND `--edit` not specified, use the AskUserQuestion tool to ask what to do with the existing config:
 
-```
+```markdown
 Question: "Config already exists. What would you like to do?"
 Header: "Existing"
 Options:
@@ -63,9 +63,9 @@ If editing existing config, parse current values to use as defaults in following
 
 ## Step 4: Configure Reviewer Agent
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user to select a reviewer agent:
 
-```
+```markdown
 Question: "Which agent should review the code?"
 Header: "Reviewer"
 Options:
@@ -83,9 +83,9 @@ Store as `$reviewer`.
 
 ## Step 5: Configure Developer Agent
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user to select a developer agent:
 
-```
+```markdown
 Question: "Which agent should address review feedback?"
 Header: "Developer"
 Options:
@@ -99,9 +99,9 @@ Store as `$developer`.
 
 ## Step 6: Configure CI Integration
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask whether to enable CI integration:
 
-```
+```markdown
 Question: "Enable CI status checking?"
 Header: "CI"
 Options:
@@ -126,9 +126,9 @@ Based on selection:
 
 ## Step 7: Configure Max Rounds
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user to choose the maximum review rounds:
 
-```
+```markdown
 Question: "Maximum review rounds before stopping?"
 Header: "Max Rounds"
 Options:
@@ -148,9 +148,9 @@ Store as `$maxRounds`.
 
 ## Step 8: Configure Approval Threshold
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask the user to select the approval threshold:
 
-```
+```markdown
 Question: "When should the loop consider PR approved?"
 Header: "Threshold"
 Options:
@@ -171,9 +171,9 @@ Store as `$approvalThreshold`.
 
 ## Step 9: Custom Prompts (Optional)
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask whether to add custom agent prompts:
 
-```
+```markdown
 Question: "Add custom instructions for agents?"
 Header: "Prompts"
 Options:
@@ -205,29 +205,23 @@ developer: "$developer"
 
 If CI is configured, add:
 
-
 ```yaml
-
 # CI Integration
 ciChecker: "$ciChecker"
 ciFixer: "$ciFixer"
 ```
 
-
 Add loop settings:
 
 ```yaml
-
 # Loop Settings
 maxRounds: $maxRounds
 approvalThreshold: $approvalThreshold
 ```
 
-
 If custom prompts were requested, add commented template:
 
 ```yaml
-
 # Custom Prompts (edit as needed)
 # prompts:
 #   reviewer: |
@@ -238,13 +232,11 @@ If custom prompts were requested, add commented template:
 
 ## Step 11: Ensure Directory Exists
 
-
-Using Bash tool, create parent directory if needed:
+Use the Bash tool to create the parent directory if needed:
 
 For project-level:
 
 ```bash
-
 mkdir -p "$CWD/.config/review-loop"
 ```
 
@@ -256,13 +248,13 @@ mkdir -p "$HOME/.config/review-loop"
 
 ## Step 12: Write Config File
 
-Using Write tool, save the generated config to `$configPath`.
+Use the Write tool to save the generated config to `$configPath`.
 
 ## Step 13: Report Success
 
 Output summary:
 
-```
+```markdown
 Configuration saved!
 
 Location: $configPath

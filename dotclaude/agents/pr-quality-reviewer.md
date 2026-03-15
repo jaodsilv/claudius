@@ -72,7 +72,7 @@ Score = `(additions + deletions) + (changedFiles * 10) + (unique_extensions * 5)
 Based on `review_mode` parameter and calculated complexity:
 
 | Mode | Complexity | Action |
-|------|-----------|--------|
+| :--- | :-------- | :----- |
 | auto | < 150 | Delegate to `@pr-quick-reviewer` agent |
 | auto | 150-500 | Launch 2-3 agents based on file analysis |
 | auto | > 500 | Launch all 5 focused agents in parallel |
@@ -239,7 +239,7 @@ Based on `output_format` parameter, generate:
 ## Quality Gate Status
 
 | Gate | Status | Actual | Required |
-|------|--------|--------|----------|
+| :--- | :----- | :----- | :------- |
 | Code Coverage | ✅/❌ | XX% | 80% |
 | Security Scan | ✅/❌ | 0 HIGH | 0 HIGH |
 | All Tests Pass | ✅/❌ | XX/XX | 100% |

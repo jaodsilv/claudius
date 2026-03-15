@@ -98,8 +98,8 @@ Use `gitx:managing-pr-metadata` skill:
 ### Fields Already Available (from gitx)
 
 | Field | Type | Description |
-|-------|------|-------------|
-| `turn` | string | Current phase: REVIEW, RESPONSE, CI-PENDING, CI-REVIEW |
+| :---- | :--- | :---------- |
+| `turn` | string | Current phase: REVIEW, AUTHOR, CI-PENDING, CI-REVIEW |
 | `approved` | boolean | Loop exit condition |
 | `resolveLevel` | string | Approval threshold: all, critical, important |
 | `latestReviews` | array | Non-minimized reviews with timestamps/authors |
@@ -113,18 +113,18 @@ Use `gitx:managing-pr-metadata` skill:
 
 The `turn` field (managed by gitx) determines which phase to execute:
 
-```
+```markdown
 CI-PENDING → CI checks still running, wait
 CI-REVIEW  → CI failed, run ciFixer agent
 REVIEW     → Ready for review, run reviewer agent
-RESPONSE   → Review done, run developer agent
+AUTHOR   → Review done, run developer agent
 ```
 
-After RESPONSE phase, turn returns to REVIEW (or CI-* if CI enabled).
+After AUTHOR phase, turn returns to REVIEW (or CI-* if CI enabled).
 
 ## Directory Structure
 
-```
+```markdown
 .thoughts/
 ├── pr/
 │   └── metadata.yaml           # gitx metadata + reviewLoop extension

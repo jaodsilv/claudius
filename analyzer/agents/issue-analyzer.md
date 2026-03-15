@@ -23,6 +23,8 @@ From the prompt:
 
 Remaining prompt text: the raw input to analyze.
 
+The agent also uses the built-in `Explore` system agent for codebase investigation. No structured input is required for this — it is invoked as needed during analysis.
+
 ## Process
 
 ### 1. Parse Inputs

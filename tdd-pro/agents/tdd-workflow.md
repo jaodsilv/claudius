@@ -33,7 +33,7 @@ throughout.
 ### Workflow Phases
 
 | Phase | Name               | Key Action                      |
-|-------|--------------------|---------------------------------|
+| :---- | :----------------- | :------------------------------ |
 | 0     | Setup              | Create git worktree             |
 | 1     | Evaluation         | Determine if tests needed       |
 | 2     | Testing            | Design, plan, write tests       |
@@ -83,7 +83,7 @@ cd ../task-name-worktree
 **Purpose:** Determine testing strategy
 
 | Task Type       | Tests Required        |
-|-----------------|-----------------------|
+| :-------------- | :-------------------- |
 | New feature     | Yes                   |
 | Bug fix         | Yes                   |
 | Refactoring     | Evaluate case-by-case |
@@ -343,7 +343,7 @@ git worktree remove ../task-name-worktree
 ## Integration with Other Skills
 
 | Skill                        | Phase | Purpose           |
-|------------------------------|-------|-------------------|
+| :--------------------------- |-------|-------------------|
 | `tdd-pro:tdd-approach-selection` | 2     | Choose approach   |
 | `tdd-pro:conventional-commits`   | 4     | Commit messages   |
 | `tdd-pro:conventional-branch`    | 0     | Branch naming     |

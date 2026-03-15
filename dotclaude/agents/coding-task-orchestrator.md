@@ -73,7 +73,7 @@ mklink /J D:\src\{project-name}\{worktree-name}\data D:\src\{project-name}\data
 Evaluate if tests are needed:
 
 | Task Type   | Tests Required       |
-|-------------|----------------------|
+| :---------- | :------------------- |
 | New feature | Yes                  |
 | Bug fix     | Yes                  |
 | Refactoring | Evaluate case-by-case|
@@ -211,7 +211,7 @@ git push
 ## Skills Used
 
 | Skill                             | Phase | Purpose                 |
-|-----------------------------------|-------|-------------------------|
+| :-------------------------------- |-------|-------------------------|
 | `dotclaude:tdd-approach-selection`| 2     | Choose TDD approach     |
 | `dotclaude:tdd-workflow`          | 2-3   | TDD principles          |
 | `dotclaude:conventional-commits`  | 4     | Commit messages         |

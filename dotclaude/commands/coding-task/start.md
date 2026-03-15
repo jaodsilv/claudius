@@ -115,7 +115,7 @@ Will prompt for task description.
 ## Related Skills
 
 | Skill                             | Purpose                  |
-|-----------------------------------|--------------------------|
+| :-------------------------------- |--------------------------|
 | `dotclaude:tdd-approach-selection`| Choose TDD approach      |
 | `dotclaude:tdd-workflow`          | TDD principles & phases  |
 | `dotclaude:conventional-commits`  | Commit message format    |
@@ -124,5 +124,5 @@ Will prompt for task description.
 ## Related Commands
 
 | Command             | Purpose                           |
-|---------------------|-----------------------------------|
+| :------------------ | :-------------------------------- |
 | `/project:create`   | Create new project with data repo |

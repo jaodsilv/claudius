@@ -52,7 +52,7 @@ A complete workflow that orchestrates the entire TDD process:
 Separate phases for fine-grained control:
 
 | Phase    | Purpose                                    |
-|----------|--------------------------------------------|
+| :------- | :----------------------------------------- |
 | RED      | Write failing tests with framework patterns|
 | GREEN    | Minimal implementation to pass tests       |
 | REFACTOR | Improve code while keeping tests green     |

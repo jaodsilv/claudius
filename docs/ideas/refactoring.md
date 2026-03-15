@@ -19,7 +19,7 @@ After 5 rounds of multi-agent ideation and practical experimentation, we conclud
 We tested `context: fork` + `agent` field behavior:
 
 | Scenario | Result |
-|----------|--------|
+| :------- | :----- |
 | Plugin: `agent` field in skill | NOT loaded (bug) |
 | User config: `agent` field in skill | Works - agent footer appeared |
 | Skill body vs Agent body | Skill body is primary, agent supplements |
@@ -31,7 +31,7 @@ We tested `context: fork` + `agent` field behavior:
 ### Agent Archetypes
 
 | Archetype | Description | Extraction Strategy |
-|-----------|-------------|---------------------|
+| :-------- | :---------- | :------------------ |
 | **Worker** | Executes defined tasks | HIGH - procedures are transferable |
 | **Specialist** | Domain expert with methodology | SELECTIVE - extract taxonomies, keep judgment |
 | **Orchestrator** | Coordinates multiple agents | LOW - coordination IS identity |
@@ -45,24 +45,26 @@ We tested `context: fork` + `agent` field behavior:
 
 ## Decision Framework
 
-```
-Stage 1: Is there a second consumer for the methodology?
-  No  → Keep methodology in agent
-  Yes → Go to Stage 2
+**Stage 1**: Is there a second consumer for the methodology?
 
-Stage 2: What is the agent archetype?
-  Worker     → Extract most methodology
-  Specialist → Extract domain knowledge/taxonomies, keep analytical judgment
-  Orchestrator → Keep orchestration, extract only utilities
-  Analyzer   → Extract output templates/frameworks, keep analysis criteria
+- No  → Keep methodology in agent
+- Yes → Go to Stage 2
 
-Stage 3: Preserve Discovery
-  Leave summary stub in agent pointing to extracted skill
-```
+**Stage 2**: What is the agent archetype?
+
+- Worker     → Extract most methodology
+- Specialist → Extract domain knowledge/taxonomies, keep analytical judgment
+- Orchestrator → Keep orchestration, extract only utilities
+- Analyzer   → Extract output templates/frameworks, keep analysis criteria
+
+**Stage 3**: Preserve Discovery
+
+- Leave summary stub in agent pointing to extracted skill
 
 ### "Consumer" Definition
 
 A consumer is:
+
 - An agent that uses the methodology via `Skill` tool
 - An agent that has the skill in frontmatter `skills:` field
 - A command that invokes the skill directly
@@ -86,7 +88,7 @@ Systematically classify agents and apply prescribed extraction strategy.
 #### gitx Agent Classification
 
 | Agent | Lines | Archetype | Current Skills | Extraction Action |
-|-------|-------|-----------|----------------|-------------------|
+| :---- | :---- | :-------- | :------------- | :---------------- |
 | `worktree/creator` | 112 | Worker | managing-worktrees | DONE - keep as-is |
 | `worktree/remover` | ~80 | Worker | managing-worktrees | DONE - keep as-is |
 | `branch/merger` | ~60 | Worker | managing-branches | DONE - keep as-is |
@@ -99,7 +101,7 @@ Systematically classify agents and apply prescribed extraction strategy.
 #### review-loop Agent Classification
 
 | Agent | Archetype | Extraction Action |
-|-------|-----------|-------------------|
+| :---- | :-------- | :---------------- |
 | `orchestrator` | Orchestrator | KEEP - phase coordination is identity |
 | `round-executor` | Worker | Consider: extract phase templates |
 | `approval-verifier` | Analyzer | KEEP - decision logic specific |
@@ -162,7 +164,7 @@ New functionality should follow skill-first thinking. Existing functionality fol
 ## Rejected Approaches
 
 | Approach | Verdict | Reason |
-|----------|---------|--------|
+| :------- | :------ | :----- |
 | Skill-First Entry Points (Now) | WEAK | Bug prevents plugin support; commands have UX value |
 | Skill Injection Optimization | WEAK | Confuses declaration with instruction |
 | Command-Centric Orchestration | WEAK | Commands are wrong layer for orchestration |
@@ -171,7 +173,7 @@ New functionality should follow skill-first thinking. Existing functionality fol
 ## Risk Assessment
 
 | Factor | Refactor Now | Wait for Bug Fix |
-|--------|--------------|------------------|
+| :----- | :----------- | :--------------- |
 | Bug uncertainty | High risk | Low risk |
 | Technical debt | Starts accumulating | Continues accumulating |
 | Effort efficiency | May need rework | Work done once correctly |
@@ -219,7 +221,7 @@ New functionality should follow skill-first thinking. Existing functionality fol
 ## Appendix: Feature Capabilities Reference
 
 | Feature | Location | Purpose |
-|---------|----------|---------|
+| :------ | :------- | :------ |
 | `context: fork` | Skills AND Commands | Run in isolated subagent context |
 | `agent` field | Skills AND Commands | Specify which agent provides config when forked |
 | `user-invocable: false` | Skills | Hide from slash menu, keep programmatic access |

@@ -24,7 +24,7 @@ Apply this skill when:
 Search in priority order (first found wins):
 
 | Priority | Location | Description |
-|----------|----------|-------------|
+| :------- | :------- | :---------- |
 | 1 | Explicit `--config` path | User-specified config file |
 | 2 | `$worktree/.config/review-loop/config.yaml` | Project-level config |
 | 3 | `~/.config/review-loop/config.yaml` | User-level config |
@@ -70,7 +70,7 @@ fetchingStrategies:
 
 ### Step 1: Determine Config Path
 
-```
+```markdown
 IF --config provided:
   configPath = --config value
   IF file not exists: ERROR "Config file not found: $path"
@@ -94,7 +94,7 @@ If configPath is set:
 
 Precedence: CLI args > config file > hardcoded defaults
 
-```
+```markdown
 FOR each field IN [reviewer, developer, ciChecker, ciFixer, ...]:
   IF CLI arg provided for field:
     finalValue = CLI arg
@@ -117,7 +117,7 @@ If validation fails, prompt user for missing values.
 ## Hardcoded Defaults
 
 | Field | Default Value |
-|-------|---------------|
+| :---- | :------------ |
 | `maxRounds` | 5 |
 | `approvalThreshold` | all |
 | `reviewer` | (none - required) |
@@ -175,7 +175,7 @@ When resuming a loop with `/resume-loop`:
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Explicit --config not found | Error and exit |
 | Auto-detected config not found | Continue with CLI args only |
 | Invalid YAML syntax | Error with parse message |

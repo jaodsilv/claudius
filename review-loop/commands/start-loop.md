@@ -84,10 +84,9 @@ If config file has `prompts` section:
 ## Validate Required Arguments
 
 After merge, if `reviewer` is still missing:
-  Use AskUserQuestion:
+  Use the AskUserQuestion tool to ask the user to select a reviewer agent:
 
-
-  ```
+  ```markdown
   Question: "Which agent should perform code review?"
   Header: "Reviewer"
   Options:
@@ -101,9 +100,9 @@ After merge, if `reviewer` is still missing:
 
 After merge, if `developer` is still missing:
 
-  Use AskUserQuestion:
+  Use the AskUserQuestion tool to ask the user to select a developer agent:
 
-  ```
+  ```markdown
   Question: "Which agent should address review feedback?"
   Header: "Developer"
   Options:
@@ -128,22 +127,18 @@ If no config found:
 
 ## Delegate to Orchestrator
 
-Using Agent tool, run `review-loop:orchestrator` agent:
+Use the Agent tool to spawn the agent `review-loop:orchestrator` to start the review loop:
 
-```xml
-<mode>start</mode>
-<worktree>$worktree</worktree>
-<reviewer>$reviewer</reviewer>
-<developer>$developer</developer>
-<ciChecker>$ciChecker</ciChecker>
-<ciFixer>$ciFixer</ciFixer>
-<maxRounds>$maxRounds</maxRounds>
-<approvalThreshold>$approvalThreshold</approvalThreshold>
-<reviewerPrompt>$reviewerPrompt</reviewerPrompt>
-<developerPrompt>$developerPrompt</developerPrompt>
-<ciCheckerPrompt>$ciCheckerPrompt</ciCheckerPrompt>
-<ciFixerPrompt>$ciFixerPrompt</ciFixerPrompt>
-<noHandingOver>$noHandingOver</noHandingOver>
+```markdown
+Agent(review-loop:orchestrator):
+  prompt: "<mode>start</mode><worktree>$worktree</worktree><reviewer>$reviewer</reviewer><developer>$developer</developer><ciChecker>$ciChecker</ciChecker><ciFixer>$ciFixer</ciFixer><maxRounds>$maxRounds</maxRounds><approvalThreshold>$approvalThreshold</approvalThreshold><reviewerPrompt>$reviewerPrompt</reviewerPrompt><developerPrompt>$developerPrompt</developerPrompt><ciCheckerPrompt>$ciCheckerPrompt</ciCheckerPrompt><ciFixerPrompt>$ciFixerPrompt</ciFixerPrompt><noHandingOver>$noHandingOver</noHandingOver>"
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 The orchestrator will handle all loop logic, state management, and reporting.
