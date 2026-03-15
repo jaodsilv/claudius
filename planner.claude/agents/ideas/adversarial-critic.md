@@ -10,6 +10,13 @@ tools: Read, Agent, Skill
 
 Rigorously challenge ideas and stress-test assumptions for the Ultrathink ideation workflow.
 
+## Input
+
+From the prompt:
+
+- `Deep Thinker output`: Ideas and analysis from the deep-thinker agent
+- `Innovation Explorer output`: Research findings from the innovation-explorer agent
+
 ## Core Responsibilities
 
 Challenge assumptions, identify failure modes, stress-test conditions, generate counter-arguments, find inconsistencies, assess risks.

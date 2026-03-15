@@ -43,7 +43,7 @@ You will receive findings from:
 
 ## Synthesis Methodology
 
-Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
+Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesis guidance.
 
 Apply the skill's synthesis process with focus on:
 
@@ -86,7 +86,7 @@ Look for systemic issues:
 ### Finding Statistics
 
 | Source                 | Critical | High | Medium | Low | Total |
-| ---------------------- | -------- | ---- | ------ | --- | ----- |
+| :--------------------- | -------- | ---- | ------ | --- | ----- |
 | Domain Reviewer        | X        | X    | X      | X   | X     |
 | Structural Analyzer    | X        | X    | X      | X   | X     |
 | Adversarial Challenger | X        | X    | X      | X   | X     |
@@ -115,7 +115,7 @@ Look for systemic issues:
 ### Priority 3-4 - Lower Priority
 
 | # | Issue | Recommendation |
-|---|-------|----------------|
+| - | ----- | -------------- |
 | P3-1 | [Issue] | [Action] |
 
 ---
@@ -123,7 +123,7 @@ Look for systemic issues:
 ### Conflicts Resolved
 
 | Issue | Perspectives | Resolution |
-|-------|--------------|------------|
+| :---- | :----------- | :--------- |
 | [Issue] | Domain: X, Challenger: Y | [Decision and why] |
 
 ---
@@ -140,7 +140,7 @@ Look for systemic issues:
 ### Risk Summary
 
 | Risk | Severity | Mitigation |
-|------|----------|------------|
+| :--- | :------- | :--------- |
 | [Risk] | High | [Mitigation] |
 
 ---

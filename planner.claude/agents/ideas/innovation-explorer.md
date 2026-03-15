@@ -11,6 +11,15 @@ tools: Read, Glob, Grep, WebSearch, Agent
 Explore cutting-edge solutions, cross-domain inspiration, and unconventional
 approaches for the Ultrathink ideation workflow.
 
+## Input
+
+From the prompt:
+
+- `Topic`: The topic/goal to research — store as `$topic`
+- `Previous findings` (optional): Findings from prior rounds
+- `User interests` (optional): Areas of interest from facilitator feedback
+- `Round number`: Current round number — store as `$round`
+
 ## Core Responsibilities
 
 1. Research cutting-edge solutions and technologies
@@ -152,7 +161,7 @@ Consider what will be possible:
 ### Emerging Technologies
 
 | Technology | Maturity             | Potential Impact | Timeline      |
-| ---------- | -------------------- | ---------------- | ------------- |
+| :--------- | :------------------- | :--------------- | :------------ |
 | [Tech]     | Early/Growing/Mature | High/Medium/Low  | [When viable] |
 
 ### Unconventional Approaches

@@ -11,6 +11,14 @@ tools: Read, Write, Bash, Glob, Grep, Agent, Skill
 Apply systematic prioritization frameworks to rank issues, features, tasks, or
 any items requiring comparative evaluation.
 
+## Input
+
+From the prompt:
+
+- `framework`: Prioritization framework to use (RICE, MoSCoW, or custom) — store as `$framework`
+- `issues`: Issue data to prioritize (from GitHub or manual list)
+- `dependencies` (optional): Dependency graph between issues
+
 ## Skills to Load
 
 Load these skills for guidance:
@@ -88,7 +96,7 @@ Collect items to prioritize from:
 Choose framework based on context:
 
 | Context                      | Recommended Framework |
-| ---------------------------- | --------------------- |
+| :--------------------------- | --------------------- |
 | Product features with data   | RICE                  |
 | Stakeholder-driven decisions | MoSCoW                |
 | Custom evaluation criteria   | Weighted Scoring      |
@@ -186,12 +194,12 @@ Create prioritization matrix with:
 ### P0 - Critical
 
 | # | Title | Score | Effort | Rationale |
-|---|-------|-------|--------|-----------|
+| - | ----- | ----- | ------ | --------- |
 
 ### P1 - High Priority
 
 | # | Title | Score | Effort | Rationale |
-|---|-------|-------|--------|-----------|
+| - | ----- | ----- | ------ | --------- |
 
 ### P2 - Medium Priority
 

@@ -11,6 +11,15 @@ tools: Read, Glob, Grep, Agent, AskUserQuestion, WebSearch, Skill
 Review architecture decisions, evaluate technical designs, and verify alignment
 with goals and requirements.
 
+## Input
+
+From the prompt (via orchestrating-reviews skill):
+
+- `Context`: Path to the architecture documentation
+- `Mode`: Review thoroughness (`thorough` or `quick`)
+- `Phase`: Phase number (typically Phase 1 as Domain Reviewer)
+- `Goal` (optional): Requirements or goals to evaluate against
+
 ## Core Responsibilities
 
 1. Understand the architectural context
@@ -22,7 +31,7 @@ with goals and requirements.
 
 ## Review Methodology
 
-Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
+Use the Skill tool to load the skill `planner:reviewing-artifacts` for artifact review guidance.
 
 Follow the skill's review process with these domain-specific dimensions.
 
@@ -108,7 +117,7 @@ Reference: Use skill's standard evaluation format with above dimensions.
 Include dimension scores table:
 
 | Dimension          | Score | Key Finding |
-| ------------------ | ----- | ----------- |
+| :----------------- | :---- | :---------- |
 | Goal Alignment     | X/5   | [Finding]   |
 | Technical Soundness| X/5   | [Finding]   |
 | Scalability        | X/5   | [Finding]   |

@@ -11,9 +11,18 @@ tools: Read, Glob, Grep, WebSearch, Agent, Skill
 Ultrathink the problem space, then generate novel insights and solutions
 for the ideation workflow.
 
+## Input
+
+From the prompt:
+
+- `Topic`: The topic/goal to explore — store as `$topic`
+- `Previous round insights` (optional): Insights from previous rounds
+- `User feedback` (optional): Feedback from the facilitator
+- `Round number`: Current round number — store as `$round`
+
 ## Skills to Load
 
-Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
+Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesis guidance.
 
 ## Core Responsibilities
 

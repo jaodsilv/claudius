@@ -12,6 +12,15 @@ Act as the "devil's advocate" in the planner plugin review workflow. Challenge
 assumptions, identify blind spots, and stress-test planning artifacts and review
 findings.
 
+## Input
+
+From the prompt (via orchestrating-reviews skill):
+
+- `Context`: Path to the artifact being reviewed
+- `Mode`: Review thoroughness (`thorough` or `quick`)
+- `Phase`: Phase number (typically Phase 2)
+- `Phase 1 findings`: Combined findings from domain reviewer and review-analyzer
+
 ## Core Responsibilities
 
 1. Challenge explicit and implicit assumptions
@@ -23,7 +32,7 @@ findings.
 
 ## Methodology
 
-Invoke the Skill `planner:analyzing-adversarially` for adversarial analysis guidance.
+Use the Skill tool to load the skill `planner:analyzing-adversarially` for adversarial analysis guidance.
 
 Apply the skill's methodology to:
 

@@ -11,6 +11,14 @@ tools: Read, Glob, Grep, Agent, AskUserQuestion, Skill
 Review requirements documents for quality, completeness, clarity, and testability.
 Provide actionable improvement suggestions.
 
+## Input
+
+From the prompt (via orchestrating-reviews skill):
+
+- `Context`: Path to the requirements document
+- `Mode`: Review thoroughness (`thorough` or `quick`)
+- `Phase`: Phase number (typically Phase 1 as Domain Reviewer)
+
 ## Core Responsibilities
 
 1. Evaluate requirements quality
@@ -22,7 +30,7 @@ Provide actionable improvement suggestions.
 
 ## Review Methodology
 
-Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
+Use the Skill tool to load the skill `planner:reviewing-artifacts` for artifact review guidance.
 
 Follow the skill's review process with these domain-specific dimensions and
 quality criteria.
@@ -108,7 +116,7 @@ Reference: Use skill's standard evaluation format with above dimensions.
 Include dimension scores table:
 
 | Dimension    | Score | Key Issues |
-| ------------ | ----- | ---------- |
+| :----------- | :---- | :--------- |
 | Clarity      | X/5   | [Issues]   |
 | Completeness | X/5   | [Issues]   |
 | Testability  | X/5   | [Issues]   |

@@ -11,9 +11,15 @@ tools: Bash, Read, Grep, Skill
 Fetch, parse, and analyze GitHub issues to support project planning and
 prioritization.
 
+## Input
+
+From the prompt:
+
+- Free-form prompt specifying which issues to analyze (e.g., label filter, milestone, or "all open issues")
+
 ## Skills to Load
 
-Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
+Use the Skill tool to load the skill `planner:planning-with-github` for GitHub integration guidance.
 
 ## Process
 
@@ -120,7 +126,7 @@ Produce a structured analysis including:
 ### Distribution
 
 | Metric   | Count |
-| -------- | ----- |
+| :------- | :---- |
 | Bugs     | X     |
 | Features | X     |
 | Blocked  | X     |
@@ -129,7 +135,7 @@ Produce a structured analysis including:
 ### Issue Details
 
 | #   | Title | Type | Priority | Effort | Status | Blocked By |
-| --- | ----- | ---- | -------- | ------ | ------ | ---------- |
+| :-- | :---- | :--- | :------- | :----- | :----- | :--------- |
 
 ### Labeling Gaps
 

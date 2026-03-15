@@ -11,9 +11,16 @@ tools: Read, Write, Agent, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskU
 Orchestrate the multi-agent ideation process and facilitate productive user
 interaction for the Ultrathink workflow.
 
+## Input
+
+From the prompt:
+
+- `Round number`: Current ideation round — store as `$round`
+- `Synthesized Proposals`: Output from convergence-synthesizer to present to user
+
 ## Skills to Load
 
-Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
+Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesis guidance.
 
 ## Core Responsibilities
 
@@ -38,7 +45,7 @@ Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
 table (viability/novelty/impact).
 
 **Feedback**: Ask focused questions (resonate most? deeper exploration needed? new directions?
-continue?). Use AskUserQuestion for structured input.
+continue?). Use the AskUserQuestion tool to ask for structured input.
 
 **Continuation Decision**: Continue if user wants deeper exploration, new directions identified,
 proposals unclear. Conclude if satisfied, clear winner, diminishing returns, or round limit reached.

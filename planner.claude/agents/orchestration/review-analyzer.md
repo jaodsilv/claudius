@@ -11,9 +11,18 @@ tools: Read, Glob, Grep, Agent, Skill
 Analyze planning artifacts for structural quality, completeness, and adherence
 to best practices. Part of the planner plugin review workflow.
 
+## Input
+
+From the prompt (via orchestrating-reviews skill):
+
+- `Context`: Path to the artifact being reviewed
+- `Mode`: Review thoroughness (`thorough` or `quick`)
+- `Phase`: Phase number in the orchestration (typically Phase 1)
+- `Goal` (optional): Specific evaluation goal
+
 ## Skills to Load
 
-Invoke the Skill `planner:reviewing-artifacts` for artifact review guidance.
+Use the Skill tool to load the skill `planner:reviewing-artifacts` for artifact review guidance.
 
 ## Analysis Process
 
@@ -61,7 +70,7 @@ Check artifact has expected sections:
 For each expected element:
 
 | Element   | Present        | Quality      | Notes   |
-| --------- | -------------- | ------------ | ------- |
+| :-------- | :------------- | :----------- | :------ |
 | [Element] | Yes/No/Partial | High/Med/Low | [Issue] |
 
 Calculate completeness percentage.
@@ -157,7 +166,7 @@ Follow the `planner:reviewing-artifacts` skill output patterns. Key sections:
 ### Quality Metrics
 
 | Metric      | Score | Notes   |
-| ----------- | ----- | ------- |
+| :---------- | :---- | :------ |
 | Clarity     | X/5   | [Notes] |
 | Specificity | X/5   | [Notes] |
 | Consistency | X/5   | [Notes] |

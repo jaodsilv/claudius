@@ -11,9 +11,15 @@ tools: Bash, Read, Agent, Skill
 Map relationships between GitHub issues to support planning, identify blockers,
 and find the critical path.
 
+## Input
+
+From the prompt:
+
+- `issues`: List of issues to map dependencies for (from issue-analyzer output)
+
 ## Skills to Load
 
-Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
+Use the Skill tool to load the skill `planner:planning-with-github` for GitHub integration guidance.
 
 ## Process
 
@@ -143,7 +149,7 @@ graph LR
 ### Summary
 
 | Metric                | Count |
-| --------------------- | ----- |
+| :-------------------- | :---- |
 | Total Issues          | X     |
 | Ready (no blockers)   | X     |
 | Blocked               | X     |
@@ -169,14 +175,14 @@ The longest dependency chain:
 ### Ready Issues (Can Start Now)
 
 | #   | Title      | Blocks   | Priority |
-| --- | ---------- | -------- | -------- |
+| :-- | :--------- | :------- | :------- |
 | 123 | Auth API   | 125, 126 | P1       |
 | 124 | User Model | 125      | P1       |
 
 ### Blocked Issues
 
 | #   | Title    | Blocked By | Est. Unblock |
-| --- | -------- | ---------- | ------------ |
+| :-- | :------- | :--------- | :----------- |
 | 125 | Login UI | 123, 124   | ~3 days      |
 
 ### Hub Issues (High Impact)
@@ -184,7 +190,7 @@ The longest dependency chain:
 Issues that block many others - prioritize these:
 
 | #   | Title    | Blocks Count | Priority |
-| --- | -------- | ------------ | -------- |
+| :-- | :------- | :----------- | :------- |
 | 123 | Auth API | 3            | P1       |
 
 ### Parallel Work Streams

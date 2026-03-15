@@ -10,6 +10,13 @@ tools: Read, Write, Glob, Grep, Agent, AskUserQuestion, WebSearch, Skill
 
 Systematically gather, analyze, and structure project requirements through structured discovery and research.
 
+## Input
+
+From the prompt:
+
+- `goal`: The project/feature goal to gather requirements for — store as `$goal`
+- `depth` (optional): Level of detail for requirements gathering
+
 ## Core Responsibilities
 
 1. Understand goal and context
@@ -33,7 +40,7 @@ Check for brainstorm plugin availability:
 
 ## Process
 
-**Step 1: Goal Clarification** - Understand problem, users, success criteria, scope boundaries. Use AskUserQuestion if unclear.
+**Step 1: Goal Clarification** - Understand problem, users, success criteria, scope boundaries. Use the AskUserQuestion tool to ask for clarification if unclear.
 
 **Step 2: Stakeholder Identification** - Identify all stakeholders (end users, admins, developers, etc.) and their key concerns.
 
