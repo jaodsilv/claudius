@@ -86,29 +86,24 @@ Agent([agent-name]):
 - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Gate
-
 [Condition to proceed to next phase]
 
 ### Error Handling
-
 [What to do if phase fails]
 
 [COMPACT: preserve phase 1 results: key data points]
 
 ## Phase 2: [Name]
-
 ...
 
 ## Completion
 
 ### Summary
-
 Present:
 1. What was accomplished
 2. Key results from each phase
 3. Any issues encountered
 4. Suggested next steps
-
 ```
 
 ### Step 4: Create Supporting Agents
