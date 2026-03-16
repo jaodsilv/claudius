@@ -6,7 +6,11 @@
 
 ## Context
 
-The `scripts/lib/count-tokens.py` estimates token usage. Thresholds in `inject_or_read()` determine when hooks **preload** file content inline (inject) vs. instruct the agent/skill to **read files itself** (explicit read). This affects hook behavior across the entire plugin ecosystem.
+The `scripts/lib/count-tokens.py` estimates token usage. Thresholds
+in `inject_or_read()` determine when hooks **preload** file content
+inline (inject) vs. instruct the agent/skill to **read files itself**
+(explicit read). This affects hook behavior across the entire plugin
+ecosystem.
 
 All plugin `lib/` directories are **symlinks** to `scripts/lib/`, confirmed:
 
@@ -179,17 +183,33 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 
 ## Key Observations
 
-1. **Single change point**: Modifying thresholds in `inject_or_read()` (`hook-output.sh` lines 119-127) affects all 11 call sites across gitx and analyzer plugins automatically via symlinks.
+1. **Single change point**: Modifying thresholds in
+   `inject_or_read()` (`hook-output.sh` lines 119-127) affects all
+   11 call sites across gitx and analyzer plugins automatically
+   via symlinks.
 
-2. **Git diffs are the biggest gap**: `commit-push-inject-diff.sh` injects raw git diffs (potentially very large) via `hook_output_context` WITHOUT any token-based gating. This is the highest-impact area for adding threshold control.
+2. **Git diffs are the biggest gap**:
+   `commit-push-inject-diff.sh` injects raw git diffs (potentially
+   very large) via `hook_output_context` WITHOUT any token-based
+   gating. This is the highest-impact area for adding threshold
+   control.
 
-3. **PR metadata is always small**: `inject-pr-metadata.sh` extracts individual YAML fields -- these are consistently small and don't need threshold gating.
+3. **PR metadata is always small**: `inject-pr-metadata.sh` extracts
+   individual YAML fields -- these are consistently small and don't
+   need threshold gating.
 
-4. **Worktree-only injections are trivial**: Many handlers inject just `<worktree>path</worktree>` -- these are always under 100 tokens and need no threshold logic.
+4. **Worktree-only injections are trivial**: Many handlers inject
+   just `<worktree>path</worktree>` -- these are always under
+   100 tokens and need no threshold logic.
 
-5. **review-loop resume metadata is moderate**: `resume-loop.sh` injects review-loop state from YAML which could grow with review history, but is typically small.
+5. **review-loop resume metadata is moderate**: `resume-loop.sh`
+   injects review-loop state from YAML which could grow with review
+   history, but is typically small.
 
-6. **Plugins using thresholds today**: Only **gitx** (ci-pre-tool.sh, commit-push-inject-diff.sh, review.sh) and **analyzer** (analyzer-pre-task.sh). Other plugins (review-loop, brainstorm, planner, cc) do not use `inject_or_read` at all.
+6. **Plugins using thresholds today**: Only **gitx**
+   (ci-pre-tool.sh, commit-push-inject-diff.sh, review.sh) and
+   **analyzer** (analyzer-pre-task.sh). Other plugins (review-loop,
+   brainstorm, planner, cc) do not use `inject_or_read` at all.
 
 ---
 
@@ -197,6 +217,12 @@ These handlers inject content directly -- they do NOT use token-based thresholds
 
 During verification of the original plan, two discrepancies were found and corrected:
 
-1. **Call site count corrected**: Original plan stated "13 call sites" -- actual verified count is **11 static call sites** (6 in ci-pre-tool.sh + 1 in commit-push-inject-diff.sh + 1 in review.sh + 3 in analyzer-pre-task.sh).
+1. **Call site count corrected**: Original plan stated "13 call
+   sites" -- actual verified count is **11 static call sites**
+   (6 in ci-pre-tool.sh + 1 in commit-push-inject-diff.sh + 1 in
+   review.sh + 3 in analyzer-pre-task.sh).
 
-2. **Code comment fixed**: `hook-output.sh` line 93 originally said "Medium (500-8K tok)" but the actual code threshold at line 121 is `>= 10000` (10K). Comment was corrected to "Medium (500-10K tok)".
+2. **Code comment fixed**: `hook-output.sh` line 93 originally said
+   "Medium (500-8K tok)" but the actual code threshold at line 121
+   is `>= 10000` (10K). Comment was corrected to
+   "Medium (500-10K tok)".

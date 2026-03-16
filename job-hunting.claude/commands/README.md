@@ -11,13 +11,11 @@ Use `/job-hunting.claude:skill-name` directly. Skills are now user-invocable.
 
 Use `/job-hunting.claude:skill-name` directly. Skills are now user-invocable.
 
-
 Example:
 
-```
+```text
 /job-hunting.claude:worktree
 ```
-
 
 ### Option 2: Stub Commands
 
@@ -27,7 +25,7 @@ Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
 
 Example:
 
-```
+```text
 /job-hunting.claude-skill-name
 ```
 

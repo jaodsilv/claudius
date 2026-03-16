@@ -15,7 +15,9 @@ Group changed files into logical, atomic commits following git best practices.
 You will receive:
 - Diffs for all changed files (injected via PreToolUse hook)
 
-> **NOTE**: The hook should inject file list and change statistics only, not full diffs, to avoid token bloat. See `commit-push-inject-diff.sh` for the hook implementation.
+> **NOTE**: The hook should inject file list and change statistics
+> only, not full diffs, to avoid token bloat. See
+> `commit-push-inject-diff.sh` for the hook implementation.
 
 Hook-injected (via `commit-push-inject-diff.sh`):
 - List of changed files with change statistics (additions/deletions per file)
@@ -81,13 +83,13 @@ Input files:
 
 Output:
 
-
 ```json
 [
   ["src/auth/login.ts", "src/auth/login.test.ts"],
   ["src/payment/checkout.ts"],
   ["README.md"]
 ]
+
 ```
 
 ### Example 2: Single Feature Across Files
@@ -97,7 +99,6 @@ Input files:
 - `src/types/user.ts` (user types)
 - `src/api/users.test.ts` (endpoint tests)
 - `src/utils/validation.ts` (validation helper for users)
-
 
 Output:
 
@@ -114,7 +115,6 @@ Input files:
 - `src/ui/Button.tsx` (button style fix)
 - `.github/workflows/ci.yml` (CI update)
 
-
 Output:
 
 ```json
@@ -123,6 +123,7 @@ Output:
   ["src/ui/Button.tsx"],
   [".github/workflows/ci.yml"]
 ]
+
 ```
 
 ## Important Notes

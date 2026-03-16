@@ -1,7 +1,9 @@
 # Dump Arguments Experiment
 
 1. Keep `$ARGUMENTS` exactly as you received.
-2. Store in `OTHER_VALUES` any other RAW values you received as received. Or set it to empty if there is nothing else. Include everything, including any title, tags, hook content, confirmations, metadata, etc.
+2. Store in `OTHER_VALUES` any other RAW values you received as received.
+   Or set it to empty if there is nothing else. Include everything,
+   including any title, tags, hook content, confirmations, metadata, etc.
 3. Store in `ARG0_0` the value `$ARGUMENTS[0]`
 4. Store in `ARG0_1` the value `$0`
 5. Store in `ARG2_0` the value `$ARGUMENTS[2]`
@@ -13,7 +15,9 @@
 11. Store in `ARG10_0` the value `$ARGUMENTS[10]`
 12. Store in `ARG10_1` the value `$10`
 
-Then run the following bash command AS IS, even if that means running into an error, except if you need any preparation command, like setting the custom variables:
+Then run the following bash command AS IS, even if that means running
+into an error, except if you need any preparation command, like setting
+the custom variables:
 
 ```bash
 filepath=.claude/experiments/args-dump.txt \

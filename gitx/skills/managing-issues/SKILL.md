@@ -35,7 +35,6 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-create.sh [options]
 
 **Output** (info mode):
 
-
 ```json
 {
   "title": "Fix bug in parser",
@@ -43,6 +42,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-create.sh [options]
   "labels": ["bug", "priority:high"],
   "template_used": "bug_report"
 }
+
 ```
 
 ### issue-close.sh
@@ -60,7 +60,6 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-close.sh <issue> [options]
 - `--execute` - Close the issue
 
 **Exit codes**: 0 ready, 1 already closed, 2 error
-
 
 **Output** (info mode):
 
@@ -92,7 +91,6 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-list.sh [options]
 
 **Exit codes**: 0 success, 2 error
 
-
 **Output** (json format):
 
 ```json
@@ -106,6 +104,7 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-list.sh [options]
     "milestone": "v1.0"
   }
 ]
+
 ```
 
 ### issue-update.sh
@@ -124,7 +123,6 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/issues/issue-update.sh <issue> [options]
 - `--milestone <name>` - Set milestone
 - `--state <open|closed>` - Update state
 - `--execute` - Apply updates
-
 
 **Exit codes**: 0 ready, 1 no changes, 2 error
 

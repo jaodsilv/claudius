@@ -24,7 +24,9 @@ We tested `context: fork` + `agent` field behavior:
 | User config: `agent` field in skill | Works - agent footer appeared |
 | Skill body vs Agent body | Skill body is primary, agent supplements |
 
-**Conclusion**: The architecture IS designed for skill-with-agent-context, but there's a plugin-specific bug. Design for current capabilities; treat bug fix as future bonus.
+**Conclusion**: The architecture IS designed for
+skill-with-agent-context, but there's a plugin-specific bug. Design
+for current capabilities; treat bug fix as future bonus.
 
 ## Archetype Classification Framework
 
@@ -75,7 +77,9 @@ NOT a consumer:
 
 ### Clarity Override
 
-If extraction significantly improves agent readability (>100 lines reduced, clearer separation of concerns), extraction is allowed even with one consumer. Document the rationale.
+If extraction significantly improves agent readability (>100 lines
+reduced, clearer separation of concerns), extraction is allowed even
+with one consumer. Document the rationale.
 
 ## Concrete Recommendations
 

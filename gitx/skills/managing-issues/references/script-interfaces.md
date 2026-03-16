@@ -68,7 +68,6 @@ If `--template` is provided:
 
 **Info mode**:
 
-
 ```json
 {
   "title": "Add dark mode support",
@@ -79,8 +78,8 @@ If `--template` is provided:
   "project": "Frontend",
   "template_used": "feature_request"
 }
-```
 
+```
 
 **Execute mode**:
 
@@ -117,7 +116,6 @@ Options:
 - `2` - Error (issue not found, invalid reason, gh CLI error)
 
 ### Output Examples
-
 
 **Info mode (issue open)**:
 
@@ -234,7 +232,6 @@ Options:
 
 ### Exit Codes
 
-
 - `0` - Success (info mode: changes ready, execute mode: updated)
 - `1` - No changes detected
 - `2` - Error (issue not found, invalid field, gh CLI error)
@@ -265,7 +262,6 @@ Options:
 ```
 
 **Info mode (no changes)**:
-
 
 ```json
 {

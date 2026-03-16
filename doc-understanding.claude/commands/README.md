@@ -11,13 +11,11 @@ Use `/doc-understanding.claude:skill-name` directly. Skills are now user-invocab
 
 Use `/doc-understanding.claude:skill-name` directly. Skills are now user-invocable.
 
-
 Example:
 
-```
+```text
 /doc-understanding.claude:worktree
 ```
-
 
 ### Option 2: Stub Commands
 
@@ -27,7 +25,7 @@ Use stub commands in `~/.claude/commands/` for argument-hint and fork support.
 
 Example:
 
-```
+```text
 /doc-understanding.claude-skill-name
 ```
 

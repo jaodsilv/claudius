@@ -29,34 +29,18 @@ config:
 # Globs
 
 globs:
-  - "dotclaude/agents/**/*.md"
-  - "dotclaude/agents/*.md"
-  - "dotclaude/commands/**/*.md"
-  - "dotclaude/commands/*.md"
-  - "dotclaude/output-styles/**/*.md"
-  - "dotclaude/output-styles/*.md"
-  - "dotclaude/skills/**/*.md"
-  - "dotclaude/skills/*.md"
-  - ".claude/agents/**/*.md"
-  - ".claude/agents/*.md"
-  - ".claude/commands/**/*.md"
-  - ".claude/commands/*.md"
-  - ".claude/output-styles/**/*.md"
-  - ".claude/output-styles/*.md"
-  - "doc-understanding.claude/agents/**/*.md"
-  - "doc-understanding.claude/agents/*.md"
-  - "doc-understanding.claude/commands/**/*.md"
-  - "doc-understanding.claude/commands/*.md"
-  - "doc-understanding.claude/output-styles/**/*.md"
-  - "doc-understanding.claude/output-styles/*.md"
-  - "job-hunting.claude/agents/**/*.md"
-  - "job-hunting.claude/agents/*.md"
-  - "job-hunting.claude/commands/**/*.md"
-  - "job-hunting.claude/commands/*.md"
-  - "job-hunting.claude/output-styles/**/*.md"
-  - "job-hunting.claude/output-styles/*.md"
-  - "job-hunting.claude/experiments/**/*.md"
-  - "job-hunting.claude/experiments/*.md"
+  - "**/agents/**/*.md"
+  - "**/agents/*.md"
+  - "**/commands/**/*.md"
+  - "**/commands/*.md"
+  - "**/output-styles/**/*.md"
+  - "**/output-styles/*.md"
+  - "**/skills/**/*.md"
+  - "**/skills/*.md"
+
+ignores:
+  - "**/official-documentation.*.md"
+  - "**/official-documentation.md"
 
 # Fix any fixable errors
 
