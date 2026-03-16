@@ -7,7 +7,9 @@ version: 1.0.0
 
 ## Overview
 
-This skill provides automated detection of affected plugins based on changed files. It analyzes either a PR's changed files or local git diff to determine which plugins in the marketplace are impacted.
+This skill provides automated detection of affected plugins based on changed files.
+It analyzes either a PR's changed files or local git diff to determine which plugins
+in the marketplace are impacted.
 
 ## Usage
 

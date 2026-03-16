@@ -42,7 +42,7 @@ Agent(gitx:ci:analysis-merger):
   prompt: "<worktree>$worktree</worktree><id>$groupId</id><input1>$input1</input1><input2>$input2</input2>"
 ```
 
-2. Wait for ALL groups in the batch to complete before proceeding to the next batch.
+1. Wait for ALL groups in the batch to complete before proceeding to the next batch.
 
 The last group ID from the final batch is the merged result.
 

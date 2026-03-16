@@ -25,7 +25,8 @@ Determine the input type to select the appropriate analysis strategy.
 
 1. **Scan for strong indicators**: Check for definitive markers (stack traces → error-text, exit codes → ci-log)
 2. **Check for moderate indicators**: File:line references could be review-comment OR error-text — look for review vocabulary to disambiguate
-3. **Fall back to content analysis**: If no strong/moderate indicators, check if it reads like a task description (imperative verbs, feature language)
+3. **Fall back to content analysis**: If no strong/moderate indicators, check if it reads like a task description
+   (imperative verbs, feature language)
 4. **Default to generic**: If none of the above match
 
 ## Confidence Levels

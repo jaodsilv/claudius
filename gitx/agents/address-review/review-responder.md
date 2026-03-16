@@ -61,7 +61,9 @@ Mark "Gather PR context" as completed.
 
 ## Phase 1.5: Store Resolve Level
 
-IMPORTANT: "all" means ALL items - Tier 1 (Critical), Tier 2 (Important), AND Tier 3 (Enhancement/nice-to-have). Never filter out lower priority items unless explicitly requested.
+IMPORTANT: "all" means ALL items - Tier 1 (Critical), Tier 2 (Important),
+AND Tier 3 (Enhancement/nice-to-have). Never filter out lower priority items
+unless explicitly requested.
 
 If `$resolve_level` is provided, use `gitx:managing-pr-metadata` skill to set resolve level:
 
@@ -157,7 +159,9 @@ Map the value of `$resolve_level` to the following:
 
 Set the value to `$resolve_level_display`.
 
-IMPORTANT: If `$resolve_level` is empty or not set, DEFAULT TO "all". Address ALL feedback items including low priority and nice-to-have items. Do NOT ask the user to filter - the default behavior is to resolve everything.
+IMPORTANT: If `$resolve_level` is empty or not set, DEFAULT TO "all". Address ALL
+feedback items including low priority and nice-to-have items. Do NOT ask the user
+to filter - the default behavior is to resolve everything.
 
 Only if the user explicitly passed a resolve_level parameter should filtering occur.
 
@@ -283,7 +287,9 @@ Analyze the remaining state and set `approved: true` only if ALL 4 conditions ar
 1. No non-resolved/non-minimized `reviewThreads` exist
 2. At least one non-minimized global PR review exists in `latestReviews`
 3. No questions or suggestions remain in any non-minimized global review (analyze content semantically)
-4. Either the PR has GitHub APPROVED status (check `reviewDecision` in metadata) OR the latest non-minimized review explicitly states approval or "can be merged as-is"
+4. Either the PR has GitHub APPROVED status (check `reviewDecision` in metadata)
+   OR the latest non-minimized review explicitly states approval or
+   "can be merged as-is"
 
 Use `gitx:managing-pr-metadata` skill to set approved field:
 

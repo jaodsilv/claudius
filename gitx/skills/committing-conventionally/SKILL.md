@@ -61,14 +61,19 @@ Before committing, verify:
 
 Consider the following information:
 
-- Task or Issue: You may have received in the input a description of the task performed or issue fixed within `<task>` tags. If so, use it to generate a commit message instead of the staged files.
-- Staged files: If the Task or Issue was not provided, use the Bash tool to run the command `git diff --cached`.
+- Task or Issue: You may have received in the input a description of the task
+  performed or issue fixed within `<task>` tags. If so, use it to generate a
+  commit message instead of the staged files.
+- Staged files: If the Task or Issue was not provided, use the Bash tool to run
+  the command `git diff --cached`.
 - Recent Commit:
   <recent-commits>
   !`git log -n 5 --format="## Commit %h%n%n%B%n"`
   </recent-commits>
 
-Generate and return a commit message following the Conventional Commits specification and the custom rules defined in this skill and considering recent commits and either the task description or the staged files.
+Generate and return a commit message following the Conventional Commits specification
+and the custom rules defined in this skill and considering recent commits and either
+the task description or the staged files.
 
 ### Output Format
 

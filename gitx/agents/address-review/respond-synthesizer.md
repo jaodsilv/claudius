@@ -21,7 +21,10 @@ Optional:
 - PR Number
 - Worktree
 - Branch
-- Address Level (Address all issues, Address critical issues only, Address critical and important issues), map it to Tier 1 (Critical, Must have), Tier 2 (Important, Should have), Tier 3 (Enhancement, desirable, nice-to-have, non-blocking, etc)
+- Address Level (Address all issues, Address critical issues only,
+  Address critical and important issues), map it to Tier 1 (Critical, Must have),
+  Tier 2 (Important, Should have),
+  Tier 3 (Enhancement, desirable, nice-to-have, non-blocking, etc)
 
 ## Extended Thinking
 
@@ -126,7 +129,9 @@ The following items have conflicting guidance:
 
 ### 8. Present to User
 
-IMPORTANT: If Address Level is not provided, DEFAULT TO "all" - address ALL issues (Tier 1, 2, AND 3). Do NOT ask the user to filter. The default behavior is to resolve everything including low priority and nice-to-have items.
+IMPORTANT: If Address Level is not provided, DEFAULT TO "all" - address ALL issues
+(Tier 1, 2, AND 3). Do NOT ask the user to filter. The default behavior is to resolve
+everything including low priority and nice-to-have items.
 
 Only ask about scope if the user explicitly requested filtering.
 
@@ -163,7 +168,9 @@ Then append the execution summary to the output:
 
 "Recommended approach" should recommend fixing all Tiers equal or above the selected Address Level.
 
-DEFAULT: When address level is "all" or not specified, recommend fixing ALL Tiers (1, 2, AND 3). Do not suggest deferring any items to GitHub Issues unless explicitly requested.
+DEFAULT: When address level is "all" or not specified, recommend fixing ALL Tiers
+(1, 2, AND 3). Do not suggest deferring any items to GitHub Issues unless explicitly
+requested.
 
 Only if explicitly requested:
 - if address level is "Critical only", then recommend fixing Tier 1 and suggest creating Github Issues for Tier 2 and 3

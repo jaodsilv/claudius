@@ -13,7 +13,8 @@ Create a structured project roadmap for achieving a goal.
 
 Extract from `$ARGUMENTS`:
 
-- `$goal`: Firs positional argument. The project goal to roadmap (required). It's value it the substring of everything that comes before any flags.
+- `$goal`: First positional argument. The project goal to roadmap (required).
+  Its value is the substring of everything that comes before any flags.
 - `$phases`: Number of development phases (default: 4)
 - `$horizon`: Planning horizon (e.g., "8 weeks", "3 months". Default: "12 weeks")
 - `$output`: Output directory for roadmap (default: "docs/planning/")

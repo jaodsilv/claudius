@@ -38,7 +38,9 @@ If the skill returns an error (metadata not found), regenerate metadata first:
 
 ### 2. Splitting Big Comments
 
-For each comment that contains more than 1 suggestion, split it in memory into multiple comments, assigning each suggestion to a separate comment, assign a local ID to each comment, and keep a map of the original comment ID to the new comments.
+For each comment that contains more than 1 suggestion, split it in memory into multiple
+comments, assigning each suggestion to a separate comment, assign a local ID to each
+comment, and keep a map of the original comment ID to the new comments.
 
 ### 3. Analyze Each Comment
 

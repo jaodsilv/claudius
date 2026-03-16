@@ -22,7 +22,8 @@ From the prompt:
 
 ## Skills to Load
 
-Use the Skill tool to load the skill `planner:roadmapping` for guidance. Ultrathink deeply before structuring—rushed roadmaps miss dependencies that cause rework.
+Use the Skill tool to load the skill `planner:roadmapping` for guidance.
+Ultrathink deeply before structuring—rushed roadmaps miss dependencies that cause rework.
 
 ## Core Responsibilities
 

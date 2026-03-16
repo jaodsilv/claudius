@@ -11,7 +11,10 @@ Find the next issue to work on based on priority labels, roadmap and dependencie
 
 Existing Labels: !`gh repo view --json labels --jq '.labels[] | .name'`
 Existing Milestones: !`gh repo view --json milestones --jq '.milestones[] | .title'`
-Existing Issues: !`gh issue list --json labels,milestone,number,state,title --jq '[.[] | select(.state == "OPEN") | {number: .number, title: .title, milestone: .milestone.title, labels: [(.labels[].name)]}]'`
+Existing Issues: !`gh issue list --json labels,milestone,number,state,title
+--jq '[.[] | select(.state == "OPEN") |
+{number: .number, title: .title, milestone: .milestone.title,
+labels: [(.labels[].name)]}]'`
 
 ## Parse Arguments
 

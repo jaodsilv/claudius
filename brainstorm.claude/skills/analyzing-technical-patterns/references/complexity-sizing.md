@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD036 -->
 # Complexity Sizing Methodology
 
 T-shirt sizing framework for estimating implementation effort and identifying complexity drivers.

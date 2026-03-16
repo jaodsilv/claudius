@@ -20,11 +20,24 @@ Commit changes with conventional messages and optional smart grouping.
 
 Extract from $ARGUMENTS or hook additional context:
 
-- **Explicit files (--files <file0> <file1> ... <fileN>)**: Explicit file groups with one or more `--files`, and each `--files` creates a separate commit. Here identified as `$GROUPS` for the array of file groups, `$GROUPS[i]` for the i-th file group, and `$MODE="lists"`
-- **Context Description (--context "<description>")**: If `--context` is present. Select files matching a contextual description. Here identified as `$DESCRIPTION` for the context description, and `$MODE="context-description"`
-- **Multiple Commits (--multi)**: If `--multi` is present, Intelligent grouping of files into multiple logical commits. Here identified as `$MODE="multi-commit"`
-- **Staged Only (--staged)**: If `--staged` is present, commit only the files that are already staged in the git index. Here identified as `$MODE="staged"` and `$STAGED_ONLY="true"`.
-- **No push (--no-push)**: If `--no-push` is present, Create commits but skip push. Here identified as `$NO_PUSH="true"` if the no-push flag is present, otherwise `$NO_PUSH="false"`. Also set `$STAGED_ONLY="false"` for all non-staged modes.
+- **Explicit files (--files <file0> <file1> ... <fileN>)**: Explicit file groups
+  with one or more `--files`, and each `--files` creates a separate commit.
+  Here identified as `$GROUPS` for the array of file groups,
+  `$GROUPS[i]` for the i-th file group, and `$MODE="lists"`
+- **Context Description (--context "<description>")**: If `--context` is present.
+  Select files matching a contextual description.
+  Here identified as `$DESCRIPTION` for the context description,
+  and `$MODE="context-description"`
+- **Multiple Commits (--multi)**: If `--multi` is present,
+  Intelligent grouping of files into multiple logical commits.
+  Here identified as `$MODE="multi-commit"`
+- **Staged Only (--staged)**: If `--staged` is present,
+  commit only the files that are already staged in the git index.
+  Here identified as `$MODE="staged"` and `$STAGED_ONLY="true"`.
+- **No push (--no-push)**: If `--no-push` is present,
+  Create commits but skip push. Here identified as `$NO_PUSH="true"`
+  if the no-push flag is present, otherwise `$NO_PUSH="false"`.
+  Also set `$STAGED_ONLY="false"` for all non-staged modes.
 
 ## Behavioral Rules
 

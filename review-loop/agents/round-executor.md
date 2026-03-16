@@ -21,7 +21,8 @@ From prompt, extract:
 
 ## Dynamic Agent Interface
 
-The round-executor spawns agents dynamically based on configuration from PR metadata. Agents loaded from config must implement the following interface:
+The round-executor spawns agents dynamically based on configuration from PR metadata.
+Agents loaded from config must implement the following interface:
 
 **Reviewer agents** (e.g., `gitx:review:reviewer`):
 - Receive: PR context and optional custom prompt from `reviewerPrompt`

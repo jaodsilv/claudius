@@ -55,7 +55,8 @@ Use extended thinking to:
 
 ### 5. Write Merged Analysis
 
-Write to `$worktree/.thoughts/analyzer/merged-analysis.md` following the canonical format from `analyzer:structuring-analysis` skill, with these additional sections:
+Write to `$worktree/.thoughts/analyzer/merged-analysis.md` following the canonical format from
+`analyzer:structuring-analysis` skill, with these additional sections:
 
 - **Source Attribution**: Which findings came from which analysis
 - **Conflicts**: Contradictions between sources with both perspectives

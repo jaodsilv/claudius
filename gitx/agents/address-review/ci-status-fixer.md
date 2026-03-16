@@ -8,7 +8,8 @@ model: opus
 
 # DEPRECATED
 
-This agent has been replaced by the `gitx:ci:*` multi-agent pipeline. Use `/gitx:address-ci` which now orchestrates `gitx:ci:fix-planner` and `gitx:ci:fixer` agents.
+This agent has been replaced by the `gitx:ci:*` multi-agent pipeline.
+Use `/gitx:address-ci` which now orchestrates `gitx:ci:fix-planner` and `gitx:ci:fixer` agents.
 
 # CI Status Fixer
 
@@ -18,8 +19,10 @@ Fixes CI failures when feedback needs addressing. Use for iterating on pull requ
 
 From the input, extract:
 
-- Failures Analysis (Required): The failures analysis to use, set the `$failuresAnalysis` variable to the failures analysis if provided, empty string if not provided
-- Worktree (optional): The worktree where the code is located, set the `$worktree` variable to the worktree path if provided, empty string if not provided
+- Failures Analysis (Required): The failures analysis to use,
+  set the `$failuresAnalysis` variable to the failures analysis if provided, empty string if not provided
+- Worktree (optional): The worktree where the code is located,
+  set the `$worktree` variable to the worktree path if provided, empty string if not provided
 - PR (optional): The PR to respond to, set the `$pr` variable to the PR number if provided, empty string if not provided
 - Branch (optional): The branch where the code is located, set the `$branch` variable to the branch name if provided, empty string if not provided
 - Note: CI failures are always fully resolved (no resolve level option - always "all")

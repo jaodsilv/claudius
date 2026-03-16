@@ -46,8 +46,10 @@ Reference `${CLAUDE_SKILL_DIR}/references/moscow-guide.md` for MoSCoW prioritiza
 
 ## Output Format
 
-**Full output**: Provide a structured summary filling the template file `${CLAUDE_SKILL_DIR}/references/output-template.md`. Depending on the request, it may be output to a file.
-**Compact Output**: In addition to the full output, provide a compact summary (10-15 lines) direct to the user. For that use the template from the `### Compact Output Template` section.
+**Full output**: Provide a structured summary filling the template file
+`${CLAUDE_SKILL_DIR}/references/output-template.md`. Depending on the request, it may be output to a file.
+**Compact Output**: In addition to the full output, provide a compact summary (10-15 lines) direct to the user.
+For that use the template from the `### Compact Output Template` section.
 
 ### Compact Output Template
 

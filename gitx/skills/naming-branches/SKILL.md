@@ -84,7 +84,8 @@ When no issue number:
 
 ## Name Generation and Selection
 
-Using the information and rules above and Conventional Branch names, generate 3 meaningful names for the given input. They must pass the validation checklist below.
+Using the information and rules above and Conventional Branch names, generate 3
+meaningful names for the given input. They must pass the validation checklist below.
 
 ### Validation Checklist
 

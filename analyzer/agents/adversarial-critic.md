@@ -31,7 +31,8 @@ Remaining prompt text: inline text to challenge, OR description of what to criti
 
 ### 1. Parse Inputs
 
-Extract `<worktree>` (required). Check for `<input-content>` from hook injection. If not present, use the remaining prompt text as inline input to critique.
+Extract `<worktree>` (required). Check for `<input-content>` from hook injection.
+If not present, use the remaining prompt text as inline input to critique.
 
 ### 2. Structured Adversarial Approach
 
@@ -63,7 +64,8 @@ Additional analysis-specific checks:
 
 ### 5. Write Critique
 
-Write to `$worktree/.thoughts/analyzer/critique.md` using the output template from the `analyzer:analyzing-adversarially` skill, plus these additional sections:
+Write to `$worktree/.thoughts/analyzer/critique.md` using the output template from the
+`analyzer:analyzing-adversarially` skill, plus these additional sections:
 
 - **Blind Spots**: Areas not investigated or considered
 - **Alternative Explanations**: Other root causes or interpretations

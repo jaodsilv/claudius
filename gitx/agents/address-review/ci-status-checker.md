@@ -8,7 +8,9 @@ model: opus
 
 # DEPRECATED
 
-This agent has been replaced by the `gitx:ci:*` multi-agent pipeline. Use `/gitx:address-ci` which now orchestrates `gitx:ci:failures-analyses-orchestrator`, `gitx:ci:fix-planner`, and `gitx:ci:fixer` agents.
+This agent has been replaced by the `gitx:ci:*` multi-agent pipeline.
+Use `/gitx:address-ci` which now orchestrates `gitx:ci:failures-analyses-orchestrator`,
+`gitx:ci:fix-planner`, and `gitx:ci:fixer` agents.
 
 # CI Status Checker
 
@@ -18,7 +20,8 @@ Checks CI status and provides feedback when needed.
 
 From the input, extract:
 
-- Worktree (optional): The worktree where the code is located, set the `$worktree` variable to the worktree path if provided, empty string if not provided
+- Worktree (optional): The worktree where the code is located,
+  set the `$worktree` variable to the worktree path if provided, empty string if not provided
 - PR (optional): The PR to respond to, set the `$pr` variable to the PR number if provided, empty string if not provided
 - Branch (optional): The branch where the code is located, set the `$branch` variable to the branch name if provided, empty string if not provided
 - Attempt Number (optional): The attempt number to use, set the `$attemptNumber` variable to the attempt number if provided, 1 if not provided
@@ -107,7 +110,8 @@ Mark "Gather PR context" as completed.
 
 Mark "Waiting All CI Checks to finish" as in_progress.
 
-If the `$cistatus` variable has ALL checks with a "status" equals to "completed", then mark "Waiting All CI Checks to finish" as completed and skip to Phase 3.
+If the `$cistatus` variable has ALL checks with a "status" equals to "completed",
+then mark "Waiting All CI Checks to finish" as completed and skip to Phase 3.
 
 1. Wait 10 seconds with the following command using the Bash tool:
 

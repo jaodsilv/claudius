@@ -72,7 +72,9 @@ Mark "Initialize/Resume loop" as in_progress.
 3. Use the Skill tool to load the skill `gitx:managing-pr-metadata` to initialize reviewLoop fields:
    - worktree: `$worktree`
    - field: reviewLoop
-   - value: `{"active": true, "maxRounds": $maxRounds, "startedAt": "$timestamp", "pausedAt": null, "reviewer": "$reviewer", "developer": "$developer", "ciChecker": "$ciChecker", "ciFixer": "$ciFixer"}`
+   - value: `{"active": true, "maxRounds": $maxRounds, "startedAt": "$timestamp",
+     "pausedAt": null, "reviewer": "$reviewer", "developer": "$developer",
+     "ciChecker": "$ciChecker", "ciFixer": "$ciFixer"}`
 
 4. If prompts provided, write to `.thoughts/review-loop/prompts.yaml`:
 

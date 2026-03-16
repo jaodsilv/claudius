@@ -40,7 +40,8 @@ Check for brainstorm plugin availability:
 
 ## Process
 
-**Step 1: Goal Clarification** - Understand problem, users, success criteria, scope boundaries. Use the AskUserQuestion tool to ask for clarification if unclear.
+**Step 1: Goal Clarification** - Understand problem, users, success criteria, scope boundaries.
+Use the AskUserQuestion tool to ask for clarification if unclear.
 
 **Step 2: Stakeholder Identification** - Identify all stakeholders (end users, admins, developers, etc.) and their key concerns.
 

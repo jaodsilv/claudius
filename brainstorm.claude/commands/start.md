@@ -46,7 +46,9 @@ Use the TaskCreate tool to add the following task(s) to the task list:
 
 ## Phase Execution
 
-> **Note**: Phase 0 (Initialization) is handled by the pre-tool hook (`start.sh`). The hook validates the topic, creates the output directory, and writes `session-log.md`. Resolved values (`output_path`, `depth`, `topic`) are injected via hook context.
+> **Note**: Phase 0 (Initialization) is handled by the pre-tool hook (`start.sh`).
+> The hook validates the topic, creates the output directory, and writes `session-log.md`.
+> Resolved values (`output_path`, `depth`, `topic`) are injected via hook context.
 
 ### Phase 1: Socratic Dialogue (Batched)
 
@@ -154,7 +156,8 @@ Apply Gate 1 criteria from `brainstorm:validating-workflow` skill. If any check 
 
 **Execute domain, technical, and constraint analysis in parallel using the Agent tool.**
 
-Use the Agent tool to spawn the following three agents **IN PARALLEL** (all three agents simultaneously). **Wait for all three parallel tasks to complete before proceeding.**
+Use the Agent tool to spawn the following three agents **IN PARALLEL** (all three agents simultaneously).
+**Wait for all three parallel tasks to complete before proceeding.**
 
 #### Phase 2.1: Domain Exploration
 
