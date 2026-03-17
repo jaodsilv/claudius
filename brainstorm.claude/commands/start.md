@@ -46,9 +46,9 @@ Use the TaskCreate tool to add the following task(s) to the task list:
 
 ## Phase Execution
 
-> **Note**: Phase 0 (Initialization) is handled by the pre-tool hook (`start.sh`).
-> The hook validates the topic, creates the output directory, and writes `session-log.md`.
-> Resolved values (`output_path`, `depth`, `topic`) are injected via hook context.
+<!-- Phase 0 (Initialization) is handled by the pre-tool hook (start.sh).
+The hook validates the topic, creates the output directory, and writes session-log.md.
+Resolved values (output_path, depth, topic) are injected via hook context. -->
 
 ### Phase 1: Socratic Dialogue (Batched)
 

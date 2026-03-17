@@ -2,18 +2,13 @@
 description: >-
   Orchestrates requirements discovery through multi-agent analysis and Socratic dialogue.
   Invoked when exploring vague ideas, discovering requirements, or defining feature scope.
+  Use when a user has a vague software/feature idea, needs requirements discovery, or needs feature scope definition before implementation.
 user-invocable: false
 allowed-tools:
 model: opus
 ---
 
 # Brainstorming Skill
-
-## When to Invoke
-
-1. User has vague software/feature idea to explore
-2. Requirements discovery needed for new concept
-3. Feature scope needs definition before implementation
 
 ## Workflow Phases
 

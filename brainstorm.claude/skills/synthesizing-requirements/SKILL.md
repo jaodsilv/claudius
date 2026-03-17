@@ -1,6 +1,7 @@
 ---
 description: >-
   Consolidates brainstorming insights into structured requirements. Use when formulating requirements, prioritizing features, or validating requirement quality.
+  Also use after gathering user needs to formalize requirements or during Phase 5 of the brainstorming workflow.
 user-invocable: false
 allowed-tools:
 model: sonnet
@@ -10,13 +11,6 @@ model: sonnet
 
 Consolidates brainstorming insights into structured requirements. Use when formulating requirements,
 prioritizing features, or validating requirement quality.
-
-## When to Use
-
-- After gathering user needs to formalize requirements
-- When prioritizing features for a release
-- To validate requirement quality and completeness
-- During Phase 5 of the brainstorming workflow
 
 ## Requirement Categories
 

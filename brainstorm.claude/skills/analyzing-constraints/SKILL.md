@@ -1,6 +1,7 @@
 ---
 description: >-
   Identifies and categorizes constraints that shape solution design. Use when analyzing project constraints, identifying trade-offs, or documenting boundaries.
+  Also use during requirements gathering to surface hidden constraints or when evaluating solution feasibility and stakeholder expectations.
 user-invocable: false
 allowed-tools:
 model: sonnet
@@ -10,13 +11,6 @@ model: sonnet
 
 Identifies and categorizes constraints that shape solution design. Use when analyzing project constraints,
 identifying trade-offs, or documenting boundaries.
-
-## When to Use
-
-- During requirements gathering to surface hidden constraints
-- When evaluating solution feasibility
-- To identify trade-offs between competing requirements
-- When prioritizing work or managing stakeholder expectations
 
 ## Constraint Categories
 

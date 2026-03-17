@@ -2,6 +2,7 @@
 description: >-
   Evaluates technical feasibility and architecture options. Invoked during brainstorm Phase 3
   to assess implementation approaches, compare architectures, and estimate complexity.
+  Also use when estimating project complexity/effort or identifying technical risks and unknowns.
 user-invocable: false
 allowed-tools:
 model: sonnet
@@ -10,13 +11,6 @@ model: sonnet
 # Technical Patterns Skill
 
 Evaluates technical feasibility and architecture options for proposed features.
-
-## When to Use
-
-- During Phase 3 (Technical Feasibility Analysis) of brainstorm workflow
-- When assessing multiple implementation approaches
-- When estimating project complexity and effort
-- When identifying technical risks and unknowns
 
 ## Architecture Patterns
 

@@ -1,6 +1,7 @@
 ---
 description: >-
   Explores industry practices, competitors, and domain knowledge to inform solution design with market context.
+  Use before solution design to understand market landscape, analyze competitors, identify best practices, or validate market expectations during requirements gathering.
 user-invocable: false
 allowed-tools: WebSearch
 model: sonnet
@@ -9,14 +10,6 @@ model: sonnet
 # Domain Research
 
 Explores industry practices, competitors, and domain knowledge to inform solution design with market context.
-
-## When to Use
-
-- Before solution design to understand market landscape
-- When analyzing competitive landscape and market positioning
-- To identify industry best practices, patterns, and standards
-- During requirements gathering to validate market expectations
-- To understand regulatory and compliance requirements
 
 ## Research Areas
 

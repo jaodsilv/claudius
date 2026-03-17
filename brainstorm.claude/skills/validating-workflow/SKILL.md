@@ -1,6 +1,7 @@
 ---
 description: >-
   Validates brainstorming phase outputs before proceeding to next phase. Use when assessing quality gates between workflow phases.
+  Apply after each brainstorm phase completes, before proceeding to the next phase, or when quality concerns arise during execution.
 user-invocable: false
 allowed-tools:
 model: opus
@@ -9,13 +10,6 @@ model: opus
 # Workflow Validation
 
 Validates brainstorming phase outputs before proceeding to next phase. Use when assessing quality gates between workflow phases.
-
-## When to Use
-
-- After each brainstorm phase completes
-- Before proceeding to the next phase
-- When determining if early exit is appropriate
-- When quality concerns arise during execution
 
 ## Validation Gates
 
