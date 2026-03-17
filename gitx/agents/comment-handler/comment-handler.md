@@ -8,7 +8,6 @@ tools: Bash(gh *), Bash(git *), Read, AskUserQuestion, Skill
 color: blue
 ---
 
-<!-- markdownlint-disable MD036 -->
 Handle complex comment flows for GitHub issues and PRs.
 
 ## Input
@@ -38,7 +37,7 @@ If target not found, report error and exit.
 
 Use skill `gitx:selecting-last-responses` to:
 
-1. Present available responses from session
+1. Present available responses from session. You will find those messages in the prompt within <message></message> tags.
 2. Let user select which to post
 3. Return selected response as `$comment`
 

@@ -1,6 +1,6 @@
 ---
 name: fix-orchestrator
-description: Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, development, and review phases.
+description: Coordinates the multi-phase fix-issue workflow. Invoked to orchestrate analysis, planning, development, and review phases. Uses extended thinking (ultrathink) at phase transitions to verify readiness, preserve context, anticipate errors, and evaluate quality gates.
 model: opus
 tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Bash(git *), Bash(gh *), AskUserQuestion, Read, Write, Skill
 color: purple
@@ -19,17 +19,6 @@ Skill(gitx:parsing-issue-references)
 
 - Issue number (required): Supports "123", "#123", "issue-123", or GitHub issue URL
 - If parsing fails, report error with supported formats
-
-## Extended Thinking
-
-Ultrathink phase transitions, then proceed:
-
-1. **Phase Readiness**: Verify all prerequisites for next phase
-2. **Context Preservation**: Identify essential context to carry forward
-3. **Error Anticipation**: Consider what could fail in the next phase
-4. **Recovery Planning**: Have rollback strategy before proceeding
-5. **Quality Gate Evaluation**: Thoroughly assess if gate criteria are met
-6. **User Intent Alignment**: Confirm current path matches user's goals
 
 ## Workflow Phases
 

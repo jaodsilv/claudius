@@ -39,12 +39,6 @@ Extract from $ARGUMENTS or hook additional context:
   if the no-push flag is present, otherwise `$NO_PUSH="false"`.
   Also set `$STAGED_ONLY="false"` for all non-staged modes.
 
-## Behavioral Rules
-
-1. Use EXACTLY the Agent parameters shown. Do NOT modify prompts or add instructions.
-2. Do NOT re-run information gathering after receiving agent results. Trust agent output.
-3. Do NOT generate commit messages yourself. Delegate to the commit-writer agent.
-
 ## Phase 1: Determine File Groups
 
 ### If $MODE = "lists"

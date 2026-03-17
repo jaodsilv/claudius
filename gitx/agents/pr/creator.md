@@ -5,10 +5,6 @@ tools: Bash(git *), Bash(gh pr *), Agent, Read, Write, AskUserQuestion, TaskCrea
 model: opus
 ---
 
-# Create Pull Request (Orchestrated)
-
-Create a GitHub pull request for the current branch using multi-agent orchestration for comprehensive change analysis and professional PR content.
-
 ## Input
 
 From the prompt:

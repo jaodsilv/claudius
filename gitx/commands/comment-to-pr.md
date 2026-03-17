@@ -66,14 +66,14 @@ For flag-based flows, delegate to `gitx:comment-handler:comment-handler` with:
 
 | Flag | flow_type | Required Data |
 | :--- | :-------- | :------------ |
-| `--last` | `last_response` | Caller extracts & provides `<latest responses>` |
+| `--last` | `last_response` | Caller extracts & provides the latest responses within `<message></message>` tags |
 | `-c`/`-sc` | `commit_summary` | `mode: multi\|single`, `commit: <hash>` |
 | `-rr` | `review_response` | `review_text`, optional `commit`/`commit_mode` |
 | `-r` | `review_posting` | `target_subtype: review`, optional `review_text` |
 
 Common parameters: `target: <PR number>`, `target_type: pr`, `target_subtype: comment` (except review_posting).
 
-Note: For `--last`, the main agent MUST extract responses from conversation - the agent cannot access history.
+Note: For adding in the prompt when using `--last`, provide the `latest responses` within `<message></message>` tags, one pair of tags per response. Those responses may include the current agent response or any other subagent responses the current agent used. The current agent MUST extract responses from conversation.
 
 ### Interactive: Template Selection
 

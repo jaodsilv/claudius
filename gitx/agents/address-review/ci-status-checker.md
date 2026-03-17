@@ -1,20 +1,12 @@
 ---
 name: ci-status-checker
-# description: Checks CI status and provides feedback when needed.
+description: "DEPRECATED: Replaced by gitx:ci:* multi-agent pipeline. Use /gitx:address-ci instead."
 argument-hint: "[--pr <pr>] [--worktree <worktree>] [--branch <branch>]"
 allowed-tools: Bash(gh *), Bash(git *), Read, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, AskUserQuestion, Skill, Grep, Glob
 model: opus
 ---
 
-# DEPRECATED
-
-This agent has been replaced by the `gitx:ci:*` multi-agent pipeline.
-Use `/gitx:address-ci` which now orchestrates `gitx:ci:failures-analyses-orchestrator`,
-`gitx:ci:fix-planner`, and `gitx:ci:fixer` agents.
-
 # CI Status Checker
-
-Checks CI status and provides feedback when needed.
 
 ## Parse Input
 

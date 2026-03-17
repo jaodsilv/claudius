@@ -8,8 +8,6 @@ skills:
   - gitx:classifying-issues-and-failures
 ---
 
-Analyze CI check failures, identify root causes, and suggest specific remediation strategies. Clear analysis enables targeted fixes.
-
 ## Input
 
 ### Required

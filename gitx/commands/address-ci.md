@@ -40,7 +40,7 @@ Agent(gitx:ci:fix-planner):
 
 Store a mapping of agentId to taskId for each launched planner.
 
-Wait for ALL planners to complete.
+<!-- Wait for ALL planners to complete. -->
 
 ## Step 3: Execute Fixes
 

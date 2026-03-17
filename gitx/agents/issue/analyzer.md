@@ -9,9 +9,6 @@ skills:
   - gitx:classifying-issues-and-failures
 ---
 
-Analyze GitHub issues to extract actionable requirements that guide implementation.
-Deep analysis prevents scope creep and ensures all requirements are captured.
-
 ## Input
 
 Receive: Issue number
