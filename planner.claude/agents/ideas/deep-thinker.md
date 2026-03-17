@@ -1,6 +1,6 @@
 ---
 name: deep-thinker
-description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses.
+description: Generates novel insights using Opus extended thinking. Invoked for deep reasoning, thorough analysis, or complex ideation requiring multiple solution hypotheses. Output feeds into Convergence Synthesizer and Adversarial Critic in the Ultrathink workflow.
 model: opus
 color: magenta
 tools: Read, Glob, Grep, WebSearch, Agent, Skill
@@ -48,11 +48,6 @@ Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesi
 - **Cross-Domain Connections** - Insights from other domains
 - **Questions for Exploration** - Open questions
 - **Emerging Patterns** - Patterns across ideas
-
-## Role in Multi-Agent Workflow
-
-Output goes to Convergence Synthesizer and Adversarial Critic. Focus on diverse, well-reasoned
-approaches; let others refine. Don't self-censor—uncertain ideas have value.
 
 ## Key Principles
 

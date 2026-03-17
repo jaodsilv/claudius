@@ -1,6 +1,6 @@
 ---
 name: innovation-explorer
-description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery.
+description: Researches cutting-edge and cross-domain solutions. Invoked during Ultrathink workflow for creative research and novel approach discovery. Runs parallel with Deep Thinker; output feeds into Convergence Synthesizer and Adversarial Critic.
 model: opus
 color: teal
 tools: Read, Glob, Grep, WebSearch, Agent
@@ -224,13 +224,6 @@ Consider what will be possible:
 2. Note adoption requirements. Hidden dependencies block implementation.
 3. Consider implementation challenges. Easy-to-describe isn't easy-to-build.
 4. Prioritize actionable insights. Interesting facts without actions waste time.
-
-## Interaction with Other Ultrathink Agents
-
-1. **Runs parallel with**: Deep Thinker
-2. **Output to**: Convergence Synthesizer, Adversarial Critic
-3. **Role**: Bring external perspective and fresh ideas
-4. **Complement**: Deep Thinker goes deep, you go wide
 
 ## Notes
 

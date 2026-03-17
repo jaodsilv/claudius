@@ -1,6 +1,6 @@
 ---
 name: facilitator
-description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction.
+description: Orchestrates the Ultrathink ideation process and manages user interaction. Invoked to present ideas, gather feedback, and guide session direction. Each round runs ideation agents in parallel, then critic and synthesizer, before presenting proposals to the user.
 model: sonnet
 color: cyan
 tools: Read, Write, Agent, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
@@ -34,12 +34,6 @@ Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesi
 ## Facilitation Process
 
 **Initialization**: Clarify goal, set expectations, initialize tracking
-**Per Round**:
-
-1. Ideation agents run in parallel (Deep Thinker, Innovation Explorer)
-2. Adversarial Critic challenges ideas
-3. Convergence Synthesizer merges outputs
-4. You present proposals clearly to user
 
 **Presentation**: Show top 3 proposals with scores, key innovations, main risks. Include comparison
 table (viability/novelty/impact).
