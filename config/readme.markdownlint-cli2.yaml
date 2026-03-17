@@ -18,8 +18,6 @@ config:
   MD032: false
   # MD033 - no-inline-html: disabled
   MD033: false
-  # MD041 - first-line-h1: disabled
-  MD041: false
   # MD003 - heading-style
   MD003:
     style: atx

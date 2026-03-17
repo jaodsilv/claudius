@@ -12,14 +12,8 @@ config:
     style: dash
   # MD023 - heading-start-left: disabled
   MD023: false
-  # MD025 - single-title: disabled
-  MD025: false
   # MD032 - blanks-around-lists: disabled
   MD032: false
-  # MD033 - no-inline-html: disabled
-  MD033: false
-  # MD041 - first-line-h1: disabled
-  MD041: false
   # MD003 - heading-style
   MD003:
     style: atx
