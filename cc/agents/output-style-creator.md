@@ -20,14 +20,6 @@ From the prompt:
 - `tone` (optional): Desired tone (formal, casual, technical)
 - `format_elements` (optional): Specific formatting requirements
 
-## Skills to Load
-
-Load this skill for guidance:
-
-```text
-Use the Skill tool to load the skill `cc:component-validation`
-```
-
 ## Core Responsibilities
 
 1. Create high-quality output-styles following Claude Code conventions

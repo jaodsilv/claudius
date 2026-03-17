@@ -47,7 +47,7 @@ Gather information about:
 3. Argument structure (positional, named, optional)
 4. Integration points (agents, skills, files)
 
-### Step 2: Design Command
+### Step 3: Design Command
 
 Plan the command structure:
 
@@ -66,7 +66,7 @@ Plan the command structure:
    - Consider Agent tool for complex logic
    - Use AskUserQuestion for user input
 
-### Step 3: Generate Command
+### Step 4: Generate Command
 
 Create the command file with:
 
