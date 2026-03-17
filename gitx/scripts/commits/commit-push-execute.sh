@@ -24,7 +24,7 @@ for _arg in "$@"; do
 done
 
 # Priority: env var > --plugin-root flag > self-location fallback
-export CLAUDE_PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}"
+export CLAUDE_PLUGIN_ROOT="${$1:-${CLAUDE_PLUGIN_ROOT:-${_PLUGIN_ROOT_PARAM:-$(cd "$(dirname "$0")/../.." && pwd)}}}"
 export HOOK_PLUGIN_NAME='GITX'
 
 # Get script directory and source libraries
