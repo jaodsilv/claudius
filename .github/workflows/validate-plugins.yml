@@ -1,6 +1,17 @@
 name: Validate Plugins
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".claude-plugin/**"
+      - "analyzer/**"
+      - "brainstorm.claude/**"
+      - "gitx/**"
+      - "cc/**"
+      - "planner.claude/**"
+      - "review-loop/**"
+      - "walkthrough/**"
   pull_request:
     paths:
       - ".claude-plugin/**"
