@@ -1,7 +1,7 @@
 ---
 description: Reviews requirements quality with multi-agent orchestration. Use for validating completeness and testability.
-allowed-tools: Task, Read, Glob, Grep, Skill, AskUserQuestion, TodoWrite
-argument-hint: <goal|roadmap-path> [--requirements-path <path>] [--mode <quick|thorough>]
+argument-hint: "[[--goal] <goal> | [--roadmap-path] <roadmap-path>] [--requirements-path <path>] [--mode <quick|thorough>]"
+allowed-tools: Agent, Read, Glob, Grep, Skill, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 
@@ -9,35 +9,24 @@ model: opus
 
 Reviews requirements document with multi-agent orchestration for quality, completeness, and testability.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-requirements-arguments:
-  type: object
-  properties:
-    context:
-      type: string
-      description: Goal or path to roadmap file
-    requirements_path:
-      type: string
-      default: "docs/planning/requirements.md"
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [context]
-```
+Extract from `$ARGUMENTS`:
+
+- `$context`: Goal or path to roadmap file (required). It's value it the substring of everything that comes before any flags.
+- `$requirements_path`: path to the requirements file (default: "docs/planning/requirements.md")
+- `$mode`: How to review the requirements: "quick" or "thorough"
 
 ## Workflow
 
 ### 1. Load Skill
 
-Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
+Use the Skill tool to load the skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 
 **Artifact Type**: requirements
-**Primary Artifact Path**: `{{requirements_path}}` (default: `docs/planning/requirements.md`)
+**Primary Artifact Path**: `$requirements_path`
 **Domain Reviewer Agent**: `planner:reviewers:requirements-reviewer`
 **Evaluation Dimensions**:
 

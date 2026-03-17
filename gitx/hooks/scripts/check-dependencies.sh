@@ -1,7 +1,16 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 # Check for git and gh CLI dependencies
 # Returns JSON with systemMessage for warnings
+
+SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
+LIBS_DIR="${SCRIPTS_DIR}/lib"
+
+# Plugin config (set BEFORE sourcing shared libs)
+export HOOK_PLUGIN_NAME="GITX"
+
+source "$LIBS_DIR/logging.sh"
+source "$LIBS_DIR/hook-output.sh"
 
 missing_deps=""
 warnings=""
@@ -32,11 +41,9 @@ fi
 
 # Output result
 if [ -n "$missing_deps" ]; then
-    echo "{\"systemMessage\": \"[gitx plugin] Missing dependencies: $missing_deps. Some commands may not work. Install git from https://git-scm.com/ and gh from https://cli.github.com/\"}"
+    hook_output_system_message "[gitx plugin] Missing dependencies: $missing_deps. Some commands may not work. Install git from https://git-scm.com/ and gh from https://cli.github.com/"
 elif [ -n "$warnings" ]; then
-    echo "{\"systemMessage\": \"[gitx plugin] Warning: $warnings\"}"
-else
-    echo '{"status": "ok"}'
+    hook_output_system_message "[gitx plugin] Warning: $warnings"
 fi
 
 # Exit 1 if critical dependency (git) is missing, exit 0 for optional deps

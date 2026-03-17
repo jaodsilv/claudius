@@ -1,5 +1,4 @@
 ---
-name: dotclaude:markdown-review
 description: >-
   Provides Markdown-specific review guidelines covering formatting,
   accessibility, and documentation best practices.
@@ -68,7 +67,7 @@ Align columns consistently for readability.
 
 ```markdown
 | Name | Age |
-|------|-----|
+| :--- | :-- |
 | John | 25  |
 ```
 

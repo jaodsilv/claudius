@@ -1,5 +1,4 @@
 ---
-name: dotclaude:solid-principles
 description: >-
   Provides guidance on SOLID principles (Single Responsibility, Open-Closed,
   Liskov Substitution, Interface Segregation, Dependency Inversion) for

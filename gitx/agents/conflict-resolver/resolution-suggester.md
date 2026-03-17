@@ -1,8 +1,8 @@
 ---
-name: gitx:resolution-suggester
+name: resolution-suggester
 description: >-
   Generates specific code resolutions for git conflicts with confidence levels. Invoked after conflict analysis to suggest solutions.
-model: sonnet
+model: opus
 tools: Read, Grep, Glob, Edit
 color: green
 ---
@@ -13,7 +13,7 @@ Generate specific code resolutions for git conflicts based on analysis of both s
 
 Receive:
 
-1. Conflict analysis from gitx:conflict-analyzer
+1. Conflict analysis from gitx:conflict-resolver:conflict-analyzer
 2. File contents with conflicts
 3. Context about the merge/rebase operation
 

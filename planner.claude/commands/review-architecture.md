@@ -1,7 +1,7 @@
 ---
 description: Reviews architecture decisions with multi-agent orchestration. Use for validating technical designs against goals.
-allowed-tools: Task, Read, Glob, Grep, WebSearch, Skill, AskUserQuestion, TodoWrite
-argument-hint: <goal|requirements-path> [--architecture-path <path>] [--mode <quick|thorough>]
+argument-hint: "[[--goal] <goal> | [--requirements-path] <requirements-path>] [--architecture-path <path>] [--mode <quick|thorough>]"
+allowed-tools: Agent, Read, Glob, Grep, WebSearch, Skill, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 
@@ -9,30 +9,19 @@ model: opus
 
 Reviews architecture decisions with multi-agent orchestration for alignment with goals and requirements.
 
-## Parameters Schema
+## Arguments Parsing
 
-```yaml
-review-architecture-arguments:
-  type: object
-  properties:
-    context:
-      type: string
-      description: Goal or path to requirements file
-    architecture_path:
-      type: string
-      description: Path to architecture documentation
-    mode:
-      type: string
-      enum: [quick, thorough]
-      default: thorough
-  required: [context]
-```
+Extract from `$ARGUMENTS`:
+
+- `$context`: Goal or path to requirements file (required). It's value it the substring of everything that comes before any flags.
+- `$architecture_path`: Path to architecture documentation
+- `$mode`: [quick, thorough]
 
 ## Workflow
 
 ### 1. Load Skill
 
-Invoke the Skill `planner:orchestrating-reviews` for multi-agent review orchestration.
+Use the Skill tool to load the skill `planner:orchestrating-reviews` for multi-agent review orchestration.
 
 ### 2. Domain Context
 

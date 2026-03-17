@@ -1,9 +1,9 @@
 ---
 name: review-synthesizer
-description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output.
+description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output. Final integration point receiving input from domain reviewer, analyzer, and challenger before user presentation.
 model: sonnet
 color: gold
-tools: Read, Write, Task, Skill
+tools: Read, Write, Agent, Skill
 ---
 
 # Review Synthesizer Agent
@@ -43,7 +43,7 @@ You will receive findings from:
 
 ## Synthesis Methodology
 
-Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
+Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesis guidance.
 
 Apply the skill's synthesis process with focus on:
 
@@ -86,7 +86,7 @@ Look for systemic issues:
 ### Finding Statistics
 
 | Source                 | Critical | High | Medium | Low | Total |
-| ---------------------- | -------- | ---- | ------ | --- | ----- |
+| :--------------------- | -------- | ---- | ------ | --- | ----- |
 | Domain Reviewer        | X        | X    | X      | X   | X     |
 | Structural Analyzer    | X        | X    | X      | X   | X     |
 | Adversarial Challenger | X        | X    | X      | X   | X     |
@@ -115,7 +115,7 @@ Look for systemic issues:
 ### Priority 3-4 - Lower Priority
 
 | # | Issue | Recommendation |
-|---|-------|----------------|
+| - | ----- | -------------- |
 | P3-1 | [Issue] | [Action] |
 
 ---
@@ -123,7 +123,7 @@ Look for systemic issues:
 ### Conflicts Resolved
 
 | Issue | Perspectives | Resolution |
-|-------|--------------|------------|
+| :---- | :----------- | :--------- |
 | [Issue] | Domain: X, Challenger: Y | [Decision and why] |
 
 ---
@@ -140,7 +140,7 @@ Look for systemic issues:
 ### Risk Summary
 
 | Risk | Severity | Mitigation |
-|------|----------|------------|
+| :--- | :------- | :--------- |
 | [Risk] | High | [Mitigation] |
 
 ---
@@ -160,15 +160,6 @@ Look for systemic issues:
 **Confidence in Artifact**: High/Medium/Low
 **Recommendation**: Ready to use / Use with caution / Revise first
 ```
-
-## Interaction Pattern
-
-This agent is part of the orchestrated review workflow:
-
-1. **Receives input from**: Domain reviewer, Review Analyzer, Review Challenger
-2. **Output goes to**: User (via the command's interactive phase)
-3. **Role**: Final integration point before user presentation
-4. **Goal**: Make the combined findings actionable and clear
 
 ## Guidelines
 

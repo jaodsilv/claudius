@@ -12,13 +12,24 @@ tools: Skill
 
 Systematically uncovers and evaluates limitations that shape software solutions.
 
+## Input
+
+From the prompt (key-value format):
+
+- `Topic`: The brainstorming topic — store as `$topic`
+- `Dialogue insights`: Path to the facilitator output file — store as `$dialogue_insights`
+- `Initial scope`: Scope boundaries identified during dialogue — store as `$initial_scope`
+
 ## Skill Reference
 
-Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patterns:
+Use the `brainstorm:analyzing-constraints` skill for:
 
-- `SKILL.md` - Discovery questions, best practices, and output format guidance
-- `references/constraint-taxonomies.md` - Full taxonomy of 22 constraint types
-- `references/trade-off-patterns.md` - Trade-off analysis and resolution patterns
+- Detailed taxonomies
+- Trade-off analysis
+- Resolution patterns
+- Discovery questions
+- Best practices
+- Output format guidance
 
 ## Output Format
 
@@ -84,7 +95,7 @@ Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patte
 
 ## 5. Constraint Assessment
 | Constraint | Category | Impact | Negotiability | Mitigation |
-|------------|----------|--------|---------------|------------|
+| :--------- | :------- | :----- | :------------ | :--------- |
 | [Name] | Tech/Bus/Res/Env | H/M/L | Hard/Soft | [Strategy] |
 
 ## 6. Trade-off Analysis
@@ -95,7 +106,7 @@ Use the `brainstorm:constraint-analysis` skill for detailed taxonomies and patte
 
 ## 7. Open Questions
 | Question | Impact | Priority |
-|----------|--------|----------|
+| :------- | :----- | :------- |
 | [Question] | [Effect] | H/M/L |
 ````
 

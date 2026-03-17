@@ -108,7 +108,7 @@ skills/
 ## Size Guidelines
 
 | Content Type | Target Lines |
-|--------------|--------------|
+| :----------- | :----------- |
 | SKILL.md body | <500 (hard limit) |
 | SKILL.md optimal | <300 |
 | Reference files | No limit, but use TOC if >100 |

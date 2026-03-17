@@ -1,7 +1,7 @@
 ---
 description: Creates multi-agent orchestrations when coordinating complex workflows.
-argument-hint: <orchestration-name> [--plugin <plugin-path>]
-allowed-tools: ["Read", "Write", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "Bash", "TodoWrite"]
+argument-hint: "[[--orchestration-name] <orchestration-name>] [--plugin <plugin-path>]"
+allowed-tools: Read, Write, Glob, Grep, AskUserQuestion, Skill, Agent, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -24,22 +24,25 @@ If orchestration_name not provided, ask user to specify.
 ### Phase 1: Validate Context
 
 Apply Skill(cc:orchestrating-agents) for orchestration patterns.
-Apply Skill(cc:component-validation) for validation criteria.
+Apply Skill(cc:validating-components) for validation criteria.
 
 1. Verify plugin directory exists
 2. Check commands/ directory exists
 3. Check existing agents available in plugin
 
-Use TodoWrite to track progress:
+Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
 - [ ] Design architecture
 - [ ] Review with user
 - [ ] Create orchestration command
 - [ ] Create any new agents
 - [ ] Validate and test
+</new-tasks>
 
 ### Phase 2: Gather Requirements
 
-Use AskUserQuestion to understand the workflow:
+Use the AskUserQuestion tool to ask about the workflow type:
 
 ```text
 Question: "What type of workflow is this?"
@@ -70,22 +73,23 @@ Options: [User provides description]
 
 ### Phase 3: Design Architecture
 
-Use Task tool with @cc:orchestration-architect agent:
+Use the Agent tool to spawn the agent `cc:orchestration-architect` to design the orchestration:
 
-```text
-Design orchestration: [orchestration_name]
+```markdown
+Agent(cc:orchestration-architect):
+  Design orchestration: [orchestration_name]
 
-Workflow type: [from question 1]
-Phase count: [from question 2]
-Phase descriptions: [from phase questions]
-
-Provide:
-1. Recommended coordination pattern
-2. Phase definitions with agents
-3. Data flow between phases
-4. Error handling strategy
-5. Complexity assessment
+  Workflow type: [from question 1]
+  Phase count: [from question 2]
+  Phase descriptions: [from phase questions]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Design architecture - Complete
 
@@ -109,21 +113,21 @@ Mark todo: Review with user - Complete
 
 ### Phase 5: Create Components
 
-Use Task tool with @cc:orchestration-creator agent:
+Use the Agent tool to spawn the agent `cc:orchestration-creator` to create the orchestration:
 
-```text
-Create orchestration: [orchestration_name]
-Plugin path: [plugin_path]
-Architecture: [from design phase]
-
-Create:
-1. Main orchestration command in commands/[orchestration_name].md
-2. Any new agents needed in agents/
-3. Ensure data flow is implemented
-4. Add error handling
-5. Include compact points
-6. Add TodoWrite tracking
+```markdown
+Agent(cc:orchestration-creator):
+  Create orchestration: [orchestration_name]
+  Plugin path: [plugin_path]
+  Architecture: [from design phase]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todos: Create orchestration command, Create any new agents - Complete
 

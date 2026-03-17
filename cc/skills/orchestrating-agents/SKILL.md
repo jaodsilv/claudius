@@ -1,10 +1,12 @@
 ---
-name: cc:orchestrating-agents
 description: >-
   Provides multi-agent orchestration patterns when designing complex workflows,
   coordinating multiple agents, or implementing phase-based command structures.
   Use when creating orchestrations or improving existing multi-agent workflows.
+user-invocable: false
 version: 1.0.0
+allowed-tools: Read
+model: sonnet
 ---
 
 # Orchestrating Agents
@@ -25,7 +27,7 @@ For simple linear tasks, prefer single commands or agents.
 ## Pattern Selection
 
 | Pattern | Use Case |
-|---------|----------|
+| :------ | :------- |
 | Sequential | Phases execute in order, each depends on previous |
 | Parallel | Independent analyses that merge results |
 | Iterative | Refinement loops with quality gates |
@@ -37,7 +39,7 @@ For simple linear tasks, prefer single commands or agents.
 ---
 description: [Brief workflow description]
 argument-hint: [Arguments]
-allowed-tools: ["Task", "TodoWrite", "AskUserQuestion", "Read", ...]
+allowed-tools: Agent, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Read, ...
 ---
 
 # Orchestration: [Name]
@@ -48,7 +50,9 @@ allowed-tools: ["Task", "TodoWrite", "AskUserQuestion", "Read", ...]
 [What this phase accomplishes]
 
 ### Execution
-Use Task tool with @[agent-name]:
+Use the Agent tool to spawn the agent `[agent-name]`:
+
+Agent([agent-name]):
   [Detailed instructions]
 
 ### Gate
@@ -75,13 +79,13 @@ Each phase requires:
 
 1. Pass summaries, not raw content between phases
 2. Use compact points to preserve essential state
-3. Track progress with TodoWrite
+3. Track progress with TaskCreate/TaskUpdate
 4. Define explicit handoffs between agents
 
 ## Complexity Assessment
 
 | Factor | Simple | Moderate | Complex |
-|--------|--------|----------|---------|
+| :----- | :----- | :------- | :------ |
 | Phases | 1-2 | 3-4 | 5+ |
 | Agents | 1-2 | 3-4 | 5+ |
 | User interactions | 0-1 | 2-3 | 4+ |
@@ -90,6 +94,6 @@ If complexity exceeds "Moderate", consider decomposition.
 
 ## Additional Resources
 
-- **`references/coordinator-patterns.md`** - Detailed coordination patterns
-- **`references/agent-coordination.md`** - Agent communication patterns
-- **`references/complexity-assessment.md`** - Complexity scoring guidelines
+- **`${CLAUDE_SKILL_DIR}/references/coordinator-patterns.md`** - Detailed coordination patterns
+- **`${CLAUDE_SKILL_DIR}/references/agent-coordination.md`** - Agent communication patterns
+- **`${CLAUDE_SKILL_DIR}/references/complexity-assessment.md`** - Complexity scoring guidelines

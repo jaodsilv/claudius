@@ -1,7 +1,7 @@
 ---
 description: Multi-agent Ultrathink deep ideation session with Opus extended thinking
-allowed-tools: Task, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TodoWrite, Skill
-argument-hint: <goal|roadmap-path> [--mode <full|focused>] [--rounds <number>] [--output <path>]
+argument-hint: "[[--goal] <goal> | [--roadmap-path] <roadmap-path>] [--mode <full|focused>] [--rounds <number>] [--output <path>]"
+allowed-tools: Agent, Read, Write, Glob, Grep, WebSearch, AskUserQuestion, TaskCreate, TaskGet, TaskList, TaskUpdate, Skill
 model: opus
 ---
 
@@ -9,44 +9,14 @@ model: opus
 
 Launch a multi-agent Ultrathink deep ideation session using Opus extended thinking, multi-pass iteration, and adversarial analysis.
 
-## Input Processing
+## Arguments Parsing
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+Extract from `$ARGUMENTS`:
 
-Parse the arguments:
-
-1. `$input`: Goal description or path to roadmap file (required)
-2. `$mode`: Session mode - "full" (all agents) or "focused" (subset) (default: "full")
-3. `$rounds`: Number of ideation rounds (default: 3)
-4. `$output`: Output path (default: "docs/planning/ideas/")
-
-## Parameters Schema
-
-```yaml
-ideas-arguments:
-  type: object
-  properties:
-    input:
-      type: string
-      description: Goal to ideate on, or path to roadmap file
-    mode:
-      type: string
-      enum: [full, focused]
-      default: full
-      description: Session mode (full=all agents, focused=subset)
-    rounds:
-      type: number
-      default: 3
-      minimum: 1
-      maximum: 5
-      description: Number of ideation rounds
-    output:
-      type: string
-      default: "docs/planning/ideas/"
-      description: Output directory
-  required:
-    - input
-```
+- `$input`: Goal to ideate on, or path to roadmap file (required). It's value it the substring of everything that comes before any flags.
+- `$mode`: Session mode - "full" (all agents) or "focused" (subset) (default: "full")
+- `$rounds`: Number of ideation rounds (default: 3, minimum: 1, maximum: 5)
+- `$output`: Output path (default: "docs/planning/ideas/")
 
 ## Ultrathink Workflow
 
@@ -73,12 +43,15 @@ Round N (repeat for --rounds):
 
 ### Initialization
 
-1. Initialize TodoWrite:
-   - Initialization (in_progress)
-   - Round 1 (pending)
-   - Round 2 (pending)
-   - Round 3 (pending)
-   - Finalization (pending)
+1. Use the TaskCreate tool to add the following task(s) to the task list:
+
+   <new-tasks>
+   - [ ] Initialization (in_progress)
+   - [ ] Round 1 (pending)
+   - [ ] Round 2 (pending)
+   - [ ] Round 3 (pending)
+   - [ ] Finalization (pending)
+   </new-tasks>
 
 2. Ultrathink the goal and constraints before orchestrating the multi-agent workflow.
 
@@ -119,124 +92,121 @@ For each round (1 to {{rounds}}):
 
    **Deep Thinker (Opus with extended thinking)**:
 
-   ```text
-   Use Task tool with planner:ideas:deep-thinker agent:
+   Use the Agent tool to spawn the agent `planner:ideas:deep-thinker` to deeply explore the problem:
 
-   Topic: {{goal}}
+   ```markdown
+   Agent(planner:ideas:deep-thinker):
+     prompt:
+       Topic: {{goal}}
 
-   Previous round insights (if any):
-   {{previous_insights}}
+       Previous round insights (if any):
+       {{previous_insights}}
 
-   User feedback from last round (if any):
-   {{user_feedback}}
+       User feedback from last round (if any):
+       {{user_feedback}}
 
-   Round: {{current_round}} of {{max_rounds}}
-
-   Ultrathink the problem thoroughly:
-   1. Deconstruct the problem thoroughly
-   2. Generate multiple distinct approaches
-   3. Explore non-obvious solutions
-   4. Challenge assumptions
-   5. Make cross-domain connections
-
-   Ultrathink deeply - thorough reasoning is valuable here.
+       Round: {{current_round}} of {{max_rounds}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
    **Innovation Explorer (Opus with web research)**:
 
-   ```text
-   Use Task tool with planner:ideas:innovation-explorer agent:
+   Use the Agent tool to spawn the agent `planner:ideas:innovation-explorer` to explore innovative approaches:
 
-   Topic: {{goal}}
+   ```markdown
+   Agent(planner:ideas:innovation-explorer):
+     prompt:
+       Topic: {{goal}}
 
-   Previous findings (if any):
-   {{previous_findings}}
+       Previous findings (if any):
+       {{previous_findings}}
 
-   User interests (if any):
-   {{user_interests}}
+       User interests (if any):
+       {{user_interests}}
 
-   Round: {{current_round}} of {{max_rounds}}
-
-   Explore:
-   1. State-of-the-art solutions
-   2. Cross-domain inspiration
-   3. Emerging technologies
-   4. Unconventional approaches
-   5. Novel combinations
+       Round: {{current_round}} of {{max_rounds}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 4. Collect outputs from both agents
 
 #### Step 2: Adversarial Analysis
 
-```text
-Use Task tool with planner:ideas:adversarial-critic agent:
+Use the Agent tool to spawn the agent `planner:ideas:adversarial-critic` to challenge the generated ideas:
 
-Ideas to challenge:
+```markdown
+Agent(planner:ideas:adversarial-critic):
+  prompt:
+    Ideas to challenge:
 
-From Deep Thinker:
-{{deep_thinker_output}}
+    From Deep Thinker:
+    {{deep_thinker_output}}
 
-From Innovation Explorer:
-{{innovation_output}}
-
-For each idea:
-1. Challenge underlying assumptions
-2. Identify failure modes
-3. Generate counter-arguments
-4. Stress test under extremes
-5. Find logical inconsistencies
-
-Be rigorous but constructive.
+    From Innovation Explorer:
+    {{innovation_output}}
 ```
+
+**IMPORTANT**:
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 1. Receive critique and challenges
 
 #### Step 3: Synthesis
 
-1. Launch Convergence Synthesizer:
+1. Use the Agent tool to spawn the agent `planner:ideas:convergence-synthesizer` to synthesize the ideas into coherent proposals:
 
-   ```text
-   Use Task tool with planner:ideas:convergence-synthesizer agent:
+   ```markdown
+   Agent(planner:ideas:convergence-synthesizer):
+     prompt:
+       Deep Thinker Output:
+       {{deep_thinker_output}}
 
-   Deep Thinker Output:
-   {{deep_thinker_output}}
+       Innovation Explorer Output:
+       {{innovation_output}}
 
-   Innovation Explorer Output:
-   {{innovation_output}}
-
-   Adversarial Critic Analysis:
-   {{critic_output}}
-
-   Synthesize into coherent proposals:
-   1. Merge complementary ideas
-   2. Address identified weaknesses
-   3. Create hybrid proposals
-   4. Rank by viability and impact
-   5. Identify remaining gaps
+       Adversarial Critic Analysis:
+       {{critic_output}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 2. Receive synthesized proposals
 
 #### Step 4: User Interaction
 
-1. Launch Facilitator for presentation:
+1. Use the Agent tool to spawn the agent `planner:ideas:facilitator` to present proposals and gather user feedback:
 
-   ```text
-   Use Task tool with planner:ideas:facilitator agent:
+   ```markdown
+   Agent(planner:ideas:facilitator):
+     prompt:
+       Round: {{current_round}} of {{max_rounds}}
 
-   Round: {{current_round}} of {{max_rounds}}
-
-   Synthesized Proposals:
-   {{synthesis_output}}
-
-   Present proposals clearly and gather user feedback:
-   1. Show top proposals with scores
-   2. Highlight key innovations
-   3. Note main concerns
-   4. Ask focused questions
-   5. Determine if another round needed
+       Synthesized Proposals:
+       {{synthesis_output}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 2. Present to user through AskUserQuestion:
    - Which proposals resonate most?

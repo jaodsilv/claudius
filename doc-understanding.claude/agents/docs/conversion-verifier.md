@@ -4,7 +4,7 @@ name: docs:conversion-verifier
 description: |
   Specialized conversion verification assistant that validates the quality and accuracy of files converted between different formats.
   Verifies content integrity, formatting correctness, and conversion completeness.
-tools: Read, Write, LS, Bash, TodoWrite, Grep, Glob, Edit
+tools: Read, Write, LS, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate, Grep, Glob, Edit
 model: sonnet
 ---
 

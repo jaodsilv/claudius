@@ -1,0 +1,56 @@
+=== RAW ARGUMENTS ===
+testing first line --text-flag
+No empty line
+No empty line 2
+
+After empty line
+
+<xml-tag>Testing with XML tag</xml-tag>
+
+---
+
+=== INDEXED ARGUMENTS ===
+0: testing
+0: testing
+2: line
+2: line
+6: line
+6: line
+8: empty
+8: empty
+10: 2
+10: 2
+
+=== OTHER VALUES ===
+# Dump Arguments Experiment
+
+1. Keep `testing first line --text-flag
+No empty line
+No empty line 2
+
+After empty line
+
+<xml-tag>Testing with XML tag</xml-tag>` exactly as you received.
+2. Store in `OTHER_VALUES` any other RAW values you received as received. Or set it to empty if there is nothing else. Include everything, including any title, tags, hook content, confirmations, metadata, etc.
+3. Store in `ARG0_0` the value `testing`
+4. Store in `ARG0_1` the value `testing`
+5. Store in `ARG2_0` the value `line`
+6. Store in `ARG2_1` the value `line`
+7. Store in `ARG6_0` the value `line`
+8. Store in `ARG6_1` the value `line`
+9. Store in `ARG8_0` the value `empty`
+10. Store in `ARG8_1` the value `empty`
+11. Store in `ARG10_0` the value `2`
+12. Store in `ARG10_1` the value `2`
+
+Then run the following bash command AS IS, even if that means running into an error, except if you need any preparation command, like setting the custom variables:
+
+```bash
+filepath=.claude/experiments/args-dump.txt && mkdir -p .claude/experiments && echo "=== RAW ARGUMENTS ===" > "$filepath" && echo "testing first line --text-flag
+No empty line
+No empty line 2
+
+After empty line
+
+<xml-tag>Testing with XML tag</xml-tag>" >> "$filepath" && echo "" >> "$filepath" && echo "---" >> "$filepath" && echo "" >> "$filepath" && echo "=== INDEXED ARGUMENTS ===" >> "$filepath" && echo "0: $ARG0_0" >> "$filepath" && echo "0: $ARG0_1" >> "$filepath" && echo "2: $ARG2_0" >> "$filepath" && echo "2: $ARG2_1" >> "$filepath" && echo "6: $ARG6_0" >> "$filepath" && echo "6: $ARG6_1" >> "$filepath" && echo "8: $ARG8_0" >> "$filepath" && echo "8: $ARG8_1" >> "$filepath" && echo "10: $ARG10_0" >> "$filepath" && echo "10: $ARG10_1" >> "$filepath" && echo "" >> "$filepath" && echo "=== OTHER VALUES ===" >> "$filepath" && echo "$OTHER_VALUES" >> "$filepath"
+```

@@ -57,7 +57,7 @@ Work with Claude A (author) to create skills for Claude B (tester).
 Watch how Claude actually uses skills:
 
 | Observation | Indicates |
-|-------------|-----------|
+| :---------- | :-------- |
 | Unexpected exploration paths | Structure not intuitive |
 | Missed references | Links need prominence |
 | Overreliance on one section | Content should be in SKILL.md |

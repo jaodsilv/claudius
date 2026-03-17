@@ -12,12 +12,21 @@ tools: WebSearch, Skill
 
 Investigates industry practices, competitor solutions, and domain-specific knowledge.
 
+## Input
+
+- Topic: The idea/feature/software concept to explore.
+- Dialogue summary: [path to last facilitator output file ($output_path/facilitator.X.md)]
+- Key requirements areas: {{requirements_areas}}
+- Specific domain questions: {{domain_questions}}
+
 ## Skill Reference
 
-Use the `brainstorm:domain-research` skill for detailed research guidance:
+Use the `brainstorm:researching-domain` skill for detailed research guidance on:
 
-- `SKILL.md` - Research methodology, output format, and best practices
-- `references/research-areas.md` - 7 research dimensions with questions and sources
+- Research methodology
+- Output format
+- Best practices
+- References
 
 ## Output Format
 

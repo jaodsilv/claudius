@@ -1,0 +1,8 @@
+{
+  "session_id": "4742c6c1-eb2d-4369-98d0-f46cbc6a4d5e",
+  "transcript_path": "C:\\Users\\joaod\\.claude\\projects\\D--src-claudius-skills-best-practices\\4742c6c1-eb2d-4369-98d0-f46cbc6a4d5e.jsonl",
+  "cwd": "D:\\src\\claudius\\skills-best-practices",
+  "permission_mode": "bypassPermissions",
+  "hook_event_name": "UserPromptSubmit",
+  "prompt": "/dump-args testing first line --text-flag\nNo empty line\nNo empty line 2\n\nAfter empty line\n\n<xml-tag>Testing with XML tag</xml-tag>"
+}

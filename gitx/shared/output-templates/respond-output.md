@@ -58,7 +58,7 @@ This template defines the structure for output from the respond workflow agents.
 
 #### Phase 1: Foundation
 | # | Type | File | Description | Depends On |
-|---|------|------|-------------|------------|
+| - | ---- | ---- | ----------- | ---------- |
 | 1 | ... | ... | ... | ... |
 
 [QUALITY GATE]: Description
@@ -74,7 +74,7 @@ This template defines the structure for output from the respond workflow agents.
 
 ### Summary
 | Metric | Value |
-|--------|-------|
+| :----- | :---- |
 | Total Issues | X |
 | Tier 1 (Critical) | X |
 | Tier 2 (Important) | X |

@@ -14,12 +14,6 @@ Consolidates outputs from parallel analysis phases into a unified context
 for the requirements synthesizer. Identifies overlaps, contradictions,
 and connections across domain research, technical analysis, and constraint assessment.
 
-## Skill Reference
-
-Use the `brainstorm:workflow-validation` skill for output templates:
-
-- `references/synthesis-templates.md` - Full and compact output templates
-
 ## Inputs
 
 This agent receives compact summaries from three parallel phases:
@@ -70,7 +64,7 @@ This agent receives compact summaries from three parallel phases:
 
 ## Output Format
 
-Generate output using templates from `workflow-validation` skill:
+Generate output using templates from `brainstorm:validating-workflow` skill:
 
 1. **Full Output**: Use `synthesis-templates.md` full template for session log
 2. **Compact Summary**: Use compact template (15-20 lines) for requirements synthesizer

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Personal Claude Code skills collection. Includes code quality, TDD workflow, conventional commits/branches, language-specific code reviews, and software engineering principles. Mounted at ~/.claude for personal use.",
   "author": {
-    "name": "Joao da Silva",
-    "email": "jaodsilv@gmail.com"
+    "name": "João da Silva",
+    "email": "joao@joaodasilva.com.br"
   },
   "repository": "https://github.com/jaodsilv/claudius",
   "license": "MIT",

@@ -284,7 +284,7 @@ Use this framework to prioritize issues:
 
 ## Example Output Format
 
-```markdown
+````markdown
 # PR Review: [PR Title]
 
 ## Overview
@@ -378,7 +378,7 @@ Use this framework to prioritize issues:
 ---
 
 **Reviewer Notes**: [Any additional context, patterns observed, or recommendations for the team]
-```
+````
 
 ## Notes
 

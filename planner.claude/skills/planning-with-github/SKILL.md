@@ -1,6 +1,8 @@
 ---
-name: planner:planning-with-github
 description: Integrates GitHub issues with project planning. Invoked when user asks to analyze issues, fetch issues for planning, map dependencies, or work with GitHub projects.
+user-invocable: false
+allowed-tools: Bash
+model: sonnet
 ---
 
 # Planning with GitHub
@@ -33,7 +35,7 @@ gh api repos/{owner}/{repo}/milestones --jq '.[] | {number, title, due_on, open_
 ### Priority Labels
 
 | Pattern                    | Priority | MoSCoW      |
-| -------------------------- | -------- | ----------- |
+| :------------------------- | -------- | ----------- |
 | `P0`, `critical`, `blocker`| Highest  | Must Have   |
 | `P1`, `high-priority`      | High     | Should Have |
 | `P2`, `medium`, `normal`   | Medium   | Could Have  |
@@ -42,7 +44,7 @@ gh api repos/{owner}/{repo}/milestones --jq '.[] | {number, title, due_on, open_
 ### Status Labels
 
 | Pattern              | Action              |
-| -------------------- | ------------------- |
+| :------------------- | :------------------ |
 | `blocked`, `waiting` | Check blocker       |
 | `ready`, `groomed`   | Can be scheduled    |
 | `in-progress`, `wip` | Already worked      |
@@ -68,7 +70,7 @@ Build dependency graph:
 ## PR Status Interpretation
 
 | Status    | Issue Impact      |
-| --------- | ----------------- |
+| :-------- | :---------------- |
 | No PR     | Not started       |
 | Draft PR  | In progress       |
 | Review PR | Near completion   |
@@ -80,7 +82,7 @@ Build dependency graph:
 
 ```markdown
 | # | Title | Priority | Effort | Status | Blocked By |
-|---|-------|----------|--------|--------|------------|
+| - | ----- | -------- | ------ | ------ | ---------- |
 ```
 
 ### Dependency Report

@@ -3,7 +3,7 @@
 name: cover-letter-evaluator:impact
 description: Use this agent when you need to evaluate the quantified achievements and technical contributions in a tech cover letter as part of Step 9 of a systematic evaluation process. Examples: <example>Context: User is working through a comprehensive cover letter evaluation process and has reached the impact demonstration phase. user: "I've completed steps 1-8 of my cover letter evaluation. Now I need to assess how well my quantified achievements and technical contributions are presented. Here's my cover letter draft, the job description, and my resume." assistant: "I'll use the cover-letter-evaluator:impact agent to perform Step 9 evaluation focusing on quantified achievements and technical contributions."</example> <example>Context: User wants to strengthen the impact demonstration in their tech cover letter before submitting. user: "My cover letter feels weak on showing concrete results. Can you evaluate how well I'm demonstrating quantified achievements for this software engineering position?" assistant: "Let me launch the cover-letter-evaluator:impact agent to analyze your quantified achievements and technical contributions against the job requirements."</example>
 model: sonnet
-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
+tools: Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 color: red
 ---
 

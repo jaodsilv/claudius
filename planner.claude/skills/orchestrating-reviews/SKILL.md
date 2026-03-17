@@ -1,10 +1,10 @@
 ---
-name: planner:orchestrating-reviews
 description: >-
   Provides multi-agent review orchestration pattern for planning artifacts.
   Use when implementing review commands that use domain reviewers, structural
   analysis, adversarial challenge, and synthesis phases.
-allowed-tools: Task
+user-invocable: false
+allowed-tools: Agent
 model: opus
 ---
 
@@ -15,7 +15,7 @@ model: opus
 The **Diverge-Challenge-Synthesize** workflow enables comprehensive artifact review through multi-agent collaboration.
 
 | Phase | Purpose | Agents |
-|-------|---------|--------|
+| :---- | :------ | :----- |
 | 1. Parallel Analysis | Independent domain + structural review | Domain reviewer, review-analyzer |
 | 2. Adversarial Challenge | Challenge assumptions, find blind spots | review-challenger |
 | 3. Synthesis | Deduplicate, resolve conflicts, prioritize | review-synthesizer |
@@ -26,7 +26,7 @@ The **Diverge-Challenge-Synthesize** workflow enables comprehensive artifact rev
 ## Mode Selection
 
 | Mode | Description | Use When |
-|------|-------------|----------|
+| :--- | :---------- | :------- |
 | Thorough | Full 4-phase orchestration | Default; comprehensive review needed |
 | Quick | Single domain reviewer only | Time-constrained; focused feedback |
 
@@ -72,20 +72,31 @@ The orchestrator:
 
 ## Agent Invocation Pattern
 
-```text
-Use Task tool with @[agent-name]:
-  Context: [artifact path], [goal if any]
-  Mode: [thorough|quick]
-  Phase: [1|2|3|4]
+Use the Agent tool to spawn the agent `[agent-name]` to perform the review phase:
+
+```markdown
+Agent([agent-name]):
+  prompt:
+    Context: [artifact path], [goal if any]
+    Mode: [thorough|quick]
+    Phase: [1|2|3|4]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Example:
 
-```text
-Task @planner:orchestration:review-analyzer:
-  Context: docs/roadmap.md
-  Mode: thorough
-  Phase: 1
+```markdown
+Agent(planner:orchestration:review-analyzer):
+  prompt:
+    Context: docs/roadmap.md
+    Mode: thorough
+    Phase: 1
 ```
 
 ## Output Format
@@ -101,7 +112,7 @@ Key sections:
 ## Error Handling
 
 | Scenario | Action |
-|----------|--------|
+| :------- | :----- |
 | File not found | Suggest similar paths via glob search |
 | Artifact too large | Summarize sections before full analysis |
 | Goal unclear | Ask user to clarify evaluation criteria |

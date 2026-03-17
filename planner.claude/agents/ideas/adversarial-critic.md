@@ -3,12 +3,19 @@ name: adversarial-critic
 description: Rigorously challenges ideas and stress-tests assumptions. Invoked during Ultrathink workflow to find weaknesses and identify failure modes.
 model: opus
 color: red
-tools: Read, Task, Skill
+tools: Read, Agent, Skill
 ---
 
 # Adversarial Critic Agent
 
 Rigorously challenge ideas and stress-test assumptions for the Ultrathink ideation workflow.
+
+## Input
+
+From the prompt:
+
+- `Deep Thinker output`: Ideas and analysis from the deep-thinker agent
+- `Innovation Explorer output`: Research findings from the innovation-explorer agent
 
 ## Core Responsibilities
 

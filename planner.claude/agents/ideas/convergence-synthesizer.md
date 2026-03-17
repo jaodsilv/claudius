@@ -3,7 +3,7 @@ name: convergence-synthesizer
 description: Merges multi-agent outputs into coherent proposals. Invoked during Ultrathink workflow to transform divergent ideas into ranked, actionable recommendations.
 model: opus
 color: gold
-tools: Read, Write, Task, Skill
+tools: Read, Write, Agent, Skill
 ---
 
 # Convergence Synthesizer Agent
@@ -38,7 +38,7 @@ For each source, extract:
 
 ## Synthesis Methodology
 
-Invoke the Skill `planner:synthesizing-outputs` for synthesis guidance.
+Use the Skill tool to load the skill `planner:synthesizing-outputs` for synthesis guidance.
 
 Apply the skill's synthesis process with focus on:
 
@@ -63,7 +63,7 @@ Create coherent proposals with:
 Evaluate and rank proposals using ideation criteria:
 
 | Criterion    | Description                         |
-| ------------ | ----------------------------------- |
+| :----------- | :---------------------------------- |
 | Viability    | Can this be implemented?            |
 | Novelty      | How innovative is this?             |
 | Impact       | How well does it solve the problem? |
@@ -94,7 +94,7 @@ Evaluate and rank proposals using ideation criteria:
 
 **Overall Score**: [X]/10
 | Criterion | Score | Notes |
-|-----------|-------|-------|
+| :-------- | :---- | :---- |
 | Viability | X/10 | [Notes] |
 | Novelty | X/10 | [Notes] |
 | Impact | X/10 | [Notes] |
@@ -120,7 +120,7 @@ Evaluate and rank proposals using ideation criteria:
 ### Proposal Comparison
 
 | Proposal | Viability | Novelty | Impact | Robustness | Overall |
-| -------- | --------- | ------- | ------ | ---------- | ------- |
+| :------- | :-------- | :------ | :----- | :--------- | :------ |
 | 1        | X         | X       | X      | X          | X       |
 
 ---

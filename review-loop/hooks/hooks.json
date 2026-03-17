@@ -1,0 +1,17 @@
+{
+  "description": "Global hooks for review-loop plugin - skill pre-validation",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Agent|Skill|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/review-loop-pre-tool.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

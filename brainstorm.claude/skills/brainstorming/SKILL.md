@@ -1,24 +1,19 @@
 ---
-name: brainstorm:brainstorming
 description: >-
   Orchestrates requirements discovery through multi-agent analysis and Socratic dialogue.
   Invoked when exploring vague ideas, discovering requirements, or defining feature scope.
+  Use when a user has a vague software/feature idea, needs requirements discovery, or needs feature scope definition before implementation.
+user-invocable: false
 allowed-tools:
 model: opus
 ---
 
 # Brainstorming Skill
 
-## When to Invoke
-
-1. User has vague software/feature idea to explore
-2. Requirements discovery needed for new concept
-3. Feature scope needs definition before implementation
-
 ## Workflow Phases
 
 | Phase | Agent | Output |
-|-------|-------|--------|
+| :---- | :---- | :----- |
 | 1. Dialogue | `brainstorm:facilitator` | Key insights, user needs (batched 2-3 rounds) |
 | 2-4. Analysis | `brainstorm:domain-explorer`, `brainstorm:technical-analyst`, `brainstorm:constraint-analyst` | Parallel analysis reports |
 | 4.5. Synthesis | `brainstorm:analysis-synthesizer` | Unified analysis context |
@@ -30,7 +25,7 @@ model: opus
 ## Depth Levels
 
 | Level | Rounds | Best For | Time |
-|-------|--------|----------|------|
+| :---- | :----- | :------- | :--- |
 | shallow | 3 | Small features, extensions | 15-30 min |
 | normal | 5 | New features, moderate complexity | 30-60 min |
 | deep | 8 | New products, strategic features | 60-120 min |
@@ -38,7 +33,7 @@ model: opus
 ## Commands
 
 | Command | Purpose |
-|---------|---------|
+| :------ | :------ |
 | `/brainstorm:start` | Start new session |
 | `/brainstorm:continue` | Resume interrupted session |
 | `/brainstorm:export` | Regenerate documents |
@@ -46,7 +41,7 @@ model: opus
 ## Output Artifacts
 
 | File | Contents |
-|------|----------|
+| :--- | :------- |
 | `specification.md` | Complete specification with all sections |
 | `requirements.md` | Prioritized requirements (MoSCoW) |
 | `session-log.md` | Dialogue transcripts, phase outputs |
@@ -56,18 +51,18 @@ model: opus
 
 Output document templates are available in references:
 
-- `references/requirements-document.md` - Full requirements specification template
-- `references/session-summary.md` - Executive summary template
+- `${CLAUDE_SKILL_DIR}/references/requirements-document.md` - Full requirements specification template
+- `${CLAUDE_SKILL_DIR}/references/session-summary.md` - Executive summary template
 
 ## Related Skills
 
 The brainstorming workflow leverages these specialized skills:
 
-- `constraint-analysis` - Constraint identification and trade-off patterns
-- `technical-patterns` - Architecture pattern selection and complexity sizing
-- `requirements-synthesis` - SMART criteria and MoSCoW prioritization
-- `domain-research` - Domain exploration research areas
-- `workflow-validation` - Quality gates between phases
+- `analyzing-constraints` - Constraint identification and trade-off patterns
+- `analyzing-technical-patterns` - Architecture pattern selection and complexity sizing
+- `synthesizing-requirements` - SMART criteria and MoSCoW prioritization
+- `researching-domain` - Domain exploration research areas
+- `validating-workflow` - Quality gates between phases
 
 Each skill provides detailed reference material used by the corresponding agents.
 
@@ -92,7 +87,6 @@ Each skill provides detailed reference material used by the corresponding agents
 
 - [ ] Feasibility assessed
 - [ ] Architecture options considered
-
 - [ ] Risks identified
 
 ### Document
@@ -118,7 +112,7 @@ Each skill provides detailed reference material used by the corresponding agents
 ## Troubleshooting
 
 | Issue | Resolution |
-|-------|------------|
+| :---- | :--------- |
 | Too little information | Ask specific questions, provide examples |
 | Session going in circles | Summarize understanding, move to next phase |
 | Requirements conflict | Document conflict, analyze trade-offs, escalate |

@@ -1,98 +1,210 @@
 ---
-description: Commits staged changes and pushes to remote when saving work. Use for standard git workflow or quick updates.
-argument-hint: ""
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git push:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*)
+description: Commits and pushes changes with smart file grouping and conventional messages
+argument-hint: "[(--files <file>+)+ | --context <description> | --multi | --staged] [--no-push]"
+allowed-tools: Bash, Skill, Agent, AskUserQuestion
+model: haiku
+hooks:
+  PreToolUse:
+    - matcher: "Agent"
+      hooks:
+        - type: command
+          command: "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-pretool.sh"
+          timeout: 60
 ---
 
-# Commit and Push
+# Commit and Push - Multi-Mode Workflow
 
-Commit all changes with a well-crafted message following conventional commits, then push to remote.
+Commit changes with conventional messages and optional smart grouping.
 
-## Gather Context
+## Modes
 
-Get repository state:
+Extract from $ARGUMENTS or hook additional context:
 
-- Current branch: !`git branch --show-current`
-- Untracked files: !`git status --porcelain`
-- Staged changes: !`git diff --cached --stat`
-- Unstaged changes: !`git diff --stat`
-- Recent commits (for style reference): !`git log --oneline -10`
+- **Explicit files (--files <file0> <file1> ... <fileN>)**: Explicit file groups
+  with one or more `--files`, and each `--files` creates a separate commit.
+  Here identified as `$GROUPS` for the array of file groups,
+  `$GROUPS[i]` for the i-th file group, and `$MODE="lists"`
+- **Context Description (--context "<description>")**: If `--context` is present.
+  Select files matching a contextual description.
+  Here identified as `$DESCRIPTION` for the context description,
+  and `$MODE="context-description"`
+- **Multiple Commits (--multi)**: If `--multi` is present,
+  Intelligent grouping of files into multiple logical commits.
+  Here identified as `$MODE="multi-commit"`
+- **Staged Only (--staged)**: If `--staged` is present,
+  commit only the files that are already staged in the git index.
+  Here identified as `$MODE="staged"` and `$STAGED_ONLY="true"`.
+- **No push (--no-push)**: If `--no-push` is present,
+  Create commits but skip push. Here identified as `$NO_PUSH="true"`
+  if the no-push flag is present, otherwise `$NO_PUSH="false"`.
+  Also set `$STAGED_ONLY="false"` for all non-staged modes.
 
-## Analyze Changes
+## Phase 1: Determine File Groups
 
-Review all changes to understand what's being committed:
+### If $MODE = "lists"
 
-- `git diff HEAD` to see full changes
-- Identify the nature: new feature, bug fix, refactor, docs, etc.
-- Look for patterns in file names and content
+Each `$GROUPS[i]` represents a separate list of files for a individual commit.
 
-## Draft Commit Message
+Skip to Phase 2.
 
-Use the gitx:committing-conventionally skill to draft an appropriate message:
+### If $MODE = "context-description"
 
-1. Determine type:
-   - `feat:` for new features
-   - `fix:` for bug fixes
-   - `docs:` for documentation
-   - `style:` for formatting
-   - `refactor:` for code restructuring
-   - `test:` for tests
-   - `chore:` for maintenance
+Launch the file-selector agent to determine which files match the description:
 
-2. Determine scope (optional):
-   - Based on affected component/module
-   - e.g., `feat(auth):`, `fix(api):`
-
-3. Write description:
-   - Imperative mood ("add" not "added")
-   - Concise but descriptive
-   - No period at end
-
-4. Add body if needed:
-   - Explain the "why" for non-trivial changes
-   - Reference related issues
-
-## Stage Changes
-
-Stage relevant files:
-
-- Analyze which files should be committed
-- Avoid committing sensitive files (.env, credentials, etc.)
-- `git add <files>` for specific files
-- If all changes are intentional: `git add -A`
-
-## Create Commit
-
-Commit with the drafted message:
-
-```text
-git commit -m "<type>(<scope>): <description>
-
-<body if needed>
-
-<footer if needed>"
+```markdown
+Task:
+  subagent_type: "gitx:commit:file-selector"
+  prompt: "$DESCRIPTION"
+  description: "Select commit files"
 ```
 
-## Push to Remote
+Store the returned JSON array directly as `$GROUPS[0]`.
 
-Push the commit:
+### If $MODE = "multi-commit"
 
-1. Check if remote tracking branch exists: `git rev-parse --abbrev-ref @{upstream} 2>/dev/null`
-2. If exists: `git push`
-3. If not exists: `git push -u origin <branch-name>`
+Launch the change-grouper agent to intelligently group files:
 
-## Report Results
+```markdown
+Task:
+  subagent_type: "gitx:commit:change-grouper"
+  prompt: "Group the changed files into logical commits"
+  description: "Group commit files"
+```
 
-Show:
+Store the result as `$GROUPS`.
 
-- Commit hash and message
-- Files changed
+### If $MODE = "staged"
+
+Get the list of currently staged files:
+
+```markdown
+Bash(git diff --cached --name-only)
+```
+
+If no files are staged, inform the user and stop.
+
+Store the returned file list as `$GROUPS[0]`.
+
+## Phase 2: Generate Commit Messages
+
+For EACH file group in `$GROUPS`, launch the `gitx:commit:commit-writer` agent IN PARALLEL:
+
+```markdown
+For each $group in $GROUPS:
+  Task:
+    subagent_type: "gitx:commit:commit-writer"
+    prompt: "$group"
+    description: "Generate commit message"
+```
+
+If `$DESCRIPTION` exists (from context-description mode), include it in the prompt:
+
+```markdown
+    prompt: "<task>$DESCRIPTION</task> $group"
+```
+
+Store a map of agent id to the index of the group in `$TASK_AGENTS_MAP`.
+The agent will generate a conventional commit message storing in a map of agent id to the message in `$MESSAGES`.
+
+Wait for all tasks to complete, collecting each result as a pair: `($GROUPS[$TASK_AGENTS_MAP[$agent_id]], $MESSAGES[$agent_id])`
+
+Store all output in an array $OUTPUTS
+
+## Phase 3: Execute Commits and Push
+
+Build commit pairs json:
+
+```json
+{
+  "no_push": $NO_PUSH,
+  "staged_only": $STAGED_ONLY,
+  "pairs": [
+    {"files": [$OUTPUTS[0][0]], "message": "$OUTPUTS[0][1]"},
+    {"files": [$OUTPUTS[1][0]], "message": "$OUTPUTS[1][1]"}
+  ]
+}
+```
+
+Escape that JSON and store it in `$JSON_COMMIT_PAIRS`. Execute the commit-push script directly:
+
+```markdown
+Bash(${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push-execute.sh "$CLAUDE_PLUGIN_ROOT" "$JSON_COMMIT_PAIRS")
+```
+
+The script will stage files, create commits, push to remote, and return results.
+
+### Example for the JSON input
+
+```json
+{
+  "no_push": false,
+  "staged_only": false,
+  "pairs": [
+    {"files": ["src/a.ts", "src/b.ts"], "message": "feat(core): ..."},
+    {"files": ["test.ts"], "message": "test(core): ..."}
+  ]
+}
+```
+
+## Phase 4: Display Results
+
+The script outputs results directly. Display the formatted output to the user showing:
+
+- Each commit created (SHA, message, files)
 - Push status
-- Branch URL (if available): `https://github.com/<owner>/<repo>/tree/<branch>`
+- PR status (if applicable)
+
+If push failed, follow the hook's suggestion to ask the user about rebase vs force push.
 
 ## Error Handling
 
-1. No changes to commit: Report "Nothing to commit, working tree clean".
-2. Push rejected (behind remote): Suggest `git pull --rebase` first.
-3. Push rejected (no permission): Check authentication.
-4. Pre-commit hook failed: Report failure and do NOT amend, create new commit after fix.
+1. **Push fails**: AskUserQuestion
+2. **PR update fails**: Let user know and continue
+
+## Usage Examples
+
+### Default (stage all, one commit)
+
+```markdown
+/gitx:commit-push
+```
+
+### Explicit file groups
+
+```markdown
+/gitx:commit-push --files src/auth.ts tests/auth.test.ts --files README.md
+```
+
+Creates two commits: one for auth files, one for README.
+
+### Context-based selection
+
+```markdown
+/gitx:commit-push --context "authentication changes"
+```
+
+Selects files related to authentication, creates one commit.
+
+### Intelligent multi-commit
+
+```markdown
+/gitx:commit-push --multi
+```
+
+Analyzes all changes and creates separate commits for each logical group.
+
+### Staged files only
+
+```markdown
+/gitx:commit-push --staged
+```
+
+Commits only files already in the staging area without re-staging.
+
+### Without push
+
+```markdown
+/gitx:commit-push --no-push
+```
+
+Creates commit(s) but doesn't push to remote.

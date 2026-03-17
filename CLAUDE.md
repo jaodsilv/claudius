@@ -36,7 +36,9 @@ specialized plugin directories.
 2. 15 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
    commit-push, next-issue, fix-issue, comment-to-issue, comment-to-pr, pr,
    respond, update-pr, merge-pr
-3. 2 skills: conventional-commits, conventional-branch
+3. Multiple skills: conventional-commits, conventional-branch,
+   managing-issues, performing-pr-preflight-checks,
+   categorizing-review-concerns, etc...
 
 **See**: `gitx/README.md` for detailed documentation
 
@@ -86,7 +88,7 @@ specialized plugin directories.
 
 1. 7 agents: facilitator, domain-explorer, technical-analyst, constraint-analyst, analysis-synthesizer, requirements-synthesizer, specification-writer
 2. 3 commands: start, continue, export
-3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, workflow-validation
+3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, validating-workflow
 4. Templates for requirements and session summaries
 
 **See**: `brainstorm.claude/README.md` for detailed documentation

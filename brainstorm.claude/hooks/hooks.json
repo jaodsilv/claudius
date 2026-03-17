@@ -1,0 +1,17 @@
+{
+  "description": "Hooks for brainstorm.claude plugin - argument validation for brainstorming skills",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/brainstorm-pre-tool.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

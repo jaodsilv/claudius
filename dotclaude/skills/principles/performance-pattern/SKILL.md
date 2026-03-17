@@ -1,5 +1,4 @@
 ---
-name: dotclaude:performance-pattern
 description: >-
   Provides performance optimization patterns and guidelines for building
   efficient, scalable applications.

@@ -1,5 +1,4 @@
 ---
-name: dotclaude:mermaid-review
 description: >-
   Provides Mermaid diagram review guidelines covering syntax, clarity,
   and diagram best practices for technical documentation.

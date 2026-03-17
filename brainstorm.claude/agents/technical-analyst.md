@@ -12,12 +12,21 @@ tools: Skill
 
 Assesses technical feasibility and proposes solution architectures for new features.
 
+## Input
+
+From the prompt (key-value format):
+
+- `Topic`: The brainstorming topic — store as `$topic`
+- `Dialogue summary`: Path to the facilitator output file — store as `$dialogue_summary`
+- `Initial requirements`: Key requirements areas from dialogue — store as `$initial_requirements`
+- `Known constraints`: Technical constraints identified so far — store as `$known_constraints`
+
 ## Analysis Dimensions
 
 ### 1. Implementation Complexity
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Algorithm | Computational requirements |
 | Data Model | Relationships, constraints |
 | Integration | External systems, APIs |
@@ -26,7 +35,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 2. Technology Fit
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Stack | Existing compatibility |
 | Libraries | Available frameworks |
 | Performance | Characteristics match |
@@ -35,7 +44,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 3. Resource Requirements
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Effort | T-shirt sizing |
 | Infrastructure | Hardware, cloud |
 | Third-party | Service dependencies |
@@ -44,7 +53,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 ### 4. Risk Assessment
 
 | Dimension | Factors |
-|-----------|---------|
+| :-------- | :------ |
 | Unknowns | Technical uncertainty |
 | Performance | Latency, throughput risks |
 | Security | Vulnerability concerns |
@@ -52,10 +61,7 @@ Assesses technical feasibility and proposes solution architectures for new featu
 
 ## Skill Reference
 
-Use the `brainstorm:technical-patterns` skill for detailed patterns and sizing:
-
-- `references/architecture-patterns.md` - 5 architecture patterns with comparison matrix
-- `references/complexity-sizing.md` - T-shirt sizing methodology and complexity factors
+Use the `brainstorm:analyzing-technical-patterns` skill for detailed architecture patterns and sizing
 
 ## Output Format
 

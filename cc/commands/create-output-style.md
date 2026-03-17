@@ -1,7 +1,7 @@
 ---
 description: Creates output-styles when defining consistent formatting patterns.
-argument-hint: <style-name> [--plugin <plugin-path>]
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+argument-hint: "[[--style-name] <style-name>] [--plugin <plugin-path>]"
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: sonnet
 ---
 
@@ -21,9 +21,9 @@ If style_name not provided, ask user to specify.
 
 ## Execution
 
-Apply Skill(cc:component-validation) for output-style validation criteria.
+Apply Skill(cc:validating-components) for output-style validation criteria.
 
-Use TodoWrite to track progress:
+Use TaskCreate/TaskUpdate to track progress:
 - [ ] Step 1: Validate context
 - [ ] Step 2: Gather requirements
 - [ ] Step 3: Create directory
@@ -37,21 +37,20 @@ Use TodoWrite to track progress:
 2. Check if output-styles/ directory exists (create if needed)
 3. Check if output-style already exists
 
-If plugin not found:
+If plugin not found, use the AskUserQuestion tool to ask where to create the output-style:
 
 ```text
-Use AskUserQuestion:
-  Question: "No plugin found. Where should I create the output-style?"
-  Header: "Location"
-  Options:
-  - Create in current directory
-  - Specify plugin path
-  - Create new plugin first
+Question: "No plugin found. Where should I create the output-style?"
+Header: "Location"
+Options:
+- Create in current directory
+- Specify plugin path
+- Create new plugin first
 ```
 
 ### Step 2: Gather Requirements
 
-Use AskUserQuestion to gather output-style details:
+Use the AskUserQuestion tool to ask about the output-style purpose:
 
 ```text
 Question: "What is the primary purpose of this output-style?"
@@ -96,39 +95,43 @@ mkdir -p [plugin_path]/output-styles
 
 Mark todo: Step 3 complete, Step 4 in progress.
 
-Use Task tool with @cc:output-style-creator agent:
+Use the Agent tool to spawn the agent `cc:output-style-creator` to design the output-style:
 
-```text
-Design output-style: [style_name]
-Plugin path: [plugin_path]
-Purpose: [answer from purpose question]
-Tone: [answer from tone question]
-Format elements: [answers from format question]
-
-Generate output-style content with:
-1. YAML frontmatter (name, description)
-2. Formatting rules section
-3. Tone guidelines section
-4. Example output section
-
-Return the complete content for writing.
-Do NOT write the file - return content only.
+```markdown
+Agent(cc:output-style-creator):
+  Design output-style: [style_name]
+  Plugin path: [plugin_path]
+  Purpose: [answer from purpose question]
+  Tone: [answer from tone question]
+  Format elements: [answers from format question]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Step 5: Write Output-Style File
 
 Mark todo: Step 4 complete, Step 5 in progress.
 
-Use Task tool with @cc:component-writer agent:
+Use the Agent tool to spawn the agent `cc:component-writer` to write the output-style file:
 
-```text
-Write output-style file:
-- Path: [plugin_path]/output-styles/[style_name].md
-- Content: [content from Step 4]
-
-Validate syntax after writing.
-Report success/failure.
+```markdown
+Agent(cc:component-writer):
+  Write output-style file:
+  - Path: [plugin_path]/output-styles/[style_name].md
+  - Content: [content from Step 4]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 ### Step 6: Validate
 
@@ -156,16 +159,15 @@ Show:
 
 ## Error Handling
 
-If output-style already exists:
+If output-style already exists, use the AskUserQuestion tool to ask how to proceed:
 
 ```text
-Use AskUserQuestion:
-  Question: "Output-style already exists. What would you like to do?"
-  Header: "Conflict"
-  Options:
-  - Overwrite existing output-style
-  - Choose different name
-  - Cancel
+Question: "Output-style already exists. What would you like to do?"
+Header: "Conflict"
+Options:
+- Overwrite existing output-style
+- Choose different name
+- Cancel
 ```
 
 If creation fails:

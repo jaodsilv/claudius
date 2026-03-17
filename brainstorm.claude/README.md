@@ -1,10 +1,10 @@
-# Brainstorm Pro Plugin
+# Brainstorm Plugin
 
 Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation.
 
 ## Overview
 
-Brainstorm Pro transforms ambiguous software ideas into actionable specifications through a structured,
+Brainstorm Plugin transforms ambiguous software ideas into actionable specifications through a structured,
 multi-phase workflow. It combines interactive Socratic dialogue with automated analysis to produce
 comprehensive requirements documentation.
 
@@ -54,11 +54,11 @@ Rounds based on depth:
 
 ### Phases 2-4: Parallel Analysis
 
-**Important**: Phases 2, 3, and 4 execute **simultaneously in parallel** using the Task tool
+**Important**: Phases 2, 3, and 4 execute **simultaneously in parallel** using the Agent tool
 to maximize efficiency. All three agents run at the same time, and the workflow waits for
 all three to complete before proceeding to Phase 4.5.
 
-The facilitator uses `Task` tool invocations to spawn the `domain-explorer`, `technical-analyst`,
+The facilitator uses `Agent` tool invocations to spawn the `domain-explorer`, `technical-analyst`,
 and `constraint-analyst` agents concurrently.
 
 #### Phase 2: Domain Exploration (runs in parallel)
@@ -231,4 +231,4 @@ MIT License - see repository for details.
 
 ## Author
 
-Joao da Silva - [GitHub](https://github.com/jaodsilv)
+João da Silva - [GitHub](https://github.com/jaodsilv)

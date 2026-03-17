@@ -1,0 +1,13 @@
+{
+  "session_id": "e8f58728-b156-4e86-a4fe-78a4f2d48e4f",
+  "transcript_path": "C:\\Users\\joaod\\.claude\\projects\\D--src-claudius-skills-best-practices\\e8f58728-b156-4e86-a4fe-78a4f2d48e4f.jsonl",
+  "cwd": "D:\\src\\claudius\\skills-best-practices",
+  "permission_mode": "bypassPermissions",
+  "hook_event_name": "PreToolUse",
+  "tool_name": "Skill",
+  "tool_input": {
+    "skill": "dump-args",
+    "args": "testing first line --text-flag\nNo empty line\nNo empty line 2\n\nAfter empty line\n\n<xml-tag>Testing with XML tag</xml-tag>"
+  },
+  "tool_use_id": "toolu_01WZDMRD8Q62tUxABvChVhK8"
+}

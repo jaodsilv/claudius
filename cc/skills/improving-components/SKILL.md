@@ -1,10 +1,12 @@
 ---
-name: cc:improving-components
 description: >-
   Provides interactive improvement workflows for plugin components when analyzing
   and enhancing commands, agents, skills, or orchestrations. Use when implementing
   analyze-suggest-approve-apply patterns or severity-based improvement workflows.
+user-invocable: false
 version: 1.0.0
+allowed-tools: Read, Edit, AskUserQuestion
+model: sonnet
 ---
 
 # Improving Components
@@ -21,7 +23,7 @@ Guidelines for interactive improvement workflows in Claude Code plugins.
 ## Severity Levels
 
 | Level | Description | Examples |
-|-------|-------------|----------|
+| :---- | :---------- | :------- |
 | CRITICAL | Breaks functionality/security | Invalid syntax, missing fields, vulnerabilities |
 | HIGH | Best practice violations | Missing examples, wrong style, permissive tools |
 | MEDIUM | Enhancement opportunities | Incomplete docs, suboptimal organization |
@@ -78,7 +80,12 @@ Options: [List of specific improvements]
 - [ ] Report success/failure per change
 - [ ] Present completion summary
 
+## Related Skills
+
+- **`cc:analyzing-focus-areas`** - When user specifies a focus area
+- **`cc:validating-components`** - Detailed validation criteria by component type
+
 ## Additional Resources
 
-- **`references/interactive-patterns.md`** - AskUserQuestion patterns
-- **`references/approval-workflows.md`** - Multi-step approval patterns
+- **`${CLAUDE_SKILL_DIR}/references/interactive-patterns.md`** - AskUserQuestion patterns
+- **`${CLAUDE_SKILL_DIR}/references/approval-workflows.md`** - Multi-step approval patterns

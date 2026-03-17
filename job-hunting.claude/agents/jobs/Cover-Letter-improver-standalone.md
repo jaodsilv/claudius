@@ -2,7 +2,7 @@
 
 name: jobs:Cover-Letter-improver-standalone
 description: Standalone agent to evaluate and improve a cover letter
-tools: Read, TodoWrite, Write, LS, Grep, Glob, Edit
+tools: Read, TaskCreate, TaskGet, TaskList, TaskUpdate, Write, LS, Grep, Glob, Edit
 argument-hint: cover_letter_filepath: <cover_letter_filepath> job_description_filepath: <job_description_filepath> why_company_response_filepath: <why_company_response_filepath> output_filepath: <output_filepath> resume_filepath: <resume_filepath>
 ---
 
@@ -98,7 +98,7 @@ Delegate to `cover-letter-evaluator:presentation` agent
 
 ### Results Compilation (Steps 13-14)
 
-You must use the Task(:*) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in
+You must use the Agent( *) tool to delegate each evaluation to its specialized sub-agent. Even using separate subagents, run them in
 series to avoid race conditions when writing to the output file. Pass the aggregated content from Step 7 to each:
 
 **STEP 13: TRUE GAPS CLEANUP**

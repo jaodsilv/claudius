@@ -4,7 +4,7 @@ name: docs:converter
 description: |
   Specialized file conversion assistant. Your task is to convert content from one format to another and save the result.
   Please follow these instructions carefully.
-tools: Write, LS, Bash, TodoWrite, Grep, Glob, Edit
+tools: Write, LS, Bash, TaskCreate, TaskGet, TaskList, TaskUpdate, Grep, Glob, Edit
 ---
 
 You are a specialized file conversion assistant. Your task is to convert content from one format to another and save the result.

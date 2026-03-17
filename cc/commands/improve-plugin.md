@@ -1,7 +1,7 @@
 ---
 description: Improves plugins comprehensively when preparing for release or audit.
-argument-hint: <plugin-path> [--focus "<aspect>"]
-allowed-tools: ["Read", "Glob", "Grep", "AskUserQuestion", "Skill", "Task", "TodoWrite"]
+argument-hint: "[[--plugin-path] <plugin-path>] [--focus \"<aspect>\"]"
+allowed-tools: Read, Glob, Grep, AskUserQuestion, Skill, Agent, TaskCreate, TaskGet, TaskList, TaskUpdate
 model: opus
 ---
 
@@ -23,10 +23,10 @@ If focus provided, prioritize analysis of that aspect across all components.
 
 ### Phase 1: Discovery
 
-Load improving-components skill:
+Use the Skill tool to load the skill `cc:improving-components`:
 
-```text
-Use Skill tool to load cc:improving-components
+```markdown
+Skill(cc:improving-components)
 ```
 
 1. Read plugin.json manifest
@@ -39,33 +39,35 @@ Glob pattern="[plugin-path]/skills/**/SKILL.md"
 Glob pattern="[plugin-path]/hooks/hooks.json"
 ```
 
-1. Create TodoWrite with all components to analyze:
-   - [ ] Analyze plugin structure
-   - [ ] Analyze commands (X total)
-   - [ ] Analyze agents (X total)
-   - [ ] Analyze skills (X total)
-   - [ ] Synthesize cross-component issues
-   - [ ] Present improvement roadmap
-   - [ ] Apply selected improvements
-   - [ ] Validate final state
+1. Use the TaskCreate tool to add the following task(s) to the task list:
+
+<new-tasks>
+- [ ] Analyze plugin structure
+- [ ] Analyze commands (X total)
+- [ ] Analyze agents (X total)
+- [ ] Analyze skills (X total)
+- [ ] Synthesize cross-component issues
+- [ ] Present improvement roadmap
+- [ ] Apply selected improvements
+- [ ] Validate final state
+</new-tasks>
 
 ### Phase 2: Plugin Structure Analysis
 
-Use Task tool with @cc:plugin-improver agent:
+Use the Agent tool to spawn the agent `cc:plugin-improver` to analyze the plugin structure:
 
-```text
-Analyze plugin structure: [plugin_path]
-Focus area: [focus if provided, otherwise "general analysis"]
-
-Evaluate:
-1. plugin.json validity and completeness
-2. Directory organization
-3. Naming conventions
-4. README documentation
-5. Cross-component consistency
-
-Focus on plugin-wide issues, not individual components.
+```markdown
+Agent(cc:plugin-improver):
+  Analyze plugin structure: [plugin_path]
+  Focus area: [focus if provided, otherwise "general analysis"]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Analyze plugin structure - Complete
 
@@ -75,37 +77,55 @@ For each component type, launch analysis in parallel if many components, or sequ
 
 #### Commands Analysis
 
-For each command:
+For each command, use the Agent tool to spawn the agent `cc:command-improver` to analyze the command:
 
-```text
-Use Task tool with @cc:command-improver:
+```markdown
+Agent(cc:command-improver):
   Analyze command: [command-path]
-  Provide summary of issues by severity.
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Analyze commands - Complete
 
 #### Agents Analysis
 
-For each agent:
+For each agent, use the Agent tool to spawn the agent `cc:agent-improver` to analyze the agent:
 
-```text
-Use Task tool with @cc:agent-improver:
+```markdown
+Agent(cc:agent-improver):
   Analyze agent: [agent-path]
-  Provide summary of issues by severity.
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Analyze agents - Complete
 
 #### Skills Analysis
 
-For each skill:
+For each skill, use the Agent tool to spawn the agent `cc:skill-improver` to analyze the skill:
 
-```text
-Use Task tool with @cc:skill-improver:
+```markdown
+Agent(cc:skill-improver):
   Analyze skill: [skill-path]
-  Provide summary of issues by severity.
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Analyze skills - Complete
 
@@ -139,7 +159,7 @@ Group by severity:
 
 ### Phase 5: Present Roadmap
 
-Use AskUserQuestion:
+Use the AskUserQuestion tool to ask which severity levels to address:
 
 ```text
 Question: "Which severity levels would you like to address?"
@@ -170,39 +190,45 @@ Options: [List improvements]
 
 ### Phase 7: Plan Changes
 
-Use Task tool with @cc:change-planner agent:
+Use the Agent tool to spawn the agent `cc:change-planner` to plan the changes:
 
-```text
-Plan changes for plugin: [plugin_path]
+```markdown
+Agent(cc:change-planner):
+  Plan changes for plugin: [plugin_path]
 
-Selected improvements:
-[List of all selected improvements across severity levels]
-
-For plugin-wide changes:
-- Group by file
-- Order by dependency
-- Identify cross-component impacts
-
-Return a structured change plan.
+  Selected improvements:
+  [List of all selected improvements across severity levels]
 ```
+
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 Mark todo: Plan changes - Complete
 
 ### Phase 8: Apply Improvements
 
-Use Task tool with @cc:component-writer agent:
+Use the Agent tool to spawn the agent `cc:component-writer` to apply the changes:
 
-```text
-Apply change plan to plugin: [plugin_path]
+```markdown
+Agent(cc:component-writer):
+  Apply change plan to plugin: [plugin_path]
 
-Change plan:
-[Change plan from Phase 7]
-
-Apply each change in order.
-Report success/failure for each step.
+  Change plan:
+  [Change plan from Phase 7]
 ```
 
-Update TodoWrite progress.
+**IMPORTANT**:
+
+- Run this agent with the prompt exactly as requested.
+- The agent have full instructions of what to do with this prompt.
+- The only required changes are replacing then placeholders by their values.
+- Other than that, the only acceptable changes are eventual escapings needed and formatting.
+
+Update progress using TaskUpdate.
 
 Mark todo: Apply selected improvements - Complete
 

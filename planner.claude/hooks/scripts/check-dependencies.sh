@@ -4,10 +4,8 @@ set -euo pipefail
 # Returns JSON with systemMessage for warnings and additionalContext for templates
 
 # Get plugin root from Claude Code environment
-PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-}"
-if [ -z "$PLUGIN_ROOT" ]; then
-    echo '{"systemMessage": "[planner] Error: CLAUDE_PLUGIN_ROOT not set - hook cannot determine template paths"}'
-    exit 0
+if [[ -f "${CLAUDE_PLUGIN_ROOT}/../brainstorm.claude/.claude-plugin/plugin.json" ]]; then
+  brainstorm_status="Available"
 fi
 
 warnings=""
@@ -31,22 +29,20 @@ fi
 
 # Check for brainstorm plugin (optional)
 brainstorm_available="false"
-if [ -f "${PLUGIN_ROOT}/../brainstorm.claude/.claude-plugin/plugin.json" ] || [ -f "../brainstorm.claude/.claude-plugin/plugin.json" ]; then
+if [ -f "${CLAUDE_PLUGIN_ROOT}/../brainstorm.claude/.claude-plugin/plugin.json" ]; then
     brainstorm_available="true"
     info_msgs="Brainstorm plugin detected - /planner:gather-requirements can use enhanced brainstorming"
 fi
 
-# Build template paths context
-# Use forward slashes for cross-platform compatibility
-template_dir="${PLUGIN_ROOT}/templates"
-template_context="Planner Plugin Template Paths (use these exact paths when loading templates):
-- Review Report: ${template_dir}/review-report.md
-- Roadmap: ${template_dir}/roadmap.md
-- Prioritization Matrix: ${template_dir}/prioritization-matrix.md
-- Requirements Summary: ${template_dir}/requirements-summary.md
-- Ideas Synthesis: ${template_dir}/ideas-synthesis.md
-- Base Sections: ${template_dir}/_base.md
-- Orchestrating Reviews Report: ${PLUGIN_ROOT}/skills/orchestrating-reviews/report-template.md"
+$system_message=""
+if [ -n "$warnings" ]; then
+    $system_message="[planner] Warning: $warnings"
+    if [ -n "$info_msgs" ]; then
+        $system_message="$system_message\n[planner] $info_msgs"
+    fi
+elif [ -n "$info_msgs" ]; then
+    $system_message="[planner] $info_msgs"
+fi
 
 # Build JSON output
 # Escape special characters for JSON
@@ -54,15 +50,11 @@ escape_json() {
     echo "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/\t/\\t/g' | tr '\n' ' '
 }
 
-template_context_escaped=$(escape_json "$template_context")
+system_message_json=$(escape_json "$system_message")
 
 # Build the output JSON
-if [ -n "$warnings" ]; then
-    echo "{\"systemMessage\": \"[planner] Warning: $warnings\", \"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"$template_context_escaped\"}}"
-elif [ -n "$info_msgs" ]; then
-    echo "{\"systemMessage\": \"[planner] $info_msgs\", \"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"$template_context_escaped\"}}"
-else
-    echo "{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"$template_context_escaped\"}}"
+if [ -n "$system_message" ]; then
+    echo "{\"systemMessage\": \"$system_message_json\"}"
 fi
 
 exit 0

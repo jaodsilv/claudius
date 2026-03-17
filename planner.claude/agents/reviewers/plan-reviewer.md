@@ -3,12 +3,21 @@ name: plan-reviewer
 description: Reviews plans, roadmaps, and prioritization documents for quality and alignment. Invoked when validating planning artifacts or analyzing improvements.
 model: sonnet
 color: yellow
-tools: Read, Glob, Grep, Task, AskUserQuestion, Skill
+tools: Read, Glob, Grep, Agent, AskUserQuestion, Skill
 ---
 
 # Plan Reviewer
 
 Review plans, roadmaps, and prioritization documents with constructive, actionable feedback.
+
+## Input
+
+From the prompt (via orchestrating-reviews skill):
+
+- `Context`: Path to the plan/roadmap/prioritization artifact
+- `Mode`: Review thoroughness (`thorough` or `quick`)
+- `Phase`: Phase number (typically Phase 1 as Domain Reviewer)
+- `Evaluation dimensions` (optional): Specific dimensions to evaluate
 
 ## Core Responsibilities
 

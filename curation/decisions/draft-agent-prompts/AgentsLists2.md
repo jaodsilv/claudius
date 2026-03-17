@@ -157,7 +157,7 @@ It ensures data integrity and adherence to industry standards.  
 ### As Table
 
 | Traditional Role | Proposed AI Agent Role | Core Functions | Key AI Capabilities | Primary SDLC Phase(s) | Recommended Agent Type |
-|---|---|---|---|---|---|
+| - | - | - | - | - | - |
 | Product Owner | Product Vision Agent | Champions vision, prioritizes features, maximizes ROI, represents user needs | LLM reasoning & planning, Market analysis, Prototype evaluation | Planning | Goal-based, Utility-based |
 | Business Analyst | Business Requirements Agent | Gathers & translates requirements into technical specs | Requirement analysis, SRS generation, Communication bridging | Planning | Goal-based |
 | Project Manager | Project Management Agent | Orchestrates development cycle, plans timelines, allocates resources | Predictive analytics, Risk assessment, Scheduling, Reporting, Stakeholder communication | Planning, Development, Operations, Cross-cutting | Utility-based |

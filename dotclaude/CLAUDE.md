@@ -52,7 +52,7 @@ probably some leak, hopefully it is resolved soon
 
   ```text
   \<foreach $url in $urls\>
-    Launch Task using the Task tool with sub-agent "@docs:batch-downloader"
+    Launch an agent using the Agent tool with sub-agent "@docs:batch-downloader"
       Download the urls: \<urls\>{{urls}}\</urls\>
   \</foreach\>
   ```
@@ -60,7 +60,7 @@ probably some leak, hopefully it is resolved soon
 ### Prompt Templates on Markdown Agents and Custom Slash Commands
 
 - Template prompts live within the command and agent files in a markdown format code block in the subsection
-  `Template Prompt for sub-agent Task tool` or `Template Prompts for sub-agent Task tool`
+  `Template Prompt for sub-agent Agent tool` or `Template Prompts for sub-agent Agent tool`
 - Template outputs live within the command and agent files in a markdown format code block in the subsection `Output Template` or `Output Templates`
 - Custom Slash Commands and sub-agents can fill a prompt template with the parsed arguments to fill the command prompt when
   initializing a sub-agent Task.
@@ -186,7 +186,7 @@ probably some leak, hopefully it is resolved soon
 This workflow ensures:
 
 1. **Test-Driven Development (TDD)**: Tests are written before implementation
-2. **Multi-Agent Collaboration**: Each phase uses specialized agents via the Task tool
+2. **Multi-Agent Collaboration**: Each phase uses specialized agents via the Agent tool
 3. **Quality Assurance**: Multiple design and review cycles
 4. **Systematic Process**: Sequential execution with clear handoffs
 5. **Context Management**: Regular compaction and state preservation

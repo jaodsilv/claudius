@@ -1,6 +1,6 @@
 ---
-name: planner:roadmapping
 description: Creates project roadmaps with phases, milestones, and dependencies. Invoked when user asks to create a roadmap, plan project phases, define milestones, or map out a project.
+user-invocable: false
 model: opus
 ---
 
@@ -24,7 +24,7 @@ Creates structured project roadmaps with phases, milestones, deliverables, and d
 ## Phase Sizing Guide
 
 | Duration    | Phases |
-| ----------- | ------ |
+| :---------- | :----- |
 | < 1 month   | 2-3    |
 | 1-3 months  | 3-4    |
 | 3-6 months  | 4-5    |
@@ -33,7 +33,7 @@ Creates structured project roadmaps with phases, milestones, deliverables, and d
 ## Typical Phase Distribution
 
 | Phase         | Effort % |
-| ------------- | -------- |
+| :------------ | :------- |
 | Discovery     | 10-15%   |
 | Design        | 15-20%   |
 | Implementation| 40-50%   |
@@ -61,7 +61,7 @@ Creates structured project roadmaps with phases, milestones, deliverables, and d
 
 #### Risks
 | Risk | Probability | Impact | Mitigation |
-|------|-------------|--------|------------|
+| :--- | :---------- | :----- | :--------- |
 ```
 
 ## Gantt Chart (Mermaid)

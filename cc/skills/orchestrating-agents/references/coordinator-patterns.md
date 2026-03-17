@@ -224,7 +224,7 @@ Any → FAILED: Unrecoverable error
 ```markdown
 ### State Storage
 
-Use TodoWrite to track:
+Use TaskCreate/TaskUpdate to track:
 - Current state
 - State history
 - State-specific data
@@ -240,7 +240,7 @@ On resume:
 ## Choosing a Pattern
 
 | Scenario | Recommended Pattern |
-|----------|---------------------|
+| :------- | :------------------ |
 | Linear workflow, clear dependencies | Sequential |
 | Independent parallel analysis | Fork-Join |
 | Quality refinement loops | Iterative |

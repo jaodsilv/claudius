@@ -1,7 +1,7 @@
 ---
 description: Create a project roadmap with phases, milestones, and deliverables
-allowed-tools: Task, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TodoWrite, AskUserQuestion, Skill
-argument-hint: <goal> [--phases <number>] [--horizon <weeks|months>] [--output <path>]
+argument-hint: "[[--goal] <goal>] [--phases <number>] [--horizon <weeks|months>] [--output <path>]"
+allowed-tools: Agent, Read, Write, Edit, Glob, Grep, Bash, WebSearch, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Skill
 model: opus
 ---
 
@@ -9,52 +9,29 @@ model: opus
 
 Create a structured project roadmap for achieving a goal.
 
-## Input Processing
+## Arguments Parsing
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+Extract from `$ARGUMENTS`:
 
-Parse the arguments:
-
-1. `$goal`: The project goal to roadmap (required)
-2. `$phases`: Number of phases (default: 4)
-3. `$horizon`: Planning horizon (default: "12 weeks")
-4. `$output`: Output path (default: "docs/planning/")
-
-## Parameters Schema
-
-```yaml
-roadmap-arguments:
-  type: object
-  properties:
-    goal:
-      type: string
-      description: The project goal to create a roadmap for
-    phases:
-      type: number
-      default: 4
-      description: Number of development phases
-    horizon:
-      type: string
-      default: "12 weeks"
-      description: Planning horizon (e.g., "8 weeks", "3 months")
-    output:
-      type: string
-      default: "docs/planning/"
-      description: Output directory for roadmap
-  required:
-    - goal
-```
+- `$goal`: First positional argument. The project goal to roadmap (required).
+  Its value is the substring of everything that comes before any flags.
+- `$phases`: Number of development phases (default: 4)
+- `$horizon`: Planning horizon (e.g., "8 weeks", "3 months". Default: "12 weeks")
+- `$output`: Output directory for roadmap (default: "docs/planning/")
 
 ## Execution Workflow
 
 ### Phase 1: Goal Analysis
 
-1. Initialize TodoWrite with phases:
-   - Phase 1: Goal Analysis (in_progress)
-   - Phase 2: Context Gathering (pending)
-   - Phase 3: GitHub Integration (pending)
-   - Phase 4: Roadmap Generation (pending)
-   - Phase 5: Output Generation (pending)
+1. Use the TaskCreate tool to add the following task(s) to the task list:
+
+   <new-tasks>
+   - [ ] Phase 1: Goal Analysis (in_progress)
+   - [ ] Phase 2: Context Gathering (pending)
+   - [ ] Phase 3: GitHub Integration (pending)
+   - [ ] Phase 4: Roadmap Generation (pending)
+   - [ ] Phase 5: Output Generation (pending)
+   </new-tasks>
 
 2. Validate goal is provided
 
@@ -72,11 +49,7 @@ roadmap-arguments:
    - Existing plans or specs
    - Related issues or PRs
 
-3. Load the roadmapping skill for patterns:
-
-   ```text
-   Invoke the Skill `planner:roadmapping` for roadmap creation guidance.
-   ```
+3. Use the Skill tool to load the skill `planner:roadmapping` for roadmap creation guidance and patterns.
 
 ### Phase 3: GitHub Integration
 
@@ -88,19 +61,18 @@ roadmap-arguments:
    gh --version
    ```
 
-3. If available, launch `issue-analyzer` agent:
+3. If gh CLI is available, use the Agent tool to spawn the agent `planner:github:issue-analyzer` to analyze relevant issues:
 
-   ```text
-   Use Task tool with `planner:github:issue-analyzer` agent:
-
-   Analyze open issues relevant to: {{goal}}
-
-   Identify:
-   - Issues that relate to this goal
-   - Existing work in progress
-   - Potential blockers
-   - Effort indicators from labels
+   ```markdown
+   Agent(planner:github:issue-analyzer):
+     prompt: Analyze open issues relevant to: $goal
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 4. Collect issue insights for roadmap integration
 
@@ -108,29 +80,28 @@ roadmap-arguments:
 
 1. Mark Phase 4 as in_progress
 
-2. Launch `roadmap-architect` agent:
+2. Use the Agent tool to spawn the agent `planner:creators:roadmap-architect` to design the roadmap:
 
-   ```text
-   Use Task tool with `planner:creators:roadmap-architect` agent:
+   ```markdown
+   Agent(planner:creators:roadmap-architect):
+     prompt:
+       Create a roadmap for:
+       Goal: $goal
+       Phases: $phases
+       Horizon: $horizon
 
-   Create a roadmap for:
-   Goal: {{goal}}
-   Phases: {{phases}}
-   Horizon: {{horizon}}
+       Context gathered:
+       {{context_summary}}
 
-   Context gathered:
-   {{context_summary}}
-
-   GitHub issues relevant:
-   {{github_issues}}
-
-   Design phases with:
-   - Clear objectives per phase
-   - SMART milestones
-   - Concrete deliverables
-   - Dependencies mapped
-   - Risks identified
+       GitHub issues relevant:
+       {{github_issues}}
    ```
+
+   **IMPORTANT**:
+   - Run this agent with the prompt exactly as requested.
+   - The agent have full instructions of what to do with this prompt.
+   - The only required changes are replacing then placeholders by their values.
+   - Other than that, the only acceptable changes are eventual escapings needed and formatting.
 
 3. Receive roadmap structure from agent
 

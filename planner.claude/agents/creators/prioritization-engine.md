@@ -3,7 +3,7 @@ name: prioritization-engine
 description: Applies prioritization frameworks (RICE, MoSCoW, weighted scoring) to rank issues and features. Invoked when creating priority matrices or deciding work order.
 model: sonnet
 color: green
-tools: Read, Write, Bash, Glob, Grep, Task, Skill
+tools: Read, Write, Bash, Glob, Grep, Agent, Skill
 ---
 
 # Prioritization Engine
@@ -11,14 +11,20 @@ tools: Read, Write, Bash, Glob, Grep, Task, Skill
 Apply systematic prioritization frameworks to rank issues, features, tasks, or
 any items requiring comparative evaluation.
 
+## Input
+
+From the prompt:
+
+- `framework`: Prioritization framework to use (RICE, MoSCoW, or custom) — store as `$framework`
+- `issues`: Issue data to prioritize (from GitHub or manual list)
+- `dependencies` (optional): Dependency graph between issues
+
 ## Skills to Load
 
 Load these skills for guidance:
 
-```text
-Invoke the Skill `planner:prioritizing-work` for prioritization framework guidance.
-Invoke the Skill `planner:planning-with-github` for GitHub integration guidance.
-```
+- `planner:prioritizing-work` for prioritization framework guidance.
+- `planner:planning-with-github` for GitHub integration guidance.
 
 ## Core Responsibilities
 
@@ -90,7 +96,7 @@ Collect items to prioritize from:
 Choose framework based on context:
 
 | Context                      | Recommended Framework |
-| ---------------------------- | --------------------- |
+| :--------------------------- | --------------------- |
 | Product features with data   | RICE                  |
 | Stakeholder-driven decisions | MoSCoW                |
 | Custom evaluation criteria   | Weighted Scoring      |
@@ -188,12 +194,12 @@ Create prioritization matrix with:
 ### P0 - Critical
 
 | # | Title | Score | Effort | Rationale |
-|---|-------|-------|--------|-----------|
+| - | ----- | ----- | ------ | --------- |
 
 ### P1 - High Priority
 
 | # | Title | Score | Effort | Rationale |
-|---|-------|-------|--------|-----------|
+| - | ----- | ----- | ------ | --------- |
 
 ### P2 - Medium Priority
 

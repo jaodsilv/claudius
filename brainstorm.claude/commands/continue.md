@@ -1,7 +1,7 @@
 ---
 description: Continues interrupted brainstorming session from last checkpoint. Use when resuming after context overflow or interruption.
-allowed-tools: Task, Read, Write, Edit, TodoWrite, AskUserQuestion, Glob, Skill
-argument-hint: --session-path: <session_path>
+argument-hint: "[--session-path] <path>"
+allowed-tools: Agent, Read, Write, Edit, TaskCreate, TaskGet, TaskList, TaskUpdate, AskUserQuestion, Glob
 model: sonnet
 ---
 
@@ -11,23 +11,17 @@ Resumes an interrupted session by reading session log and continuing from last c
 
 ## Parameters
 
-```yaml
-properties:
-  session_path:
-    type: string
-    description: Path to session output directory containing session-log.md
-    required: true
-```
+From `$ARGUMENTS`, extract:
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+- session_path: Path to session output directory containing session-log.md
 
 ## Skill Reference
 
-Use the `brainstorm:workflow-validation` skill for gate check criteria and session state validation:
-
-- `SKILL.md` - Gate criteria and validation patterns between phases
+Use the `brainstorm:validating-workflow` skill for gate check criteria and session state validation
 
 ## Execution Checklist
+
+Apply Skill(brainstorm:validating-workflow) for session state validation.
 
 ### Step 1: Validate Session
 
@@ -48,7 +42,7 @@ From `{{session_path}}/session-log.md` extract:
 ### Step 3: Determine Resume Point
 
 | Last Completed | Resume From |
-|----------------|-------------|
+| :------------- | :---------- |
 | None | Phase 1 (Dialogue - batched) |
 | Phase 1 | Phases 2-4 (Parallel Analysis) |
 | Phases 2-4 | Phase 4.5 (Analysis Synthesis) |
@@ -56,7 +50,6 @@ From `{{session_path}}/session-log.md` extract:
 | Phase 5 | Phase 6 (Document) |
 
 **Notes**:
-
 - Phase 1 uses batched dialogue (2-3 rounds per invocation)
 - Phases 2-4 execute in parallel (domain, technical, constraints)
 - Phase 4.5 synthesizes parallel outputs before requirements
@@ -89,7 +82,7 @@ Present final summary as defined in `/brainstorm:start` completion section.
 ## Error Handling
 
 | Error | Action |
-|-------|--------|
+| :---- | :----- |
 | Session not found | Inform user, suggest checking path |
 | Corrupted log | Inform user, offer to restart |
 | Missing context | Ask user for missing information |
@@ -97,6 +90,6 @@ Present final summary as defined in `/brainstorm:start` completion section.
 ## Usage Examples
 
 ```text
-/brainstorm:continue --session-path: ./brainstorm-output/
-/brainstorm:continue --session-path: ./specs/auth-feature/
+/brainstorm:continue --session-path ./brainstorm-output/
+/brainstorm:continue --session-path ./specs/auth-feature/
 ```

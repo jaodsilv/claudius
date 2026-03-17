@@ -1,9 +1,9 @@
 ---
-name: planner:reviewing-artifacts
 description: >-
   Provides standard review process for planning artifacts with dimension-based
   scoring. Use when evaluating plans, requirements, architecture, or other
   planning documents against goals and quality criteria.
+user-invocable: false
 model: sonnet
 ---
 
@@ -21,7 +21,7 @@ model: sonnet
 ## Dimension Scoring (1-5 Scale)
 
 | Score | Meaning                                  |
-| ----- | ---------------------------------------- |
+| :---- | :--------------------------------------- |
 | 5     | Excellent - exceeds expectations         |
 | 4     | Good - meets expectations                |
 | 3     | Adequate - acceptable with minor issues  |
@@ -46,7 +46,7 @@ model: sonnet
 ## Gap Analysis Format
 
 | Gap               | Impact               | Suggested Resolution |
-| ----------------- | -------------------- | -------------------- |
+| :---------------- | :------------------- | :------------------- |
 | [Missing element] | [Impact on artifact] | [How to address]     |
 
 ## Interactive Refinement

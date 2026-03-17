@@ -1,7 +1,7 @@
 {
-  "name": "tdd-pro",
+  "name": "tdd",
   "version": "1.0.0",
-  "description": "Professional TDD workflow with multi-agent coordination, conventional commits, and branch management",
+  "description": "Test-driven development plugin: multi-agent orchestrated TDD workflow with red-green-refactor",
   "author": {
     "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
@@ -11,23 +11,14 @@
     "testing",
     "workflow",
     "automation",
-    "conventional-commits",
-    "git",
+    "code-quality",
+    "red-green-refactor",
+    "test-driven-development",
+    "development-workflow",
     "multi-agent",
-    "code-quality"
+    "orchestration"
   ],
   "license": "MIT",
   "homepage": "https://github.com/jaodsilv/claudius",
-  "repository": "https://github.com/jaodsilv/claudius.git",
-  "skills": [
-    "./skills/tdd-workflow/SKILL.md",
-    "./skills/conventional-commits/SKILL.md",
-    "./skills/conventional-branch/SKILL.md",
-    "./skills/code-quality/SKILL.md"
-  ],
-  "agents": [
-    "./agents/curator.md",
-    "./agents/prompt-to-pipeline-architect.md",
-    "./agents/file-output-writer.md"
-  ]
+  "repository": "https://github.com/jaodsilv/claudius.git"
 }

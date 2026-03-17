@@ -1,5 +1,4 @@
 ---
-name: community-testing:code-quality
 description: >-
   Provides code quality guidelines and best practices for maintaining
   high-quality, maintainable code.

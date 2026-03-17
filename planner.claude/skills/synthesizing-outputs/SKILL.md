@@ -1,9 +1,9 @@
 ---
-name: planner:synthesizing-outputs
 description: >-
   Provides multi-source synthesis methodology for merging findings from multiple
   agents. Use when combining review findings, ideation outputs, or other
   multi-perspective analyses into unified, prioritized recommendations.
+user-invocable: false
 model: sonnet
 ---
 
@@ -29,7 +29,7 @@ Merge findings from multiple agents into unified, prioritized recommendations.
 ## Conflict Resolution Principles
 
 | Conflict Type | Resolution |
-|---------------|------------|
+| :------------ | :--------- |
 | Risk assessment | Conservative view wins |
 | Goal alignment | Domain expert wins |
 | Structural issues | Systematic analysis wins |
@@ -38,7 +38,7 @@ Merge findings from multiple agents into unified, prioritized recommendations.
 ## Priority Matrix
 
 | Priority | Criteria |
-|----------|----------|
+| :------- | :------- |
 | P0 | Critical + 2+ sources, or blocks usage |
 | P1 | High + multiple sources, or Critical single |
 | P2 | Medium + multiple sources, or High single |

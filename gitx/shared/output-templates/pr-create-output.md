@@ -15,7 +15,7 @@ This template defines the structure for output from the PR creation workflow age
 
 ### Commit Summary
 | Hash | Message | Files |
-|------|---------|-------|
+| :--- | :------ | :---- |
 | abc1234 | feat: description | 3 |
 
 ### Changes by Type
@@ -26,7 +26,7 @@ This template defines the structure for output from the PR creation workflow age
 
 ### Files Changed
 | File | Insertions | Deletions | Change Type |
-|------|------------|-----------|-------------|
+| :--- | :--------- | :-------- | :---------- |
 | src/file.ts | +50 | -10 | Modified |
 
 ### Breaking Changes
@@ -67,7 +67,7 @@ This template defines the structure for output from the PR creation workflow age
 
 ### Suggested Reviewers
 | Reviewer | Reason |
-|----------|--------|
+| :------- | :----- |
 | @username | Owns affected code |
 
 ### Review Focus Areas
@@ -100,5 +100,5 @@ This template defines the structure for output from the PR creation workflow age
 ### Next Steps
 1. Wait for CI checks
 2. Request reviews from suggested reviewers
-3. Address any feedback with `/gitx:respond`
+3. Address any feedback with `/gitx:address-review` (for comments) or `/gitx:address-ci` (for failures)
 ```

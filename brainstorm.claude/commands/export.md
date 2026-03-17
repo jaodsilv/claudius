@@ -1,7 +1,7 @@
 ---
 description: Exports or regenerates brainstorming session documents. Use for generating fresh specification from session data.
-allowed-tools: Task, Read, Write, Edit, Glob
-argument-hint: --session-path: <session_path> --format: <markdown|pdf|html>
+argument-hint: "[--session-path] <path> [--format <markdown|pdf|html>]"
+allowed-tools: Agent, Read, Write, Edit, Glob
 model: sonnet
 ---
 
@@ -11,19 +11,10 @@ Regenerates specification documents from completed brainstorming session.
 
 ## Parameters
 
-```yaml
-properties:
-  session_path:
-    type: string
-    description: Path to session output directory
-    required: true
-  format:
-    type: string
-    enum: [markdown, pdf, html]
-    default: markdown
-```
+From `$ARGUMENTS`, extract:
 
-Arguments: `<arguments>$ARGUMENTS</arguments>`
+- session_path: Path to session output directory
+- format: The output format for the brainstorm. possible values are: markdown (default), pdf, html
 
 ## Execution Checklist
 
@@ -60,7 +51,7 @@ Use templates from: brainstorm:brainstorming skill references/
 ### Step 4: Generate Format-Specific Outputs
 
 | Format | Files Generated |
-|--------|----------------|
+| :----- | :------------- |
 | markdown | `specification.md`, `requirements.md`, `summary.md` |
 | pdf | Convert markdown to PDF (requires pandoc) |
 | html | Convert markdown to HTML with styling |
@@ -85,6 +76,6 @@ Use templates from: brainstorm:brainstorming skill references/
 ## Usage Examples
 
 ```text
-/brainstorm:export --session-path: ./brainstorm-output/
-/brainstorm:export --session-path: ./brainstorm-output/ --format: html
+/brainstorm:export --session-path ./brainstorm-output/
+/brainstorm:export --session-path ./brainstorm-output/ --format html
 ```
