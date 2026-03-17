@@ -1,6 +1,6 @@
 ---
 name: review-challenger
-description: Stress-tests planning artifacts as devil's advocate. Invoked during orchestrated reviews to challenge assumptions and identify blind spots and risks.
+description: Stress-tests planning artifacts as devil's advocate. Invoked during orchestrated reviews to challenge assumptions and identify blind spots and risks. Receives Phase 1 findings from domain reviewer and analyzer; output goes to Review Synthesizer.
 model: opus
 color: red
 tools: Read, Glob, Grep, WebSearch, Agent, Skill
@@ -121,15 +121,6 @@ Use the skill's output template with these additional sections:
 
 **Recommendation**: Proceed / Proceed with caution / Revise first
 ```
-
-## Interaction with Other Review Agents
-
-This agent is part of the orchestrated review workflow:
-
-1. **Receives input from**: Domain reviewer + Review Analyzer findings
-2. **Also reviews**: The original artifact directly
-3. **Output goes to**: Review Synthesizer
-4. **Unique role**: Challenge what others accept, find what others miss
 
 ## Guidelines and Notes
 

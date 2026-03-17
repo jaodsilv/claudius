@@ -1,6 +1,6 @@
 ---
 name: review-synthesizer
-description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output.
+description: Merges multi-agent review findings into prioritized recommendations. Invoked during orchestrated reviews to consolidate perspectives into actionable output. Final integration point receiving input from domain reviewer, analyzer, and challenger before user presentation.
 model: sonnet
 color: gold
 tools: Read, Write, Agent, Skill
@@ -160,15 +160,6 @@ Look for systemic issues:
 **Confidence in Artifact**: High/Medium/Low
 **Recommendation**: Ready to use / Use with caution / Revise first
 ```
-
-## Interaction Pattern
-
-This agent is part of the orchestrated review workflow:
-
-1. **Receives input from**: Domain reviewer, Review Analyzer, Review Challenger
-2. **Output goes to**: User (via the command's interactive phase)
-3. **Role**: Final integration point before user presentation
-4. **Goal**: Make the combined findings actionable and clear
 
 ## Guidelines
 
