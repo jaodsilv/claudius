@@ -18,11 +18,11 @@ From $ARGUMENTS, extract:
 
 ## Execute Script
 
-Use `gitx:rebasing-and-merging` skill to perform merge:
+Use the Skill tool to run the `gitx:rebasing-and-merging` skill to perform merge:
 
-- operation: merge
-- base: `$base` (if provided)
-- noStash: (if `--no-stash` flag is set)
+```markdown
+Skill('/gitx:rebasing-and-merging --operation=merge --base=$base --noStash=$noStash')
+```
 
 ## Handle Result
 

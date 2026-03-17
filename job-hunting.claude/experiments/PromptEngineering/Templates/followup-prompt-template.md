@@ -1,5 +1,4 @@
 ---
-
 description: Template for use with the tech-recruitment-followup-specialist system prompt
 version: 1.0
 system_prompt: tech-recruitment-followup-specialist
@@ -27,6 +26,7 @@ resume_with_excluded_parts.md
 
 <conversation_history>
 [Provide the conversation history in YAML format, including:
+
 - Previous messages exchanged
 - Key points discussed
 - Decisions made or pending

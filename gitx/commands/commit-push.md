@@ -62,11 +62,10 @@ Store the returned JSON array directly as `$GROUPS[0]`.
 
 ### If $MODE = "multi-commit"
 
-Launch the change-grouper agent to intelligently group files:
+Use the Agent tool to spawn the agent `change-grouper` to intelligently group files:
 
 ```markdown
-Task:
-  subagent_type: "gitx:commit:change-grouper"
+Agent(gitx:commit:change-grouper):
   prompt: "Group the changed files into logical commits"
   description: "Group commit files"
 ```
@@ -87,12 +86,11 @@ Store the returned file list as `$GROUPS[0]`.
 
 ## Phase 2: Generate Commit Messages
 
-For EACH file group in `$GROUPS`, launch the `gitx:commit:commit-writer` agent IN PARALLEL:
+For EACH file group in `$GROUPS`, use the Agent tool to spawn the agent `gitx:commit:commit-writer` IN PARALLEL:
 
 ```markdown
 For each $group in $GROUPS:
-  Task:
-    subagent_type: "gitx:commit:commit-writer"
+  Agent(gitx:commit:commit-writer):
     prompt: "$group"
     description: "Generate commit message"
 ```
