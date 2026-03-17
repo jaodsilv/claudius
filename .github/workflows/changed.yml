@@ -15,10 +15,22 @@ jobs:
         with:
           files: "**/*.md"
           separator: ","
+      # - uses: DavidAnson/markdownlint-cli2-action@v22
+      #   continue-on-error: true
+      #   if: steps.changed-files.outputs.any_changed == 'true'
+      #   with:
+      #     config: "config/base.markdownlint-cli2.yaml"
+      #     globs: ${{ steps.changed-files.outputs.all_changed_files }}
+      #     separator: ","
       - uses: DavidAnson/markdownlint-cli2-action@v22
         continue-on-error: true
-        if: steps.changed-files.outputs.any_changed == 'true'
         with:
-          config: "config/base.markdownlint-cli2.yaml"
-          globs: ${{ steps.changed-files.outputs.all_changed_files }}
-          separator: ","
+          config: "config/claude.markdownlint-cli2.yaml"
+      - uses: DavidAnson/markdownlint-cli2-action@v22
+        continue-on-error: true
+        with:
+          config: "config/readme.markdownlint-cli2.yaml"
+      - uses: DavidAnson/markdownlint-cli2-action@v22
+        continue-on-error: true
+        with:
+          config: "config/other.markdownlint-cli2.yaml"
