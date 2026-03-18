@@ -238,7 +238,7 @@ done < <(cat "$TEMP_DIR/changed_files.txt" | tr -d '\r') > "$TEMP_DIR/matches.tx
   fi
 
   # Build unmatched files
-  UNMATCHED_LINES=$(rg '^UNMATCHED\|\|' "$TEMP_DIR/matches.txt" 2>/dev/null | cut -d'|' -f3 || true)
+  UNMATCHED_LINES=$(grep '^UNMATCHED||' "$TEMP_DIR/matches.txt" 2>/dev/null | cut -d'|' -f3 || true)
   if [[ -n "$UNMATCHED_LINES" ]]; then
     UNMATCHED_JSON=$(echo "$UNMATCHED_LINES" | jq -R -s 'split("\n") | map(select(length > 0))')
   else
