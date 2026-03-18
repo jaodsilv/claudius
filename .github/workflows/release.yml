@@ -17,18 +17,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get last marketplace tag
-        id: last-tag
-        run: |
-          TAG=$(git tag -l 'marketplace-v*' --sort=-version:refname | head -1)
-          echo "tag=${TAG:-}" >> $GITHUB_OUTPUT
-          echo "Last tag: ${TAG:-none}"
-
       - name: Detect and bump versions
         id: bump
         run: |
-          chmod +x scripts/ci-bump-versions.sh cc/scripts/plugins/detect-affected-plugins.sh
-          RESULT=$(bash scripts/ci-bump-versions.sh "." "${{ steps.last-tag.outputs.tag }}")
+          chmod +x scripts/ci-bump-versions.sh
+          RESULT=$(bash scripts/ci-bump-versions.sh ".")
           echo "$RESULT" | jq .
           BUMPED=$(echo "$RESULT" | jq -r '.bumped')
           echo "bumped=$BUMPED" >> $GITHUB_OUTPUT
@@ -44,8 +37,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .claude-plugin/marketplace.json package.json
           git add '*/.claude-plugin/plugin.json'
-          git commit -m "chore(release): marketplace v${{ steps.bump.outputs.version }}"
-          git tag "marketplace-v${{ steps.bump.outputs.version }}"
+          git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
+          git tag "v${{ steps.bump.outputs.version }}"
           git push origin main --follow-tags
 
       - name: Create GitHub Release
@@ -53,6 +46,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "marketplace-v${{ steps.bump.outputs.version }}" \
-            --title "Marketplace v${{ steps.bump.outputs.version }}" \
+          gh release create "v${{ steps.bump.outputs.version }}" \
+            --title "v${{ steps.bump.outputs.version }}" \
             --notes-file /tmp/release-summary.md

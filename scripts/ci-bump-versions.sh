@@ -1,16 +1,18 @@
 #!/bin/bash
 # CI-only version bump script for plugin-aware releases
-# Usage: ci-bump-versions.sh [repo-root] [base-ref]
+# Usage: ci-bump-versions.sh [repo-root]
 # Outputs JSON summary to stdout; diagnostics to stderr
+#
+# Detection: For each plugin in marketplace.json, finds the last commit that
+# changed its plugin.json, then diffs the plugin folder from that commit to HEAD.
+# If any files changed, the plugin gets a version bump.
 
 set -euo pipefail
 
 REPO_ROOT="${1:-.}"
-BASE_REF="${2:-}"
 
 MARKETPLACE_FILE="$REPO_ROOT/.claude-plugin/marketplace.json"
 PACKAGE_JSON="$REPO_ROOT/package.json"
-DETECT_SCRIPT="$REPO_ROOT/cc/scripts/plugins/detect-affected-plugins.sh"
 
 # ============================================================================
 # Version manipulation (extracted from cc/hooks/scripts/handlers/bump-version.sh)
@@ -74,64 +76,63 @@ if [[ ! -f "$MARKETPLACE_FILE" ]]; then
   exit 0
 fi
 
-if [[ ! -f "$DETECT_SCRIPT" ]]; then
-  echo '{"bumped": false, "error": "detect-affected-plugins.sh not found"}'
-  exit 0
-fi
-
 # ============================================================================
-# Detect affected plugins
+# Detect and bump changed plugins
 # ============================================================================
 
-echo "Detecting affected plugins..." >&2
-
-DETECT_ARGS=("" "$REPO_ROOT")
-if [[ -n "$BASE_REF" ]]; then
-  DETECT_ARGS+=("$BASE_REF")
-fi
-
-DETECTION_RESULT=$(CLAUDE_PLUGIN_ROOT="$REPO_ROOT/cc" bash "$DETECT_SCRIPT" "${DETECT_ARGS[@]}" 2>/dev/null) || {
-  echo '{"bumped": false, "error": "detection script failed"}'
-  exit 0
-}
-
-AFFECTED_COUNT=$(echo "$DETECTION_RESULT" | jq '.affectedPlugins | length')
-
-if [[ "$AFFECTED_COUNT" -eq 0 ]]; then
-  echo '{"bumped": false}'
-  exit 0
-fi
-
-# ============================================================================
-# Bump each affected plugin
-# ============================================================================
-
-echo "Bumping $AFFECTED_COUNT plugin(s)..." >&2
+echo "Detecting changed plugins via plugin.json commit history..." >&2
 
 PLUGINS_JSON="[]"
 SUMMARY_LINES=""
+BUMP_COUNT=0
 
 while IFS='|' read -r name source; do
   [[ -z "$name" ]] && continue
 
   PLUGIN_JSON="$REPO_ROOT/${source#./}/.claude-plugin/plugin.json"
+
   if [[ ! -f "$PLUGIN_JSON" ]]; then
     echo "WARNING: plugin.json not found for $name at $PLUGIN_JSON" >&2
     continue
   fi
 
-  OLD_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON")
-  NEW_VERSION=$(bump_version "$OLD_VERSION" "0.0.1")
+  LAST_BUMP=$(git -C "$REPO_ROOT" log -1 --format=%H -- "${source#./}/.claude-plugin/plugin.json")
 
-  echo "  $name: $OLD_VERSION -> $NEW_VERSION" >&2
+  CHANGED=false
+  if [[ -z "$LAST_BUMP" ]]; then
+    echo "  $name: new plugin (no prior plugin.json commit)" >&2
+    CHANGED=true
+  else
+    DIFF=$(git -C "$REPO_ROOT" diff --name-only "$LAST_BUMP"...HEAD -- "${source#./}/")
+    if [[ -n "$DIFF" ]]; then
+      CHANGED=true
+    fi
+  fi
 
-  update_json_version "$PLUGIN_JSON" "$NEW_VERSION"
-  update_marketplace_plugin_version "$MARKETPLACE_FILE" "$name" "$NEW_VERSION"
+  if [[ "$CHANGED" == "true" ]]; then
+    OLD_VERSION=$(jq -r '.version // "0.0.0"' "$PLUGIN_JSON")
+    NEW_VERSION=$(bump_version "$OLD_VERSION" "0.0.1")
 
-  PLUGINS_JSON=$(echo "$PLUGINS_JSON" | jq --arg n "$name" --arg f "$OLD_VERSION" --arg t "$NEW_VERSION" \
-    '. + [{"name": $n, "from": $f, "to": $t}]')
-  SUMMARY_LINES="${SUMMARY_LINES}\n- **${name}**: ${OLD_VERSION} → ${NEW_VERSION}"
-done < <(echo "$DETECTION_RESULT" | jq -r '.affectedPlugins[] | "\(.name)|\(.source)"' | tr -d '\r')
+    echo "  $name: $OLD_VERSION -> $NEW_VERSION" >&2
+
+    update_json_version "$PLUGIN_JSON" "$NEW_VERSION"
+    update_marketplace_plugin_version "$MARKETPLACE_FILE" "$name" "$NEW_VERSION"
+
+    PLUGINS_JSON=$(echo "$PLUGINS_JSON" | jq --arg n "$name" --arg f "$OLD_VERSION" --arg t "$NEW_VERSION" \
+      '. + [{"name": $n, "from": $f, "to": $t}]')
+    SUMMARY_LINES="${SUMMARY_LINES}\n- **${name}**: ${OLD_VERSION} → ${NEW_VERSION}"
+    BUMP_COUNT=$((BUMP_COUNT + 1))
+  else
+    echo "  $name: no changes" >&2
+  fi
+done < <(jq -r '.plugins[] | "\(.name)|\(.source)"' "$MARKETPLACE_FILE" | tr -d '\r')
+
+if [[ "$BUMP_COUNT" -eq 0 ]]; then
+  echo '{"bumped": false}'
+  exit 0
+fi
+
+echo "Bumped $BUMP_COUNT plugin(s)." >&2
 
 # ============================================================================
 # Bump marketplace root version and package.json
@@ -152,7 +153,7 @@ fi
 # Output JSON summary
 # ============================================================================
 
-SUMMARY="## Marketplace v${NEW_MKT_VERSION}\n\nPlugins bumped:${SUMMARY_LINES}"
+SUMMARY="## v${NEW_MKT_VERSION}\n\nPlugins bumped:${SUMMARY_LINES}"
 
 jq -n \
   --argjson bumped true \
