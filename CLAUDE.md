@@ -7,11 +7,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 > document are to be interpreted as described in
 > [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119).
 
-## Custom Slash Commands and Sub-Agents Instructions
+## Skills, Custom Slash Commands and Sub-Agents Instructions
 
-1. Follow the slash command/agent instructions thoroughly, do not skip any steps unless explicitly stated.
-2. Do not assume anything without reading the instructions.
-3. To add additional steps request explicit approval.
+- **CRITICAL**: Always use scripts and paths from the installed plugin versions (under `~/.claude/`), NOT from the current repository source.
+- Follow the skill/slash command/agent instructions thoroughly, do not skip any steps unless explicitly stated.
+- Do not assume anything without reading the instructions.
+- To add additional steps request explicit approval.
 
 ## Repository Overview
 
