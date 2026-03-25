@@ -11,7 +11,7 @@ model: opus
 IGNORE arguments. Instead, parse input from hook additional context looking for the XML tags:
 
 - `worktree`: store its value in `$worktree`
-- `review-prompt`: store its value in `$review-prompt`, keep it raw, no need to remove the escaping.
+- `review-prompt`: store its value in `$review-prompt`, keep it raw.
 
 ## Step 1: Read Prompt and Execute Review
 
