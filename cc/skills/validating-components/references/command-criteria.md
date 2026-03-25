@@ -43,7 +43,7 @@ Detailed validation rules for Claude Code slash commands.
 | :------ | :------------- | :---------------- |
 | File references | `@path/to/file.md` | HIGH |
 | Bash execution | `` !`command` `` | HIGH |
-| Agent delegation | `Task @agent-name` | HIGH |
+| Agent delegation | `Agent(agent-name)` | HIGH |
 | Skill integration | `Use the Skill tool to load the skill skill-name`\* | MEDIUM |
 | Plugin paths | `${CLAUDE_PLUGIN_ROOT}/path` | MEDIUM |
 
