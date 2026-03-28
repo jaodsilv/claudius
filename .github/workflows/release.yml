@@ -31,6 +31,7 @@ jobs:
           fi
 
       - name: Commit and tag
+        id: commit
         if: steps.bump.outputs.bumped == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -39,7 +40,10 @@ jobs:
           git add '*/.claude-plugin/plugin.json'
           git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
           git tag "v${{ steps.bump.outputs.version }}"
-          git push origin main --follow-tags
+          git push origin main
+          git push origin "v${{ steps.bump.outputs.version }}"
+          COMMIT_SHA=$(git rev-parse HEAD)
+          echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         if: steps.bump.outputs.bumped == 'true'
@@ -47,5 +51,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "v${{ steps.bump.outputs.version }}" \
+            --target "${{ steps.commit.outputs.commit_sha }}" \
             --title "v${{ steps.bump.outputs.version }}" \
             --notes-file /tmp/release-summary.md
