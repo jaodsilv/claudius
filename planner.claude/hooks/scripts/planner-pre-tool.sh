@@ -10,14 +10,16 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 HOOK_PLUGIN_NAME="PLANNER"
 _PLUGIN_VALUE_FLAGS=(--use-brainstorm --depth --output --mode --rounds --framework --architecture-path --goal --prioritization-path --requirements-path --roadmap-path --phases --horizon)
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-validator.sh"
 log_init "pre-tool"
 
 export HOOK_EVENT_TYPE="PreToolUse"
 
-# Read JSON input
-INPUT=$(cat)
 log_section "Input Processing"
 
 TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // ""')

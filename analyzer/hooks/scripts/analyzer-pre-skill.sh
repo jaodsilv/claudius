@@ -19,6 +19,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 HOOK_PLUGIN_NAME="ANALYZER"
 _PLUGIN_VALUE_FLAGS=(--worktree --input-type --analysis-path --analysis-paths --input-path)
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"
 source "$SCRIPTS_DIR/analyzer-helpers.sh"

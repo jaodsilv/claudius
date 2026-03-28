@@ -19,6 +19,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 HOOK_PLUGIN_NAME="ANALYZER"
 _PLUGIN_VALUE_FLAGS=(--worktree --input-type --analysis-path --analysis-paths --input-path)
 
+# Read input and export CWD before logging init
+_RAW_INPUT=$(cat)
+export CWD=$(echo "$_RAW_INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"
 source "$LIBS_DIR/args-validator.sh"
@@ -27,8 +31,6 @@ log_init "pre-task"
 # Set hook event type for output formatting
 export HOOK_EVENT_TYPE="PreToolUse"
 
-# Read input and extract agent type
-_RAW_INPUT=$(cat)
 _AGENT_TYPE=$(echo "$_RAW_INPUT" | jq -r '.tool_input.subagent_type // ""')
 
 # Early exit if not an analyzer agent

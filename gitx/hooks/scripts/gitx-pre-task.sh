@@ -18,6 +18,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 # Plugin config (set BEFORE sourcing shared libs)
 export HOOK_PLUGIN_NAME="GITX"
 
+# Read input and export CWD before logging init
+_RAW_INPUT=$(cat)
+export CWD=$(echo "$_RAW_INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/hook-output.sh"
 log_init "pre-task"
@@ -25,8 +29,6 @@ log_init "pre-task"
 # Set hook event type for output formatting
 export HOOK_EVENT_TYPE="PreToolUse"
 
-# Read input and extract agent type
-_RAW_INPUT=$(cat)
 _AGENT_TYPE=$(echo "$_RAW_INPUT" | jq -r '.tool_input.subagent_type // ""')
 
 log_debug "AGENT_TYPE" "$_AGENT_TYPE"

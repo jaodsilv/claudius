@@ -11,15 +11,22 @@ All scripts support structured logging to help debug issues. To enable logging:
 Set these before running Claude Code:
 
 ```bash
-# Enable debug logging
+# Enable debug logging for gitx
 export GITX_DEBUG=1
+
+# Or enable debug logging globally for all plugins
+export CLAUDIUS_DEBUG=1
 
 # Also print logs to stderr (see logs in real-time)
 export GITX_LOG_VERBOSE=1
 
-# Custom log directory (optional, defaults to $TMP/gitx-hooks)
+# Custom log directory (optional, defaults to .thoughts/logs/gitx)
 export GITX_LOG_DIR=/path/to/logs
 ```
+
+> **Note**: `CLAUDIUS_DEBUG=1` is a global alternative that enables debug logging
+> for all plugins, not just gitx. Use `GITX_DEBUG=1` to enable debug logging
+> only for the gitx plugin.
 
 ### Method 2: Edit Main Scripts
 
@@ -38,7 +45,7 @@ export GITX_LOG_VERBOSE=1    # Also print to stderr
 
 ### Log File Location
 
-Logs are written to: `$TMP/gitx-hooks/` (or `$GITX_LOG_DIR` if set)
+Logs are written to: `.thoughts/logs/gitx/` (or `$GITX_LOG_DIR` if set)
 
 Log files are named: `YYYYMMDD-HHMMSS-<script-name>-<pid>.log`
 
@@ -48,10 +55,10 @@ Example: `20260122-143052-pre-command-12345.log`
 
 ```bash
 # List recent logs
-ls -lt $TMP/gitx-hooks/ | head -10
+ls -lt .thoughts/logs/gitx/ | head -10
 
 # View the most recent log
-cat "$(ls -t $TMP/gitx-hooks/*.log | head -1)"
+cat "$(ls -t .thoughts/logs/gitx/*.log | head -1)"
 
 # Follow logs in real-time (with GITX_LOG_VERBOSE=1)
 # Logs will appear on stderr as commands run
@@ -560,13 +567,13 @@ The Stop hook runs after Claude finishes responding for looping commands.
 
 ```bash
 # Find the most recent log
-ls -lt $TMP/gitx-hooks/
+ls -lt .thoughts/logs/gitx/
 
 # Search for errors
-grep -l "ERROR" $TMP/gitx-hooks/*.log
+grep -l "ERROR" .thoughts/logs/gitx/*.log
 
 # View specific handler logs
-grep "Address-CI Handler" $TMP/gitx-hooks/*.log
+grep "Address-CI Handler" .thoughts/logs/gitx/*.log
 ```
 
 ### 2. Test Scripts Directly

@@ -17,16 +17,17 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 # Plugin config (set BEFORE sourcing shared libs)
 HOOK_PLUGIN_NAME="CC"
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 log_init "pre-command"
 
-# Read JSON input from stdin
-INPUT=$(cat)
 log_section "Input Processing"
 log_json "stdin_input" "$INPUT"
 
 PROMPT=$(echo "$INPUT" | jq -r '.prompt // ""')
-CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
 log_debug "PROMPT" "$PROMPT"
 log_debug "CWD" "$CWD"
 

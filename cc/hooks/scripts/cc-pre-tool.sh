@@ -18,6 +18,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 HOOK_PLUGIN_NAME="CC"
 _PLUGIN_VALUE_FLAGS=(--plugin --plugins --delta --worktree --focus)
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-validator.sh"
 source "$LIBS_DIR/hook-output.sh"
@@ -26,15 +30,12 @@ log_init "pre-tool"
 # Set hook event type for output formatting
 export HOOK_EVENT_TYPE="PreToolUse"
 
-# Read JSON input from stdin
-INPUT=$(cat)
 log_section "Input Processing"
 log_json "stdin_input" "$INPUT"
 
 # Parse PreToolUse fields
 TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // ""')
 TOOL_INPUT=$(echo "$INPUT" | jq -r '.tool_input // {}')
-CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
 log_debug "TOOL_NAME" "$TOOL_NAME"
 log_debug "CWD" "$CWD"
 

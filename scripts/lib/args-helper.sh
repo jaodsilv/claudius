@@ -87,11 +87,13 @@ _trim_newlines() {
 init() {
   log_debug "HOOK_EVENT_TYPE" "$HOOK_EVENT_TYPE"
 
-  INPUT=$(cat)
+  if [[ -z "${INPUT:-}" ]]; then INPUT=$(cat); fi
   log_section "Input Processing"
   log_json "stdin_input" "$INPUT"
 
-  CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+  if [[ -z "${CWD:-}" ]]; then
+    CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+  fi
   log_debug "CWD" "$CWD"
 
   if [[ "$HOOK_EVENT_TYPE" == "UserPromptSubmit" ]]; then

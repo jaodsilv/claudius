@@ -10,6 +10,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 HOOK_PLUGIN_NAME="BRAINSTORM"
 _PLUGIN_VALUE_FLAGS=(--depth --output-path --session-path --format)
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-validator.sh"
 source "$LIBS_DIR/hook-output.sh"
@@ -17,12 +21,7 @@ log_init "pre-tool"
 
 export HOOK_EVENT_TYPE="PreToolUse"
 
-# Read JSON input
-INPUT=$(cat)
 log_section "Input Processing"
-
-CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
-export CWD
 
 TOOL_NAME=$(echo "$INPUT" | jq -r '.tool_name // ""')
 if [[ "$TOOL_NAME" != "Skill" ]]; then

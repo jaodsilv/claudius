@@ -13,10 +13,13 @@
 #   log_section "Section Name"
 #   log_json "label" "$json_data"
 #
-# Environment variables (per plugin):
-#   <PLUGIN>_DEBUG=1        - Enable debug logging (default: off)
-#   <PLUGIN>_LOG_DIR        - Override log directory (default: $TMP/<plugin>-hooks)
-#   <PLUGIN>_LOG_VERBOSE=1  - Also print logs to stderr (default: off)
+# Environment variables:
+#   CLAUDIUS_DEBUG=1         - Enable debug logging for ALL plugins (default: off)
+#   CLAUDIUS_LOG_VERBOSE=1   - Print logs to stderr for ALL plugins (default: off)
+#   CLAUDIUS_LOG_DIR         - Override log directory for ALL plugins
+#   <PLUGIN>_DEBUG=1         - Enable for one plugin (overrides CLAUDIUS_DEBUG)
+#   <PLUGIN>_LOG_DIR         - Override for one plugin (overrides CLAUDIUS_LOG_DIR)
+#   <PLUGIN>_LOG_VERBOSE=1   - Print to stderr for one plugin (overrides CLAUDIUS_LOG_VERBOSE)
 
 # ============================================================================
 # Configuration - Resolved from HOOK_PLUGIN_NAME
@@ -26,9 +29,17 @@ _debug_var="${HOOK_PLUGIN_NAME}_DEBUG"
 _verbose_var="${HOOK_PLUGIN_NAME}_LOG_VERBOSE"
 _logdir_var="${HOOK_PLUGIN_NAME}_LOG_DIR"
 
-HOOK_DEBUG="${!_debug_var:-0}"
-HOOK_LOG_VERBOSE="${!_verbose_var:-0}"
-HOOK_LOG_DIR="${!_logdir_var:-${TMP:-/tmp}/${_plugin_lower}-hooks}"
+# Precedence: <PLUGIN>_VAR > CLAUDIUS_VAR > default
+HOOK_DEBUG="${!_debug_var:-${CLAUDIUS_DEBUG:-0}}"
+HOOK_LOG_VERBOSE="${!_verbose_var:-${CLAUDIUS_LOG_VERBOSE:-0}}"
+if [[ -n "${!_logdir_var:-}" ]]; then
+  HOOK_LOG_DIR="${!_logdir_var}"
+elif [[ -n "${CLAUDIUS_LOG_DIR:-}" ]]; then
+  HOOK_LOG_DIR="${CLAUDIUS_LOG_DIR}"
+else
+  _log_cwd=$(echo "${CWD:-$(pwd)}" | sed -E 's|^([A-Za-z]):|/\L\1|; s|\\|/|g')
+  HOOK_LOG_DIR="${_log_cwd}/.thoughts/logs/${_plugin_lower}"
+fi
 
 # ============================================================================
 # Internal state

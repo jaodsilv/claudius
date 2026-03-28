@@ -19,6 +19,10 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 export HOOK_PLUGIN_NAME="GITX"
 export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
 
+# Read input and export CWD before logging init
+INPUT=$(cat)
+export CWD=$(echo "$INPUT" | jq -r '.cwd // ""')
+
 source "$LIBS_DIR/logging.sh"
 source "$LIBS_DIR/args-helper.sh"
 source "$SCRIPTS_DIR/gitx-helpers.sh"
