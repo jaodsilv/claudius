@@ -1,6 +1,6 @@
 ---
 description: Commits and pushes changes with smart file grouping and conventional messages
-argument-hint: "[(--files <file>+)+ | --context <description> | --multi | --staged] [--no-push]"
+argument-hint: "[--worktree <worktree>] [(--files <file>+)+ | --context <description> | --multi | --staged] [--no-push]"
 allowed-tools: Bash, Skill, Agent, AskUserQuestion
 model: haiku
 hooks:
