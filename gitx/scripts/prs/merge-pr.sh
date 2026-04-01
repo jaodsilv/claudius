@@ -129,15 +129,14 @@ METADATA_FILE="$WORKTREE/.thoughts/pr/metadata.yaml"
 # Step 1: Get PR info from metadata or GitHub
 if [[ -f "$METADATA_FILE" ]]; then
   # Read from metadata
-  HAS_ERROR=$(yq -r '.error // false' "$METADATA_FILE" 2>/dev/null)
-  PR_VAL=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
-
-  if [[ "$HAS_ERROR" != "true" ]] && [[ -n "$PR_VAL" ]] && [[ "$PR_VAL" != "null" ]]; then
-    [[ -z "$PR_NUMBER" ]] && PR_NUMBER=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
-    BRANCH=$(yq -r '.branch // ""' "$METADATA_FILE" 2>/dev/null)
-    BASE=$(yq -r '.base // ""' "$METADATA_FILE" 2>/dev/null)
-    TITLE=$(yq -r '.title // ""' "$METADATA_FILE" 2>/dev/null)
-    DESCRIPTION=$(yq -r '.description // ""' "$METADATA_FILE" 2>/dev/null)
+  META_JSON=$(bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" \
+    --worktree "$WORKTREE" --get pr,branch,base,title,description --format json 2>/dev/null)
+  if [[ -n "$META_JSON" ]]; then
+    [[ -z "$PR_NUMBER" ]] && PR_NUMBER=$(echo "$META_JSON" | jq -r '.pr // ""')
+    BRANCH=$(echo "$META_JSON" | jq -r '.branch // ""')
+    BASE=$(echo "$META_JSON" | jq -r '.base // ""')
+    TITLE=$(echo "$META_JSON" | jq -r '.title // ""')
+    DESCRIPTION=$(echo "$META_JSON" | jq -r '.description // ""')
   fi
 fi
 

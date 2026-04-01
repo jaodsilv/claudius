@@ -17,7 +17,7 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 
 # Plugin config (set BEFORE sourcing shared libs)
 export HOOK_PLUGIN_NAME="GITX"
-export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
+export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit --include-confidence)
 
 # Read input and export CWD before logging init
 INPUT=$(cat)
@@ -34,24 +34,24 @@ export HOOK_EVENT_TYPE="Stop"
 
 init
 
-$NEXT_TURN = ""
+NEXT_TURN=""
 case "$COMMAND" in
   "address-ci")
     log_section "Address-CI Stop Hook"
 
     # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
-    $NEXT_TURN = "CI-PENDING"
+    NEXT_TURN="CI-PENDING"
     ;;
   "review")
     log_section "Review Stop Hook"
 
     # Set turn to AUTHOR (waiting for author to read and respond to the review)
-    $NEXT_TURN = "AUTHOR"
+    NEXT_TURN="AUTHOR"
     ;;
   "address-review")
     log_section "Address-Review Stop Hook"
     # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
-    $NEXT_TURN = "CI-PENDING"
+    NEXT_TURN="CI-PENDING"
     ;;
   *)
     log_info "Not a looping command"

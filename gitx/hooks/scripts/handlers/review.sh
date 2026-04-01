@@ -8,8 +8,7 @@ log_section "Review Handler"
 # --- Phase 1: Ensure metadata exists ---
 if [[ ! -f "$METADATA_FILE" ]]; then
   log_info "Metadata not found, fetching..."
-  FETCH_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/metadata/fetch-pr-metadata.sh"
-  if ! bash "$FETCH_SCRIPT" "$WORKTREE"; then
+  if ! bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh; then
     log_error "Failed to fetch metadata"
     log_exit 2 "fetch failed"
     hook_output_block "Failed to fetch PR metadata"

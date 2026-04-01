@@ -44,7 +44,8 @@ fi
 # Fallback: check metadata linkedIssue
 if [[ -z "$ISSUE_NUM" ]] || [[ "$ISSUE_NUM" == "null" ]]; then
   if [[ -f "$METADATA_FILE" ]]; then
-    LINKED=$(yq -r '.linkedIssue // ""' "$METADATA_FILE" 2>/dev/null)
+    LINKED=$(bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" \
+      --worktree "$WORKTREE" --get linkedIssue 2>/dev/null)
     if [[ -n "$LINKED" ]] && [[ "$LINKED" != "null" ]]; then
       ISSUE_NUM="$LINKED"
     fi

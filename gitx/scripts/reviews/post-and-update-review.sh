@@ -47,8 +47,10 @@ if [[ ! -f "$REVIEW_FILE" ]]; then
 fi
 
 # Read values from metadata
-PR_NUMBER=$(yq '.pr' "$METADATA_FILE")
-BRANCH=$(yq '.branch' "$METADATA_FILE")
+META_JSON=$(bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" \
+  --worktree "$WORKTREE" --get pr,branch --format json 2>/dev/null)
+PR_NUMBER=$(echo "$META_JSON" | jq -r '.pr // ""')
+BRANCH=$(echo "$META_JSON" | jq -r '.branch // ""')
 
 if [[ -z "$PR_NUMBER" ]] || [[ "$PR_NUMBER" == "null" ]]; then
   echo "error: PR number not found in metadata" >&2

@@ -70,7 +70,8 @@ case "$OPERATION" in
       exit 1
     fi
 
-    pr_val=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
+    pr_val=$(bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" \
+      --worktree "$WORKTREE" --get pr 2>/dev/null)
     if [[ -z "$pr_val" ]] || [[ "$pr_val" == "null" ]]; then
       echo '{"error": "No PR exists for this branch", "needs_fetch": false}' >&2
       exit 1

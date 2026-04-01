@@ -38,13 +38,13 @@ Use `gitx:managing-pr-metadata` skill to fetch PR metadata:
 ```bash
 Skill(gitx:managing-pr-metadata):
   --worktree "$worktree"
-  --operation fetch
+  --refresh
 ```
 
 ### Phase 3: Report Result
 
 Read the metadata file at `$worktree/.thoughts/pr/metadata.yaml`.
 
-- If `noPr: true`, suggest `/gitx:pr` to create a PR
+- If `pr` is null or empty, suggest `/gitx:pr` to create a PR
 - If `error: true`, report the error message
 - Otherwise, confirm metadata was written successfully
