@@ -52,6 +52,29 @@ case "$_AGENT_TYPE" in
     bash "$HANDLERS_DIR/ci-pre-tool.sh" "$_AGENT_TYPE" "$_RAW_INPUT"
     exit $?
     ;;
+  gitx:issue:fix-orchestrator)
+    log_info "Parsing issue reference for fix-orchestrator"
+    # Extract potential issue reference from agent prompt
+    _PROMPT=$(echo "$_RAW_INPUT" | jq -r '.tool_input.prompt // ""')
+    # Try to parse any issue reference from the prompt
+    PARSE_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/issues/parse-references.sh"
+    if [[ -f "$PARSE_SCRIPT" ]]; then
+      # Try each word in the prompt as a potential reference
+      PARSE_RESULT=""
+      for word in $_PROMPT; do
+        PARSE_RESULT=$(bash "$PARSE_SCRIPT" "$word" 2>/dev/null)
+        if [[ $? -eq 0 ]]; then
+          break
+        fi
+        PARSE_RESULT=""
+      done
+      if [[ -n "$PARSE_RESULT" ]]; then
+        source "$LIBS_DIR/hook-output.sh"
+        hook_output_context "<parsed-issue-reference>$PARSE_RESULT</parsed-issue-reference>"
+      fi
+    fi
+    exit 0
+    ;;
   *)
     log_info "No metadata injection for $_AGENT_TYPE - pass through"
     log_exit 0 "pass through"

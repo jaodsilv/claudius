@@ -11,11 +11,7 @@ each phase. Proper orchestration ensures nothing is missed and context is preser
 
 ## Parse Arguments
 
-Use the Skill tool to execute the skill `gitx:parsing-issue-references` to parse $ARGUMENTS:
-
-```markdown
-Skill(gitx:parsing-issue-references)
-```
+Parse $ARGUMENTS for issue references. The hook pre-processes the arguments and injects parsed issue context.
 
 - Issue number (required): Supports "123", "#123", "issue-123", or GitHub issue URL
 - If parsing fails, report error with supported formats

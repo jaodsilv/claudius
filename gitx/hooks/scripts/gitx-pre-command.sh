@@ -53,8 +53,8 @@ case "$COMMAND" in
     source "$HANDLERS_DIR/commit-push-pre.sh"
     ;;
   comment-to-issue|fix-issue)
-    log_info "Loading validate-issue.sh"
-    source "$HANDLERS_DIR/validate-issue.sh"
+    log_info "Loading pre-comment-to-issue.sh"
+    source "$HANDLERS_DIR/pre-comment-to-issue.sh"
     ;;
   comment-to-pr)
     log_info "Loading comment-to-pr.sh"
@@ -107,6 +107,10 @@ case "$COMMAND" in
   refresh-metadata)
     log_info "Loading refresh-metadata.sh"
     source "$HANDLERS_DIR/refresh-metadata.sh"
+    ;;
+  parse-issue-reference)
+    log_info "Loading parse-issue-reference.sh"
+    source "$HANDLERS_DIR/parse-issue-reference.sh"
     ;;
   *)
     log_info "Unknown command '$COMMAND', passing through"

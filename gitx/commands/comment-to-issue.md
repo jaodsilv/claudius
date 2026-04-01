@@ -23,13 +23,9 @@ From $ARGUMENTS, extract:
 
 If no issue number provided:
 
-1. Check PR metadata for `linkedIssue`:
-   - If `.thoughts/pr/metadata.yaml` exists and has `linkedIssue`, use that
-   - This is set by `fetch-pr-metadata.sh` from branch name parsing
-
-2. If no metadata or no `linkedIssue`, apply skill `gitx:parsing-issue-references`:
-   - Get current branch: !`git branch --show-current`
-   - Parse branch name for issue patterns
+1. Check PR metadata for `linkedIssue` exists in `.thoughts/pr/metadata.yaml` use that.
+2. If no metadata or no `linkedIssue`, the hook will have already parsed the branch name for issue patterns
+   - The parsed issue number is injected as `<parsed-issue>` context by the hook
 
 If issue number found:
 

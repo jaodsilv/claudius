@@ -112,6 +112,10 @@ case "$COMMAND" in
     log_info "Loading refresh-metadata.sh"
     source "$HANDLERS_DIR/refresh-metadata.sh"
     ;;
+  parse-issue-reference)
+    log_info "Loading parse-issue-reference.sh"
+    source "$HANDLERS_DIR/parse-issue-reference.sh"
+    ;;
   *)
     log_info "Unknown command '$COMMAND', passing through"
     log_exit 0 "unknown command - pass through"
