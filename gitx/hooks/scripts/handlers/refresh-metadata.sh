@@ -35,16 +35,13 @@ if ! gh pr view "$CURRENT_BRANCH" &>/dev/null; then
   exit 2
 fi
 
-FETCH_SCRIPT="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/fetch-pr-metadata.sh"
+METADATA_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh"
 
 if [[ "$REFRESH_ALL" == "true" ]]; then
-  # Full refresh - re-fetch (atomic write preserves existing file on failure)
   log_info "Performing full metadata refresh..."
   rm -rf "$WORKTREE/.thoughts/pr/ci"
 
-  # Capture fetch output (suppress from stdout, we'll include in block reason)
-  if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
-    # Extract the message from fetch output if it's JSON
+  if FETCH_OUTPUT=$(bash "$METADATA_SCRIPT" --worktree "$WORKTREE" --refresh 2>&1); then
     FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | rg -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
     if [[ -z "$FETCH_MESSAGE" ]]; then
       FETCH_MESSAGE="$METADATA_FILE"
@@ -59,13 +56,9 @@ if [[ "$REFRESH_ALL" == "true" ]]; then
     exit 2
   fi
 else
-  # Selective refresh based on --fields
   log_info "Performing selective refresh for fields: $FIELDS"
 
-  # Always do a full refresh for now (selective refresh would require
-  # significant refactoring of fetch-pr-metadata.sh into modular functions)
-  # Capture fetch output (suppress from stdout, we'll include in block reason)
-  if FETCH_OUTPUT=$(bash "$FETCH_SCRIPT" "$WORKTREE" ); then
+  if FETCH_OUTPUT=$(bash "$METADATA_SCRIPT" --worktree "$WORKTREE" --refresh 2>&1); then
     FETCH_MESSAGE=$(echo "$FETCH_OUTPUT" | rg -o '"message"[[:space:]]*:[[:space:]]*"[^"]*"' | sed 's/"message"[[:space:]]*:[[:space:]]*"\([^"]*\)"/\1/' | tail -1)
     if [[ -z "$FETCH_MESSAGE" ]]; then
       FETCH_MESSAGE="$METADATA_FILE"

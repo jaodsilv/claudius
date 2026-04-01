@@ -31,11 +31,11 @@ fi
 
 # Wait for CI using centralized operation (suppress stdout, errors go to stderr)
 log_info "Waiting for CI to complete..."
-bash "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh" wait-ci "$WORKTREE" >/dev/null
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --wait-ci >/dev/null
 
 # Refresh metadata - this computes turn correctly using statusCheckRollup
 log_info "Refreshing metadata..."
-bash "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh" fetch "$WORKTREE" >/dev/null
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
 
 # Check turn (unless --force)
 TURN=$(yq -r '.turn' "$METADATA_FILE")

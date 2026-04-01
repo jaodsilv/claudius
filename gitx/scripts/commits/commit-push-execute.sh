@@ -196,10 +196,11 @@ if [[ "$PUSHED" == "true" ]]; then
     log_section "Update PR Metadata"
     log_debug "METADATA_FILE" "$METADATA_FILE"
 
-    METADATA_SCRIPT="${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh"
+    METADATA_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh"
 
     if [[ -f "$METADATA_SCRIPT" ]]; then
-      if bash "$METADATA_SCRIPT" post-push "$WORKTREE" 2>&1; then
+      LATEST_COMMIT=$(git -C "$WORKTREE" rev-parse HEAD 2>/dev/null || echo "")
+      if bash "$METADATA_SCRIPT" --worktree "$WORKTREE" --clear ciStatus --set ciResult "\"ONGOING\"" --set turn CI-PENDING --set latestCommit "\"$LATEST_COMMIT\"" 2>&1; then
         log_info "PR metadata updated"
         PR_UPDATED=true
       else

@@ -61,9 +61,8 @@ case "$OPERATION" in
       exit 1
     fi
 
-    # Check for error or noPr status in metadata
+    # Check for error or missing PR in metadata
     has_error=$(yq -r '.error // false' "$METADATA_FILE" 2>/dev/null)
-    no_pr=$(yq -r '.noPr // false' "$METADATA_FILE" 2>/dev/null)
 
     if [[ "$has_error" == "true" ]]; then
       error_msg=$(yq -r '.message // "Unknown error"' "$METADATA_FILE")
@@ -71,7 +70,8 @@ case "$OPERATION" in
       exit 1
     fi
 
-    if [[ "$no_pr" == "true" ]]; then
+    pr_val=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
+    if [[ -z "$pr_val" ]] || [[ "$pr_val" == "null" ]]; then
       echo '{"error": "No PR exists for this branch", "needs_fetch": false}' >&2
       exit 1
     fi

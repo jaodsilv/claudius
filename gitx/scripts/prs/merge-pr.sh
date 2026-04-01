@@ -130,9 +130,9 @@ METADATA_FILE="$WORKTREE/.thoughts/pr/metadata.yaml"
 if [[ -f "$METADATA_FILE" ]]; then
   # Read from metadata
   HAS_ERROR=$(yq -r '.error // false' "$METADATA_FILE" 2>/dev/null)
-  NO_PR=$(yq -r '.noPr // false' "$METADATA_FILE" 2>/dev/null)
+  PR_VAL=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
 
-  if [[ "$HAS_ERROR" != "true" ]] && [[ "$NO_PR" != "true" ]]; then
+  if [[ "$HAS_ERROR" != "true" ]] && [[ -n "$PR_VAL" ]] && [[ "$PR_VAL" != "null" ]]; then
     [[ -z "$PR_NUMBER" ]] && PR_NUMBER=$(yq -r '.pr // ""' "$METADATA_FILE" 2>/dev/null)
     BRANCH=$(yq -r '.branch // ""' "$METADATA_FILE" 2>/dev/null)
     BASE=$(yq -r '.base // ""' "$METADATA_FILE" 2>/dev/null)

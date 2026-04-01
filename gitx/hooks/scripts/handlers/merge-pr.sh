@@ -26,7 +26,7 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   fi
   # Fetch metadata
   log_info "Fetching metadata..."
-  bash "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh" fetch "$WORKTREE"
+  bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh
 fi
 
 APPROVED=$(yq -r '.approved // false' "$METADATA_FILE")

@@ -60,6 +60,6 @@ case "$COMMAND" in
     ;;
 esac
 
-bash "$HANDLERS_DIR/metadata-operations.sh" set-turn "$WORKTREE" "$NEXT_TURN"
+bash "$HANDLERS_DIR/metadata-operations.sh" --worktree "$WORKTREE" --set turn "$NEXT_TURN"
 log_exit 0 "Turn set to $NEXT_TURN"
 exit 0

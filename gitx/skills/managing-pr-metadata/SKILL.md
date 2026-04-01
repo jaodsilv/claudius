@@ -1,8 +1,8 @@
 ---
 description: >-
-  Centralized PR metadata management with lazy loading. Use when components
+  Centralized PR metadata management with flag-based CLI. Use when components
   need PR context or need to update metadata state (approved, resolveLevel).
-user-invocable: false
+user-invocable: true
 allowed-tools: Bash(*/scripts/metadata/metadata-operations.sh *)
 model: haiku
 ---
@@ -11,39 +11,49 @@ model: haiku
 
 Centralized metadata management with lazy loading fallback.
 
-## execution
+## Execution
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh <operation> <worktree> [args...]
+${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh [flags]
 ```
 
-## Operations
+## Flags
 
-### fetch
+| Flag | Description |
+| :--- | :---------- |
+| `--worktree <path>` | Working directory (default: .) |
+| `--get [<fields>]` | Get metadata fields (comma-separated, or all if omitted) |
+| `--set <key> <value>` | Set a metadata field (repeatable) |
+| `--clear <fields>` | Clear/delete fields (comma-separated) |
+| `--refresh [<fields>]` | Refresh metadata from GitHub |
+| `--refresh-areas <areas>` | Refresh by area (comma-separated) |
+| `--wait-ci` | Wait for CI to complete (max 10 min) |
+| `--format <json\|yaml>` | Output format (default: json) |
+| `--output <filepath>` | Write output to file |
+| `--fields` | List all known fields |
+| `--areas` | List all areas |
+| `--set-fields` | List populated fields in metadata |
 
-Fetch PR metadata from GitHub:
+## --get Output Rules
 
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh fetch <worktree>
-```
+- No fields → entire metadata as JSON (or --format)
+- 1 field → raw value only (unless --format specified)
+- 2+ fields → key-value JSON (or --format)
 
-Fetches PR data for the current branch and writes to `<worktree>/.thoughts/pr/metadata.yaml`.
+## Areas
 
-Output on success:
+| Area | Fields |
+| :--- | :----- |
+| no-pr | branch, latestCommit, linkedIssue, base, author, pr |
+| pr | pr, author, title, description, branch, base |
+| issue | linkedIssue |
+| worktree | worktree, branch |
+| review | latestReviews, reviewThreads, latestMinimizedReview, latestReviewedCommit, reviewCount, latestCommit |
+| comments | latestComments, historicalComments |
+| ci | ciStatus, ciResult |
+| turn | ciStatus, ciResult, latestComments, historicalComments, turn |
 
-```json
-{"status": "ok", "message": "PR metadata written to <path>"}
-```
-
-Output when no PR found (exit 0):
-
-```json
-{"pr": null, "branch": "<branch>", "noPr": true, "message": "No open PR found for branch: <branch>"}
-```
-
-#### Expected Fields
-
-The metadata file contains:
+## Expected Fields
 
 | Field | Type | Description |
 | :---- | :--- | :---------- |
@@ -60,6 +70,7 @@ The metadata file contains:
 | latestMinimizedReview | object\|null | Latest minimized review |
 | latestReviewedCommit | string\|null | Last reviewed commit SHA |
 | ciStatus | array | CI check results |
+| ciResult | string\|null | Aggregated CI result (SUCCESS\|FAILURE\|ONGOING) |
 | latestComments | array | Comments after oldest review |
 | historicalComments | array | Comments before oldest review |
 | reviewCount | number | Count of review rounds |
@@ -71,135 +82,30 @@ The metadata file contains:
 | createdAt | string | ISO-8601 creation timestamp |
 | updatedAt | string | ISO-8601 update timestamp |
 
-### ensure
-
-Check if metadata exists and is valid:
+## Examples
 
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh ensure <worktree>
-```
+# List all known fields
+metadata-operations.sh --fields
 
-Output on success:
+# List all areas
+metadata-operations.sh --areas
 
-```json
-{"status": "ok", "path": "<worktree>/.thoughts/pr/metadata.yaml"}
-```
+# Refresh metadata from GitHub
+metadata-operations.sh --worktree /path --refresh
 
-Output when metadata needs fetching (exit 1):
+# Get specific fields
+metadata-operations.sh --worktree /path --get pr,branch
 
-```json
-{"status": "needs_fetch", "path": "<worktree>/.thoughts/pr/metadata.yaml"}
-```
+# Get single field (raw value)
+metadata-operations.sh --worktree /path --get pr
 
-### read
+# Set turn and approved
+metadata-operations.sh --worktree /path --set turn AUTHOR --set approved true
 
-Read a specific field from metadata:
+# Clear CI status
+metadata-operations.sh --worktree /path --clear ciStatus,ciResult
 
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh read <worktree> <field>
-```
-
-Returns the field value as JSON. Exits with error if metadata doesn't exist.
-
-### update
-
-Update a specific field:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh update <worktree> <field> <json_value>
-```
-
-Updates the field and sets `updatedAt` timestamp.
-
-### set-resolve-level
-
-Update the resolve level field:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-resolve-level <worktree> <level>
-```
-
-Values: `all`, `critical`, `important`
-
-### set-approved
-
-Update the approved field:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-approved <worktree> <bool>
-```
-
-Values: `true`, `false`
-
-### remove-field
-
-Remove a field from metadata:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh remove-field <worktree> <field>
-```
-
-Removes the specified field and updates `updatedAt` timestamp.
-
-### post-push
-
-Reset CI status and turn after pushing changes:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh post-push <worktree>
-```
-
-Performs three updates atomically:
-- Clears `ciStatus` to empty array
-- Sets `turn` to `CI-PENDING`
-- Updates `latestCommit` to current HEAD
-
-Output:
-
-```json
-{"status": "ok", "turn": "CI-PENDING", "ciStatus": "cleared", "latestCommit": "<sha>"}
-```
-
-### set-turn
-
-Set the workflow turn state:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh set-turn <worktree> <turn>
-```
-
-Values: `CI-PENDING`, `CI-REVIEW`, `REVIEW`, `AUTHOR`
-
-Output:
-
-```json
-{"status": "ok", "turn": "<turn>"}
-```
-
-### clear-ci-status
-
-Clear the CI status array:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh clear-ci-status <worktree>
-```
-
-Output:
-
-```json
-{"status": "ok", "cleared": "ciStatus"}
-```
-
-### update-latest-commit
-
-Update the latest commit from HEAD:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh update-latest-commit <worktree>
-```
-
-Output:
-
-```json
-{"status": "ok", "latestCommit": "<sha>"}
+# Post-push equivalent
+metadata-operations.sh --worktree /path --clear ciStatus --set ciResult '"ONGOING"' --set turn CI-PENDING
 ```

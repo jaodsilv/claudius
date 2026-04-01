@@ -38,7 +38,7 @@ METADATA_FILE="$WORKTREE/.thoughts/pr/metadata.yaml"
 # Lazy fetch if metadata doesn't exist
 if [[ ! -f "$METADATA_FILE" ]]; then
   log_info "Metadata not found, lazy fetching..."
-  bash "$SCRIPTS_DIR/handlers/metadata-operations.sh" fetch "$WORKTREE" >/dev/null 2>&1
+  bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null 2>&1
 fi
 
 if [[ ! -f "$METADATA_FILE" ]]; then
@@ -47,10 +47,10 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   exit 0
 fi
 
-# Check for noPr indicator
-NO_PR=$(yq -r '.noPr // false' "$METADATA_FILE")
-if [[ "$NO_PR" == "true" ]]; then
-  log_info "noPr flag set, blocking"
+# Check for missing PR
+PR_VAL=$(yq -r '.pr // ""' "$METADATA_FILE")
+if [[ -z "$PR_VAL" ]] || [[ "$PR_VAL" == "null" ]]; then
+  log_info "No PR in metadata, blocking"
   hook_output_block "No open PR found for current branch. Use /gitx:pr to create one."
   exit 0
 fi
@@ -80,6 +80,7 @@ $LATEST_REVIEWS
     BRANCH=$(yq -r '.branch // ""' "$METADATA_FILE")
     CI_STATUS=$(yq -o json '.ciStatus // []' "$METADATA_FILE")
     LATEST_COMMIT=$(yq -r '.latestCommit // ""' "$METADATA_FILE")
+    CI_RESULT=$(yq -r '.ciResult // ""' "$METADATA_FILE")
 
     hook_output_context "<pr-metadata>
 <pr>$PR</pr>
@@ -88,6 +89,7 @@ $LATEST_REVIEWS
 $CI_STATUS
 </ci-status>
 <latest-commit>$LATEST_COMMIT</latest-commit>
+<ci-result>$CI_RESULT</ci-result>
 </pr-metadata>"
     ;;
 

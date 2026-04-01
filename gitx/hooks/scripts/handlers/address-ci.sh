@@ -22,7 +22,7 @@ while true; do
   # Refresh metadata - this computes turn correctly using statusCheckRollup
   # which properly handles skipped jobs (unlike gh run list)
   log_info "Refreshing metadata..."
-  bash "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/metadata-operations.sh" fetch "$WORKTREE" >/dev/null
+  bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
 
   TURN=$(yq -r '.turn' "$METADATA_FILE")
   log_debug "TURN" "$TURN"
