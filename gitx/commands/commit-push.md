@@ -8,7 +8,7 @@ hooks:
     - matcher: "Agent"
       hooks:
         - type: command
-          command: "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commit-push-pretool.sh"
+          command: "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/handlers/commits/commit-push-pretool.sh"
           timeout: 60
 ---
 

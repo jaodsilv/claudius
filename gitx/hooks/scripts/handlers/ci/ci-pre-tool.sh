@@ -95,7 +95,7 @@ case "$AGENT_SUFFIX" in
     fi
 
     # Multiple IDs: generate processing order via Python helper
-    PROCESSING_ORDER=$(python3 "$SCRIPTS_DIR/handlers/ci-merge-tree.py" ${CHECK_IDS})
+    PROCESSING_ORDER=$(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/ci/ci-merge-tree.py" ${CHECK_IDS})
     if [[ $? -ne 0 ]] || [[ -z "$PROCESSING_ORDER" ]]; then
       log_error "ci-merge-tree.py failed"
       hook_output_block "Failed to generate merge tree processing order"

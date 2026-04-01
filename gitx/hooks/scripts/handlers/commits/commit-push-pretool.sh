@@ -38,7 +38,7 @@ case "$TOOL_NAME" in
       gitx:committing-conventionally)
         # Inject diffs for commit message generation
         log_info "Routing to inject-diff handler"
-        bash "$SCRIPTS_DIR/handlers/commit-push-inject-diff.sh" <<< "$INPUT"
+        bash "${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push-inject-diff.sh" <<< "$INPUT"
         exit $?
         ;;
 
@@ -59,7 +59,7 @@ case "$TOOL_NAME" in
       gitx:commit:file-selector|gitx:commit:change-grouper|gitx:commit:commit-writer)
         # Inject diffs for file selection/grouping
         log_info "Routing to inject-diff handler for agent"
-        bash "$SCRIPTS_DIR/handlers/commit-push-inject-diff.sh" <<< "$INPUT"
+        bash "${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push-inject-diff.sh" <<< "$INPUT"
         exit $?
         ;;
 

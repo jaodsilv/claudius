@@ -1,6 +1,6 @@
 ---
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official to be installed
-argument-hint: "[[--worktree] <worktree>]"
+argument-hint: "[[--worktree] <worktree>] [--include-confidence]"
 allowed-tools: Skill, Read, Bash
 context: fork
 model: opus
@@ -21,26 +21,6 @@ Use the Skill tool to execute the skill `/pr-review-toolkit:review-pr`:
 Skill(/pr-review-toolkit:review-pr $review-prompt)
 ```
 
-## Step 2: Post Review and Update Metadata
+## Done
 
-Once the review is complete, use the Bash tool to run the post-and-update script:
-
-```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/reviews/post-and-update-review.sh "$worktree"
-```
-
-## Error Handling
-
-**CRITICAL**: If any script fails (non-zero exit code), do NOT attempt manual fallbacks.
-
-- Do NOT manually post the review using `gh pr comment` or `gh pr review`
-- Do NOT skip the metadata update step
-- Do NOT improvise alternative solutions
-
-Instead:
-
-1. Report the error clearly to the user
-2. Use AskUserQuestion to ask the user how to proceed:
-   - "Retry the failed step"
-   - "Abort the review process"
-   - "Let me handle it manually"
+The after-hook will automatically post the review to the PR and update metadata.

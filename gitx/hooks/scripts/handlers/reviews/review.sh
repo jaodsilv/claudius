@@ -5,6 +5,14 @@
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_section "Review Handler"
 
+# --- Phase 0: Clean up stale review output ---
+REVIEW_OUTPUT="$WORKTREE/.thoughts/pr/review.md"
+if [[ -f "$REVIEW_OUTPUT" ]]; then
+  log_info "Backing up and removing stale review.md"
+  cp -f "$REVIEW_OUTPUT" "${REVIEW_OUTPUT}.bkp" 2>/dev/null
+  rm -f "$REVIEW_OUTPUT"
+fi
+
 # --- Phase 1: Ensure metadata exists ---
 if [[ ! -f "$METADATA_FILE" ]]; then
   log_info "Metadata not found, fetching..."
@@ -39,12 +47,25 @@ log_info "Turn is REVIEW, proceeding"
 
 # --- Phase 3: Build review prompt ---
 log_info "Building review prompt..."
-BUILD_SCRIPT="${HANDLERS_DIR}/build-review-prompt.sh"
+BUILD_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/reviews/build-review-prompt.sh"
 if ! bash "$BUILD_SCRIPT" "$WORKTREE"; then
   log_error "Failed to build review prompt"
   log_exit 2 "build prompt failed"
   hook_output_block "Failed to build review prompt"
   exit 2
+fi
+
+# --- Phase 3b: Append confidence instruction if requested ---
+if has_flag "$ARGS" "--include-confidence"; then
+  log_info "Including confidence scores in review"
+  cat << 'EOF' >> "$WORKTREE/.thoughts/pr/review-prompt.txt"
+
+For each suggestion or concern in your review, include a confidence percentage score (0-100%) indicating how certain you are that the issue is a genuine problem. Format as [Confidence: XX%] at the end of each suggestion. Use these guidelines:
+- 90-100%: Certain — clear bug, security flaw, or standards violation
+- 70-89%: High — likely an issue based on context and best practices
+- 50-69%: Moderate — possible issue, depends on intent or broader context
+- Below 50%: Low — style preference or speculative concern
+EOF
 fi
 
 # --- Phase 4: Output for skill ---

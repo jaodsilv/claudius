@@ -6,7 +6,6 @@ set -uo pipefail
 
 # Get script directory and source logging
 SCRIPTS_DIR="${CLAUDE_PLUGIN_ROOT}/hooks/scripts"
-HANDLERS_DIR="${SCRIPTS_DIR}/handlers"
 source "$SCRIPTS_DIR/lib/logging.sh"
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_init "commit-push-inject-diff"
@@ -30,7 +29,7 @@ log_debug "TOOL_NAME" "$TOOL_NAME"
 # ============================================================================
 log_section "Get Git Status"
 
-STATUS_SCRIPT="$HANDLERS_DIR/commit-push.sh"
+STATUS_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push.sh"
 
 STATUS=$(bash "$STATUS_SCRIPT" --info 2>/dev/null)
 STATUS_EXIT=$?

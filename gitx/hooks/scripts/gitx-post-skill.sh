@@ -48,6 +48,9 @@ case "$COMMAND" in
   review)
     log_section "Review Stop Hook"
 
+    # Post review to PR and update metadata
+    source "$HANDLERS_DIR/reviews/post-review.sh"
+
     # Set turn to AUTHOR (waiting for author to read and respond to the review)
     NEXT_TURN="AUTHOR"
     ;;
@@ -64,6 +67,6 @@ case "$COMMAND" in
     ;;
 esac
 
-bash "$HANDLERS_DIR/metadata-operations.sh" --worktree "$WORKTREE" --set turn "$NEXT_TURN"
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --set turn "$NEXT_TURN"
 log_exit 0 "Turn set to $NEXT_TURN"
 exit 0

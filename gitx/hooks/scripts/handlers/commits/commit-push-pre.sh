@@ -40,7 +40,7 @@ fi
 # ============================================================================
 log_section "Git Status"
 
-STATUS_SCRIPT="$SCRIPTS_DIR/handlers/commit-push.sh"
+STATUS_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/commits/commit-push.sh"
 
 log_debug "STATUS_SCRIPT" "$STATUS_SCRIPT"
 

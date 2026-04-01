@@ -44,12 +44,12 @@ log_section "Gitx Agent"
 case "$_AGENT_TYPE" in
   gitx:address-review:review-responder|gitx:address-review:ci-status-checker|gitx:pr:updater)
     log_info "Routing to inject-pr-metadata handler"
-    bash "$HANDLERS_DIR/inject-pr-metadata.sh" "$_RAW_INPUT"
+    bash "$HANDLERS_DIR/metadata/inject-pr-metadata.sh" "$_RAW_INPUT"
     exit $?
     ;;
   gitx:ci:*)
     log_info "Routing to ci-pre-tool handler for $_AGENT_TYPE"
-    bash "$HANDLERS_DIR/ci-pre-tool.sh" "$_AGENT_TYPE" "$_RAW_INPUT"
+    bash "$HANDLERS_DIR/ci/ci-pre-tool.sh" "$_AGENT_TYPE" "$_RAW_INPUT"
     exit $?
     ;;
   gitx:issue:fix-orchestrator)

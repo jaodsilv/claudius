@@ -41,76 +41,76 @@ log_info "Dispatching to handler: $COMMAND"
 
 case "$COMMAND" in
   address-ci)
-    log_info "Loading address-ci.sh"
-    source "$HANDLERS_DIR/address-ci.sh"
+    log_info "Loading ci/address-ci.sh"
+    source "$HANDLERS_DIR/ci/address-ci.sh"
     ;;
   address-review)
-    log_info "Loading address-review.sh"
-    source "$HANDLERS_DIR/address-review.sh"
+    log_info "Loading reviews/address-review.sh"
+    source "$HANDLERS_DIR/reviews/address-review.sh"
     ;;
   commit-push)
-    log_info "Loading commit-push-pre.sh"
-    source "$HANDLERS_DIR/commit-push-pre.sh"
+    log_info "Loading commits/commit-push-pre.sh"
+    source "$HANDLERS_DIR/commits/commit-push-pre.sh"
     ;;
   comment-to-issue|fix-issue)
-    log_info "Loading pre-comment-to-issue.sh"
-    source "$HANDLERS_DIR/pre-comment-to-issue.sh"
+    log_info "Loading issues/pre-comment-to-issue.sh"
+    source "$HANDLERS_DIR/issues/pre-comment-to-issue.sh"
     ;;
   comment-to-pr)
-    log_info "Loading comment-to-pr.sh"
-    source "$HANDLERS_DIR/comment-to-pr.sh"
+    log_info "Loading prs/comment-to-pr.sh"
+    source "$HANDLERS_DIR/prs/comment-to-pr.sh"
     ;;
   ignore)
-    log_info "Loading ignore.sh"
-    source "$HANDLERS_DIR/ignore.sh"
+    log_info "Loading workflow/ignore.sh"
+    source "$HANDLERS_DIR/workflow/ignore.sh"
     ;;
   merge-pr)
-    log_info "Loading merge-pr.sh"
-    source "$HANDLERS_DIR/merge-pr.sh"
+    log_info "Loading prs/merge-pr.sh"
+    source "$HANDLERS_DIR/prs/merge-pr.sh"
     ;;
   merge)
-    log_info "Loading merge.sh"
-    source "$HANDLERS_DIR/merge.sh"
+    log_info "Loading branches/merge.sh"
+    source "$HANDLERS_DIR/branches/merge.sh"
     ;;
   next-issue)
-    log_info "Loading next-issue.sh"
-    source "$HANDLERS_DIR/next-issue.sh"
+    log_info "Loading issues/next-issue.sh"
+    source "$HANDLERS_DIR/issues/next-issue.sh"
     ;;
   next-turn)
-    log_info "Loading next-turn.sh"
-    source "$HANDLERS_DIR/next-turn.sh"
+    log_info "Loading workflow/next-turn.sh"
+    source "$HANDLERS_DIR/workflow/next-turn.sh"
     ;;
   pr)
-    log_info "Loading pr.sh"
-    source "$HANDLERS_DIR/pr.sh"
+    log_info "Loading prs/pr.sh"
+    source "$HANDLERS_DIR/prs/pr.sh"
     ;;
   update-pr)
-    log_info "Loading update-pr.sh"
-    source "$HANDLERS_DIR/update-pr.sh"
+    log_info "Loading prs/pre-update-pr.sh"
+    source "$HANDLERS_DIR/prs/pre-update-pr.sh"
     ;;
   rebase)
-    log_info "Loading rebase.sh"
-    source "$HANDLERS_DIR/rebase.sh"
+    log_info "Loading branches/rebase.sh"
+    source "$HANDLERS_DIR/branches/rebase.sh"
     ;;
   remove-branch)
-    log_info "Loading remove-branch.sh"
-    source "$HANDLERS_DIR/remove-branch.sh"
+    log_info "Loading branches/remove-branch.sh"
+    source "$HANDLERS_DIR/branches/remove-branch.sh"
     ;;
   remove-worktree)
-    log_info "Loading remove-worktree.sh"
-    source "$HANDLERS_DIR/remove-worktree.sh"
+    log_info "Loading worktrees/remove-worktree.sh"
+    source "$HANDLERS_DIR/worktrees/remove-worktree.sh"
     ;;
   review)
-    log_info "Loading review.sh"
-    source "$HANDLERS_DIR/review.sh"
+    log_info "Loading reviews/review.sh"
+    source "$HANDLERS_DIR/reviews/review.sh"
     ;;
   refresh-metadata)
-    log_info "Loading refresh-metadata.sh"
-    source "$HANDLERS_DIR/refresh-metadata.sh"
+    log_info "Loading metadata/refresh-metadata.sh"
+    source "$HANDLERS_DIR/metadata/refresh-metadata.sh"
     ;;
   parse-issue-reference)
-    log_info "Loading parse-issue-reference.sh"
-    source "$HANDLERS_DIR/parse-issue-reference.sh"
+    log_info "Loading issues/parse-issue-reference.sh"
+    source "$HANDLERS_DIR/issues/parse-issue-reference.sh"
     ;;
   *)
     log_info "Unknown command '$COMMAND', passing through"
