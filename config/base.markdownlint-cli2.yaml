@@ -24,6 +24,9 @@ config:
   MD033: false
   # MD041 - first-line-h1: disabled
   MD041: false
+  # MD046 - code-block-style
+  MD046:
+    style: fenced
   # MD060 - table-column-style: disabled (newer rule not in CI version)
   MD060: false
 
