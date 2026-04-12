@@ -34,14 +34,14 @@ if [ -f "${CLAUDE_PLUGIN_ROOT}/../brainstorm.claude/.claude-plugin/plugin.json" 
     info_msgs="Brainstorm plugin detected - /planner:gather-requirements can use enhanced brainstorming"
 fi
 
-$system_message=""
+system_message=""
 if [ -n "$warnings" ]; then
-    $system_message="[planner] Warning: $warnings"
+    system_message="[planner] Warning: $warnings"
     if [ -n "$info_msgs" ]; then
-        $system_message="$system_message\n[planner] $info_msgs"
+        system_message="$system_message\n[planner] $info_msgs"
     fi
 elif [ -n "$info_msgs" ]; then
-    $system_message="[planner] $info_msgs"
+    system_message="[planner] $info_msgs"
 fi
 
 # Build JSON output
