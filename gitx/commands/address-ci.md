@@ -78,5 +78,4 @@ Output a summary of what was done:
 
 ### Next Steps
 - Wait for CI to re-run
-- Use `/gitx:next-turn` to check status
 ```

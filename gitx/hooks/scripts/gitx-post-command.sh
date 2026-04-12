@@ -39,8 +39,8 @@ case "$COMMAND" in
   "address-ci")
     log_section "Address-CI Stop Hook"
 
-    # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
-    NEXT_TURN="CI-PENDING"
+    # Set turn to REVIEW (so reviewer can review the changes)
+    NEXT_TURN="REVIEW"
     ;;
   "review")
     log_section "Review Stop Hook"
@@ -54,6 +54,16 @@ case "$COMMAND" in
   "address-review")
     log_section "Address-Review Stop Hook"
     # Set turn to CI-PENDING (waiting for new CI run on pushed fixes)
+    NEXT_TURN="CI-PENDING"
+    ;;
+  "commit-push")
+    log_section "Commit-Push Stop Hook"
+    PR_VAL=$(yq -r '.pr // ""' "$METADATA_FILE")
+    if [[ -z "$PR_VAL" ]] || [[ "$PR_VAL" == "null" ]]; then
+      log_info "No PR found in metadata, skipping turn update"
+      log_exit 0 "no PR"
+      exit 0
+    fi
     NEXT_TURN="CI-PENDING"
     ;;
   *)
