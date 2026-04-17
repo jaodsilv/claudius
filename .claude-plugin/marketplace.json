@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jaodsilv-claudius-marketplace",
   "version": "2.0.15",
-  "description": "Personal productivity marketplace: TDD workflows, job hunting automation, and curated community development tools",
+  "description": "Personal productivity marketplace with naming, TDD workflows, job hunting automation, and curated community development tools",
   "owner": {
     "name": "João da Silva",
     "url": "https://github.com/jaodsilv"
@@ -125,6 +125,14 @@
         "structured-output",
         "multi-agent"
       ]
+    },
+    {
+      "name": "naming",
+      "description": "Naming plugin for Claude Code and Claude Cowork",
+      "source": "./naming",
+      "category": "productivity",
+      "version": "0.0.0",
+      "keywords": ["naming", "naming-things", "prompt-naming"]
     }
   ]
 }
