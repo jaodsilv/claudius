@@ -7,8 +7,9 @@ on:
       - ".claude-plugin/**"
       - "analyzer/**"
       - "brainstorm.claude/**"
-      - "gitx/**"
       - "cc/**"
+      - "gitx/**"
+      - "naming/**"
       - "planner.claude/**"
       - "review-loop/**"
       - "walkthrough/**"
@@ -17,8 +18,9 @@ on:
       - ".claude-plugin/**"
       - "analyzer/**"
       - "brainstorm.claude/**"
-      - "gitx/**"
       - "cc/**"
+      - "gitx/**"
+      - "naming/**"
       - "planner.claude/**"
       - "review-loop/**"
       - "walkthrough/**"
@@ -45,7 +47,7 @@ jobs:
 
       - name: Comment on failure
         if: failure()
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             github.rest.issues.createComment({
