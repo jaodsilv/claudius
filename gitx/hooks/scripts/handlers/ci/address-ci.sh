@@ -1,17 +1,98 @@
 #!/bin/bash
 # Handler for /gitx:address-ci command
-# Wait for CI, refresh metadata (which computes turn correctly), block if not CI-REVIEW
+# Supports --repo <owner/name> --pr <number> for foreign PR mode (flag plumbing only)
+# Supports --ci-mode <job-name> to skip waiting for the named job (running in CI context)
 
-# Source hook output library for cross-event-type output formatting
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 
 log_section "Address-CI Handler"
 
+# --- Phase 0: Flag parsing & validation ---
+REPO_FLAG=$(get_flag_value "$ARGS" "--repo")
+PR_FLAG=$(get_flag_value "$ARGS" "--pr")
+CI_MODE_FLAG=$(get_flag_value "$ARGS" "--ci-mode")
+validate_requires "$ARGS" "--repo" "--pr"
+validate_requires "$ARGS" "--pr" "--repo"
+
+WT_FLAG_PRESENT=false
+has_flag "$ARGS" "--worktree" && WT_FLAG_PRESENT=true
+
+# --- Phase 1: Branch on flag presence ---
+if [[ -n "$REPO_FLAG" ]]; then
+  # Branch A: --repo + --pr provided, skip metadata/turn checks
+  log_info "Branch A: --repo=$REPO_FLAG --pr=$PR_FLAG"
+
+  OUT=""
+  [[ "$WT_FLAG_PRESENT" == "true" ]] && OUT+="<worktree>$WORKTREE</worktree>"$'\n'
+  OUT+="<repo>$REPO_FLAG</repo>"$'\n'
+  OUT+="<pr-number>$PR_FLAG</pr-number>"$'\n'
+  [[ -n "$CI_MODE_FLAG" ]] && OUT+="<ci-mode>$CI_MODE_FLAG</ci-mode>"$'\n'
+
+  log_exit 0 "foreign PR mode"
+  hook_output_context "$OUT"
+  exit 0
+fi
+
+# Branch B: no --repo/--pr flags, use local metadata
+log_info "Branch B: using local metadata"
+
 if [[ ! -f "$METADATA_FILE" ]]; then
+  if [[ -n "$CI_MODE_FLAG" ]]; then
+    log_info "CI mode: no metadata file, emitting minimal context"
+    log_exit 0 "ci-mode no metadata"
+    hook_output_context "<ci-mode>$CI_MODE_FLAG</ci-mode>"
+    exit 0
+  fi
   log_error "No metadata file found"
   log_exit 2 "no metadata"
   echo "No PR metadata found. Create a PR first with /gitx:pr" >&2
   exit 2
+fi
+
+# CI mode: poll until all other jobs finish (excluding the named job), never block
+if [[ -n "$CI_MODE_FLAG" ]]; then
+  log_info "CI mode: job=$CI_MODE_FLAG, waiting for other jobs to finish"
+  MAX_WAIT=1740
+  ELAPSED=0
+
+  _ci_mode_emit() {
+    local failed
+    failed=$(yq -r --arg job "$CI_MODE_FLAG" \
+      '[.ciStatus[] | select(.name != $job and .conclusion != "SUCCESS" and .conclusion != "SKIPPED" and .conclusion != "CANCELLED" and .conclusion != "NEUTRAL" and .conclusion != null and .conclusion != "")] | length' \
+      "$METADATA_FILE")
+    log_info "CI mode: emitting context, $failed failed checks (excluding $CI_MODE_FLAG)"
+    hook_output_context "<worktree>$WORKTREE</worktree>
+<ci-failed-count>$failed</ci-failed-count>
+<ci-mode>$CI_MODE_FLAG</ci-mode>"
+  }
+
+  while true; do
+    log_info "CI mode: refreshing metadata..."
+    bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
+
+    OTHER_PENDING=$(yq -r --arg job "$CI_MODE_FLAG" \
+      '[.ciStatus[] | select(.name != $job and (.conclusion == null or .conclusion == ""))] | length' \
+      "$METADATA_FILE")
+    log_debug "OTHER_PENDING" "$OTHER_PENDING"
+
+    if [[ "$OTHER_PENDING" -eq 0 ]]; then
+      log_exit 0 "ci-mode all other jobs done"
+      _ci_mode_emit
+      exit 0
+    fi
+
+    if [[ $ELAPSED -ge $MAX_WAIT ]]; then
+      log_info "CI mode: $OTHER_PENDING other jobs still pending after ${ELAPSED}s, proceeding"
+      log_exit 0 "ci-mode timeout proceed"
+      _ci_mode_emit
+      exit 0
+    fi
+
+    WAIT=$(( (RANDOM % 51) + 10 ))
+    log_info "CI mode: $OTHER_PENDING other jobs pending, waiting ${WAIT}s (${ELAPSED}s elapsed)..."
+    sleep $WAIT
+    ELAPSED=$((ELAPSED + WAIT))
+  done
 fi
 
 # Loop until turn resolves to something other than CI-PENDING
@@ -19,8 +100,6 @@ MAX_WAIT=1740   # stay under hook timeout (1800s) with buffer
 ELAPSED=0
 
 while true; do
-  # Refresh metadata - this computes turn correctly using statusCheckRollup
-  # which properly handles skipped jobs (unlike gh run list)
   log_info "Refreshing metadata..."
   bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
 
@@ -29,11 +108,11 @@ while true; do
 
   case "$TURN" in
     CI-REVIEW)
-      # Count failing checks from metadata for context message
       FAILED=$(yq -r '[.ciStatus[] | select(.conclusion != "SUCCESS" and .conclusion != "SKIPPED" and .conclusion != "CANCELLED" and .conclusion != "NEUTRAL" and .conclusion != null and .conclusion != "")] | length' "$METADATA_FILE")
       log_info "CI has $FAILED failed checks"
       log_exit 0 "CI failures to address"
-      hook_output_context "CI Status: $FAILED failed checks. Proceed with /gitx:address-ci"
+      hook_output_context "<worktree>$WORKTREE</worktree>
+<ci-failed-count>$FAILED</ci-failed-count>"
       exit 0
       ;;
     REVIEW|AUTHOR)
@@ -49,14 +128,12 @@ while true; do
         hook_output_block "CI still pending after ${ELAPSED}s. Try again later."
         exit 0
       fi
-      # Wait random 10-60 seconds before retrying
       WAIT=$(( (RANDOM % 51) + 10 ))
       log_info "CI pending, waiting ${WAIT}s (${ELAPSED}s elapsed)..."
       sleep $WAIT
       ELAPSED=$((ELAPSED + WAIT))
       ;;
     *)
-      # Unknown turn state - let it through with warning
       log_info "Unexpected turn: $TURN - allowing execution"
       log_exit 0 "unexpected turn - allow"
       hook_output_context "Unexpected turn state: $TURN. Proceeding with /gitx:address-ci"

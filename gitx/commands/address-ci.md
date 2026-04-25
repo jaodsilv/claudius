@@ -1,6 +1,6 @@
 ---
 description: Responds to CI failures with multi-agent analysis, planning, and automated fixes.
-argument-hint: "[--worktree <worktree>]"
+argument-hint: "[--worktree <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>]"
 allowed-tools: Agent, Skill
 model: sonnet
 ---
@@ -11,10 +11,17 @@ model: sonnet
 
 Parse input from hook additional context looking for the XML tags:
 
-- `<worktree>`: store its value in `$worktree`
+- `<worktree>`: store its value in `$worktree` (may be absent in foreign-PR mode)
+- `<repo>`: store its value in `$repo` (present when --repo/--pr were used)
+- `<pr-number>`: store its value in `$prNumber` (present when --repo/--pr were used)
 - `<check-ids>`: store its value in `$checkIds` (space-separated sequential IDs like "0 1 2")
+- `<ci-mode>`: store its value in `$ciMode` (present when --ci-mode was used; names the CI job we are running inside)
 
 Ignore any $ARGUMENTS — all input comes from hook context.
+
+> **Note**: When `<repo>`/`<pr-number>` are present without `<worktree>`, downstream agents
+> (`gitx:ci:failures-analyses-orchestrator` and below) currently expect a local worktree —
+> full foreign-PR execution is future work.
 
 ## Step 1: Analyze CI Failures
 
