@@ -17,7 +17,7 @@ LIBS_DIR="${SCRIPTS_DIR}/lib"
 
 # Plugin config (set BEFORE sourcing shared libs)
 export HOOK_PLUGIN_NAME="GITX"
-export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit)
+export _PLUGIN_VALUE_FLAGS=(--worktree --base --files --context --resolve-level --format --session-path -l -a -t -m -sc -c --since-commit --single-commit --repo --pr)
 
 # Read input and export CWD before logging init
 INPUT=$(cat)
