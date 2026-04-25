@@ -2,5 +2,5 @@
   "permissions": {
     "allow": []
   },
-  "prefersReducedMotion": false
+  "prefersReducedMotion": true
 }
