@@ -1,0 +1,22 @@
+{
+  "name": "teammates",
+  "version": "0.1.0",
+  "description": "Teammate-mode commands for Claude Code: spawn, manage, message, observe, and persist parallel teammate agents via the Agent/SendMessage/TeamCreate primitives. Requires teammate-mode-capable harness.",
+  "author": {
+    "name": "João da Silva",
+    "email": "joao@joaodasilva.com.br"
+  },
+  "repository": "https://github.com/jaodsilv/claudius",
+  "license": "MIT",
+  "keywords": [
+    "teammates",
+    "team-mode",
+    "multi-agent",
+    "orchestration",
+    "parallel-agents",
+    "send-message",
+    "team-create",
+    "broadcast",
+    "state-persistence"
+  ]
+}

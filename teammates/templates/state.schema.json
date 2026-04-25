@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jaodsilv/claudius/teammates/state.schema.json",
+  "title": "teammates state file",
+  "description": "Snapshot of a single teammate produced by /save-state or /save-state-all, used by /restore-state to rebuild after /shutdown.",
+  "type": "object",
+  "required": ["schema_version", "state_id", "captured_at", "team", "teammate"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "state_id": {
+      "type": "string",
+      "description": "Unique id of the form '<team>-<name|all>-<unix-ts>'.",
+      "pattern": "^[a-z0-9][a-z0-9-]*-(?:[0-9]+|all-[0-9]+)$"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "team": {
+      "type": "object",
+      "required": ["name", "config"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{1,39}$"
+        },
+        "config": {
+          "type": "object",
+          "required": ["message_format", "default_model", "agent_dir"],
+          "additionalProperties": true,
+          "properties": {
+            "message_format": {
+              "type": "string",
+              "const": "envelope-v1"
+            },
+            "default_model": {
+              "type": "string"
+            },
+            "agent_dir": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "teammate": {
+      "type": "object",
+      "required": [
+        "name",
+        "agent_file",
+        "agent_file_sha256",
+        "spawn_source"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{1,39}$"
+        },
+        "agent_file": {
+          "type": "string",
+          "description": "Path to the agent definition file used at spawn."
+        },
+        "agent_file_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "spawn_source": {
+          "type": "string",
+          "description": "'generated', 'preset:<name>', or 'agent-type:<id>'.",
+          "pattern": "^(generated|preset:[a-z0-9][a-z0-9-]*|agent-type:[a-zA-Z0-9:_-]+)$"
+        },
+        "last_status": {
+          "type": ["object", "null"],
+          "description": "Most recent teammate-status block captured at save time.",
+          "additionalProperties": true
+        },
+        "recent_messages": {
+          "type": "array",
+          "description": "Tail of the message log (envelope-v1 objects); replayed on restore to prime context.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "default": []
+        },
+        "scratch": {
+          "type": "object",
+          "description": "Opaque bag; MUST include agent_body for drift recovery.",
+          "additionalProperties": true,
+          "properties": {
+            "agent_body": {
+              "type": "string",
+              "description": "Full text of agent_file at save time; used to rebuild the file if agent_file_sha256 does not match on restore."
+            }
+          }
+        }
+      }
+    }
+  }
+}

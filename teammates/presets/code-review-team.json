@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "code-review-team",
+  "description": "3-member PR review squad: reviewer (style/design/correctness), tester (failing tests first), security-auditor (injection/authz/secrets/SSRF).",
+  "team_config": {
+    "message_format": "envelope-v1",
+    "default_model": "sonnet"
+  },
+  "members": [
+    {
+      "name": "reviewer",
+      "agent_type": "teammates:reviewer",
+      "description": "Reads diff, flags style/design/correctness issues."
+    },
+    {
+      "name": "tester",
+      "agent_type": "generated",
+      "description": "Proposes and runs test cases against the diff."
+    },
+    {
+      "name": "security-auditor",
+      "agent_type": "generated",
+      "description": "Scans for injection, authz, secrets, SSRF."
+    }
+  ],
+  "bootstrap_messages": [
+    {
+      "to": "reviewer",
+      "body": "Wait for a request to review Wait for a diff. Report back with {issues:[...]}"
+    },
+    {
+      "to": "tester",
+      "body": "Wait for a diff. Produce failing tests first."
+    },
+    {
+      "to": "security-auditor",
+      "body": "Wait for a diff. Report CWEs found."
+    }
+  ]
+}
