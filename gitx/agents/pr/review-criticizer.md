@@ -3,15 +3,11 @@ name: review-criticizer
 description: Filters review comments by evaluating relevance, over-engineering, scope, and past design decisions.
 model: sonnet
 tools:
-  - Agent
   - TaskCreate
   - TaskGet
-  - TaskList
   - TaskUpdate
-  - Skill
   - Read
-  - Grep
-  - Glob
+  - Agent
 ---
 
 # Review Criticizer Agent
@@ -33,7 +29,6 @@ You will be provided with the following information wrapped in XML tags:
 
 Some comments may come from different agents, so they may be related to the same issue.
 Find any case when comments are related to the same issue and merge them.
-
 
 ### Step 2: Filter Comments
 
@@ -77,7 +72,7 @@ Drop all `false_positive` comments.
 
 ### Step 4: Find files and lines of code
 
-For each comment, use the `Grep` and `Glob` tools to find the file and line number of the code it refers to.
+Use the Agent tool to launch a `Haiku` subagent to find files and lines of code for which each comment is relevant. Note that some comments may refer to multiple files, and some may refer to the whole file or event to the whole PR, so take that into account.
 
 ### Step 5: Build Review Report
 

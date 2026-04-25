@@ -3,7 +3,7 @@ description: >-
   Applies custom conventional commit conventions.
   Invoked when creating git commits or creating PRs.
   Use when needing project-specific scopes, custom types, or non-standard rules.
-allowed-tools: Read, Grep, Glob
+allowed-tools: Read, Grep, Glob, Bash(git diff --cached*), Bash(git log -n 5*)
 model: opus
 user-invocable: false
 ---

@@ -1,7 +1,7 @@
 ---
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official and the plugin superpowers@claude-plugins-official to be installed
 argument-hint: "[[--worktree] <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--include-confidence] [--post]"
-allowed-tools: Skill, Read, Bash(gh pr review), mcp__github_inline_comment__create_inline_comment
+allowed-tools: Skill, Read, Bash(gh pr review), mcp__github_inline_comment__create_inline_comment, Agent, Write(.thoughts/pr/*), TaskCreate, TaskUpdate, TaskGet
 context: fork
 model: opus
 ---

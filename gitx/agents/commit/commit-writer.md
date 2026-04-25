@@ -2,7 +2,7 @@
 name: commit-writer
 description: Generates conventional commit messages from diffs and project conventions
 model: sonnet
-tools: Read, Grep
+tools: Read, Grep, Bash(git log -n 5*)
 skills:
   - gitx:committing-conventionally
 color: green

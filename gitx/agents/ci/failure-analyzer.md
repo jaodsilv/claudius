@@ -2,7 +2,7 @@
 name: failure-analyzer
 description: Analyzes a single CI check failure from its log to identify root causes and fix suggestions.
 model: opus
-tools: Read, Grep, Glob, Write, Bash(gh *, git *)
+tools: Read, Grep, Glob, Write, Bash(gh *), Bash(git *), mcp__github_ci__get_ci_status, mcp__github_ci__get_workflow_run_details, mcp__github_ci__download_job_log
 skills:
   - gitx:classifying-issues-and-failures
 ---
@@ -19,6 +19,7 @@ From the prompt:
 From hook additional context:
 
 - `<failure-log>`: The full failure log content
+- If `<failure-log>` is not present download the job log with `mcp__github_ci__download_job_log` and `mcp__github_ci__get_workflow_run_details`.
 
 ## Process
 
