@@ -1,80 +1,97 @@
 #!/bin/bash
 # Handler for /gitx:review command
-# Ensures metadata, validates turn, and builds review prompt
+# Supports --repo <owner/name> --pr <number> for foreign PR reviews
+# Supports --ci-mode <job-name> to skip turn check when running in CI context
 
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_section "Review Handler"
 
-# --- Phase 0: Clean up stale review output ---
-REVIEW_OUTPUT="$WORKTREE/.thoughts/pr/review.md"
-if [[ -f "$REVIEW_OUTPUT" ]]; then
-  log_info "Backing up and removing stale review.md"
-  cp -f "$REVIEW_OUTPUT" "${REVIEW_OUTPUT}.bkp" 2>/dev/null
-  rm -f "$REVIEW_OUTPUT"
-fi
+# --- Phase 0: Flag parsing & validation ---
+REPO_FLAG=$(get_flag_value "$ARGS" "--repo")
+PR_FLAG=$(get_flag_value "$ARGS" "--pr")
+CI_MODE_FLAG=$(get_flag_value "$ARGS" "--ci-mode")
+validate_requires "$ARGS" "--repo" "--pr"
+validate_requires "$ARGS" "--pr" "--repo"
 
-# --- Phase 1: Ensure metadata exists ---
-if [[ ! -f "$METADATA_FILE" ]]; then
-  log_info "Metadata not found, fetching..."
-  if ! bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh; then
-    log_error "Failed to fetch metadata"
-    log_exit 2 "fetch failed"
-    hook_output_block "Failed to fetch PR metadata"
+WT_FLAG_PRESENT=false
+has_flag "$ARGS" "--worktree" && WT_FLAG_PRESENT=true
+
+# --- Phase 1: Branch on flag presence ---
+if [[ -n "$REPO_FLAG" ]]; then
+  # Branch A: --repo + --pr provided, skip metadata/turn checks
+  log_info "Branch A: --repo=$REPO_FLAG --pr=$PR_FLAG"
+  REPO="$REPO_FLAG"
+  PR_NUMBER="$PR_FLAG"
+  LATEST_REVIEWED_COMMIT=""
+  if [[ "$WT_FLAG_PRESENT" == "true" ]]; then
+    WORKTREE_OUT="$WORKTREE"
+  else
+    WORKTREE_OUT=""
+  fi
+else
+  # Branch B: no flags, use local metadata
+  log_info "Branch B: using local metadata"
+
+  if [[ ! -f "$METADATA_FILE" ]]; then
+    log_info "Metadata not found, fetching..."
+    if ! bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh; then
+      log_error "Failed to fetch metadata"
+      log_exit 2 "fetch failed"
+      hook_output_block "Failed to fetch PR metadata"
+      exit 2
+    fi
+  fi
+
+  if [[ ! -f "$METADATA_FILE" ]]; then
+    log_error "No metadata after fetch"
+    log_exit 2 "no metadata"
+    hook_output_block "No PR metadata. Run /gitx:pr first."
     exit 2
   fi
+
+  TURN=$(yq -r '.turn // "unknown"' "$METADATA_FILE")
+  log_debug "TURN" "$TURN"
+
+  if [[ -z "$CI_MODE_FLAG" && "$TURN" != "REVIEW" ]]; then
+    log_error "Turn is $TURN, not REVIEW"
+    log_exit 2 "wrong turn"
+    hook_output_block "Current turn is $TURN, not REVIEW. Cannot review."
+    exit 2
+  fi
+
+  log_info "Turn is $TURN, proceeding"
+
+  PR_NUMBER=$(yq -r '.pr // ""' "$METADATA_FILE")
+  LATEST_REVIEWED_COMMIT=$(yq -r '.latestReviewedCommit // ""' "$METADATA_FILE")
+
+  remote_url=$(git -C "$WORKTREE" remote get-url origin 2>/dev/null || echo "")
+  if [[ -z "$remote_url" ]]; then
+    log_error "Could not determine remote URL"
+    log_exit 2 "no remote"
+    hook_output_block "Could not determine repository from git remote"
+    exit 2
+  fi
+  if [[ "$remote_url" =~ github\.com[:/]([^/]+)/([^/.]+) ]]; then
+    REPO="${BASH_REMATCH[1]}/${BASH_REMATCH[2]}"
+  else
+    log_error "Could not parse repository from remote URL: $remote_url"
+    log_exit 2 "bad remote"
+    hook_output_block "Could not parse repository from remote URL"
+    exit 2
+  fi
+
+  WORKTREE_OUT="$WORKTREE"
 fi
 
-# Re-check after potential fetch
-if [[ ! -f "$METADATA_FILE" ]]; then
-  log_error "No metadata after fetch"
-  log_exit 2 "no metadata"
-  hook_output_block "No PR metadata. Run /gitx:pr first."
-  exit 2
-fi
+# --- Phase 3: Emit additionalContext ---
+OUT=""
+[[ -n "$WORKTREE_OUT" ]] && OUT+="<worktree>$WORKTREE_OUT</worktree>"$'\n'
+OUT+="<repo>$REPO</repo>"$'\n'
+OUT+="<pr-number>$PR_NUMBER</pr-number>"$'\n'
+[[ -n "$LATEST_REVIEWED_COMMIT" ]] && OUT+="<latest-reviewed-commit>$LATEST_REVIEWED_COMMIT</latest-reviewed-commit>"$'\n'
+[[ -n "$CI_MODE_FLAG" ]] && OUT+="<ci-mode>$CI_MODE_FLAG</ci-mode>"$'\n'
 
-# --- Phase 2: Validate turn ---
-TURN=$(yq -r '.turn // "unknown"' "$METADATA_FILE")
-log_debug "TURN" "$TURN"
-
-if [[ "$TURN" != "REVIEW" ]]; then
-  log_error "Turn is $TURN, not REVIEW"
-  log_exit 2 "wrong turn"
-  hook_output_block "Current turn is $TURN, not REVIEW. Cannot review."
-  exit 2
-fi
-
-log_info "Turn is REVIEW, proceeding"
-
-# --- Phase 3: Build review prompt ---
-log_info "Building review prompt..."
-BUILD_SCRIPT="${CLAUDE_PLUGIN_ROOT}/scripts/reviews/build-review-prompt.sh"
-if ! bash "$BUILD_SCRIPT" "$WORKTREE"; then
-  log_error "Failed to build review prompt"
-  log_exit 2 "build prompt failed"
-  hook_output_block "Failed to build review prompt"
-  exit 2
-fi
-
-# --- Phase 3b: Append confidence instruction if requested ---
-if has_flag "$ARGS" "--include-confidence"; then
-  log_info "Including confidence scores in review"
-  cat << 'EOF' >> "$WORKTREE/.thoughts/pr/review-prompt.txt"
-
-For each suggestion or concern in your review, include a confidence percentage score (0-100%) indicating how certain you are that the issue is a genuine problem. Format as [Confidence: XX%] at the end of each suggestion. Use these guidelines:
-- 90-100%: Certain — clear bug, security flaw, or standards violation
-- 70-89%: High — likely an issue based on context and best practices
-- 50-69%: Moderate — possible issue, depends on intent or broader context
-- Below 50%: Low — style preference or speculative concern
-EOF
-fi
-
-# --- Phase 4: Output for skill ---
-PROMPT_FILE="$WORKTREE/.thoughts/pr/review-prompt.txt"
-log_info "Setup complete, prompt at $PROMPT_FILE"
+log_info "Emitting additionalContext"
 log_exit 0 "proceed"
-
-# Read prompt content and output as additional context
-REVIEW_CONTENT=$(inject_or_read "$PROMPT_FILE" "review-prompt")
-hook_output_context "<worktree>$WORKTREE</worktree>
-$REVIEW_CONTENT"
+hook_output_context "$OUT"
 exit 0
