@@ -164,7 +164,19 @@ These directories are scheduled for removal or consolidation:
 
 #### scripts/
 
-**Purpose**: Generate docs and validate plugins (2 Node.js scripts)
+**Purpose**: Generate docs, validate plugins, and shared hook libraries
+
+**CRITICAL**: `scripts/lib/` is the **single source of truth** for all plugin hook libraries
+(`logging.sh`, `args-helper.sh`, `args-validator.sh`, `hook-output.sh`, `text-styles.sh`,
+`count-tokens.py`). Each plugin's `hooks/scripts/lib/` is a **hard copy** of this directory.
+
+- **NEVER edit files inside `<plugin>/hooks/scripts/lib/`** — they are overwritten by the
+  **"Sync lib files"** workflow step on every release run, and any local edits will be lost.
+- To change hook library behavior, edit `scripts/lib/` directly.
+- The release workflow (`release.yml`) has two relevant steps: **"Resolve plugin symlinks"**
+  converts any legacy symlinks to hard copies (one-time, before the tag commit), and
+  **"Sync lib files"** detects content drift between `scripts/lib/` and each plugin copy
+  post-release and overwrites the plugin copy whenever they diverge.
 
 #### docs/
 

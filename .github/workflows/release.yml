@@ -3,6 +3,8 @@ name: Release
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '*/hooks/scripts/lib/**'
 
 permissions:
   contents: write
@@ -10,7 +12,7 @@ permissions:
 jobs:
   release:
     # Skip release commits to prevent infinite loop
-    if: "!contains(github.event.head_commit.message, 'chore(release):')"
+    if: "!contains(github.event.head_commit.message, 'chore(release):') && !contains(github.event.head_commit.message, 'chore(sync):')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -30,6 +32,18 @@ jobs:
             echo "$RESULT" | jq -r '.summary' > /tmp/release-summary.md
           fi
 
+      - name: Resolve plugin symlinks
+        if: steps.bump.outputs.bumped == 'true'
+        run: |
+          while IFS= read -r symlink; do
+            real_target=$(readlink -f "$symlink")
+            if [[ -d "$real_target" ]]; then
+              rm "$symlink"
+              cp -r "$real_target" "$symlink"
+              echo "Resolved: $symlink"
+            fi
+          done < <(find . -type l -name "lib" -path "*/hooks/scripts/lib")
+
       - name: Commit and tag
         id: commit
         if: steps.bump.outputs.bumped == 'true'
@@ -38,12 +52,33 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .claude-plugin/marketplace.json package.json
           git add '*/.claude-plugin/plugin.json'
+          git add '*/hooks/scripts/lib'
           git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
           git tag "v${{ steps.bump.outputs.version }}"
           git push origin main
           git push origin "v${{ steps.bump.outputs.version }}"
           COMMIT_SHA=$(git rev-parse HEAD)
           echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Sync lib files
+        if: steps.bump.outputs.bumped == 'true'
+        run: |
+          changed=false
+          while IFS= read -r plugin_lib; do
+            if ! diff -r scripts/lib "$plugin_lib" > /dev/null 2>&1; then
+              rm -rf "$plugin_lib"
+              cp -r scripts/lib "$plugin_lib"
+              changed=true
+            fi
+          done < <(find . -path "*/hooks/scripts/lib" -type d)
+
+          if [[ "$changed" == "true" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add '*/hooks/scripts/lib'
+            git commit -m "chore(sync): sync lib files post-release v${{ steps.bump.outputs.version }}"
+            git push origin main
+          fi
 
       - name: Create GitHub Release
         if: steps.bump.outputs.bumped == 'true'
