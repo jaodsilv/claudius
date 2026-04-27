@@ -37,18 +37,12 @@ jobs:
         run: |
           changed=false
           while IFS= read -r plugin_lib; do
-            if [[ -L "$plugin_lib" ]]; then
-              rm "$plugin_lib"
+            if ! diff -r scripts/lib "$plugin_lib" > /dev/null 2>&1; then
+              rm -rf "$plugin_lib"
               cp -r scripts/lib "$plugin_lib"
               changed=true
-            elif [[ -d "$plugin_lib" ]]; then
-              if ! diff -r scripts/lib "$plugin_lib" > /dev/null 2>&1; then
-                rm -rf "$plugin_lib"
-                cp -r scripts/lib "$plugin_lib"
-                changed=true
-              fi
             fi
-          done < <(find . -path "*/hooks/scripts/lib" \( -type l -o -type d \))
+          done < <(find . -path "*/hooks/scripts/lib" -type d)
 
           if [[ "$changed" == "true" ]]; then
             git config user.name "github-actions[bot]"

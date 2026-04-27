@@ -174,9 +174,8 @@ These directories are scheduled for removal or consolidation:
   **"Sync lib files"** workflow step on every release run, and any local edits will be lost.
 - To change hook library behavior, edit `scripts/lib/` directly.
 - The release workflow (`release.yml`) has a **"Sync lib files"** step (runs before the tag
-  commit) that converts any legacy symlinks to hard copies and overwrites any plugin copy
-  that has drifted from `scripts/lib/`. Changes are committed locally; the following
-  **"Commit and tag"** step pushes everything together.
+  commit) that overwrites any plugin copy that has drifted from `scripts/lib/`. Changes are
+  committed locally; the following **"Commit and tag"** step pushes everything together.
 
 #### docs/
 
