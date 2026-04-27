@@ -1,6 +1,6 @@
 {
   "name": "teammates",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Teammate-mode commands for Claude Code: spawn, manage, message, observe, and persist parallel teammate agents via the Agent/SendMessage/TeamCreate primitives. Requires teammate-mode-capable harness.",
   "author": {
     "name": "João da Silva",
