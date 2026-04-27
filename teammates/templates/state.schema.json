@@ -4,7 +4,13 @@
   "title": "teammates state file",
   "description": "Snapshot of a single teammate produced by /save-state or /save-state-all, used by /restore-state to rebuild after /shutdown.",
   "type": "object",
-  "required": ["schema_version", "state_id", "captured_at", "team", "teammate"],
+  "required": [
+    "schema_version",
+    "state_id",
+    "captured_at",
+    "team",
+    "teammate"
+  ],
   "additionalProperties": false,
   "properties": {
     "schema_version": {
@@ -22,7 +28,10 @@
     },
     "team": {
       "type": "object",
-      "required": ["name", "config"],
+      "required": [
+        "name",
+        "config"
+      ],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -31,7 +40,11 @@
         },
         "config": {
           "type": "object",
-          "required": ["message_format", "default_model", "agent_dir"],
+          "required": [
+            "message_format",
+            "default_model",
+            "agent_dir"
+          ],
           "additionalProperties": true,
           "properties": {
             "message_format": {
@@ -76,7 +89,10 @@
           "pattern": "^(generated|preset:[a-z0-9][a-z0-9-]*|agent-type:[a-zA-Z0-9:_-]+)$"
         },
         "last_status": {
-          "type": ["object", "null"],
+          "type": [
+            "object",
+            "null"
+          ],
           "description": "Most recent teammate-status block captured at save time.",
           "additionalProperties": true
         },
