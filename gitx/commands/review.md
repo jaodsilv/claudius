@@ -47,13 +47,13 @@ Use the Skill tool to execute the skill `/pr-review-toolkit:review-pr`:
 Skill(skill: 'pr-review-toolkit:review-pr', context: 'fork', args: 'all
   To all issues found, attribute a confidence score
   Rate each issue from 0-100:
-  
+
   - **0-25**: Likely false positive or pre-existing issue
   - **26-50**: Minor nitpick not explicitly in CLAUDE.md
   - **51-75**: Valid but low-impact issue
   - **76-90**: Important issue requiring attention
   - **91-100**: Critical bug or explicit CLAUDE.md violation
-  
+
   Review all changes from commit <commit>$LATEST_REVIEWED_COMMIT</commit> to tip of PR
 
   Also verify if all comments from the previous review round have been addressed either by fixing them or by a justification.')
