@@ -94,24 +94,71 @@ case "$MODE" in
           [[ "$file" =~ ^-- ]] && continue
           [[ -z "$file" ]] && continue
 
-          # Validate file has changes
-          HAS_STAGED=$(echo "$STATUS" | jq -r --arg f "$file" '.staged_files[]? | select(.file == $f) | .file')
-          HAS_UNSTAGED=$(echo "$STATUS" | jq -r --arg f "$file" '.unstaged_files[]? | select(.file == $f) | .file')
-          HAS_UNTRACKED=$(echo "$STATUS" | jq -r --arg f "$file" '.untracked_files[]? | select(. == $f)')
+          # Normalise: strip leading "./" and trailing "/"
+          norm="$file"
+          norm="${norm#./}"
+          trailing_slash=false
+          if [[ "$norm" == */ ]]; then
+            trailing_slash=true
+            norm="${norm%/}"
+          fi
+          if [[ -z "$norm" || "$norm" == "." ]]; then
+            log_error "Invalid file arg: $file"
+            hook_output_block "Invalid file argument: '$file' (cannot be empty or '.')"
+            log_exit 2 "invalid file arg"
+            exit 2
+          fi
 
-          if [[ -z "$HAS_STAGED" && -z "$HAS_UNSTAGED" && -z "$HAS_UNTRACKED" ]]; then
+          # 1. Try exact match against staged / unstaged / untracked
+          HAS_STAGED=$(echo "$STATUS"   | jq -r --arg f "$norm" '.staged_files[]?   | select(.file == $f) | .file')
+          HAS_UNSTAGED=$(echo "$STATUS" | jq -r --arg f "$norm" '.unstaged_files[]? | select(.file == $f) | .file')
+          HAS_UNTRACKED=$(echo "$STATUS"| jq -r --arg f "$norm" '.untracked_files[]? | select(. == $f)')
+
+          if [[ -n "$HAS_STAGED" || -n "$HAS_UNSTAGED" || -n "$HAS_UNTRACKED" ]]; then
+            if $FIRST_FILE; then FIRST_FILE=false; else FILES_JSON+=","; fi
+            FILES_JSON+="$(printf '%s' "$norm" | jq -Rs .)"
+            continue
+          fi
+
+          # 2. Exact-match miss. Determine if arg is a directory request.
+          is_dir=false
+          if $trailing_slash; then
+            is_dir=true
+          elif [[ -n "${WORKTREE:-}" && -d "$WORKTREE/$norm" ]]; then
+            is_dir=true
+          fi
+
+          if ! $is_dir; then
             log_error "No changes for file: $file"
             hook_output_block "No changes found for file: $file"
             log_exit 2 "file has no changes"
             exit 2
           fi
 
-          if $FIRST_FILE; then
-            FIRST_FILE=false
-          else
-            FILES_JSON+=","
+          # 3. Expand directory: collect any changed file under "$norm/"
+          EXPANDED=$(echo "$STATUS" | jq -c --arg p "$norm/" '
+            [
+              (.staged_files[]?    | select(.file       | startswith($p)) | .file),
+              (.unstaged_files[]?  | select(.file       | startswith($p)) | .file),
+              (.untracked_files[]? | select(.            | startswith($p)))
+            ] | unique
+          ')
+          EXPANDED_COUNT=$(echo "$EXPANDED" | jq 'length')
+
+          if [[ "$EXPANDED_COUNT" -eq 0 ]]; then
+            log_error "No changes under directory: $file"
+            hook_output_block "No changes found under directory: $file"
+            log_exit 2 "directory has no changes"
+            exit 2
           fi
-          FILES_JSON+="\"$file\""
+
+          log_debug "DIR_EXPAND" "$file -> $EXPANDED_COUNT files"
+
+          while IFS= read -r expanded_file; do
+            [[ -z "$expanded_file" ]] && continue
+            if $FIRST_FILE; then FIRST_FILE=false; else FILES_JSON+=","; fi
+            FILES_JSON+="$(printf '%s' "$expanded_file" | jq -Rs .)"
+          done < <(echo "$EXPANDED" | jq -r '.[]')
         done
         FILES_JSON+="]"
 

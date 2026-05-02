@@ -116,7 +116,7 @@ if [[ "$INFO_MODE" == "true" ]]; then
     UNTRACKED_COUNT=$(git ls-files --others --exclude-standard 2>/dev/null | wc -l)
 
     # Get staged files (for commit)
-    STAGED_FILES=$(git diff --cached --name-status 2>/dev/null | head -20 || true)
+    STAGED_FILES=$(git diff --cached --name-status 2>/dev/null || true)
     STAGED_JSON="["
     first=true
     while IFS=$'\t' read -r status file; do
@@ -132,7 +132,7 @@ if [[ "$INFO_MODE" == "true" ]]; then
     STAGED_JSON+="]"
 
     # Get unstaged files
-    UNSTAGED_FILES=$(git diff --name-status 2>/dev/null | head -10 || true)
+    UNSTAGED_FILES=$(git diff --name-status 2>/dev/null || true)
     UNSTAGED_JSON="["
     first=true
     while IFS=$'\t' read -r status file; do
@@ -148,7 +148,7 @@ if [[ "$INFO_MODE" == "true" ]]; then
     UNSTAGED_JSON+="]"
 
     # Get untracked files
-    UNTRACKED_FILES=$(git ls-files --others --exclude-standard 2>/dev/null | head -10 || true)
+    UNTRACKED_FILES=$(git ls-files --others --exclude-standard 2>/dev/null || true)
     UNTRACKED_JSON="["
     first=true
     while IFS= read -r file; do

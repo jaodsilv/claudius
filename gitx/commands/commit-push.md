@@ -52,10 +52,7 @@ Skip to Phase 2.
 Launch the file-selector agent to determine which files match the description:
 
 ```markdown
-Task:
-  subagent_type: "gitx:commit:file-selector"
-  prompt: "$DESCRIPTION"
-  description: "Select commit files"
+Agent(subagent_type: "gitx:commit:file-selector", prompt: "$DESCRIPTION", description: "Select commit files")
 ```
 
 Store the returned JSON array directly as `$GROUPS[0]`.
@@ -65,9 +62,7 @@ Store the returned JSON array directly as `$GROUPS[0]`.
 Use the Agent tool to spawn the agent `change-grouper` to intelligently group files:
 
 ```markdown
-Agent(gitx:commit:change-grouper):
-  prompt: "Group the changed files into logical commits"
-  description: "Group commit files"
+Agent(subagent_type: gitx:commit:change-grouper, prompt: "Group the changed files into logical commits", description: "Group commit files")
 ```
 
 Store the result as `$GROUPS`.
@@ -90,9 +85,7 @@ For EACH file group in `$GROUPS`, use the Agent tool to spawn the agent `gitx:co
 
 ```markdown
 For each $group in $GROUPS:
-  Agent(gitx:commit:commit-writer):
-    prompt: "$group"
-    description: "Generate commit message"
+  Agent(subagent_type: gitx:commit:commit-writer, prompt: "$group", description: "Generate commit message")
 ```
 
 If `$DESCRIPTION` exists (from context-description mode), include it in the prompt:
