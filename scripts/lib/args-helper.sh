@@ -10,6 +10,28 @@ convert_path() {
   echo "$path"
 }
 
+# Normalize a user-provided file path to a repo-relative, forward-slash path
+# suitable for matching against `git diff --name-only` / `git ls-files` output.
+# Accepts: D:\..., D:/..., /d/... (Git Bash), ./..., .\..., path\with\backslashes
+# Args: $1 = path, $2 = worktree (absolute path to repo root)
+normalize_repo_path() {
+  local path="$1"
+  local worktree="$2"
+
+  path=$(convert_path "$path")
+  worktree=$(convert_path "$worktree")
+  worktree="${worktree%/}"
+
+  if [[ "$path" == /* && -n "$worktree" && "$path" == "$worktree"/* ]]; then
+    path="${path#$worktree/}"
+  fi
+
+  path="${path#./}"
+
+  log_debug "NORMALIZED REPO PATH" "$path"
+  echo "$path"
+}
+
 # Resolve relative paths to absolute (relative to CWD, not script dir)
 resolve_path() {
   local path="$1"

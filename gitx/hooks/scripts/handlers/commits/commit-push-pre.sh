@@ -9,6 +9,7 @@
 
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 source "$SCRIPTS_DIR/lib/args-validator.sh"
+source "$SCRIPTS_DIR/lib/args-helper.sh"
 
 log_section "commit-push-pre Handler"
 
@@ -94,9 +95,9 @@ case "$MODE" in
           [[ "$file" =~ ^-- ]] && continue
           [[ -z "$file" ]] && continue
 
-          # Normalise: strip leading "./" and trailing "/"
-          norm="$file"
-          norm="${norm#./}"
+          # Normalise: convert Windows paths to repo-relative forward-slash form,
+          # then detect and strip a trailing slash for directory-arg handling.
+          norm=$(normalize_repo_path "$file" "$WORKTREE")
           trailing_slash=false
           if [[ "$norm" == */ ]]; then
             trailing_slash=true
