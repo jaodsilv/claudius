@@ -12,7 +12,20 @@ log_debug "ARGS" "$ARGS"
 # Pattern: [--squash|--merge|--rebase]
 validate_mutually_exclusive "$ARGS" "--squash" "--merge" "--rebase"
 
+NO_METADATA_SYNC=false
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  NO_METADATA_SYNC=true
+fi
+log_debug "NO_METADATA_SYNC" "$NO_METADATA_SYNC"
+
 if [[ ! -f "$METADATA_FILE" ]]; then
+  if [[ "$NO_METADATA_SYNC" == "true" ]]; then
+    log_error "No metadata and --no-metadata-sync set"
+    log_exit 2 "no metadata - no-sync block"
+    source "$SCRIPTS_DIR/lib/hook-output.sh"
+    hook_output_block "No PR metadata. Run /gitx:pr first."
+    exit 2
+  fi
   log_info "No metadata file, trying to get PR from current branch"
   # Try to get PR from current branch
   PR_NUM=$(gh pr view --json number --jq '.number' 2>/dev/null || echo "")

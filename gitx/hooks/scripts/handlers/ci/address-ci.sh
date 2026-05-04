@@ -17,6 +17,12 @@ validate_requires "$ARGS" "--pr" "--repo"
 WT_FLAG_PRESENT=false
 has_flag "$ARGS" "--worktree" && WT_FLAG_PRESENT=true
 
+NO_METADATA_SYNC=false
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  NO_METADATA_SYNC=true
+fi
+log_debug "NO_METADATA_SYNC" "$NO_METADATA_SYNC"
+
 # --- Phase 1: Branch on flag presence ---
 if [[ -n "$REPO_FLAG" ]]; then
   # Branch A: --repo + --pr provided, skip metadata/turn checks
@@ -66,6 +72,13 @@ if [[ -n "$CI_MODE_FLAG" ]]; then
 <ci-mode>$CI_MODE_FLAG</ci-mode>"
   }
 
+  if [[ "$NO_METADATA_SYNC" == "true" ]]; then
+    log_info "CI mode: --no-metadata-sync, skipping wait loop and emitting from current metadata"
+    log_exit 0 "ci-mode no-sync emit"
+    _ci_mode_emit
+    exit 0
+  fi
+
   while true; do
     log_info "CI mode: refreshing metadata..."
     bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
@@ -93,6 +106,29 @@ if [[ -n "$CI_MODE_FLAG" ]]; then
     sleep $WAIT
     ELAPSED=$((ELAPSED + WAIT))
   done
+fi
+
+# --no-metadata-sync: skip the wait loop, read existing turn once and dispatch
+if [[ "$NO_METADATA_SYNC" == "true" ]]; then
+  TURN=$(yq -r '.turn' "$METADATA_FILE")
+  log_debug "TURN" "$TURN"
+  log_info "--no-metadata-sync: dispatching on stale turn=$TURN"
+  case "$TURN" in
+    CI-REVIEW)
+      FAILED=$(yq -r '[.ciStatus[] | select(.conclusion != "SUCCESS" and .conclusion != "SKIPPED" and .conclusion != "CANCELLED" and .conclusion != "NEUTRAL" and .conclusion != null and .conclusion != "")] | length' "$METADATA_FILE")
+      log_info "CI has $FAILED failed checks (stale)"
+      log_exit 0 "CI failures to address (no-sync)"
+      hook_output_context "<worktree>$WORKTREE</worktree>
+<ci-failed-count>$FAILED</ci-failed-count>"
+      exit 0
+      ;;
+    *)
+      log_info "Stale metadata: turn=$TURN - blocking"
+      log_exit 0 "stale metadata - block"
+      hook_output_block "Stale metadata (--no-metadata-sync). Turn=$TURN."
+      exit 0
+      ;;
+  esac
 fi
 
 # Loop until turn resolves to something other than CI-PENDING

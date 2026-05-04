@@ -1,6 +1,6 @@
 ---
 description: Merges a PR and closes related issues when ready to complete. Use for finalizing approved pull requests.
-argument-hint: "[[--pr] <pr_number>] [--worktree <path>] [--squash|--merge|--rebase] [-d] [--delete-branch] [--delete-worktree] [--delete-remote]"
+argument-hint: "[[--pr] <pr_number>] [--worktree <path>] [--squash|--merge|--rebase] [-d] [--delete-branch] [--delete-worktree] [--delete-remote] [--no-metadata-sync]"
 allowed-tools: Agent, AskUserQuestion
 model: sonnet
 ---
@@ -12,6 +12,15 @@ Parse input from hook additional context looking for the XML tags:
 - `worktree`: store its value in `$worktree`
 
 Strip the `--worktree` argument from $ARGUMENTS if present.
+
+## Modes
+
+Extract from $ARGUMENTS:
+
+- **No metadata sync (--no-metadata-sync)**: If `--no-metadata-sync` is present,
+  skip all automatic metadata.yaml writes and refreshes. Identified as
+  `$NO_METADATA_SYNC="true"` if present, otherwise `"false"`. Pass `$ARGUMENTS`
+  through to the merger agent unchanged.
 
 ## Step 1: Run Agent
 

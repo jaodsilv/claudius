@@ -16,6 +16,8 @@ analysis of commits and changes.
 From the prompt:
 
 - `<worktree>`: Path to the worktree — store as `$worktree`
+- `--no-metadata-sync`: If present in the prompt, set `$NO_METADATA_SYNC="true"`,
+  otherwise `"false"`. When `"true"`, skip Phase 5 (metadata sync).
 - Remaining text: optional PR number — store as `$pr_number`
 
 Hook-injected (via `inject-pr-metadata.sh`):
@@ -166,7 +168,10 @@ gh pr edit <PR_NUMBER> --body "[body]"
 
 ## Phase 5: Sync Metadata
 
-After successful PR update, use the Skill tool to load the skill `gitx:managing-pr-metadata` to sync local metadata:
+If `$NO_METADATA_SYNC` is `"true"`, skip this entire phase — the user has opted
+out of automatic metadata writes.
+
+Otherwise, after successful PR update, use the Skill tool to load the skill `gitx:managing-pr-metadata` to sync local metadata:
 
 If title was updated:
 

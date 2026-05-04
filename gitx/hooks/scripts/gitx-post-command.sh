@@ -34,6 +34,12 @@ export HOOK_EVENT_TYPE="Stop"
 
 init
 
+NO_METADATA_SYNC=false
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  NO_METADATA_SYNC=true
+fi
+log_debug "NO_METADATA_SYNC" "$NO_METADATA_SYNC"
+
 NEXT_TURN=""
 case "$COMMAND" in
   "address-ci")
@@ -46,7 +52,11 @@ case "$COMMAND" in
     log_section "Review Stop Hook"
 
     # Post review to PR and update metadata
-    source "$HANDLERS_DIR/reviews/post-review.sh"
+    if [[ "$NO_METADATA_SYNC" == "false" ]]; then
+      source "$HANDLERS_DIR/reviews/post-review.sh"
+    else
+      log_info "Skipping post-review metadata writes (--no-metadata-sync)"
+    fi
 
     # Set turn to AUTHOR (waiting for author to read and respond to the review)
     NEXT_TURN="AUTHOR"
@@ -72,6 +82,12 @@ case "$COMMAND" in
     exit 0
     ;;
 esac
+
+if [[ "$NO_METADATA_SYNC" == "true" ]]; then
+  log_info "Skipping turn update (--no-metadata-sync)"
+  log_exit 0 "no-sync skip turn"
+  exit 0
+fi
 
 bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --set turn "$NEXT_TURN"
 log_exit 0 "Turn set to $NEXT_TURN"

@@ -1,6 +1,6 @@
 ---
 description: Responds to PR review comments when feedback needs addressing. Use for iterating on pull request feedback.
-argument-hint: "[--worktree <worktree>] [--resolve-level <all|critical|important>] [-f or --force] [[--review-comment] <review-comment>]"
+argument-hint: "[--worktree <worktree>] [--resolve-level <all|critical|important>] [-f or --force] [--no-metadata-sync] [[--review-comment] <review-comment>]"
 allowed-tools: Agent
 model: sonnet
 ---
@@ -12,6 +12,14 @@ Parse input from hook additional context looking for the XML tags:
 - `worktree`: store its value in `$worktree`
 
 Strip the `--worktree` argument and its value from $ARGUMENTS if present.
+
+## Modes
+
+Extract from $ARGUMENTS:
+
+- **No metadata sync (--no-metadata-sync)**: If `--no-metadata-sync` is present,
+  skip all automatic metadata.yaml writes and refreshes. Identified as
+  `$NO_METADATA_SYNC="true"` if present, otherwise `"false"`.
 
 ## Step 1: Run Agent
 

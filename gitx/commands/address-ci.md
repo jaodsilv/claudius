@@ -1,6 +1,6 @@
 ---
 description: Responds to CI failures with multi-agent analysis, planning, and automated fixes.
-argument-hint: "[--worktree <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>]"
+argument-hint: "[--worktree <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--no-metadata-sync]"
 allowed-tools: Agent, Skill
 model: sonnet
 ---
@@ -18,6 +18,17 @@ Parse input from hook additional context looking for the XML tags:
 - `<ci-mode>`: store its value in `$ciMode` (present when --ci-mode was used; names the CI job we are running inside)
 
 Ignore any $ARGUMENTS — all input comes from hook context.
+
+## Modes
+
+Extract from $ARGUMENTS:
+
+- **No metadata sync (--no-metadata-sync)**: If `--no-metadata-sync` is present,
+  skip all automatic metadata.yaml writes and refreshes. Identified as
+  `$NO_METADATA_SYNC="true"` if present, otherwise `"false"`.
+
+When forwarding control to downstream skills (Step 4), append `--no-metadata-sync`
+if `$NO_METADATA_SYNC` is `"true"`.
 
 > **Note**: When `<repo>`/`<pr-number>` are present without `<worktree>`, downstream agents
 > (`gitx:ci:failures-analyses-orchestrator` and below) currently expect a local worktree —
@@ -64,7 +75,8 @@ Wait for ALL fixers to complete. Collect their output summaries.
 
 ## Step 4: Commit and Push
 
-Use the Skill tool to execute the skill `/gitx:commit-push`:
+Use the Skill tool to execute the skill `/gitx:commit-push`. If `$NO_METADATA_SYNC`
+is `"true"`, append `--no-metadata-sync` to the args:
 
 ```markdown
 Skill(/gitx:commit-push, args: "--worktree $worktree")

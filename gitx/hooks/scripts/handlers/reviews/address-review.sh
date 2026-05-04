@@ -22,6 +22,12 @@ if has_flag "$ARGS" "-f or --force"; then
 fi
 log_debug "FORCE" "$FORCE"
 
+NO_METADATA_SYNC=false
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  NO_METADATA_SYNC=true
+fi
+log_debug "NO_METADATA_SYNC" "$NO_METADATA_SYNC"
+
 if [[ ! -f "$METADATA_FILE" ]]; then
   log_error "No metadata file found"
   log_exit 2 "no metadata"
@@ -29,13 +35,17 @@ if [[ ! -f "$METADATA_FILE" ]]; then
   exit 2
 fi
 
-# Wait for CI using centralized operation (suppress stdout, errors go to stderr)
-log_info "Waiting for CI to complete..."
-bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --wait-ci >/dev/null
+if [[ "$NO_METADATA_SYNC" == "false" ]]; then
+  # Wait for CI using centralized operation (suppress stdout, errors go to stderr)
+  log_info "Waiting for CI to complete..."
+  bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --wait-ci >/dev/null
 
-# Refresh metadata - this computes turn correctly using statusCheckRollup
-log_info "Refreshing metadata..."
-bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
+  # Refresh metadata - this computes turn correctly using statusCheckRollup
+  log_info "Refreshing metadata..."
+  bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh >/dev/null
+else
+  log_info "Skipping CI wait and metadata refresh (--no-metadata-sync)"
+fi
 
 # Check turn (unless --force)
 TURN=$(yq -r '.turn' "$METADATA_FILE")

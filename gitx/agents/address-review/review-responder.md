@@ -19,6 +19,11 @@ You will receive the following inputs:
 - `$resolve_level` (optional): The level of feedback to resolve (all, critical, important)
 - `$review_comments` (optional): The actual review to be addressed
 - `$priorities_file` (optional): The path to the priorities file
+- `$NO_METADATA_SYNC`: Set to `"true"` if `--no-metadata-sync` is present in the
+  prompt, otherwise `"false"`. When `"true"`, skip every metadata write phase
+  (Phase 1.5 resolveLevel write, Phase 9a minimize+metadata update, Phase 9b
+  approved write). Use the in-memory value of `$resolve_level` for synthesis
+  even when the metadata write is skipped.
 - `$cwd`: !`pwd`
 
 ## Initialize Progress Tracking
@@ -65,7 +70,12 @@ IMPORTANT: "all" means ALL items - Tier 1 (Critical), Tier 2 (Important),
 AND Tier 3 (Enhancement/nice-to-have). Never filter out lower priority items
 unless explicitly requested.
 
-If `$resolve_level` is provided, use `gitx:managing-pr-metadata` skill to set resolve level:
+If `$NO_METADATA_SYNC` is `"true"`, skip the metadata write below — keep
+`$resolve_level` only in-memory for use by later phases. Read the existing
+resolve level from metadata for fallback only if `$resolve_level` was not
+provided in the prompt.
+
+Otherwise, if `$resolve_level` is provided, use `gitx:managing-pr-metadata` skill to set resolve level:
 
 - worktree: `$worktree`
 - resolveLevel: `$resolve_level`
@@ -271,7 +281,11 @@ Mark "Post comment to PR" as in_progress.
 
 ### 9a. Batch Minimize Addressed Comments
 
-For each addressed comment (from the synthesis plan), use `gitx:using-gh-cli-for-reviews` skill to minimize comment:
+If `$NO_METADATA_SYNC` is `"true"`, skip this entire block — the user has opted
+out of automatic metadata writes, so do not minimize comments and do not update
+`latestMinimizedReview`, `latestReviews`, or `reviewThreads`.
+
+Otherwise, for each addressed comment (from the synthesis plan), use `gitx:using-gh-cli-for-reviews` skill to minimize comment:
 
 - nodeId: `<nodeid>`
 - reason: "RESOLVED"
@@ -282,7 +296,10 @@ After minimizing, update the metadata:
 
 ### 9b. Update Approved Field (LLM Semantic Analysis)
 
-Analyze the remaining state and set `approved: true` only if ALL 4 conditions are met:
+If `$NO_METADATA_SYNC` is `"true"`, skip this entire block — the user has opted
+out of automatic metadata writes.
+
+Otherwise, analyze the remaining state and set `approved: true` only if ALL 4 conditions are met:
 
 1. No non-resolved/non-minimized `reviewThreads` exist
 2. At least one non-minimized global PR review exists in `latestReviews`

@@ -16,6 +16,12 @@ validate_requires "$ARGS" "--pr" "--repo"
 WT_FLAG_PRESENT=false
 has_flag "$ARGS" "--worktree" && WT_FLAG_PRESENT=true
 
+NO_METADATA_SYNC=false
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  NO_METADATA_SYNC=true
+fi
+log_debug "NO_METADATA_SYNC" "$NO_METADATA_SYNC"
+
 # --- Phase 1: Branch on flag presence ---
 if [[ -n "$REPO_FLAG" ]]; then
   # Branch A: --repo + --pr provided, skip metadata/turn checks
@@ -33,6 +39,12 @@ else
   log_info "Branch B: using local metadata"
 
   if [[ ! -f "$METADATA_FILE" ]]; then
+    if [[ "$NO_METADATA_SYNC" == "true" ]]; then
+      log_error "No metadata and --no-metadata-sync set"
+      log_exit 2 "no metadata - no-sync block"
+      hook_output_block "No PR metadata. Run /gitx:pr first."
+      exit 2
+    fi
     log_info "Metadata not found, fetching..."
     if ! bash "${CLAUDE_PLUGIN_ROOT}/scripts/metadata/metadata-operations.sh" --worktree "$WORKTREE" --refresh; then
       log_error "Failed to fetch metadata"

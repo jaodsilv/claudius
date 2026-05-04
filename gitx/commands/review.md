@@ -1,6 +1,6 @@
 ---
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official and the plugin superpowers@claude-plugins-official to be installed
-argument-hint: "[[--worktree] <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--include-confidence] [--post]"
+argument-hint: "[[--worktree] <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--include-confidence] [--post] [--no-metadata-sync]"
 allowed-tools: Skill, Read, Bash(gh pr review), mcp__github_inline_comment__create_inline_comment, Agent, Write(.thoughts/pr/*), TaskCreate, TaskUpdate, TaskGet
 context: fork
 model: opus
@@ -21,6 +21,8 @@ $ARGUMENTS
 
 From arguments find the following optional values:
 - `--post`: set to `true` if present, `false` otherwise
+- `--no-metadata-sync`: set `$NO_METADATA_SYNC` to `"true"` if present, `"false"` otherwise.
+  When `"true"`, the post-review hook will skip writing review fields back to metadata.yaml.
 
 ### Step 0.2: Hook Additional Context Parsing
 

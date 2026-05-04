@@ -1,6 +1,6 @@
 ---
 description: Runs the appropriate next command based on current PR workflow turn
-argument-hint: "[[--worktree] <worktree>]"
+argument-hint: "[[--worktree] <worktree>] [--no-metadata-sync]"
 allowed-tools: Skill
 hooks:
   PreToolUse:
@@ -29,9 +29,22 @@ Parse input from hook additional context looking for the XML tags:
 
 Extract the value for `--turn` from $ARGUMENTS (passed by the hook).
 
+## Modes
+
+Extract from $ARGUMENTS:
+
+- **No metadata sync (--no-metadata-sync)**: If `--no-metadata-sync` is present,
+  set `$NO_METADATA_SYNC="true"`, otherwise `"false"`. When `"true"`, the
+  downstream skill invocation MUST also include `--no-metadata-sync` so the flag
+  flows down naturally.
+
 ## Logic
 
-Based on the value for `--turn` select the correct skill to run.
+Based on the value for `--turn` select the correct skill to run. When
+`$NO_METADATA_SYNC` is `"true"`, append ` --no-metadata-sync` to the args of
+the chosen downstream skill (the table below shows the base form; for example,
+when `$NO_METADATA_SYNC="true"` and turn is `REVIEW`, run
+`/gitx:review --worktree $worktree --no-metadata-sync`).
 
 | Turn | Action |
 | :--- | :----- |

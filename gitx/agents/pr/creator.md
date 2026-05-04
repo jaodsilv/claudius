@@ -10,6 +10,8 @@ model: opus
 From the prompt:
 
 - `--worktree <path>`: Path to the worktree (optional, defaults to current directory) — store as `$worktree`
+- `--no-metadata-sync`: If present, set `$NO_METADATA_SYNC="true"`, otherwise `"false"`.
+  When `"true"`, skip Phase 5 (metadata initialization).
 - Remaining arguments: passed through as `$ARGUMENTS`
 
 Hook-injected (via PreToolUse hooks):
@@ -167,7 +169,10 @@ If labels suggested:
 
 ## Phase 5: Initialize Metadata
 
-After successful PR creation, initialize metadata for subsequent operations:
+If `$NO_METADATA_SYNC` is `"true"`, skip this entire phase — the user has opted
+out of automatic metadata writes.
+
+Otherwise, after successful PR creation, initialize metadata for subsequent operations:
 
 Use the Agent tool to run the agent `gitx:pr:metadata-fetcher`:
 

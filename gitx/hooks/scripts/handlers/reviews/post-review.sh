@@ -5,6 +5,13 @@
 source "$SCRIPTS_DIR/lib/hook-output.sh"
 log_section "Post-Review Handler"
 
+# Defensive: short-circuit if caller forgot to gate this and --no-metadata-sync is set
+if has_flag "$ARGS" "--no-metadata-sync"; then
+  log_info "--no-metadata-sync set, skipping post-review metadata writes"
+  log_exit 0 "no-sync skip"
+  return 0 2>/dev/null || exit 0
+fi
+
 # Resolve REPO from --repo flag or git remote
 REPO_FLAG=$(get_flag_value "$ARGS" "--repo")
 PR_FLAG=$(get_flag_value "$ARGS" "--pr")

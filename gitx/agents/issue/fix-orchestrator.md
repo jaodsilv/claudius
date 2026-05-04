@@ -15,6 +15,12 @@ Parse $ARGUMENTS for issue references. The hook pre-processes the arguments and 
 
 - Issue number (required): Supports "123", "#123", "issue-123", or GitHub issue URL
 - If parsing fails, report error with supported formats
+- `--no-metadata-sync` (optional): If present, set `$NO_METADATA_SYNC="true"`,
+  otherwise `"false"`. When `"true"`, forward the flag to:
+  - the Phase 9 `gitx:pr` Skill invocation (append `--no-metadata-sync` to its args)
+  - the Phase 10 `review-loop:orchestrator` agent prompt (include
+    `<no-metadata-sync>true</no-metadata-sync>` and append `--no-metadata-sync`
+    to the developer prompt args so it flows down to `gitx:address-review:review-responder`).
 
 ## Workflow Phases
 
@@ -288,7 +294,8 @@ After development completes:
    Skill(commit-commands:commit-push-pr)
    ```
 
-3. **If no changes exist**, use the Skill tool to execute the skill `gitx:pr`:
+3. **If no changes exist**, use the Skill tool to execute the skill `gitx:pr`. If
+   `$NO_METADATA_SYNC` is `"true"`, append `--no-metadata-sync` to the args:
 
    ```markdown
    Skill(gitx:pr)
@@ -302,7 +309,11 @@ Mark "Commit and create PR" as completed.
 
 Mark "Review Loop" as in_progress.
 
-Use the Agent tool to spawn the agent `review-loop:orchestrator` to run the review loop:
+Use the Agent tool to spawn the agent `review-loop:orchestrator` to run the review loop.
+If `$NO_METADATA_SYNC` is `"true"`, the prompt MUST forward the flag by including
+`--no-metadata-sync` inside each sub-prompt block (reviewerPrompt, developerPrompt,
+ciCheckerPrompt, ciFixerPrompt) so it propagates to spawned subagents — in particular
+`gitx:address-review:review-responder`:
 
 ```markdown
 Agent(review-loop:orchestrator):
