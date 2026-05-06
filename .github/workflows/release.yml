@@ -15,9 +15,22 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'chore(release):') && !contains(github.event.head_commit.message, 'chore(sync):')"
     runs-on: ubuntu-latest
     steps:
+      - name: Generate App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.RELEASE_APP_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config user.email '${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
 
       - name: Detect and bump versions
         id: bump
@@ -45,8 +58,6 @@ jobs:
           done < <(find . -path "*/hooks/scripts/lib" -type d)
 
           if [[ "$changed" == "true" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
             git add '*/hooks/scripts/lib/*'
             git commit -m "chore(sync): sync lib files for release v${{ steps.bump.outputs.version }}"
           fi
@@ -55,8 +66,6 @@ jobs:
         id: commit
         if: steps.bump.outputs.bumped == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .claude-plugin/marketplace.json package.json
           git add '*/.claude-plugin/plugin.json'
           git commit -m "chore(release): v${{ steps.bump.outputs.version }}"
@@ -69,7 +78,7 @@ jobs:
       - name: Create GitHub Release
         if: steps.bump.outputs.bumped == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh release create "v${{ steps.bump.outputs.version }}" \
             --target "${{ steps.commit.outputs.commit_sha }}" \
