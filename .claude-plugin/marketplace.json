@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jaodsilv-claudius-marketplace",
-  "version": "2.0.23",
+  "version": "2.0.24",
   "description": "Personal productivity marketplace with naming, TDD workflows, job hunting automation, and curated community development tools",
   "owner": {
     "name": "João da Silva",
@@ -13,7 +13,7 @@
       "description": "Multi-agent requirements discovery through Socratic dialogue and systematic exploration for software/feature ideation",
       "source": "./brainstorm.claude",
       "category": "productivity",
-      "version": "2.0.14",
+      "version": "2.0.15",
       "keywords": [
         "brainstorming",
         "requirements",
@@ -29,7 +29,7 @@
       "description": "Meta-toolkit for creating, improving, and managing Claude Code plugin components. Requires plugin-dev@claude-plugins-official",
       "source": "./cc",
       "category": "development-workflow",
-      "version": "2.0.29",
+      "version": "2.0.30",
       "keywords": [
         "meta-tools",
         "plugin-development",
@@ -45,7 +45,7 @@
       "description": "Extended git/GitHub workflow commands with multi-agent orchestration for worktrees, issues, PRs, conflict resolution, and branch operations",
       "source": "./gitx",
       "category": "git-version-control",
-      "version": "2.0.25",
+      "version": "2.0.26",
       "keywords": [
         "git",
         "github",
@@ -64,7 +64,7 @@
       "description": "Strategic planning plugin: multi-agent orchestrated roadmapping, issue prioritization, requirements discovery, and comprehensive planning reviews",
       "source": "./planner.claude",
       "category": "productivity",
-      "version": "1.1.6",
+      "version": "1.1.7",
       "keywords": [
         "planning",
         "roadmap",
@@ -85,7 +85,7 @@
       "description": "Generic Review-Task loop orchestrator with pause/resume support and config file auto-detection. Requires: gitx plugin for metadata management.",
       "source": "./review-loop",
       "category": "development-workflow",
-      "version": "2.1.14",
+      "version": "2.1.15",
       "keywords": [
         "review",
         "workflow",
@@ -116,7 +116,7 @@
       "description": "Generic analysis plugin with multi-agent investigation, adversarial critique, analysis merging, and task decomposition",
       "source": "./analyzer",
       "category": "development-workflow",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "keywords": [
         "analysis",
         "root-cause",

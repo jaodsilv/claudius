@@ -1,6 +1,6 @@
 {
   "name": "analyzer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generic analysis plugin for investigating issues, review comments, errors, and task descriptions with structured output for downstream planners",
   "author": {
     "name": "João da Silva",
