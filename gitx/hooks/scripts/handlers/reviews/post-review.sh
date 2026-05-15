@@ -55,7 +55,26 @@ if [[ -z "$PR_NUMBER" ]] || [[ "$PR_NUMBER" == "null" ]]; then
   exit 0
 fi
 
-# --- Fetch and update review fields ---
+# --- Resolve latest reviewed commit via shared discovery script ---
+log_info "Discovering latest reviewed commit..."
+
+discovery_json=$(bash "${CLAUDE_PLUGIN_ROOT}/scripts/reviews/discover-latest-reviewed.sh" \
+  --repo "$REPO_OWNER/$REPO_NAME" \
+  --pr "$PR_NUMBER" \
+  --worktree "$WORKTREE" \
+  --plugin-root "$CLAUDE_PLUGIN_ROOT" 2>/dev/null)
+
+if [[ -z "$discovery_json" ]]; then
+  discovery_json='{"head_sha":"","latest_reviewed_commit":"","source":"none","round":0}'
+fi
+
+latest_reviewed_commit=$(echo "$discovery_json" | jq -r '.latest_reviewed_commit // ""')
+review_count=$(echo "$discovery_json" | jq -r '.round // 0')
+discovery_source=$(echo "$discovery_json" | jq -r '.source // "none"')
+log_debug "DISCOVERY_SOURCE" "$discovery_source"
+log_debug "REVIEW_COUNT" "$review_count"
+
+# --- Fetch supplementary review data (latestReviews list, comments) for metadata ---
 log_info "Updating review metadata..."
 
 reviews_query='
@@ -86,28 +105,16 @@ fi
 
 reviews=$(echo "$reviews" | jq 'sort_by(.timestamp)' | tr -d '\r')
 
-latest_reviewed_commit=""
-reviews_length=$(echo "$reviews" | jq 'length' | tr -d '\r')
-
-review_count=0
-if [[ "$reviews_length" -gt 0 ]]; then
-  latest_review_body=$(echo "$reviews" | jq -r '.[-1].body // ""' | tr -d '\r')
-  round_match=$(echo "$latest_review_body" | head -5 | grep -oiE 'Round[[:space:]]*[0-9]+' | head -1 | grep -oE '[0-9]+')
-
-  if [[ -n "$round_match" ]]; then
-    review_count="$round_match"
-  else
-    review_count=$(gh pr view -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --json reviews --jq '.reviews | length' 2>/dev/null || echo "0")
-  fi
-fi
-
-if [[ "$reviews_length" -gt 0 ]]; then
-  latest_review_commit=$(echo "$reviews" | jq -r '.[-1].commitOid // empty' | tr -d '\r')
-
-  if [[ -n "$latest_review_commit" ]]; then
-    latest_reviewed_commit=$(git -C "$WORKTREE" log "$latest_review_commit^" --max-count=1 --format="%H" 2>/dev/null || echo "")
-    if [[ -z "$latest_reviewed_commit" ]]; then
-      latest_reviewed_commit="$latest_review_commit"
+# If discovery didn't yield a round, fall back to the legacy "Round N" body parse
+if [[ "$review_count" == "0" || -z "$review_count" ]]; then
+  reviews_length=$(echo "$reviews" | jq 'length' | tr -d '\r')
+  if [[ "$reviews_length" -gt 0 ]]; then
+    latest_review_body=$(echo "$reviews" | jq -r '.[-1].body // ""' | tr -d '\r')
+    round_match=$(echo "$latest_review_body" | head -5 | grep -oiE 'Round[[:space:]]*[0-9]+' | head -1 | grep -oE '[0-9]+')
+    if [[ -n "$round_match" ]]; then
+      review_count="$round_match"
+    else
+      review_count=$(gh pr view -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --json reviews --jq '.reviews | length' 2>/dev/null || echo "0")
     fi
   fi
 fi

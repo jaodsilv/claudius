@@ -1,7 +1,7 @@
 ---
 description: Comprehensive PR review using specialized agents. Use this skill proactively when requested to review a PR. This skill requires the plugin pr-review-toolkit@claude-plugins-official and the plugin superpowers@claude-plugins-official to be installed
-argument-hint: "[[--worktree] <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--include-confidence] [--post] [--no-metadata-sync]"
-allowed-tools: Skill, Read, Bash(gh pr review), mcp__github_inline_comment__create_inline_comment, Agent, Write(.thoughts/pr/*), TaskCreate, TaskUpdate, TaskGet
+argument-hint: "[[--worktree] <worktree>] [--repo <owner/name>] [--pr <number>] [--ci-mode <job-name>] [--bootstrap] [--latest-reviewed-commit <sha>] [--include-drafts] [--force-post] [--approval-level <all|critical|important>] [--include-confidence] [--post] [--no-metadata-sync]"
+allowed-tools: Skill, Read, Bash(gh pr review *), Bash(gh pr view *), Bash(date *), mcp__github_inline_comment__create_inline_comment, Agent, Write(.thoughts/pr/*), TaskCreate, TaskUpdate, TaskGet
 context: fork
 model: opus
 ---
@@ -22,7 +22,8 @@ $ARGUMENTS
 From arguments find the following optional values:
 - `--post`: set to `true` if present, `false` otherwise
 - `--no-metadata-sync`: set `$NO_METADATA_SYNC` to `"true"` if present, `"false"` otherwise.
-  When `"true"`, the post-review hook will skip writing review fields back to metadata.yaml.
+- `--force-post`: set `$FORCE_POST` to `"true"` if present, `"false"` otherwise. When true, post even if the marker discovery indicates the current head was already reviewed (Step 4.2 idempotency).
+- `--bootstrap`, `--latest-reviewed-commit`, `--include-drafts`, `--approval-level`: handled by the pre-command hook; surface only as the corresponding XML tags below. Do not re-parse here.
 
 ### Step 0.2: Hook Additional Context Parsing
 
@@ -31,8 +32,16 @@ IGNORE other arguments. Instead, parse input from hook additional context lookin
 - `worktree`: store its value in `$worktree`
 - `pr-number`: store its value in `$PR_NUMBER`
 - `repo`: store its value in `$REPO`
-- `latest-reviewed-commit`: store its value in `$LATEST_REVIEWED_COMMIT`
+- `latest-reviewed-commit`: store its value in `$LATEST_REVIEWED_COMMIT` (computed as `head_sha^` from the marker; falls back to legacy reviews-only heuristic when no marker exists)
+- `latest-reviewed-source`: store its value in `$LATEST_REVIEWED_SOURCE`. One of `reviews | comments | threads | none | manual`. Use `none` to detect that the legacy fallback was used (no marker found anywhere). Use `manual` to detect that `--latest-reviewed-commit` was passed.
 - `ci-mode`: store its value in `$CI_MODE` (present when --ci-mode was used; names the CI job running this command)
+- `head-sha`: store its value in `$HEAD_SHA`. The current PR head OID; required for marker write in Step 4.2.
+- `base-branch`: store its value in `$BASE_BRANCH`. Target branch name (e.g., `main`).
+- `base-sha`: store its value in `$BASE_SHA`. Base ref OID; used in the marker.
+- `pr-title`, `pr-author`, `pr-labels`, `pr-state`, `pr-draft`: surface PR metadata as additional review context. `pr-labels` is a JSON array string.
+- `changed-files-count`: numeric hint for how many files this PR touches.
+- `force-post`: when present and equal to `true`, skip the idempotency check in Step 4.2.
+- `approval-level`: store its value in `$APPROVAL_LEVEL`. One of `all | critical | important`. When set, gates the PR-approval verb used in Step 4.2 (see "Approval gate" there). When absent, the PR is not approved or rejected — the review is posted as a plain comment (existing behavior).
 - `review-prompt`: DEPRECATED, ignore it
 
 ## Step 1: Run reviews
@@ -165,7 +174,50 @@ Separate comments by their locations mapping the specific locations to the comme
 If `mcp__github_inline_comment__create_inline_comment` tool is available, use it to post file-level, line-range, and line-specific comments using that mcp tool (with `confirmed: true`) to highlight specific code issues.
 If not available proceed as if ALL comments were top-level comments.
 
-Post all top-level comments in a single review comment using the `gh pr review -R "$REPO" "$PR_NUMBER" --comment --body "..."` command.
+#### Idempotency check
+
+Before posting the top-level review:
+
+- If `$LATEST_REVIEWED_SOURCE` is one of `reviews`, `comments`, or `threads`, AND the marker's `head_sha` (from the discovery output) equals `$HEAD_SHA`, AND `$FORCE_POST` is not `true`:
+  - Skip the post. Log: "Already reviewed at $HEAD_SHA (round N, source=$LATEST_REVIEWED_SOURCE). Use --force-post to override."
+  - The pre-command hook already enforces this as a `hook_output_block`, so in practice the command will not reach this step in that case. This explicit check covers the rare path where the hook is bypassed (e.g., direct command invocation).
+
+#### Marker prepend
+
+The review body posted to GitHub MUST start with a single-line marker so future runs can detect that this commit has been reviewed. The marker is invisible in rendered Markdown but is parsed by `discover-latest-reviewed.sh`.
+
+Marker format (single line, no trailing whitespace):
+
+```
+<!-- claudius-review:v=1:head_sha=<HEAD_SHA>:base_sha=<BASE_SHA>:round=<N>:posted_at=<ISO8601> -->
+```
+
+Where:
+- `<HEAD_SHA>` = `$HEAD_SHA` (the value from the hook's `<head-sha>` tag)
+- `<BASE_SHA>` = `$BASE_SHA` (the value from the hook's `<base-sha>` tag)
+- `<N>` = (round from discovery + 1), or `1` if no prior round
+- `<ISO8601>` = output of `date -u +"%Y-%m-%dT%H:%M:%SZ"`
+
+Prepend this marker as the first line of the body file, followed by a blank line, before invoking `gh pr review`.
+
+#### Approval gate
+
+If `$APPROVAL_LEVEL` is set, choose the review verb based on whether any aggregated issue meets or exceeds the gate threshold. The level names the **floor** — any issue at that severity or higher blocks approval:
+
+| `$APPROVAL_LEVEL` | Blocks approval if any issue has confidence | Threshold |
+|---|---|---|
+| `critical`  | Critical bug or explicit CLAUDE.md violation                              | `>= 91` |
+| `important` | Important issue requiring attention, or critical                          | `>= 76` |
+| `all`       | Any non-false-positive issue (skip 0-25 likely-false-positive bucket)     | `>= 26` |
+
+Decision:
+- If `$APPROVAL_LEVEL` is empty/unset → use `--comment` (no approval/rejection; current default behavior).
+- If `$APPROVAL_LEVEL` is set AND **at least one** issue's confidence score meets the threshold → use `--request-changes`. The body MUST list the gating issues first.
+- If `$APPROVAL_LEVEL` is set AND **no** issue meets the threshold → use `--approve`.
+
+#### Post the review
+
+Post all top-level comments in a single review using `gh pr review -R "$REPO" "$PR_NUMBER" <verb> --body-file "<path>"` where `<verb>` is `--comment`, `--approve`, or `--request-changes` per the approval gate above. The body MUST begin with the marker line described above.
 
 ## Issue Confidence Scoring
 

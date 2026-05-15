@@ -75,8 +75,54 @@ fi
 
 # --- Phase 1: Post the review ---
 
+# Prepend a machine-readable marker so subsequent runs can detect that this
+# commit has already been reviewed. Format documented in
+# scripts/reviews/discover-latest-reviewed.sh.
+#
+# Marker fields are best-effort:
+#   - head_sha: PR HEAD ref OID (gh pr view), falls back to local HEAD
+#   - base_sha: PR base ref OID (gh pr view), falls back to "0" * 40
+#   - round:    (existing reviewCount in metadata) + 1, default 1
+#   - posted_at: current UTC ISO-8601 timestamp
+
+PR_VIEW_JSON=$(gh pr view -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" \
+  --json headRefOid,baseRefOid 2>/dev/null | tr -d '\r')
+HEAD_SHA=$(echo "$PR_VIEW_JSON" | jq -r '.headRefOid // ""' 2>/dev/null)
+BASE_SHA=$(echo "$PR_VIEW_JSON" | jq -r '.baseRefOid // ""' 2>/dev/null)
+
+if [[ -z "$HEAD_SHA" ]]; then
+  HEAD_SHA=$(git -C "$WORKTREE" rev-parse HEAD 2>/dev/null || echo "")
+fi
+if [[ -z "$BASE_SHA" ]]; then
+  BASE_SHA="0000000000000000000000000000000000000000"
+fi
+
+PRIOR_ROUND=0
+if [[ -f "$METADATA_FILE" ]]; then
+  PRIOR_ROUND=$(yq -r '.reviewCount // 0' "$METADATA_FILE" 2>/dev/null || echo "0")
+fi
+[[ -z "$PRIOR_ROUND" || "$PRIOR_ROUND" == "null" ]] && PRIOR_ROUND=0
+ROUND=$((PRIOR_ROUND + 1))
+
+POSTED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+if [[ -n "$HEAD_SHA" && "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+  MARKER="<!-- claudius-review:v=1:head_sha=${HEAD_SHA}:base_sha=${BASE_SHA}:round=${ROUND}:posted_at=${POSTED_AT} -->"
+  TMP_BODY=$(mktemp "${TMPDIR:-/tmp}/gitx-review-body-XXXXXX.md")
+  {
+    echo "$MARKER"
+    echo ""
+    cat "$REVIEW_FILE"
+  } > "$TMP_BODY"
+  POST_BODY_FILE="$TMP_BODY"
+  trap 'rm -f "$TMP_BODY"' EXIT
+else
+  echo "warn: HEAD SHA not resolvable (got '$HEAD_SHA'); posting review without marker" >&2
+  POST_BODY_FILE="$REVIEW_FILE"
+fi
+
 echo "Posting review to PR #$PR_NUMBER..."
-if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --comment --body-file "$REVIEW_FILE"; then
+if ! gh pr review -R "$REPO_OWNER/$REPO_NAME" "$PR_NUMBER" --comment --body-file "$POST_BODY_FILE"; then
   echo "error: Failed to post review" >&2
   exit 1
 fi
