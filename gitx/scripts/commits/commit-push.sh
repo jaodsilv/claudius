@@ -260,18 +260,8 @@ if [[ "$PUSH" == "true" ]]; then
         PUSH_FLAGS="--force-with-lease"
     fi
 
-    # Check if upstream exists
-    UPSTREAM=$(git rev-parse --abbrev-ref @{upstream} 2>/dev/null || echo "")
-    if [[ -z "$UPSTREAM" ]]; then
-        # No upstream, push with -u
-        BRANCH=$(git branch --show-current)
-        if ! git push -u origin "$BRANCH" $PUSH_FLAGS 2>&1; then
-            error_output "push_failed" "Commit succeeded but push failed. Manual push required."
-        fi
-    else
-        if ! git push $PUSH_FLAGS 2>&1; then
-            error_output "push_failed" "Commit succeeded but push failed. Manual push required."
-        fi
+    if ! git push $PUSH_FLAGS 2>&1; then
+        error_output "push_failed" "Commit succeeded but push failed. Manual push required."
     fi
     PUSHED=true
 fi

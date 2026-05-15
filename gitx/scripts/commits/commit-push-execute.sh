@@ -153,20 +153,9 @@ PUSH_ERROR=""
 if [[ "$NO_PUSH" != "true" ]]; then
   log_section "Push to Remote"
 
-  # Check if upstream exists
-  UPSTREAM=$(git rev-parse --abbrev-ref @{upstream} 2>/dev/null || echo "")
-
-  if [[ -z "$UPSTREAM" ]]; then
-    # No upstream, push with -u
-    BRANCH=$(git branch --show-current)
-    log_info "No upstream, pushing with -u origin $BRANCH"
-    PUSH_OUTPUT=$(git push -u origin "$BRANCH" 2>&1)
-    PUSH_EXIT=$?
-  else
-    log_info "Pushing to $UPSTREAM"
-    PUSH_OUTPUT=$(git push 2>&1)
-    PUSH_EXIT=$?
-  fi
+  log_info "Pushing"
+  PUSH_OUTPUT=$(git push 2>&1)
+  PUSH_EXIT=$?
 
   log_debug "PUSH_EXIT" "$PUSH_EXIT"
   log_debug "PUSH_OUTPUT" "$PUSH_OUTPUT"
