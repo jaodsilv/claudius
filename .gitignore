@@ -35,3 +35,7 @@ node_modules/
 coverage/
 coverage-*
 tmpclaude-*
+
+# CLAUDE Local files
+.claude/worktrees/
+.claude/settings.local.json
