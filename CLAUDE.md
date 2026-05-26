@@ -27,185 +27,57 @@ specialized plugin directories.
 #### gitx/
 
 **Purpose**: Extended Git/GitHub workflow plugin with multi-agent orchestration
-**Contents**:
-
-1. 14 agents in 4 groups:
-   - `conflict-resolver/` - 3 agents for conflict resolution
-   - `fix-issue/` - 4 agents for issue-to-PR workflow
-   - `pr-create/` - 3 agents for PR creation
-   - `respond/` - 4 agents for PR response handling
-2. 15 commands: worktree, remove-worktree, remove-branch, rebase, merge, ignore,
-   commit-push, next-issue, fix-issue, comment-to-issue, comment-to-pr, pr,
-   respond, update-pr, merge-pr
-3. Multiple skills: conventional-commits, conventional-branch,
-   managing-issues, performing-pr-preflight-checks,
-   categorizing-review-concerns, etc...
-
 **See**: `gitx/README.md` for detailed documentation
 
 #### cc/
 
 **Purpose**: Meta-toolkit for creating and improving Claude Code plugin components
-**Contents**:
-
-1. 14 agents:
-   - Creator agents (4): command, skill, orchestration, output-style
-   - Improver agents (6): command, agent, skill, plugin, orchestration, output-style
-   - Architect agent (1): orchestration
-   - Workflow agents (3): change-planner, component-writer, improvement-workflow-orchestrator
-2. 11 commands: create-command, create-skill, create-orchestration,
-   create-output-style, improve-command, improve-agent, improve-skill,
-   improve-plugin, improve-orchestration, improve-output-style, bump-version
-3. 6 skills: authoring-skills, component-validation, focus-driven-analysis,
-   improving-components, orchestrating-agents, syntax-validation
-
 **See**: `cc/README.md` for detailed documentation
 
 #### planner.claude/
 
 **Purpose**: Strategic planning with roadmapping, prioritization, and deep ideation
-**Contents**:
-
-1. 16 agents in 5 groups:
-   - `creators/` - 3 agents (prioritization-engine, requirements-gatherer, roadmap-architect)
-   - `github/` - 2 agents (issue-analyzer, issue-relationship-mapper)
-   - `ideas/` - 5 agents (adversarial-critic, convergence-synthesizer, deep-thinker,
-     facilitator, innovation-explorer)
-   - `orchestration/` - 3 agents (review-analyzer, review-challenger, review-synthesizer)
-   - `reviewers/` - 3 agents (architecture-reviewer, plan-reviewer, requirements-reviewer)
-2. 9 commands: roadmap, prioritize, gather-requirements, review-plan,
-   review-roadmap, review-prioritization, review-architecture, review-requirements,
-   ideas
-3. 7 skills: analyzing-adversarially, orchestrating-reviews, planning-with-github,
-   prioritizing-work, reviewing-artifacts, roadmapping, synthesizing-outputs
-4. Multi-agent "Ultrathink" ideation with Opus extended thinking
-
 **See**: `planner.claude/README.md` for detailed documentation
 
 #### brainstorm.claude/
 
 **Purpose**: Multi-agent requirements discovery through Socratic dialogue
-**Contents**:
-
-1. 7 agents: facilitator, domain-explorer, technical-analyst, constraint-analyst, analysis-synthesizer, requirements-synthesizer, specification-writer
-2. 3 commands: start, continue, export
-3. 6 skills: brainstorming, constraint-analysis, domain-research, requirements-synthesis, technical-patterns, validating-workflow
-4. Templates for requirements and session summaries
-
 **See**: `brainstorm.claude/README.md` for detailed documentation
-
-### Plugins Under Development
-
-#### doc-understanding.claude/
-
-**Purpose**: Documentation downloading, conversion, and processing
-**Contents**:
-
-1. 4 agents: downloader, batch-downloader, converter, conversion-verifier
-2. 1 command: /docs:download
-
-**See**: `doc-understanding.claude/README.md` for detailed documentation
-
-#### job-hunting.claude/
-
-**Purpose**: Job hunting workflow configurations
-**Contents**:
-
-1. 19 agents:
-   - Cover letter evaluators (14): ATS, communication, false-assertion-cleaner,
-     impact, keywords, overlap, personalization, presentation, relevance,
-     result-combiner, skills, tech-positioning, terminology, true-gaps
-   - Interview preparation (1): interview-company-researcher
-   - Job hunting workflow (4): cover-letter-improver, improver-standalone,
-     shortener, message-parser
-2. 4 commands: overlap-analysis, improve-cover-letter, eval-cover-letter, eval-cover-letterv2
-3. 1 output style: tech-cover-letter-specialist
-4. 1 skill: job-hunting
-
-**See**: `job-hunting.claude/README.md` for detailed documentation
-
-#### jaodsilv-career/
-
-**Purpose**: Career development skill
-**Contents**: 1 skill (job-hunting) - 593 lines of career guidance
-
-#### marketplace-curator/ (Deprecated - Pending Cleanup)
-
-**Purpose**: Marketplace curation tools
-**Contents**: 1 agent (curator) for discovering and analyzing marketplace items
-
-#### tdd-pro/
-
-**Purpose**: Professional TDD workflow
-**Contents**:
-
-1. 3 agents: curator, file-output-writer, prompt-to-pipeline-architect
-2. 4 skills: code-quality, conventional-branch, conventional-commits, tdd-workflow
-
-### Community Plugins (Deprecated - Pending Cleanup)
-
-These directories are scheduled for removal or consolidation:
-
-1. `community-bundle/` - Meta plugin for installing all community collections
-2. `community-devops/` - CI/CD & Infrastructure
-3. `community-git-tools/` - Git workflow skills
-4. `community-testing/` - Testing & QA skills
 
 ### Supporting Directories
 
-#### curation/ (Deprecated - Pending Cleanup)
-
-**Purpose**: Marketplace curation analysis and reports
-**Contents**: Analysis, decisions, inventory, outputs, reports, outputs of marketplace-curator plugin
-
 #### config/
 
-**Purpose**: Markdownlint configurations (4 files)
+**Purpose**: Markdownlint configurations
 
 #### scripts/
 
 **Purpose**: Generate docs, validate plugins, and shared hook libraries
 
-**CRITICAL**: `scripts/lib/` is the **single source of truth** for all plugin hook libraries
+- **CRITICAL**: `scripts/lib/` is the **single source of truth** for all plugin hook libraries
 (`logging.sh`, `args-helper.sh`, `args-validator.sh`, `hook-output.sh`, `text-styles.sh`,
-`count-tokens.py`). Each plugin's `hooks/scripts/lib/` is a **hard copy** of this directory.
-
-- **NEVER edit files inside `<plugin>/hooks/scripts/lib/`** — they are overwritten by the
-  **"Sync lib files"** workflow step on every release run, and any local edits will be lost.
-- To change hook library behavior, edit `scripts/lib/` directly.
-- The release workflow (`release.yml`) has a **"Sync lib files"** step (runs before the tag
-  commit) that overwrites any plugin copy that has drifted from `scripts/lib/`. Changes are
-  committed locally; the following **"Commit and tag"** step pushes everything together.
+`count-tokens.py`).
+- Each plugin's `hooks/scripts/lib/` is a **hard copy** of this directory and are synced by a CI job workflow.
+- **NEVER edit files inside `<plugin>/hooks/scripts/lib/`**, instead edit `scripts/lib/` directly.
 
 #### docs/
 
 **Purpose**: Documentation directory
 
-#### dotclaude/
+### Deprecated Folders
 
-**Purpose**: General-purpose Claude Code configurations (legacy, no longer mounted as ~/.claude)
+**IMPORTANT**: Do not touch unless you are requested to, but you take anything from there to build something new
 
-**Contents**:
+- community-*/ - Community plugins
+- curation/ - Marketplace curation analysis and reports
+- doc-understanding.claude/ - Documentation downloading, conversion, and processing
+- dotclaude/ - Legacy pré-plugins era agents, commands, and skills. Some parts may still be pending migration
+- jaodsilv-career/ - Career development skill
+- job-hunting.claude/ - Job hunting workflow configurations
+- marketplace-curator/ - Marketplace curation tools
+- tdd-pro/ - TDD workflow
 
-1. `agents/` - 12 agents
-   - Root level (7): coding-task-orchestrator, curator, prompt-to-pipeline-architect,
-     pr-quality-reviewer, pr-quick-reviewer, pr-reviewer-2, walkthrough-generator
-   - `pr-focused-reviewers/` (5): architecture, documentation, performance, security,
-     test-coverage
-2. `commands/` - 3 commands in 2 groups (coding-task/start, project/create, project/create-data)
-3. `instructions/` - Agent creation guidelines
-4. `shared/` - 7 reference documents (coding-task-workflow, conventional-branch, conventional-commits, rfc2119, semver, etc.)
-5. `output-styles/` - 1 output style (candidate-response)
-6. `skills/` - 16 skills in categories:
-   - Code quality (1)
-   - Conventional standards (2): branch, commits
-   - Language-specific reviews (7): Go, Java, Markdown, Mermaid, Python, Rust, TypeScript
-   - Principles (3): performance, security, SOLID
-   - TDD (2): approach-selection, workflow
-   - Job hunting (1)
-7. `plugins/` - Plugin configurations
-
-## Migration Notes
+### `dotclaude/` Migration Notes
 
 Content previously in `dotclaude/` is being split:
 
